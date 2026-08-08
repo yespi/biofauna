@@ -1,0 +1,298 @@
+{
+  "created": "2026-08-04T19:53:27",
+  "n_samples": 2427,
+  "n_species": 972,
+  "base_rate_species": 0.6386,
+  "base_rate_genus": 0.6967,
+  "base_rate_family": 0.7482,
+  "species_level": {
+    "ece": 0.0454,
+    "auc": 0.8452,
+    "operating_points": [
+      {
+        "umbral": 0.5,
+        "cobertura": 0.701,
+        "n": 510,
+        "precision_real": 0.788,
+        "ci_95": [
+          0.752,
+          0.825
+        ]
+      },
+      {
+        "umbral": 0.6,
+        "cobertura": 0.622,
+        "n": 453,
+        "precision_real": 0.819,
+        "ci_95": [
+          0.782,
+          0.854
+        ]
+      },
+      {
+        "umbral": 0.7,
+        "cobertura": 0.529,
+        "n": 385,
+        "precision_real": 0.873,
+        "ci_95": [
+          0.838,
+          0.906
+        ]
+      },
+      {
+        "umbral": 0.75,
+        "cobertura": 0.486,
+        "n": 354,
+        "precision_real": 0.887,
+        "ci_95": [
+          0.854,
+          0.919
+        ]
+      },
+      {
+        "umbral": 0.8,
+        "cobertura": 0.433,
+        "n": 315,
+        "precision_real": 0.905,
+        "ci_95": [
+          0.873,
+          0.936
+        ]
+      },
+      {
+        "umbral": 0.85,
+        "cobertura": 0.38,
+        "n": 277,
+        "precision_real": 0.921,
+        "ci_95": [
+          0.886,
+          0.952
+        ]
+      },
+      {
+        "umbral": 0.9,
+        "cobertura": 0.301,
+        "n": 219,
+        "precision_real": 0.922,
+        "ci_95": [
+          0.886,
+          0.956
+        ]
+      },
+      {
+        "umbral": 0.95,
+        "cobertura": 0.224,
+        "n": 163,
+        "precision_real": 0.914,
+        "ci_95": [
+          0.87,
+          0.953
+        ]
+      },
+      {
+        "umbral": 0.98,
+        "cobertura": 0.066,
+        "n": 48,
+        "precision_real": 0.958,
+        "ci_95": [
+          0.896,
+          1.0
+        ]
+      }
+    ]
+  },
+  "genus_level": {
+    "ece": 0.0493,
+    "auc": 0.8619,
+    "operating_points": [
+      {
+        "umbral": 0.5,
+        "cobertura": 0.758,
+        "n": 552,
+        "precision_real": 0.822,
+        "ci_95": [
+          0.79,
+          0.854
+        ]
+      },
+      {
+        "umbral": 0.6,
+        "cobertura": 0.692,
+        "n": 504,
+        "precision_real": 0.847,
+        "ci_95": [
+          0.816,
+          0.877
+        ]
+      },
+      {
+        "umbral": 0.7,
+        "cobertura": 0.624,
+        "n": 454,
+        "precision_real": 0.879,
+        "ci_95": [
+          0.848,
+          0.908
+        ]
+      },
+      {
+        "umbral": 0.75,
+        "cobertura": 0.576,
+        "n": 419,
+        "precision_real": 0.897,
+        "ci_95": [
+          0.869,
+          0.925
+        ]
+      },
+      {
+        "umbral": 0.8,
+        "cobertura": 0.526,
+        "n": 383,
+        "precision_real": 0.906,
+        "ci_95": [
+          0.876,
+          0.935
+        ]
+      },
+      {
+        "umbral": 0.85,
+        "cobertura": 0.471,
+        "n": 343,
+        "precision_real": 0.921,
+        "ci_95": [
+          0.893,
+          0.948
+        ]
+      },
+      {
+        "umbral": 0.9,
+        "cobertura": 0.383,
+        "n": 279,
+        "precision_real": 0.939,
+        "ci_95": [
+          0.911,
+          0.963
+        ]
+      },
+      {
+        "umbral": 0.95,
+        "cobertura": 0.284,
+        "n": 207,
+        "precision_real": 0.942,
+        "ci_95": [
+          0.91,
+          0.97
+        ]
+      },
+      {
+        "umbral": 0.98,
+        "cobertura": 0.093,
+        "n": 68,
+        "precision_real": 0.956,
+        "ci_95": [
+          0.903,
+          1.0
+        ]
+      }
+    ]
+  },
+  "family_level": {
+    "ece": 0.0487,
+    "auc": 0.8663,
+    "operating_points": [
+      {
+        "umbral": 0.5,
+        "cobertura": 0.806,
+        "n": 587,
+        "precision_real": 0.842,
+        "ci_95": [
+          0.812,
+          0.871
+        ]
+      },
+      {
+        "umbral": 0.6,
+        "cobertura": 0.757,
+        "n": 551,
+        "precision_real": 0.862,
+        "ci_95": [
+          0.831,
+          0.89
+        ]
+      },
+      {
+        "umbral": 0.7,
+        "cobertura": 0.702,
+        "n": 511,
+        "precision_real": 0.886,
+        "ci_95": [
+          0.86,
+          0.913
+        ]
+      },
+      {
+        "umbral": 0.75,
+        "cobertura": 0.659,
+        "n": 480,
+        "precision_real": 0.908,
+        "ci_95": [
+          0.881,
+          0.933
+        ]
+      },
+      {
+        "umbral": 0.8,
+        "cobertura": 0.625,
+        "n": 455,
+        "precision_real": 0.914,
+        "ci_95": [
+          0.888,
+          0.94
+        ]
+      },
+      {
+        "umbral": 0.85,
+        "cobertura": 0.565,
+        "n": 411,
+        "precision_real": 0.932,
+        "ci_95": [
+          0.907,
+          0.956
+        ]
+      },
+      {
+        "umbral": 0.9,
+        "cobertura": 0.477,
+        "n": 347,
+        "precision_real": 0.945,
+        "ci_95": [
+          0.921,
+          0.966
+        ]
+      },
+      {
+        "umbral": 0.95,
+        "cobertura": 0.396,
+        "n": 288,
+        "precision_real": 0.948,
+        "ci_95": [
+          0.922,
+          0.971
+        ]
+      },
+      {
+        "umbral": 0.98,
+        "cobertura": 0.239,
+        "n": 174,
+        "precision_real": 0.954,
+        "ci_95": [
+          0.922,
+          0.982
+        ]
+      }
+    ]
+  },
+  "weighted_accuracy": 0.718,
+  "note": "FAMILY_MARGIN abstention rule: genus abstention when top-1 and top-2 share genus with small margin; family abstention when share family. Genus abstention 89.0% correct, family 89.6% correct."
+}

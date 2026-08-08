@@ -1,10 +1,24 @@
-*.npy
+# No secrets
+*.key
+*.pem
+*.env
+.api-keys
+*secret*
+*token*
+
+# No large model files (except prototype centroids in data/patterns/)
 *.pt
-*.pkl
-hf_cache/
-dataset/patterns*/
-dataset/images/
-dataset/finetune_checkpoints/
-logs/
-__pycache__/
-*.pyc
+*.bin
+*.pth
+*.ckpt
+*.h5
+*.safetensors
+
+# Exception: prototype centroids (small, essential for model)
+!data/patterns/**/*.npy
+
+# No production paths
+/mnt/
+*.log
+tmp/
+temp/
