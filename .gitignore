@@ -1,0 +1,10 @@
+*.npy
+*.pt
+*.pkl
+hf_cache/
+dataset/patterns*/
+dataset/images/
+dataset/finetune_checkpoints/
+logs/
+__pycache__/
+*.pyc

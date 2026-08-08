@@ -1,0 +1,16 @@
+{
+  "indistinguishable_pairs": {
+    "berthella_aurantiaca": "berthellina_edwardsii",
+    "berthellina_edwardsii": "berthella_aurantiaca",
+    "discodoris_stellifera": "geitodoris_planata",
+    "geitodoris_planata": "discodoris_stellifera",
+    "thordisa_filix": "thordisa_amanzii",
+    "actinia_striata": "actinia_mediterranea",
+    "actinia_mediterranea": "actinia_striata"
+  },
+  "abstain_genera": [
+    "cuthona", "trinchesia", "tenellia", "runcina", "eubranchus", 
+    "doto", "fjordia", "coryphella", "cuthonella", "rubramoena"
+  ],
+  "note": "Expert-validated visual indistinguishability rules from GROC/OPK and taxonomic literature"
+}
