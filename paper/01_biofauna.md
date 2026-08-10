@@ -6,6 +6,8 @@
 **Live system**: https://fotofauna.yespi.es  
 **Version**: 2026-08-10
 
+> **Naming.** This project was originally developed under the name **YOLOFauna** (2024–2026). It was renamed **BioFauna** when the production stack settled on BioCLIP retrieval rather than YOLO detection. A short provenance note is in [`docs/HISTORY.md`](../docs/HISTORY.md).
+
 ---
 
 ## Abstract

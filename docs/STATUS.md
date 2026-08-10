@@ -44,4 +44,4 @@ Only observation-stratified `harvest_calib` numbers are trusted. Photo-level spl
 | [species_coverage.md](species_coverage.md) | Coverage metrics |
 | [dataset.md](dataset.md) / [api.md](api.md) / [self_host.md](self_host.md) | Reproduce / run |
 | [EXPERIMENTS.md](EXPERIMENTS.md) | Ablation log (condensed) |
-| [HANDOFF_YOLOFAUNA_RESPUESTAS_A_SONNET5.md](HANDOFF_YOLOFAUNA_RESPUESTAS_A_SONNET5.md) | Historical (2026-08-08) |
+| [HISTORY.md](HISTORY.md) | Origins as YOLOFauna → BioFauna |
