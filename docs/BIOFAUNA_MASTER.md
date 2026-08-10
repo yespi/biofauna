@@ -44,6 +44,7 @@ Photo-level train/test splits inflate results by ~10pp — do not use them as he
 ## Docs
 
 - Status: [`STATUS.md`](STATUS.md)
+- History (YOLOFauna → BioFauna): [`HISTORY.md`](HISTORY.md)
 - Experiments: [`EXPERIMENTS.md`](EXPERIMENTS.md)
 - Paper: [`paper/01_biofauna.md`](../paper/01_biofauna.md)
 - Coverage: [`species_coverage.md`](species_coverage.md)

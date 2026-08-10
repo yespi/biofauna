@@ -34,6 +34,7 @@ python3 src/fit_calib.py
 | Doc | What |
 |-----|------|
 | [STATUS](docs/STATUS.md) | Current public status (start here) |
+| [HISTORY](docs/HISTORY.md) | Origins as YOLOFauna → rename to BioFauna |
 | [Paper](paper/01_biofauna.md) | Full write-up |
 | [Master](docs/BIOFAUNA_MASTER.md) | Short architecture + results |
 | [Experiments](docs/EXPERIMENTS.md) | Ablation log |
@@ -42,5 +43,5 @@ python3 src/fit_calib.py
 | [Dataset](docs/dataset.md) · [API](docs/api.md) · [Self-host](docs/self_host.md) | Reproduce / run |
 | [Species table](docs/species_table.md) · [Appendix](paper/appendix_species.md) | Historical checklists |
 
-## Previous Project
-This project supersedes [YOLOFauna](https://github.com/yespi/yolofauna).
+## Naming note
+This project was originally called **YOLOFauna**. It was renamed to **BioFauna** in August 2026 because the production system is BioCLIP-based (not YOLO). See [HISTORY](docs/HISTORY.md). The old [yolofauna](https://github.com/yespi/yolofauna) repository is a retired redirect.
