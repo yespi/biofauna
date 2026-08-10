@@ -1,18 +1,30 @@
-# Species Coverage — YOLOFauna (Updated 2026-08-06)
+# Species Coverage — BioFauna
+
+> Updated **2026-08-10**. Encoder: BioCLIP-2.5 ViT-H. Classifier: k-NN **k=15**.
 
 | Metric | Value |
 |--------|-------|
-| Species in model | 1,390 |
-| With training images | 1371 |
-| Total training images | 549,647 |
-| Global accuracy (k-NN) | 63.4% |
-| Weighted accuracy | 71.8% |
-| AutoID threshold | p≥0.75 |
-| Taxonomic exceptions | 7 pairs + 10 genera |
+| Species folders on disk | ~3,000 (2,994 with ≥1 photo) |
+| Photographs | ~584K–587K |
+| ViT-H embeddings (full re-embed) | ~553K / **1,358** species |
+| Active production patterns | ~454K / **1,158** species |
+| Species accuracy (`harvest_calib`) | **71.7%** |
+| Genus / family | **76.5%** / **80.4%** |
+| Calibration set | 1,946 photos · 810 species |
+| AutoID threshold | **p≥0.90** → 95.5% precision · 30.2% coverage |
+| Hierarchical fallback | On (`MIN_RISK` / family margin) · ~+2pp weighted |
 
-## New (Aug 6)
-- +21 bird species embedded (Xavier Salvador guide)
-- 361 pages scanned from "Guía fotografiar nudibranquios" (Xavier Salvador)
-- 429 expert-labeled crops from Pontes/Ballesteros/Salvador PDFs
-- NN classifier tested: 75.2% val (50% real — data leakage)
-- Weighted k-NN implemented
+## Catalog vs live gallery
+
+Early public drafts listed a **1,369**-species checklist with prototypes. The image corpus has since grown to ~**3,000** folders; the live identifier serves the **active patterns** subset (~1,158 species with usable embeddings).
+
+Full tables (historical / checklist style):
+
+- [`species_table.md`](species_table.md)
+- [`paper/appendix_species.md`](../paper/appendix_species.md)
+
+## Notes from 2026-08 experiments
+
+- Expert-guide OCR (MiniCPM-V): 525/525 pages; crops tested as ablations → **did not** beat 71.7%.
+- Burst dedup (cos>0.99) → **−1.6pp** on `harvest_calib` (near-duplicates help k-NN).
+- Fine-tuning (triplet / ArcFace / LoRA) → no out-of-sample gain beyond 71.7% under the trusted protocol.

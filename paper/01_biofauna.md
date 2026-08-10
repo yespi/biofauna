@@ -296,19 +296,21 @@ The calibration is well-behaved across the entire probability range, with the la
 
 #### 3.6.4 Operating Points
 
-| p_species ≥ | Precision | Coverage | N |
-|-------------|-----------|----------|---|
+**Production (ViT-H, k=15, 2026-08-10):** AutoID uses **p≥0.90 → 95.5% precision · 30.2% coverage**.
+
+The table below is retained from an earlier ViT-L-era calibration export (different sample sizes). Use it only as historical methodology context for logistic operating curves — **not** as current production numbers.
+
+| p_species ≥ | Precision (legacy export) | Coverage | N |
+|-------------|---------------------------|----------|---|
 | 0.50 | 78.8% | 70% | 510 |
 | 0.60 | 81.9% | 62% | 453 |
 | 0.70 | 87.3% | 53% | 385 |
 | 0.75 | 88.7% | 49% | 354 |
 | 0.80 | 90.5% | 43% | 315 |
 | 0.85 | 92.1% | 38% | 277 |
-| **0.90** | **92.2%** | **30%** | **219** |
+| 0.90 | 92.2% | 30% | 219 |
 | 0.95 | 91.4% | 22% | 163 |
 | 0.98 | 95.8% | 7% | 48 |
-
-For auto-publication to citizen science platforms, we use p≥0.90, achieving 92.2% precision with 30% coverage. The non-monotonicity at 0.95 (91.4% vs 92.2%) is due to the small sample size in high-confidence bins.
 
 
 ### 3.7 Evaluation Protocol

@@ -23,20 +23,24 @@ Triplet / ArcFace / LoRA / dedup / expert crops did **not** beat 71.7% on the tr
 ## Quick Start
 ```bash
 # Service
-python3 -m uvicorn scripts.identify_service:app --host 0.0.0.0 --port 8090
-
-# Re-embedding (ViT-H)
-python3 scripts/reembed_vith.py
+python3 -m uvicorn src.identify_service:app --host 0.0.0.0 --port 8090
 
 # Calibration (observation-stratified)
-python3 scripts/harvest_calib.py 3 --out dataset/calib_raw.jsonl
-python3 scripts/fit_calib.py
+python3 src/harvest_calib.py 3 --out dataset/calib_raw.jsonl
+python3 src/fit_calib.py
 ```
 
 ## Docs
-- [Paper](paper/01_biofauna.md)
-- [Master Document](docs/BIOFAUNA_MASTER.md)
-- [Methodology](docs/methodology.md)
+| Doc | What |
+|-----|------|
+| [STATUS](docs/STATUS.md) | Current public status (start here) |
+| [Paper](paper/01_biofauna.md) | Full write-up |
+| [Master](docs/BIOFAUNA_MASTER.md) | Short architecture + results |
+| [Experiments](docs/EXPERIMENTS.md) | Ablation log |
+| [Methodology](docs/methodology.md) | Pipeline |
+| [Species coverage](docs/species_coverage.md) | Dataset / gallery sizes |
+| [Dataset](docs/dataset.md) · [API](docs/api.md) · [Self-host](docs/self_host.md) | Reproduce / run |
+| [Species table](docs/species_table.md) · [Appendix](paper/appendix_species.md) | Historical checklists |
 
 ## Previous Project
 This project supersedes [YOLOFauna](https://github.com/yespi/yolofauna).
