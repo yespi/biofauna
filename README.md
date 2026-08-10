@@ -1,19 +1,24 @@
 # BioFauna
 
 **AI-based Mediterranean marine fauna identification.**  
-Formerly known as YOLOFauna. Uses BioCLIP-2.5 ViT-H + k-NN.
+Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 
 ## Architecture
-- **Encoder**: BioCLIP-2.5 ViT-H (632M params, 1024-dim)
-- **Identification**: k-NN (k=25) over 550K embeddings + logistic calibration
-- **AutoID**: Publishes to Minka when p≥0.90 (95.5% precision)
+- **Encoder**: BioCLIP-2.5 ViT-H (632M params, 1024-dim), frozen
+- **Identification**: k-NN (k=15) over ~450K–550K embeddings + logistic calibration
+- **AutoID**: Publishes to Minka when p≥0.90 (**95.5%** precision, **30.2%** coverage)
+- **Fallback**: Hierarchical species→genus→family + iNaturalist CV cross-check
 
-## Accuracy
+## Accuracy (out-of-sample, `harvest_calib`, 2026-08-10)
+
 | Level | Accuracy |
 |-------|----------|
-| Species | 70.6% |
-| Genus | 75.8% |
-| Family | 80.2% |
+| Species | **71.7%** |
+| Genus | **76.5%** |
+| Family | **80.4%** |
+
+Gains that stuck: ViT-L→ViT-H (**+6.8pp**), k=25→k=15 (**+1.1pp**).  
+Triplet / ArcFace / LoRA / dedup / expert crops did **not** beat 71.7% on the trusted protocol.
 
 ## Quick Start
 ```bash
@@ -23,14 +28,15 @@ python3 -m uvicorn scripts.identify_service:app --host 0.0.0.0 --port 8090
 # Re-embedding (ViT-H)
 python3 scripts/reembed_vith.py
 
-# Calibration
-python3 scripts/harvest_calib.py 5 --out dataset/calib_raw_vith.jsonl
+# Calibration (observation-stratified)
+python3 scripts/harvest_calib.py 3 --out dataset/calib_raw.jsonl
 python3 scripts/fit_calib.py
 ```
 
 ## Docs
+- [Paper](paper/01_biofauna.md)
 - [Master Document](docs/BIOFAUNA_MASTER.md)
-- [Sonnet 5 Feedback](docs/HANDOFF_YOLOFAUNA_RESPUESTAS_A_SONNET5.md)
+- [Methodology](docs/methodology.md)
 
 ## Previous Project
 This project supersedes [YOLOFauna](https://github.com/yespi/yolofauna).
