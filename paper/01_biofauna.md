@@ -3,17 +3,18 @@
 **Authors**: Gustavo Zafra (Yespi)  
 **Taxonomic contributors**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros  
 **Repository**: https://github.com/yespi/biofauna  
-**Live system**: https://fotofauna.yespi.es
+**Live system**: https://fotofauna.yespi.es  
+**Version**: 2026-08-10
 
 ---
 
 ## Abstract
 
-We present BioFauna, a deep learning system for automated identification of Mediterranean marine fauna from photographs. The system fine-tunes BioCLIP (Stevens et al., 2024) — a vision-language model trained on 450M images from the Tree of Life — using QLoRA (4-bit quantized Low-Rank Adaptation) on a custom dataset of 525,253 images covering 1,369 species across 8 phyla. Training requires only 1.65 GB of GPU memory, fitting on consumer hardware (NVIDIA RTX 3060 12GB), demonstrating that large vision models can be domain-adapted without data-center infrastructure.
+We present BioFauna, a deep learning system for automated identification of Mediterranean marine fauna from photographs. The production system uses **BioCLIP-2.5 ViT-H** (632M parameters, 1024-dimensional embeddings) as a frozen vision encoder, followed by **k-nearest neighbors** (k=15) over a database of ~450K–550K image embeddings and logistic confidence calibration. It runs on consumer hardware (NVIDIA RTX 3060 12GB) and is deployed on the FotoFauna citizen science platform.
 
-The system has been upgraded to BioCLIP-2.5 ViT-H (632M parameters, 1024-dimensional embeddings), achieving **70.6% top-1 species accuracy** on a held-out calibration set of 3,291 photographs from 997 species (+6.8pp over ViT-L baseline). Genus-level accuracy reaches **75.8%** and family-level accuracy **80.2%**. High-confidence predictions (calibrated probability >= 0.90) achieve **95.5% precision** at 30.2% coverage. — an 8 percentage point improvement over species-only prediction. High-confidence predictions (calibrated probability ≥ 0.90) achieve **92.2% precision** at 30% coverage, suitable for automated publication to citizen science platforms.
+On an out-of-sample calibration set stratified by observation ID (`harvest_calib`, 1,946 photographs, 810 species), the system achieves **71.7% top-1 species accuracy**, **76.5% genus**, and **80.4% family**. High-confidence predictions (calibrated probability ≥ 0.90) reach **95.5% precision** at **30.2% coverage**, suitable for automated publication to Minka. Scaling from BioCLIP ViT-L to ViT-H contributed **+6.8pp** species accuracy; reducing k from 25 to 15 contributed a further **+1.1pp**. Extensive fine-tuning experiments on the ViT-H backbone (triplet loss, ArcFace, LoRA+ArcFace, expert-guide crops, near-duplicate deduplication) did **not** improve the out-of-sample species metric beyond 71.7%.
 
-We release the complete model package (~14 MB of prototype centroids and calibration data, with the BioCLIP backbone auto-downloaded from HuggingFace) as open-source software. The system has been deployed on the FotoFauna citizen science platform, where 100 observations have been auto-published to Minka with **100% curator confirmation rate** (21/21 reviewed by professional taxonomists). We also provide a comprehensive per-species appendix documenting accuracy, morphological descriptions, and taxonomic validation status for all 1,369 species.
+We release the identification service code, calibration artifacts, and species appendix as open-source software. The BioCLIP backbone is auto-downloaded from HuggingFace. The system has been validated in production with curator-reviewed auto-publications on Minka.
 
 **Keywords**: BioCLIP-2.5, ViT-H, k-NN, fine-grained visual classification, marine biodiversity, citizen science, taxonomic abstention, model calibration, Mediterranean Sea
 
@@ -23,52 +24,33 @@ We release the complete model package (~14 MB of prototype centroids and calibra
 
 ### 1.1 The Biodiversity Identification Bottleneck
 
-The Mediterranean Sea is one of the world's biodiversity hotspots, hosting over 17,000 marine species — approximately 7% of global marine biodiversity in just 0.8% of ocean surface area (Coll et al., 2010; Bianchi & Morri, 2000). Accurate species identification is fundamental to biodiversity monitoring, ecological research, conservation planning, and citizen science initiatives. Yet taxonomic expertise — the ability to correctly identify organisms to species level — is increasingly scarce (Hopkins & Freckleton, 2002; Kim & Byrne, 2006). The number of professional taxonomists continues to decline, and the remaining experts are concentrated in a few institutions, creating a critical bottleneck for biodiversity data collection.
+The Mediterranean Sea is one of the world's biodiversity hotspots, hosting over 17,000 marine species — approximately 7% of global marine biodiversity in just 0.8% of ocean surface area (Coll et al., 2010; Bianchi & Morri, 2000). Accurate species identification is fundamental to biodiversity monitoring, ecological research, conservation planning, and citizen science initiatives. Yet taxonomic expertise is increasingly scarce (Hopkins & Freckleton, 2002; Kim & Byrne, 2006).
 
-Citizen science platforms like iNaturalist (Van Horn et al., 2018) and Minka (minka-sdg.org) have partially addressed this through community-based identification, where volunteers suggest and vote on species identifications. However, the process can take days to weeks, and rare or taxonomically difficult species may never receive expert attention. In the Mediterranean context, where many species are endemic and field guides are often language-specific (Catalan, Spanish, Italian), the identification challenge is particularly acute.
+Citizen science platforms like iNaturalist (Van Horn et al., 2018) and Minka (minka-sdg.org) address this through community identification, but rare or taxonomically difficult species may wait days or never receive expert attention. In the Mediterranean, many endemics and language-specific field guides (Catalan, Spanish, Italian) intensify the bottleneck.
 
 ### 1.2 Automated Image-Based Identification
 
-Automated image-based identification offers a complementary approach — providing instant, if imperfect, suggestions that can accelerate the identification pipeline. Recent advances in computer vision, particularly the emergence of vision-language models, have created new possibilities for biodiversity applications.
-
-Traditional approaches to automated species identification have relied on convolutional neural networks (CNNs) trained on datasets like iNaturalist 2017-2021 (Van Horn et al., 2018, 2021). These models achieve impressive accuracy on common taxa but suffer from several limitations: they require large labeled training sets for each species, they do not leverage taxonomic relationships explicitly, and they struggle with the long-tailed distribution of species observations where rare species have few training examples.
+Automated image-based identification can provide instant suggestions that accelerate the pipeline. Traditional CNN approaches (iNaturalist challenges; Van Horn et al., 2018, 2021) require large per-species labeled sets and struggle with long-tailed distributions. Vision-language models open a different route: strong pretrained embeddings plus retrieval over a regional gallery.
 
 ### 1.3 Vision-Language Models for Biology
 
-BioCLIP (Stevens et al., 2024) represents a paradigm shift. Trained contrastively on 450M image-text pairs from the Tree of Life — spanning 454,000 taxa across the entire taxonomic hierarchy — BioCLIP learns aligned representations of images and taxonomic names. Unlike general-purpose vision-language models such as CLIP (Radford et al., 2021), BioCLIP's training data is structured around biological taxonomy, with text prompts derived from scientific names at multiple taxonomic ranks (species, genus, family, order, etc.). This taxonomic grounding makes BioCLIP particularly well-suited for biodiversity applications.
+BioCLIP (Stevens et al., 2024) is trained contrastively on TreeOfLife-450M with taxonomic text structure. BioCLIP-2.5 provides a **ViT-H/14** vision encoder (632M parameters, **1024-dim** embeddings), substantially stronger than the earlier ViT-L/14 (428M, 768-dim) used in our initial experiments.
 
-BioCLIP uses a ViT-L/14 vision encoder producing 768-dimensional embeddings. The model can perform zero-shot classification by computing cosine similarity between image embeddings and text embeddings of candidate species names. However, zero-shot performance on region-specific fauna is limited because the model's training distribution may not adequately represent Mediterranean species.
+### 1.4 What Worked (and What Did Not)
 
-### 1.4 The Fine-Tuning Challenge
+Early work on this project (formerly YOLOFauna) explored QLoRA fine-tuning of ViT-L under a 12GB VRAM constraint. Those runs either failed (projection-head corruption → 1.7% accuracy) or failed to beat a frozen-backbone k-NN baseline (~63.9% species). **Re-embedding the gallery with BioCLIP-2.5 ViT-H** raised out-of-sample species accuracy to **70.6%** (+6.8pp) without fine-tuning. A subsequent k-NN grid search, validated with observation-stratified `harvest_calib`, selected **k=15** and reached **71.7%**.
 
-Fine-tuning large vision transformers for domain-specific tasks is challenging on consumer hardware. BioCLIP's ViT-L/14 has 428M parameters and requires 9.6 GB of GPU memory in full precision. Consumer GPUs like the NVIDIA RTX 3060 (12 GB) leave only 2.4 GB for activations, gradients, and optimizer states — insufficient for standard fine-tuning even with batch size 2.
+Follow-up attempts to improve ViT-H further — triplet projections, ArcFace classifiers, LoRA+ArcFace, expert field-guide crops, and aggressive near-duplicate removal — did not beat 71.7% on the same protocol. We therefore present BioFauna as a **retrieval system on a strong frozen backbone**, with hierarchical abstention and calibrated AutoID thresholds, rather than as a QLoRA success story.
 
-We encountered this limitation directly in preliminary experiments: unfreezing the last transformer blocks caused out-of-memory errors, PEFT LoRA (Hu et al., 2021) was incompatible with BioCLIP's open_clip wrapper, and even extreme measures (gradient checkpointing, batch size 1) could not fit the model in 12 GB.
+### 1.5 Contributions
 
-### 1.5 Our Approach: QLoRA
-
-We address this using QLoRA (Dettmers et al., 2023), which combines two complementary techniques:
-
-1. **4-bit NormalFloat quantization** of the frozen backbone weights, reducing memory from 9.6 GB to approximately 2.5 GB
-2. **Low-rank adapters** (LoRA) injected into the quantized layers, adding only 0.27% trainable parameters
-
-This approach achieves fine-tuning on a consumer GPU with 1.65 GB VRAM usage — leaving 10+ GB free for other processes. To our knowledge, this is the first application of QLoRA to BioCLIP for fine-grained species identification, and the first demonstration that Mediterranean marine species can be identified with >70% weighted taxonomic accuracy using a model that fits on consumer hardware.
-
-### 1.6 Contributions
-
-Our specific contributions are:
-
-1. **QLoRA fine-tuning of BioCLIP** for 1,369 Mediterranean marine species, trained with triplet loss on 525,253 curated images, requiring only 1.65 GB GPU memory.
-
-2. **Multi-level taxonomic abstention**: A margin-based hierarchical decision rule that abstains to genus or family when species-level confidence is low, improving weighted accuracy from 63.9% to 71.8%.
-
-3. **Well-calibrated confidence estimates** (ECE=0.045) via logistic regression on k-NN features, enabling reliable auto-publication with 92.2% precision at p≥0.90.
-
-4. **Per-species performance analysis**: Detailed accuracy metrics for all 1,369 species, identifying 233 species with ≥75% accuracy suitable for automated identification and 113 species requiring expert review.
-
-5. **Open-source model release**: Complete model package (~14 MB) deployable on any GPU server, with BioCLIP backbone auto-downloaded from HuggingFace.
-
-6. **Real-world validation**: 100 auto-published observations on Minka with 100% curator confirmation rate, demonstrating practical utility in a citizen science context.
+1. **ViT-H gallery re-embedding** for Mediterranean marine fauna (~553K embeddings / 1,358 species with reliable prototypes; ~1,158 species active in production patterns).
+2. **Observation-stratified evaluation** (`harvest_calib`) as the only trusted accuracy protocol, exposing inflated splits caused by photo-level train/test leakage.
+3. **k-NN tuning with k=15**, improving 70.6% → **71.7%** species accuracy over k=25.
+4. **Hierarchical fallback / taxonomic abstention** (species→genus→family) adding ~**+2pp weighted** utility in production.
+5. **Calibrated AutoID** at p≥0.90 with **95.5% precision / 30.2% coverage**, dual-checked with iNaturalist CV when below threshold.
+6. **Negative-result ablations** documenting that triplet, ArcFace, LoRA, dedup, and expert crops do not raise the ViT-H out-of-sample species ceiling under our protocol.
+7. **Open deployment** on FotoFauna / Minka with curator validation.
 
 ## 2. Related Work
 
@@ -105,7 +87,7 @@ Full fine-tuning of large models is computationally prohibitive. Parameter-effic
 - **LoRA** (Hu et al., 2021): Low-rank decomposition of weight updates: W = W₀ + BA, where B∈ℝ^(d_out×r), A∈ℝ^(r×d_in), r << min(d_in, d_out)
 - **QLoRA** (Dettmers et al., 2023): Extends LoRA with 4-bit NormalFloat quantization of the frozen backbone, plus double quantization and paged optimizers
 
-We chose QLoRA for its demonstrated effectiveness on consumer hardware. The 4-bit quantization directly addresses our VRAM constraint (9.6 GB → 2.5 GB for the backbone), while LoRA adapters provide sufficient capacity for domain adaptation (1.1M trainable parameters, 0.27% of total).
+We initially planned to rely on QLoRA for domain adaptation under a 12 GB VRAM budget. In practice, open_clip + bitsandbytes proved fragile on our BioCLIP stack, and **frozen ViT-H retrieval outperformed** the fine-tuning attempts we could run reliably. We retain LoRA/QLoRA discussion here as related work and as documented negative results (§3.3, §4.4).
 
 ### 2.5 Taxonomic Abstention
 
@@ -113,237 +95,73 @@ Most classification systems report a single best-guess prediction. However, in t
 
 In biodiversity, the iNaturalist platform shows a "similar species" list but does not explicitly abstain to higher taxonomic levels. Our work formalizes taxonomic abstention as a decision rule based on k-NN margin and shared taxonomic ancestry.
 
+
+
 ## 3. Methods
 
 ### 3.1 Dataset
 
 #### 3.1.1 Sources and Composition
 
-Our training dataset consists of **525,253 photographs** covering **1,369 Mediterranean marine species** across 8 phyla. Images were sourced from three primary channels:
+Our image corpus contains approximately **584,000–587,000 photographs** across **~3,000 Mediterranean marine species folders** (2,994 with ≥1 photo). The identification gallery used in production embeds **~450K–554K** images for **1,158–1,358** species with reliable prototypes (species with too few images remain in the catalog but are not active gallery members).
 
-| Source | Images | Percentage | Description |
-|--------|--------|-----------|-------------|
-| Minka (minka-sdg.org) | 289,660 | 55.1% | Citizen science platform focused on Mediterranean marine life |
-| iNaturalist (inaturalist.org) | 226,455 | 43.1% | Global citizen science platform, research-grade observations |
-| Other sources | 4,479 | 0.9% | Personal observations, field guides, GROC/OPK archives |
+| Source | Role |
+|--------|------|
+| Minka (minka-sdg.org) | Regional citizen science, Mediterranean focus |
+| iNaturalist (inaturalist.org) | Research-grade and community observations |
+| Expert guides (Pontes, Salvador, Ballesteros) | Cropped plates + OCR labels (MiniCPM-V); measured separately — see §4.4 |
 
-**Taxonomic distribution** (Table 1):
+Names are cross-referenced with **WoRMS**. Images are filtered for minimum resolution and format validity.
 
-| Phylum / Class | Species | Images | % of Dataset |
-|---------------|---------|--------|-------------|
-| Mollusca | 1,014 | ~380,000 | 72.3% |
-| Plantae (algae) | 466 | ~80,000 | 15.2% |
-| Actinopterygii (fish) | 312 | ~35,000 | 6.7% |
-| Cnidaria | 170 | ~15,000 | 2.9% |
-| Malacostraca (crustaceans) | 167 | ~10,000 | 1.9% |
-| Porifera (sponges) | 102 | ~3,000 | 0.6% |
-| Echinodermata | 54 | ~2,000 | 0.4% |
-| Others (Annelida, Bryozoa, etc.) | 84 | ~1,000 | 0.2% |
+#### 3.1.2 Expert Literature
 
-The dataset is organized by species, with images stored in per-species directories on SSD storage. The median species has 404 images; only 4 species have fewer than 30 images (genuinely rare organisms).
+Species lists and morphological notes were validated against Ballesteros (2007), Cervera et al. (2004), Salvador et al. (2022), and Pontes et al. field work (GROC/OPK). OCR of scanned guides (525/525 pages with MiniCPM-V 4.5) produced labeled crops used in ablation experiments (§4.4).
 
-#### 3.1.2 Data Quality and Curation
+### 3.2 Model Architecture (Production)
 
-All taxonomic names were cross-referenced with the **World Register of Marine Species (WoRMS)** to ensure nomenclatural validity and resolve synonyms. This step was critical: our initial analysis of 62 "missing" species from expert literature revealed that 17 were already present in the model under their valid WoRMS names (e.g., "Flabellina pedata" → "Edmundsella pedata", "Janolus cristatus" → "Antiopella cristata").
+#### 3.2.1 Encoder: BioCLIP-2.5 ViT-H
 
-Images were filtered for minimum quality: resolution ≥ 224×224 pixels, file size ≥ 5 KB, valid JPEG/PNG format. Duplicate images were removed via perceptual hashing (pHash).
+Production encoder: **`hf-hub:imageomics/bioclip-2.5-vith14`**
 
-#### 3.1.3 Species Coverage Gaps
+| Property | Value |
+|----------|-------|
+| Architecture | ViT-H/14 |
+| Parameters | ~632M |
+| Embedding dim | **1024** (L2-normalized) |
+| Input | 224×224 |
+| Training status in BioFauna | **Frozen** (no LoRA in production) |
 
-Of 1,369 species in the identification model, 975 (71.2%) have training images. The remaining 394 species (28.8%) rely solely on prototype centroids derived from related species. An ongoing data collection effort using iNaturalist API downloads has added 5,600+ images for 50 previously uncovered species, with automated daily downloads continuing.
+Inference footprint on RTX 3060: BioFauna service ≈ **4.4 GB** VRAM (encoder + FAISS/k-NN index).
 
-#### 3.1.4 Expert-Validated Species Lists
+#### 3.2.2 Identification: k-NN over Image Embeddings
 
-Our species catalog was validated against published checklists by leading Mediterranean taxonomists:
+1. Embed the query crop with ViT-H.
+2. Retrieve **k=15** nearest gallery embeddings (cosine / inner product on L2-normalized vectors).
+3. Aggregate votes/scores per species; optional geographic prior when GPS is present.
+4. Apply hierarchical fallback when species margin is low (`MIN_RISK`, `FAMILY_MARGIN≈0.08`).
+5. Map features → calibrated P(correct) via logistic regression (`fit_calib.py`).
 
-- **Ballesteros (2007)**: 205 opisthobranch species from Catalan waters
-- **Cervera et al. (2004)**: Annotated checklist of Iberian Peninsula opisthobranchs
-- **Salvador et al. (2022)**: Comprehensive inventory with distribution data
-- **Pontes et al. (2018)**: Nudibranchs of Tarifa (Strait of Gibraltar)
+**Why k=15.** Internal grid searches suggested small k values (≈10) maximize accuracy, but photo-level splits inflate absolute numbers. Observation-stratified `harvest_calib` selected **k=15** as the production balance between accuracy and abstention coverage (k=8 measured worse at 71.0%).
 
-These expert sources provided not only species validation but also morphological descriptions used for enriched model prompts (see §3.2.4).
+#### 3.2.3 Prototype / Gallery Layout
 
-### 3.2 Model Architecture
+Per species directory under `dataset/patterns/`: `embeddings.npy` (+ metadata). Active production patterns: **~1,158 species / ~454K embeddings**. Full ViT-H re-embedding backup: **1,358 species / ~553K embeddings**.
 
-#### 3.2.1 Base Model: BioCLIP-2
+### 3.3 Fine-Tuning Attempts (Ablations, Not Production)
 
-We use **BioCLIP-2** (hf-hub:imageomics/bioclip-2) as the base model. BioCLIP-2 consists of:
+We document these because earlier drafts of this paper presented QLoRA as the primary method.
 
-- **Vision encoder**: ViT-L/14 (Dosovitskiy et al., 2021) with 24 transformer blocks, 1024-dimensional hidden states, 16 attention heads
-- **Input resolution**: 224×224 pixels, patch size 14×14
-- **Output**: 768-dimensional L2-normalized embedding vector
-- **Parameters**: 428M total (vision encoder only)
-- **Training data**: TreeOfLife-450M (450M image-text pairs from 454K taxa)
+| Experiment | Outcome (out-of-sample unless noted) |
+|------------|--------------------------------------|
+| QLoRA ViT-L + trainable proj head | **1.7%** species (catastrophic) |
+| Triplet on ViT-L embeddings | Historically helped ViT-L era; **not** the ViT-H story |
+| Triplet on ViT-H (8 variants) | **Degrades** −0.7 to −7pp |
+| ArcFace on frozen ViT-H | **71.4%** vs k-NN **71.6%** (tie); photo splits inflate internal val |
+| LoRA+ArcFace (FIXED, eval bug corrected) | **+0.0pp** on 100 spp; full 1,358 spp run confirmatory |
+| Expert crops weighted in gallery | **70.8%** (−0.9pp vs 71.7%) |
+| Near-duplicate dedup (cos>0.99) | **70.1%** (−1.6pp) — bursts *help* k-NN |
 
-The vision encoder processes images through patch embedding, positional encoding, 24 self-attention blocks, and a final projection layer (1024→768). The output is a single vector representing the visual content.
-
-#### 3.2.2 QLoRA Fine-Tuning Configuration
-
-We apply QLoRA to the MLP layers of the last 4 transformer blocks (blocks 20-23 out of 24). For each selected block, the following layers are quantized and augmented with LoRA adapters:
-
-- **MLP up-projection** (`c_fc`): Linear(1024, 4096) → 4-bit quantized + LoRA
-- **MLP down-projection** (`c_proj`): Linear(4096, 1024) → 4-bit quantized + LoRA
-
-The attention output projection (`out_proj`) was NOT quantized due to an incompatibility with PyTorch's `MultiheadAttention.forward()`, which accesses `out_proj.weight` directly for `F.multi_head_attention_forward()` — the 4-bit quantized weight format (Byte storage) causes a dtype mismatch.
-
-LoRA configuration:
-
-- **Rank (r)**: 8
-- **Alpha (α)**: 16
-- **Scaling factor**: α/r = 2.0
-- **Target modules**: c_fc, c_proj (2 layers × 4 blocks = 8 adapters)
-
-The projection head (1024→768) is kept in full precision (fp16) and trained alongside the LoRA adapters.
-
-Trainable parameters: **1,114,112** (0.27% of 411,166,977 total).
-
-The forward pass for each LoRA-augmented layer is:
-
-$$h = W_{4bit}(x) + \frac{\alpha}{r} \cdot B \cdot A(x)$$
-
-where:
-- $W_{4bit}$ is the 4-bit NormalFloat quantized weight (frozen)
-- $A \in \mathbb{R}^{r \times d_{in}}$ is the low-rank projection (trainable)
-- $B \in \mathbb{R}^{d_{out} \times r}$ is the output projection (trainable)
-- $x$ is the input activation (converted to float32 for the LoRA path, then cast back to the model's compute dtype)
-
-#### 3.2.3 Memory Analysis
-
-Detailed VRAM breakdown during training (batch size 16):
-
-| Component | Memory |
-|-----------|--------|
-| BioCLIP backbone (4-bit quantized) | ~2.5 GB |
-| LoRA adapters + optimizer states | ~0.1 GB |
-| Activations (batch 16, 224×224) | ~0.8 GB |
-| Projection head (fp16) | ~0.1 GB |
-| PyTorch overhead | ~0.2 GB |
-| **Total** | **~1.65 GB** |
-
-Peak memory: 3.65 GB (during backward pass with gradient accumulation).
-
-This represents a **5.8× reduction** from the 9.6 GB required for full-precision inference alone, demonstrating that QLoRA makes BioCLIP fine-tuning accessible on widely available consumer hardware.
-
-#### 3.2.4 Text Prompt Enhancement (Experimental)
-
-As an auxiliary contribution, we explored enriching BioCLIP's text prompts with morphological descriptions extracted from GROC/OPK field guides. For 32 species with available diagnostic descriptions, we constructed prompts of the form:
-
-> "A photo of {species_name}, a {morphological_description}"
-
-For example:
-
-> "A photo of Aeolidiella alderi, a nudibranch with abundant grey cerata with white tips, body white to orange, thick rhinophores with orange rounded tips"
-
-This approach was inspired by BioCLIP's training methodology, where text prompts with taxonomic information improve visual feature extraction. The enriched prompts are included in the model package for future evaluation.
-
-### 3.3 Training
-
-#### 3.3.1 Triplet Loss
-
-We train using triplet loss (Schroff et al., 2015), which encourages same-species image pairs to be closer in embedding space than different-species pairs:
-
-$$L = \max(0, \|f(a) - f(p)\|_2^2 - \|f(a) - f(n)\|_2^2 + m)$$
-
-where:
-- $a$ (anchor) and $p$ (positive) are images of the same species
-- $n$ (negative) is the hardest different-species image in the current batch
-- $f(\cdot)$ is the BioCLIP embedding function
-- $m = 0.8$ is the margin (tuned from initial 0.2 after observing saturated loss)
-
-The margin of 0.8 was selected after observing that margin=0.2 produced zero loss for most batches — the frozen BioCLIP backbone already separates different species well in cosine space, so a larger margin is needed to force the LoRA adapters to learn meaningful within-genus distinctions.
-
-#### 3.3.2 Hard Negative Mining
-
-Within each batch, the negative for each anchor-positive pair is selected as the positive image of the most similar different species (hardest negative):
-
-$$n = \arg\max_{j \neq i} \langle f(a_i), f(p_j) \rangle$$
-
-This batch-wise hard negative mining is computationally efficient (O(B²) pairwise comparisons) and provides more informative gradients than random negatives.
-
-#### 3.3.3 Training Configuration
-
-| Parameter | Value |
-|-----------|-------|
-| Batch size | 16 |
-| Epochs | 30 |
-| Optimizer | AdamW |
-| Learning rate | 1×10⁻⁴ |
-| Weight decay | 1×10⁻⁵ |
-| LR schedule | Cosine annealing (T_max=30) |
-| Margin | 0.8 |
-| Training pairs | 5,845 (from 975 species) |
-| Max pairs per species | 4 images → 6 pairs |
-
-The dataset of 5,845 pairs was constructed by taking up to 4 images per species and generating all possible same-species pairs. This ensures species diversity: each batch of 16 images typically contains 8-12 different species, providing meaningful hard negatives.
-
-#### 3.3.4 Training Dynamics
-
-The triplet loss evolved as follows over 30 epochs:
-
-| Epoch | Loss | Zero % | Interpretation |
-|-------|------|--------|---------------|
-| 1 | 0.6036 | 0% | Initial state: margin not satisfied |
-| 2 | 0.2033 | 0% | Rapid learning |
-| 5 | 0.1374 | 0% | Steady improvement |
-| 10 | 0.0599 | 3% | Approaching convergence |
-| 15 | 0.0350 | 6% | Most species well-separated |
-| 22 | 0.0278 | 20% | Margin saturated for easy cases |
-| 30 | ~0.020 | ~25% | Final: LoRA adapters learned within-genus distinctions |
-
-The increasing zero-loss fraction (batches where all triplets satisfy the margin) indicates that easy species pairs are fully separated. The non-zero losses come from challenging within-genus comparisons where the LoRA adapters are learning fine-grained distinctions.
-
-### 3.4 Identification Pipeline
-
-#### 3.4.1 Embedding Generation
-
-For each input image, the pipeline:
-
-1. Preprocesses the image (resize to 224×224, normalize with BioCLIP statistics)
-2. Passes through the vision encoder → 768-dimensional vector
-3. L2-normalizes the output: $\hat{f} = f / \|f\|_2$
-
-Normalization ensures cosine similarity is equivalent to dot product, simplifying the k-NN search.
-
-#### 3.4.2 Prototype Database
-
-We maintain a database of 1,369 **prototype centroids** — one per species. Each prototype is the mean L2-normalized embedding of all training images for that species:
-
-$$p_s = \frac{1}{|I_s|} \sum_{i \in I_s} \hat{f}(x_i)$$
-
-Prototypes are stored as 768-dimensional float32 arrays (~3 KB per species, 5.4 MB total). At inference time, we compute cosine similarity between the query embedding and all 1,369 prototypes.
-
-#### 3.4.3 k-Nearest Neighbors
-
-We use k=25 nearest neighbors for the identification. The choice of k=25 balances:
-
-- **Too small (k<10)**: Sensitive to noise, single outlier images can dominate
-- **Too large (k>50)**: Includes unrelated species, diluting the signal
-- **k=25**: Empirically optimal for our dataset size (1,369 species, 525K images)
-
-For each species $s$ in the k-NN results, we compute:
-
-- **Score**: Sum of cosine similarities to all k neighbors of that species
-- **Vote count**: Number of k-NN neighbors belonging to species $s$
-- **Maximum similarity**: Highest single-neighbor similarity for species $s$
-
-#### 3.4.4 Geographic Priors
-
-When GPS coordinates are available, we apply geographic priors to boost scores for species known to occur near the observation location. Our geo-prior database contains 77,244 occurrence points for 1,348 species, derived from GBIF and Minka observations.
-
-The boost factor for species $s$ at location $(lat, lon)$ is:
-
-$$g_s(lat, lon) = 1 + B \cdot \exp\left(-\frac{d_{min}^2}{2\sigma^2}\right)$$
-
-where:
-- $d_{min}$ is the minimum Haversine distance from $(lat, lon)$ to any known occurrence of species $s$
-- $B = 2.0$ is the maximum boost factor
-- $\sigma = 200$ km is the spatial bandwidth
-
-Species with no occurrence data receive no boost ($g_s = 1.0$), meaning GPS absence is not penalized — it simply provides no additional information.
-
-#### 3.4.5 Taxonomically-Weighted Scoring
-
-For species absent from the k-NN results but belonging to the same genus or family as top candidates, we propagate scores up the taxonomic hierarchy. This ensures that rare species (with few or no training images) can still be suggested when related common species are identified with high confidence.
+**Lesson:** with ViT-H, capacity is already high; frozen-backbone metric learning / light adapters did not move the trusted metric. Bitsandbytes QLoRA remains incompatible with the open_clip ViT-H path we use; torchao/hqq remains future work.
 
 ### 3.5 Taxonomic Abstention Rule
 
@@ -492,147 +310,68 @@ The calibration is well-behaved across the entire probability range, with the la
 
 For auto-publication to citizen science platforms, we use p≥0.90, achieving 92.2% precision with 30% coverage. The non-monotonicity at 0.95 (91.4% vs 92.2%) is due to the small sample size in high-confidence bins.
 
+
 ### 3.7 Evaluation Protocol
 
-All accuracy measurements are computed on a **held-out calibration set** of 2,427 photographs from 972 species, constructed with the following constraints:
+All **headline accuracy numbers** use `harvest_calib.py`: photographs held out by **observation ID**, embedded with the production encoder, identified with production k-NN, then scored against curator/community labels. Current canonical file: `dataset/calib_raw_k15.jsonl` → `fit_calib.py` → `calibration.json` (**2026-08-10**, n=1,946, 810 species).
 
-- **Observation-level stratification**: Photos from the same iNaturalist/Minka observation are kept together (either all in training or all in calibration) to prevent inflated accuracy from near-duplicate images.
-- **Species coverage**: All 972 species have at least 2 calibration samples.
-- **Temporal separation**: Calibration images are from observations after the training data cutoff where possible.
-- **No model retraining**: The calibration set was collected once and fixed; all reported metrics (including the threshold sweep) are computed on this fixed set.
+| Rule | Rationale |
+|------|-----------|
+| Observation stratification | Prevents burst/near-duplicate leakage across train/test |
+| Fixed protocol across ablations | Same harvest when comparing techniques |
+| Do not trust photo-level 80/20 | Inflates ArcFace/k grid by ~10pp |
 
 ## 4. Results
 
-### 4.1 Species-Level Accuracy
+### 4.1 Headline Accuracy (ViT-H, k=15)
 
-On the calibration set, the model achieves:
+| Level | Accuracy |
+|-------|----------|
+| **Species (top-1)** | **71.7%** |
+| Genus | **76.5%** |
+| Family | **80.4%** |
 
-| Metric | Value |
-|--------|-------|
-| Top-1 species accuracy (raw, no abstention) | 63.9% |
-| Top-1 species accuracy (with abstention at species level) | 64.9% |
-| Species-level precision among species-ranked predictions | 64.9% |
-| Genus-level precision among genus-ranked predictions | 89.0% |
-| Family-level precision among family-ranked predictions | 89.6% |
+Progression:
 
-The 63.9% base rate represents the fraction of all 2,427 samples where the top-1 k-NN result matches the true species, regardless of the abstention rule.
+| System | Species | Notes |
+|--------|---------|-------|
+| ViT-L + k-NN (legacy) | 63.9% | Previous production baseline |
+| ViT-H + k=25 | 70.6% | After full re-embedding |
+| **ViT-H + k=15** | **71.7%** | Current production setting |
 
-### 4.2 Taxonomic Abstention Benefit
+### 4.2 AutoID Operating Point
 
-The weighted taxonomic accuracy of 71.8% represents an **8 percentage point improvement** over species-only prediction (63.9%). This improvement comes from:
+At calibrated **p ≥ 0.90**: **95.5% precision**, **30.2% coverage** (production config). Below threshold, FotoFauna dual-checks with iNaturalist CV before publishing.
 
-- **383 correct genus abstentions**: Cases where the model correctly identified the genus but the species-level prediction was uncertain
-- **275 correct family abstentions**: Cases where the model correctly identified the family
+Calibration quality (logistic on k-NN features): ECE ≈ **0.04**, AUC ≈ **0.845** at species level (aligned with earlier ViT-L-era calibration diagnostics; recalibrated after ViT-H / k=15).
 
-The total of 1,743 rank-matched correct predictions (out of 2,427) demonstrates the practical value of taxonomic abstention.
+### 4.3 Hierarchical Fallback
 
-### 4.3 Per-Species Performance Analysis
+Margin / shared-taxon abstention plus production `MIN_RISK` / `FAMILY_MARGIN` yields approximately **+2pp weighted** taxonomic utility (correct genus/family when species is unsafe). Species top-1 remains the primary reported metric (71.7%).
 
-#### 4.3.1 Accuracy Distribution
+### 4.4 Ablation Summary (Trusted Protocol)
 
-Of the 972 calibrated species:
-
-| Accuracy Range | Species | % | Interpretation |
-|---------------|---------|---|---------------|
-| ≥85% | 233 | 24.0% | Reliable for automated identification |
-| 75-84% | 0 | 0.0% | (impossible bin: 2-3 samples → 0%, 50%, 100%) |
-| 50-74% | 137 | 14.1% | Borderline — needs high confidence threshold |
-| <50% | 113 | 11.6% | Not suitable for automated identification |
-| Insufficient data (<3 samples) | 489 | 50.3% | Requires additional calibration data |
-
-The 0% in the 75-84% bin is an artifact of having only 2-3 calibration samples per species, which restricts possible accuracy values to {0%, 33%, 50%, 67%, 100%}.
-
-#### 4.3.2 High-Performing Species
-
-Species achieving 100% accuracy on calibration samples (≥3 samples):
-
-- *Aeolidiella alderi*: 3/3 (100%)
-- *Aplysia punctata*: 3/3 (100%)
-- *Corallium rubrum*: 3/3 (100%)
-- *Paracentrotus lividus*: 3/3 (100%)
-- *Pinna nobilis*: 3/3 (100%)
-
-These species are characterized by distinctive visual features (large size, unique shape, or characteristic coloration) and abundant training data.
-
-#### 4.3.3 Low-Performing Species
-
-Species with 0% calibration accuracy:
-
-- *Abra alba*: 0/3 — small bivalve, easily confused with other *Abra* species
-- *Acanthocardia paucicostata*: 0/3 — cockle species with subtle shell differences
-- Several *Cuthona* / *Trinchesia* species: require microscopic examination
-
-These species share characteristics of being small, morphologically similar to congeneric species, and having relatively few training images.
-
-### 4.4 QLoRA Fine-Tuning Results
-
-#### 4.4.1 Training Convergence
-
-The QLoRA fine-tuning converged successfully, with triplet loss decreasing from 0.60 (epoch 1) to 0.028 (epoch 22), approaching saturation (~25% zero-loss batches). Training completed 30 epochs in approximately 7 hours on a single RTX 3060.
-
-VRAM usage remained stable at 1.65 GB throughout training, with peak memory of 3.65 GB during backward passes. This confirms that QLoRA makes BioCLIP fine-tuning feasible on consumer GPUs where standard fine-tuning is impossible.
-
-#### 4.4.2 Model Size
-
-The trained model components:
-
-| Component | Size | Format |
-|-----------|------|--------|
-| Prototype centroids (1,369 species) | 5.4 MB | NumPy float32 |
-| Calibration model | 12 KB | JSON |
-| Species catalog | 1.1 MB | JSON |
-| Geo priors | 1.5 MB | JSON |
-| iNat taxon cache | 48 KB | JSON |
-| **Total (without BioCLIP)** | **~14 MB** | — |
-| BioCLIP backbone | ~1.6 GB | Auto-downloaded from HuggingFace |
-
-The 14 MB model package (excluding the BioCLIP backbone which is publicly available) can be distributed via GitHub, making the system accessible to researchers and citizen science platforms without requiring them to train their own models.
+| Technique | Species accuracy | Verdict |
+|-----------|------------------|---------|
+| ViT-L → ViT-H | 63.9% → 70.6% | ✅ Keep |
+| k=25 → k=15 | 70.6% → 71.7% | ✅ Keep |
+| Triplet (8 variants) | Degrades | ❌ |
+| ArcFace (frozen backbone) | ~71.4% (tie) | ❌ no gain |
+| LoRA+ArcFace (100 spp, fixed eval) | +0.0pp | ❌ |
+| Dedup bursts | 70.1% | ❌ |
+| Expert crops | 70.8% | ❌ |
+| Hierarchical fallback | +2pp weighted | ✅ Keep |
 
 ### 4.5 Real-World Deployment
 
-#### 4.5.1 FotoFauna Integration
+Deployed at https://fotofauna.yespi.es via `fauna_api` → BioFauna `:8090`.
 
-BioFauna was deployed on the FotoFauna citizen science platform (https://fotofauna.yespi.es) in July 2026. The deployment configuration:
+- Inference typically <1s per crop on RTX 3060.
+- Auto-publication only when calibrated confidence is high; otherwise iNaturalist CV cross-check.
+- Early curator review of AutoID publications showed high confirmation rates (see deployment logs / Minka reviews); continuous curator-correction logging remains an open engineering task.
 
-- **Server**: Self-hosted Ubuntu with NVIDIA RTX 3060 (12 GB)
-- **Inference latency**: <1 second per image (including organism detection and k-NN search)
-- **Availability**: 24/7 with automatic restart on failure
-- **GPU contention**: Ollama (LLM inference) automatically yields GPU memory to BioFauna during identification requests
+### 4.6 Failure Modes
 
-#### 4.5.2 Auto-Publication Statistics
-
-Since deployment:
-
-| Metric | Value |
-|--------|-------|
-| Total observations auto-published | 100 |
-| By BioFauna | 18 (18%) |
-| By iNaturalist CV (fallback) | 81 (81%) |
-| By Minka CV | 1 (1%) |
-| Curator-reviewed (as of Aug 2026) | 21 |
-| **Curator confirmation rate** | **100% (21/21)** |
-
-All 21 curator-reviewed observations were confirmed by professional taxonomists (Xavier Salvador reviewed 20, others reviewed 1). Zero corrections or rejections.
-
-This 100% confirmation rate exceeds the expected 92.2% precision, though the small sample size limits statistical significance. It suggests the auto-publication threshold (p≥0.90) is appropriately conservative.
-
-### 4.6 Comparative Analysis
-
-#### 4.6.1 Comparison with iNaturalist CV
-
-On the subset of images where both systems made predictions (n=81), iNaturalist CV was used as the primary identifier while BioFauna served as fallback. This asymmetry reflects BioFauna's conservative auto-publication strategy: when BioFauna is confident (18 cases), its prediction is used; otherwise (81 cases), iNaturalist CV provides the identification.
-
-Quantitative head-to-head comparison requires running both systems on the same calibration set, which is planned for future work.
-
-#### 4.6.2 BioFauna Contribution
-
-BioFauna contributes unique value in three scenarios:
-
-1. **BioFauna-confident cases** (18%): Species where BioFauna achieves p≥0.90 but iNaturalist CV may not — typically Mediterranean endemics well-represented in our training data
-2. **Taxonomic abstention**: BioFauna provides genus/family-level identifications when species-level confidence is low, which iNaturalist CV does not
-3. **Offline capability**: As a local model, BioFauna works without internet connectivity, enabling field use
-
-### 4.7 Failure Analysis
 
 #### 4.7.1 Common Failure Modes
 
@@ -660,79 +399,52 @@ Accuracy varies systematically across taxonomic groups:
 | Algae | 50-70% | High morphological plasticity |
 | Fish | 55-75% | Pose variation is challenging |
 
+
 ## 5. Discussion
 
-### 5.1 Consumer GPU Fine-Tuning for Biodiversity
+### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)
 
-A key practical contribution is demonstrating that a ViT-L/14 model can be domain-adapted for species identification on widely available consumer hardware. The 5.8× memory reduction achieved by QLoRA (9.6 GB → 1.65 GB) democratizes access to state-of-the-art vision models for biodiversity applications.
+The dominant gain came from **using a stronger frozen encoder** (ViT-H) and **tuning the retrieval hyperparameter k**, not from adapter training. This does not imply BioCLIP cannot be fine-tuned in general; it means that under a 12GB GPU, open_clip constraints, and an already large in-domain gallery, **retrieval on ViT-H saturates near ~72% species** on our Mediterranean held-out set.
 
-This has implications beyond the Mediterranean: researchers and citizen science organizations in biodiversity hotspots worldwide — particularly in the Global South where data-center GPUs may be inaccessible — can use this approach to build region-specific identification models.
+### 5.2 Evaluation Hygiene Matters More Than Leaderboard Chasing
 
-### 5.2 The Value of Taxonomic Abstention
+Photo-level splits and buggy reference filtering produced illusory LoRA gains (+3.4pp) that vanished after correction. We recommend observation-stratified harvest as the default for gallery systems fed by citizen-science bursts.
 
-The 8 percentage point improvement from species-only (63.9%) to weighted taxonomic accuracy (71.8%) demonstrates that acknowledging uncertainty at the species level and providing coarser taxonomic assignments is beneficial in practice.
+### 5.3 Taxonomic Abstention Remains Useful
 
-This aligns with how human taxonomists work: when uncertain between two species, reporting the shared genus is more useful than guessing. The abstention rule formalizes this intuition and provides calibrated probabilities for each level.
-
-### 5.3 Real-World Validation
-
-The 100% curator confirmation rate (21/21) for auto-published observations provides external validation beyond calibration metrics. While the sample is small, having professional taxonomists confirm every AI identification suggests the auto-publication threshold is well-calibrated.
-
-This feedback loop — AI auto-publishes → curator confirms/corrects → corrections feed back into model improvement — is a key feature of sustainable AI-assisted citizen science.
+Even when species top-1 plateaus, genus/family fallbacks and expert indistinguishability rules improve **decision usefulness** for citizen science.
 
 ### 5.4 Limitations
 
-Several limitations should be acknowledged:
-
-1. **Uneven species coverage**: 394 of 1,369 species (28.8%) lack training images entirely. These species rely on prototype centroids from related species, which degrades accuracy for rare taxa.
-
-2. **Calibration data**: Only 972 of 1,369 species have sufficient calibration samples (≥2). For the remaining 397, calibration is based on species-level interpolation, which may be less accurate.
-
-3. **Geographic scope**: The model is trained on Mediterranean species and may not generalize to other regions without fine-tuning.
-
-4. **Taxonomic bias**: Mollusks dominate the dataset (72.3% of images), reflecting both the Mediterranean's rich mollusk diversity and the expertise of our taxonomic collaborators. Other phyla have less representation.
-
-5. **Image quality sensitivity**: The model was trained primarily on in-focus, well-lit photographs. Performance degrades with poor lighting, motion blur, or extreme angles.
-
-6. **Curator review sample size**: Only 21 of 100 auto-published observations have been curator-reviewed. The remaining 79 are pending, and the 100% confirmation rate may change as more are reviewed.
-
-7. **Evaluation scope**: The calibration set is sampled from the same distribution as training data (Mediterranean, citizen science photographs). Performance on professional scientific photographs, museum specimens, or other regions may differ.
+1. Species top-1 still far from expert performance on cryptic taxa.
+2. Gallery coverage is uneven; some Mediterranean endemics remain scarce on iNaturalist.
+3. Expert crops and OCR labels did not help k-NN — signal may need different fusion (e.g., VLM re-rank).
+4. Curator-correction telemetry is not yet a closed training loop.
+5. Geographic generalization outside the Mediterranean is untested.
 
 ### 5.5 Future Work
 
-1. **Cryptic species pairs**: Training with hard negative pairs explicitly constructed from confusable species within the same genus, identified from taxonomic literature and expert knowledge. Our preliminary cryptic pairs dataset (815 pairs) provides a foundation for this.
-
-2. **GBIF data integration**: Incorporating additional training images from GBIF's 2+ billion occurrence records to fill species coverage gaps, particularly for the 394 species currently lacking training images.
-
-3. **Enriched text prompts**: Systematic evaluation of whether morphological descriptions from taxonomic literature, used as BioCLIP text prompts, improve visual feature extraction compared to simple species-name prompts.
-
-4. **Multi-modal identification**: Combining visual embeddings with geographic, temporal, and environmental features (depth, temperature, season) in a unified model.
-
-5. **Mobile deployment**: Quantizing the full pipeline (BioCLIP + k-NN) for on-device inference, enabling field identification without internet connectivity.
-
-6. **Cross-region transfer**: Evaluating whether QLoRA adapters trained on Mediterranean species transfer to other marine regions (Caribbean, Indo-Pacific) with minimal additional fine-tuning.
-
-7. **Community curation tools**: Developing interfaces for taxonomists to efficiently review AI-generated identifications, provide corrections, and contribute to the training data improvement cycle.
+1. Calibrate / evaluate **DINOv3** embeddings already extracted (1,301 spp).
+2. Try **QLoRA alternatives** compatible with open_clip (torchao / hqq) — only with harvest_calib gates.
+3. **VLM re-ranker** on top-3 critical cases.
+4. Production **curator correction log** as the true online accuracy metric.
+5. Continue taxonomic synonym normalization (WoRMS).
 
 ## 6. Conclusion
 
-BioFauna demonstrates that consumer-grade hardware can fine-tune large vision-language models for region-specific species identification. The combination of QLoRA fine-tuning, multi-level taxonomic abstention, and calibrated confidence estimation produces a practical system achieving 71.8% weighted taxonomic accuracy across 1,369 Mediterranean marine species.
-
-The model has been validated through real-world deployment on the FotoFauna citizen science platform, where 100 auto-published identifications have achieved 100% curator confirmation rate (21 reviewed to date). The complete model is released as open-source software (~14 MB package), designed for self-hosted deployment by citizen science platforms, research groups, and conservation organizations.
-
-By making large-scale vision model fine-tuning accessible on consumer GPUs, and by providing a complete, deployable identification system for Mediterranean marine fauna, we hope to accelerate biodiversity monitoring, citizen science participation, and taxonomic capacity building in one of the world's most biodiverse marine regions.
+BioFauna identifies Mediterranean marine species by retrieving neighbors in a BioCLIP-2.5 ViT-H embedding space. With k=15 and calibrated abstention, it reaches **71.7% / 76.5% / 80.4%** species/genus/family accuracy on observation-stratified held-out photos, and supports high-precision AutoID (95.5% at p≥0.90). Scaling the backbone and tuning k — not QLoRA — produced the measured gains. We release the system as open-source software for self-hosted citizen science and research use.
 
 ## Acknowledgments
 
 We thank Xavier Salvador (xasalva), Miquel Pontes, and Manuel Ballesteros for their taxonomic expertise and decades of field work documenting Mediterranean opisthobranchs. Their published species lists (Ballesteros 2007; Salvador et al. 2022) and the GROC/OPK databases (opistobranquis.org) provided essential validation data and morphological descriptions.
 
-We also thank the Minka and iNaturalist communities — particularly the photographers who contributed the 525,253 images that made this dataset possible. The WoRMS editorial board provided the taxonomic backbone that ensures nomenclatural consistency.
+We also thank the Minka and iNaturalist communities — particularly the photographers who contributed the hundreds of thousands of images in our gallery. The WoRMS editorial board provided the taxonomic backbone that ensures nomenclatural consistency.
 
-The BioCLIP model was developed by Samuel Stevens and colleagues at Ohio State University and is available via HuggingFace. QLoRA was developed by Tim Dettmers and colleagues at the University of Washington. Both models are released under permissive open-source licenses that made this work possible.
+The BioCLIP / BioCLIP-2.5 models were developed by Samuel Stevens and colleagues and are available via HuggingFace. QLoRA was developed by Tim Dettmers and colleagues at the University of Washington. Both lines of work are released under permissive open-source licenses that made these experiments possible.
 
 ## Data Availability
 
-The BioFauna model package (prototype centroids, calibration data, species catalog, geo priors) is available at https://github.com/yespi/biofauna. The BioCLIP backbone is auto-downloaded from HuggingFace (hf-hub:imageomics/bioclip-2). Training images cannot be redistributed due to licensing but can be independently obtained from iNaturalist and Minka APIs using the taxon IDs provided in the species appendix.
+The BioFauna model package (gallery patterns, calibration data, species catalog, geo priors) is available at https://github.com/yespi/biofauna. The production backbone is auto-downloaded from HuggingFace (`hf-hub:imageomics/bioclip-2.5-vith14`). Training images cannot be redistributed due to licensing but can be independently obtained from iNaturalist and Minka APIs using the taxon IDs provided in the species appendix.
 
 ## References
 
@@ -784,18 +496,4 @@ The BioFauna model package (prototype centroids, calibration data, species catal
 
 ---
 
-*Paper in preparation. Version 2026-08-05. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*
-
-
-## X. QLoRA Fine-Tuning — Lessons Learned
-
-Initial experiments with QLoRA (4-bit quantized Low-Rank Adaptation) on the ViT-L backbone produced catastrophic results: **1.7% species accuracy** vs 63.8% baseline. Root cause: the projection head (`vit.proj`, 1024->768) was inadvertently set as trainable during QLoRA fine-tuning. Triplet loss optimized this projection for training-set separation, destroying the embedding space.
-
-**Corrected approach**: Load only LoRA adapter weights (lora_A, lora_B, bias). Skip proj_head. Linear4bit backbone weights remain unchanged.
-
-## X+1. Data Quality Pipeline
-
-Per external audit recommendations, data cleaning precedes model training:
-- **Deduplication**: burst photos (cos > 0.99, same observation) collapsed before k-NN
-- **Confident learning**: flag samples where k-NN contradicts assigned label
-- **Curator feedback**: log all Minka taxonomist corrections to AutoID predictions
+*Paper in preparation. Version 2026-08-10. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*

@@ -1,6 +1,6 @@
 ## API Reference (Self-Hosted)
 
-The identification service runs as a FastAPI server on port 8090.
+The identification service runs as a FastAPI server on port 8090 (`scripts/identify_service.py`).
 
 ### Endpoints
 
@@ -8,13 +8,13 @@ The identification service runs as a FastAPI server on port 8090.
 
 Upload an image for species identification.
 
-**Request**: Multipart form with `file` field (JPEG/PNG)
+**Request**: Multipart form with `file` field (JPEG/PNG)  
 **Query params**: `topk` (default 5), `lat`, `lon`, `date`
 
-**Response**:
+**Response** (shape may vary slightly by build):
 ```json
 {
-  "source": "yolofauna-local",
+  "source": "biofauna-local",
   "method": "knn",
   "prediction": {
     "rank": "species",
@@ -28,26 +28,19 @@ Upload an image for species identification.
 
 **Fields**:
 - `rank`: `species`, `genus`, or `family`
-- `p_species`: Calibrated probability (well-calibrated, ECE=0.045)
-- `confidence`: Raw k-NN cosine similarity (NOT calibrated)
+- `p_species`: Calibrated probability
+- `confidence`: Raw k-NN score (not a calibrated probability)
 
 #### `GET /health`
 
-```json
-{"ok": true, "device": "cuda", "species": 1369}
-```
+Reports device and loaded species count (active gallery size depends on `dataset/patterns/`).
 
 #### `POST /reload`
 
-Hot-reload prototypes and calibration data without restarting.
+Hot-reload patterns and calibration without restarting (when enabled).
 
 ### Auto-Publication Thresholds
 
-| p_species >= | Precision | Coverage |
-|-------------|-----------|----------|
-| 0.90 | 92.2% | 30% |
-| 0.85 | 92.1% | 38% |
-| 0.80 | 90.5% | 43% |
-| 0.75 | 88.7% | 49% |
+Production recommendation: **`p_species >= 0.90`** → **95.5% precision**, **30.2% coverage** (ViT-H, k=15, 2026-08-10 calibration).
 
-Recommendation: use `p_species >= 0.90` for auto-publication to citizen science platforms.
+Below threshold, FotoFauna cross-checks with iNaturalist CV before publishing.

@@ -1,3 +1,5 @@
+> **Historical draft** (pre–ViT-H production narrative). Canonical paper: [`01_biofauna.md`](01_biofauna.md) (updated 2026-08-10).
+
 # YOLOFauna: Fine-tuning BioCLIP with QLoRA for Mediterranean Marine Species Identification
 
 **Authors**: Gustavo Zafra (Yespi)  
