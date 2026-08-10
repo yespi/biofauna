@@ -1,6 +1,9 @@
 ## Species Coverage & Performance
 
-**2,989 species** in the taxonomic catalog. Model covers **1,369 species** with prototype embeddings. Calibration on 2,427 held-out photographs (972 species).
+> **Catalog table (historical checklist export).** For live metrics see [`STATUS.md`](STATUS.md) and [`species_coverage.md`](species_coverage.md).  
+> Production (2026-08-10): BioCLIP-2.5 **ViT-H**, k-NN **k=15**, **71.7% / 76.5% / 80.4%** species/genus/family on `harvest_calib` (1,946 photos · 810 species). Active gallery ≈ **1,158** species; image corpus ≈ **3,000** folders / ~**585K** photos.
+
+**This table** lists checklist rows from an earlier export (~2,989 named taxa; many rows still show legacy “1,369 prototypes” era fields). Per-row `Accuracy` / `Cal.` columns are **not** the current ViT-H harvest and should not be cited as headline results.
 
 | # | Species | Tier | Iconic | Cal. | Accuracy | Images | Minka ID |
 |---|---------|------|--------|------|----------|--------|----------|
@@ -2998,23 +3001,36 @@
 
 | Metric | Value |
 |--------|-------|
-| Catalog species | 2989 |
-| Model species (with prototypes) | 1,369 |
-| With training images | 1114 (37%) |
-| Total training images | 530,738 |
-| Calibrated species | 972 |
-| Species >= 75% accuracy | 442 |
-| **Global species accuracy** | **63.9%** |
-| **Weighted taxonomic accuracy** | **71.8%** |
-| High-confidence (p>=0.90) precision | 92.2% |
-| High-confidence (p>=0.98) precision | 95.4% |
-| | |
-| **Tier distribution** | |
+| Catalog rows in this export | 2989 |
+| Historical “model prototypes” field | 1,369 (legacy export) |
+| With training images (export-era count) | 1114 (37%) |
+| Total training images (export-era count) | 530,738 |
+| Tier / phylum breakdown | see below (unchanged from export) |
+
+### Live system metrics (prefer these — 2026-08-10)
+
+| Metric | Value |
+|--------|-------|
+| Active gallery species | ~**1,158** |
+| Photographs on disk | ~**585K** |
+| **Species / genus / family (`harvest_calib`)** | **71.7% / 76.5% / 80.4%** |
+| AutoID p≥0.90 | **95.5%** precision · **30.2%** coverage |
+| Encoder / k | BioCLIP-2.5 ViT-H · **k=15** |
+
+> The legacy lines formerly quoted here (63.9% global / 92.2% @p≥0.90) were ViT-L-era calibration figures and are **obsolete**.
+
+### Tier distribution (export)
+
+| Tier | Count |
+|------|-------|
 | Tier 0 (Gold) | 636 |
 | Tier 1 (Silver) | 1527 |
 | Tier 2 (Bronze) | 826 |
-| | |
-| **By taxonomic group** | |
+
+### By taxonomic group (export)
+
+| Group | Count |
+|-------|-------|
 | Mollusca | 1014 |
 | Plantae | 466 |
 | Actinopterygii | 312 |

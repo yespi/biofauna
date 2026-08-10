@@ -1,4 +1,8 @@
-# Appendix A: Per-Species Data for YOLOFauna
+# Appendix A: Per-Species Data for BioFauna
+
+> Historical per-species export (checklist / guide features).  
+> Canonical system metrics (2026-08-10): **71.7%** species · **76.5%** genus · **80.4%** family (ViT-H, k=15, `harvest_calib`). See [`../docs/STATUS.md`](../docs/STATUS.md).  
+> Many `Acc.` / `Cal.N` cells are empty or predate the ViT-H calibration — do not treat column blanks as 0% accuracy.
 
 | Species | Tier | Acc. | Cal.N | Images | Similar to | Key Features |
 |---|------|------|-------|--------|------------|--------------|

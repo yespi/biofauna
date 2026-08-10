@@ -41,9 +41,12 @@ Upload → BioFauna (ViT-H k-NN)
 Only **`harvest_calib`** (observation-stratified) + **`fit_calib`** numbers are trusted.  
 Photo-level train/test splits inflate results by ~10pp — do not use them as headlines.
 
-## Paper
+## Docs
 
-See [`paper/01_biofauna.md`](../paper/01_biofauna.md).
+- Status: [`STATUS.md`](STATUS.md)
+- Experiments: [`EXPERIMENTS.md`](EXPERIMENTS.md)
+- Paper: [`paper/01_biofauna.md`](../paper/01_biofauna.md)
+- Coverage: [`species_coverage.md`](species_coverage.md)
 
 ## Objective
 

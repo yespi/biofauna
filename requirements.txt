@@ -1,11 +1,14 @@
-# YOLOFauna — BioCLIP-based species identification
+# BioFauna — dependencies
 # Install: pip install -r requirements.txt
+#
+# Production inference: frozen BioCLIP-2.5 ViT-H + k-NN (open_clip + torch + FastAPI).
+# bitsandbytes is optional/legacy (QLoRA experiments); not required to run the identifier.
 
 open-clip-torch>=2.26.0
 torch>=2.3.0
-bitsandbytes>=0.44.0
 fastapi>=0.111.0
 uvicorn[standard]>=0.30.0
 Pillow>=10.3.0
 numpy>=1.24.0
 requests>=2.28.0
+# optional: bitsandbytes>=0.44.0  # legacy QLoRA only; incompatible with our ViT-H open_clip path
