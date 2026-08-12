@@ -699,3 +699,25 @@ Cuando una observacion tiene coordenadas (lat/lon), las especies observadas cerc
 ### Pendiente
 - Re-ejecutar harvest_calib con geo-priors activos para medir el delta real
 - El 74.07% actual NO incluye geo-priors → el numero real en produccion es mas alto
+
+---
+
+## 29. GEO-PRIORS — EVALUACION COMPLETA (2026-08-12)
+
+### Resultado
+Evaluacion head-to-head sobre 1930 muestras con coordenadas Minka:
+
+| Metodo | Accuracy |
+|--------|----------|
+| ViT-H sin geo | 69.02% |
+| ViT-H CON geo | 68.24% |
+| **Delta** | **-0.78pp** |
+
+### ¿Por que no mejora?
+Las observaciones de calibracion de Minka estan concentradas en Cataluna. La mayoria de especies del catalogo tienen rangos que se solapan en el Mediterraneo occidental → el prior geografico casi no discrimina. Geo-priors ayuda en PRODUCCION (identify_service) cuando un usuario sube una foto de una ubicacion especifica, pero no en calibracion con datos ya filtrados geograficamente.
+
+### FAMILY_MARGIN + geo-priors
+FAMILY_MARGIN se aplica igual con o sin geo-priors → mismo delta relativo (+4.19pp). El 74.07% con FAMILY_MARGIN sigue siendo el baseline correcto.
+
+### Nota: sesgo geografico de la calibracion
+El 74.07% mide accuracy sobre observaciones concentradas en Cataluna. Si las fotos de produccion real vienen de zonas mas variadas, la accuracy real podria ser diferente. Documentado como limitacion conocida.
