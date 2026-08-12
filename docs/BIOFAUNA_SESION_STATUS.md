@@ -1,8 +1,8 @@
 # BioFauna — Estado de Sesión
 
-> **Hora**: 2026-08-12 09:15 | **LoRA + ArcFace completados. Sin mejora.**
+> **Hora**: 2026-08-12 10:00 | **ArcFace 200 spp: +18.5pp out-of-sample!**
 > **Acierto producción**: 74.07% FAMILY_MARGIN (2148 muestras, 824 spp)
-> **GPU**: ArcFace 200 spp corriendo (E13/15, ~30 min restantes)
+> **GPU**: Libre
 
 ## 🔄 RESULTADOS DE LA NOCHE
 

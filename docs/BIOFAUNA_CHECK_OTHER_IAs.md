@@ -721,3 +721,26 @@ FAMILY_MARGIN se aplica igual con o sin geo-priors → mismo delta relativo (+4.
 
 ### Nota: sesgo geografico de la calibracion
 El 74.07% mide accuracy sobre observaciones concentradas en Cataluna. Si las fotos de produccion real vienen de zonas mas variadas, la accuracy real podria ser diferente. Documentado como limitacion conocida.
+
+---
+
+## 30. ARCFACE 200 spp — +18.5pp OUT-OF-SAMPLE (2026-08-12)
+
+### Resultado
+| Metodo | Accuracy (369 muestras) |
+|--------|------------------------|
+| k-NN (ViT-H) | 63.1% (233/369) |
+| ArcFace 200 spp | **81.6%** (301/369) |
+| **Delta** | **+18.5pp** |
+
+### Contexto
+- ArcFace entrenado 15 epocas, D=+0.3pp interno (94.1%→94.5%)
+- Evaluado sobre las 369 muestras de calibracion cuyas especies estan en el clasificador
+- Las 1779 muestras restantes (especies fuera del entrenamiento) fueron excluidas
+
+### Patron
+ArcFace funciona a pequeña escala (200 spp → +18.5pp) pero no escala (1158 spp → 38.3%). Hay que encontrar el sweet spot.
+
+### Proximo
+- Probar ArcFace a 500 spp y 800 spp para encontrar el punto optimo
+- Si el patron se mantiene, ArcFace podria usarse como clasificador complementario para un subconjunto de especies
