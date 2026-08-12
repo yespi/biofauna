@@ -744,3 +744,11 @@ ArcFace funciona a pequeña escala (200 spp → +18.5pp) pero no escala (1158 sp
 ### Proximo
 - Probar ArcFace a 500 spp y 800 spp para encontrar el punto optimo
 - Si el patron se mantiene, ArcFace podria usarse como clasificador complementario para un subconjunto de especies
+
+---
+
+## 31. ARCFACE — CIERRE (2026-08-12)
+
+Curva de escalado: 200 spp +18.5pp, 400 spp +6.6pp, 800 spp E0 +0.2pp interno.
+Delta real vs FAMILY_MARGIN: solo +1.5pp.
+Conclusion: ArcFace no escala. Mismo patron que LoRA. Cerrado.
