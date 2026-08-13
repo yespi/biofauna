@@ -1,43 +1,26 @@
-# BioFauna — Estado de Sesión
+# BioFauna — Estado de Sesion
 
-> **Hora**: 2026-08-12 10:00 | **ArcFace 200 spp: +18.5pp out-of-sample!**
-> **Acierto producción**: 74.07% FAMILY_MARGIN (2148 muestras, 824 spp)
-> **GPU**: Libre
+> **Hora**: 2026-08-12 06:00 | **Sesion completa. Todas las vias de modelo agotadas.**
+> **Acierto produccion**: 74.07% FAMILY_MARGIN (2148 muestras, 824 spp)
+> **GPU**: Libre (55°C)
 
-## 🔄 RESULTADOS DE LA NOCHE
+## Resultados finales
 
-### Re-embedding LoRA
-- **Completado**: 2994 spp, 586,435 imágenes, 8.3h GPU
-- Sin incidencias. Backup cada 2h funcionando.
+| Via | Resultado | Evidencia |
+|-----|-----------|-----------|
+| ViT-L -> ViT-H | +7.8pp | ✅ En produccion |
+| FAMILY_MARGIN | +4.2pp | ✅ En produccion |
+| Geo-priors | -0.78pp | ✅ En produccion (neutro en calib) |
+| Triplet (8 var) | -0.7 a -7pp | ❌ Cerrado |
+| ArcFace (200/400/800/1158) | +1.5pp -> -6.1pp | ❌ No escala |
+| LoRA (todas escalas) | +3.4pp -> -0.2pp | ❌ No escala |
+| DINOv3 | -19.9pp | ❌ Cerrado |
+| Ruta A/B (VLM) | Degrada / Solo Haminoea | ❌ Cerrado |
+| QLoRA (torchao) | Pendiente | ⏳ Ultima via |
 
-### Evaluación LoRA + geo-priors
-| Métrica | ViT-H baseline | LoRA 1358 + geo-priors | Delta |
-|---------|---------------|----------------------|-------|
-| Especie | 69.88% (1501/2148) | 69.68% (1496/2147) | **-0.20pp** |
+## Pendiente (datos, no modelo)
 
-**Conclusión: LoRA NO mejora.** El +0.2pp interno no se traslada a datos reales. Patrón confirmado: LoRA no escala.
-
-### ArcFace 200 spp (en curso)
-- E0-E12 completados sin morir (¡no como antes!)
-- E12: acc=94.5%, best=94.5% (baseline=94.1%)
-- Mejora interna: +0.4pp. Pendiente de evaluar out-of-sample.
-
-### Geo-priors
-- Añadidos a harvest_calib y eval_lora_full
-- 1,374/1,437 especies con datos (77,494 puntos)
-- Impacto en LoRA: mínimo (-0.20pp con vs sin)
-
-## 📊 SISTEMA ACTUAL
-| Métrica | Valor |
-|---------|-------|
-| Baseline FAMILY_MARGIN | **74.07%** (2148/824) |
-| AutoID p≥0.90 | 35.9% cobertura, 97.8% precisión |
-| Dataset | 584K img, 98.1% limpias |
-| Fusiones | 2 aplicadas |
-| HF cache | Local, sin warnings |
-
-## ⏭️ PENDIENTE
-- ArcFace 200 spp: terminar y evaluar out-of-sample
-- QLoRA torchao
-- SDXL en /mnt/gpu/
-- Renombrar YOLOFauna → BioFauna
+1. Revisar 540 sospechosos CL (solo 34/574 hechos)
+2. Extraer rasgos diagnosticos de guias (6/34 spp)
+3. QLoRA torchao
+4. Renombrar YOLOFauna -> BioFauna

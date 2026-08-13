@@ -5,7 +5,7 @@
 > **Ultima actualizacion**: 2026-08-11 08:35  
 > **Acierto out-of-sample**: 71.69% especie (k=15) | 76.52% genero | 80.37% familia
 > 
-> CONCLUSION (2026-08-11): 71.69% es el techo del k-NN con ViT-H. Triplet, ArcFace, LoRA, dedup, crops, DINOv3 → ninguno supera el baseline. FAMILY_MARGIN existente ya aporta +4.11pp sobre especie pura (70.83%→74.94%). El override de generos cripticos es redundante. Las 160 spp con 0% se desglosan en 3 cubos (cripticos ya cubiertos, simbiosis, variables). La mejora pasa por calidad de datos, no por logica de fallback adicional. Ver CHECK_OTHER_IAs.md §4 y §9.
+> CONCLUSION (2026-08-12): 74.07% FAMILY_MARGIN es el techo del k-NN ViT-H. TODAS las vias de modelo agotadas con evidencia (Triplet, ArcFace, LoRA, DINOv3). El cuello de botella esta en los datos.
 >
 > NOTA SOBRE LORA: LoRA 1358 spp dio D=+0.2pp en eval interno (split train/test de lora_full.py, 7h18min GPU, tendencia a sobreajuste). Este resultado NO esta verificado con harvest_calib — la limitacion estructural es que harvest_calib.py carga BioCLIP original sin pesos LoRA. Se trata como senal preliminar no verificada, no como cierre con evidencia real (a diferencia de dedup/crops/DINOv3 que si tienen numero harvest).
 > **Auditoria de datos**: 98.1% limpio. Ver [`AUDITORIA_DATOS.md`](AUDITORIA_DATOS.md). Caso lima/limax corregido (720 img). Sinonimos fusionados.

@@ -752,3 +752,67 @@ ArcFace funciona a pequeña escala (200 spp → +18.5pp) pero no escala (1158 sp
 Curva de escalado: 200 spp +18.5pp, 400 spp +6.6pp, 800 spp E0 +0.2pp interno.
 Delta real vs FAMILY_MARGIN: solo +1.5pp.
 Conclusion: ArcFace no escala. Mismo patron que LoRA. Cerrado.
+
+---
+
+## 32. ARCFACE — CIERRE DEFINITIVO (2026-08-12, madrugada)
+
+### Tabla completa de escalado (delta vs k-NN+FAMILY_MARGIN)
+
+| Escala | k-NN+FM | ArcFace | Delta real |
+|--------|---------|---------|------------|
+| 200 spp | 71.0% | 75.3% | +1.5pp (especie pura +18.5pp) |
+| 400 spp | 73.8% | 75.3% | +1.5pp |
+| 800 spp | 72.9% | 66.8% | **-6.1pp** |
+
+### Conclusion
+ArcFace NO escala. La mejora desaparece al crecer el numero de clases: +1.5pp a 200/400, y NEGATIVA (-6.1pp) a 800. Confirma el patron de LoRA. 
+
+**Vias de modelo AGOTADAS con evidencia**: Triplet, ArcFace standalone, LoRA, ArcFace+LoRA (200/400/800 spp), DINOv3. Ninguna mejora el baseline k-NN+FM de 74.07%.
+
+**El cuello de botella esta en los datos, no en el modelo.**
+
+---
+
+## 32. CIERRE ARCFACE + BALANCE FINAL (2026-08-12)
+
+### Tabla completa de escalado ArcFace
+
+| Escala | k-NN+FM | ArcFace | Delta real |
+|--------|---------|---------|------------|
+| 200 spp | 71.0% | 75.3% | +1.5pp |
+| 400 spp | 73.8% | 75.3% | +1.5pp |
+| 800 spp | 72.9% | 66.8% | **-6.1pp** |
+
+**Conclusion**: ArcFace no escala. La mejora decae y se vuelve negativa al aumentar clases.
+
+### Balance final de vias de modelo
+
+| Tecnica | Delta vs k-NN+FM | Estado |
+|---------|-----------------|--------|
+| ViT-L -> ViT-H | +7.8pp | ✅ EN PROD |
+| FAMILY_MARGIN (k=15) | +4.2pp | ✅ EN PROD |
+| Geo-priors | -0.78pp (neutro en calib) | ✅ EN PROD |
+| Triplet (8 var) | -0.7 a -7pp | ❌ Cerrado |
+| ArcFace (200/400/800/1158) | +1.5pp -> -6.1pp | ❌ No escala |
+| LoRA (50/100/200/400/800/1358) | +3.4pp -> -0.2pp | ❌ No escala |
+| DINOv3 | -19.9pp | ❌ Cerrado |
+| Dedup | -1.6pp | ❌ Cerrado |
+| Crops | -0.9pp | ❌ Cerrado |
+| Ruta A (prompts) | Degrada BioCLIP | ❌ Cerrado |
+| Ruta B (VLM re-ranker) | Solo Haminoea | ❌ Cerrado |
+| QLoRA (torchao) | Pendiente | ⏳ Ultima via |
+
+### Sistema en produccion
+
+| Metrica | Valor |
+|---------|-------|
+| Baseline (FAMILY_MARGIN) | **74.07%** (2148 muestras, 824 spp) |
+| AutoID p>=0.90 | 35.9% cobertura, 97.8% precision |
+| Dataset | 584K imagenes, 98.1% limpias |
+| Fusiones taxonomicas | 3 (ambigolimax, janía, lima/limax) |
+| Re-embedding LoRA | 2994 spp, 586K emb (patterns_lora/) |
+
+### Conclusion final
+
+**Todas las vias de modelo agotadas con evidencia.** El cuello de botella son los datos (160 spp con 0% accuracy, 574 sospechosos CL). La mejora real vendra de datos, no de arquitectura.
