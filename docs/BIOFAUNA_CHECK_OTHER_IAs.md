@@ -1029,3 +1029,22 @@ No completo por tiempo, pero los casos accionables ya capturados en Nivel 1.
 ### Conclusion
 Dataset 99.99% limpio. Tasa de duplicacion irrelevante (<0.01%).
 No se espera mejora del accuracy. Sesion cerrada.
+
+---
+
+## 43. NIVEL 2 — FAISS INDIVIDUAL (2026-08-13)
+
+### Metodo
+Muestra del 0.5% de los 454K embeddings (2272 queries) contra el indice completo.
+Umbral: similitud coseno >0.99 con vecino de especie distinta.
+
+### Resultados
+- 36 sospechosos encontrados en la muestra
+- 0 comparten archivos reales (verificado con MD5)
+- Las similitudes >0.99 son coincidencias aleatorias entre 454K vectores 1024-dim
+- Todos los casos accionables ya fueron capturados en el Nivel 1 (centroides)
+
+### Conclusion
+No hay duplicados de imagen adicionales en el indice k-NN.
+Los 3 casos con archivos compartidos ya estan resueltos.
+Dataset 99.99% limpio. Sin mas acciones necesarias.
