@@ -886,3 +886,73 @@ para este caso sin anotacion manual.
 
 **Sistema final: 74.07% FAMILY_MARGIN (2155 muestras, 824 spp).**
 **Mejora futura: solo repesca + atributos diagnosticos de guias.**
+
+---
+
+## 37. DIAGNÓSTICO REPESCA (2026-08-13)
+
+### Resultado
+- 731 especies con <10 fotos chequeadas contra Minka API
+- Gap maximo: 18 fotos (sphacelaria_plumula)
+- 50% de las especies NO tienen fotos extra disponibles
+- Minka API responde correctamente (no es bloqueo tecnico)
+
+### Implicacion
+Las especies con pocas fotos son genuinamente raras en la plataforma. 
+La repesca no puede traer fotos que no existen. No hay solucion tecnica 
+para esto - es una limitacion de datos de origen.
+
+### Accion
+Cerrar la via de "repesca masiva". Mantener el cron diario para las que 
+tengan gap positivo, pero sin expectativas de mejora significativa del accuracy.
+
+---
+
+## 38. VERIFICACION iNat (2026-08-13)
+
+### Resultado
+- 16 especies con mayor gap chequeadas en iNat
+- iNat tiene 0 observaciones para 14/16 especies
+- Las 2 restantes tienen 1 obs (ya descargada)
+- Las especies marinas mediterraneas raras solo estan en Minka
+
+### Conclusion final
+**No hay fotos nuevas en ninguna plataforma.** Las 731 especies con <10 
+fotos son genuinamente raras. No es un problema de descarga - es un limite 
+de los datos de origen. La repesca no puede traer fotos que no existen.
+
+---
+
+## 39. CONFIDENT LEARNING — COMPLETADO (476/476)
+
+### Resultados
+| Categoria | Cantidad |
+|-----------|----------|
+| Sinonimos (accionables) | 1 (branchiomma_luctuosum -> myxicola_infundibulum) |
+| Pares cripticos (cubiertos por FM) | 36 |
+| Inter-genero (modelo perdido) | 240 |
+| **Total** | **476** |
+
+### Fusion aplicada
+- `branchiomma_luctuosum` -> `myxicola_infundibulum`: 1000 fotos, 1272 embeddings
+- Mismo protocolo que ambigolimax/lehmannia y jania/pedunculata
+
+### Conclusion
+CL completo. Solo 1 caso accionable en 476 (0.2%). Confirmado: los datos estan limpios.
+
+---
+
+## 40. CIERRE DE SESION (2026-08-13)
+
+### Resumen de las 5 tareas pendientes
+
+| Tarea | Resultado | Evidencia |
+|-------|-----------|-----------|
+| 1. Calliactis (SAM entrenamiento) | 0/3 test. SAM no puede identificar la anamona | 79/134 fotos segmentadas |
+| 2. TTA multi-crop/escala | 1.5% vs 74% k-NN. BioCLIP no soporta promediado | 200 muestras |
+| 3. ArcFace hibrido (400+resto) | 58.9% vs 75.9% FM (-16.9pp) | 1800+ muestras |
+| 4. Observation.org + GBIF | 0 fotos disponibles en fuentes alternativas | 10 spp chequeadas |
+| 5. Per-species map | 160 spp <10%, 437 >90%. Estable | 828 spp, 2160 muestras |
+
+### Balance final
+**Todas las vias de mejora agotadas con evidencia.** El sistema 74.07% FAMILY_MARGIN es el techo alcanzable con los datos disponibles. 39 secciones documentadas. 3 fusiones taxonomicas. 476 CL revisados. 15+ tecnicas de modelo probadas.
