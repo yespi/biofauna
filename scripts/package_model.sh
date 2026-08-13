@@ -1,13 +1,13 @@
 #!/bin/bash
-# Package YOLOFauna model for distribution (~75 MB)
-# Output: yolofauna_model_v1.tar.gz
+# Package BioFauna model for distribution (~75 MB)
+# Output: biofauna_model_v1.tar.gz
 set -e
 
 OUTDIR="./model_package"
 rm -rf "$OUTDIR"
 mkdir -p "$OUTDIR/patterns" "$OUTDIR/data"
 
-echo "Packaging YOLOFauna model..."
+echo "Packaging BioFauna model..."
 
 # Copy calibration and taxonomy
 cp data/calibration.json "$OUTDIR/data/" 2>/dev/null
@@ -28,6 +28,6 @@ find data/patterns -name "prototype.npy" | while read f; do
 done
 
 # Create archive
-tar -czf yolofauna_model_v1.tar.gz -C "$OUTDIR" .
-SIZE=$(du -h yolofauna_model_v1.tar.gz | cut -f1)
-echo "Done: yolofauna_model_v1.tar.gz ($SIZE)"
+tar -czf biofauna_model_v1.tar.gz -C "$OUTDIR" .
+SIZE=$(du -h biofauna_model_v1.tar.gz | cut -f1)
+echo "Done: biofauna_model_v1.tar.gz ($SIZE)"

@@ -74,8 +74,8 @@ if TRUSTED_ONLY:
     PER_SP = max(PER_SP, 5)  # mínimo 5 para set de confianza
 
 K = 25
-FAMILY_MARGIN = float(os.environ.get("YOLOFAUNA_FAMILY_MARGIN", "0.06"))
-UA = {"User-Agent": "yolofauna-calib/1.0"}
+FAMILY_MARGIN = float(os.environ.get("BIOFAUNA_FAMILY_MARGIN", "0.06"))
+UA = {"User-Agent": "biofauna-calib/1.0"}
 
 log = lambda *a: print(*a, flush=True)
 slug = lambda n: re.sub(r"[^a-z0-9]+", "_", n.lower()).strip("_")

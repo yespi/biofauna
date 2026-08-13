@@ -257,7 +257,7 @@ def main():
                # el servicio lee estos alias para el nivel de especie
                "note": "P(el taxón del top-1 sea correcto a ese nivel). Ajustado "
                        "OUT-OF-SAMPLE: fotos excluidas por obs id contra _manifest.jsonl. "
-                       "Ver YOLOFAUNA.md sec. L."}
+                       "Ver BIOFAUNA.md sec. L."}
     if "species" in levels:
         sp = levels["species"]
         payload.update(kind=sp.get("kind"), model=sp.get("model"),

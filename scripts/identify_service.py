@@ -18,13 +18,13 @@ MIN_IMGS = 10; BATCH = 16
 EMBED_DIM = 1024
 torch.set_num_threads(max(2, (torch.get_num_threads() or 4)))
 def _free_gpu():
-    """Descarga qwen de la GPU (YOLOFauna tiene prioridad; qwen es puntual)."""
+    """Descarga qwen de la GPU (BioFauna tiene prioridad; qwen es puntual)."""
     try:
         import urllib.request as _u
         _u.urlopen(_u.Request('http://172.17.0.1:11434/api/generate',
             data=b'{"model":"qwen3:8b","keep_alive":0}',
             headers={'Content-Type':'application/json'}), timeout=20).read()
-        print('[identify] qwen liberado (GPU para YOLOFauna)', flush=True)
+        print('[identify] qwen liberado (GPU para BioFauna)', flush=True)
     except Exception: pass
 _free_gpu()
 def _load(dev):
@@ -33,7 +33,7 @@ import time as _t
 model=None; preprocess=None; device="cpu"
 if torch.cuda.is_available():
     for _try in range(6):
-        _free_gpu(); _t.sleep(1.5)   # ganar la carrera al poller de qwen (si YOLOFAUNA_KEEP_QWEN no está activo)
+        _free_gpu(); _t.sleep(1.5)   # ganar la carrera al poller de qwen (si BIOFAUNA_KEEP_QWEN no está activo)
         try:
             model,preprocess=_load("cuda")
             with torch.no_grad(): _=model.encode_image(torch.zeros(1,3,224,224).to("cuda"))
@@ -65,10 +65,10 @@ try:
 except Exception: pass
 
 # Margen de similitud por debajo del cual, si el top-1 y top-2 comparten familia,
-# abstenemos a nivel FAMILIA (regla de producto: Minka manda; ver YOLOFAUNA.md sec. F).
-FAMILY_MARGIN=float(os.environ.get("YOLOFAUNA_FAMILY_MARGIN","0.06"))
+# abstenemos a nivel FAMILIA (regla de producto: Minka manda; ver BIOFAUNA.md sec. F).
+FAMILY_MARGIN=float(os.environ.get("BIOFAUNA_FAMILY_MARGIN","0.06"))
 # Sec.4 Plan Maestro: regla bayesiana de mínimo riesgo (alternativa al margen fijo)
-MIN_RISK=os.environ.get("YOLOFAUNA_MIN_RISK","").lower() in ("1","true","yes")
+MIN_RISK=os.environ.get("BIOFAUNA_MIN_RISK","").lower() in ("1","true","yes")
 if MIN_RISK:
     print("[identify] MIN_RISK activo: regla bayesiana de minimo riesgo taxonomico", flush=True)
 
@@ -125,7 +125,7 @@ def load_protos():
     return len(names)
 load_protos()
 
-# --- Calibración de la confianza (YOLOFAUNA.md sec. L) ------------------------
+# --- Calibración de la confianza (BIOFAUNA.md sec. L) ------------------------
 # La similitud coseno NO es una probabilidad: un 0.938 puede ser un error. Este
 # bloque mapea las features del kNN -> P(el top-1 de especie sea correcto), con
 # los coeficientes ajustados OUT-OF-SAMPLE por scripts/fit_calib.py. Si el fichero
@@ -160,8 +160,8 @@ load_calib()
 # favoreciendo especies observadas cerca de la ubicacion de la consulta.
 # Suelo=1.0: sin GPS no se penaliza, solo se premia la cercania.
 GEO_PRIORS = None
-GEO_BOOST = float(os.environ.get("YOLOFAUNA_GEO_BOOST","2.0"))
-GEO_SIGMA_KM = float(os.environ.get("YOLOFAUNA_GEO_SIGMA","200"))
+GEO_BOOST = float(os.environ.get("BIOFAUNA_GEO_BOOST","2.0"))
+GEO_SIGMA_KM = float(os.environ.get("BIOFAUNA_GEO_SIGMA","200"))
 def load_geo():
     global GEO_PRIORS
     try:
@@ -290,7 +290,7 @@ def _bg_loop():
                        and len(list(d.glob("*.jpg")))>=MIN_IMGS
                        for d in (IMG.iterdir() if IMG.exists() else []) if d.is_dir())
             if pend:
-                if device=="cuda": _free_gpu()   # prioridad GPU YOLOFauna
+                if device=="cuda": _free_gpu()   # prioridad GPU BioFauna
                 if _embed_new_species()>0:
                     _write_eval(); load_protos()
         except Exception as e:
@@ -298,10 +298,10 @@ def _bg_loop():
         time.sleep(30)
 def _qwen_suppressor():
     # Mantener qwen FUERA de la GPU cada 8s MIENTRAS haya backlog (prioridad
-    # YOLOFauna; qwen puntual). Al terminar, deja de tocar qwen.
-    # Desactivado con YOLOFAUNA_KEEP_QWEN=true (para entrenamiento).
-    if os.environ.get("YOLOFAUNA_KEEP_QWEN", "").lower() in ("true", "1", "yes"):
-        print("[identify] YOLOFAUNA_KEEP_QWEN=true: no se libera qwen", flush=True)
+    # BioFauna; qwen puntual). Al terminar, deja de tocar qwen.
+    # Desactivado con BIOFAUNA_KEEP_QWEN=true (para entrenamiento).
+    if os.environ.get("BIOFAUNA_KEEP_QWEN", "").lower() in ("true", "1", "yes"):
+        print("[identify] BIOFAUNA_KEEP_QWEN=true: no se libera qwen", flush=True)
         return
     while True:
         try:
@@ -314,7 +314,7 @@ def _qwen_suppressor():
 threading.Thread(target=_qwen_suppressor, daemon=True).start()
 threading.Thread(target=_bg_loop, daemon=True).start()   # ARRANCAR el auto-embed (se había perdido)
 
-app=FastAPI(title="YOLOFauna identify")
+app=FastAPI(title="BioFauna identify")
 @app.get("/health")
 def health(): return {"ok":True,"device":device,"species":len(NAMES)}
 @app.get("/species")
@@ -541,5 +541,5 @@ async def identify(file: UploadFile = File(...), topk: int = 5,
                         "candidates":[r["species"] for r in res[:3]]}
         except: pass
 
-    return {"source":"yolofauna-local","method":method,"top":res[0] if res else None,
+    return {"source":"biofauna-local","method":method,"top":res[0] if res else None,
             "prediction":prediction,"results":res}

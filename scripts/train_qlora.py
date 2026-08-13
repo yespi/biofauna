@@ -1,12 +1,12 @@
 """
-QLoRA fine-tuning de BioCLIP ViT-L para YOLOFauna.
+QLoRA fine-tuning de BioCLIP ViT-L para BioFauna.
 - Cuantiza el backbone ViT a 4-bit (NF4) → ~2.5 GB en vez de ~9.6 GB.
 - Inserta adaptadores LoRA manuales en los últimos 4 bloques del transformer.
 - Proj head (1024→768) se mantiene en fp16 y se entrena.
 - Entrena con triplet loss sobre crop embeddings.
 - VRAM objetivo: <11 GB (entra en RTX 3060 12 GB).
 
-Referencia: YOLOFAUNA_PLAN_MAESTRO.md Sec.3.A
+Referencia: BIOFAUNA_PLAN_MAESTRO.md Sec.3.A
 """
 
 import json, os, sys, time, math

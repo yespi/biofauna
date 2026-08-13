@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Construye dataset de pares crípticos (especies confundibles) para YOLOFauna.
+Construye dataset de pares crípticos (especies confundibles) para BioFauna.
 Fuentes:
   1. OPK (opistobranquis.info) — descripciones de especies con "similar a"
   2. Minka — especies frecuentemente co-observadas o corregidas por curadores
@@ -9,7 +9,7 @@ Fuentes:
 Output: dataset/cryptic_pairs.jsonl
   {"sp1": "actinia_striata", "sp2": "actinia_mediterranea", "source": "opk", "note": "..."}
 
-Referencia: YOLOFAUNA_PLAN_MAESTRO.md Sec.3.D
+Referencia: BIOFAUNA_PLAN_MAESTRO.md Sec.3.D
 """
 
 import json, os, sys, re, time
@@ -17,7 +17,7 @@ from pathlib import Path
 from collections import defaultdict
 import requests
 
-ROOT = Path(os.environ.get("YOLOFAUNA_ROOT", "/mnt/docker/fotofauna-yolo"))
+ROOT = Path(os.environ.get("BIOFAUNA_ROOT", "/mnt/docker/biofauna"))
 DATASET = ROOT / "dataset"
 OUT = DATASET / "cryptic_pairs.jsonl"
 MINKA_API = "https://api.minka-sdg.org/v1"

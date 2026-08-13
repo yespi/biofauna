@@ -5,7 +5,7 @@ from pathlib import Path
 from PIL import Image
 import torch, open_clip
 
-ROOT = Path(os.environ.get("YOLOFAUNA_ROOT", "/work"))
+ROOT = Path(os.environ.get("BIOFAUNA_ROOT", "/work"))
 IMAGES = Path(os.environ.get("IMAGES_DIR", "/mnt/gpu/fotofauna-images"))
 PATTERNS = ROOT / "dataset/patterns"
 BATCH = 32

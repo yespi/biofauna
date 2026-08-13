@@ -10,7 +10,7 @@ OUT = ROOT / "dataset/geo_priors.json"
 LOCK = ROOT / "dataset/.geo_priors.lock"
 TARGETS = ROOT / "dataset/target_species.json"
 CACHE = ROOT / "dataset/inat_taxon_cache.json"
-UA = "yespi-fotofauna-yolo/1.0"
+UA = "yespi-biofauna/1.0"
 
 PER_PAGE = 30
 MAX_OBS = 100
