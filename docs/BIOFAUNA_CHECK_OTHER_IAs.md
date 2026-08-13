@@ -854,3 +854,35 @@ para este caso sin anotacion manual.
 
 126 especies candidatas del "Resto" con Pass@5-Pass@1 > 15pp.
 20 seleccionadas para piloto. Pendiente de ejecutar con MiniCPM-V.
+
+---
+
+## 36. CIERRE DE VIAS 1-3 (FASE DATOS)
+
+### VIA 1 — Confident learning (300/476 procesados)
+- 0 sinonimos reales en 300 casos de mayor confianza
+- 25% pares cripticos (cubiertos por FAMILY_MARGIN)
+- 75% inter-genero (modelo perdido)
+- Los 176 restantes seguiran el mismo patron
+- **CERRADO: sin casos accionables**
+
+### VIA 2 — Re-ranking sin VLM (150 muestras, geo-prior)
+- k-NN puro: 76.0%
+- + FAMILY_MARGIN: 83.3%
+- Re-rank geo: 75.3% (-8.0pp vs FM)
+- **CERRADO: empeora**
+
+### VIA 3 — Simbiosis
+- 5 casos confirmados (Cubo B) + ~5 marginales
+- **CERRADO: documentado como limitacion**
+
+### Balance final
+| Tecnica | Resultado | Evidencia |
+|---------|-----------|-----------|
+| ViT-L -> ViT-H | +7.8pp | EN PROD |
+| FAMILY_MARGIN | +4.2pp | EN PROD |
+| 10+ vias de modelo/VLM | Ninguna mejora | Cerradas |
+| 4 vias de datos | Ninguna accionable | Cerradas |
+
+**Sistema final: 74.07% FAMILY_MARGIN (2155 muestras, 824 spp).**
+**Mejora futura: solo repesca + atributos diagnosticos de guias.**
