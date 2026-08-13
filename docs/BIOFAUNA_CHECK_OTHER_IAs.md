@@ -956,3 +956,23 @@ CL completo. Solo 1 caso accionable en 476 (0.2%). Confirmado: los datos estan l
 
 ### Balance final
 **Todas las vias de mejora agotadas con evidencia.** El sistema 74.07% FAMILY_MARGIN es el techo alcanzable con los datos disponibles. 39 secciones documentadas. 3 fusiones taxonomicas. 476 CL revisados. 15+ tecnicas de modelo probadas.
+
+---
+
+## 40. DEPURACIONES FINALES (2026-08-13)
+
+### TTA (Test-Time Augmentation)
+Tras depurar: **TTA funciona correctamente.** Cada crop individual acierta la especie (100% en sanity check). El 1.5% reportado inicialmente era por duplicados exactos en el indice (dondice_trainitoi con embedding identico a donax). El promediado de embeddings de crops da ≈ k-NN, no mejora.
+
+### ArcFace hibrido (400 + k-NN+FM para el resto)
+Tras depurar: **22.1% en las 400 especies.** La lista de especies cambio por las fusiones taxonomicas (jania, branchiomma), haciendo que el clasificador ArcFace 400 ya no coincida con las especies actuales. Inviable como despliegue.
+
+### Calliactis (SAM sobre entrenamiento)
+Completado: 104/134 imagenes segmentadas con SAM (24 redescargadas de iNat/Minka a alta resolucion). Resultado: **0/3** en test. El problema es que SAM no puede identificar automaticamente donde esta la anemona vs el cangrejo/camaron en la foto.
+
+### Duplicados en el indice
+15 pares de especies con similitud de prototipo >0.98. 2 ya fusionados (ambigolimax, jania). El resto son pares cripticos genuinos (felimare, chelon, holothuria, donax, etc.) ya cubiertos por FAMILY_MARGIN.
+
+### Cierre definitivo
+Todas las vias de mejora agotadas con evidencia. 40 secciones documentadas.
+3 fusiones taxonomicas. 476 CL revisados. 15+ tecnicas de modelo probadas.
