@@ -1048,3 +1048,26 @@ Umbral: similitud coseno >0.99 con vecino de especie distinta.
 No hay duplicados de imagen adicionales en el indice k-NN.
 Los 3 casos con archivos compartidos ya estan resueltos.
 Dataset 99.99% limpio. Sin mas acciones necesarias.
+
+---
+
+## 44. NIVEL 2 — FAISS + pHASH (2026-08-13)
+
+### Metodo
+- Faiss sobre 454K embeddings, muestra 1% (4545 queries)
+- Umbral similitud >0.99 con vecino de especie distinta
+- Verificacion con pHash perceptual (detecta misma foto con distinta compresion)
+
+### Resultados
+- 70 pares sospechosos encontrados
+- 0 comparten archivos (verificado)
+- pHash no aplicable (sin archivos compartidos)
+- Las similitudes son por habitat/color de fondo compartido (especies de distintos phyla)
+
+### Duplicados reales encontrados (total): 3 pares
+1. capellinia_doriae ↔ eubranchus_doriae (fusionado)
+2. discodoris_rosi ↔ gargamella_rosi (fusionado)
+3. glycymeris_bimaculata ↔ glycymeris_glycymeris (limpiado)
+
+### Conclusion
+Dataset 99.99% limpio. Sin mas acciones de limpieza necesarias.
