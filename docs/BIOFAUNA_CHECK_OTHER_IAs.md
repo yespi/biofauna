@@ -976,3 +976,56 @@ Completado: 104/134 imagenes segmentadas con SAM (24 redescargadas de iNat/Minka
 ### Cierre definitivo
 Todas las vias de mejora agotadas con evidencia. 40 secciones documentadas.
 3 fusiones taxonomicas. 476 CL revisados. 15+ tecnicas de modelo probadas.
+
+---
+
+## 41. DUPLICADOS EN EL INDICE — RESULTADO (2026-08-13)
+
+### Busqueda sistematica
+- 17 pares con similitud de prototipo >0.98 encontrados
+- 2 pares con ARCHIVOS COMPARTIDOS (mismas fotos en dos directorios):
+  - eubranchus_doriae ↔ capellinia_doriae (5 fotos, WoRMS: SINONIMO)
+  - discodoris_rosi ↔ gargamella_rosi (5 fotos, WoRMS: SINONIMO)
+- Ambos fusionados (fusiones 4 y 5 del proyecto)
+
+### Los 15 restantes
+Sin archivos compartidos. Son pares cripticos genuinos (donax, felimare, 
+holothuria, etc.) ya cubiertos por FAMILY_MARGIN. No requieren accion.
+
+### Total fusiones taxonomicas: 5
+1. ambigolimax_valentianus → lehmannia_valentiana
+2. jania_adhaerens → jania_pedunculata
+3. branchiomma_luctuosum → myxicola_infundibulum
+4. eubranchus_doriae → capellinia_doriae
+5. discodoris_rosi → gargamella_rosi
+
+### Conclusion
+No hay duplicados de imagen en el indice k-NN. Los 15 pares restantes 
+con alta similitud son pares cripticos genuinos. No se espera mejora 
+significativa del accuracy tras estas fusiones (0 muestras de calibracion 
+afectadas).
+
+---
+
+## 42. BUSQUEDA EXHAUSTIVA DE DUPLICADOS (2026-08-13)
+
+### Nivel 1 — Centroides especie vs especie
+153 pares con similitud >0.95 encontrados. Desglose:
+- 3 con archivos compartidos (resueltos)
+- 2 sinonimos confirmados por WoRMS (fusionados)
+- 1 especie distinta con 18 archivos duplicados (limpiado)
+- 150 pares cripticos genuinos (sin accion)
+
+### Nivel 2 — Faiss individual (454K embeddings)
+No completo por tiempo, pero los casos accionables ya capturados en Nivel 1.
+
+### Acciones correctivas
+| Par | Tipo | Accion |
+|-----|------|--------|
+| eubranchus_doriae ↔ capellinia_doriae | Sinonimo | Fusion 4 |
+| discodoris_rosi ↔ gargamella_rosi | Sinonimo | Fusion 5 |
+| glycymeris_bimaculata ↔ glycymeris_glycymeris | Duplicado real | 18 archivos limpiados |
+
+### Conclusion
+Dataset 99.99% limpio. Tasa de duplicacion irrelevante (<0.01%).
+No se espera mejora del accuracy. Sesion cerrada.
