@@ -774,7 +774,7 @@ ArcFace NO escala. La mejora desaparece al crecer el numero de clases: +1.5pp a 
 
 ---
 
-## 32. CIERRE ARCFACE + BALANCE FINAL (2026-08-12)
+## 33. CIERRE ARCFACE + BALANCE FINAL (2026-08-12)
 
 ### Tabla completa de escalado ArcFace
 
@@ -816,3 +816,23 @@ ArcFace NO escala. La mejora desaparece al crecer el numero de clases: +1.5pp a 
 ### Conclusion final
 
 **Todas las vias de modelo agotadas con evidencia.** El cuello de botella son los datos (160 spp con 0% accuracy, 574 sospechosos CL). La mejora real vendra de datos, no de arquitectura.
+
+---
+
+## 33. ESTADO ACTUAL (2026-08-13 09:30)
+
+### En curso
+| Tarea | Estado | Notas |
+|-------|--------|-------|
+| QLoRA 400 spp (torchao int8) | E0 corriendo, 2.7GB VRAM | Ultima via de modelo sin probar |
+| Repesca diaria | Background (CPU) | Descarga fotos de iNat para especies con pocas |
+| CL review | 476/574 pendientes | Prioridad: alta confianza primero |
+
+### Pendiente
+- Las 476 especies CL pendientes requieren ~16h de revision manual (GBIF+WoRMS+Minka cada una)
+- No hay impedimento tecnico, solo tiempo
+- QLoRA (int8) deberia terminar en ~4h (15 epocas, 294 batches)
+- Repesca corre automaticamente
+
+### Proximo paso
+Evaluar QLoRA out-of-sample al terminar. Si da mejora real, escalar. Si no, cerrar definitivamente toda via de modelo y pivotar a datos (CL, repesca, atributos diagnosticos).
