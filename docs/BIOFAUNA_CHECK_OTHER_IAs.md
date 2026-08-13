@@ -836,3 +836,21 @@ ArcFace NO escala. La mejora desaparece al crecer el numero de clases: +1.5pp a 
 
 ### Proximo paso
 Evaluar QLoRA out-of-sample al terminar. Si da mejora real, escalar. Si no, cerrar definitivamente toda via de modelo y pivotar a datos (CL, repesca, atributos diagnosticos).
+
+---
+
+## 34. PASO 2 (SAM) — CUBO B: NO FUNCIONA
+
+Se probo SAM (Segment Anything) sobre imagenes de calliactis_palliata para 
+separar la anamona del cangrejo/camaron. Resultado: el modelo predice 
+`palaemon_serratus` (camaron) tanto en la imagen original como en la 
+segmentada. SAM no sabe cual de los multiples organismos en la foto es el 
+"correcto".
+
+**Conclusion**: Cubo B queda como limitacion documentada. SAM no escala 
+para este caso sin anotacion manual.
+
+## 35. PASO 3 — PILOTO VLM RE-RANKER V2
+
+126 especies candidatas del "Resto" con Pass@5-Pass@1 > 15pp.
+20 seleccionadas para piloto. Pendiente de ejecutar con MiniCPM-V.
