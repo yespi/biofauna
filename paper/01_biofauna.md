@@ -500,4 +500,20 @@ The BioFauna model package (gallery patterns, calibration data, species catalog,
 
 ---
 
-*Paper in preparation. Version 2026-08-10. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*
+## Post-publication development (August 2026)
+
+After the baseline results in this paper (~71.7% species accuracy on an observation-stratified calibration set of ~810 species), the reference gallery was expanded to **~3,000 Mediterranean target species** to improve coverage for citizen-science workflows. This expansion temporarily lowered tier-1 fresh accuracy (~51%) for species with sparse reference embeddings — an expected effect when k-NN retrieval is applied before sufficient photos are embedded.
+
+Active remediation (not part of the baseline evaluation):
+
+- Global iNaturalist downloads (removing a Mediterranean bounding-box limit on deficit species)
+- Open-access field-guide PDF mining via OpenAlex (`fetch_oa_guides_hard.py`)
+- Taxonomic synonym resolution (WoRMS / WikiSpecies)
+- Batch re-embedding, FAISS rebuild, and recalibration when download impact is sufficient
+- **Species freeze** — halt new pattern creation until remediation closes
+
+See the public [STATUS.md](../docs/STATUS.md) for the current project snapshot.
+
+---
+
+*Paper in preparation. Version 2026-08-16. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*

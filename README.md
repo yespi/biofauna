@@ -5,11 +5,13 @@ Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 
 ## Architecture
 - **Encoder**: BioCLIP-2.5 ViT-H (632M params, 1024-dim), frozen
-- **Identification**: k-NN (k=15) over ~450K–550K embeddings + logistic calibration
-- **AutoID**: Publishes to Minka when p≥0.90 (**95.5%** precision, **30.2%** coverage)
+- **Identification**: k-NN (k=15) over ~700K embeddings / **~3,000 species** (Aug 2026)
+- **AutoID**: Publishes to Minka when p≥0.90 (**95.5%** precision, **30.2%** coverage on baseline cohort)
 - **Fallback**: Hierarchical species→genus→family + iNaturalist CV cross-check
 
-## Accuracy (out-of-sample, `harvest_calib`, 2026-08-10)
+## Accuracy
+
+**Published baseline** (out-of-sample `harvest_calib`, observation-stratified, Aug 2026):
 
 | Level | Accuracy |
 |-------|----------|
@@ -17,8 +19,9 @@ Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 | Genus | **76.5%** |
 | Family | **80.4%** |
 
-Gains that stuck: ViT-L→ViT-H (**+6.8pp**), k=25→k=15 (**+1.1pp**).  
-Triplet / ArcFace / LoRA / dedup / expert crops did **not** beat 71.7% on the trusted protocol.
+Gains that stuck: ViT-L→ViT-H (**+6.8pp**), k=25→k=15 (**+1.1pp**).
+
+**Remediation (Aug 2026):** the gallery expanded to ~3,000 species; tier-1 fresh accuracy on the new corpus is ~51% while reference photos are still being collected and embedded. See [docs/STATUS.md](docs/STATUS.md).
 
 ## Quick Start
 ```bash
