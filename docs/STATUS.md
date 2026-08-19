@@ -1,7 +1,7 @@
 # BioFauna — Project Status (public)
 
-> **2026-08-16** · Canonical **published** accuracy: **71.7%** species (k=15, `harvest_calib`, Aug 2026)  
-> **In progress:** tier-1 remediation on an expanded corpus (~3,000 species). See [Development note](#development-august-2026) below.
+> **2026-08-19** · Tier-1 OOS on expanded corpus: **~64%** (remediation)  
+> **Critical fix in progress:** SSD + HDD archive photo consolidation (see [Archive gap](#archive-gap-august-2026))
 
 ## Production stack
 
@@ -9,39 +9,49 @@
 |-------|---------|
 | Encoder | BioCLIP-2.5 ViT-H (1024-dim), **frozen** |
 | Retrieval | k-NN **k=15** + logistic calibration |
-| AutoID | p≥0.90 → **95.5%** precision, **30.2%** coverage |
+| Storage | Active SSD gallery + **HDD archive** (full-resolution backup per species) |
+| AutoID | p≥0.90 → high precision on validated cohort |
 | Fallback | Hierarchical species→genus→family + iNaturalist CV cross-check |
 
-## Verified results (`harvest_calib`, observation-stratified)
+## Published baseline vs remediation
+
+| Cohort | Species accuracy | Notes |
+|--------|------------------|-------|
+| **Paper baseline** (Aug 2026, ~1.1k spp) | **71.7%** | Observation-stratified `harvest_calib` |
+| **Expanded corpus** (Aug 2026, ~3k spp) | **~64% tier-1 OOS** | Sparse / partial embeddings during data push |
+
+Do not compare these numbers without noting corpus size and embedding coverage.
+
+## Archive gap (August 2026)
+
+During disk management, excess photos were moved to an HDD archive while a **~300-photo sample** stayed on SSD for fast access. Re-embedding pipelines accidentally read **SSD only**, so:
+
+- Many species had **1000+ total photos** but the model only saw **~300 embeddings**.
+- Download jobs thought species were “incomplete” and re-fetched photos already in archive.
+- Accuracy dropped on rich archived species (especially heterobranchs).
+
+**Fix (private ops):** unified photo counting (`species_photos.py`), paused redundant iNat downloads, and a GPU consolidation job that merges SSD+archive → full ViT-H re-embed → re-archive excess. Expected to recover a large share of tier-1 accuracy without changing the encoder.
+
+## Verified techniques (`harvest_calib`)
 
 | Technique | Result | Verdict |
 |-----------|--------|---------|
 | ViT-L → ViT-H | 63.9% → 70.6% | ✅ +6.8pp |
 | k=25 → k=15 | 70.6% → 71.7% | ✅ +1.1pp |
-| Triplet (8 variants) | Degrades | ❌ |
-| ArcFace (frozen) | ~71.4% (tie) | ❌ no gain |
-| LoRA+ArcFace (100 spp, fixed eval) | +0.0pp | ❌ |
-| Dedup bursts | 70.1% (−1.6pp) | ❌ |
-| Expert crops | 70.8% (−0.9pp) | ❌ |
+| QLoRA (800 spp, cryptic pairs) | No OOS gain on partial gallery | ❌ until gallery unified |
+| Triplet / ArcFace / LoRA at scale | Degrades or plateaus | ❌ |
 | Hierarchical fallback | +2pp weighted | ✅ |
 
-## Development (August 2026)
+## Development roadmap (public summary)
 
-The production gallery grew from ~1,100 to **~3,000 species** during an intensive data-collection phase (iNaturalist global downloads, field guides, Sea Slug Forum, GROC, OpenAlex OA guides). On the **expanded** corpus, tier-1 (non-heterobranch marine) fresh accuracy is **~51%** while reference embeddings are still sparse for many species — expected until more photos are embedded and recalibrated.
-
-Current work (private ops docs on HanSolo):
-
-- Global iNaturalist downloads (no Mediterranean bbox limit)
-- Taxonomic synonym resolution (WoRMS / WikiSpecies)
-- Open-access field-guide PDF extraction (`fetch_oa_guides_hard.py`)
-- **Species freeze** — no new species/patterns until remediation closes (disk + calibration stability)
-- Batch re-embed → FAISS → `harvest_calib` → `fit_calib` when download impact is sufficient
-
-**Do not** compare the ~51% remediation number to the **71.7%** paper baseline without noting different corpus size and calibration cohort.
+1. **Consolidate** SSD + archive per species (in progress, Aug 2026)
+2. Rebuild FAISS index + recalibrate
+3. Measure tier-1 OOS toward **≥80%** goal
+4. Resume targeted downloads only where **total** photos &lt; 1000/spp
 
 ## Evaluation rule
 
-Only observation-stratified `harvest_calib` numbers are trusted. Photo-level splits inflate accuracy by ~10pp. Use `biofauna_kpi.py` on the private deployment for fresh tier metrics during remediation.
+Only observation-stratified `harvest_calib` numbers are trusted. Photo-level splits inflate accuracy. During remediation, prefer tier-scoped OOS metrics on the full calibration corpus.
 
 ## Docs map
 
@@ -51,6 +61,6 @@ Only observation-stratified `harvest_calib` numbers are trusted. Photo-level spl
 | [BIOFAUNA_MASTER.md](BIOFAUNA_MASTER.md) | Short public master |
 | [species_coverage.md](species_coverage.md) | Coverage metrics |
 | [methodology.md](methodology.md) | Pipeline |
-| [dataset.md](dataset.md) / [api.md](api.md) / [self_host.md](self_host.md) | Reproduce / run |
-| [EXPERIMENTS.md](EXPERIMENTS.md) | Ablation log (condensed) |
-| [HISTORY.md](HISTORY.md) | Origins as YOLOFauna → BioFauna |
+| [HISTORY.md](HISTORY.md) | YOLOFauna → BioFauna rename |
+
+Private operational detail (HanSolo): see internal `hansolo-docs` repo — `biofauna/BIOFAUNA_ARCHIVE_SSD_GAP.md`.

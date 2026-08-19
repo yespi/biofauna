@@ -21,7 +21,7 @@ Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 
 Gains that stuck: ViT-L→ViT-H (**+6.8pp**), k=25→k=15 (**+1.1pp**).
 
-**Remediation (Aug 2026):** the gallery expanded to ~3,000 species; tier-1 fresh accuracy on the new corpus is ~51% while reference photos are still being collected and embedded. See [docs/STATUS.md](docs/STATUS.md).
+**Remediation (Aug 2026):** gallery ~3,000 species; tier-1 OOS ~64% while consolidating SSD + HDD archive into embeddings. See [docs/STATUS.md](docs/STATUS.md) and [docs/ARCHIVE_GAP.md](docs/ARCHIVE_GAP.md).
 
 ## Quick Start
 ```bash
@@ -37,6 +37,7 @@ python3 src/fit_calib.py
 | Doc | What |
 |-----|------|
 | [STATUS](docs/STATUS.md) | Current public status (start here) |
+| [ARCHIVE_GAP](docs/ARCHIVE_GAP.md) | SSD vs HDD archive consolidation (Aug 2026) |
 | [HISTORY](docs/HISTORY.md) | Origins as YOLOFauna → rename to BioFauna |
 | [Paper](paper/01_biofauna.md) | Full write-up |
 | [Master](docs/BIOFAUNA_MASTER.md) | Short architecture + results |
