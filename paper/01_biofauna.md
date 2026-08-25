@@ -502,18 +502,30 @@ The BioFauna model package (gallery patterns, calibration data, species catalog,
 
 ## Post-publication development (August 2026)
 
-After the baseline results in this paper (~71.7% species accuracy on an observation-stratified calibration set of ~810 species), the reference gallery was expanded to **~3,000 Mediterranean target species** to improve coverage for citizen-science workflows. This expansion temporarily lowered tier-1 fresh accuracy (~51%) for species with sparse reference embeddings — an expected effect when k-NN retrieval is applied before sufficient photos are embedded.
+After the baseline results in this paper (~71.7% species accuracy on an observation-stratified calibration set of ~810 species), the reference gallery was expanded to **~3,000 Mediterranean target species** to improve coverage for citizen-science workflows. This expansion temporarily lowered tier-1 fresh accuracy (~51%) for species with sparse reference embeddings, traced to a photo-archival bug: re-embedding pipelines were reading only a fast-access SSD subset (~300 photos/species) while the rest of each species' photos sat on an HDD archive untouched by the encoder.
 
-Active remediation (not part of the baseline evaluation):
+**Remediation closed (2026-08-21/23).** A full catalog re-embedding consolidated SSD + HDD archive per species and re-ran the frozen BioCLIP-2.5 ViT-H encoder end-to-end. On the full observation-stratified calibration set (`harvest_calib`, **n = 22,332**, all tiers), the system now measures:
 
-- Global iNaturalist downloads (removing a Mediterranean bounding-box limit on deficit species)
-- Open-access field-guide PDF mining via OpenAlex (`fetch_oa_guides_hard.py`)
-- Taxonomic synonym resolution (WoRMS / WikiSpecies)
-- Batch re-embedding, FAISS rebuild, and recalibration when download impact is sufficient
-- **Species freeze** — halt new pattern creation until remediation closes
+| Metric | Accuracy |
+|---|---|
+| Species (top-1) | **75.4%** |
+| Genus | **81.8%** |
+| Family | **85.7%** |
 
-See the public [STATUS.md](../docs/STATUS.md) for the current project snapshot.
+This is the current production baseline — an improvement over the original paper's 71.7% species figure, on a much larger and more diverse gallery (~2,900 species with ≥2 embedded photos out of ~4,700 target species with at least one photo, vs. ~810 in the original evaluation cohort). It supersedes the interim ~51% tier-1 number reported during the archive-gap incident.
+
+**Further fine-tuning ablations (August 2026), all closed without production change:**
+
+| Attempt | Result | Verdict |
+|---|---|---|
+| QLoRA on BioCLIP-2 ViT-L (768-dim) | Base-model mismatch vs. production ViT-H (1024-dim); architectures incompatible | ❌ discarded before evaluation |
+| LoRA on ViT-H backbone, full catalog scale (1,358 of 2,934 species fine-tuned) | **−31.2pp** species accuracy on the full n=22,332 eval (75.4% → 44.2%) | ❌ severe regression — overfit to the fine-tuned subset of species, degrading the shared embedding space for the rest |
+| Linear projection head ("head sidecar") on frozen ViT-H embeddings, no backbone changes, trained on the full 3,878-species catalog | Species 74.8% (−0.6pp), genus 80.7% (−1.1pp), family 84.6% (−1.1pp) vs. baseline | ❌ net regression on all three levels, despite training-time validation suggesting a small gain (+2.6pp on a self-consistent mini-set that did not hold up on the full eval) |
+
+All three attempts reinforce §5.1: at this backbone scale and dataset regime, further parameter-efficient fine-tuning has not beaten the frozen-encoder k-NN baseline, including a lower-risk head-only variant that leaves the backbone untouched. Production remains **frozen BioCLIP-2.5 ViT-H + k-NN (k=15) + calibrated hierarchical abstention**, unchanged since the original publication.
+
+See the public [STATUS.md](../docs/STATUS.md) and [EXPERIMENTS.md](../docs/EXPERIMENTS.md) for the current project snapshot and full experiment log.
 
 ---
 
-*Paper in preparation. Version 2026-08-16. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*
+*Paper in preparation. Version 2026-08-25. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*
