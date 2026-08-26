@@ -1,19 +1,19 @@
 # Species Coverage — BioFauna
 
-> Updated **2026-08-25**. Encoder: BioCLIP-2.5 ViT-H. Classifier: k-NN **k=15**.
+> Updated **2026-08-26**. Encoder: BioCLIP-2.5 ViT-H. Classifier: k-NN **k=15**.
 
 | Metric | Value (Aug 2026) |
 |--------|------------------|
 | Target species list | **~4,709** |
 | Species with ≥2 embedded photos (production) | **~2,934** |
 | FAISS embeddings (post full re-embed) | **~763K** |
-| Species accuracy (`harvest_calib`, full corpus, n=22,332) | **75.4%** |
-| Genus / family (same corpus) | **81.8%** / **85.7%** |
+| Species accuracy (`harvest_calib`, full corpus, n=12,788 deduplicated) | **75.8%** |
+| Genus / family (same corpus) | **81.1%** / **84.5%** |
 | AutoID threshold | **p≥0.90** → 95.5% precision · 30.2% coverage |
 
 ## Catalog vs live gallery
 
-The public paper (Aug 2026) reports its original headline results on an **observation-stratified calibration set** with ~810 species and **71.7%** top-1 accuracy. The live gallery has since expanded to a ~4,700-species target catalog for Mediterranean (and adjacent) coverage. A photo-archival bug (SSD-only re-embedding, missing HDD-archived photos) temporarily lowered tier-1 accuracy during that expansion; a full catalog re-embed (SSD+archive unified, Aug 21–23 2026) closed that gap and raised the full-corpus baseline to **75.4%** species / **81.8%** genus / **85.7%** family on n=22,332 — see the paper's [Post-publication development](../paper/01_biofauna.md#post-publication-development-august-2026) section.
+The public paper (Aug 2026) reports its original headline results on an **observation-stratified calibration set** with ~810 species and **71.7%** top-1 accuracy. The live gallery has since expanded to a ~4,700-species target catalog for Mediterranean (and adjacent) coverage. A photo-archival bug (SSD-only re-embedding, missing HDD-archived photos) temporarily lowered tier-1 accuracy during that expansion; a full catalog re-embed (SSD+archive unified, Aug 21-23 2026) closed that gap and raised the full-corpus baseline to 75.4% species / 81.8% genus / 85.7% family on n=22,332. That figure was later found (Aug 25-26 2026) to include ~43% leaked calibration samples (duplicates of the reference gallery, caused by a broken deduplication check); fixed, and re-measured on the clean n=12,788 subset at **75.8%** species / **81.1%** genus / **84.5%** family — see the paper's [Post-publication development](../paper/01_biofauna.md#post-publication-development-august-2026) section.
 
 Full tables (historical / checklist style):
 

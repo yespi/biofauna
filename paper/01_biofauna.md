@@ -512,17 +512,53 @@ After the baseline results in this paper (~71.7% species accuracy on an observat
 | Genus | **81.8%** |
 | Family | **85.7%** |
 
-This is the current production baseline — an improvement over the original paper's 71.7% species figure, on a much larger and more diverse gallery (~2,900 species with ≥2 embedded photos out of ~4,700 target species with at least one photo, vs. ~810 in the original evaluation cohort). It supersedes the interim ~51% tier-1 number reported during the archive-gap incident.
+This was the production baseline reported at the time — an improvement over the original paper's 71.7% species figure, on a much larger and more diverse gallery (~2,900 species with ≥2 embedded photos out of ~4,700 target species with at least one photo, vs. ~810 in the original evaluation cohort). It superseded the interim ~51% tier-1 number reported during the archive-gap incident. **It was later corrected (see "Calibration-set data leakage" below) to 75.8%/81.1%/84.5% on a deduplicated n=12,788 — the current figure to cite.**
 
 **Further fine-tuning ablations (August 2026), all closed without production change:**
 
 | Attempt | Result | Verdict |
 |---|---|---|
 | QLoRA on BioCLIP-2 ViT-L (768-dim) | Base-model mismatch vs. production ViT-H (1024-dim); architectures incompatible | ❌ discarded before evaluation |
-| LoRA on ViT-H backbone, full catalog scale (1,358 of 2,934 species fine-tuned) | **−31.2pp** species accuracy on the full n=22,332 eval (75.4% → 44.2%) | ❌ severe regression — overfit to the fine-tuned subset of species, degrading the shared embedding space for the rest |
+| LoRA on ViT-H backbone, full catalog scale (1,358 of 2,934 species fine-tuned) | **−31.2pp** species accuracy on the full n=22,332 eval (75.4% → 44.2%; ~43% of that eval set was later found to be leaked duplicates of the reference gallery — see below — but a ~1pp-scale correction does not change a 31pp regression) | ❌ severe regression — overfit to the fine-tuned subset of species, degrading the shared embedding space for the rest |
 | Linear projection head ("head sidecar") on frozen ViT-H embeddings, no backbone changes, trained on the full 3,878-species catalog | Species 74.8% (−0.6pp), genus 80.7% (−1.1pp), family 84.6% (−1.1pp) vs. baseline | ❌ net regression on all three levels, despite training-time validation suggesting a small gain (+2.6pp on a self-consistent mini-set that did not hold up on the full eval) |
 
 All three attempts reinforce §5.1: at this backbone scale and dataset regime, further parameter-efficient fine-tuning has not beaten the frozen-encoder k-NN baseline, including a lower-risk head-only variant that leaves the backbone untouched. Production remains **frozen BioCLIP-2.5 ViT-H + k-NN (k=15) + calibrated hierarchical abstention**, unchanged since the original publication.
+
+### Calibration-set data leakage — found and fixed (2026-08-25/26)
+
+While grid-searching the k-NN neighbor count `k` to check whether 15 was still optimal on the
+expanded catalog, the resulting accuracy curve improved monotonically toward k=1 — behavior a
+healthy k-NN classifier should not show, since retrieval noise usually makes very small k
+*worse*, not better without limit. Investigating this surfaced a real bug: **42.7% (9,544 of
+22,332) of the calibration photos were also embedded in the reference gallery** — the same photo
+served as both the query being classified and (with near-perfect similarity, >0.999) its own
+nearest neighbor in the answer key. Root cause: the calibration harvester's "has this
+observation already been used for training?" check pointed at a manifest file path abandoned
+during an earlier image-directory migration, so the check silently matched nothing for the
+current pipeline and deduplication stopped working from that point on.
+
+**Fix:** replaced the manifest-path check with a direct embedding-similarity check against the
+live reference catalog (same mechanism used to detect the leak), validated on a real harvest run
+before merging (a small live test correctly flagged and skipped every already-embedded candidate
+it encountered). The leaked and clean rows were also split out and kept for reference.
+
+**Corrected baseline**, verified independently with the project's official metrics script on the
+clean n=12,788 subset:
+
+| Metric | Accuracy |
+|---|---|
+| Species (top-1) | **75.8%** |
+| Genus | **81.1%** |
+| Family | **84.5%** |
+
+This is close to the previously-reported 75.4%/81.8%/85.7% — the leakage barely inflated the
+production k=15 setting, since diluting a duplicate's trivial "self-match" across 15 neighbors'
+votes mostly washes it out. The effect was much larger at low k (the leak alone explained why k=1
+had appeared to outperform k=15), which is what made the anomaly visible in the first place. The
+k-search itself, redone on the clean data, confirmed k=15 remains within noise of the true
+optimum (k=10, 0.3pp apart on n=12,788) — no production change was warranted. **None of the
+closed fine-tuning verdicts above change**: both regressions (LoRA −31.2pp, head sidecar
+−0.6 to −1.1pp) are an order of magnitude larger than the leak's effect at k=15.
 
 See the public [STATUS.md](../docs/STATUS.md) and [EXPERIMENTS.md](../docs/EXPERIMENTS.md) for the current project snapshot and full experiment log.
 

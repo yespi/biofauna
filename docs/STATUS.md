@@ -1,7 +1,7 @@
 # BioFauna — Project Status (public)
 
-> **2026-08-25** · Full-corpus OOS baseline: **75.4% species / 81.8% genus / 85.7% family** (n=22,332)  
-> **Archive-gap remediation closed** (Aug 21–23) — see [history below](#archive-gap-august-2026-closed)
+> **2026-08-26** · Full-corpus OOS baseline: **75.8% species / 81.1% genus / 84.5% family** (n=12,788, deduplicated)  
+> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26) — see notes below
 
 ## Production stack
 
@@ -18,7 +18,7 @@
 | Cohort | Species accuracy | Notes |
 |--------|------------------|-------|
 | **Paper baseline** (Aug 2026, ~810 spp cohort) | **71.7%** | Original observation-stratified `harvest_calib` |
-| **Current full corpus** (Aug 21-25 2026, n=22,332) | **75.4%** | Post archive-gap fix, full SSD+HDD re-embed; genus 81.8%, family 85.7% |
+| **Current full corpus** (Aug 21-26 2026, n=12,788 deduplicated) | **75.8%** | Post archive-gap fix + calibration-set dedup; genus 81.1%, family 84.5% |
 
 Do not compare these numbers without noting corpus size and embedding coverage.
 
@@ -30,7 +30,7 @@ During disk management, excess photos were moved to an HDD archive while a **~30
 - Download jobs thought species were “incomplete” and re-fetched photos already in archive.
 - Accuracy dropped on rich archived species (especially heterobranchs), down to ~51-64% tier-1 OOS during remediation.
 
-**Fix, closed 2026-08-23:** unified photo counting (`species_photos.py`), paused redundant iNat downloads, and a GPU consolidation job that merged SSD+archive → full ViT-H re-embed → re-archive excess. Result: full-corpus baseline recovered and improved past the original paper figure, to **75.4% species / 81.8% genus / 85.7% family** (n=22,332), without changing the encoder.
+**Fix, closed 2026-08-23:** unified photo counting (`species_photos.py`), paused redundant iNat downloads, and a GPU consolidation job that merged SSD+archive → full ViT-H re-embed → re-archive excess. Result: full-corpus baseline recovered and improved past the original paper figure, to **75.8% species / 81.1% genus / 84.5% family** (n=12,788 deduplicated; see the separate data-leakage note below for why n changed from 22,332), without changing the encoder.
 
 ## Verified techniques (`harvest_calib`)
 
@@ -68,3 +68,21 @@ Only observation-stratified `harvest_calib` numbers are trusted. Photo-level spl
 | [HISTORY.md](HISTORY.md) | YOLOFauna → BioFauna rename |
 
 Private operational detail (HanSolo): see internal `hansolo-docs` repo — `biofauna/BIOFAUNA_ARCHIVE_SSD_GAP.md`.
+
+## Calibration-set data leakage (August 2026) — found & fixed
+
+On 2026-08-25/26, while grid-searching the k-NN neighbor count, an anomalous accuracy curve
+(monotonically *improving* toward k=1, which a healthy k-NN classifier should not do) led to
+discovering that **42.7% (9,544/22,332) of the calibration photos were also embedded in the
+reference gallery** — the same photo served as both query and answer. Root cause: the
+calibration harvester's "already trained on this observation?" check pointed at a manifest path
+abandoned during an earlier image-directory migration, so deduplication silently stopped
+working. Fixed with a direct embedding-similarity check against the live reference catalog
+instead of manifest files; validated on a real (non-synthetic) harvest run before merging.
+
+The clean subset (n=12,788, no leakage) is now the reference calibration set. Verified with the
+project's official metrics script: **75.8% species / 81.1% genus / 84.5% family** — close to the
+previously-reported 75.4%/81.8%/85.7%, and the leakage does not change any closed-experiment
+verdict (LoRA and head-sidecar regressions are an order of magnitude larger than the ~1pp shift
+introduced by the leak at k=15; the effect was much larger only at low k, which is what first
+made it visible).

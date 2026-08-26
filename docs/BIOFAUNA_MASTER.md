@@ -1,6 +1,6 @@
 # BioFauna — Documento Maestro (público)
 
-> **Fecha**: 2026-08-25 · Baseline vigente: **75.4%** species (`harvest_calib`, n=22.332)  
+> **Fecha**: 2026-08-26 · Baseline vigente: **75.8%** species (`harvest_calib`, n=12.788, deduplicado — ver nota de fuga de datos abajo)  
 > **GPU**: RTX 3060 12GB · **Live**: [fotofauna.yespi.es](https://fotofauna.yespi.es)
 
 ## Resumen
@@ -9,8 +9,8 @@ BioFauna identifica fauna marina mediterránea con **BioCLIP-2.5 ViT-H** (congel
 
 | Resultado | Valor |
 |-----------|-------|
-| Especies (baseline calib, n=22.332) | 75.4% |
-| Género / familia | 81.8% / 85.7% |
+| Especies (baseline calib, n=12.788 deduplicado) | 75.8% |
+| Género / familia | 81.1% / 84.5% |
 | AutoID p≥0.90 | 95.5% precisión, 30.2% cobertura |
 
 ## Qué funciona
@@ -40,3 +40,16 @@ Triplet, ArcFace, LoRA, QLoRA, DINOv3, VLM re-ranker, dedup agresivo, crops de g
 - [STATUS](STATUS.md)
 - [species_coverage](species_coverage.md)
 - [HISTORY](HISTORY.md)
+
+## ⚠️ Fuga de datos en el set de calibración — encontrada y arreglada (2026-08-26)
+
+El 25/26-ago-2026 se descubrió que el 42,7% (9.544/22.332) de las fotos del set de calibración
+`calib_raw_k15.jsonl` estaban también embebidas en el catálogo de referencia contra el que se
+comparaban — la misma foto servía de pregunta y de respuesta. Causa: el harvester de calibración
+comprobaba "¿ya visto?" contra una ruta de manifiesto legacy abandonada tras una migración de
+directorio de imágenes; la deduplicación nunca funcionó desde entonces. Arreglado (comprobación
+directa por similitud de embedding contra el catálogo, validada en producción real). El baseline
+limpio (n=12.788, sin fuga), verificado con el script oficial de métricas: **75,8% especie /
+81,1% género / 84,5% familia** — muy parecido al 75,4% contaminado que se citaba antes en este
+documento, y no cambia ninguna conclusión de los experimentos cerrados (las regresiones de LoRA y
+head sidecar son de una magnitud muchísimo mayor que el margen de error introducido por la fuga).

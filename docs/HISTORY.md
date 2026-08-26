@@ -10,8 +10,9 @@
 | 2026-08-07 | Transition | Full gallery re-embedding with **BioCLIP-2.5 ViT-H** | **70.6%** |
 | 2026-08-08 | **Rename → BioFauna** | Public name matches architecture (BioCLIP / biology, not YOLO) | 70.6% |
 | 2026-08-09–10 | BioFauna production tune | k-NN **k=15**, hierarchical fallback, calibration hygiene | **71.7%** |
-| 2026-08-21–23 | Archive-gap fix | Full SSD+HDD-archive re-embed, catalog expanded to ~4,700 target spp | **75.4%** (n=22,332; genus 81.8%, family 85.7%) |
-| 2026-08-24–25 | Fine-tuning round 2 | QLoRA (ViT-L mismatch), LoRA (full-scale, backbone), linear head sidecar (frozen backbone) — all closed negative | **75.4%** unchanged (no cutover) |
+| 2026-08-21-23 | Archive-gap fix | Full SSD+HDD-archive re-embed, catalog expanded to ~4,700 target spp | **75.4%** (n=22,332; genus 81.8%, family 85.7%) — later found to include leaked samples, see below |
+| 2026-08-24-25 | Fine-tuning round 2 | QLoRA (ViT-L mismatch), LoRA (full-scale, backbone), linear head sidecar (frozen backbone) — all closed negative | **75.4%** unchanged (no cutover) |
+| 2026-08-25-26 | Calibration-set leakage found & fixed | 42.7% of calibration photos were duplicates already in the reference gallery (broken dedup check); fixed, re-measured on clean n=12,788 | **75.8%** species / 81.1% genus / 84.5% family — current baseline |
 
 \*Trusted metric: observation-stratified `harvest_calib` (not photo-level splits).
 
