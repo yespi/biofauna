@@ -1,7 +1,7 @@
 # BioFauna — Project Status (public)
 
-> **2026-08-27** · Full-corpus OOS baseline: **75.97% species / 81.29% genus / 84.90% family** (n=12,788, deduplicated, TTA in production)  
-> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27) — see notes below
+> **2026-08-27** · Full-corpus OOS baseline: **75.97% species / 81.29% genus / 84.90% family** (n=12,788, deduplicated, TTA in production); **76.76% species with multi-photo late fusion**, now live in production for observations with 2+ photos  
+> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27); **multi-photo observation fusion shipped to production** (Aug 27) — see notes below
 
 ## Production stack
 
@@ -20,6 +20,7 @@
 | **Paper baseline** (Aug 2026, ~810 spp cohort) | **71.7%** | Original observation-stratified `harvest_calib` |
 | **Full corpus, deduplicated** (Aug 25-26 2026, n=12,788) | **75.8%** | Post archive-gap fix + calibration-set dedup; genus 81.1%, family 84.5% |
 | **+ TTA, current** (Aug 27 2026, n=12,788) | **75.97%** | Test-time augmentation added, calibration re-fit end-to-end; genus 81.29%, family 84.90% |
+| **+ Multi-photo late fusion, current** (Aug 27 2026, n=12,788) | **76.76%** | Zero-training inference-time fusion for observations with 2+ photos (25.1% of corpus); 84.70% on that subset alone. See paper §4.7 |
 
 Do not compare these numbers without noting corpus size and embedding coverage.
 
@@ -44,7 +45,8 @@ During disk management, excess photos were moved to an HDD archive while a **~30
 | QLoRA (ViT-L base, Aug 2026) | Base-model mismatch vs. production ViT-H | ❌ discarded before eval |
 | LoRA fine-tune, full catalog scale (1,358/2,934 spp) | **−31.2pp** species on n=22,332 | ❌ severe overfit to fine-tuned subset |
 | Linear head sidecar on frozen ViT-H (no backbone change) | **−0.6 to −1.1pp** across species/genus/family | ❌ net regression, no cutover |
-| **Test-time augmentation** (query + 90% center crop, averaged) | **+0.21 to +0.75pp** species depending on eval protocol (both positive, see paper §"Post-publication development") | ✅ **only technique to beat frozen k-NN baseline** — live in production |
+| **Test-time augmentation** (query + 90% center crop, averaged) | **+0.21 to +0.75pp** species depending on eval protocol (both positive, see paper §"Post-publication development") | ✅ **only single-photo technique to beat frozen k-NN baseline** — live in production |
+| **Multi-photo late fusion** (mean k-NN score across an observation's 2+ photos, geo prior applied once post-fusion) | **+0.79pp** species full corpus (75.97%→76.76%), **+3.15pp** on the 25.1% multi-photo subset (81.55%→84.70%); early (embedding-mean) fusion also positive but weaker (+0.65pp / +2.59pp) | ✅ zero-training, zero extra GPU compute beyond the extra photos themselves — live in production, capped at 5 photos/request, N=1 reduces exactly to prior behavior (paper §4.7) |
 | Prototype/embedding outlier filtering (median-cosine, thr 0.5/0.7) | **−0.21pp / −1.45pp** species | ❌ filtered legitimate intra-species variation, not noise |
 | Widened same-genus abstention margin (0.06→0.10+) for cryptic pairs | 9:1 cost/benefit (152 correct predictions lost per 17 errors fixed) | ❌ |
 | Non-oracle "prefer epibiont" re-ranking rule for parasite/host pairs | **−0.23pp** species, **−0.26pp** genus | ❌ |
@@ -69,9 +71,10 @@ the narrower pool runs dry.
 
 1. ~~Consolidate SSD + archive per species~~ ✅ done (Aug 21-23)
 2. ~~Rebuild FAISS index + recalibrate~~ ✅ done
-3. ~~Test-time augmentation~~ ✅ done (Aug 26-27), only technique so far to beat the frozen-backbone k-NN baseline
-4. Explore encoder-level improvements beyond parameter-efficient fine-tuning and beyond frozen-backbone contrastive heads (closed as ineffective at this scale across three independent architectures — see EXPERIMENTS.md)
-5. Resume targeted downloads only where **total** photos &lt; 1000/spp, or where a specific species is confirmed photo-starved relative to its confusion rivals (not just Tier assignment — see EXPERIMENTS.md, three species closed this way on 2026-08-27)
+3. ~~Test-time augmentation~~ ✅ done (Aug 26-27), only single-photo technique so far to beat the frozen-backbone k-NN baseline
+4. ~~Multi-photo observation fusion~~ ✅ done (Aug 27), zero-training inference-time ensemble over an observation's existing extra photos — see paper §4.7
+5. Explore encoder-level improvements beyond parameter-efficient fine-tuning and beyond frozen-backbone contrastive heads (closed as ineffective at this scale across three independent architectures — see EXPERIMENTS.md)
+6. Resume targeted downloads only where **total** photos &lt; 1000/spp, or where a specific species is confirmed photo-starved relative to its confusion rivals (not just Tier assignment — see EXPERIMENTS.md, three species closed this way on 2026-08-27)
 
 ## Evaluation rule
 

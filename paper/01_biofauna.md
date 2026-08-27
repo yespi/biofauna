@@ -14,7 +14,7 @@
 
 We present BioFauna, a deep learning system for automated identification of Mediterranean marine fauna from photographs. The production system uses **BioCLIP-2.5 ViT-H** (632M parameters, 1024-dimensional embeddings) as a **frozen** vision encoder, followed by **k-nearest neighbors** (k=15) with a prototype-similarity boost and a multiplicative geographic prior over a gallery of **762,082 image embeddings across 4,709 target species**, **test-time augmentation** (query + 90% center crop), hierarchical taxonomic abstention, and logistic confidence calibration. It runs on consumer hardware (NVIDIA RTX 3060 12GB) and is deployed on the FotoFauna citizen science platform, where it also drives an hourly automated-identification ("AutoID") pipeline that publishes high-confidence results directly to the Minka citizen-science network.
 
-On an out-of-sample, observation-stratified, leak-checked calibration set (`harvest_calib`, n=12,788), the system achieves **75.97% top-1 species accuracy**, **81.29% genus**, and **84.90% family**. High-confidence predictions (calibrated probability ≥ 0.80) reach an estimated **95.3% precision** at **57.4% coverage**, the operating point used for automated publication. Scaling from BioCLIP ViT-L to ViT-H contributed the largest single gain (+6.8pp species accuracy on an earlier, smaller cohort); k-NN tuning, a full-catalog re-embedding, and test-time augmentation each contributed further, smaller gains. A systematic search for additional gains through model fine-tuning — a full-backbone LoRA fine-tune, a frozen-backbone linear projection head, embedding outlier filtering, abstention-margin retuning, a biologically-motivated re-ranking heuristic, and a frozen-backbone Supervised Contrastive re-ranker scoped to the hardest known confusion pairs, the last evaluated under a pre-registered kill-switch protocol — did **not** improve the out-of-sample species metric beyond what test-time augmentation already achieves; we report all of these as negative results with quantified costs, since a rigorous account of what does not work is, in a project maintained by a single practitioner without a dedicated ML research team, as valuable as what does.
+On an out-of-sample, observation-stratified, leak-checked calibration set (`harvest_calib`, n=12,788), the single-photo-per-observation system achieves **75.97% top-1 species accuracy**, **81.29% genus**, and **84.90% family**. High-confidence predictions (calibrated probability ≥ 0.80) reach an estimated **95.3% precision** at **57.4% coverage**, the operating point used for automated publication. Scaling from BioCLIP ViT-L to ViT-H contributed the largest single gain (+6.8pp species accuracy on an earlier, smaller cohort); k-NN tuning, a full-catalog re-embedding, and test-time augmentation each contributed further, smaller gains. Where an observation carries more than one photo (25.1% of the calibration set), a zero-training late-fusion of per-photo k-NN scores raises accuracy on the full corpus to **76.76% species** (+0.79pp) and to **84.70%** (+3.15pp) on the multi-photo subset alone (§4.7); this is now the production behavior. A systematic search for additional gains through model fine-tuning — a full-backbone LoRA fine-tune, a frozen-backbone linear projection head, embedding outlier filtering, abstention-margin retuning, a biologically-motivated re-ranking heuristic, and a frozen-backbone Supervised Contrastive re-ranker scoped to the hardest known confusion pairs, the last evaluated under a pre-registered kill-switch protocol — did **not** improve the out-of-sample species metric beyond what test-time augmentation already achieves; we report all of these as negative results with quantified costs, since a rigorous account of what does not work is, in a project maintained by a single practitioner without a dedicated ML research team, as valuable as what does.
 
 We release the identification service code, calibration artifacts, and species appendix as open-source software. The BioCLIP backbone is auto-downloaded from HuggingFace. The system has been validated in production with curator-reviewed auto-publications on Minka.
 
@@ -573,6 +573,41 @@ Accuracy varies systematically across taxonomic groups:
 | Algae | 50-70% | High morphological plasticity |
 | Fish | 55-75% | Pose variation is challenging |
 
+### 4.7 Multi-Photo Observation Fusion (2026-08-27)
+
+Minka observations frequently carry more than one photo of the same individual. In the n=12,788
+calibration set, 3,209 observations (25.1%) have two or more photos (mean 1.45 photos/observation
+overall, up to 20 for a single observation); the remaining 9,579 (74.9%) are single-photo. Every
+result reported above uses only the first photo per observation. We tested whether the additional
+photos — already collected, requiring no new labeling or model training — carry exploitable signal
+on their own.
+
+Two fusion strategies were compared against the single-photo baseline, both applied purely at
+inference time on the frozen k-NN pipeline of §3.2:
+
+- **Late fusion**: run the full per-photo pipeline (k-NN vote + prototype boost) independently on
+  each of the N photos of an observation, then average the N resulting per-species score vectors
+  before the geographic prior (applied once to the averaged vector, since it is observation-level
+  and photo-invariant) and the abstention/calibration logic.
+- **Early fusion**: average the N L2-normalized query embeddings (each already TTA-augmented per
+  §4.4) before the k-NN search, running the retrieval pipeline once on the fused embedding.
+
+| Strategy | Species accuracy, full corpus (n=12,788) | Species accuracy, multi-photo subset only (n=3,209) |
+|---|---|---|
+| Baseline (first photo only) | 75.97% | 81.55% |
+| **Late fusion (mean scores)** | **76.76%** (+0.79pp) | **84.70%** (+3.15pp) |
+| Early fusion (mean embedding) | 76.62% (+0.65pp) | 84.14% (+2.59pp) |
+
+Late fusion wins on both slices and was deployed to the production `/identify` endpoint: it accepts
+an optional list of up to 5 photos per request (single-photo requests are unaffected — with N=1 the
+fused pipeline reduces algebraically to the exact pre-existing single-photo computation, verified
+both mathematically and against live test requests). Unlike every fine-tuning attempt in §4.4/§3.3,
+this is not a model change — the frozen ViT-H encoder, k-NN index, calibration curve, and
+abstention rules are all untouched; it is a pure inference-time ensemble over evidence already
+present in the source data. It is, together with test-time augmentation, one of only two techniques
+in this project's history to beat the frozen-backbone baseline, and the only one that costs zero
+additional GPU compute per unit of accuracy gained beyond what the extra photos themselves require
+(no re-embedding, no index rebuild, no retraining).
 
 ## 5. Discussion
 

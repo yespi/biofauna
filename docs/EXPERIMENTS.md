@@ -12,7 +12,8 @@
 | Full SSD+HDD-archive re-embed, catalog expanded to ~4,700 target spp | **+3.7pp** vs. original cohort (71.7% → **75.8%** clean / n=12,788 dedup, was reported as 75.4%/n=22,332 before a calibration-set leakage fix — see below) — closed the archive-gap regression |
 | Hierarchical fallback (`MIN_RISK`, family margin) | ~**+2pp weighted** (not species top-1) |
 | Logistic calibration + AutoID p≥0.80 | ~**95.3%** precision @ ~**57.4%** coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation throughput; both operating points are valid, the platform runs at the lower threshold) |
-| **Test-time augmentation** (query embedding averaged with its own 90% center crop, 2026-08-26/27) | **+0.21 to +0.75pp** species depending on eval protocol (see below) — **the only technique in this project's history to beat the frozen-backbone k-NN baseline without a data-quality fix** |
+| **Test-time augmentation** (query embedding averaged with its own 90% center crop, 2026-08-26/27) | **+0.21 to +0.75pp** species depending on eval protocol (see below) — **the only single-photo technique in this project's history to beat the frozen-backbone k-NN baseline without a data-quality fix** |
+| **Multi-photo observation late fusion** (mean k-NN+prototype score across an observation's own 2+ photos, geo prior applied once post-fusion, 2026-08-27) | **+0.79pp** species full corpus (75.97%→76.76%, n=12,788), **+3.15pp** on the 25.1% of observations with 2+ photos (81.55%→84.70%, n=3,209) — see below |
 
 ## Closed / negative (do not repeat as-is)
 
@@ -70,3 +71,21 @@ figure above. Separately, a genuine (not cripsis-driven) photo-count deficit was
 for exactly 3 species (`Aglaophenia acacia`, `Polycitor adriaticus`, `Dagetichthys lusitanicus`;
 +145 photos, +49 reference embeddings after quality filtering), and the FAISS production index was
 rebuilt to include them (762,033 → 762,082 embeddings).
+
+## Multi-photo observation fusion (2026-08-27)
+
+25.1% of the n=12,788 calibration set's observations (3,209 of 12,788) carry 2+ photos of the same
+individual (mean 1.45 photos/observation overall, up to 20 on one observation); every result above
+uses only the first photo per observation. Two zero-training, inference-time fusion strategies were
+compared against that single-photo baseline: **late fusion** (run the per-photo k-NN+prototype
+pipeline independently on each photo, average the resulting per-species score vectors, apply the
+geographic prior once on the averaged vector) and **early fusion** (average the N L2-normalized,
+TTA-augmented query embeddings before a single k-NN search). Both beat the baseline; late fusion
+won on both the full corpus (75.97%→**76.76%**, +0.79pp) and the multi-photo subset alone
+(81.55%→**84.70%**, +3.15pp), against early fusion's 76.62%/84.14%. Harvest of the 3,209
+observations' extra photos hit two short-lived transient network outages (traced to a 10-minute DNS
+watchdog timer bouncing the host's network interface, unrelated to Minka) — retried with a 2s
+backoff and a memory-capped (`systemd-run --scope -p MemoryMax=12G`, to protect the concurrently
+running production service) re-run, reaching 3,209/3,209 with zero errors. Deployed to the
+production `/identify` endpoint (optional `files` list, capped at 5 photos/request; N=1 reduces
+algebraically to the pre-existing single-photo computation). See paper §4.7.
