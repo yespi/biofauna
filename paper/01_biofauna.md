@@ -609,6 +609,65 @@ in this project's history to beat the frozen-backbone baseline, and the only one
 additional GPU compute per unit of accuracy gained beyond what the extra photos themselves require
 (no re-embedding, no index rebuild, no retraining).
 
+### 4.8 Taxonomic Consensus Re-ranking Does Not Fix Cross-Group Errors (2026-08-27)
+
+§4.6.1 found that 32.02% of baseline errors (984 of 3,073, 7.69% of the full n=12,788
+corpus) cross broad taxonomic groups between the predicted and true species (iNaturalist's
+"iconic taxon": Mollusca, Actinopterygii, Cnidaria, Plantae, Porifera, etc. — known for
+2,930 of 4,709 catalog species). We tested whether penalizing k-NN candidates whose group
+disagrees with the dominant group among a query's k=20 nearest neighbors could recover any
+of this error mass, entirely at inference time on the frozen pipeline.
+
+**Method.** For each query, compute k=20 nearest-neighbor votes (cosine similarity, before
+the production k=15 score's prototype boost); find the group with the largest summed
+positive similarity ("dominant group") and its share of the total; above a trigger
+threshold, multiply the k=15+boost scores of candidates in *other* known groups by a
+proportional penalty (1.0 at the threshold, down to 0.15 at 100% consensus — never a hard
+zero). A first pass with a conservative, literature-typical 70% hard threshold and a fixed
+0.10 suppression factor fixed **0 of 979** cross-group errors (2 previously-correct
+predictions broken; 75.94%→75.92%).
+
+**Audit.** Manual inspection of 5 real failures (full raw k=20 neighbor dump per case)
+explained the null result: in 80% of the 979 cross-group errors, the dominant group among
+the neighbors already **agrees with the wrong prediction** — the retrieval step itself
+votes for the wrong group, which no post-hoc group filter can fix by construction (it can
+only suppress non-dominant candidates, and here the wrong answer *is* the dominant one). In
+the remaining cases, the correct group was present but only as a 35-45% plurality, well
+under the original 70% cutoff — in 2 of 5 audited cases the true species itself appeared in
+the k=20 list at competitive similarity (0.73-0.75) but lost to a different, heavily
+duplicated catalog species on cumulative vote mass.
+
+**Threshold sweep.** A second pass tested trigger thresholds at 0% (simple plurality), 35%,
+40%, and 70%, all with the same proportional (non-binary) penalty:
+
+| Threshold | Species accuracy (n=12,788) | Δ vs. baseline | Cubo-C errors fixed (of 979) | Correct predictions broken |
+|---|---|---|---|---|
+| Baseline (no filter) | 75.97%* | — | 0 | — |
+| Plurality (no minimum) | 75.82% | −0.12pp | 31 | 47 |
+| 35% | 75.84% | −0.09pp | 17 | 29 |
+| 40% | 75.87% | −0.07pp | 16 | 25 |
+| 70% | 75.92% | −0.02pp | 0 | 2 |
+
+*<sub>Reproduced baseline for this pipeline run: 75.94%, within noise of the official 75.97%.</sub>*
+
+Lowering the threshold does unlock genuine fixes (0→31), confirming the audit's diagnosis
+— but the break rate outpaces the fix rate at every point on the sweep, with no exception.
+The mechanism cannot separate a legitimate minority-group neighbor (morphological
+convergence between unrelated taxa) from a spurious one, because both look identical to a
+coarse group-level vote: in one audited case, the sea hare *Aplysia depilans* (Mollusca)
+and the flatworm *Thysanozoon brocchii* (Platyhelminthes) — unrelated phyla, but both
+soft-bodied benthic grazers with similar coloration — account for 79.9% of one query's
+k=20 neighborhood mass in favor of the *wrong* group. Suppressing "outsider" evidence by
+taxonomic label alone penalizes genuine cross-group visual similarity exactly as often as
+it penalizes noise.
+
+**Verdict: closed, no cutover.** The underlying signal is real (§4.6.1) and the failure
+mode was fully characterized (majority-vote bias at the retrieval step itself, not a
+ranking artifact fixable by re-weighting), but a blind Phylum/Class-level filter cannot
+exploit it — the next candidate approach is cleaning the model's visual *input* (excluding
+background/substrate before the encoder sees it) rather than re-ranking a possibly
+contaminated embedding after the fact.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)

@@ -590,6 +590,69 @@ Se compararon dos estrategias de fusión contra el baseline monofoto, ambas apli
 
 La fusión tardía gana en ambos cortes y se desplegó en el endpoint de producción `/identify`: acepta opcionalmente una lista de hasta 5 fotos por petición (las peticiones monofoto no se ven afectadas — con N=1 la tubería fusionada se reduce algebraicamente al cálculo monofoto preexistente exacto, verificado tanto matemáticamente como contra peticiones de prueba reales). A diferencia de todos los intentos de ajuste fino de §4.4/§3.3, esto no es un cambio de modelo — el codificador ViT-H congelado, el índice kNN, la curva de calibración y las reglas de abstención quedan intactos; es un ensemble puro en tiempo de inferencia sobre evidencia ya presente en los datos de origen. Es, junto con el aumento en tiempo de inferencia, una de solo dos técnicas en la historia de este proyecto que baten el baseline de backbone congelado, y la única que no cuesta cómputo GPU adicional por unidad de ganancia de acierto más allá de lo que las propias fotos extra requieren (sin reembeber, sin reconstruir el índice, sin reentrenar).
 
+### 4.8 El re-ranking por consenso taxonómico no arregla los errores cross-grupo (2026-08-27)
+
+El §4.6.1 encontró que el 32,02% de los errores del baseline (984 de 3.073, 7,69% del
+corpus n=12.788 completo) cruzan grupos taxonómicos gruesos entre la especie predicha y la
+real ("iconic taxon" de iNaturalist: Mollusca, Actinopterygii, Cnidaria, Plantae,
+Porifera, etc. — conocido para 2.930 de las 4.709 especies del catálogo). Comprobamos si
+penalizar candidatos kNN cuyo grupo difiere del grupo dominante entre los k=20 vecinos más
+cercanos de una consulta podía recuperar parte de esa masa de error, enteramente en
+tiempo de inferencia sobre la tubería congelada.
+
+**Método.** Para cada consulta, se calculan los votos de los k=20 vecinos más cercanos
+(similitud coseno, antes del refuerzo de prototipo del score de producción k=15); se busca
+el grupo con mayor similitud positiva acumulada ("grupo dominante") y su proporción sobre
+el total; por encima de un umbral de disparo, se multiplican los scores k=15+refuerzo de
+los candidatos de *otros* grupos conocidos por una penalización proporcional (1,0 en el
+umbral, hasta 0,15 al 100% de consenso — nunca cero absoluto). Un primer pase con un
+umbral duro conservador y típico en la literatura (70%) y un factor de supresión fijo
+(0,10) arregló **0 de 979** errores cross-grupo (2 predicciones previamente correctas
+rotas; 75,94%→75,92%).
+
+**Auditoría.** La inspección manual de 5 fallos reales (volcado completo del top-20 crudo
+de vecinos por caso) explicó el resultado nulo: en el 80% de los 979 errores cross-grupo,
+el grupo dominante entre los vecinos **ya coincide con la predicción errónea** — el propio
+paso de recuperación vota por el grupo equivocado, algo que ningún filtro de grupo a
+posteriori puede arreglar por construcción (solo puede suprimir candidatos no-dominantes,
+y aquí la respuesta errónea *es* la dominante). En el resto de casos, el grupo correcto
+estaba presente pero solo como pluralidad del 35-45%, muy por debajo del umbral original
+del 70% — en 2 de los 5 casos auditados la propia especie real aparecía en la lista de
+k=20 con similitud competitiva (0,73-0,75) pero perdía frente a otra especie del catálogo,
+muy duplicada, por peso acumulado de voto.
+
+**Barrido de umbral.** Un segundo pase probó umbrales de disparo al 0% (pluralidad
+simple), 35%, 40% y 70%, todos con la misma penalización proporcional (no binaria):
+
+| Umbral | Acierto especie (n=12.788) | Δ vs. baseline | Errores Cubo C arreglados (de 979) | Predicciones correctas rotas |
+|---|---|---|---|---|
+| Baseline (sin filtro) | 75,97%* | — | 0 | — |
+| Pluralidad (sin mínimo) | 75,82% | −0,12pp | 31 | 47 |
+| 35% | 75,84% | −0,09pp | 17 | 29 |
+| 40% | 75,87% | −0,07pp | 16 | 25 |
+| 70% | 75,92% | −0,02pp | 0 | 2 |
+
+*<sub>Baseline reproducido para esta ejecución de la tubería: 75,94%, dentro del ruido del 75,97% oficial.</sub>*
+
+Bajar el umbral sí desbloquea arreglos genuinos (0→31), confirmando el diagnóstico de la
+auditoría — pero la tasa de rotura supera a la de arreglo en todos los puntos del barrido,
+sin excepción. El mecanismo no puede separar un vecino de grupo minoritario legítimo
+(convergencia morfológica entre taxones no emparentados) de uno espurio, porque ambos son
+idénticos para un voto de grupo grueso: en un caso auditado, la liebre de mar *Aplysia
+depilans* (Mollusca) y el platelminto *Thysanozoon brocchii* (Platyhelminthes) — phyla no
+emparentados, pero ambos organismos bentónicos de cuerpo blando y coloración similar —
+representan el 79,9% de la masa del vecindario k=20 de una consulta a favor del grupo
+*incorrecto*. Suprimir evidencia "externa" solo por etiqueta taxonómica penaliza la
+similitud visual cross-grupo genuina exactamente con la misma frecuencia que penaliza el
+ruido.
+
+**Veredicto: cerrado, sin cutover.** La señal subyacente es real (§4.6.1) y el modo de
+fallo quedó totalmente caracterizado (sesgo de mayoría en el propio paso de recuperación,
+no un artefacto de ranking arreglable reponderando), pero un filtro ciego a nivel de
+Phylum/Clase no puede explotarla — el siguiente candidato es limpiar la *entrada* visual
+del modelo (excluir fondo/sustrato antes de que el codificador lo vea) en vez de re-
+rankear a posteriori un embedding posiblemente ya contaminado.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)
