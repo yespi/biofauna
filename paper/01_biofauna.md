@@ -12,9 +12,9 @@
 
 ## Abstract
 
-We present BioFauna, a deep learning system for automated identification of Mediterranean marine fauna from photographs. The production system uses **BioCLIP-2.5 ViT-H** (632M parameters, 1024-dimensional embeddings) as a frozen vision encoder, followed by **k-nearest neighbors** (k=15) over a database of ~450K–550K image embeddings and logistic confidence calibration. It runs on consumer hardware (NVIDIA RTX 3060 12GB) and is deployed on the FotoFauna citizen science platform.
+We present BioFauna, a deep learning system for automated identification of Mediterranean marine fauna from photographs. The production system uses **BioCLIP-2.5 ViT-H** (632M parameters, 1024-dimensional embeddings) as a **frozen** vision encoder, followed by **k-nearest neighbors** (k=15) with a prototype-similarity boost and a multiplicative geographic prior over a gallery of **762,082 image embeddings across 4,709 target species**, **test-time augmentation** (query + 90% center crop), hierarchical taxonomic abstention, and logistic confidence calibration. It runs on consumer hardware (NVIDIA RTX 3060 12GB) and is deployed on the FotoFauna citizen science platform, where it also drives an hourly automated-identification ("AutoID") pipeline that publishes high-confidence results directly to the Minka citizen-science network.
 
-On an out-of-sample calibration set stratified by observation ID (`harvest_calib`, 1,946 photographs, 810 species), the system achieves **71.7% top-1 species accuracy**, **76.5% genus**, and **80.4% family**. High-confidence predictions (calibrated probability ≥ 0.90) reach **95.5% precision** at **30.2% coverage**, suitable for automated publication to Minka. Scaling from BioCLIP ViT-L to ViT-H contributed **+6.8pp** species accuracy; reducing k from 25 to 15 contributed a further **+1.1pp**. Extensive fine-tuning experiments on the ViT-H backbone (triplet loss, ArcFace, LoRA+ArcFace, expert-guide crops, near-duplicate deduplication) did **not** improve the out-of-sample species metric beyond 71.7%.
+On an out-of-sample, observation-stratified, leak-checked calibration set (`harvest_calib`, n=12,788), the system achieves **75.97% top-1 species accuracy**, **81.29% genus**, and **84.90% family**. High-confidence predictions (calibrated probability ≥ 0.80) reach an estimated **95.3% precision** at **57.4% coverage**, the operating point used for automated publication. Scaling from BioCLIP ViT-L to ViT-H contributed the largest single gain (+6.8pp species accuracy on an earlier, smaller cohort); k-NN tuning, a full-catalog re-embedding, and test-time augmentation each contributed further, smaller gains. A systematic search for additional gains through model fine-tuning — a full-backbone LoRA fine-tune, a frozen-backbone linear projection head, embedding outlier filtering, abstention-margin retuning, a biologically-motivated re-ranking heuristic, and a frozen-backbone Supervised Contrastive re-ranker scoped to the hardest known confusion pairs, the last evaluated under a pre-registered kill-switch protocol — did **not** improve the out-of-sample species metric beyond what test-time augmentation already achieves; we report all of these as negative results with quantified costs, since a rigorous account of what does not work is, in a project maintained by a single practitioner without a dedicated ML research team, as valuable as what does.
 
 We release the identification service code, calibration artifacts, and species appendix as open-source software. The BioCLIP backbone is auto-downloaded from HuggingFace. The system has been validated in production with curator-reviewed auto-publications on Minka.
 
@@ -40,19 +40,20 @@ BioCLIP (Stevens et al., 2024) is trained contrastively on TreeOfLife-450M with 
 
 ### 1.4 What Worked (and What Did Not)
 
-Early work on this project (formerly YOLOFauna) explored QLoRA fine-tuning of ViT-L under a 12GB VRAM constraint. Those runs either failed (projection-head corruption → 1.7% accuracy) or failed to beat a frozen-backbone k-NN baseline (~63.9% species). **Re-embedding the gallery with BioCLIP-2.5 ViT-H** raised out-of-sample species accuracy to **70.6%** (+6.8pp) without fine-tuning. A subsequent k-NN grid search, validated with observation-stratified `harvest_calib`, selected **k=15** and reached **71.7%**.
+Early work on this project (formerly YOLOFauna) explored QLoRA fine-tuning of ViT-L under a 12GB VRAM constraint. Those runs either failed (projection-head corruption → 1.7% accuracy) or failed to beat a frozen-backbone k-NN baseline (~63.9% species). **Re-embedding the gallery with BioCLIP-2.5 ViT-H** raised out-of-sample species accuracy to **70.6%** (+6.8pp) without fine-tuning. A subsequent k-NN grid search, validated with observation-stratified `harvest_calib`, selected **k=15**; a full catalog expansion and re-embedding (correcting an archive/SSD photo-coverage gap, and later a calibration-set deduplication bug) brought the trusted, leak-checked baseline to 75.8% species on a much larger n=12,788 cohort; **test-time augmentation** — averaging the embedding of each query photo with its own 90% center crop before retrieval — added a further, smaller gain, to the current **75.97%**.
 
-Follow-up attempts to improve ViT-H further — triplet projections, ArcFace classifiers, LoRA+ArcFace, expert field-guide crops, and aggressive near-duplicate removal — did not beat 71.7% on the same protocol. We therefore present BioFauna as a **retrieval system on a strong frozen backbone**, with hierarchical abstention and calibrated AutoID thresholds, rather than as a QLoRA success story.
+A wide range of further attempts to extract additional accuracy from the frozen ViT-H embedding space — triplet projections, ArcFace classifiers, LoRA fine-tuning (both at small scale and at full catalog scale), a frozen-backbone linear projection head, embedding-level outlier filtering, retuning the taxonomic-abstention margin, a biologically-motivated re-ranking heuristic for known parasite/host pairs, expert field-guide crops, aggressive near-duplicate removal, and a Supervised Contrastive re-ranker scoped to the hardest known same-genus confusion pairs under a pre-registered kill-switch protocol — did **not** beat the frozen-backbone-plus-TTA baseline on the same evaluation protocol (§3.3, §4.4). We therefore present BioFauna as a **retrieval system on a strong frozen backbone with test-time augmentation**, with hierarchical abstention and calibrated AutoID thresholds, rather than as a fine-tuning success story — and as a worked example of when a wide, well-instrumented ablation search should conclude "the frozen encoder is the ceiling for this data regime" rather than keep searching.
 
 ### 1.5 Contributions
 
-1. **ViT-H gallery re-embedding** for Mediterranean marine fauna (~553K embeddings / 1,358 species with reliable prototypes; ~1,158 species active in production patterns).
-2. **Observation-stratified evaluation** (`harvest_calib`) as the only trusted accuracy protocol, exposing inflated splits caused by photo-level train/test leakage.
-3. **k-NN tuning with k=15**, improving 70.6% → **71.7%** species accuracy over k=25.
-4. **Hierarchical fallback / taxonomic abstention** (species→genus→family) adding ~**+2pp weighted** utility in production.
-5. **Calibrated AutoID** at p≥0.90 with **95.5% precision / 30.2% coverage**, dual-checked with iNaturalist CV when below threshold.
-6. **Negative-result ablations** documenting that triplet, ArcFace, LoRA, dedup, and expert crops do not raise the ViT-H out-of-sample species ceiling under our protocol.
-7. **Open deployment** on FotoFauna / Minka with curator validation.
+1. **ViT-H gallery re-embedding at full catalog scale** for Mediterranean marine fauna — 762,082 embeddings across 4,709 target species, unifying a previously split SSD/HDD-archive photo store.
+2. **Observation-stratified evaluation** (`harvest_calib`) as the only trusted accuracy protocol, including a deduplication check against the reference gallery itself that caught and fixed a real 42.7%-of-samples calibration-set leak (§3.7).
+3. **k-NN tuning with k=15** and **test-time augmentation**, together the two techniques that measurably improved the trusted species-accuracy metric.
+4. **Hierarchical fallback / taxonomic abstention** (species→genus→family), including hand-curated cryptic-pair and always-abstain-genus rules from taxonomic literature, adding weighted taxonomic utility beyond raw species top-1.
+5. **Calibrated AutoID** at p≥0.80 with an estimated **95.3% precision / 57.4% coverage**, integrated into an hourly automated-publication pipeline on FotoFauna, dual-checked with iNaturalist CV when below threshold (§4.2, and the FotoFauna companion paper for the user-facing view).
+6. **A wide, quantified negative-result ablation program** — full-catalog LoRA, a frozen-backbone linear head, embedding outlier filtering, abstention-margin retuning, a non-oracle biological re-ranking rule, and a scoped Supervised Contrastive re-ranker with a pre-registered kill-switch — documenting that none of these raise the ViT-H out-of-sample species ceiling under our protocol, several with a fully worked-out cost/benefit accounting rather than a bare pass/fail (§3.3, §4.4).
+7. **A confusion-error taxonomy** (known biological association, same-genus cripsis, other) that separates genuinely fixable error classes from ones that are not, and a demonstration that geographic priors provide essentially no additional separation for the heaviest same-genus confusion pairs (§4.6).
+8. **Open deployment** on FotoFauna / Minka with curator validation.
 
 ## 2. Related Work
 
@@ -105,7 +106,7 @@ In biodiversity, the iNaturalist platform shows a "similar species" list but doe
 
 #### 3.1.1 Sources and Composition
 
-Our image corpus contains approximately **584,000–587,000 photographs** across **~3,000 Mediterranean marine species folders** (2,994 with ≥1 photo). The identification gallery used in production embeds **~450K–554K** images for **1,158–1,358** species with reliable prototypes (species with too few images remain in the catalog but are not active gallery members).
+Our image corpus contains approximately **768,000 photographs** across **4,709 target Mediterranean marine species**. The production identification gallery embeds **762,082 images** for the subset of species with enough photographs for a reliable prototype (species below that threshold remain in the catalog, tracked for targeted download, but are not yet active gallery members).
 
 | Source | Role |
 |--------|------|
@@ -118,6 +119,27 @@ Names are cross-referenced with **WoRMS**. Images are filtered for minimum resol
 #### 3.1.2 Expert Literature
 
 Species lists and morphological notes were validated against Ballesteros (2007), Cervera et al. (2004), Salvador et al. (2022), and Pontes et al. field work (GROC/OPK). OCR of scanned guides (525/525 pages with MiniCPM-V 4.5) produced labeled crops used in ablation experiments (§4.4).
+
+#### 3.1.3 Data Quality Control
+
+Two systematic data-quality issues were found and fixed as part of the standard pipeline, rather than as one-off firefighting, and are now checked routinely:
+
+- **Field-guide crop contamination.** A minority of photos are crops from scanned field-guide plates that show several unrelated species on the same page, bulk-labeled under a single taxon at download time. A catalog-wide scan for the filename pattern used by this ingestion path found **107 affected species, 1,088 contaminated photos (0.14% of the corpus)**. Affected photos are quarantined (kept on disk, excluded from the gallery) rather than deleted, and the affected species are re-embedded. Of the 20 worst-performing lower-tier species at the time of the audit, the 8 that were contaminated all improved after quarantine (mean +33pp species accuracy, up to +56pp); the 12 that were not contaminated did not change — confirming their low accuracy is genuine visual confusion rather than a labeling artifact, an important control for interpreting the ablation results in §3.3.
+- **Calibration-set self-leakage.** The out-of-sample evaluation harvester independently downloads held-out photographs and checks each candidate's embedding similarity against the entire reference gallery before accepting it, rejecting anything above a near-duplicate threshold (originally intended via a manifest of already-used observation IDs; now via direct embedding similarity, after the manifest-based check was found to have silently stopped working across an infrastructure migration and let 42.7% of one evaluation cohort duplicate its own answer key — see §3.7).
+
+```mermaid
+flowchart LR
+    A["Minka / iNaturalist\n/ expert-guide scans"] --> B["Download + WoRMS\nname resolution"]
+    B --> C["Resolution/format filter"]
+    C --> D{"Field-guide crop\ncontamination scan"}
+    D -- "flagged" --> E["Quarantine\n(kept, excluded from gallery)"]
+    D -- "clean" --> F["BioCLIP-2.5 ViT-H\nembedding (frozen)"]
+    F --> G["Per-species\nembeddings.npy + prototype.npy"]
+    G --> H["FAISS index build\n(k-NN search structure)"]
+    H --> I["Production gallery\n762,082 embeddings / 4,709 species"]
+```
+
+*Figure 1. Data pipeline from raw observation to production gallery. The contamination scan (§3.1.3) and the calibration-set leakage check (§3.7) are two independent, complementary quality gates — the first protects the training/reference gallery, the second protects the evaluation set used to measure everything in §4.*
 
 ### 3.2 Model Architecture (Production)
 
@@ -137,7 +159,7 @@ Inference footprint on RTX 3060: BioFauna service ≈ **4.4 GB** VRAM (encoder +
 
 #### 3.2.2 Identification: k-NN over Image Embeddings
 
-1. Embed the query crop with ViT-H, averaged with the embedding of its own 90% center crop (test-time augmentation, added 2026-08-26 — see "Post-publication development" below).
+1. Embed the query crop with ViT-H, averaged with the embedding of its own 90% center crop (test-time augmentation, §3.3).
 2. Retrieve **k=15** nearest gallery embeddings (cosine / inner product on L2-normalized vectors) via FAISS.
 3. Aggregate votes/scores per species, plus a prototype-similarity boost (`ARC_WEIGHT=3.0`); optional multiplicative geographic prior when GPS is present.
 4. Apply hierarchical fallback when species margin is low (`MIN_RISK`, `FAMILY_MARGIN≈0.06–0.08` across production revisions), including hard-coded cryptic-pair and always-abstain-genus rules (§3.5.5).
@@ -166,29 +188,60 @@ flowchart TD
     O --> P["Confidence-gated output\n(AutoID / manual review, see FotoFauna paper)"]
 ```
 
-*Figure 1. Production identification pipeline (as of 2026-08-27). The frozen ViT-H encoder and the k-NN retrieval step have been stable since the ablations in §3.3/§4.4; test-time augmentation (top) and the two abstention triggers (bottom) were added later and are documented in "Post-publication development" below.*
+*Figure 2. Production identification pipeline (as of 2026-08-27). Test-time augmentation (top) and the two abstention triggers (bottom) are described in §3.3 and §3.5.5 respectively.*
 
 **Why k=15.** Internal grid searches suggested small k values (≈10) maximize accuracy, but photo-level splits inflate absolute numbers. Observation-stratified `harvest_calib` selected **k=15** as the production balance between accuracy and abstention coverage (k=8 measured worse at 71.0%). Re-validated twice more in August 2026 (k=[10,15,20,30,40,50,70] grid, monotonic decrease past k=15, no change) — see EXPERIMENTS.md.
 
 #### 3.2.3 Prototype / Gallery Layout
 
-Per species directory under `dataset/patterns/`: `embeddings.npy` (+ metadata). Active production patterns: **~1,158 species / ~454K embeddings**. Full ViT-H re-embedding backup: **1,358 species / ~553K embeddings**.
+Per species directory under `dataset/patterns/`: `embeddings.npy` (raw reference embeddings) and `prototype.npy` (mean embedding, L2-normalized, used for the boost term in §3.2.2). Production gallery: **4,709 species / 762,082 embeddings**, rebuilt into a FAISS index whenever the underlying embeddings change materially (contamination remediation, targeted downloads for photo-starved species — see §3.1.3, §4.6).
 
-### 3.3 Fine-Tuning Attempts (Ablations, Not Production)
+### 3.3 Fine-Tuning and Post-Hoc Ablations
 
-We document these because earlier drafts of this paper presented QLoRA as the primary method.
+This is the full, chronological set of attempts to raise the out-of-sample species-accuracy ceiling beyond the frozen ViT-H + k-NN baseline, evaluated under the same observation-stratified protocol throughout (§3.7). Two entries — test-time augmentation and the full-catalog re-embedding — are kept in production; everything else is a documented negative result.
 
-| Experiment | Outcome (out-of-sample unless noted) |
-|------------|--------------------------------------|
-| QLoRA ViT-L + trainable proj head | **1.7%** species (catastrophic) |
-| Triplet on ViT-L embeddings | Historically helped ViT-L era; **not** the ViT-H story |
-| Triplet on ViT-H (8 variants) | **Degrades** −0.7 to −7pp |
-| ArcFace on frozen ViT-H | **71.4%** vs k-NN **71.6%** (tie); photo splits inflate internal val |
-| LoRA+ArcFace (FIXED, eval bug corrected) | **+0.0pp** on 100 spp; full 1,358 spp run confirmatory |
-| Expert crops weighted in gallery | **70.8%** (−0.9pp vs 71.7%) |
-| Near-duplicate dedup (cos>0.99) | **70.1%** (−1.6pp) — bursts *help* k-NN |
+| Experiment | Outcome (out-of-sample unless noted) | Verdict |
+|------------|--------------------------------------|---------|
+| QLoRA, ViT-L + trainable proj head | **1.7%** species (catastrophic) | ❌ |
+| QLoRA, BioCLIP-2 ViT-L base (768-dim) | Base-model mismatch vs. production ViT-H (1024-dim) — incompatible architecture | ❌ discarded before evaluation |
+| Triplet on ViT-L embeddings | Historically helped ViT-L era; **not** the ViT-H story | ❌ superseded |
+| Triplet on ViT-H (8 variants) | **Degrades** −0.7 to −7pp | ❌ |
+| ArcFace on frozen ViT-H | **71.4%** vs k-NN **71.6%** (tie); photo splits inflate internal val | ❌ no gain |
+| LoRA+ArcFace, 100-species pilot (eval-bug corrected) | **+0.0pp** | ❌ |
+| **LoRA + ArcFace head, full catalog scale** (1,358 of 2,934 species fine-tuned, last 4 backbone blocks trainable) | **−31.2pp** species on the full-catalog eval (75.4%→44.2%) | ❌ severe overfit to the fine-tuned subset, degraded the shared embedding space for the rest |
+| **Linear projection head ("head sidecar")** on frozen ViT-H, full catalog | Species −0.6pp, genus −1.1pp, family −1.1pp vs. baseline, despite a self-consistent training-time mini-set suggesting +2.6pp | ❌ net regression on all three levels; a lower-risk, backbone-frozen variant still lost to plain k-NN |
+| Expert crops weighted in gallery | **70.8%** (−0.9pp vs 71.7%) | ❌ |
+| Near-duplicate dedup (cos>0.99) | **70.1%** (−1.6pp) — bursts *help* k-NN | ❌ |
+| **Prototype/embedding outlier filtering** (median-cosine distance, thresholds 0.5 and 0.7) | 73.93% (−0.21pp) at 0.5; 72.69% (−1.45pp) at 0.7 — monotonic degradation | ❌ filtered legitimate intra-species variation, not noise |
+| **Widened same-genus abstention margin** for the heaviest cripsis pairs (0.06→0.10 and beyond) | Smallest step tested already costs 152 correct species predictions to recover 17 errors (≈9:1 against) | ❌ |
+| **Non-oracle "prefer the epibiont" re-ranking rule** for known parasite/host and epibiont/substrate pairs | 216 activations over the full error set: 64 fixed, 116 broken (genuine host photos with the partner as top-k noise) — net −0.23pp species, −0.26pp genus | ❌ below the pre-registered +0.3pp bar |
+| **Supervised Contrastive (SupCon) re-ranker**, frozen backbone, scoped to the 20 heaviest cripsis pairs, pre-registered kill-switch | Per-pair validation loss diverged monotonically from epoch 1 in **two independent hyperparameter regimes**; kill-switch invoked before the evaluation set was ever touched | ❌ memorization, not generalization — see §4.4 for the full protocol |
+| **Test-time augmentation** (query embedding averaged with its own 90% center crop) | **+0.21 to +0.75pp** species depending on eval protocol (both positive) | ✅ **kept in production** — the only technique to beat the frozen-backbone k-NN baseline |
+| **Full SSD+HDD-archive re-embedding, catalog expanded to 4,709 target species** | 71.7% (810-species cohort) → 75.4%/75.8% (n=22,332/n=12,788 respectively, on the much larger current catalog) | ✅ **kept in production** — closed a photo-coverage gap, not a modeling change |
 
-**Lesson:** with ViT-H, capacity is already high; frozen-backbone metric learning / light adapters did not move the trusted metric. Bitsandbytes QLoRA remains incompatible with the open_clip ViT-H path we use; torchao/hqq remains future work.
+```mermaid
+flowchart TD
+    Base["Frozen ViT-H + k-NN\nbaseline"] --> A1["Triplet / ArcFace\nvariants"]
+    Base --> A2["LoRA fine-tuning\n(pilot + full-catalog)"]
+    Base --> A3["Frozen-backbone\nlinear head"]
+    Base --> A4["Embedding outlier\nfiltering"]
+    Base --> A5["Abstention-margin /\nre-ranking heuristics"]
+    Base --> A6["SupCon contrastive\nre-ranker (scoped)"]
+    Base --> A7["Test-time\naugmentation"]
+    Base --> A8["Full-catalog\nre-embedding"]
+    A1 --> X1["❌ no gain / degrades"]
+    A2 --> X2["❌ overfits\n(-31.2pp at full scale)"]
+    A3 --> X3["❌ net regression"]
+    A4 --> X4["❌ removes signal,\nnot noise"]
+    A5 --> X5["❌ cost > benefit"]
+    A6 --> X6["❌ memorizes from\nepoch 1, killed pre-eval"]
+    A7 --> Y1["✅ kept — only technique\nto beat the baseline"]
+    A8 --> Y2["✅ kept — data-quality fix,\nnot a modeling change"]
+```
+
+*Figure 3. Every attempted route to improving on the frozen ViT-H + k-NN baseline, and its verdict. Of eight independent directions tried, two were kept — and neither is a fine-tuning technique.*
+
+**Lesson.** With ViT-H, capacity is already high relative to the number of images available per species in this catalog (many species have on the order of tens to a few hundred reference photos); frozen-backbone metric learning, light adapters, and even a scoped contrastive re-ranker trained only on the hardest pairs all showed the same failure mode — memorization rather than generalization — regardless of how much of the network was touched. We treat "retrain or fine-tune something on top of this embedding space" as closed for the current data regime; the two things that did work were an inference-time trick (TTA) and a data-completeness fix (full re-embedding), not a training change. Bitsandbytes QLoRA remains incompatible with the open_clip ViT-H path we use; torchao/hqq remains future work if a different data regime someday warrants revisiting fine-tuning at all.
 
 ### 3.5 Taxonomic Abstention Rule
 
@@ -292,63 +345,69 @@ Features are standardized (z-score) before logistic regression.
 
 #### 3.6.3 Training and Evaluation
 
-The calibrator is trained on 2,427 held-out samples from 972 species, stratified by observation ID to prevent data leakage (photos from the same observation have correlated errors).
+The calibrator is re-fit on every material change to the production scorer (most recently after adding test-time augmentation, §3.3), on a held-out validation split drawn from the full `harvest_calib` cohort (n=12,788, observation-stratified). The current species-level calibration validation split has 3,902 samples.
 
-##### Calibration Metrics
+##### Calibration Metrics (current, species level)
 
-| Level | AUC | ECE | Brier Score | NLL |
+Three candidate models were compared: **raw** cosine similarity, a single-feature **Platt scaling** on `s1`, and the **full** 10-feature logistic model described above.
+
+| Model | AUC | ECE | Brier Score | NLL |
 |-------|-----|-----|------------|-----|
-| Species | 0.845 | 0.045 | 0.151 | 0.473 |
-| Genus | 0.862 | 0.049 | 0.135 | 0.430 |
-| Family | 0.866 | 0.049 | 0.123 | 0.400 |
+| Raw cosine similarity | 0.767 | 0.091 | 0.165 | 0.499 |
+| Platt scaling (`s1` only) | 0.767 | 0.043 | 0.149 | 0.463 |
+| **Full 10-feature logistic (production)** | **0.881** | **0.028** | **0.110** | **0.350** |
+| Family level, full model (for comparison) | 0.897 | 0.022 | 0.079 | 0.262 |
 
-The Expected Calibration Error (ECE) of 0.045 indicates near-perfect calibration: when the model says "80% confident", it is correct approximately 80% of the time. This is a substantial improvement over raw cosine similarity (ECE=0.271 for uncalibrated scores).
+The full model is chosen at every level. Its Expected Calibration Error (ECE ≈ 0.03) indicates near-perfect calibration: when the model reports "80% confident," it is correct roughly 81% of the time (see the reliability table below) — a substantial improvement over raw cosine similarity (ECE=0.091) and over `s1`-only Platt scaling (ECE=0.043), which shows the additional k-NN-derived features (margin, vote share, taxonomic coherence, reference-set size) carry real calibration information beyond the top-1 similarity alone.
 
-##### Reliability by Confidence Bin
+##### Reliability by Confidence Bin (species level, current)
 
 | Bin | N | Declared P | Actual Accuracy |
 |-----|---|-----------|----------------|
-| 0.0-0.1 | 23 | 0.07 | 0.043 |
-| 0.1-0.2 | 54 | 0.15 | 0.130 |
-| 0.2-0.3 | 42 | 0.25 | 0.167 |
-| 0.3-0.4 | 53 | 0.35 | 0.340 |
-| 0.4-0.5 | 46 | 0.44 | 0.478 |
-| 0.5-0.6 | 57 | 0.55 | 0.544 |
-| 0.6-0.7 | 68 | 0.66 | 0.515 |
-| 0.7-0.8 | 70 | 0.76 | 0.729 |
-| 0.8-0.9 | 96 | 0.85 | 0.865 |
-| 0.9-1.0 | 219 | 0.96 | 0.922 |
+| 0.0-0.1 | 13 | 0.072 | 0.077 |
+| 0.1-0.2 | 159 | 0.160 | 0.132 |
+| 0.2-0.3 | 205 | 0.246 | 0.268 |
+| 0.3-0.4 | 208 | 0.354 | 0.375 |
+| 0.4-0.5 | 203 | 0.451 | 0.502 |
+| 0.5-0.6 | 205 | 0.552 | 0.576 |
+| 0.6-0.7 | 270 | 0.655 | 0.711 |
+| 0.7-0.8 | 400 | 0.754 | 0.807 |
+| 0.8-0.9 | 557 | 0.851 | 0.905 |
+| 0.9-1.0 | 1,682 | 0.969 | 0.968 |
 
-The calibration is well-behaved across the entire probability range, with the largest deviation at 0.6-0.7 (declared 66%, actual 52%).
+The calibration is well-behaved across the entire probability range; the largest gaps (0.4-0.7 declared range) are all in the *conservative* direction — actual accuracy exceeds the declared probability — which is the safer direction to be miscalibrated in for an auto-publication system.
 
 #### 3.6.4 Operating Points
 
-**Production (ViT-H, k=15, 2026-08-10):** AutoID uses **p≥0.90 → 95.5% precision · 30.2% coverage**.
+AutoID uses **p≥0.80 → an estimated 95.3% precision at 57.4% coverage** (retuned from p≥0.90/95.5%/30.2% coverage to raise automated-publication throughput; see the FotoFauna companion paper, §6, for the operational rationale and the AutoID wave system that consumes this threshold).
 
-The table below is retained from an earlier ViT-L-era calibration export (different sample sizes). Use it only as historical methodology context for logistic operating curves — **not** as current production numbers.
+| p_species ≥ | Precision (real) | Coverage | N | 95% CI |
+|-------------|-------------------|----------|---|--------|
+| 0.50 | 88.8% | 79.8% | 3,114 | [87.7%, 89.9%] |
+| 0.60 | 91.0% | 74.6% | 2,909 | [90.0%, 92.1%] |
+| 0.70 | 93.1% | 67.6% | 2,639 | [92.2%, 94.1%] |
+| 0.75 | 94.3% | 63.2% | 2,466 | [93.4%, 95.2%] |
+| **0.80** | **95.3%** | **57.4%** | 2,239 | [94.4%, 96.2%] |
+| 0.85 | 96.1% | 50.5% | 1,971 | [95.2%, 96.9%] |
+| 0.90 | 96.8% | 43.1% | 1,682 | [96.0%, 97.6%] |
+| 0.95 | 98.5% | 30.3% | 1,184 | [97.8%, 99.1%] |
+| 0.98 | 99.1% | 21.6% | 844 | [98.4%, 99.6%] |
 
-| p_species ≥ | Precision (legacy export) | Coverage | N |
-|-------------|---------------------------|----------|---|
-| 0.50 | 78.8% | 70% | 510 |
-| 0.60 | 81.9% | 62% | 453 |
-| 0.70 | 87.3% | 53% | 385 |
-| 0.75 | 88.7% | 49% | 354 |
-| 0.80 | 90.5% | 43% | 315 |
-| 0.85 | 92.1% | 38% | 277 |
-| 0.90 | 92.2% | 30% | 219 |
-| 0.95 | 91.4% | 22% | 163 |
-| 0.98 | 95.8% | 7% | 48 |
+Lowering the operating threshold from 0.90 to 0.80 costs an estimated 1.5 percentage points of precision (96.8%→95.3%) for a 33% relative increase in the fraction of candidates that clear the bar (43.1%→57.4%) — read directly off this table, with no new evaluation required.
 
 
 ### 3.7 Evaluation Protocol
 
-All **headline accuracy numbers** use `harvest_calib.py`: photographs held out by **observation ID**, embedded with the production encoder, identified with production k-NN, then scored against curator/community labels. Current canonical file: `dataset/calib_raw_k15.jsonl` → `fit_calib.py` → `calibration.json` (**2026-08-10**, n=1,946, 810 species).
+All **headline accuracy numbers** use `harvest_calib.py`: photographs held out by **observation ID**, embedded with the production encoder (including test-time augmentation), identified with the production scorer, then scored against curator/community labels. Current canonical file: `dataset/calib_raw_k15_clean_20260825_tta.jsonl` (n=12,788) → `fit_calib.py` → `calibration.json`.
 
 | Rule | Rationale |
 |------|-----------|
 | Observation stratification | Prevents burst/near-duplicate leakage across train/test |
 | Fixed protocol across ablations | Same harvest when comparing techniques |
 | Do not trust photo-level 80/20 | Inflates ArcFace/k grid by ~10pp |
+| **Gallery-similarity dedup check** | The harvester embeds each held-out candidate and rejects it if its cosine similarity to anything already in the reference gallery exceeds a near-duplicate threshold, in addition to excluding by observation ID |
+
+**Why the similarity check, not just observation-ID exclusion.** An observation-ID exclusion list is only as good as the manifest it is checked against. In this project, that manifest pointed at a legacy image-directory path abandoned during an earlier migration, so the check silently matched nothing for over a year without erroring — a k-NN grid search producing an implausible, monotonically-improving-toward-k=1 accuracy curve (a healthy k-NN classifier should get *worse*, not better, as k shrinks toward 1) was the first symptom, and it traced to **42.7% of one 22,332-photo evaluation cohort being embedded in its own reference gallery** — the same photo serving as both the query and its own nearest neighbor in the answer key. The fix (direct embedding-similarity check against the live gallery, independent of any manifest) is now a standing part of the harvest pipeline rather than a one-time patch, and the effect on the **production k=15 setting specifically** was small (≈1pp — diluting one duplicate's trivial self-match across 15 neighbors' votes mostly washes it out; the effect was much larger at low k, which is what made it visible in the first place) — small enough that none of the ablation verdicts in §3.3 depend on it, but large enough that we no longer trust an ID-only exclusion list for this kind of evaluation.
 
 ## 4. Results
 
@@ -356,67 +415,105 @@ All **headline accuracy numbers** use `harvest_calib.py`: photographs held out b
 
 | Level | Accuracy |
 |-------|----------|
-| **Species (top-1)** | **71.7%** |
-| Genus | **76.5%** |
-| Family | **80.4%** |
+| **Species (top-1)** | **75.97%** |
+| Genus | **81.29%** |
+| Family | **84.90%** |
 
-Progression:
+Progression (each row evaluated under the current protocol on the cohort available at the time — see §3.7):
 
 | System | Species | Notes |
 |--------|---------|-------|
 | ViT-L + k-NN (legacy) | 63.9% | Previous production baseline |
-| ViT-H + k=25 | 70.6% | After full re-embedding |
-| **ViT-H + k=15** | **71.7%** | Current production setting |
+| ViT-H + k=25 | 70.6% | After full re-embedding, 810-species cohort |
+| ViT-H + k=15 | 71.7% | k-NN tuning, same cohort |
+| ViT-H + k=15, full catalog re-embed | 75.4% / 75.8% | Catalog expanded to 4,709 target species (n=22,332 / leak-checked n=12,788) |
+| **ViT-H + k=15 + TTA (current)** | **75.97%** | Test-time augmentation added, calibration re-fit |
 
 ### 4.2 AutoID Operating Point
 
-At calibrated **p ≥ 0.90**: **95.5% precision**, **30.2% coverage** (production config). Below threshold, FotoFauna dual-checks with iNaturalist CV before publishing.
+At calibrated **p ≥ 0.80**: an estimated **95.3% precision**, **57.4% coverage** (production config, retuned from p≥0.90/95.5%/30.2% — see §3.6.4). Below threshold, FotoFauna dual-checks with iNaturalist CV before publishing; see the FotoFauna companion paper for the user-facing view of this flow and §4.3 below for the scheduling/throughput mechanics.
 
-Calibration quality (logistic on k-NN features): ECE ≈ **0.04**, AUC ≈ **0.845** at species level (aligned with earlier ViT-L-era calibration diagnostics; recalibrated after ViT-H / k=15).
+Calibration quality (logistic on k-NN features, species level): ECE ≈ **0.028**, AUC ≈ **0.881** (§3.6.3).
 
-### 4.3 Hierarchical Fallback
+### 4.3 Hierarchical Fallback and the AutoID Wave System
 
-Margin / shared-taxon abstention plus production `MIN_RISK` / `FAMILY_MARGIN` yields approximately **+2pp weighted** taxonomic utility (correct genus/family when species is unsafe). Species top-1 remains the primary reported metric (71.7%).
+Margin / shared-taxon abstention plus the hand-curated cryptic-pair and always-abstain-genus rules (§3.5) give correct genus/family output when species-level identification is unsafe, adding weighted taxonomic utility beyond the raw species top-1 figure above. In production, this same scorer also drives **AutoID**, an hourly batch job that scans Minka observations awaiting identification and auto-publishes the ones that clear the confidence bar:
 
-### 4.4 Ablation Summary (Trusted Protocol)
+```mermaid
+sequenceDiagram
+    participant S as Hourly scheduler
+    participant W as AutoID wave
+    participant M as Minka API
+    participant BF as BioFauna scorer
+    participant IN as iNaturalist CV
 
-| Technique | Species accuracy | Verdict |
-|-----------|------------------|---------|
-| ViT-L → ViT-H | 63.9% → 70.6% | ✅ Keep |
-| k=25 → k=15 | 70.6% → 71.7% | ✅ Keep |
-| Triplet (8 variants) | Degrades | ❌ |
-| ArcFace (frozen backbone) | ~71.4% (tie) | ❌ no gain |
-| LoRA+ArcFace (100 spp, fixed eval) | +0.0pp | ❌ |
-| Dedup bursts | 70.1% | ❌ |
-| Expert crops | 70.8% | ❌ |
-| Hierarchical fallback | +2pp weighted | ✅ Keep |
+    S->>W: trigger (once per hour)
+    loop until quota (20/h) or scan timeout (1800s) or pool exhausted
+        W->>M: fetch next page of unidentified observations
+        M-->>W: candidate observations
+        loop each candidate
+            W->>BF: identify(photo, GPS)
+            BF-->>W: species, calibrated p
+            alt p >= 0.80
+                W->>IN: corroborate? (skip if BF already very confident)
+                IN-->>W: agree / disagree / unavailable
+                W->>M: publish identification
+            else p < 0.80
+                W->>IN: request CV identification
+                IN-->>W: candidate species
+                W-->>W: queue for manual/curator review
+            end
+        end
+    end
+    W-->>S: run summary (published / scanned / errors)
+```
+
+*Figure 4. AutoID wave mechanics (technical view — see the FotoFauna paper for what the end user experiences). The per-schedule confidence threshold and hourly publication cap live in a database table, not a fixed constant, so they can be retuned without a code deploy; the per-wave scan timeout (raised from 900s to 1800s in the same retuning pass as the confidence threshold) is a code-level ceiling on how long the wave spends paging through Minka before giving up, independent of whether the hourly quota has been met.*
+
+A throughput audit (2026-08-27) found the wave publishing at roughly a quarter of its configured 20/hour cap. Two causes, both fixed: the 900-second scan timeout was cutting the wave off before it could page through enough candidates to fill the quota (raised to 1800s), and the 0.90 confidence threshold was conservative relative to what the calibration curve in §3.6.4 supports (lowered to 0.80). Post-fix, the wave reliably reaches its quota (verified across five consecutive hourly runs, 18-30 Minka result pages scanned per run).
+
+### 4.4 Ablation Summary
+
+See §3.3 for the full table and decision-tree diagram (Figure 3). In one line: of eight independent directions tried beyond the ViT-L→ViT-H→k=15 progression, only **test-time augmentation** and the **full-catalog re-embedding** improved the trusted metric; six fine-tuning/re-ranking attempts (three loss/architecture variants, embedding outlier filtering, abstention-margin retuning, a biological re-ranking heuristic, and a scoped SupCon contrastive re-ranker with a pre-registered kill-switch) did not.
 
 ### 4.5 Real-World Deployment
 
 Deployed at https://fotofauna.yespi.es via `fauna_api` → BioFauna `:8090`.
 
-- Inference typically <1s per crop on RTX 3060.
-- Auto-publication only when calibrated confidence is high; otherwise iNaturalist CV cross-check.
-- Early curator review of AutoID publications showed high confirmation rates (see deployment logs / Minka reviews); continuous curator-correction logging remains an open engineering task.
+- Inference typically <1s per crop on RTX 3060 (TTA doubles the per-crop forward-pass cost — two images per query in a single batch — but stays well under the 1s budget).
+- Auto-publication only when calibrated confidence is high; otherwise iNaturalist CV cross-check (§4.3).
+- Curator review of AutoID publications has historically shown high confirmation rates; continuous curator-correction logging remains an open engineering task (§5.4).
 
-### 4.6 Failure Modes
+### 4.6 Failure Modes and a Structured Error Taxonomy
 
+#### 4.6.1 Common Failure Modes
 
-#### 4.7.1 Common Failure Modes
+Examining the ~24% of samples where the top-1 species is incorrect (n=3,215 of 22,332 species-level, non-abstained predictions) reveals several recurring patterns, which we now decompose into three buckets rather than a flat list, to separate genuinely fixable error classes from ones that are not:
 
-Examining the 36% of samples where the top-1 species is incorrect reveals several recurring patterns:
+```mermaid
+flowchart LR
+    E["3,215 species-level errors"] --> A["Bucket A\nKnown biological association\n56 errors (1.74%)"]
+    E --> B["Bucket B\nSame-genus cripsis\n199 forced-to-species errors (6.19%)\n+1,247 already correctly abstained"]
+    E --> C["Bucket C\nOther cross-genus confusion\n2,960 errors (92.07%)"]
+    A --> A1["Parasite/epibiont votes for\nits visually-dominant host\n(e.g. isopod family Cymothoidae -> fish;\nCalliactis parasitica -> Dardanus calidus)"]
+    B --> B1["Visually near-identical\nsame-genus species\n(e.g. Hemimycale mediterranea\n<-> H. columella)"]
+    C --> C1["No exploitable structure found\n(§4.4, §4.6.3): genuine\nvisual look-alikes across genera"]
+```
 
-1. **Cryptic species complexes** (most common): Species within the same genus that are visually nearly identical. Examples: *Actinia* species (distinguished by subtle tentacle patterns), *Cuthona/Trinchesia* species (require microscopic examination), *Berthella* species (described as "cannot be differentiated by sight alone" in field guides).
+*Figure 5. Error taxonomy over the full non-abstained species-level error set. Bucket C dominates by volume but has resisted every structural fix attempted (§3.3); Buckets A and B are small in aggregate but map onto identifiable, testable hypotheses.*
 
-2. **Pose and occlusion**: Organisms photographed from unusual angles, partially hidden, or in non-standard orientations. The model relies on the training distribution of "typical" poses.
+1. **Cryptic species complexes (Bucket B, and the bulk of Bucket C)**: species within the same genus, or across genera, that are visually nearly identical. Examples: *Actinia* species (subtle tentacle patterns), *Cuthona*/*Trinchesia* species (require microscopic examination), *Berthella* species ("cannot be differentiated by sight alone" per field guides), *Hemimycale mediterranea*/*H. columella* (the heaviest single confusion pair in the current catalog).
+2. **Known biological association (Bucket A)**: a parasite or epibiont photographed together with its host, where the k-NN vote is pulled toward whichever organism is visually dominant in the frame — e.g. the isopod family Cymothoidae (fish parasites) voting for the fish, or the anemone *Calliactis parasitica* voting for the hermit crab *Dardanus calidus* it rides on. Confirmed by manual photo inspection to be genuine co-occurrence, not a labeling artifact.
+3. **Pose and occlusion**: organisms photographed from unusual angles, partially hidden, or in non-standard orientations.
+4. **Background confusion**: when the organism occupies a small portion of the image, the background (rocks, algae, sand) can dominate the embedding; organism detection (YOLOv8) mitigates but does not eliminate this.
+5. **Life stage variation**: juveniles, breeding coloration, or damaged specimens can look very different from the typical adult form in the gallery.
+6. **Genuine data scarcity**: distinct from cripsis — a species whose confusion rival also has few reference images. Checked directly (not assumed) for the twenty worst-performing lower-tier species: the majority had confusion rivals with 500-1,000+ reference embeddings already, i.e. were not data-starved; exactly three were, and were closed by targeted download (§3.1.3-adjacent maintenance, not a modeling change).
 
-3. **Background confusion**: When the organism occupies a small portion of the image, the background (rocks, algae, sand) can dominate the embedding. Our organism detection (YOLOv8) mitigates but does not eliminate this.
+#### 4.6.2 Geographic Priors Do Not Rescue Bucket B
 
-4. **Life stage variation**: Juveniles, breeding coloration, or damaged specimens can look very different from the typical adult form represented in training data.
+Since the production scorer already applies a multiplicative geographic prior when GPS is present (§3.2.2), we checked whether it has, or could gain, real discriminative power for the heaviest same-genus cripsis pairs, by computing each species' observation-coordinate centroid and the ratio of inter-centroid distance to mean intra-species spread. The two pairs responsible for the largest share of Bucket B — *Hemimycale mediterranea*/*H. columella* (ratio 0.42) and *Halopteris filicina*/*H. scoparia* (ratio 0.29) — are **geographically fully overlapping** (a ratio below ~0.7 indicates habitat overlap indistinguishable by location alone), confirming these are genuine visual cripsis with no geographic shortcut. Of forty species checked across the twenty heaviest pairs, twelve had no cached observation coordinates at all; backfilling these revealed real, usable separation for exactly two further pairs (*Mesophyllum lichenoides*/*M. expansum*, ratio 1.62; *Lutraria magna*/*L. lutraria*, ratio 2.28) — a small, recorded finding, not yet built into the abstention rule, and not enough to move the headline metric.
 
-5. **Data scarcity**: Species with <30 training images (4 species) have substantially lower accuracy, though the effect is confounded with these species also being rare and atypical.
-
-#### 4.7.2 Taxonomic Patterns
+#### 4.6.3 Taxonomic Patterns
 
 Accuracy varies systematically across taxonomic groups:
 
@@ -445,23 +542,24 @@ Even when species top-1 plateaus, genus/family fallbacks and expert indistinguis
 
 ### 5.4 Limitations
 
-1. Species top-1 still far from expert performance on cryptic taxa.
-2. Gallery coverage is uneven; some Mediterranean endemics remain scarce on iNaturalist.
-3. Expert crops and OCR labels did not help k-NN — signal may need different fusion (e.g., VLM re-rank).
+1. Species top-1 still far from expert performance on cryptic taxa — and, per the error taxonomy in §4.6, the dominant error class (Bucket C, 92% of the remaining error) has resisted every structural fix attempted so far, including a well-instrumented, pre-registered contrastive-learning trial.
+2. Gallery coverage is uneven; some Mediterranean endemics remain scarce on iNaturalist, though the catalog now tracks and can target species below the reliable-prototype threshold explicitly (§3.1.1).
+3. Expert crops and OCR labels did not help k-NN — signal may need different fusion (e.g., VLM re-rank) than simple gallery weighting.
 4. Curator-correction telemetry is not yet a closed training loop.
-5. Geographic generalization outside the Mediterranean is untested.
+5. Geographic generalization outside the Mediterranean is untested. Within the Mediterranean, the geographic prior provides essentially no additional separation for the heaviest same-genus confusion pairs (§4.6.2) — it is not a substitute for visual signal where visual signal does not exist.
 
 ### 5.5 Future Work
 
-1. Calibrate / evaluate **DINOv3** embeddings already extracted (1,301 spp).
-2. Try **QLoRA alternatives** compatible with open_clip (torchao / hqq) — only with harvest_calib gates.
-3. **VLM re-ranker** on top-3 critical cases.
+1. Calibrate / evaluate **DINOv3** embeddings already extracted (1,301 spp) as an alternative encoder — the ablation program in §3.3 rules out squeezing more from *this* frozen ViT-H via training, but does not rule out a different backbone.
+2. If fine-tuning is revisited at all, only with substantially more images per confused species than the current catalog provides for its hardest pairs, given the consistent memorization failure mode observed across three independent architectures (§3.3).
+3. **VLM re-ranker** on top-3 critical cases, as a non-training-based alternative signal source.
 4. Production **curator correction log** as the true online accuracy metric.
 5. Continue taxonomic synonym normalization (WoRMS).
+6. Extend the geographic-prior backfill (§4.6.2) to the rest of the cryptic-pair list and, if further separable pairs turn up, fold them into the abstention rule.
 
 ## 6. Conclusion
 
-BioFauna identifies Mediterranean marine species by retrieving neighbors in a BioCLIP-2.5 ViT-H embedding space. With k=15 and calibrated abstention, it reaches **71.7% / 76.5% / 80.4%** species/genus/family accuracy on observation-stratified held-out photos, and supports high-precision AutoID (95.5% at p≥0.90). Scaling the backbone and tuning k — not QLoRA — produced the measured gains. We release the system as open-source software for self-hosted citizen science and research use.
+BioFauna identifies Mediterranean marine species by retrieving neighbors in a BioCLIP-2.5 ViT-H embedding space, augmented with test-time augmentation and calibrated hierarchical abstention. It reaches **75.97% / 81.29% / 84.90%** species/genus/family top-1 accuracy on a 12,788-photo, observation-stratified, leak-checked held-out set, and supports automated, curator-reviewed publication to Minka at an estimated 95.3% precision and 57.4% coverage. The gains that mattered were **scaling the backbone, tuning k, completing gallery coverage, and test-time augmentation** — not fine-tuning: a wide, systematic, and where possible pre-registered search across eight independent fine-tuning and re-ranking techniques (§3.3), including three genuinely different architectures (full-backbone LoRA, a frozen-backbone linear head, and a frozen-backbone contrastive re-ranker scoped to the hardest known confusion pairs), converged on the same failure mode — memorization rather than generalization — and none improved the trusted out-of-sample metric. We release the system, this negative-result record, and the species/error-taxonomy appendix as open-source software for self-hosted citizen science and research use.
 
 ## Acknowledgments
 
@@ -524,251 +622,6 @@ The BioFauna model package (gallery patterns, calibration data, species catalog,
 23. Goëau, H., Bonnet, P., Joly, A., Bakić, V., Barbe, J., Yahiaoui, I., Selmi, S., Carré, J., Barthélémy, D., Boujemaa, N., Molino, J.F., Duché, G., & Péronnet, A. (2013). Pl@ntNet Mobile App. *ACM Multimedia*.
 
 24. Khosla, P., Teterwak, P., Wang, C., Sarna, A., Tian, Y., Isola, P., Maschinot, A., Liu, C., & Krishnan, D. (2020). Supervised Contrastive Learning. *Advances in Neural Information Processing Systems (NeurIPS)*.
-
----
-
-## Post-publication development (August 2026)
-
-After the baseline results in this paper (~71.7% species accuracy on an observation-stratified calibration set of ~810 species), the reference gallery was expanded to **~3,000 Mediterranean target species** to improve coverage for citizen-science workflows. This expansion temporarily lowered tier-1 fresh accuracy (~51%) for species with sparse reference embeddings, traced to a photo-archival bug: re-embedding pipelines were reading only a fast-access SSD subset (~300 photos/species) while the rest of each species' photos sat on an HDD archive untouched by the encoder.
-
-**Remediation closed (2026-08-21/23).** A full catalog re-embedding consolidated SSD + HDD archive per species and re-ran the frozen BioCLIP-2.5 ViT-H encoder end-to-end. On the full observation-stratified calibration set (`harvest_calib`, **n = 22,332**, all tiers), the system now measures:
-
-| Metric | Accuracy |
-|---|---|
-| Species (top-1) | **75.4%** |
-| Genus | **81.8%** |
-| Family | **85.7%** |
-
-This was the production baseline reported at the time — an improvement over the original paper's 71.7% species figure, on a much larger and more diverse gallery (~2,900 species with ≥2 embedded photos out of ~4,700 target species with at least one photo, vs. ~810 in the original evaluation cohort). It superseded the interim ~51% tier-1 number reported during the archive-gap incident. **It was later corrected (see "Calibration-set data leakage" below) to 75.8%/81.1%/84.5% on a deduplicated n=12,788 — the current figure to cite.**
-
-**Further fine-tuning ablations (August 2026), all closed without production change:**
-
-| Attempt | Result | Verdict |
-|---|---|---|
-| QLoRA on BioCLIP-2 ViT-L (768-dim) | Base-model mismatch vs. production ViT-H (1024-dim); architectures incompatible | ❌ discarded before evaluation |
-| LoRA on ViT-H backbone, full catalog scale (1,358 of 2,934 species fine-tuned) | **−31.2pp** species accuracy on the full n=22,332 eval (75.4% → 44.2%; ~43% of that eval set was later found to be leaked duplicates of the reference gallery — see below — but a ~1pp-scale correction does not change a 31pp regression) | ❌ severe regression — overfit to the fine-tuned subset of species, degrading the shared embedding space for the rest |
-| Linear projection head ("head sidecar") on frozen ViT-H embeddings, no backbone changes, trained on the full 3,878-species catalog | Species 74.8% (−0.6pp), genus 80.7% (−1.1pp), family 84.6% (−1.1pp) vs. baseline | ❌ net regression on all three levels, despite training-time validation suggesting a small gain (+2.6pp on a self-consistent mini-set that did not hold up on the full eval) |
-
-All three attempts reinforce §5.1: at this backbone scale and dataset regime, further parameter-efficient fine-tuning has not beaten the frozen-encoder k-NN baseline, including a lower-risk head-only variant that leaves the backbone untouched. Production remains **frozen BioCLIP-2.5 ViT-H + k-NN (k=15) + calibrated hierarchical abstention**, unchanged since the original publication.
-
-### Calibration-set data leakage — found and fixed (2026-08-25/26)
-
-While grid-searching the k-NN neighbor count `k` to check whether 15 was still optimal on the
-expanded catalog, the resulting accuracy curve improved monotonically toward k=1 — behavior a
-healthy k-NN classifier should not show, since retrieval noise usually makes very small k
-*worse*, not better without limit. Investigating this surfaced a real bug: **42.7% (9,544 of
-22,332) of the calibration photos were also embedded in the reference gallery** — the same photo
-served as both the query being classified and (with near-perfect similarity, >0.999) its own
-nearest neighbor in the answer key. Root cause: the calibration harvester's "has this
-observation already been used for training?" check pointed at a manifest file path abandoned
-during an earlier image-directory migration, so the check silently matched nothing for the
-current pipeline and deduplication stopped working from that point on.
-
-**Fix:** replaced the manifest-path check with a direct embedding-similarity check against the
-live reference catalog (same mechanism used to detect the leak), validated on a real harvest run
-before merging (a small live test correctly flagged and skipped every already-embedded candidate
-it encountered). The leaked and clean rows were also split out and kept for reference.
-
-**Corrected baseline**, verified independently with the project's official metrics script on the
-clean n=12,788 subset:
-
-| Metric | Accuracy |
-|---|---|
-| Species (top-1) | **75.8%** |
-| Genus | **81.1%** |
-| Family | **84.5%** |
-
-This is close to the previously-reported 75.4%/81.8%/85.7% — the leakage barely inflated the
-production k=15 setting, since diluting a duplicate's trivial "self-match" across 15 neighbors'
-votes mostly washes it out. The effect was much larger at low k (the leak alone explained why k=1
-had appeared to outperform k=15), which is what made the anomaly visible in the first place. The
-k-search itself, redone on the clean data, confirmed k=15 remains within noise of the true
-optimum (k=10, 0.3pp apart on n=12,788) — no production change was warranted. **None of the
-closed fine-tuning verdicts above change**: both regressions (LoRA −31.2pp, head sidecar
-−0.6 to −1.1pp) are an order of magnitude larger than the leak's effect at k=15.
-
-See the public [STATUS.md](../docs/STATUS.md) and [EXPERIMENTS.md](../docs/EXPERIMENTS.md) for the current project snapshot and full experiment log.
-
-### Contamination audit and index rebuild (2026-08-26)
-
-A single mislabeled species (`synalpheus_tumidomanus`, 74 photos, 49 of which were crops from a
-scanned field guide plate containing several unrelated species on the same page, bulk-labeled
-under one taxon at download time) was found to act as a spurious vector "magnet," pulling
-false-positive votes from unrelated species whose embeddings happened to fall near the
-contaminated prototype. A full-catalog audit for the same `guide_oa_*`/`lit_guide_oa_*` filename
-pattern found **107 affected species, 1,088 contaminated photos (0.14% of the 767,878-photo
-corpus)**. All were quarantined (kept, not deleted) and every affected species was re-embedded.
-Of the 20 worst-performing Tier-1 species at the time, the 8 that were contaminated all improved
-(mean **+33pp**, up to +56pp); the 12 that were not contaminated (including
-`perforatus_perforatus`, `schizobrachiella_sanguinea`) did not change — confirming their low
-accuracy is genuine visual confusion, not a labeling artifact. The production FAISS index was
-rebuilt and promoted afterward (762,033 embeddings verified against the sanitized catalog).
-
-### Test-time augmentation (TTA): the one technique that worked (2026-08-26/27)
-
-Every attempt to improve species accuracy via backbone/head fine-tuning had failed by this point
-(§3.3, and the further ablations below). We tested one **inference-time**, zero-training change:
-averaging the L2-normalized embedding of each query photo with the embedding of its own 90%
-center crop, then re-normalizing, before the k-NN search (frozen backbone, no retraining).
-
-Two independent measurements, both positive:
-
-| Evaluation | Species Δ | Genus Δ | Family Δ |
-|---|---|---|---|
-| Offline validation, k=15+ArcFace boost, geo omitted (methodology-matched grid-search protocol), n=12,788 | 75.13%→**75.88%** (+0.75pp) | 76.34%→77.11% (+0.77pp) | 83.86%→84.59% (+0.73pp) |
-| Official production re-harvest (`harvest_calib.py` patched with the same TTA, full scorer incl. geo prior), n=12,788 | 75.76%→**75.97%** (+0.21pp) | 81.12%→81.29% (+0.17pp) | 84.53%→84.90% (+0.37pp) |
-
-The two figures differ because they measure different things: the first is an isolated
-ablation of TTA alone against a geo-free baseline (consistent with the grid-search protocol used
-elsewhere in this paper); the second is the *full* production decision path (k-NN + ArcFace-style
-prototype boost + multiplicative geo prior) before vs. after adding TTA, which is the number that
-actually ships. Both are positive and of the same order of magnitude. TTA is now live in
-production (`/identify` and `/biofauna` endpoints): each query image is encoded together with its
-90% center crop in a single 2-image GPU batch, and the two embeddings are averaged and
-re-normalized before retrieval. This is, to date, the **only technique in this project's history
-that improved the trusted out-of-sample species metric** without a data-quality fix.
-
-### Further negative ablations (2026-08-26/27): prototype cleaning, margin, epibiosis, and a
-### scoped contrastive-learning trial
-
-With TTA banked, we ran a structured, hypothesis-driven search for any remaining exploitable
-signal, using an error-bucket decomposition of the full n=22,332 evaluation (3,215 species-level
-errors) as a map of where effort could plausibly pay off:
-
-| Bucket | Definition | Share of error |
-|---|---|---|
-| A — known biological association | Parasite/epibiont ↔ host pairs (e.g. isopod family Cymothoidae → the fish it parasitizes; the anemone *Calliactis parasitica* → the hermit crab *Dardanus calidus* it rides on) | 1.74% (56/3,215) |
-| B — same-genus cripsis | True and predicted species share a genus, and are visually near-identical (e.g. *Hemimycale mediterranea* ↔ *H. columella*) | 6.19% (199/3,215 forced to species; **1,247 additional cases already correctly abstain to genus/family** under the existing margin rule and are not counted as species errors) |
-| C — other | Everything else — mostly cross-genus visual look-alikes with no exploitable structure | 92.07% (2,960/3,215) |
-
-Four follow-up experiments were run against this decomposition, all closed without a production
-change:
-
-1. **Prototype/embedding outlier filtering** (median-cosine distance, thresholds 0.5 and 0.7,
-   applied to `embeddings.npy` before averaging into `prototype.npy`): both thresholds
-   **degraded** species accuracy monotonically (73.93%, Δ−0.21pp at 0.5; 72.69%, Δ−1.45pp at
-   0.7, against the same full-pipeline evaluation used for TTA above). The photos being filtered
-   out as "outliers" were legitimate intra-species variation, not noise. ❌
-2. **Widened genus-abstention margin for Bucket-B genera** (raising the shared-genus abstention
-   threshold from the production 0.06 in steps up to 0.25, simulated directly against the
-   evaluation jsonl, no retraining): even the smallest step tested (→0.10) turned **152 currently
-   correct species predictions into abstentions** to recover only **17** genuine Bucket-B errors
-   — a ≈9:1 cost/benefit ratio against. ❌
-3. **Non-oracle "prefer the epibiont" re-ranking rule for Bucket-A pairs** (deployable version,
-   not using the ground-truth label: whenever the current top-1 prediction is a known host
-   species and its known epibiont/parasite partner is anywhere in the same query's own top-k
-   candidate list, override to the epibiont): simulated over all 3,215 errors, this rule fired
-   216 times, correcting 64 species predictions but breaking 116 that were genuine photos of the
-   host with the epibiont only appearing as top-k noise — **net −0.23pp species, −0.26pp genus**.
-   Below the pre-registered acceptance bar (+0.3pp). ❌
-4. **Supervised Contrastive (SupCon) re-ranker, scoped to the 20 heaviest-weighted cryptic pairs**
-   (see below) — the most substantial experiment of the four, designed as a strict, pre-registered
-   hypothesis test rather than an exploratory tweak.
-
-#### SupCon-scoped contrastive re-ranker: a pre-registered kill-switch protocol
-
-Rather than repeat the earlier whole-catalog fine-tuning attempts (LoRA, head sidecar; both
-already closed above with severe or mild regressions), this experiment was deliberately narrow
-and mechanistically different, to test one specific question: *can a small amount of targeted
-contrastive supervision, applied only to the hardest known confusion pairs, extract a
-generalizable discriminative signal that the frozen k-NN retrieval is missing for those pairs
-specifically?*
-
-**Design.**
-- **Backbone**: frozen BioCLIP-2.5 ViT-H (unchanged, no gradient ever flows into it).
-- **Trainable component**: a small projection head, `Linear(1024→512) → ReLU → Dropout →
-  Linear(512→256)`, L2-normalized output, trained with the standard Supervised Contrastive Loss
-  (Khosla et al., 2020).
-- **Scope**: the 20 heaviest-weighted pairs in the project's cryptic-pair confusion list (40
-  unique species; per-species reference-embedding counts ranged 18–1,000).
-- **Anti-leak guarantee by construction**: training data was drawn *exclusively* from
-  `dataset/patterns/` (the reference gallery, already deduplicated against the calibration set by
-  the embedding-similarity fix of 2026-08-25); the projection head never saw a single photo from
-  the n=12,788 held-out evaluation set.
-- **Batch sampler**: for each of several pairs per batch, an anchor+positives set from one member
-  of the pair, a **hard negative** (its cryptic partner), and one **obligatory easy negative**
-  batch drawn from a randomly chosen species of a *different* genus outside the 40 — specifically
-  to discourage the head from learning to separate on confounds (substrate, background rock,
-  photographer style) rather than genuine morphology.
-- **Monitoring**: an 80/20 per-species train/validation split *within* the reference gallery
-  (never touching the evaluation set), with per-pair validation loss tracked every few epochs —
-  designed to catch memorization before any evaluation-set cost was spent.
-- **Pre-registered acceptance criterion**: ≥+0.3pp global species accuracy on the n=12,788
-  evaluation set (relative to the 75.97% TTA baseline above) **and** no degradation to genus
-  accuracy outside the 20 scoped pairs.
-- **Pre-registered kill criterion**: if per-pair validation loss showed memorization (val loss
-  failing to track train loss) before ever reaching the evaluation set, the checkpoint would be
-  discarded immediately and the model-retraining line of attack for cripsis closed without
-  spending the evaluation-set compute budget.
-
-**Result.** Two independent hyperparameter regimes were tried — (1) LR 1e-3, no regularization,
-and (2) LR 5e-5 with dropout 0.3 and weight decay 1e-2 — and **both showed the identical failure
-signature**: per-pair validation loss degraded monotonically from epoch 1 onward (run 1:
-4.89→5.21 over 300 epochs; run 2: a smaller but still monotonic degradation under regularization),
-while training loss continued to fall. The best validation checkpoint in both runs was **epoch 1
-— i.e., before any real training had occurred.** This pattern was reproducible across two very
-different optimization regimes, which rules out a simple learning-rate or regularization
-misconfiguration as the explanation.
-
-The kill criterion was invoked **before** the model was ever evaluated against the n=12,788 test
-set — the per-pair monitoring caught the failure at negligible cost, exactly as designed. The
-checkpoint was destroyed.
-
-**Interpretation.** Combined with the LoRA and head-sidecar results in §3.3, this is now the
-**third independent architecture** (full backbone+ArcFace fine-tune; frozen-backbone linear head;
-frozen-backbone contrastive head) to fail to extract a generalizable improvement from this
-embedding space under this data regime. The common factor across all three is not the loss
-function or the amount of the network touched — it is that **any trainable component layered on
-this catalog's per-species photo counts (many Tier-1 species have on the order of tens to a few
-hundred images) tends to memorize rather than generalize.** We consider the line of attack
-"retrain or fine-tune something on top of the frozen embedding to fix cripsis" **closed** for this
-dataset regime, pending either substantially more images per confused species or a different
-signal modality (see below).
-
-### A cheap, informative but ultimately unhelpful check: geographic priors for cryptic pairs
-
-Before closing the SupCon line, we checked whether the production geographic prior (`GEO_BOOST`,
-a multiplicative bonus scaled by inverse distance to a species' known observation cluster,
-`GEO_SIGMA≈200km`) already has, or could plausibly gain, discriminative power for the heaviest
-cryptic pairs. For each pair we computed each species' geographic centroid (from up to 100 cached
-observation coordinates per species) and the ratio of inter-centroid distance to mean intra-species
-spread — a ratio ≳1.5 indicates geographically separable populations; ≲0.7 indicates habitat
-overlap indistinguishable by location alone.
-
-The two heaviest pairs by confusion weight — `Hemimycale mediterranea`/`H. columella` (ratio 0.42)
-and `Halopteris filicina`/`H. scoparia` (ratio 0.29) — are **geographically fully overlapping**:
-confirmation that these are genuine visual cripsis with no geographic shortcut, not a data
-artifact. Twelve of the forty species in the cryptic-pair list had **zero** cached geographic
-observations at all (a data gap, not a null geographic signal); backfilling these (a short,
-low-cost Minka query per species) revealed a real, usable geographic separation for two further
-pairs (`Mesophyllum lichenoides`/`M. expansum`, ratio 1.62; `Lutraria magna`/`L. lutraria`, ratio
-2.28) — modest wins, not enough to move the global metric, but recorded as the only remaining
-open thread on the cripsis question that does not require new training.
-
-### Official baseline update (2026-08-27)
-
-Following the TTA integration above, the production calibration artifact (`calibration.json`) was
-regenerated end-to-end (re-harvest with the same TTA logic used in production, full re-fit of the
-logistic calibrator) against the same clean, leak-free n=12,788 protocol used throughout this
-paper since 2026-08-25/26. **This is the current citable baseline**, superseding the 75.8/81.1/84.5
-figure reported above:
-
-| Metric | Accuracy |
-|---|---|
-| Species (top-1) | **75.97%** |
-| Genus | **81.29%** |
-| Family | **84.90%** |
-
-Separately, a real Tier-1 photo-count deficit — as opposed to genuine visual cripsis — was
-confirmed and closed for exactly three species this session (`Aglaophenia acacia`, 46→62
-reference embeddings; `Polycitor adriaticus`, 52→72; `Dagetichthys lusitanicus`, 100→113), after
-checking that the great majority of the 20 worst-performing Tier-1 species are *not*
-photo-starved (many of their confusion rivals hold 500–1,000+ reference embeddings already) and
-therefore would not benefit from more of the same-species photography. The production FAISS index
-was rebuilt to include the +49 new embeddings (762,033→762,082) and promoted with the standard
-backup-and-verify procedure.
-
-See the public [STATUS.md](../docs/STATUS.md) and [EXPERIMENTS.md](../docs/EXPERIMENTS.md) for the current project snapshot and full experiment log.
 
 ---
 
