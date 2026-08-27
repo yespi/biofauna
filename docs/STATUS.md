@@ -1,16 +1,16 @@
 # BioFauna — Project Status (public)
 
-> **2026-08-26** · Full-corpus OOS baseline: **75.8% species / 81.1% genus / 84.5% family** (n=12,788, deduplicated)  
-> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26) — see notes below
+> **2026-08-27** · Full-corpus OOS baseline: **75.97% species / 81.29% genus / 84.90% family** (n=12,788, deduplicated, TTA in production)  
+> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27) — see notes below
 
 ## Production stack
 
 | Piece | Setting |
 |-------|---------|
 | Encoder | BioCLIP-2.5 ViT-H (1024-dim), **frozen** |
-| Retrieval | k-NN **k=15** + logistic calibration |
+| Retrieval | k-NN **k=15** + logistic calibration, **test-time augmentation** (query + 90% center crop, averaged) |
 | Storage | Active SSD gallery + **HDD archive** (full-resolution backup per species), now unified in re-embedding |
-| AutoID | p≥0.90 → 95.5% precision at 30.2% coverage |
+| AutoID | p≥0.80 → ~95.3% precision at ~57.4% coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation volume; see AutoID note below) |
 | Fallback | Hierarchical species→genus→family + iNaturalist CV cross-check |
 
 ## Published baseline vs current
@@ -18,7 +18,8 @@
 | Cohort | Species accuracy | Notes |
 |--------|------------------|-------|
 | **Paper baseline** (Aug 2026, ~810 spp cohort) | **71.7%** | Original observation-stratified `harvest_calib` |
-| **Current full corpus** (Aug 21-26 2026, n=12,788 deduplicated) | **75.8%** | Post archive-gap fix + calibration-set dedup; genus 81.1%, family 84.5% |
+| **Full corpus, deduplicated** (Aug 25-26 2026, n=12,788) | **75.8%** | Post archive-gap fix + calibration-set dedup; genus 81.1%, family 84.5% |
+| **+ TTA, current** (Aug 27 2026, n=12,788) | **75.97%** | Test-time augmentation added, calibration re-fit end-to-end; genus 81.29%, family 84.90% |
 
 Do not compare these numbers without noting corpus size and embedding coverage.
 
@@ -43,15 +44,34 @@ During disk management, excess photos were moved to an HDD archive while a **~30
 | QLoRA (ViT-L base, Aug 2026) | Base-model mismatch vs. production ViT-H | ❌ discarded before eval |
 | LoRA fine-tune, full catalog scale (1,358/2,934 spp) | **−31.2pp** species on n=22,332 | ❌ severe overfit to fine-tuned subset |
 | Linear head sidecar on frozen ViT-H (no backbone change) | **−0.6 to −1.1pp** across species/genus/family | ❌ net regression, no cutover |
+| **Test-time augmentation** (query + 90% center crop, averaged) | **+0.21 to +0.75pp** species depending on eval protocol (both positive, see paper §"Post-publication development") | ✅ **only technique to beat frozen k-NN baseline** — live in production |
+| Prototype/embedding outlier filtering (median-cosine, thr 0.5/0.7) | **−0.21pp / −1.45pp** species | ❌ filtered legitimate intra-species variation, not noise |
+| Widened same-genus abstention margin (0.06→0.10+) for cryptic pairs | 9:1 cost/benefit (152 correct predictions lost per 17 errors fixed) | ❌ |
+| Non-oracle "prefer epibiont" re-ranking rule for parasite/host pairs | **−0.23pp** species, **−0.26pp** genus | ❌ |
+| SupCon contrastive re-ranker, scoped to 20 heaviest cryptic pairs, frozen backbone | Per-pair validation loss diverged from epoch 1 in **two independent hyperparameter regimes** — memorization, no generalization; **kill-switch invoked before touching the eval set** | ❌ third independent architecture to fail on this data regime |
 
 Full log: [EXPERIMENTS.md](EXPERIMENTS.md).
+
+## AutoID confidence/volume tuning (2026-08-27)
+
+Production auto-publication volume was running at ~5 identifications/hour against a configured
+cap of 20/hour. Two independent causes, both fixed: (1) a hardcoded 900-second per-wave scan
+timeout was cutting off the hourly Minka page-scan well before the hourly quota could be reached
+— raised to 1800s; (2) the confidence threshold (p≥0.90, 95.5% precision at 30.2% coverage) was
+conservative relative to what the freshly re-fit calibration curve supports — lowered to p≥0.80
+(≈95.3% precision at ≈57.4% coverage per the re-fit calibration curve, a ~33% relative increase
+in the fraction of candidates that clear the bar for an estimated ~1.5pp precision cost). A
+further lever (broadening the Minka observation pool from "zero identifications" to "pending
+confirmation, may have partial IDs") is documented but not yet exercised, held in reserve for if
+the narrower pool runs dry.
 
 ## Development roadmap (public summary)
 
 1. ~~Consolidate SSD + archive per species~~ ✅ done (Aug 21-23)
 2. ~~Rebuild FAISS index + recalibrate~~ ✅ done
-3. Explore encoder-level improvements beyond parameter-efficient fine-tuning (closed as ineffective at this scale — see EXPERIMENTS.md)
-4. Resume targeted downloads only where **total** photos &lt; 1000/spp
+3. ~~Test-time augmentation~~ ✅ done (Aug 26-27), only technique so far to beat the frozen-backbone k-NN baseline
+4. Explore encoder-level improvements beyond parameter-efficient fine-tuning and beyond frozen-backbone contrastive heads (closed as ineffective at this scale across three independent architectures — see EXPERIMENTS.md)
+5. Resume targeted downloads only where **total** photos &lt; 1000/spp, or where a specific species is confirmed photo-starved relative to its confusion rivals (not just Tier assignment — see EXPERIMENTS.md, three species closed this way on 2026-08-27)
 
 ## Evaluation rule
 

@@ -4,7 +4,7 @@
 **Taxonomic contributors**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros  
 **Repository**: https://github.com/yespi/biofauna  
 **Live system**: https://fotofauna.yespi.es  
-**Version**: 2026-08-10
+**Version**: 2026-08-27
 
 > **Naming.** This project was originally developed under the name **YOLOFauna** (2024–2026). It was renamed **BioFauna** when the production stack settled on BioCLIP retrieval rather than YOLO detection. A short provenance note is in [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -498,6 +498,8 @@ The BioFauna model package (gallery patterns, calibration data, species catalog,
 
 23. Goëau, H., Bonnet, P., Joly, A., Bakić, V., Barbe, J., Yahiaoui, I., Selmi, S., Carré, J., Barthélémy, D., Boujemaa, N., Molino, J.F., Duché, G., & Péronnet, A. (2013). Pl@ntNet Mobile App. *ACM Multimedia*.
 
+24. Khosla, P., Teterwak, P., Wang, C., Sarna, A., Tian, Y., Isola, P., Maschinot, A., Liu, C., & Krishnan, D. (2020). Supervised Contrastive Learning. *Advances in Neural Information Processing Systems (NeurIPS)*.
+
 ---
 
 ## Post-publication development (August 2026)
@@ -562,6 +564,187 @@ closed fine-tuning verdicts above change**: both regressions (LoRA −31.2pp, he
 
 See the public [STATUS.md](../docs/STATUS.md) and [EXPERIMENTS.md](../docs/EXPERIMENTS.md) for the current project snapshot and full experiment log.
 
+### Contamination audit and index rebuild (2026-08-26)
+
+A single mislabeled species (`synalpheus_tumidomanus`, 74 photos, 49 of which were crops from a
+scanned field guide plate containing several unrelated species on the same page, bulk-labeled
+under one taxon at download time) was found to act as a spurious vector "magnet," pulling
+false-positive votes from unrelated species whose embeddings happened to fall near the
+contaminated prototype. A full-catalog audit for the same `guide_oa_*`/`lit_guide_oa_*` filename
+pattern found **107 affected species, 1,088 contaminated photos (0.14% of the 767,878-photo
+corpus)**. All were quarantined (kept, not deleted) and every affected species was re-embedded.
+Of the 20 worst-performing Tier-1 species at the time, the 8 that were contaminated all improved
+(mean **+33pp**, up to +56pp); the 12 that were not contaminated (including
+`perforatus_perforatus`, `schizobrachiella_sanguinea`) did not change — confirming their low
+accuracy is genuine visual confusion, not a labeling artifact. The production FAISS index was
+rebuilt and promoted afterward (762,033 embeddings verified against the sanitized catalog).
+
+### Test-time augmentation (TTA): the one technique that worked (2026-08-26/27)
+
+Every attempt to improve species accuracy via backbone/head fine-tuning had failed by this point
+(§3.3, and the further ablations below). We tested one **inference-time**, zero-training change:
+averaging the L2-normalized embedding of each query photo with the embedding of its own 90%
+center crop, then re-normalizing, before the k-NN search (frozen backbone, no retraining).
+
+Two independent measurements, both positive:
+
+| Evaluation | Species Δ | Genus Δ | Family Δ |
+|---|---|---|---|
+| Offline validation, k=15+ArcFace boost, geo omitted (methodology-matched grid-search protocol), n=12,788 | 75.13%→**75.88%** (+0.75pp) | 76.34%→77.11% (+0.77pp) | 83.86%→84.59% (+0.73pp) |
+| Official production re-harvest (`harvest_calib.py` patched with the same TTA, full scorer incl. geo prior), n=12,788 | 75.76%→**75.97%** (+0.21pp) | 81.12%→81.29% (+0.17pp) | 84.53%→84.90% (+0.37pp) |
+
+The two figures differ because they measure different things: the first is an isolated
+ablation of TTA alone against a geo-free baseline (consistent with the grid-search protocol used
+elsewhere in this paper); the second is the *full* production decision path (k-NN + ArcFace-style
+prototype boost + multiplicative geo prior) before vs. after adding TTA, which is the number that
+actually ships. Both are positive and of the same order of magnitude. TTA is now live in
+production (`/identify` and `/biofauna` endpoints): each query image is encoded together with its
+90% center crop in a single 2-image GPU batch, and the two embeddings are averaged and
+re-normalized before retrieval. This is, to date, the **only technique in this project's history
+that improved the trusted out-of-sample species metric** without a data-quality fix.
+
+### Further negative ablations (2026-08-26/27): prototype cleaning, margin, epibiosis, and a
+### scoped contrastive-learning trial
+
+With TTA banked, we ran a structured, hypothesis-driven search for any remaining exploitable
+signal, using an error-bucket decomposition of the full n=22,332 evaluation (3,215 species-level
+errors) as a map of where effort could plausibly pay off:
+
+| Bucket | Definition | Share of error |
+|---|---|---|
+| A — known biological association | Parasite/epibiont ↔ host pairs (e.g. isopod family Cymothoidae → the fish it parasitizes; the anemone *Calliactis parasitica* → the hermit crab *Dardanus calidus* it rides on) | 1.74% (56/3,215) |
+| B — same-genus cripsis | True and predicted species share a genus, and are visually near-identical (e.g. *Hemimycale mediterranea* ↔ *H. columella*) | 6.19% (199/3,215 forced to species; **1,247 additional cases already correctly abstain to genus/family** under the existing margin rule and are not counted as species errors) |
+| C — other | Everything else — mostly cross-genus visual look-alikes with no exploitable structure | 92.07% (2,960/3,215) |
+
+Four follow-up experiments were run against this decomposition, all closed without a production
+change:
+
+1. **Prototype/embedding outlier filtering** (median-cosine distance, thresholds 0.5 and 0.7,
+   applied to `embeddings.npy` before averaging into `prototype.npy`): both thresholds
+   **degraded** species accuracy monotonically (73.93%, Δ−0.21pp at 0.5; 72.69%, Δ−1.45pp at
+   0.7, against the same full-pipeline evaluation used for TTA above). The photos being filtered
+   out as "outliers" were legitimate intra-species variation, not noise. ❌
+2. **Widened genus-abstention margin for Bucket-B genera** (raising the shared-genus abstention
+   threshold from the production 0.06 in steps up to 0.25, simulated directly against the
+   evaluation jsonl, no retraining): even the smallest step tested (→0.10) turned **152 currently
+   correct species predictions into abstentions** to recover only **17** genuine Bucket-B errors
+   — a ≈9:1 cost/benefit ratio against. ❌
+3. **Non-oracle "prefer the epibiont" re-ranking rule for Bucket-A pairs** (deployable version,
+   not using the ground-truth label: whenever the current top-1 prediction is a known host
+   species and its known epibiont/parasite partner is anywhere in the same query's own top-k
+   candidate list, override to the epibiont): simulated over all 3,215 errors, this rule fired
+   216 times, correcting 64 species predictions but breaking 116 that were genuine photos of the
+   host with the epibiont only appearing as top-k noise — **net −0.23pp species, −0.26pp genus**.
+   Below the pre-registered acceptance bar (+0.3pp). ❌
+4. **Supervised Contrastive (SupCon) re-ranker, scoped to the 20 heaviest-weighted cryptic pairs**
+   (see below) — the most substantial experiment of the four, designed as a strict, pre-registered
+   hypothesis test rather than an exploratory tweak.
+
+#### SupCon-scoped contrastive re-ranker: a pre-registered kill-switch protocol
+
+Rather than repeat the earlier whole-catalog fine-tuning attempts (LoRA, head sidecar; both
+already closed above with severe or mild regressions), this experiment was deliberately narrow
+and mechanistically different, to test one specific question: *can a small amount of targeted
+contrastive supervision, applied only to the hardest known confusion pairs, extract a
+generalizable discriminative signal that the frozen k-NN retrieval is missing for those pairs
+specifically?*
+
+**Design.**
+- **Backbone**: frozen BioCLIP-2.5 ViT-H (unchanged, no gradient ever flows into it).
+- **Trainable component**: a small projection head, `Linear(1024→512) → ReLU → Dropout →
+  Linear(512→256)`, L2-normalized output, trained with the standard Supervised Contrastive Loss
+  (Khosla et al., 2020).
+- **Scope**: the 20 heaviest-weighted pairs in the project's cryptic-pair confusion list (40
+  unique species; per-species reference-embedding counts ranged 18–1,000).
+- **Anti-leak guarantee by construction**: training data was drawn *exclusively* from
+  `dataset/patterns/` (the reference gallery, already deduplicated against the calibration set by
+  the embedding-similarity fix of 2026-08-25); the projection head never saw a single photo from
+  the n=12,788 held-out evaluation set.
+- **Batch sampler**: for each of several pairs per batch, an anchor+positives set from one member
+  of the pair, a **hard negative** (its cryptic partner), and one **obligatory easy negative**
+  batch drawn from a randomly chosen species of a *different* genus outside the 40 — specifically
+  to discourage the head from learning to separate on confounds (substrate, background rock,
+  photographer style) rather than genuine morphology.
+- **Monitoring**: an 80/20 per-species train/validation split *within* the reference gallery
+  (never touching the evaluation set), with per-pair validation loss tracked every few epochs —
+  designed to catch memorization before any evaluation-set cost was spent.
+- **Pre-registered acceptance criterion**: ≥+0.3pp global species accuracy on the n=12,788
+  evaluation set (relative to the 75.97% TTA baseline above) **and** no degradation to genus
+  accuracy outside the 20 scoped pairs.
+- **Pre-registered kill criterion**: if per-pair validation loss showed memorization (val loss
+  failing to track train loss) before ever reaching the evaluation set, the checkpoint would be
+  discarded immediately and the model-retraining line of attack for cripsis closed without
+  spending the evaluation-set compute budget.
+
+**Result.** Two independent hyperparameter regimes were tried — (1) LR 1e-3, no regularization,
+and (2) LR 5e-5 with dropout 0.3 and weight decay 1e-2 — and **both showed the identical failure
+signature**: per-pair validation loss degraded monotonically from epoch 1 onward (run 1:
+4.89→5.21 over 300 epochs; run 2: a smaller but still monotonic degradation under regularization),
+while training loss continued to fall. The best validation checkpoint in both runs was **epoch 1
+— i.e., before any real training had occurred.** This pattern was reproducible across two very
+different optimization regimes, which rules out a simple learning-rate or regularization
+misconfiguration as the explanation.
+
+The kill criterion was invoked **before** the model was ever evaluated against the n=12,788 test
+set — the per-pair monitoring caught the failure at negligible cost, exactly as designed. The
+checkpoint was destroyed.
+
+**Interpretation.** Combined with the LoRA and head-sidecar results in §3.3, this is now the
+**third independent architecture** (full backbone+ArcFace fine-tune; frozen-backbone linear head;
+frozen-backbone contrastive head) to fail to extract a generalizable improvement from this
+embedding space under this data regime. The common factor across all three is not the loss
+function or the amount of the network touched — it is that **any trainable component layered on
+this catalog's per-species photo counts (many Tier-1 species have on the order of tens to a few
+hundred images) tends to memorize rather than generalize.** We consider the line of attack
+"retrain or fine-tune something on top of the frozen embedding to fix cripsis" **closed** for this
+dataset regime, pending either substantially more images per confused species or a different
+signal modality (see below).
+
+### A cheap, informative but ultimately unhelpful check: geographic priors for cryptic pairs
+
+Before closing the SupCon line, we checked whether the production geographic prior (`GEO_BOOST`,
+a multiplicative bonus scaled by inverse distance to a species' known observation cluster,
+`GEO_SIGMA≈200km`) already has, or could plausibly gain, discriminative power for the heaviest
+cryptic pairs. For each pair we computed each species' geographic centroid (from up to 100 cached
+observation coordinates per species) and the ratio of inter-centroid distance to mean intra-species
+spread — a ratio ≳1.5 indicates geographically separable populations; ≲0.7 indicates habitat
+overlap indistinguishable by location alone.
+
+The two heaviest pairs by confusion weight — `Hemimycale mediterranea`/`H. columella` (ratio 0.42)
+and `Halopteris filicina`/`H. scoparia` (ratio 0.29) — are **geographically fully overlapping**:
+confirmation that these are genuine visual cripsis with no geographic shortcut, not a data
+artifact. Twelve of the forty species in the cryptic-pair list had **zero** cached geographic
+observations at all (a data gap, not a null geographic signal); backfilling these (a short,
+low-cost Minka query per species) revealed a real, usable geographic separation for two further
+pairs (`Mesophyllum lichenoides`/`M. expansum`, ratio 1.62; `Lutraria magna`/`L. lutraria`, ratio
+2.28) — modest wins, not enough to move the global metric, but recorded as the only remaining
+open thread on the cripsis question that does not require new training.
+
+### Official baseline update (2026-08-27)
+
+Following the TTA integration above, the production calibration artifact (`calibration.json`) was
+regenerated end-to-end (re-harvest with the same TTA logic used in production, full re-fit of the
+logistic calibrator) against the same clean, leak-free n=12,788 protocol used throughout this
+paper since 2026-08-25/26. **This is the current citable baseline**, superseding the 75.8/81.1/84.5
+figure reported above:
+
+| Metric | Accuracy |
+|---|---|
+| Species (top-1) | **75.97%** |
+| Genus | **81.29%** |
+| Family | **84.90%** |
+
+Separately, a real Tier-1 photo-count deficit — as opposed to genuine visual cripsis — was
+confirmed and closed for exactly three species this session (`Aglaophenia acacia`, 46→62
+reference embeddings; `Polycitor adriaticus`, 52→72; `Dagetichthys lusitanicus`, 100→113), after
+checking that the great majority of the 20 worst-performing Tier-1 species are *not*
+photo-starved (many of their confusion rivals hold 500–1,000+ reference embeddings already) and
+therefore would not benefit from more of the same-species photography. The production FAISS index
+was rebuilt to include the +49 new embeddings (762,033→762,082) and promoted with the standard
+backup-and-verify procedure.
+
+See the public [STATUS.md](../docs/STATUS.md) and [EXPERIMENTS.md](../docs/EXPERIMENTS.md) for the current project snapshot and full experiment log.
+
 ---
 
-*Paper in preparation. Version 2026-08-25. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*
+*Paper in preparation. Version 2026-08-27. Target journals: Biodiversity Data Journal, PeerJ, or Ecological Informatics.*

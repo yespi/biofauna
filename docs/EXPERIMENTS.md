@@ -1,6 +1,6 @@
 # BioFauna — Experiments (condensed)
 
-> Public summary of ablations through **2026-08-25**.  
+> Public summary of ablations through **2026-08-27**.  
 > Trusted metric: observation-stratified `harvest_calib` species top-1.
 
 ## Kept in production
@@ -11,7 +11,8 @@
 | k-NN **k=25 → k=15** | **+1.1pp** (70.6% → 71.7%) |
 | Full SSD+HDD-archive re-embed, catalog expanded to ~4,700 target spp | **+3.7pp** vs. original cohort (71.7% → **75.8%** clean / n=12,788 dedup, was reported as 75.4%/n=22,332 before a calibration-set leakage fix — see below) — closed the archive-gap regression |
 | Hierarchical fallback (`MIN_RISK`, family margin) | ~**+2pp weighted** (not species top-1) |
-| Logistic calibration + AutoID p≥0.90 | **95.5%** precision @ **30.2%** coverage |
+| Logistic calibration + AutoID p≥0.80 | ~**95.3%** precision @ ~**57.4%** coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation throughput; both operating points are valid, the platform runs at the lower threshold) |
+| **Test-time augmentation** (query embedding averaged with its own 90% center crop, 2026-08-26/27) | **+0.21 to +0.75pp** species depending on eval protocol (see below) — **the only technique in this project's history to beat the frozen-backbone k-NN baseline without a data-quality fix** |
 
 ## Closed / negative (do not repeat as-is)
 
@@ -26,6 +27,10 @@
 | **QLoRA on BioCLIP-2 ViT-L, 2026-08-24** | Base-model mismatch: ViT-L (768-dim) vs. production ViT-H (1024-dim) — incompatible architecture, discarded before evaluation |
 | **LoRA on ViT-H backbone, full catalog scale, 2026-08-24/25** | Trained ArcFace head + last 4 backbone blocks on 1,358 of 2,934 species. **−31.2pp** species on the full n=22,332 eval (75.4% → 44.2%; the 75.4% figure was later found to include ~43% leaked calibration samples, see below — a ~1pp shift on the clean subset does not change this verdict). Overfit to the fine-tuned species subset, distorted the shared embedding space for the rest. No cutover. |
 | **Linear projection head ("head sidecar") on frozen ViT-H, 2026-08-25** | 512-dim head trained on top of standard embeddings (backbone untouched), full 3,878-species catalog, 40 epochs. Training-time mini-set (n=800) suggested +2.6pp, but the full n=22,332 eval showed a **net regression**: species 74.8% (−0.6pp), genus 80.7% (−1.1pp), family 84.6% (−1.1pp). No cutover — even a lower-risk, backbone-frozen fine-tune did not beat plain k-NN retrieval. |
+| **Prototype/embedding outlier filtering, median-cosine, 2026-08-26** | Two thresholds tested on `embeddings.npy` before prototype averaging. Thr=0.5: **73.93%** (−0.21pp). Thr=0.7: **72.69%** (−1.45pp). Monotonic degradation — filtered legitimate intra-species variation, not noise. No sidecar, no cutover. |
+| **Widened same-genus abstention margin, 2026-08-26** | Simulated raising the shared-genus abstention threshold (production 0.06) for the genera involved in same-genus confusion pairs. Even the smallest step (→0.10) cost **152** currently-correct species predictions to recover only **17** genuine errors (≈9:1 against). No change. |
+| **Non-oracle "prefer epibiont" re-ranking rule, 2026-08-26/27** | Deployable rule (does not use the ground-truth label): when the current top-1 is a known host species and its parasite/epibiont partner appears anywhere in the same query's own top-k, override to the partner. Simulated over all errors: 216 activations, 64 fixed / 116 broken (genuine host photos with the partner as top-k noise) — **net −0.23pp species, −0.26pp genus**. Below the pre-registered +0.3pp bar. No change. |
+| **SupCon contrastive re-ranker scoped to 20 heaviest cryptic pairs, frozen ViT-H, 2026-08-27** | Small projection head (1024→512→256) trained with Supervised Contrastive Loss, hard-negative (cryptic partner) + mandatory easy-negative (different genus) batch sampling, trained exclusively on the reference gallery (anti-leak by construction — never touched the n=12,788 eval set). **Two independent hyperparameter regimes** (LR 1e-3 unregularized; LR 5e-5 + dropout 0.3 + weight decay 1e-2) both showed per-pair validation loss diverging monotonically from **epoch 1** while training loss kept falling — textbook memorization, reproducible across very different optimizer settings. **Pre-registered kill-switch invoked before the n=12,788 evaluation was ever run**, saving that compute. Checkpoint destroyed. Third independent architecture (after full-backbone LoRA and the frozen-backbone linear head) to fail to extract a generalizable signal from this embedding space at this data regime. |
 
 ## Evaluation hygiene
 
@@ -39,7 +44,8 @@
 - DINOv3 embeddings extracted (~1,301 spp) — **not** yet calibrated as a production encoder
 - QLoRA via **torchao/hqq** (bitsandbytes incompatible with our open_clip ViT-H path)
 - Confident learning / Macro-F1 dashboards / curator-correction log
-- No parameter-efficient fine-tuning variant (LoRA, QLoRA, head sidecar) has yet beaten the frozen-backbone k-NN baseline at any catalog scale tried so far
+- No parameter-efficient or contrastive fine-tuning variant (LoRA, QLoRA, linear head sidecar, SupCon re-ranker) has yet beaten the frozen-backbone k-NN baseline at any catalog scale or scope tried so far — this line of attack is considered closed for the current data regime (see the SupCon entry above); the plausible remaining levers are more photos for genuinely photo-starved species (not just "Tier 1" — verify against confusion-rival photo counts first) or a different encoder/signal modality, not more training on top of this one
+- Geographic priors for cryptic pairs: 2 of ~40 scoped species pairs show real, usable geographic separation (`Mesophyllum lichenoides`/`M. expansum`; `Lutraria magna`/`L. lutraria`) after backfilling missing coordinates for species with zero cached observations — small, not yet exploited in the abstention rule
 
 See also: [STATUS.md](STATUS.md), [paper/01_biofauna.md](../paper/01_biofauna.md).
 
@@ -49,7 +55,18 @@ A grid search over the k-NN neighbor count produced a suspicious curve (monotoni
 toward k=1), which led to finding that 42.7% of the calibration photos were duplicates already
 present in the reference gallery (a broken deduplication check, pointing at an abandoned
 manifest path from an earlier migration). Fixed with a direct embedding-similarity check;
-validated live. **Current baseline on the clean subset (n=12,788): 75.8% species / 81.1% genus /
+validated live. **Baseline on the clean subset (n=12,788) at the time: 75.8% species / 81.1% genus /
 84.5% family** — close to the previously-reported 75.4%/81.8%/85.7% on n=22,332. Does not change
 any verdict above: both closed fine-tuning experiments regress far more (−31.2pp, −0.6 to
 −1.1pp) than the leakage's effect at the production k=15 setting (~1pp).
+
+## TTA integration and calibration re-fit (2026-08-26/27)
+
+With no further model-side gains found (see the four negative entries above, closed the same
+session), test-time augmentation was integrated into production and the official calibration
+artifact re-generated end-to-end against it (same clean, leak-free n=12,788 harvest). **Current
+citable baseline: 75.97% species / 81.29% genus / 84.90% family** — superseding the 75.8/81.1/84.5
+figure above. Separately, a genuine (not cripsis-driven) photo-count deficit was found and closed
+for exactly 3 species (`Aglaophenia acacia`, `Polycitor adriaticus`, `Dagetichthys lusitanicus`;
++145 photos, +49 reference embeddings after quality filtering), and the FAISS production index was
+rebuilt to include them (762,033 → 762,082 embeddings).
