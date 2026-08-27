@@ -137,13 +137,38 @@ Inference footprint on RTX 3060: BioFauna service ≈ **4.4 GB** VRAM (encoder +
 
 #### 3.2.2 Identification: k-NN over Image Embeddings
 
-1. Embed the query crop with ViT-H.
-2. Retrieve **k=15** nearest gallery embeddings (cosine / inner product on L2-normalized vectors).
-3. Aggregate votes/scores per species; optional geographic prior when GPS is present.
-4. Apply hierarchical fallback when species margin is low (`MIN_RISK`, `FAMILY_MARGIN≈0.08`).
+1. Embed the query crop with ViT-H, averaged with the embedding of its own 90% center crop (test-time augmentation, added 2026-08-26 — see "Post-publication development" below).
+2. Retrieve **k=15** nearest gallery embeddings (cosine / inner product on L2-normalized vectors) via FAISS.
+3. Aggregate votes/scores per species, plus a prototype-similarity boost (`ARC_WEIGHT=3.0`); optional multiplicative geographic prior when GPS is present.
+4. Apply hierarchical fallback when species margin is low (`MIN_RISK`, `FAMILY_MARGIN≈0.06–0.08` across production revisions), including hard-coded cryptic-pair and always-abstain-genus rules (§3.5.5).
 5. Map features → calibrated P(correct) via logistic regression (`fit_calib.py`).
 
-**Why k=15.** Internal grid searches suggested small k values (≈10) maximize accuracy, but photo-level splits inflate absolute numbers. Observation-stratified `harvest_calib` selected **k=15** as the production balance between accuracy and abstention coverage (k=8 measured worse at 71.0%).
+```mermaid
+flowchart TD
+    A["Query photo"] --> B["ViT-H encode\n(original crop)"]
+    A --> C["ViT-H encode\n(90% center crop)"]
+    B --> D["Average + L2-renormalize\n(test-time augmentation)"]
+    C --> D
+    D --> E["FAISS k-NN search\nk=15 over ~762K reference embeddings"]
+    E --> F["Per-species score:\nsum of positive similarities\n+ prototype-similarity boost (x3.0)"]
+    F --> G{"GPS present?"}
+    G -- "Yes" --> H["Multiply by geographic prior\n(distance to species' known range)"]
+    G -- "No" --> I["Skip geo prior"]
+    H --> J["Rank species by score"]
+    I --> J
+    J --> K{"Top-1 vs Top-2 margin\n< threshold AND\nshare genus/family?"}
+    K -- "Yes" --> L["Abstain to genus or family"]
+    K -- "No" --> M["Report species"]
+    J --> N{"Known cryptic pair\nor always-abstain genus?"}
+    N -- "Yes" --> L
+    L --> O["Logistic calibration\n-> P(correct)"]
+    M --> O
+    O --> P["Confidence-gated output\n(AutoID / manual review, see FotoFauna paper)"]
+```
+
+*Figure 1. Production identification pipeline (as of 2026-08-27). The frozen ViT-H encoder and the k-NN retrieval step have been stable since the ablations in §3.3/§4.4; test-time augmentation (top) and the two abstention triggers (bottom) were added later and are documented in "Post-publication development" below.*
+
+**Why k=15.** Internal grid searches suggested small k values (≈10) maximize accuracy, but photo-level splits inflate absolute numbers. Observation-stratified `harvest_calib` selected **k=15** as the production balance between accuracy and abstention coverage (k=8 measured worse at 71.0%). Re-validated twice more in August 2026 (k=[10,15,20,30,40,50,70] grid, monotonic decrease past k=15, no change) — see EXPERIMENTS.md.
 
 #### 3.2.3 Prototype / Gallery Layout
 
