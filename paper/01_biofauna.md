@@ -98,7 +98,29 @@ Most classification systems report a single best-guess prediction. However, in t
 
 In biodiversity, the iNaturalist platform shows a "similar species" list but does not explicitly abstain to higher taxonomic levels. Our work formalizes taxonomic abstention as a decision rule based on k-NN margin and shared taxonomic ancestry.
 
+### 2.6 Glossary of Techniques Used or Tried
 
+This paper uses a number of technique names as shorthand throughout; §3 and §4 assume familiarity with what each one *is*, not just its name. This section is a self-contained reference for a reader who knows biodiversity informatics but not necessarily deep-learning internals.
+
+| Term | What it is | Role in this project |
+|------|-----------|----------------------|
+| **ViT (Vision Transformer)** | A neural network that treats an image as a grid of patches processed with the transformer attention mechanism originally developed for text, rather than the sliding convolutional filters of a classic CNN. | The architecture family behind BioCLIP's image encoder. "ViT-H/14" means the "Huge" size variant with 14×14-pixel patches. |
+| **CLIP-style contrastive pretraining** | Training an image encoder and a text encoder together so that matching image/text pairs end up with similar embedding vectors and non-matching pairs end up dissimilar — no manual class labels required, just paired image/caption (or image/taxon-name) data. | How BioCLIP was pretrained, on image/scientific-name pairs from the Tree of Life, before we ever touch it. |
+| **Embedding** | A fixed-length vector of numbers (1024 of them, here) that a neural network produces to represent an image, such that visually/semantically similar images produce similar vectors. | The unit everything in §3.2 operates on: every gallery photo and every query photo becomes one 1024-dimensional embedding, and identification is entirely a matter of comparing these vectors. |
+| **Frozen backbone** | Using a pretrained network to produce embeddings without updating any of its internal weights — as opposed to fine-tuning, which adjusts some or all of them on new data. | BioFauna's encoder is frozen throughout; every technique in §3.3 that *did* involve training only ever trained a small add-on component, never the encoder itself. |
+| **k-Nearest Neighbors (k-NN)** | A classification method with no training phase at all: to classify a new item, find the *k* most similar items in a reference set (by some distance measure) and let them vote. | BioFauna's actual classifier. There is no learned decision boundary — a query's species is decided by which reference gallery photos its embedding is closest to. |
+| **FAISS** | A library (from Meta AI) for fast nearest-neighbor search over very large collections of vectors — it makes the "find the *k* most similar of 762,082 vectors" step in k-NN run in milliseconds instead of seconds. | The search engine behind our k-NN step; not a machine-learning model itself, an indexing/search data structure. |
+| **Prototype** | The mean embedding of all of one species' reference photos (L2-normalized). A cheap summary of "what this species typically looks like" that is much faster to compare against than every individual reference photo. | Used as a similarity *boost* term alongside the k-NN vote (§3.2.2) — not the primary classifier. |
+| **ArcFace** | A loss function (originally from face recognition) that trains a network to place same-class embeddings on a shared hypersphere with a wide angular margin from other classes — designed to make embeddings *more* separable per-class than plain contrastive training does. | Tried as a trainable head on top of the frozen ViT-H embeddings (§3.3); tied with plain k-NN, no real gain. |
+| **Triplet loss** | A training objective that pulls an "anchor" embedding closer to a "positive" (same class) example and pushes it away from a "negative" (different class) example, one triplet at a time. | Tried in several variants on ViT-H (§3.3); degraded accuracy. |
+| **LoRA (Low-Rank Adaptation)** | A parameter-efficient fine-tuning method: instead of updating a full weight matrix, it learns a small low-rank correction on top of it, drastically reducing the number of trainable parameters and the compute/memory needed to fine-tune a large model. | Tried both as a small pilot and at full catalog scale (§3.3); the full-scale run caused the worst regression of any experiment in this paper. |
+| **QLoRA** | LoRA combined with 4-bit quantization of the frozen base model, to fit fine-tuning of large models into limited GPU memory (here, 12GB). | The originally-planned fine-tuning approach for this project; abandoned after architecture-mismatch and compatibility problems, before it ever produced a fair comparison (§3.3). |
+| **Supervised Contrastive Loss (SupCon)** | A generalization of triplet/contrastive loss that treats *all* same-class examples in a batch as positives and everything else as negatives, rather than hand-picking one positive and one negative at a time. | The loss function behind the scoped re-ranker experiment (§3.3, §4.4) — the most recent and most carefully controlled fine-tuning attempt in this paper, also negative. |
+| **Logistic calibration** | Fitting a logistic-regression model to map a classifier's raw scores to genuine probabilities — "the model says 80%" should mean "correct 80% of the time," which raw similarity scores do not guarantee on their own. | How BioFauna converts k-NN similarity scores into the calibrated confidence used for AutoID's publish/don't-publish decision (§3.6). |
+| **ECE (Expected Calibration Error) / Brier score / NLL** | Standard metrics for *how well calibrated* a set of predicted probabilities is (not how *accurate* the predictions are) — lower is better on all three. | Used throughout §3.6 to judge the calibrator, independently of species-accuracy numbers. |
+| **AUC (Area Under the ROC Curve)** | A standard metric for how well a classifier ranks correct vs. incorrect predictions by confidence, independent of any specific threshold. | Reported alongside calibration metrics in §3.6.3. |
+| **Test-time augmentation (TTA)** | Running inference on more than one transformed version of the same input (here: the original photo and its own 90% center crop) and combining the results, with no training involved at all. | The single technique in this paper's entire experiment history that reliably improved the trusted accuracy metric (§3.3, §4.4). |
+| **Observation-stratified evaluation** | Splitting evaluation data by the citizen-science "observation" (a whole encounter, often with several photos of the same organism) rather than by individual photo, so that near-duplicate photos of the same subject never end up split across the training and test sets. | The evaluation discipline used for every number in §4 (§3.7) — its absence is what caused the calibration-set leak described there. |
 
 ## 3. Methods
 
@@ -140,6 +162,18 @@ flowchart LR
 ```
 
 *Figure 1. Data pipeline from raw observation to production gallery. The contamination scan (§3.1.3) and the calibration-set leakage check (§3.7) are two independent, complementary quality gates — the first protects the training/reference gallery, the second protects the evaluation set used to measure everything in §4.*
+
+### 3.1.4 Species Tiers
+
+The 4,709-species catalog is partitioned into three tiers, used for prioritizing data-collection effort and for reporting accuracy at a finer grain than one global number:
+
+| Tier | Definition | Species | Eval samples (n) | Species accuracy |
+|------|-----------|---------|-------------------|-------------------|
+| 0 | Heterobranchs (sea slugs / nudibranchs and allies) — the taxonomic group our expert collaborators (§3.1.2) specialize in, and historically the most consistently photographed group by users | 636 | 824 | 81.4% |
+| 1 | All other marine species (fish, cnidarians, sponges, crustaceans, algae, etc.) — the numerically dominant, taxonomically broadest tier | 1,527 | 7,282 | 70.6% |
+| 2 | Terrestrial or incidental species (birds, insects, coastal plants, etc.) that appear in FotoFauna photos despite the platform's marine focus, and are identified rather than rejected | 826 | 4,682 | 83.4% |
+
+Tier 1 is both the largest tier and the hardest — consistent with §4.6's error taxonomy, where the dominant error class (Bucket C) is cross-genus visual confusion concentrated in exactly this broad, heterogeneous group. Tiers 0 and 2 score higher for different reasons: Tier 0 benefits from a smaller, better-curated, expert-validated species set; Tier 2 benefits from terrestrial subjects typically being easier to photograph in clear focus and good light than a partially-obscured marine organism. The SupCon experiment's confusion-pair list (§3.3) draws from all three tiers, including Tier 2 pairs (e.g. two *Prunus* cultivars, two dragonfly species) that are cryptic in the same statistical sense as a Tier 1 marine pair, even though they have nothing to do with the sea.
 
 ### 3.2 Model Architecture (Production)
 
@@ -508,6 +542,20 @@ flowchart LR
 4. **Background confusion**: when the organism occupies a small portion of the image, the background (rocks, algae, sand) can dominate the embedding; organism detection (YOLOv8) mitigates but does not eliminate this.
 5. **Life stage variation**: juveniles, breeding coloration, or damaged specimens can look very different from the typical adult form in the gallery.
 6. **Genuine data scarcity**: distinct from cripsis — a species whose confusion rival also has few reference images. Checked directly (not assumed) for the twenty worst-performing lower-tier species: the majority had confusion rivals with 500-1,000+ reference embeddings already, i.e. were not data-starved; exactly three were, and were closed by targeted download (§3.1.3-adjacent maintenance, not a modeling change).
+
+**Worked examples.** The table below gives the top confusion pairs by raw error count, each verified against the mechanism it illustrates (photo-inspected for Bucket A; reference-embedding count checked for the "not data-starved" claim in Bucket B):
+
+| True species | Predicted species | Errors (of 3,215) | Bucket | Rival's reference embeddings | Mechanism |
+|---|---|---|---|---|---|
+| *Hemimycale mediterranea* | *H. columella* | 30 | B | 801 | Same-genus sponge, visually near-identical; rival well-populated, not data-starved |
+| *Calliactis parasitica* | *Dardanus calidus* | 10 | A | 1,000 | Anemone photographed while riding the hermit crab's shell; crab is visually dominant |
+| *Bopyrus crangorum* | *Palaemon elegans* | 8 | A | — | Gill parasite votes for its shrimp host |
+| *Nerocila bivittata* | *Symphodus tinca* | 8 | A | 1,000 | Fish parasite (Cymothoidae) votes for the fish it is attached to |
+| *Halopteris filicina* | *H. scoparia* | 10 | B | 919 | Same-genus hydrozoid, indistinguishable in typical field photos |
+| *Oulastrea crispata* | *Cladocora caespitosa* | 10 | C | — | Cross-genus coral look-alike, no known structural fix |
+| *Anilocra physodes* | *Diplodus vulgaris* | 6 | A | 1,000 | Fish parasite votes for its fish host |
+
+Four of these seven pairs (*Calliactis*/*Dardanus*, *Bopyrus*/*Palaemon*, *Nerocila*/*Symphodus*, *Anilocra*/*Diplodus*) are Bucket A and were each confirmed by opening the actual query photo: in every case, the labeled organism (the parasite or epibiont) is genuinely present and correctly identified by a human, but shares the frame with a larger, more visually salient host that the k-NN vote is drawn toward.
 
 #### 4.6.2 Geographic Priors Do Not Rescue Bucket B
 
