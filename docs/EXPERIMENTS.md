@@ -45,6 +45,8 @@ Motivated directly by the taxonomic-filter post-mortem above: if the encoder's *
 - Long GPU jobs must use `systemd-run --user` or `nohup setsid ... & disown` (shell-attached jobs die when the driving session recycles).
 - A self-consistent training-time mini-set (n=800) is **not predictive** of the full out-of-sample eval (n=22,332): it overstated the head-sidecar result by ~3pp in the optimistic direction, and previously understated how bad the LoRA regression would be.
 
+| **Seasonal (monthly) prior, 2026-08-28** | Circular (von Mises κ=2.0) per-species monthly density, multiplying k=15+prototype-boost scores by month-of-observation density. **Proof of concept on 376 species with dense local coverage (median 414 obs/species, multi-year, from a local warehouse) was positive: 79.87%→80.80% (+0.93pp, n=1,401).** Scaling to the full 2,989-species catalog via the public API failed across three iterations: 100-most-recent-observations sampling regressed even with a minimum-density guardrail (best case −0.52pp) due to recency bias; fixing an unimplemented test-set leak (7,855/87,700 downloaded observations, 8.96%, were test-set members) made the ungated regression worse (−1.65pp), confirming the leak had been propping up the earlier number; month-balanced sampling (12 requests/species instead of 1, ~31k calls, same rate limit) closed most of the gap (−0.73pp→−0.19pp at N≥50) but never reached positive. The mechanism works; the available data density does not scale to it. No cutover. See paper §4.10. |
+
 ## Still open
 
 - DINOv3 embeddings extracted (~1,301 spp) — **not** yet calibrated as a production encoder
@@ -53,6 +55,7 @@ Motivated directly by the taxonomic-filter post-mortem above: if the encoder's *
 - No parameter-efficient or contrastive fine-tuning variant (LoRA, QLoRA, linear head sidecar, SupCon re-ranker) has yet beaten the frozen-backbone k-NN baseline at any catalog scale or scope tried so far — this line of attack is considered closed for the current data regime (see the SupCon entry above); the plausible remaining levers are more photos for genuinely photo-starved species (not just "Tier 1" — verify against confusion-rival photo counts first) or a different encoder/signal modality, not more training on top of this one
 - Geographic priors for cryptic pairs: 2 of ~40 scoped species pairs show real, usable geographic separation (`Mesophyllum lichenoides`/`M. expansum`; `Lutraria magna`/`L. lutraria`) after backfilling missing coordinates for species with zero cached observations — small, not yet exploited in the abstention rule
 - Independently re-measuring the *combined* full-corpus accuracy of ROI multi-crop fusion + multi-photo late fusion (both now run together in production but were each validated in isolation against their own baseline — see the ROI fusion entry below)
+- In progress: local re-ranking for Bucket B (same-genus cryptic pairs, 685 baseline errors) — when top-1/top-2 share a genus with a narrow confidence margin (<0.05), project onto a pair-local diagonal Fisher/Mahalanobis discriminant direction (computed from that pair's own reference embeddings) to break the tie, rather than a global taxonomic filter
 
 See also: [STATUS.md](STATUS.md), [paper/01_biofauna.md](../paper/01_biofauna.md).
 

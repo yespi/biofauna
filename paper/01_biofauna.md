@@ -714,6 +714,65 @@ Both mechanisms now run together in production (per-photo ROI fusion feeds the c
 late fusion), but the *combined* full-corpus accuracy has not yet been independently
 re-measured on n=12,788. We report both honestly rather than adding them.
 
+### 4.10 A Seasonal Prior Helps on Dense Data but Does Not Scale Through the Available API (2026-08-28)
+
+Species phenology is a natural complementary signal to the existing geographic prior: a
+species observed in a given month, at a given location, should be weighted toward months it
+is actually known to be active. We tested a circular (von Mises, κ=2.0) monthly density per
+species, multiplying the fused k=15+prototype-boost score of each candidate by its density
+at the query's observation month, mean-normalized so an "average" month is a no-op.
+
+**Proof of concept on dense local data.** A local PostgreSQL warehouse (BioQuest's
+`public_observations` table, 1,026,338 rows) has complete year-round month coverage for 376
+of the 2,989 target species — a median of 414 historical observations per species, spanning
+multiple years, because those are the species the BioQuest product actively tracks. Restricted
+to queries of those 376 species (n=1,401, test-set observations excluded from the histogram
+by construction via SQL): **79.87% → 80.80% (+0.93pp)**. A clean, reproducible positive
+result on data with genuine seasonal representativeness.
+
+**Scaling to the full catalog failed, in an instructive way, across three iterations.** The
+remaining 2,613 species have no local coverage; building their profiles requires querying
+Minka directly.
+
+1. *v1/v2 — 100 most-recent observations per species* (`order_by=id desc`, the default and
+   most obvious query shape): net regression at every density threshold tested, even with a
+   minimum-observations guardrail (best case, N≥100: −0.52pp). A "most recent" pull samples a
+   narrow, recency-biased window — not a full annual cycle — turning the profile into sampling
+   noise dressed up as phenology. A second pass caught a real, separate bug: v1's docstring
+   claimed to exclude the 12,788 test observations from each species' history, but the
+   aggregated-counts format made that exclusion impossible to apply after the fact. Re-fetched
+   with `obs_id` retained: 7,855 of 87,700 downloaded observations (8.96%) were in fact test-set
+   members, contaminating the "training" profile with the query's own answer. Fixing the leak
+   made the *un-gated* regression worse (−1.65pp), confirming the leak had been quietly
+   propping up the earlier number.
+2. *v3 — month-balanced sampling*: instead of one recency-biased pull, 12 requests per
+   species (`month=1..12`, ~31,356 calls total, held to the same ~4 req/s rate limit despite
+   the 12× request volume — cost absorbed as wall-clock time, ~2 hours, not query pressure).
+   This substantially closed the gap: N≥50 improved from −0.73pp to **−0.19pp** (227 fixed vs.
+   251 broken, n=12,788) — confirming that *representativeness*, not just sample count, was
+   the missing variable. It still never crosses into positive territory. Breakdown against the
+   three error buckets (§4.6): Bucket A (documented cryptic pairs) 9.9% of baseline errors
+   fixed, Bucket B (same-genus) 9.8%, Bucket C (cross-group) 4.0% — none compensate for what
+   the prior breaks elsewhere.
+
+**Verdict: closed, no cutover.** The proof of concept is real and reproducible, but it
+depends on a data density (a multi-year median of ~400 observations per species) that Minka's
+public API does not supply for the full catalog, even under careful month-balanced sampling
+and density guardrails. The mechanism itself works; the fuel does not scale.
+
+**An unrelated infrastructure bug surfaced and fixed during this work.** A system-level file
+(`/etc/profile.d/hf_token.sh`, not part of this repository, created by `root` outside of any
+project process) exported a stale Hugging Face token for every user and every login shell on
+the host, silently shadowing the correct token loaded from the project's canonical secrets
+file on every run. This was the root cause of a previously-documented "the same token bug
+keeps coming back" pattern — the recurrence was never in this codebase, but in an orphaned
+system file nothing here could see or fix. Removed, together with a redundant
+`huggingface_hub.login()` call in the shared bootstrap helper that produced a confusing (but
+harmless) warning on every single run merely because it passed an explicit token while the
+same environment variable was already set moments earlier by that same function. Verified
+with a live `whoami()` call against the Hugging Face API and a temporary stack-trace probe
+into the installed library to confirm no other code path in the pipeline calls `login()`.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)

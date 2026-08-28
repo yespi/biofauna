@@ -703,6 +703,71 @@ foto alimenta la late fusion entre fotos), pero el acierto combinado sobre el co
 completo no se ha re-medido de forma independiente sobre n=12.788. Reportamos ambas cifras
 con honestidad en vez de sumarlas.
 
+### 4.10 Un prior estacional ayuda con datos densos pero no escala a través de la API disponible (2026-08-28)
+
+La fenología de una especie es una señal complementaria natural al geo-prior existente: una
+especie observada en un mes dado, en un lugar dado, debería ponderarse hacia los meses en
+que realmente se sabe activa. Probamos una densidad mensual circular (von Mises, κ=2,0) por
+especie, multiplicando el score fusionado k=15+refuerzo de prototipo de cada candidato por
+su densidad en el mes de la observación, normalizada a media para que un mes "típico" sea
+un no-op.
+
+**Prueba de concepto sobre datos locales densos.** Un almacén local de PostgreSQL (la tabla
+`public_observations` de BioQuest, 1.026.338 filas) tiene cobertura completa de mes a lo
+largo del año para 376 de las 2.989 especies objetivo — mediana de 414 observaciones
+históricas por especie, multi-año, porque son las especies que BioQuest rastrea activamente.
+Restringido a consultas de esas 376 especies (n=1.401, obs de test excluidas del histograma
+por construcción vía SQL): **79,87% → 80,80% (+0,93pp)**. Un resultado positivo limpio y
+reproducible sobre datos con representatividad estacional genuina.
+
+**Escalar al catálogo completo falló, de forma instructiva, en tres iteraciones.** Las 2.613
+especies restantes no tienen cobertura local; construir sus perfiles requiere consultar
+Minka directamente.
+
+1. *v1/v2 — 100 observaciones más recientes por especie* (`order_by=id desc`, la forma de
+   consulta más obvia y por defecto): regresión neta en todos los umbrales de densidad
+   probados, incluso con un guardarraíl de mínimo de observaciones (mejor caso, N≥100:
+   −0,52pp). Un tirón de "más recientes" muestrea una ventana estrecha sesgada por recencia
+   — no un ciclo anual completo — convirtiendo el perfil en ruido de muestreo disfrazado de
+   fenología. Un segundo pase detectó un bug real y separado: el docstring de v1 afirmaba
+   excluir las 12.788 observaciones de test del histórico de cada especie, pero el formato
+   de conteos agregados hacía imposible aplicar esa exclusión a posteriori. Re-descargado con
+   `obs_id` retenido: 7.855 de 87.700 observaciones descargadas (8,96%) eran de hecho
+   miembros del test set, contaminando el perfil de "entrenamiento" con la propia respuesta
+   de la consulta. Arreglar la fuga empeoró la regresión *sin guardarraíl* (−1,65pp),
+   confirmando que la fuga había estado sosteniendo artificialmente la cifra anterior.
+2. *v3 — muestreo balanceado por mes*: en vez de un tirón sesgado por recencia, 12
+   peticiones por especie (`month=1..12`, ~31.356 llamadas totales, mantenidas al mismo
+   límite de ~4 req/s pese al volumen x12 — el coste se absorbió en tiempo de reloj, ~2h, no
+   en presión sobre la API). Esto cerró sustancialmente la brecha: N≥50 mejoró de −0,73pp a
+   **−0,19pp** (227 arreglados frente a 251 rotos, n=12.788) — confirmando que la
+   *representatividad*, no solo el conteo de muestras, era la variable que faltaba. Aun así,
+   nunca cruza a territorio positivo. Desglose contra los tres cubos de error (§4.6): Cubo A
+   (pares crípticos documentados) 9,9% de los errores baseline arreglados, Cubo B (mismo
+   género) 9,8%, Cubo C (cross-grupo) 4,0% — ninguno compensa lo que el prior rompe en otro
+   sitio.
+
+**Veredicto: cerrado, sin cutover.** La prueba de concepto es real y reproducible, pero
+depende de una densidad de datos (mediana multi-año de ~400 observaciones por especie) que
+la API pública de Minka no ofrece para el catálogo completo, ni siquiera con muestreo
+mensual balanceado y guardarraíles de densidad cuidadosos. El mecanismo en sí funciona; el
+combustible no escala.
+
+**Un bug de infraestructura no relacionado salió a la luz y se corrigió durante este
+trabajo.** Un fichero a nivel de sistema (`/etc/profile.d/hf_token.sh`, no parte de este
+repositorio, creado por `root` fuera de cualquier proceso del proyecto) exportaba un token
+de Hugging Face obsoleto para cada usuario y cada sesión de login del host, pisando en
+silencio el token correcto cargado desde el fichero canónico de secretos del proyecto en
+cada ejecución. Esta era la causa raíz de un patrón ya documentado de "el mismo bug del
+token vuelve a aparecer" — la recurrencia nunca estuvo en este código, sino en un fichero
+de sistema huérfano que nada aquí podía ver ni arreglar. Eliminado, junto con una llamada
+redundante a `huggingface_hub.login()` en el ayudante de arranque compartido que producía un
+aviso confuso (pero inofensivo) en cada ejecución simplemente por pasar un token explícito
+mientras esa misma variable de entorno ya estaba puesta momentos antes por esa misma
+función. Verificado con una llamada `whoami()` real contra la API de Hugging Face y una
+sonda temporal de rastreo de pila en la librería instalada para confirmar que ningún otro
+punto del pipeline llama a `login()`.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)
