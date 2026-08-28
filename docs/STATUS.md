@@ -1,14 +1,14 @@
 # BioFauna — Project Status (public)
 
-> **2026-08-27** · Full-corpus OOS baseline: **75.97% species / 81.29% genus / 84.90% family** (n=12,788, deduplicated, TTA in production); **76.76% species with multi-photo late fusion**, now live in production for observations with 2+ photos  
-> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27); **multi-photo observation fusion shipped to production** (Aug 27) — see notes below
+> **2026-08-27** · Full-corpus OOS baseline: **75.97% species / 81.29% genus / 84.90% family** (n=12,788, deduplicated, old crop90 TTA); **76.84% single-photo with ROI multi-crop fusion** (replaces crop90 TTA, +1.63pp vs. its own no-TTA baseline) and **76.76% species with multi-photo late fusion** — both now live in production simultaneously (per-photo ROI fusion feeds the cross-photo late fusion); the *combined* full-corpus accuracy of both stacked has not yet been independently re-measured on n=12,788, see note below  
+> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27); **multi-photo observation fusion shipped to production, taxonomic consensus re-ranking closed as negative, ROI multi-crop fusion shipped to production replacing crop90 TTA** (Aug 27) — see notes below
 
 ## Production stack
 
 | Piece | Setting |
 |-------|---------|
 | Encoder | BioCLIP-2.5 ViT-H (1024-dim), **frozen** |
-| Retrieval | k-NN **k=15** + logistic calibration, **test-time augmentation** (query + 90% center crop, averaged) |
+| Retrieval | k-NN **k=15** + logistic calibration, **ROI multi-crop fusion** (query + strict 65% center crop, 50/50 weighted average, re-normalized — replaces the prior 90%-crop TTA, see §4.9) |
 | Storage | Active SSD gallery + **HDD archive** (full-resolution backup per species), now unified in re-embedding |
 | AutoID | p≥0.80 → ~95.3% precision at ~57.4% coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation volume; see AutoID note below) |
 | Fallback | Hierarchical species→genus→family + iNaturalist CV cross-check |
@@ -20,9 +20,10 @@
 | **Paper baseline** (Aug 2026, ~810 spp cohort) | **71.7%** | Original observation-stratified `harvest_calib` |
 | **Full corpus, deduplicated** (Aug 25-26 2026, n=12,788) | **75.8%** | Post archive-gap fix + calibration-set dedup; genus 81.1%, family 84.5% |
 | **+ TTA, current** (Aug 27 2026, n=12,788) | **75.97%** | Test-time augmentation added, calibration re-fit end-to-end; genus 81.29%, family 84.90% |
-| **+ Multi-photo late fusion, current** (Aug 27 2026, n=12,788) | **76.76%** | Zero-training inference-time fusion for observations with 2+ photos (25.1% of corpus); 84.70% on that subset alone. See paper §4.7 |
+| **+ Multi-photo late fusion** (Aug 27 2026, n=12,788) | **76.76%** | Zero-training inference-time fusion for observations with 2+ photos (25.1% of corpus); 84.70% on that subset alone. See paper §4.7. Measured on top of the crop90 TTA baseline (75.97%), not the ROI fusion below |
+| **ROI multi-crop fusion, current** (Aug 27 2026, n=12,788, single photo) | **76.84%** | Global (100%) + strict center crop (65%) embeddings, 50/50 weighted, replaces crop90 TTA in production; +1.63pp vs. its own no-TTA baseline (75.21%), cleanly recovers 130 of 1,038 cross-taxonomic-group errors. See paper §4.9 |
 
-Do not compare these numbers without noting corpus size and embedding coverage.
+Do not compare these numbers without noting corpus size and embedding coverage. The multi-photo and ROI-fusion rows were each measured against their **own** baseline in isolation — both run together in production now, but the combined full-corpus number has not yet been separately re-measured.
 
 ## Archive gap (August 2026) — closed
 

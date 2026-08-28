@@ -668,6 +668,52 @@ exploit it — the next candidate approach is cleaning the model's visual *input
 background/substrate before the encoder sees it) rather than re-ranking a possibly
 contaminated embedding after the fact.
 
+### 4.9 ROI Multi-Crop Fusion Cleans the Input and Recovers Cross-Group Errors (2026-08-27, shipped)
+
+Direct follow-up to §4.8: if the k-NN retrieval step itself already votes for the wrong
+taxonomic group because the *encoder input* is contaminated by background/substrate,
+cleaning the crop before BioCLIP-2.5 sees it — rather than re-ranking a possibly
+contaminated embedding afterward — is the mechanistically correct place to intervene.
+
+**Method.** Three per-photo embedding strategies, compared on the full n=12,788 corpus
+(single view each, no test-time augmentation, to isolate the crop effect cleanly — this
+baseline is therefore *not* directly comparable to the official 75.97% TTA figure):
+global (100% frame); a strict center crop (65% of each linear dimension, removing ~35% of
+the border); and a 50/50 weighted fusion of the two, L2-renormalized, with a single k-NN
+pass on the fused vector.
+
+| Strategy | Species accuracy (n=12,788) | Δ vs. global | Cross-group errors fixed (of 1,038) | Correct predictions broken |
+|---|---|---|---|---|
+| Global (100%, no TTA) | 75.21% | — | 0 | — |
+| Center crop (65%) alone | 75.81% | +0.60pp | 186 | 624 |
+| **50/50 fusion (global + 65% crop)** | **76.84%** | **+1.63pp** | 130 | 266 |
+
+The strict crop alone does recover real signal, but at a steep cost — discarding
+peripheral context indiscriminately breaks 624 previously-correct predictions, presumably
+species where surrounding context (substrate, epibiont host, colonial structure) is
+genuinely informative rather than noise. The fusion keeps both signals and lands a much
+healthier trade: **+1.63pp net, 130 of 1,038 cross-taxonomic-group errors (§4.6.1) cleanly
+recovered, only 266 broken** — more than double the gain the prior 90%-crop TTA achieved
+over its own no-TTA baseline (+0.75pp).
+
+**Shipped to production.** The production TTA mechanism was already computing exactly this
+operation — average two views' L2-normalized embeddings with equal weight, then
+re-normalize — for a milder 90% center crop. The fix was a single-parameter change:
+`CROP_FRAC_ROI = 0.65` replacing `0.9`, no other code touched. It runs per-photo inside the
+multi-photo late-fusion pipeline (§4.7) exactly as the prior TTA did — kNN, prototype
+boost, geo-prior, Bayesian minimum-risk abstention, calibration, cryptic-pair penalties,
+and taxonomic exceptions are all unaffected, since they operate on whichever fused
+embedding they're handed. *N*=1 reduces exactly to the single-photo case. Verified live
+after restart: single-photo and 2-photo requests both return correct predictions with the
+expected `num_photos_processed`; `/health` healthy; no memory or GPU leak.
+
+**A methodological caveat.** The 76.84% figure and the 76.76% multi-photo late-fusion
+figure (§4.7) were each measured in isolation against their own baseline — the former
+against a single-view no-TTA baseline, the latter against the old 90%-crop TTA baseline.
+Both mechanisms now run together in production (per-photo ROI fusion feeds the cross-photo
+late fusion), but the *combined* full-corpus accuracy has not yet been independently
+re-measured on n=12,788. We report both honestly rather than adding them.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)

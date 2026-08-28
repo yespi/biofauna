@@ -653,6 +653,56 @@ Phylum/Clase no puede explotarla — el siguiente candidato es limpiar la *entra
 del modelo (excluir fondo/sustrato antes de que el codificador lo vea) en vez de re-
 rankear a posteriori un embedding posiblemente ya contaminado.
 
+### 4.9 La fusión ROI multi-crop limpia la entrada y recupera errores cross-grupo (2026-08-27, en producción)
+
+Continuación directa del §4.8: si el propio paso de recuperación kNN ya vota por el grupo
+taxonómico equivocado porque la *entrada* del codificador está contaminada por
+fondo/sustrato, limpiar el recorte antes de que BioCLIP-2.5 lo vea — en vez de re-rankear
+a posteriori un embedding posiblemente ya contaminado — es el punto de intervención
+mecánicamente correcto.
+
+**Método.** Tres estrategias de embedding por foto, comparadas sobre el corpus completo
+n=12.788 (una sola vista cada una, sin aumento en tiempo de test, para aislar limpiamente
+el efecto del recorte — este baseline por tanto *no* es directamente comparable a la
+cifra oficial del 75,97% con TTA): global (100% del encuadre); recorte central estricto
+(65% de cada dimensión lineal, eliminando ~35% del borde); y una fusión ponderada 50/50 de
+ambas, re-normalizada L2, con una única búsqueda kNN sobre el vector fusionado.
+
+| Estrategia | Acierto especie (n=12.788) | Δ vs. global | Errores cross-grupo arreglados (de 1.038) | Predicciones correctas rotas |
+|---|---|---|---|---|
+| Global (100%, sin TTA) | 75,21% | — | 0 | — |
+| Recorte central (65%) solo | 75,81% | +0,60pp | 186 | 624 |
+| **Fusión 50/50 (global + recorte 65%)** | **76,84%** | **+1,63pp** | 130 | 266 |
+
+El recorte estricto solo sí recupera señal real, pero a un coste alto — descartar el
+contexto periférico sin criterio rompe 624 predicciones previamente correctas,
+presumiblemente especies donde el contexto circundante (sustrato, huésped epibionte,
+estructura colonial) es genuinamente informativo y no ruido. La fusión conserva ambas
+señales y consigue un intercambio mucho más sano: **+1,63pp netos, 130 de 1.038 errores
+cross-grupo taxonómico (§4.6.1) recuperados limpiamente, solo 266 rotos** — más del doble
+de la ganancia que el TTA anterior de recorte al 90% consiguió sobre su propio baseline
+sin TTA (+0,75pp).
+
+**Desplegado a producción.** El mecanismo de TTA de producción ya calculaba exactamente
+esta operación — promediar los embeddings L2-normalizados de dos vistas con igual peso y
+re-normalizar — para un recorte central al 90%, más suave. El arreglo fue un cambio de un
+solo parámetro: `CROP_FRAC_ROI = 0.65` sustituyendo a `0.9`, sin tocar nada más del
+código. Corre por foto dentro de la tubería de late fusion multi-foto (§4.7) exactamente
+igual que el TTA anterior — kNN, refuerzo de prototipo, geo-prior, abstención bayesiana de
+mínimo riesgo, calibración, penalización de pares crípticos y excepciones taxonómicas no
+se ven afectados, ya que todos operan sobre el embedding fusionado que reciban, venga de
+donde venga. *N*=1 se reduce exactamente al caso de una sola foto. Verificado en vivo tras
+el reinicio: peticiones de 1 y 2 fotos devuelven ambas predicciones correctas con el
+`num_photos_processed` esperado; `/health` sano; sin fuga de memoria ni de GPU.
+
+**Una salvedad metodológica.** La cifra del 76,84% y la del 76,76% de late fusion
+multi-foto (§4.7) se midieron cada una de forma aislada contra su propio baseline — la
+primera contra un baseline de una sola vista sin TTA, la segunda contra el antiguo TTA de
+recorte al 90%. Ambos mecanismos corren juntos en producción ahora (la fusión ROI por
+foto alimenta la late fusion entre fotos), pero el acierto combinado sobre el corpus
+completo no se ha re-medido de forma independiente sobre n=12.788. Reportamos ambas cifras
+con honestidad en vez de sumarlas.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)
