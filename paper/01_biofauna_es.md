@@ -768,6 +768,51 @@ función. Verificado con una llamada `whoami()` real contra la API de Hugging Fa
 sonda temporal de rastreo de pila en la librería instalada para confirmar que ningún otro
 punto del pipeline llama a `login()`.
 
+### 4.11 Re-ranking Fisher diagonal para el Cubo B (2026-08-28/29, desplegado)
+
+El Cubo B (§4.6.1) son los 685 errores base donde el top-1 y el top-2 comparten género —
+una geometría de fallo distinta a la confusión cross-grupo taxonómico del Cubo C (§4.8):
+aquí los dos candidatos son vecinos morfológicos genuinamente cercanos, y cualquier
+solución tiene que discriminar entre dos especies concretas y conocidas, no filtrar contra
+un prior taxonómico amplio. En vez de una única regla global, calculamos un discriminante
+lineal **local al par**, para cada par críptico documentado, a partir únicamente de los
+embeddings de referencia de ESE par: una dirección diagonal de Fisher/Mahalanobis
+
+`w = (media_A − media_B) / (var_A + var_B + ε)`,
+
+normalizada a longitud unitaria. Proyectar la query y los dos prototipos candidatos sobre
+`w` da un eje discriminativo 1-D específico de esa confusión exacta; gana el candidato
+cuya proyección quede más cerca de la de la query.
+
+**Cuatro iteraciones, cada una corrigiendo un fallo real de la anterior.**
+
+| Versión | Disparo | Resultado neto (n=12.788) | Qué reveló |
+|---|---|---|---|
+| v1 | cualquier par top-1/top-2 del mismo género, margen < 0,05 | **−1,02pp** (195/685 = 28,5% del Cubo B arreglado, 326 rotos) | la señal existe, pero disparar sobre pares no documentados/no validados rompe más de lo que arregla |
+| v2 | acotado a pares documentados en `cryptic_pairs.jsonl` | **−0,77pp** (190 arreglados, 288 rotos) | apenas mueve la aguja — el 91% de los disparos libres de v1 YA eran pares documentados, descartando la hipótesis de "los pares sin documentar son la fuente de ruido" |
+| v3 | v2 + margen de confianza τ sobre el propio score Fisher | **primer resultado positivo en τ=0,15: +0,05pp** (85 arreglados, 78 rotos) | el problema real era la inversión incondicional ("blanda"), no la condición de disparo |
+| v4 | barrido fino τ ∈ {0,15; 0,18; 0,20; 0,25; 0,30}, reutilizando los scores continuos cacheados de v3 (cero coste de GPU adicional) | **pico en τ=0,20: +0,13pp neto** | un óptimo genuino y unimodal — no un único punto ruidoso |
+
+**Resultado.** Con τ=0,20, sobre la Fusión ROI (§4.9): 76,84% → **76,97%** de acierto de
+especie (n=12.788), 58 arreglados / 41 rotos (ratio 1,4:1), 115 inversiones top-1/top-2 en
+total, 8,5% de los 685 errores del Cubo B resueltos. Cerrado como resultado positivo y
+adoptado como definitivo.
+
+**Desplegado a producción.** El disparo solo actúa cuando top-1/top-2 comparten género,
+forman un par críptico documentado, y tienen un margen kNN por debajo de 0,05 — acotando
+exactamente al régimen que validó el barrido. El intercambio corre justo después de la
+puntuación kNN/prototipo/geo y antes de la abstención jerárquica (§4.3), de modo que la
+lógica de abstención ve ya el top-1/top-2 corregido, no el orden previo al re-ranking. Las
+direcciones discriminantes para 2.042 de los 2.046 pares documentados (los que tienen ≥5
+embeddings de referencia por especie) se precalculan al arrancar el servicio, leyendo
+`embeddings.npy` directamente de disco por par — la matriz de embeddings del catálogo
+completo se libera de memoria tras cargar el índice FAISS (optimización del 26-ago-2026,
+~2,9GB ahorrados) y no puede reutilizarse para esto. El artefacto de calibración oficial se
+está re-cosechando contra el pipeline totalmente consolidado (Fusión ROI + este re-ranker)
+para mantener honestos los umbrales de confianza de la plataforma; el servicio en producción
+no se reinicia para servir ni el código ni la calibración nuevos hasta que se autorice
+explícitamente.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)

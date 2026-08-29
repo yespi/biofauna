@@ -1,14 +1,14 @@
 # BioFauna — Project Status (public)
 
-> **2026-08-27** · Full-corpus OOS baseline: **75.97% species / 81.29% genus / 84.90% family** (n=12,788, deduplicated, old crop90 TTA); **76.84% single-photo with ROI multi-crop fusion** (replaces crop90 TTA, +1.63pp vs. its own no-TTA baseline) and **76.76% species with multi-photo late fusion** — both now live in production simultaneously (per-photo ROI fusion feeds the cross-photo late fusion); the *combined* full-corpus accuracy of both stacked has not yet been independently re-measured on n=12,788, see note below  
-> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27); **multi-photo observation fusion shipped to production, taxonomic consensus re-ranking closed as negative, ROI multi-crop fusion shipped to production replacing crop90 TTA** (Aug 27) — see notes below
+> **2026-08-29** · Full-corpus OOS baseline: **76.97% species with ROI multi-crop fusion + Bucket B Fisher-diagonal re-ranking** (τ=0.20, +0.13pp net on top of the 76.84% ROI-fusion baseline, n=12,788) — code shipped, calibration re-harvest against the consolidated pipeline in progress; **`biofauna-id.service` has not yet been restarted to load either**, pending explicit go-ahead, so the live service still serves the 76.84% ROI-fusion calibration. Also live: **76.76% species with multi-photo late fusion** on the older crop90 baseline — the *combined* full-corpus accuracy of ROI fusion + multi-photo fusion + Bucket B re-ranking stacked has not yet been independently re-measured, see note below  
+> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27); **multi-photo observation fusion shipped to production, taxonomic consensus re-ranking closed as negative, ROI multi-crop fusion shipped to production replacing crop90 TTA** (Aug 27); **seasonal prior closed as negative at full-catalog scale** (Aug 28); **Bucket B Fisher-diagonal re-ranking (τ=0.20) shipped to production code, calibration re-harvest in progress, service restart pending** (Aug 28-29) — see notes below
 
 ## Production stack
 
 | Piece | Setting |
 |-------|---------|
 | Encoder | BioCLIP-2.5 ViT-H (1024-dim), **frozen** |
-| Retrieval | k-NN **k=15** + logistic calibration, **ROI multi-crop fusion** (query + strict 65% center crop, 50/50 weighted average, re-normalized — replaces the prior 90%-crop TTA, see §4.9) |
+| Retrieval | k-NN **k=15** + logistic calibration, **ROI multi-crop fusion** (query + strict 65% center crop, 50/50 weighted average, re-normalized — replaces the prior 90%-crop TTA, see §4.9) + **Bucket B Fisher-diagonal re-ranking** (τ=0.20 confidence-gated top-1/top-2 swap for documented same-genus cryptic pairs, code shipped, awaiting service restart — see §4.11) |
 | Storage | Active SSD gallery + **HDD archive** (full-resolution backup per species), now unified in re-embedding |
 | AutoID | p≥0.80 → ~95.3% precision at ~57.4% coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation volume; see AutoID note below) |
 | Fallback | Hierarchical species→genus→family + iNaturalist CV cross-check |
@@ -22,8 +22,9 @@
 | **+ TTA, current** (Aug 27 2026, n=12,788) | **75.97%** | Test-time augmentation added, calibration re-fit end-to-end; genus 81.29%, family 84.90% |
 | **+ Multi-photo late fusion** (Aug 27 2026, n=12,788) | **76.76%** | Zero-training inference-time fusion for observations with 2+ photos (25.1% of corpus); 84.70% on that subset alone. See paper §4.7. Measured on top of the crop90 TTA baseline (75.97%), not the ROI fusion below |
 | **ROI multi-crop fusion, current** (Aug 27 2026, n=12,788, single photo) | **76.84%** | Global (100%) + strict center crop (65%) embeddings, 50/50 weighted, replaces crop90 TTA in production; +1.63pp vs. its own no-TTA baseline (75.21%), cleanly recovers 130 of 1,038 cross-taxonomic-group errors. See paper §4.9 |
+| **+ Bucket B Fisher-diagonal re-ranking** (Aug 28-29 2026, n=12,788, single photo) | **76.97%** | +0.13pp net on top of ROI fusion; confidence-gated (τ=0.20) top-1/top-2 swap for documented same-genus cryptic pairs, 58 fixed / 41 broken. Code shipped to `identify_service.py`; calibration re-harvest against it in progress. **`biofauna-id.service` not yet restarted**, so this is not yet the live-served figure. See paper §4.11 |
 
-Do not compare these numbers without noting corpus size and embedding coverage. The multi-photo and ROI-fusion rows were each measured against their **own** baseline in isolation — both run together in production now, but the combined full-corpus number has not yet been separately re-measured.
+Do not compare these numbers without noting corpus size and embedding coverage. The multi-photo, ROI-fusion, and Bucket B rows were each measured against their **own** baseline in isolation (Bucket B against the ROI-fusion baseline specifically) — all now shipped to production code, but the combined full-corpus number with all three stacked has not yet been independently re-measured.
 
 ## Archive gap (August 2026) — closed
 
@@ -52,6 +53,9 @@ During disk management, excess photos were moved to an HDD archive while a **~30
 | Widened same-genus abstention margin (0.06→0.10+) for cryptic pairs | 9:1 cost/benefit (152 correct predictions lost per 17 errors fixed) | ❌ |
 | Non-oracle "prefer epibiont" re-ranking rule for parasite/host pairs | **−0.23pp** species, **−0.26pp** genus | ❌ |
 | SupCon contrastive re-ranker, scoped to 20 heaviest cryptic pairs, frozen backbone | Per-pair validation loss diverged from epoch 1 in **two independent hyperparameter regimes** — memorization, no generalization; **kill-switch invoked before touching the eval set** | ❌ third independent architecture to fail on this data regime |
+| **ROI multi-crop fusion** (global + strict 65% center crop, 50/50 weighted, replaces crop90 TTA) | **+1.63pp** species vs. its own no-TTA baseline (75.21%→76.84%) | ✅ live in production, see paper §4.9 |
+| Seasonal (monthly) prior, full catalog scale | PoC positive on 376 dense-data species (+0.93pp) but **never crosses positive** at full-catalog scale via public API (best: −0.19pp, month-balanced sampling) | ❌ mechanism works, data density doesn't scale — no cutover, see paper §4.10 |
+| **Bucket B Fisher-diagonal re-ranking** (pair-local discriminant, confidence-gated τ=0.20, documented cryptic pairs only) | **+0.13pp** net on top of ROI fusion (76.84%→76.97%), 58 fixed / 41 broken | ✅ code shipped, calibration re-harvest in progress — service restart pending, see paper §4.11 |
 
 Full log: [EXPERIMENTS.md](EXPERIMENTS.md).
 

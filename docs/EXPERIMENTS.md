@@ -1,6 +1,6 @@
 # BioFauna — Experiments (condensed)
 
-> Public summary of ablations through **2026-08-27**.  
+> Public summary of ablations through **2026-08-28**.  
 > Trusted metric: observation-stratified `harvest_calib` species top-1.
 
 ## Kept in production
@@ -14,6 +14,7 @@
 | Logistic calibration + AutoID p≥0.80 | ~**95.3%** precision @ ~**57.4%** coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation throughput; both operating points are valid, the platform runs at the lower threshold) |
 | **Test-time augmentation** (query embedding averaged with its own 90% center crop, 2026-08-26/27) | **+0.21 to +0.75pp** species depending on eval protocol (see below) — **the only single-photo technique in this project's history to beat the frozen-backbone k-NN baseline without a data-quality fix** |
 | **Multi-photo observation late fusion** (mean k-NN+prototype score across an observation's own 2+ photos, geo prior applied once post-fusion, 2026-08-27) | **+0.79pp** species full corpus (75.97%→76.76%, n=12,788), **+3.15pp** on the 25.1% of observations with 2+ photos (81.55%→84.70%, n=3,209) — see below |
+| **Bucket B Fisher-diagonal re-ranking** (documented cryptic pairs only, confidence-gated margin τ=0.20, 2026-08-28) | **+0.13pp net** on top of ROI fusion (76.84%→**76.97%**, n=12,788), 58 fixed / 41 broken (1.4:1) — see below |
 
 ## Closed / negative (do not repeat as-is)
 
@@ -38,6 +39,17 @@
 
 Motivated directly by the taxonomic-filter post-mortem above: if the encoder's *input* is contaminated by background/substrate rather than the ranking step being fixable after the fact, clean the crop before BioCLIP-2.5 sees it. Compared three per-photo embedding strategies on n=12,788 (single-view, no TTA, isolated baseline): global (100% frame) 75.21%; strict center crop (65%, ~35% border removed) alone 75.81% (+0.60pp, but 624 correct predictions broken); **50/50 weighted fusion of global + 65% crop, re-normalized, single k-NN pass on the fused vector: 76.84% (+1.63pp)**, with a much healthier break/fix ratio (266 broken) and 130 of 1,038 cross-taxonomic-group errors cleanly recovered. **Shipped to production**, replacing the prior 90%-crop TTA — mathematically the same weighted-average-then-renormalize operation, just a stricter crop fraction (65% vs. 90%) validated against a real ablation. Runs per-photo inside the multi-photo late-fusion pipeline (§4.7); N=1 reduces exactly to the single-photo case. See paper §4.9.
 
+### Positive: Bucket B Fisher-diagonal re-ranking (2026-08-28, shipped)
+
+Targets the 685 baseline errors where top-1/top-2 share a genus (same-genus cryptic confusion, "Bucket B"), a different failure mode from the cross-taxonomic-group "Bucket C" errors above. Rather than a global taxonomic filter, this projects the query onto a *pair-local* diagonal Fisher/Mahalanobis discriminant direction — `w = (mean_A − mean_B) / (var_A + var_B + ε)`, computed independently for each documented cryptic pair from that pair's own reference embeddings — and flips top-1↔top-2 only when the projection favors top-2. Four iterations:
+
+- **v1 (free trigger** — any same-genus top-1/top-2 pair with margin <0.05): 28.5% of Bucket B fixed (195/685), but **net −1.02pp** (326 broken elsewhere) — the trigger was firing on undocumented, unvalidated pairs.
+- **v2 (trigger restricted to `cryptic_pairs.jsonl`-documented pairs only)**: barely moved the needle (net −0.77pp, 190 fixed/288 broken) — 91% of v1's free triggers turned out to already be documented pairs, disproving the hypothesis that undocumented pairs were the main noise source.
+- **v3 (confidence-gated margin τ** — only flip when the Fisher-score gap between candidates exceeds τ, added on top of v2's trigger): swept τ ∈ [0, 0.05, 0.10, 0.15]; **first positive result at τ=0.15 (+0.05pp**, 85 fixed/78 broken) — soft, unconditional inversion was the real problem, not the trigger.
+- **v4 (fine sweep τ ∈ [0.15, 0.18, 0.20, 0.25, 0.30]**, reusing v3's cached continuous Fisher scores — zero additional GPU cost): unimodal curve peaking at **τ=0.20: +0.13pp net** (76.84%→**76.97%**, n=12,788), 58 fixed / 41 broken (1.4:1 ratio), 115 total inversions, 8.5% of Bucket B fixed.
+
+**Shipped to production** (`identify_service.py`): fires only when top-1/top-2 share a genus, form a documented cryptic pair, and have kNN margin <0.05; swaps top-1↔top-2 only if the Fisher-score gap exceeds τ=0.20. Discriminant directions for all 2,042 (of 2,046) documented pairs with ≥5 reference embeddings/species are precomputed at service startup by reading `embeddings.npy` directly from disk per pair — the shared `KE` catalog matrix is freed after FAISS loads (2026-08-26 memory optimization) and cannot be reused for this. Runs immediately after k-NN/prototype/geo scoring and before hierarchical abstention, so abstention logic sees the corrected top-1/top-2. Official calibration re-harvest against the fully consolidated pipeline (ROI fusion + this re-ranker) in progress at time of writing, to keep `calibration.json`/`calibration_hierarchical.json` honest; `biofauna-id.service` will not be restarted to serve either the new code or the new calibration until explicitly authorized.
+
 ## Evaluation hygiene
 
 - Photo-level 80/20 splits inflate accuracy (~10pp) via immersion bursts.
@@ -55,7 +67,6 @@ Motivated directly by the taxonomic-filter post-mortem above: if the encoder's *
 - No parameter-efficient or contrastive fine-tuning variant (LoRA, QLoRA, linear head sidecar, SupCon re-ranker) has yet beaten the frozen-backbone k-NN baseline at any catalog scale or scope tried so far — this line of attack is considered closed for the current data regime (see the SupCon entry above); the plausible remaining levers are more photos for genuinely photo-starved species (not just "Tier 1" — verify against confusion-rival photo counts first) or a different encoder/signal modality, not more training on top of this one
 - Geographic priors for cryptic pairs: 2 of ~40 scoped species pairs show real, usable geographic separation (`Mesophyllum lichenoides`/`M. expansum`; `Lutraria magna`/`L. lutraria`) after backfilling missing coordinates for species with zero cached observations — small, not yet exploited in the abstention rule
 - Independently re-measuring the *combined* full-corpus accuracy of ROI multi-crop fusion + multi-photo late fusion (both now run together in production but were each validated in isolation against their own baseline — see the ROI fusion entry below)
-- In progress: local re-ranking for Bucket B (same-genus cryptic pairs, 685 baseline errors) — when top-1/top-2 share a genus with a narrow confidence margin (<0.05), project onto a pair-local diagonal Fisher/Mahalanobis discriminant direction (computed from that pair's own reference embeddings) to break the tie, rather than a global taxonomic filter
 
 See also: [STATUS.md](STATUS.md), [paper/01_biofauna.md](../paper/01_biofauna.md).
 

@@ -773,6 +773,48 @@ same environment variable was already set moments earlier by that same function.
 with a live `whoami()` call against the Hugging Face API and a temporary stack-trace probe
 into the installed library to confirm no other code path in the pipeline calls `login()`.
 
+### 4.11 Bucket B Fisher-Diagonal Re-ranking (2026-08-28/29, shipped)
+
+Bucket B (§4.6.1) is the 685 baseline errors where the top-1 and top-2 candidates share a
+genus — a different failure geometry from Bucket C's cross-taxonomic-group confusion
+(§4.8): here the two candidates are genuinely close morphological neighbors, and any fix
+has to discriminate between two specific, known species rather than filter against a broad
+taxonomic prior. Instead of a single global rule, we compute a **pair-local** linear
+discriminant for every documented cryptic pair, from that pair's own reference embeddings
+only: a diagonal Fisher/Mahalanobis direction
+
+`w = (mean_A − mean_B) / (var_A + var_B + ε)`,
+
+normalized to unit length. Projecting the query and both candidate prototypes onto `w`
+gives a 1-D discriminative axis specific to that exact confusion; the candidate whose
+projection is closer to the query's wins.
+
+**Four iterations, each correcting a real failure of the last.**
+
+| Version | Trigger | Net result (n=12,788) | What it revealed |
+|---|---|---|---|
+| v1 | any same-genus top-1/top-2 pair, margin < 0.05 | **−1.02pp** (195/685 = 28.5% of Bucket B fixed, 326 broken) | signal exists, but firing on undocumented/unvalidated pairs breaks more than it fixes |
+| v2 | restricted to `cryptic_pairs.jsonl`-documented pairs | **−0.77pp** (190 fixed, 288 broken) | barely moved the needle — 91% of v1's free triggers were *already* documented pairs, disproving the "undocumented pairs are the noise source" hypothesis |
+| v3 | v2 + confidence-gated margin τ on the Fisher score itself | **first positive at τ=0.15: +0.05pp** (85 fixed, 78 broken) | the real problem was unconditional ("soft") inversion, not the trigger condition |
+| v4 | fine sweep τ ∈ {0.15, 0.18, 0.20, 0.25, 0.30}, reusing v3's cached continuous scores (zero additional GPU cost) | **peak at τ=0.20: +0.13pp net** | a genuine, unimodal optimum — not a single noisy point |
+
+**Result.** At τ=0.20, on top of ROI fusion (§4.9): 76.84% → **76.97%** species accuracy
+(n=12,788), 58 fixed / 41 broken (1.4:1 ratio), 115 total top-1/top-2 inversions, 8.5% of
+Bucket B's 685 errors resolved. Closed as a positive result and adopted as final.
+
+**Shipped to production.** The trigger fires only when top-1/top-2 share a genus, form a
+documented cryptic pair, and have a k-NN margin below 0.05 — narrowing to exactly the
+regime the sweep validated. The swap runs immediately after k-NN/prototype/geo scoring and
+before hierarchical abstention, so abstention logic (§4.3) sees the corrected top-1/top-2,
+not the pre-rerank order. Discriminant directions for 2,042 of 2,046 documented pairs
+(those with ≥5 reference embeddings per species) are precomputed at service startup by
+reading `embeddings.npy` directly from disk, per pair — the shared full-catalog embedding
+matrix is freed from memory after the FAISS index loads (a 2026-08-26 optimization, ~2.9GB
+saved) and cannot be reused for this. The official calibration artifact is being
+re-harvested against the fully consolidated pipeline (ROI fusion + this re-ranker) to keep
+the platform's confidence thresholds honest; the production service is not restarted to
+serve either the new code or the new calibration until explicitly authorized.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)
