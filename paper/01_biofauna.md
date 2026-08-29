@@ -796,11 +796,14 @@ projection is closer to the query's wins.
 | v1 | any same-genus top-1/top-2 pair, margin < 0.05 | **−1.02pp** (195/685 = 28.5% of Bucket B fixed, 326 broken) | signal exists, but firing on undocumented/unvalidated pairs breaks more than it fixes |
 | v2 | restricted to `cryptic_pairs.jsonl`-documented pairs | **−0.77pp** (190 fixed, 288 broken) | barely moved the needle — 91% of v1's free triggers were *already* documented pairs, disproving the "undocumented pairs are the noise source" hypothesis |
 | v3 | v2 + confidence-gated margin τ on the Fisher score itself | **first positive at τ=0.15: +0.05pp** (85 fixed, 78 broken) | the real problem was unconditional ("soft") inversion, not the trigger condition |
-| v4 | fine sweep τ ∈ {0.15, 0.18, 0.20, 0.25, 0.30}, reusing v3's cached continuous scores (zero additional GPU cost) | **peak at τ=0.20: +0.13pp net** | a genuine, unimodal optimum — not a single noisy point |
+| v4 | fine sweep τ ∈ {0.15, 0.18, 0.20, 0.25, 0.30}, reusing v3's cached continuous scores (zero additional GPU cost, no geo prior in this ablation harness) | **peak at τ=0.20: +0.13pp net** (76.84% → 76.97%) | a genuine, unimodal optimum — not a single noisy point |
 
-**Result.** At τ=0.20, on top of ROI fusion (§4.9): 76.84% → **76.97%** species accuracy
-(n=12,788), 58 fixed / 41 broken (1.4:1 ratio), 115 total top-1/top-2 inversions, 8.5% of
-Bucket B's 685 errors resolved. Closed as a positive result and adopted as final.
+**Result.** At τ=0.20, on top of ROI fusion (§4.9): 58 fixed / 41 broken (1.4:1 ratio), 115
+total top-1/top-2 inversions, 8.5% of Bucket B's 685 errors resolved. The sweep above ran
+without the geo prior; re-scoring all 12,788 photos with the exact production `decide()`
+path (k-NN + prototype boost + geo prior, the same code that fits `calibration.json`) gives
+the **official, geo-inclusive figure: 76.78% → 76.92% (+0.14pp)** — corroborating the
+ablation's +0.13pp within rounding. Closed as a positive result and adopted as final.
 
 **Shipped to production.** The trigger fires only when top-1/top-2 share a genus, form a
 documented cryptic pair, and have a k-NN margin below 0.05 — narrowing to exactly the
@@ -810,10 +813,11 @@ not the pre-rerank order. Discriminant directions for 2,042 of 2,046 documented 
 (those with ≥5 reference embeddings per species) are precomputed at service startup by
 reading `embeddings.npy` directly from disk, per pair — the shared full-catalog embedding
 matrix is freed from memory after the FAISS index loads (a 2026-08-26 optimization, ~2.9GB
-saved) and cannot be reused for this. The official calibration artifact is being
-re-harvested against the fully consolidated pipeline (ROI fusion + this re-ranker) to keep
-the platform's confidence thresholds honest; the production service is not restarted to
-serve either the new code or the new calibration until explicitly authorized.
+saved) and cannot be reused for this. The official calibration artifact has been
+re-harvested and re-fit against the fully consolidated pipeline (ROI fusion + this
+re-ranker): species 76.92%, genus 81.88%, family 85.53% (n=12,788); the production service
+has not been restarted to serve either the new code or the new calibration until explicitly
+authorized.
 
 ## 5. Discussion
 

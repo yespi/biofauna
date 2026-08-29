@@ -791,12 +791,15 @@ cuya proyección quede más cerca de la de la query.
 | v1 | cualquier par top-1/top-2 del mismo género, margen < 0,05 | **−1,02pp** (195/685 = 28,5% del Cubo B arreglado, 326 rotos) | la señal existe, pero disparar sobre pares no documentados/no validados rompe más de lo que arregla |
 | v2 | acotado a pares documentados en `cryptic_pairs.jsonl` | **−0,77pp** (190 arreglados, 288 rotos) | apenas mueve la aguja — el 91% de los disparos libres de v1 YA eran pares documentados, descartando la hipótesis de "los pares sin documentar son la fuente de ruido" |
 | v3 | v2 + margen de confianza τ sobre el propio score Fisher | **primer resultado positivo en τ=0,15: +0,05pp** (85 arreglados, 78 rotos) | el problema real era la inversión incondicional ("blanda"), no la condición de disparo |
-| v4 | barrido fino τ ∈ {0,15; 0,18; 0,20; 0,25; 0,30}, reutilizando los scores continuos cacheados de v3 (cero coste de GPU adicional) | **pico en τ=0,20: +0,13pp neto** | un óptimo genuino y unimodal — no un único punto ruidoso |
+| v4 | barrido fino τ ∈ {0,15; 0,18; 0,20; 0,25; 0,30}, reutilizando los scores continuos cacheados de v3 (cero coste de GPU adicional, sin geo-prior en este arnés de ablación) | **pico en τ=0,20: +0,13pp neto** (76,84% → 76,97%) | un óptimo genuino y unimodal — no un único punto ruidoso |
 
-**Resultado.** Con τ=0,20, sobre la Fusión ROI (§4.9): 76,84% → **76,97%** de acierto de
-especie (n=12.788), 58 arreglados / 41 rotos (ratio 1,4:1), 115 inversiones top-1/top-2 en
-total, 8,5% de los 685 errores del Cubo B resueltos. Cerrado como resultado positivo y
-adoptado como definitivo.
+**Resultado.** Con τ=0,20, sobre la Fusión ROI (§4.9): 58 arreglados / 41 rotos (ratio
+1,4:1), 115 inversiones top-1/top-2 en total, 8,5% de los 685 errores del Cubo B resueltos.
+El barrido de arriba corrió sin geo-prior; re-puntuando las 12.788 fotos con el mismo
+`decide()` exacto de producción (kNN + boost de prototipo + geo-prior, el mismo código que
+ajusta `calibration.json`) da la **cifra oficial con geo: 76,78% → 76,92% (+0,14pp)** —
+corrobora el +0,13pp de la ablación dentro del margen de redondeo. Cerrado como resultado
+positivo y adoptado como definitivo.
 
 **Desplegado a producción.** El disparo solo actúa cuando top-1/top-2 comparten género,
 forman un par críptico documentado, y tienen un margen kNN por debajo de 0,05 — acotando
@@ -807,11 +810,11 @@ direcciones discriminantes para 2.042 de los 2.046 pares documentados (los que t
 embeddings de referencia por especie) se precalculan al arrancar el servicio, leyendo
 `embeddings.npy` directamente de disco por par — la matriz de embeddings del catálogo
 completo se libera de memoria tras cargar el índice FAISS (optimización del 26-ago-2026,
-~2,9GB ahorrados) y no puede reutilizarse para esto. El artefacto de calibración oficial se
-está re-cosechando contra el pipeline totalmente consolidado (Fusión ROI + este re-ranker)
-para mantener honestos los umbrales de confianza de la plataforma; el servicio en producción
-no se reinicia para servir ni el código ni la calibración nuevos hasta que se autorice
-explícitamente.
+~2,9GB ahorrados) y no puede reutilizarse para esto. El artefacto de calibración oficial ya
+se ha re-cosechado y re-ajustado contra el pipeline totalmente consolidado (Fusión ROI +
+este re-ranker): especie 76,92%, género 81,88%, familia 85,53% (n=12.788); el servicio en
+producción no se reinicia para servir ni el código ni la calibración nuevos hasta que se
+autorice explícitamente.
 
 ## 5. Discusión
 
