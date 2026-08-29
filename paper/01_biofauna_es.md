@@ -858,8 +858,9 @@ prototipo existente para calcular el margen local, sustituyendo el `arc_weight` 
 por un valor dinámico por consulta (configurable por entorno, activado por defecto, con
 retroceso al comportamiento estático anterior si se desactiva). El artefacto de calibración
 oficial se ha re-cosechado y re-ajustado contra el pipeline totalmente consolidado (Fusión
-ROI + Cubo B + este mecanismo): especie 77,08% (n=12.788); el reinicio del servicio en
-producción sigue pendiente de autorización explícita.
+ROI + Cubo B + este mecanismo): especie 77,08%, género 82,08%, familia 85,65% (n=12.788).
+El servicio en producción se reinició el mismo día con autorización explícita del usuario;
+esta es ya la cifra que sirve en vivo.
 
 ## 5. Discusión
 

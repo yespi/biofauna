@@ -859,8 +859,9 @@ the multi-photo late-fusion pipeline (§4.7) — are read *before* the existing 
 step to compute the local margin, replacing the static `arc_weight` default with a per-query
 dynamic value (env-overridable, on by default, falls back to the old static behavior if
 disabled). The official calibration artifact has been re-harvested and re-fit against the
-fully consolidated pipeline (ROI fusion + Bucket B + this mechanism): species 77.08%
-(n=12,788); the production service restart remains pending explicit authorization.
+fully consolidated pipeline (ROI fusion + Bucket B + this mechanism): species 77.08%,
+genus 82.08%, family 85.65% (n=12,788). The production service was restarted with
+explicit user authorization the same day; this is now the live-served baseline.
 
 ## 5. Discussion
 
