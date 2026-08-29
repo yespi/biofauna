@@ -16,6 +16,7 @@
 | **Multi-photo observation late fusion** (mean k-NN+prototype score across an observation's own 2+ photos, geo prior applied once post-fusion, 2026-08-27) | **+0.79pp** species full corpus (75.97%→76.76%, n=12,788), **+3.15pp** on the 25.1% of observations with 2+ photos (81.55%→84.70%, n=3,209) — see below |
 | **Bucket B Fisher-diagonal re-ranking** (documented cryptic pairs only, confidence-gated margin τ=0.20, 2026-08-28) | **+0.14pp net** on top of ROI fusion, official geo-inclusive calibration harvest (76.78%→**76.92%**, n=12,788), 58 fixed / 41 broken (1.4:1) — see below |
 | **Adaptive prototype boost by local k-NN margin** (query-level, not species-level; ARC_MIN=1.0/ARC_MAX=5.0, empirical p25/p75 thresholds, 2026-08-29) | **+0.16pp net** on top of ROI fusion + Bucket B (76.92%→**77.08%**, n=12,788), 37 fixed / 17 broken (2.18:1) — see below |
+| **Bucket B local-subspace PCA/LDA projection** (per-pair PCA+LDA, generalizes the diagonal Fisher rerank to full covariance in a low-dim subspace, τ=0.485 via 5-fold OOF, 2026-08-29) | **+0.34-0.36pp net** on top of Bucket B + k-NN-margin (77.08%→**77.44%** official harvest, n=12,788), 109 fixed / 65 broken (1.68:1), exact McNemar p=0.0011 — see below |
 
 ## Closed / negative (do not repeat as-is)
 
@@ -74,6 +75,25 @@ The production prototype-boost weight (`arc_weight`, static 3.0 for every query 
 The calibrated version beats even Bucket B's own fix/break ratio (1.4:1). Closed as the definitive configuration without a further ARC_MAX fine-sweep (4.0–7.0 in 0.5 steps was designed but not run — diminishing-returns judgment call, not a negative result).
 
 **Shipped to production** (`identify_service.py`): the pure k-NN scores/max-similarities (`scores`/`maxsim`, already fused across multi-photo late fusion) are read *before* the existing prototype-boost block to compute the local margin, replacing the static `BIOFAUNA_ARC_WEIGHT` env default with a per-query dynamic value (env-overridable ceiling/floor/thresholds, `BIOFAUNA_KNNMARGIN_ADAPTIVE=1` by default). Falls back to the old static behavior if disabled. Official calibration re-harvested and re-fit against the fully consolidated pipeline (ROI fusion + Bucket B + this mechanism): species 77.08% / genus 82.08% / family 85.65% (n=12,788). **`biofauna-id.service` restarted with explicit user authorization (2026-08-29)** — this is now the live-served baseline.
+
+### Positive: Bucket B local-subspace PCA/LDA projection (2026-08-29, shipped)
+
+The diagonal Fisher rerank already in production (see above) assumes a *diagonal* covariance — it ignores correlation between embedding dimensions. The natural generalization is a full-covariance LDA per pair, but with 1024 dimensions and as few as 5-200 reference embeddings per species, a 1024×1024 covariance matrix is hopelessly singular. Fix: reduce first with PCA fit *only on that pair's own reference embeddings* (K = min(30, n_a+n_b−2), a sample-size rule, not tuned on accuracy) into a well-conditioned low-dimensional subspace, then fit LDA inside it.
+
+**Honesty about "no re-inference."** The design assumed a cache of query embeddings already existed on disk. Checked before writing any code: the only cached query embeddings found (`grid_k_margin_query_embeddings_20260825.npz`, `calib_val_embeddings_sidecar_20260825.npz`) were from Aug 25, over the *leaked* n=22,332 set, and predate ROI fusion/Bucket B/k-NN-margin entirely — unusable. Reference embeddings (used to fit PCA/LDA) needed zero re-inference, already on disk; query embeddings for the 1,731-obs Bucket B trigger zone required one new (but minimal, scoped, and now cached) GPU pass.
+
+**Protocol applied:** 5-fold cross-validation on the trigger zone. PCA/LDA components are fit *only* from reference embeddings (never test data — no leakage there by construction). The one parameter chosen by looking at outcomes — a confidence threshold τ analogous to the Fisher rerank's τ=0.20 — was calibrated per fold using only the other 4 folds, then applied blind to the held-out fold. All 5 folds independently converged on the same value (τ=0.485, the 10th percentile of the observed |decision_function| distribution), a strong stability signal rather than fold-specific noise.
+
+| Pipeline | Species ACC (n=12,788) | Δ | Fixed / broken | Ratio |
+|---|---|---|---|---|
+| Consolidated (ROI fusion + Bucket B + k-NN-margin) | 77.08% | — | — | — |
+| **+ Local-subspace PCA/LDA, 5-fold OOF (pilot, τ=0.485)** | **77.42%** | **+0.34pp** | **109 / 65** | **1.68:1** |
+
+Exact McNemar on the full corpus: χ²=10.626, **p=0.0011** — clearly significant, and a better ratio than the Fisher rerank's own 1.4:1.
+
+**Independent audit caught a real (if minor) issue.** A second-party review (Cursor, `BIOFAUNA_AUDIT_SUBSPACE_20260829.md`) found that the candidate grid the τ search swept over was derived from percentiles of the *full* 1,731-obs confidence distribution — including each fold's own held-out data — a minor distributional leak (the chosen τ *value* per fold was still selected using only that fold's training data; only the *menu of candidates* leaked slightly). Re-run with a train-only grid: 109 fixed / 63 broken — the verdict is unchanged. Audit approved for production.
+
+**Shipped to production** (`identify_service.py`), as a second stage immediately after the Fisher rerank, on the same trigger condition (same genus, documented pair, k-NN margin < 0.05), with τ=0.485 frozen (not re-calibrated live). **Precompute cost measured before deciding the loading strategy**: building all 2,042 documented pairs' subspaces eagerly took 916.8s (~15.3 min) — unacceptable for service startup, on top of the existing ~98s Fisher-diagonal precompute. Switched to **lazy, per-pair construction on first trigger** (~0.4-0.5s, thread-safe, cached in RAM thereafter) — of the 2,046 documented pairs, only 401 ever appeared active across the full 12,788-observation evaluation, so most never pay this cost at all in real traffic. Official calibration re-harvested and re-fit against the fully consolidated pipeline: species 77.44% / genus 82.08% / family 85.65% (n=12,788). **`biofauna-id.service` restarted with explicit user authorization (2026-08-29)** and verified live via `/health` and real HTTP requests (cold-cache request 1.73s, warm-cache request 0.54s for the same pair) — this is now the live-served baseline.
 
 ## Evaluation hygiene
 
