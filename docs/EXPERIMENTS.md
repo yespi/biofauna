@@ -15,6 +15,7 @@
 | **Test-time augmentation** (query embedding averaged with its own 90% center crop, 2026-08-26/27) | **+0.21 to +0.75pp** species depending on eval protocol (see below) — **the only single-photo technique in this project's history to beat the frozen-backbone k-NN baseline without a data-quality fix** |
 | **Multi-photo observation late fusion** (mean k-NN+prototype score across an observation's own 2+ photos, geo prior applied once post-fusion, 2026-08-27) | **+0.79pp** species full corpus (75.97%→76.76%, n=12,788), **+3.15pp** on the 25.1% of observations with 2+ photos (81.55%→84.70%, n=3,209) — see below |
 | **Bucket B Fisher-diagonal re-ranking** (documented cryptic pairs only, confidence-gated margin τ=0.20, 2026-08-28) | **+0.14pp net** on top of ROI fusion, official geo-inclusive calibration harvest (76.78%→**76.92%**, n=12,788), 58 fixed / 41 broken (1.4:1) — see below |
+| **Adaptive prototype boost by local k-NN margin** (query-level, not species-level; ARC_MIN=1.0/ARC_MAX=5.0, empirical p25/p75 thresholds, 2026-08-29) | **+0.16pp net** on top of ROI fusion + Bucket B (76.92%→**77.08%**, n=12,788), 37 fixed / 17 broken (2.18:1) — see below |
 
 ## Closed / negative (do not repeat as-is)
 
@@ -53,6 +54,25 @@ Targets the 685 baseline errors where top-1/top-2 share a genus (same-genus cryp
 **Official, geo-inclusive calibration harvest confirms it:** re-scoring all 12,788 photos with the exact production `decide()` path (k-NN + prototype boost + geo prior — the same code `harvest_calib.py` uses to fit `calibration.json`) gives **76.78% → 76.92% (+0.14pp)**, corroborating the ablation's +0.13pp within rounding. **76.92% is the citable official figure** (same geo-inclusive convention as the 76.78% ROI-fusion baseline above it); the 76.84%/76.97% pair above is the no-geo ablation harness used during the τ sweep itself.
 
 **Shipped to production** (`identify_service.py`): fires only when top-1/top-2 share a genus, form a documented cryptic pair, and have kNN margin <0.05; swaps top-1↔top-2 only if the Fisher-score gap exceeds τ=0.20. Discriminant directions for all 2,042 (of 2,046) documented pairs with ≥5 reference embeddings/species are precomputed at service startup by reading `embeddings.npy` directly from disk per pair — the shared `KE` catalog matrix is freed after FAISS loads (2026-08-26 memory optimization) and cannot be reused for this. Runs immediately after k-NN/prototype/geo scoring and before hierarchical abstention, so abstention logic sees the corrected top-1/top-2. Official calibration re-harvested and re-fit against the fully consolidated pipeline (ROI fusion + this re-ranker): species 76.92% / genus 81.88% / family 85.53% (n=12,788); `biofauna-id.service` has not been restarted to serve either the new code or the new calibration, pending explicit authorization.
+
+### Positive: Adaptive prototype boost by local k-NN margin (2026-08-29, shipped)
+
+The production prototype-boost weight (`arc_weight`, static 3.0 for every query and every species) treats a k-NN vote that's already decisive the same as one that's a coin flip. Two axes were tried for making it adaptive:
+
+- **Species-level (rejected):** scale `arc_weight` by each species' intra-species reference-cluster dispersion (tight clusters trusted more) — closed negative above (−0.09pp). A global species property says nothing about whether the prototype is trustworthy for *this specific query photo*.
+- **Query-level (this entry):** scale `arc_weight` by the **k-NN margin measured before any boost is applied** — `Δ = maxsim(top1) − maxsim(top2)` on the raw k-NN scores. Narrow margin (k-NN genuinely undecided) → raise `arc_weight` toward a ceiling to let the prototype break the tie; wide margin (k-NN already confident) → drop it toward a floor to avoid interference. Linear interpolation between the two.
+
+**Calibration pitfall caught before shipping.** A first pass used guessed thresholds (0.05/0.15, borrowed from the Bucket B margin scale) and measured a statistically negligible **+0.02pp** (34 fixed / 31 broken, 1.10:1 — indistinguishable from noise). Checking the *actual* margin distribution explained why: 38% of queries are a degenerate case (all k=15 neighbors belong to a single species — margin defined as exactly 1.0, not a comparable continuous value), and among the remaining 62% the median real margin (0.039) was already below the guessed 0.05 "low" threshold — more than half the catalog was getting near-maximum boost regardless of true ambiguity, diluting any signal. Re-calibrating against the empirical p25/p75 of the *non-degenerate* margin distribution (0.00296 / 0.033315) — computed for free from the already-harvested first pass, no extra GPU cost — and widening the ceiling from 3.0/1.5 to **ARC_MIN=1.0 / ARC_MAX=5.0** (per user direction) gave a much sharper result:
+
+| Calibration | Species ACC (n=12,788) | Δ vs. consolidated | Fixed / broken | Ratio |
+|---|---|---|---|---|
+| Consolidated (ROI fusion + Bucket B) | 76.92% | — | — | — |
+| Margin-adaptive, guessed thresholds (0.05/0.15, ARC 1.5–5.0) | 76.95% | +0.02pp | 34 / 31 | 1.10:1 |
+| **Margin-adaptive, empirical p25/p75 (0.00296/0.033315, ARC 1.0–5.0)** | **77.08%** | **+0.16pp** | **37 / 17** | **2.18:1** |
+
+The calibrated version beats even Bucket B's own fix/break ratio (1.4:1). Closed as the definitive configuration without a further ARC_MAX fine-sweep (4.0–7.0 in 0.5 steps was designed but not run — diminishing-returns judgment call, not a negative result).
+
+**Shipped to production** (`identify_service.py`): the pure k-NN scores/max-similarities (`scores`/`maxsim`, already fused across multi-photo late fusion) are read *before* the existing prototype-boost block to compute the local margin, replacing the static `BIOFAUNA_ARC_WEIGHT` env default with a per-query dynamic value (env-overridable ceiling/floor/thresholds, `BIOFAUNA_KNNMARGIN_ADAPTIVE=1` by default). Falls back to the old static behavior if disabled. Official calibration re-harvested and re-fit against the fully consolidated pipeline (ROI fusion + Bucket B + this mechanism): species 77.08% / n=12,788 (genus/family pending the same re-fit); `biofauna-id.service` restart pending explicit authorization.
 
 ## Evaluation hygiene
 

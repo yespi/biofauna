@@ -816,6 +816,51 @@ este re-ranker): especie 76,92%, género 81,88%, familia 85,53% (n=12.788); el s
 producción no se reinicia para servir ni el código ni la calibración nuevos hasta que se
 autorice explícitamente.
 
+### 4.12 Boost de prototipo adaptativo por margen kNN local (29-ago-2026, desplegado)
+
+El peso de boost de prototipo (`arc_weight`, estático en 3,0 en producción para toda
+consulta y toda especie) trata igual un voto kNN ya decisivo que uno que es un empate.
+Se probaron dos ejes para hacerlo adaptativo. Escalar por la dispersión del clúster de
+referencia intra-especie (clústeres más densos, más confianza) cerró negativo (−0,09pp,
+48 arreglados/60 rotos) — una propiedad global de la especie no dice nada sobre si el
+prototipo es fiable para la foto concreta de esa consulta. La alternativa a nivel de
+consulta corrige esto: escalar `arc_weight` por el margen kNN medido ANTES de aplicar
+ningún boost — `Δ = maxsim(top1) − maxsim(top2)` sobre los scores kNN crudos — subiéndolo
+hacia un techo cuando el margen es estrecho (kNN genuinamente indeciso, dejar que el
+prototipo desempate) y bajándolo hacia un suelo cuando el margen es amplio (kNN ya seguro,
+evitar interferencia), interpolado linealmente entre ambos.
+
+**Un fallo de calibración detectado antes de desplegar.** Una primera pasada con umbrales
+adivinados (0,05/0,15, prestados de la escala de margen del Cubo B) midió una ganancia
+estadísticamente insignificante de +0,02pp (34 arreglados/31 rotos, 1,10:1 — indistinguible
+del ruido). Inspeccionar la distribución real del margen explicó por qué: el 38% de las
+consultas son un caso degenerado — los 15 vecinos kNN pertenecen todos a una sola especie,
+así que el margen se define como exactamente 1,0, no un valor continuo comparable — y entre
+el 62% restante, la mediana del margen real (0,039) ya estaba por debajo del umbral "bajo"
+adivinado de 0,05, así que más de la mitad del catálogo recibía boost casi máximo
+independientemente de la ambigüedad real, diluyendo cualquier señal. Recalibrando contra
+los percentiles empíricos p25/p75 de la distribución de margen NO degenerada
+(0,00296/0,033315 — calculados gratis a partir de la primera pasada ya cosechada) y
+ampliando el rango a ARC_MIN=1,0/ARC_MAX=5,0 dio un resultado notablemente más nítido:
+
+| Calibración | ACC especie (n=12.788) | Δ | Arreglados/rotos | Ratio |
+|---|---|---|---|---|
+| Consolidado (Fusión ROI + Cubo B) | 76,92% | — | — | — |
+| Umbrales adivinados (0,05/0,15, ARC 1,5–5,0) | 76,95% | +0,02pp | 34/31 | 1,10:1 |
+| **Percentiles empíricos (0,00296/0,033315, ARC 1,0–5,0)** | **77,08%** | **+0,16pp** | **37/17** | **2,18:1** |
+
+El ratio de arreglados/rotos de la versión calibrada (2,18:1) supera incluso al del propio
+Cubo B (1,4:1). Cerrado como configuración definitiva.
+
+**Desplegado a producción.** Los scores y máximas similitudes kNN puros —ya fusionados
+entre fotos por la tubería de fusión multi-foto (§4.7)— se leen ANTES del paso de boost de
+prototipo existente para calcular el margen local, sustituyendo el `arc_weight` estático
+por un valor dinámico por consulta (configurable por entorno, activado por defecto, con
+retroceso al comportamiento estático anterior si se desactiva). El artefacto de calibración
+oficial se ha re-cosechado y re-ajustado contra el pipeline totalmente consolidado (Fusión
+ROI + Cubo B + este mecanismo): especie 77,08% (n=12.788); el reinicio del servicio en
+producción sigue pendiente de autorización explícita.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)

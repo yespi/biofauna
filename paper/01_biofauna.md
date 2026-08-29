@@ -819,6 +819,49 @@ re-ranker): species 76.92%, genus 81.88%, family 85.53% (n=12,788); the producti
 has not been restarted to serve either the new code or the new calibration until explicitly
 authorized.
 
+### 4.12 Adaptive Prototype Boost by Local k-NN Margin (2026-08-29, shipped)
+
+The prototype-boost weight (`arc_weight`, static 3.0 in production for every query and
+every species) treats a k-NN vote that is already decisive the same as one that is a coin
+flip. Two ways of making it adaptive were tried. Scaling by each species' intra-species
+reference-cluster dispersion (tighter clusters trusted more) closed negative (−0.09pp,
+48 fixed / 60 broken) — a global species property says nothing about whether the prototype
+is trustworthy for the specific query photo at hand. The query-level alternative fixes
+this: scale `arc_weight` by the k-NN margin measured *before* any boost is applied —
+`Δ = maxsim(top1) − maxsim(top2)` on the raw k-NN scores — raising it toward a ceiling when
+the margin is narrow (k-NN genuinely undecided, let the prototype break the tie) and
+dropping it toward a floor when the margin is wide (k-NN already confident, avoid
+interference), linearly interpolated between.
+
+**A calibration pitfall caught before shipping.** A first pass with guessed thresholds
+(0.05/0.15, borrowed from the Bucket B margin scale) measured a statistically negligible
++0.02pp (34 fixed / 31 broken, 1.10:1 — indistinguishable from noise). Inspecting the actual
+margin distribution explained why: 38% of queries are a degenerate case — all *k*=15
+neighbors belong to a single species, so the margin is defined as exactly 1.0, not a
+comparable continuous value — and among the remaining 62%, the median real margin (0.039)
+was already below the guessed "low" threshold of 0.05, so more than half the catalog was
+receiving near-maximum boost regardless of true ambiguity, diluting any signal. Recalibrating
+against the empirical p25/p75 of the non-degenerate margin distribution (0.00296/0.033315 —
+computed for free from the already-harvested first pass) and widening the range to
+ARC_MIN=1.0/ARC_MAX=5.0 gave a markedly sharper result:
+
+| Calibration | Species ACC (n=12,788) | Δ | Fixed / broken | Ratio |
+|---|---|---|---|---|
+| Consolidated (ROI fusion + Bucket B) | 76.92% | — | — | — |
+| Guessed thresholds (0.05/0.15, ARC 1.5–5.0) | 76.95% | +0.02pp | 34 / 31 | 1.10:1 |
+| **Empirical p25/p75 (0.00296/0.033315, ARC 1.0–5.0)** | **77.08%** | **+0.16pp** | **37 / 17** | **2.18:1** |
+
+The calibrated version's fix/break ratio (2.18:1) beats even Bucket B's own (1.4:1). Closed
+as the definitive configuration.
+
+**Shipped to production.** The pure k-NN scores and max-similarities — already fused across
+the multi-photo late-fusion pipeline (§4.7) — are read *before* the existing prototype-boost
+step to compute the local margin, replacing the static `arc_weight` default with a per-query
+dynamic value (env-overridable, on by default, falls back to the old static behavior if
+disabled). The official calibration artifact has been re-harvested and re-fit against the
+fully consolidated pipeline (ROI fusion + Bucket B + this mechanism): species 77.08%
+(n=12,788); the production service restart remains pending explicit authorization.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)
