@@ -862,6 +862,56 @@ ROI + Cubo B + este mecanismo): especie 77,08%, género 82,08%, familia 85,65% (
 El servicio en producción se reinició el mismo día con autorización explícita del usuario;
 esta es ya la cifra que sirve en vivo.
 
+### 4.13 Proyección por subespacio local PCA/LDA para Cubo B (29-ago-2026, desplegado)
+
+El desempate Fisher diagonal (§4.11) asume covarianza diagonal, ignorando la correlación
+entre dimensiones del embedding. La generalización natural es una LDA de covarianza
+completa por par, pero con 1024 dimensiones y tan solo 5-200 embeddings de referencia por
+especie, una matriz de covarianza 1024×1024 es rotundamente singular. Reducimos primero con
+PCA —ajustado SOLO con las embeddings de referencia de ese par, K = min(30, n_a+n_b−2), una
+regla por tamaño de muestra, no ajustada por accuracy— a un subespacio de baja dimensión ya
+bien condicionado, y ajustamos la LDA dentro de él.
+
+**Protocolo.** Validación cruzada de 5 particiones sobre la zona de disparo de Cubo B
+(1.731 de 12.788 observaciones). Los componentes de PCA y LDA se ajustan solo con
+embeddings de referencia, nunca con datos de test, así que no hay fuga posible ahí por
+construcción. El único parámetro elegido mirando resultados —un umbral de confianza τ
+análogo al τ=0,20 del desempate Fisher— se calibró en cada partición usando solo las otras
+cuatro, y se aplicó ciego a la retenida. Las cinco particiones convergieron
+independientemente al mismo valor exacto, τ=0,485 (el percentil 10 de la distribución de
+confianza observada) — una señal de estabilidad, no de ruido específico de una partición.
+
+| Pipeline | ACC especie (n=12.788) | Δ | Arreglados / rotos | Ratio |
+|---|---|---|---|---|
+| Consolidado (Fusión ROI + Cubo B + margen-kNN) | 77,08% | — | — | — |
+| **+ Subespacio local PCA/LDA, 5-fold OOF (piloto)** | **77,42%** | **+0,34pp** | **109 / 65** | **1,68:1** |
+
+El test exacto de McNemar sobre el catálogo completo da χ²=10,626, **p=0,0011** —
+claramente significativo, y mejor ratio arreglados/rotos que el propio desempate Fisher
+(1,4:1).
+
+**Una auditoría independiente encontró un problema real, aunque menor.** Una revisión de
+segunda parte encontró que la rejilla de candidatos sobre la que se barrió τ se derivó de
+percentiles de la distribución de confianza completa de las 1.731 observaciones, incluyendo
+los datos retenidos de cada partición — una fuga menor de distribución, distinta del VALOR
+de τ en sí, que seguía eligiéndose usando solo los datos de entrenamiento de cada
+partición. Relanzando con una rejilla solo-entrenamiento se obtuvo 109 arreglados / 63
+rotos; el veredicto no cambió, y la auditoría aprobó el mecanismo para producción.
+
+**Desplegado a producción**, como segunda etapa justo después del desempate Fisher, sobre
+el mismo criterio de disparo. τ=0,485 queda congelado, no se recalibra en vivo. El coste de
+precómputo se midió antes de elegir la estrategia de carga: construir los 2.042 pares
+documentados de forma eager tardó 916,8 segundos, inaceptable para el arranque del
+servicio, sumado al precómputo Fisher diagonal ya existente. Se cambió a construcción
+perezosa por par en su primer disparo (~0,4-0,5s, segura entre hilos, cacheada en RAM
+después) — de los 2.046 pares documentados, solo 401 aparecieron activos en toda la
+evaluación, así que la mayoría nunca paga este coste en tráfico real. El artefacto de
+calibración oficial se re-cosechó y re-ajustó contra el pipeline totalmente consolidado:
+especie 77,44%, género 82,08%, familia 85,65% (n=12.788). El servicio en producción se
+reinició con autorización explícita y se verificó en vivo vía `/health` y peticiones HTTP
+reales (petición con caché fría 1,73s, con caché caliente 0,54s para el mismo par); esta es
+ya la cifra que sirve en vivo.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)

@@ -863,6 +863,53 @@ fully consolidated pipeline (ROI fusion + Bucket B + this mechanism): species 77
 genus 82.08%, family 85.65% (n=12,788). The production service was restarted with
 explicit user authorization the same day; this is now the live-served baseline.
 
+### 4.13 Bucket B Local-Subspace PCA/LDA Projection (2026-08-29, shipped)
+
+The diagonal Fisher rerank (§4.11) assumes a diagonal covariance, ignoring correlation
+between embedding dimensions. The natural generalization is a full-covariance LDA per pair,
+but at 1024 dimensions with as few as 5-200 reference embeddings per species, a full
+1024×1024 covariance matrix is hopelessly singular. We reduce first with PCA — fit *only*
+on that pair's own reference embeddings, K = min(30, n_a+n_b−2), a sample-size rule rather
+than one tuned on accuracy — into a well-conditioned low-dimensional subspace, then fit LDA
+inside it.
+
+**Protocol.** Five-fold cross-validation on the Bucket B trigger zone (1,731 of 12,788
+observations). PCA and LDA components are fit only from reference embeddings, never test
+data, so there is no leakage there by construction. The one parameter chosen by looking at
+outcomes — a confidence threshold τ analogous to the Fisher rerank's τ=0.20 — was
+calibrated per fold using only the other four folds and applied blind to the held-out
+fold. All five folds independently converged on the identical value, τ=0.485 (the 10th
+percentile of the observed confidence distribution), a stability signal rather than
+fold-specific noise.
+
+| Pipeline | Species ACC (n=12,788) | Δ | Fixed / broken | Ratio |
+|---|---|---|---|---|
+| Consolidated (ROI fusion + Bucket B + k-NN-margin) | 77.08% | — | — | — |
+| **+ Local-subspace PCA/LDA, 5-fold OOF (pilot)** | **77.42%** | **+0.34pp** | **109 / 65** | **1.68:1** |
+
+The exact McNemar test on the full corpus gives χ²=10.626, **p=0.0011** — clearly
+significant, and a better fix/break ratio than the Fisher rerank's own 1.4:1.
+
+**An independent audit caught a real, if minor, issue.** A second-party review found that
+the candidate grid the τ search swept over was derived from percentiles of the full
+1,731-observation confidence distribution, including each fold's own held-out data — a
+minor distributional leak, distinct from the τ *value* itself, which was still selected
+using only each fold's training data. Re-running with a train-only grid gave 109 fixed / 63
+broken; the verdict was unchanged, and the audit approved the mechanism for production.
+
+**Shipped to production**, as a second stage immediately after the Fisher rerank, on the
+same trigger condition. τ=0.485 is frozen, not re-calibrated live. Precompute cost was
+measured before choosing a loading strategy: building all 2,042 documented pairs eagerly
+took 916.8 seconds, unacceptable for service startup on top of the existing Fisher-diagonal
+precompute. We switched to lazy, per-pair construction on first trigger (~0.4-0.5s,
+thread-safe, cached in RAM thereafter) — of 2,046 documented pairs, only 401 ever appeared
+active across the full evaluation, so most never pay this cost in real traffic. The
+official calibration artifact was re-harvested and re-fit against the fully consolidated
+pipeline: species 77.44%, genus 82.08%, family 85.65% (n=12,788). The production service
+was restarted with explicit authorization and verified live via `/health` and real HTTP
+requests (cold-cache request 1.73s, warm-cache request 0.54s for the same pair); this is
+now the live-served baseline.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)
