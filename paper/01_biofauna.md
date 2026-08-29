@@ -871,7 +871,7 @@ The dominant gain came from **using a stronger frozen encoder** (ViT-H) and **tu
 
 ### 5.2 Evaluation Hygiene Matters More Than Leaderboard Chasing
 
-Photo-level splits and buggy reference filtering produced illusory LoRA gains (+3.4pp) that vanished after correction. We recommend observation-stratified harvest as the default for gallery systems fed by citizen-science bursts.
+Photo-level splits and buggy reference filtering produced illusory LoRA gains (+3.4pp) that vanished after correction. We recommend observation-stratified harvest as the default for gallery systems fed by citizen-science bursts. A related lesson surfaced with the Bucket B and k-NN-margin mechanisms (§4.11–4.12): a significance audit on a reduced holdout (n=2,558, only 14 vs. 11 disagreements) reported a non-significant p=0.312 and nearly triggered a revert; the exact McNemar test on the full n=12,788 corpus gave p≈0.002 for the combined effect. The holdout lacked statistical power, not evidence — we now require the full-corpus exact McNemar test plus a confidence interval before accepting any "not significant" verdict on a dynamic-threshold mechanism, and require any such threshold to be calibrated on a held-out split rather than the full evaluation set.
 
 ### 5.3 Taxonomic Abstention Remains Useful
 

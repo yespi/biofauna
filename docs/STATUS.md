@@ -8,7 +8,7 @@
 | Piece | Setting |
 |-------|---------|
 | Encoder | BioCLIP-2.5 ViT-H (1024-dim), **frozen** |
-| Retrieval | k-NN **k=15** + logistic calibration, **ROI multi-crop fusion** (query + strict 65% center crop, 50/50 weighted average, re-normalized — replaces the prior 90%-crop TTA, see §4.9) + **Bucket B Fisher-diagonal re-ranking** (τ=0.20 confidence-gated top-1/top-2 swap for documented same-genus cryptic pairs, **live in production**, see §4.11) + **adaptive prototype boost by local k-NN margin** (query-level dynamic `arc_weight`, ARC 1.0–5.0 by empirical margin percentiles, code shipped and calibration re-fit, awaiting service restart — see §4.12) |
+| Retrieval | k-NN **k=15** + logistic calibration, **ROI multi-crop fusion** (query + strict 65% center crop, 50/50 weighted average, re-normalized — replaces the prior 90%-crop TTA, see §4.9) + **Bucket B Fisher-diagonal re-ranking** (τ=0.20 confidence-gated top-1/top-2 swap for documented same-genus cryptic pairs, **live in production**, see §4.11) + **adaptive prototype boost by local k-NN margin** (query-level dynamic `arc_weight`, ARC 1.0–5.0 by empirical margin percentiles, **live in production**, see §4.12) |
 | Storage | Active SSD gallery + **HDD archive** (full-resolution backup per species), now unified in re-embedding |
 | AutoID | p≥0.80 → ~95.3% precision at ~57.4% coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation volume; see AutoID note below) |
 | Fallback | Hierarchical species→genus→family + iNaturalist CV cross-check |

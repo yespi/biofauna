@@ -870,7 +870,7 @@ La ganancia dominante vino de **usar un codificador congelado más fuerte** (ViT
 
 ### 5.2 La higiene de evaluación importa más que perseguir el leaderboard
 
-Las particiones a nivel de foto y un filtrado de referencia con bugs produjeron ganancias ilusorias de LoRA (+3,4pp) que desaparecieron tras la corrección. Recomendamos la cosecha estratificada por observación como opción por defecto para sistemas de galería alimentados por ráfagas de ciencia ciudadana.
+Las particiones a nivel de foto y un filtrado de referencia con bugs produjeron ganancias ilusorias de LoRA (+3,4pp) que desaparecieron tras la corrección. Recomendamos la cosecha estratificada por observación como opción por defecto para sistemas de galería alimentados por ráfagas de ciencia ciudadana. Una lección relacionada surgió con los mecanismos de Cubo B y margen-kNN (§4.11–4.12): una auditoría de significancia sobre un holdout reducido (n=2.558, solo 14 vs. 11 desacuerdos) reportó un p=0,312 no significativo y estuvo a punto de motivar una reversión; el test exacto de McNemar sobre el catálogo completo (n=12.788) dio p≈0,002 para el efecto combinado. El holdout carecía de potencia estadística, no de evidencia — ahora exigimos el test exacto de McNemar sobre el catálogo completo más un intervalo de confianza antes de aceptar cualquier veredicto de "no significativo" sobre un mecanismo de umbral dinámico, y exigimos que cualquier umbral así se calibre sobre una partición separada, nunca sobre el conjunto de evaluación completo.
 
 ### 5.3 La abstención taxonómica sigue siendo útil
 
