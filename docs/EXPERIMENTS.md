@@ -108,6 +108,30 @@ Exact McNemar on the full corpus: χ²=10.626, **p=0.0011** — clearly signific
 
 | **Seasonal (monthly) prior, 2026-08-28** | Circular (von Mises κ=2.0) per-species monthly density, multiplying k=15+prototype-boost scores by month-of-observation density. **Proof of concept on 376 species with dense local coverage (median 414 obs/species, multi-year, from a local warehouse) was positive: 79.87%→80.80% (+0.93pp, n=1,401).** Scaling to the full 2,989-species catalog via the public API failed across three iterations: 100-most-recent-observations sampling regressed even with a minimum-density guardrail (best case −0.52pp) due to recency bias; fixing an unimplemented test-set leak (7,855/87,700 downloaded observations, 8.96%, were test-set members) made the ungated regression worse (−1.65pp), confirming the leak had been propping up the earlier number; month-balanced sampling (12 requests/species instead of 1, ~31k calls, same rate limit) closed most of the gap (−0.73pp→−0.19pp at N≥50) but never reached positive. The mechanism works; the available data density does not scale to it. No cutover. See paper §4.10. |
 
+### Positive: Local-subspace PCA/LDA extends to inter-genus/same-family pairs (2026-08-30, pilot)
+
+The Bucket B local-subspace mechanism (§4.13) generalizes cleanly to a different error
+bucket: same-family, different-genus confusions (16.15% of remaining error, 466/2,885
+cases). Same technique, same discipline (documented pairs only, 5-fold OOF, τ calibrated
+from scratch rather than reusing Bucket B's 0.485 since the confidence scale is a property
+of a different pair population): 577 of 12,788 observations qualify (same family +
+different genus + k-NN margin < 0.05 + pair documented in `cryptic_pairs.jsonl`, 48.5% of
+the 1,190 raw candidates), 145 unique pairs, PCA(K≤30)+LDA fit per pair from reference
+embeddings only.
+
+| Pipeline | Species ACC (n=12,788) | Δ | Fixed / broken | Ratio |
+|---|---|---|---|---|
+| Consolidated (77.44% official) | 77.44% | — | — | — |
+| **+ Local-subspace PCA/LDA, inter-genus/same-family, 5-fold OOF (pilot)** | **77.69%** | **+0.25pp** | **60 / 28** | **2.14:1** |
+
+Exact McNemar: χ²=10.920, **p=0.0008** — significant, and an even better fix/break ratio
+than Bucket B's own 1.68:1. Not yet shipped to production — this is the pilot the error
+taxonomy above called for; the next step (pending decision) is the same path Bucket B took:
+official calibration re-harvest, integration into `identify_service.py` as a third stage
+(same lazy-loading discipline, since eagerly precomputing all documented same-family pairs
+would carry the same startup-cost risk found for Bucket B), and a production restart with
+explicit authorization.
+
 ## Updated error taxonomy at 77.44% (2026-08-30)
 
 With the current baseline at 77.44% (n=12,788), 2,885 species-level errors remain (22.56%).
