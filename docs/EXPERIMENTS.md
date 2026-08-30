@@ -205,6 +205,49 @@ without a genuinely new input (more reference photos for photo-starved species, 
 actually-verified DINOv3 checkpoint with a real per-image k-NN gallery, not a 2-photo
 prototype). See each hypothesis's full writeup above/below for the complete methodology.
 
+## Structural investigation ("Option B") — post-freeze, exploratory
+
+The formal freeze above covers *inference-time tuning of the current pipeline*. It explicitly
+allows reopening with a genuinely new input. The following explores one such input — a
+much larger, architecturally different vision encoder — without touching the frozen
+production configuration.
+
+### Negative: DINOv2-Giant top-5 rerank finds no discriminative signal (2026-08-30)
+
+**Setup, verified before running anything**: `vit_giant_patch14_reg4_dinov2.lvd142m` (with
+register tokens), 1,136M params, 518×518 input, 1536-dim output — a real, correctly-labeled
+DINOv2 checkpoint this time (unlike the base-model mislabeling found earlier the same day),
+available via timm with no HF token required. An 8-image timed probe measured: 72s model
+load, 4.72GB peak VRAM at batch=1, 0.654s/image — projecting ~139 min for the full 12,788-image
+gallery, so a bounded 2,000-image pilot was run first.
+
+**Design**: 900 query observations selected from the official 77.77% baseline, biased toward
+inter-family confusion in sponges/tunicates/algae/benthic fauna (Porifera, Plantae, Bryozoa
+iconic groups + a curated list of ascidian families — "Ascidiacea" has no iconic tag of its
+own in this catalog) — all 568 `diff_family` errors in that population plus a random fill
+(fixed seed) to 900, keeping a natural correct/incorrect mix for a valid two-sided McNemar.
+BioCLIP's candidates were taken directly from the official `top` field (already the final
+post-rerank top-5, confirmed by reading `reharvest_calib_final.py` — no BioCLIP score was
+reconstructed). The 900 queries' top-5 lists produced 898 nearly-non-overlapping candidate
+species; budget allowed one real reference photo per species (622/898 had one available in
+`/mnt/gpu/fotofauna-images/`, not the calibration photo cache) — a genuine single-image
+per-image gallery, not an averaged prototype, but thinner than a proper multi-image gallery
+would be. Rerank score = ALPHA × BioCLIP-rank (already reflects the real pipeline's ordering)
++ (1−ALPHA) × DINOv2-Giant cosine similarity to that one reference photo, both row-normalized
+across the 5 candidates; ALPHA calibrated via 5-fold OOF over {0.0, 0.2, 0.4, 0.6, 0.8, 1.0}.
+
+**Result**: 4/5 folds picked ALPHA∈{0.6, 0.8} — i.e. mostly trusting BioCLIP's own ranking,
+DINOv2-Giant contributing only a minor tiebreak. Exact McNemar: **40 fixed / 42 broken
+(0.95:1)**, χ²=0.012, **p=0.9122 — not significant, essentially a coin flip**. Even a
+1.1B-parameter, architecturally orthogonal encoder with real per-image references does not
+discriminate the specific candidates BioCLIP already left tied in its own top-5. Consistent
+with the Cubo C audit finding (27-ago) that ~80% of cross-group errors are already
+mis-ranked at retrieval time, not at the rerank stage: if two candidates look equally
+plausible to both a contrastive-language-supervised encoder (BioCLIP) and a purely
+self-supervised visual one (DINOv2), that is evidence the images themselves are genuinely
+ambiguous at this reference density, not that the *rerank mechanism* is missing a signal. No
+cutover — this was an exploratory pilot against a frozen production, not a proposal to ship.
+
 ## Still open (outside the closed optimization phase)
 
 - QLoRA via **torchao/hqq** (bitsandbytes incompatible with our open_clip ViT-H path) —
