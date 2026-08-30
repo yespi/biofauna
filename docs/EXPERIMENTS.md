@@ -1,7 +1,16 @@
 # BioFauna — Experiments (condensed)
 
-> Public summary of ablations through **2026-08-28**.  
+> Public summary of ablations through **2026-08-30**.  
 > Trusted metric: observation-stratified `harvest_calib` species top-1.
+>
+> **Post-77.77% optimization phase formally closed (2026-08-30)**: five independent hypotheses
+> targeting the remaining error after the local-subspace consolidation (substrate/background
+> neutralization, external geographic/ecological priors, DINOv2 fusion, Tier1 morphological
+> multi-prototypes, ancestral subspace inheritance for low-reference species) were each
+> pre-registered, piloted with 5-fold OOF where applicable, and evaluated with exact McNemar —
+> **zero returned a significant positive result**. `biofauna-id.service` is frozen at its
+> current configuration: **77.77% species / 82.38% genus / 85.65% family** (n=12,788). See
+> "Post-77.77% optimization phase — closed" below for the consolidated verdict table.
 
 ## Kept in production
 
@@ -17,6 +26,7 @@
 | **Bucket B Fisher-diagonal re-ranking** (documented cryptic pairs only, confidence-gated margin τ=0.20, 2026-08-28) | **+0.14pp net** on top of ROI fusion, official geo-inclusive calibration harvest (76.78%→**76.92%**, n=12,788), 58 fixed / 41 broken (1.4:1) — see below |
 | **Adaptive prototype boost by local k-NN margin** (query-level, not species-level; ARC_MIN=1.0/ARC_MAX=5.0, empirical p25/p75 thresholds, 2026-08-29) | **+0.16pp net** on top of ROI fusion + Bucket B (76.92%→**77.08%**, n=12,788), 37 fixed / 17 broken (2.18:1) — see below |
 | **Bucket B local-subspace PCA/LDA projection** (per-pair PCA+LDA, generalizes the diagonal Fisher rerank to full covariance in a low-dim subspace, τ=0.485 via 5-fold OOF, 2026-08-29) | **+0.34-0.36pp net** on top of Bucket B + k-NN-margin (77.08%→**77.44%** official harvest, n=12,788), 109 fixed / 65 broken (1.68:1), exact McNemar p=0.0011 — see below |
+| **Local-subspace PCA/LDA extended to inter-genus/same-family pairs** (same mechanism, second trigger τ=0.6151 via 5-fold OOF median — folds did not converge to one value, froze the median rather than the mean, 2026-08-30) | **+0.25pp net** on the 577-obs pilot zone (77.44%→77.69%), 60 fixed / 28 broken (2.14:1), exact McNemar p=0.0008; **77.77%** on the full official re-harvest, n=12,788 — see §4.14 |
 
 ## Closed / negative (do not repeat as-is)
 
@@ -170,10 +180,35 @@ the qualitative finding from the original Bucket C audit (§4.8: 80% of cross-gr
 already have the wrong group winning the raw k-NN vote, not fixable by re-ranking) remains the
 best available evidence for the largest (different-family) bucket.
 
-## Still open
+## Post-77.77% optimization phase — closed (2026-08-30)
 
-- DINOv3 embeddings extracted (~1,301 spp) — **not** yet calibrated as a production encoder
-- QLoRA via **torchao/hqq** (bitsandbytes incompatible with our open_clip ViT-H path)
+Five independent hypotheses targeting the 2,843-observation error remaining after the
+local-subspace consolidation (77.77%), each pre-registered, piloted under the McNemar+OOF
+protocol, and evaluated on the full n=12,788 corpus (or its correctly-scoped subset). **Net
+result: 0/5 positive.**
+
+| # | Hypothesis | Verdict | Exact McNemar |
+|---|---|---|---|
+| 1 | Ancestral (genus/family) subspace inheritance for low-reference species | ❌ Infeasible pre-registration — addressable population of 1 observation, no compute spent | n/a |
+| 2 | Substrate/background neutralization (border-color model, z-score mask, 50/50 fusion) | ❌ Significant regression, 75.21%→74.29% own control (−0.92pp) | χ²=22.515, p<0.0001 |
+| 3 | External geographic/ecological prior (Minka point-cloud proxy; no WoRMS/GBIF data available) | ❌ Not significant — 4/5 OOF folds picked "no penalty" as optimal | χ²=2.227, p=0.1338 |
+| 4 | "DINOv3" fusion — found to be mislabeled DINOv2, 2-photo prototypes | ❌ Significant regression, 75.88%→69.12% vs. official on aligned subset (−6.75pp) | χ²=270.084, p<0.0001 |
+| 5 | Tier1 morphological multi-prototype sub-clustering (≥15 refs, k-means) | ❌ Not significant — 4/5 OOF folds picked "no change" as optimal | χ²=0.900, p=0.3438 |
+
+**Conclusion**: the pipeline (BioCLIP-2.5 ViT-H + ROI fusion + Bucket B Fisher + adaptive
+k-NN-margin boost + dual-trigger local-subspace PCA/LDA) has reached an asymptote on the
+current catalog and encoder. Every lever tried on top of it — visual (substrate masking),
+external-signal (geography), a second encoder (DINOv2, standalone and fused), and internal
+restructuring (multi-prototype) — either found no significant signal or actively hurt.
+`biofauna-id.service` is **frozen at this configuration**: no further tuning is planned
+without a genuinely new input (more reference photos for photo-starved species, or an
+actually-verified DINOv3 checkpoint with a real per-image k-NN gallery, not a 2-photo
+prototype). See each hypothesis's full writeup above/below for the complete methodology.
+
+## Still open (outside the closed optimization phase)
+
+- QLoRA via **torchao/hqq** (bitsandbytes incompatible with our open_clip ViT-H path) —
+  architectural fine-tuning avenue, separate from the closed inference-time optimization phase
 - Confident learning / Macro-F1 dashboards / curator-correction log
 - No parameter-efficient or contrastive fine-tuning variant (LoRA, QLoRA, linear head sidecar, SupCon re-ranker) has yet beaten the frozen-backbone k-NN baseline at any catalog scale or scope tried so far — this line of attack is considered closed for the current data regime (see the SupCon entry above); the plausible remaining levers are more photos for genuinely photo-starved species (not just "Tier 1" — verify against confusion-rival photo counts first) or a different encoder/signal modality, not more training on top of this one
 - Geographic priors for cryptic pairs: 2 of ~40 scoped species pairs show real, usable geographic separation (`Mesophyllum lichenoides`/`M. expansum`; `Lutraria magna`/`L. lutraria`) after backfilling missing coordinates for species with zero cached observations — small, not yet exploited in the abstention rule
