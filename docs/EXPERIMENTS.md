@@ -108,7 +108,7 @@ Exact McNemar on the full corpus: χ²=10.626, **p=0.0011** — clearly signific
 
 | **Seasonal (monthly) prior, 2026-08-28** | Circular (von Mises κ=2.0) per-species monthly density, multiplying k=15+prototype-boost scores by month-of-observation density. **Proof of concept on 376 species with dense local coverage (median 414 obs/species, multi-year, from a local warehouse) was positive: 79.87%→80.80% (+0.93pp, n=1,401).** Scaling to the full 2,989-species catalog via the public API failed across three iterations: 100-most-recent-observations sampling regressed even with a minimum-density guardrail (best case −0.52pp) due to recency bias; fixing an unimplemented test-set leak (7,855/87,700 downloaded observations, 8.96%, were test-set members) made the ungated regression worse (−1.65pp), confirming the leak had been propping up the earlier number; month-balanced sampling (12 requests/species instead of 1, ~31k calls, same rate limit) closed most of the gap (−0.73pp→−0.19pp at N≥50) but never reached positive. The mechanism works; the available data density does not scale to it. No cutover. See paper §4.10. |
 
-### Positive: Local-subspace PCA/LDA extends to inter-genus/same-family pairs (2026-08-30, pilot)
+### Positive: Local-subspace PCA/LDA extends to inter-genus/same-family pairs (2026-08-30, shipped)
 
 The Bucket B local-subspace mechanism (§4.13) generalizes cleanly to a different error
 bucket: same-family, different-genus confusions (16.15% of remaining error, 466/2,885
@@ -125,12 +125,24 @@ embeddings only.
 | **+ Local-subspace PCA/LDA, inter-genus/same-family, 5-fold OOF (pilot)** | **77.69%** | **+0.25pp** | **60 / 28** | **2.14:1** |
 
 Exact McNemar: χ²=10.920, **p=0.0008** — significant, and an even better fix/break ratio
-than Bucket B's own 1.68:1. Not yet shipped to production — this is the pilot the error
-taxonomy above called for; the next step (pending decision) is the same path Bucket B took:
-official calibration re-harvest, integration into `identify_service.py` as a third stage
-(same lazy-loading discipline, since eagerly precomputing all documented same-family pairs
-would carry the same startup-cost risk found for Bucket B), and a production restart with
-explicit authorization.
+than Bucket B's own 1.68:1. Unlike Bucket B's clean single-value convergence, the 5 OOF
+folds did not agree on one τ (1.1812, 0.6151, 0.6059, 1.1825, 0.5078 — two loose clusters
+rather than one stable value); the **median** (0.6151) was frozen for production rather than
+the mean, so the two high outliers don't pull the threshold above where 3 of 5 folds
+actually landed.
+
+**Shipped to production** (`identify_service.py`) as a second trigger on the same
+local-subspace mechanism, immediately after the existing same-genus (Bucket B) check: same
+genus → τ=0.485; same family, different genus → τ=0.6151; anything else → mechanism does
+not fire. `_get_local_subspace()` is reused unchanged (a per-pair PCA/LDA cache keyed by
+the pair's two slugs, regardless of their taxonomic relationship). Official calibration
+re-harvested against the fully consolidated pipeline (both local-subspace triggers active):
+**species 77.77% / genus 82.38% / family 85.65%** (n=12,788) — the full-catalog re-harvest
+outperforms the isolated pilot's 77.69%, likely because the pilot's τ was validated on a
+577-observation subset while production sees the full trigger population. `biofauna-id.service`
+restarted with explicit authorization (the fourth restart of this consolidation effort) and
+verified live via `/health` and real HTTP requests (cold-cache 2.58s, warm-cache 0.51s for
+the same pair).
 
 ## Updated error taxonomy at 77.44% (2026-08-30)
 

@@ -910,6 +910,48 @@ was restarted with explicit authorization and verified live via `/health` and re
 requests (cold-cache request 1.73s, warm-cache request 0.54s for the same pair); this is
 now the live-served baseline.
 
+### 4.14 Local-Subspace Projection Extended to Inter-Genus Pairs (2026-08-30, shipped)
+
+An error taxonomy over the remaining errors after §4.13 (n=2,885) found same-family,
+different-genus confusions were the second-largest structured bucket after same-genus
+confusions: 16.15% of remaining error (466 cases), versus 22.15% still attributable to the
+Bucket B same-genus population and 61.70% unstructured. The local-subspace mechanism itself
+is agnostic to *why* two species are confusable — it only needs enough reference embeddings
+per side to fit a stable PCA+LDA subspace — so the natural test was firing the same
+mechanism on a different trigger population: same family, different genus, documented pair,
+k-NN margin < 0.05.
+
+**Protocol.** Identical discipline to §4.13: documented pairs only, five-fold OOF, τ
+calibrated per fold from training folds alone. 577 of 12,788 observations qualified (48.5%
+of 1,190 raw candidates satisfying the margin and family/genus conditions), across 145
+unique pairs. Unlike §4.13, the five folds did **not** converge on one value — τ candidates
+were {1.1812, 0.6151, 0.6059, 1.1825, 0.5078}, splitting into a loose low cluster (3 folds)
+and a high cluster (2 folds) rather than a single stable point. We froze the **median**
+(0.6151) rather than the mean for production, so the two high-outlier folds don't pull the
+live threshold above where the majority of folds actually landed — a more conservative
+choice given the lack of convergence.
+
+| Pipeline | Species ACC (n=12,788) | Δ | Fixed / broken | Ratio |
+|---|---|---|---|---|
+| Consolidated (ROI fusion + Bucket B + k-NN-margin + local-subspace) | 77.44% | — | — | — |
+| **+ Local-subspace PCA/LDA, inter-genus/same-family, 5-fold OOF (pilot)** | **77.69%** | **+0.25pp** | **60 / 28** | **2.14:1** |
+
+Exact McNemar: χ²=10.920, **p=0.0008** — significant, and a better fix/break ratio than
+§4.13's own 1.68:1, despite the noisier threshold search.
+
+**Shipped to production** as a second trigger on the existing local-subspace mechanism: same
+genus → τ=0.485 (§4.13); same family, different genus → τ=0.6151; otherwise the mechanism
+does not fire. The `_get_local_subspace()` per-pair PCA/LDA cache is reused unchanged — the
+mechanism does not care which trigger populated it, so no separate precompute path or extra
+startup cost was needed. The official calibration artifact was re-harvested against the
+fully consolidated pipeline (both triggers active): species **77.77%**, genus 82.38%, family
+85.65% (n=12,788) — the full-catalog figure exceeds the 577-observation pilot's own 77.69%,
+consistent with the pilot's τ having been validated on a smaller subset than the trigger
+population production actually sees. The production service was restarted with explicit
+authorization and verified live via `/health` and a real HTTP request against a known fixed
+case from the pilot (cold-cache 2.58s, warm-cache 0.51s); this is now the live-served
+baseline.
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)

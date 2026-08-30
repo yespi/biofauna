@@ -912,6 +912,51 @@ reinició con autorización explícita y se verificó en vivo vía `/health` y p
 reales (petición con caché fría 1,73s, con caché caliente 0,54s para el mismo par); esta es
 ya la cifra que sirve en vivo.
 
+### 4.14 Proyección por subespacio local extendida a pares inter-género (30-ago-2026, desplegado)
+
+Una taxonomía de errores sobre los errores restantes tras el §4.13 (n=2.885) encontró que
+las confusiones del mismo género intergénero (misma familia, distinto género) eran el
+segundo cubo estructurado más grande tras las confusiones del mismo género: 16,15% del
+error restante (466 casos), frente al 22,15% aún atribuible a la población del mismo género
+de Cubo B y un 61,70% sin estructura. El mecanismo de subespacio local es agnóstico a *por
+qué* dos especies son confundibles — solo necesita suficientes embeddings de referencia por
+lado para ajustar un subespacio PCA+LDA estable — así que la prueba natural era disparar el
+mismo mecanismo sobre una población de disparo distinta: misma familia, distinto género, par
+documentado, margen k-NN < 0,05.
+
+**Protocolo.** Disciplina idéntica al §4.13: solo pares documentados, cinco particiones OOF,
+τ calibrado por partición usando solo las particiones de entrenamiento. 577 de 12.788
+observaciones cualificaron (48,5% de las 1.190 candidatas en bruto que cumplían las
+condiciones de margen y familia/género), sobre 145 pares únicos. A diferencia del §4.13, las
+cinco particiones **no** convergieron en un único valor — los candidatos a τ fueron
+{1,1812, 0,6151, 0,6059, 1,1825, 0,5078}, dividiéndose en un cúmulo bajo laxo (3
+particiones) y un cúmulo alto (2 particiones) en vez de un único punto estable. Se congeló
+la **mediana** (0,6151) en vez de la media para producción, así las dos particiones atípicas
+altas no arrastran el umbral en vivo por encima de donde realmente aterrizó la mayoría de
+particiones — una elección más conservadora dada la falta de convergencia.
+
+| Pipeline | ACC especie (n=12.788) | Δ | Arreglados / rotos | Ratio |
+|---|---|---|---|---|
+| Consolidado (fusión ROI + Cubo B + margen k-NN + subespacio local) | 77,44% | — | — | — |
+| **+ Subespacio local PCA/LDA, inter-género/misma familia, 5-fold OOF (piloto)** | **77,69%** | **+0,25pp** | **60 / 28** | **2,14:1** |
+
+McNemar exacto: χ²=10,920, **p=0,0008** — significativo, y mejor ratio arreglados/rotos que
+el propio 1,68:1 del §4.13, pese a la búsqueda de umbral más ruidosa.
+
+**Desplegado a producción** como segundo disparo sobre el mecanismo de subespacio local ya
+existente: mismo género → τ=0,485 (§4.13); misma familia, distinto género → τ=0,6151; en
+cualquier otro caso el mecanismo no se dispara. La caché por par PCA/LDA de
+`_get_local_subspace()` se reutiliza sin cambios — al mecanismo no le importa qué disparo la
+pobló, así que no hizo falta ninguna ruta de precómputo separada ni coste extra de arranque.
+El artefacto de calibración oficial se re-cosechó contra el pipeline totalmente consolidado
+(ambos disparos activos): especie **77,77%**, género 82,38%, familia 85,65% (n=12.788) — la
+cifra de catálogo completo supera el 77,69% del propio piloto de 577 observaciones,
+consistente con que el τ del piloto se validó sobre un subconjunto más pequeño que la
+población de disparo que ve producción en realidad. El servicio en producción se reinició
+con autorización explícita y se verificó en vivo vía `/health` y una petición HTTP real
+contra un caso conocido arreglado del piloto (caché fría 2,58s, caché caliente 0,51s); esta
+es ya la cifra que sirve en vivo.
+
 ## 5. Discusión
 
 ### 5.1 La escala del backbone gana al ajuste fino ligero (aquí)
