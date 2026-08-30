@@ -108,6 +108,27 @@ Exact McNemar on the full corpus: χ²=10.626, **p=0.0011** — clearly signific
 
 | **Seasonal (monthly) prior, 2026-08-28** | Circular (von Mises κ=2.0) per-species monthly density, multiplying k=15+prototype-boost scores by month-of-observation density. **Proof of concept on 376 species with dense local coverage (median 414 obs/species, multi-year, from a local warehouse) was positive: 79.87%→80.80% (+0.93pp, n=1,401).** Scaling to the full 2,989-species catalog via the public API failed across three iterations: 100-most-recent-observations sampling regressed even with a minimum-density guardrail (best case −0.52pp) due to recency bias; fixing an unimplemented test-set leak (7,855/87,700 downloaded observations, 8.96%, were test-set members) made the ungated regression worse (−1.65pp), confirming the leak had been propping up the earlier number; month-balanced sampling (12 requests/species instead of 1, ~31k calls, same rate limit) closed most of the gap (−0.73pp→−0.19pp at N≥50) but never reached positive. The mechanism works; the available data density does not scale to it. No cutover. See paper §4.10. |
 
+## Updated error taxonomy at 77.44% (2026-08-30)
+
+With the current baseline at 77.44% (n=12,788), 2,885 species-level errors remain (22.56%).
+Breaking them down by taxonomic distance between the true species and the top-1 prediction:
+
+| Bucket | Count | Share of remaining errors |
+|---|---|---|
+| Same genus (Bucket B — the local-subspace/Fisher rerank's own territory) | 639 | 22.15% |
+| Same family, different genus (inter-genus, not yet attacked) | 466 | 16.15% |
+| Different family (Bucket C — cross-group, closed negative twice) | 1,780 | 61.70% |
+
+The inter-genus/same-family bucket (16.15%) is the natural next target for the local-subspace
+mechanism, since it shares Bucket B's core assumption (a documented, curated pair with its own
+reference embeddings makes a well-defined local discriminant possible) without extending into
+the cross-family territory that has failed twice (§4.8, and the family-consensus k-NN
+constraint above). A background/substrate-noise breakdown of the remaining errors was
+attempted by direct visual sampling but could not be completed this pass due to a tool outage;
+the qualitative finding from the original Bucket C audit (§4.8: 80% of cross-group errors
+already have the wrong group winning the raw k-NN vote, not fixable by re-ranking) remains the
+best available evidence for the largest (different-family) bucket.
+
 ## Still open
 
 - DINOv3 embeddings extracted (~1,301 spp) — **not** yet calibrated as a production encoder
