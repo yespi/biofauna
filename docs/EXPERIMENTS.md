@@ -1,15 +1,18 @@
 # BioFauna — Experiments (condensed)
 
-> Public summary of ablations through **2026-08-30**.  
+> Public summary of ablations through **2026-09-01**.  
 > Trusted metric: observation-stratified `harvest_calib` species top-1.
+>
+> **Live official baseline (2026-09-01):** **79.25%** species / **75.10%** Tier-1,
+> FAISS **785,897** / 4,702 spp, `faiss_aligned`. Paper §4.15–§4.16.
 >
 > **Post-77.77% optimization phase formally closed (2026-08-30)**: five independent hypotheses
 > targeting the remaining error after the local-subspace consolidation (substrate/background
 > neutralization, external geographic/ecological priors, DINOv2 fusion, Tier1 morphological
 > multi-prototypes, ancestral subspace inheritance for low-reference species) were each
 > pre-registered, piloted with 5-fold OOF where applicable, and evaluated with exact McNemar —
-> **zero returned a significant positive result**. `biofauna-id.service` is frozen at its
-> current configuration: **77.77% species / 82.38% genus / 85.65% family** (n=12,788). See
+> **zero returned a significant positive result**. Inference-time machinery stays frozen;
+> 77.77%→79.25% is gallery densification, not a new scorer. See
 > "Post-77.77% optimization phase — closed" below for the consolidated verdict table.
 
 ## Kept in production
@@ -27,6 +30,8 @@
 | **Adaptive prototype boost by local k-NN margin** (query-level, not species-level; ARC_MIN=1.0/ARC_MAX=5.0, empirical p25/p75 thresholds, 2026-08-29) | **+0.16pp net** on top of ROI fusion + Bucket B (76.92%→**77.08%**, n=12,788), 37 fixed / 17 broken (2.18:1) — see below |
 | **Bucket B local-subspace PCA/LDA projection** (per-pair PCA+LDA, generalizes the diagonal Fisher rerank to full covariance in a low-dim subspace, τ=0.485 via 5-fold OOF, 2026-08-29) | **+0.34-0.36pp net** on top of Bucket B + k-NN-margin (77.08%→**77.44%** official harvest, n=12,788), 109 fixed / 65 broken (1.68:1), exact McNemar p=0.0011 — see below |
 | **Local-subspace PCA/LDA extended to inter-genus/same-family pairs** (same mechanism, second trigger τ=0.6151 via 5-fold OOF median — folds did not converge to one value, froze the median rather than the mean, 2026-08-30) | **+0.25pp net** on the 577-obs pilot zone (77.44%→77.69%), 60 fixed / 28 broken (2.14:1), exact McNemar p=0.0008; **77.77%** on the full official re-harvest, n=12,788 — see §4.14 |
+| **Gallery densification (Tier-1 mass lot, frozen ViT-H)** (2026-08-31) | **77.77%→79.25%** species (Tier-1 75.10%), FAISS 785,897 / 4,702 spp; staging 807,267 at 79.10% **not cut over** — see §4.15 |
+| **FAISS/`KY` live-label desync** (2026-09-01, operational bug) | High-confidence wrong names on live `/identify` only; disk evals unchanged; fixed with `species_ids.npy` + `/reload`→`load_faiss()` — see §4.16 |
 
 ## Closed / negative (do not repeat as-is)
 

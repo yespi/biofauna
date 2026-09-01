@@ -1,6 +1,25 @@
 # BioFauna — Project Status (public)
 
-> ## 🧊 Production frozen at 77.77% (2026-08-30)
+> ## Live production (2026-09-01 night): **79.25%** species · FAISS aligned · AutoID on
+>
+> `biofauna-id.service` serves **785,897** embeddings / **4,702** species,
+> `faiss_aligned=true`. Official `harvest_calib` (n=12,788): **79.25%** species /
+> **75.10%** Tier-1. Staging **807,267** was evaluated at 79.10% (−0.15pp) and
+> **was not cut over**. Paper §4.15–§4.16.
+>
+> **Incident (closed):** from 31 Aug ~12:03 to 1 Sep 22:42 CEST, live `/identify`
+> translated FAISS neighbors with a rebuilt in-memory label array `KY` that no
+> longer matched the loaded index — terrestrial photos were named as marine
+> species at 85–100% confidence. Disk embeddings and official evals were never
+> scrambled. Neighbor translation now uses `species_ids.npy`; `/reload` reloads
+> FAISS; `/health` reports `faiss_aligned`. AutoID hourly wave is **on** again
+> (20/h, p≥0.80, unidentified only). Default FotoFauna PRE crop remains YOLO COCO
+> (YOLOE marine prompts recover boxes but lower BioFauna accuracy after the crop).
+>
+> Inference-time architecture remains **frozen** (0/5 post-77.77% hypotheses).
+> 77.77% → 79.25% is **gallery densification**, not a new scorer.
+>
+> ## Historical — 🧊 Production frozen at 77.77% (2026-08-30)
 >
 > The post-77.77% optimization phase is **formally closed**. Five independent hypotheses
 > (substrate/background neutralization, external geographic/ecological priors, DINOv2 fusion
@@ -47,7 +66,9 @@
 | **+ Bucket B Fisher-diagonal re-ranking** (Aug 28-29 2026, n=12,788, single photo) | **76.92%** | +0.14pp net on top of the 76.78% ROI-fusion official harvest (geo included); confidence-gated (τ=0.20) top-1/top-2 swap for documented same-genus cryptic pairs, 58 fixed / 41 broken; genus 81.88%, family 85.53%. **Live in production** (service restarted Aug 29 with explicit authorization). See paper §4.11 |
 | **+ Adaptive prototype boost by local k-NN margin** (Aug 29 2026, n=12,788, single photo) | **77.08%** | +0.16pp net on top of the 76.92% Bucket B official harvest; query-level dynamic `arc_weight` (ARC 1.0–5.0) by empirical p25/p75 margin percentiles, 37 fixed / 17 broken (2.18:1, beats Bucket B's own ratio). Genus 82.08%, family 85.65%. Shipped to `identify_service.py`, calibration re-harvested and re-fit. See paper §4.12 |
 | **+ Bucket B local-subspace PCA/LDA projection** (Aug 29 2026, n=12,788, single photo) | **77.44%** | +0.36pp net on top of the 77.08% official harvest (pilot on the 1,731-obs trigger zone alone measured +0.34pp/77.42% before the full re-harvest); per-pair PCA (K≤30, sample-size-bounded) + LDA on top of the existing Fisher rerank, τ=0.485 frozen after 5-fold OOF calibration (all 5 folds independently converged on the same value). 109 fixed / 65 broken (1.68:1) in the pilot; exact McNemar p=0.0011. Independently audited (`BIOFAUNA_AUDIT_SUBSPACE_20260829.md`, approved). Genus 82.08%, family 85.65%. Shipped to `identify_service.py` with **lazy per-pair loading** (eager precompute of all 2,042 documented pairs measured at 916.8s — unacceptable for service startup — replaced with on-demand construction on first trigger, ~0.4-0.5s, cached thereafter). See paper §4.13 |
-| **+ Local-subspace projection extended to inter-genus/same-family pairs, current** (Aug 30 2026, n=12,788, single photo) | **77.77%** | +0.33pp net on top of the 77.44% official harvest (pilot on the 577-obs inter-genus trigger zone alone measured +0.25pp/77.69% before the full re-harvest); same PCA(K≤30)+LDA mechanism and cache, second trigger for same-family/different-genus pairs, τ=0.6151 (5-fold OOF did not converge to one value — froze the **median** of {1.1812, 0.6151, 0.6059, 1.1825, 0.5078} rather than the mean, so the two high-outlier folds don't skew production). 60 fixed / 28 broken (2.14:1) in the pilot; exact McNemar p=0.0008. Genus 82.38%, family 85.65%. Shipped to `identify_service.py` reusing the existing lazy per-pair cache (no separate precompute or extra startup cost). **`biofauna-id.service` restarted with explicit authorization — this is the live-served figure**. See paper §4.14 |
+| **+ Local-subspace projection extended to inter-genus/same-family pairs** (Aug 30 2026, n=12,788, single photo) | **77.77%** | +0.33pp net on top of the 77.44% official harvest (pilot on the 577-obs inter-genus trigger zone alone measured +0.25pp/77.69% before the full re-harvest); same PCA(K≤30)+LDA mechanism and cache, second trigger for same-family/different-genus pairs, τ=0.6151 (5-fold OOF did not converge to one value — froze the **median** of {1.1812, 0.6151, 0.6059, 1.1825, 0.5078} rather than the mean, so the two high-outlier folds don't skew production). 60 fixed / 28 broken (2.14:1) in the pilot; exact McNemar p=0.0008. Genus 82.38%, family 85.65%. Shipped to `identify_service.py` reusing the existing lazy per-pair cache (no separate precompute or extra startup cost). **`biofauna-id.service` restarted with explicit authorization — this is the live-served figure**. See paper §4.14 |
+| **+ Tier-1/Tier-3 gallery densification (mass lot), current** (Aug 31 2026, n=12,788, single photo) | **79.25%** | Same frozen ViT-H encoder; FAISS **785,897** / 4,702 spp; Tier-1 **75.10%**. Overnight 726-spp staging 807,267 measured 79.10% globally (not cut over). See paper §4.15 |
+| **FAISS/label alignment fix** (Sep 1 2026, operational) | **79.25% (unchanged)** | Live `/reload` had rebuilt `KY` without reloading FAISS — high-confidence wrong names. Disk evals valid. See paper §4.16 |
 
 Do not compare these numbers without noting corpus size and embedding coverage. The 76.84% ROI-fusion row above measures an isolated no-geo ablation baseline; the 76.78%/76.92%/77.08%/77.44%/77.77% figures in this note and the Bucket B/adaptive-prototype/local-subspace rows are the official geo-inclusive `calibration.json` harvest, each measured against the immediately preceding row's own official baseline. The multi-photo fusion row was measured against the older crop90 baseline in isolation — the combined full-corpus number with all mechanisms stacked has not yet been independently re-measured.
 
