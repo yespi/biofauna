@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 # Ejecutar EN HanSolo (LAN o localhost), no desde cloud Cursor.
+#
+# ADVERTENCIA (2026-09-02): no usar tal cual en prod. find /mnt/docker puede
+# parchear backups/cargaev; el restart incluye lugares. Despliegue real:
+# copiar solo en /mnt/docker/ximo/ (PRO+PRE) y reiniciar solo contenedor ximo.
+# Ver scripts/XIMO_TESLA_HANDOFF.md.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
