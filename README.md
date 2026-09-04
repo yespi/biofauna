@@ -5,23 +5,21 @@ Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 
 ## Architecture
 - **Encoder**: BioCLIP-2.5 ViT-H (632M params, 1024-dim), frozen
-- **Identification**: k-NN (k=15) over ~700K embeddings / **~3,000 species** (Aug 2026)
-- **AutoID**: Publishes to Minka when p≥0.90 (**95.5%** precision, **30.2%** coverage on baseline cohort)
+- **Identification**: k-NN (k=15) over **785,897** embeddings / **4,702** species (Sep 2026)
+- **AutoID**: Publishes to Minka when p≥0.80 (**~95.3%** precision, **~57.4%** coverage)
 - **Fallback**: Hierarchical species→genus→family + iNaturalist CV cross-check
 
 ## Accuracy
 
-**Published baseline** (out-of-sample `harvest_calib`, observation-stratified, Aug 2026):
+**Live official baseline** (out-of-sample `calib_raw.jsonl`, n=12,788, 2026-09-04):
 
 | Level | Accuracy |
 |-------|----------|
-| Species | **71.7%** |
-| Genus | **76.5%** |
-| Family | **80.4%** |
+| Species | **79.10%** (10,115/12,788; Tier-1 **74.88%**) |
+| Gallery | **785,897** embeddings / **4,702** species, FAISS aligned |
+| night85 staging | Overlay McNemar **282/80 +1.58 pp** · **not cut over** |
 
-Gains that stuck: ViT-L→ViT-H (**+6.8pp**), k=25→k=15 (**+1.1pp**).
-
-**Remediation (Aug 2026):** gallery ~3,000 species; tier-1 OOS ~64% while consolidating SSD + HDD archive into embeddings. See [docs/STATUS.md](docs/STATUS.md) and [docs/ARCHIVE_GAP.md](docs/ARCHIVE_GAP.md).
+Paper TTA-era figure (Aug 2026) was 75.97% species; inference mechanisms then 77.77%; densification harvest 79.25% (1 Sep, Δ19 photos vs jsonl). A 1-Sep production-only FAISS/label desync is documented in paper §4.16. Staging densification overlay: §4.17. See [docs/STATUS.md](docs/STATUS.md) and [paper/01_biofauna.md](paper/01_biofauna.md) / [español](paper/01_biofauna_es.md).
 
 ## Quick Start
 ```bash
