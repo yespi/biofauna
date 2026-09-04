@@ -1,14 +1,16 @@
 # Species Coverage — BioFauna
 
-> Updated **2026-09-01**. Encoder: BioCLIP-2.5 ViT-H. Classifier: k-NN **k=15**.
+> Updated **2026-09-04**. Encoder: BioCLIP-2.5 ViT-H. Classifier: k-NN **k=15**.
 
 | Metric | Value (Sep 2026) |
 |--------|------------------|
 | Target species list | **4,702** in the live FAISS gallery |
 | FAISS embeddings (production, aligned) | **785,897** |
-| Species accuracy (`harvest_calib`, n=12,788) | **79.25%** (Tier-1 **75.10%**) |
+| Species accuracy (`calib_raw.jsonl`, n=12,788) | **79.10%** (10,115; Tier-1 **74.88%**) |
+| 1-Sep densification harvest (Δ19 photos) | 79.25% / Tier-1 75.10% |
 | AutoID threshold | **p≥0.80** → ~95.3% precision · ~57.4% coverage |
-| Staging (not serving) | 807,267 embeddings / 79.10% — do not cut over |
+| Staging 807k (not serving) | 807,267 embeddings — do not cut over |
+| night85 overlay (not serving) | McNemar **282/80 +1.58 pp** vs replica scorer — do not cut over |
 
 ## Catalog vs live gallery
 

@@ -11,14 +11,15 @@ Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 
 ## Accuracy
 
-**Live official baseline** (out-of-sample `harvest_calib`, n=12,788, 2026-09-01):
+**Live official baseline** (out-of-sample `calib_raw.jsonl`, n=12,788, 2026-09-04):
 
 | Level | Accuracy |
 |-------|----------|
-| Species | **79.25%** (Tier-1 **75.10%**) |
+| Species | **79.10%** (10,115/12,788; Tier-1 **74.88%**) |
 | Gallery | **785,897** embeddings / **4,702** species, FAISS aligned |
+| night85 staging | Overlay McNemar **282/80 +1.58 pp** · **not cut over** |
 
-Paper TTA-era figure (Aug 2026) was 75.97% species; inference mechanisms then 77.77%; densification to 79.25% did not change the frozen encoder. A 1-Sep production-only FAISS/label desync is documented in paper §4.16 — disk evals were never invalid. See [docs/STATUS.md](docs/STATUS.md) and [paper/01_biofauna.md](paper/01_biofauna.md) / [español](paper/01_biofauna_es.md).
+Paper TTA-era figure (Aug 2026) was 75.97% species; inference mechanisms then 77.77%; densification harvest 79.25% (1 Sep, Δ19 photos vs jsonl). A 1-Sep production-only FAISS/label desync is documented in paper §4.16. Staging densification overlay: §4.17. See [docs/STATUS.md](docs/STATUS.md) and [paper/01_biofauna.md](paper/01_biofauna.md) / [español](paper/01_biofauna_es.md).
 
 ## Quick Start
 ```bash

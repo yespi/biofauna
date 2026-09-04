@@ -1,10 +1,14 @@
 # BioFauna — Experiments (condensed)
 
-> Public summary of ablations through **2026-09-01**.  
-> Trusted metric: observation-stratified `harvest_calib` species top-1.
+> Public summary of ablations through **2026-09-04**.  
+> Trusted metric: observation-stratified `harvest_calib` / `calib_raw.jsonl` species top-1.
 >
-> **Live official baseline (2026-09-01):** **79.25%** species / **75.10%** Tier-1,
-> FAISS **785,897** / 4,702 spp, `faiss_aligned`. Paper §4.15–§4.16.
+> **Live official baseline (2026-09-04):** **79.10%** species jsonl (10,115/12,788) /
+> Tier-1 **74.88%**, FAISS **785,897** / 4,702 spp, `faiss_aligned`. The 1-Sep
+> densification harvest row remains 79.25% (Δ19 photos). Paper §4.15–§4.17.
+>
+> **night85 overlay (staging, not live):** 282 fixed / 80 broken, +1.58 pp vs the
+> replica scorer; **not cut over**.
 >
 > **Post-77.77% optimization phase formally closed (2026-08-30)**: five independent hypotheses
 > targeting the remaining error after the local-subspace consolidation (substrate/background
@@ -32,6 +36,7 @@
 | **Local-subspace PCA/LDA extended to inter-genus/same-family pairs** (same mechanism, second trigger τ=0.6151 via 5-fold OOF median — folds did not converge to one value, froze the median rather than the mean, 2026-08-30) | **+0.25pp net** on the 577-obs pilot zone (77.44%→77.69%), 60 fixed / 28 broken (2.14:1), exact McNemar p=0.0008; **77.77%** on the full official re-harvest, n=12,788 — see §4.14 |
 | **Gallery densification (Tier-1 mass lot, frozen ViT-H)** (2026-08-31) | **77.77%→79.25%** species (Tier-1 75.10%), FAISS 785,897 / 4,702 spp; staging 807,267 at 79.10% **not cut over** — see §4.15 |
 | **FAISS/`KY` live-label desync** (2026-09-01, operational bug) | High-confidence wrong names on live `/identify` only; disk evals unchanged; fixed with `species_ids.npy` + `/reload`→`load_faiss()` — see §4.16 |
+| **night85 staging overlay** (2026-09-03–04, not serving) | Extra vectors vs prod FAISS mmap; same-scorer McNemar **282/80 +1.58 pp** (ratio 3.53). Live identify still **79.10%**. **Not cut over** — see §4.17 |
 
 ## Closed / negative (do not repeat as-is)
 

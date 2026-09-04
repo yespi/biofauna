@@ -1,8 +1,8 @@
 # BioFauna — Documento Maestro (público)
 
-> **Fecha**: 2026-09-01 · Baseline vigente: **79.25%** species / **75.10%** Tier-1 (`harvest_calib`, n=12.788) · FAISS **785.897** / 4.702 spp, aligned  
+> **Fecha**: 2026-09-04 · Baseline vigente: **79.10%** species jsonl (10.115/12.788) / Tier-1 **74.88%** · FAISS **785.897** / 4.702 spp, aligned  
 > **GPU**: RTX 3060 12GB · **Live**: [fotofauna.yespi.es](https://fotofauna.yespi.es)
-> Incidente FAISS/etiquetas (1-sep, solo identify vivo) documentado en el paper §4.16. Ablaciones negativas de abajo siguen vigentes.
+> Incidente FAISS/etiquetas (1-sep, solo identify vivo) documentado en el paper §4.16. night85 overlay §4.17 **sin cutover**. Ablaciones negativas de abajo siguen vigentes.
 
 ## Resumen
 
@@ -10,7 +10,7 @@ BioFauna identifica fauna marina mediterránea con **BioCLIP-2.5 ViT-H** (congel
 
 | Resultado | Valor |
 |-----------|-------|
-| Especies (baseline calib, n=12.788, 1-sep-2026) | **79.25%** (Tier-1 75.10%) |
+| Especies (baseline calib jsonl, n=12.788, 4-sep-2026) | **79.10%** (10.115; Tier-1 74.88%) |
 | Género / familia | 81.1% / 84.5% |
 | AutoID p≥0.80 | ~95.3% precisión, ~57.4% cobertura (oleada en marcha) |
 

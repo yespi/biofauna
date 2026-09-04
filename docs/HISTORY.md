@@ -15,7 +15,8 @@
 | 2026-08-25-26 | Calibration-set leakage found & fixed | 42.7% of calibration photos were duplicates already in the reference gallery (broken dedup check); fixed, re-measured on clean n=12,788 | **75.8%** species / 81.1% genus / 84.5% family |
 | 2026-08-27–30 | TTA, ROI fusion, Bucket B, local subspace | Inference stack frozen at 77.77% after five negative post-freeze hypotheses | **77.77%** |
 | 2026-08-31 | Tier-1 gallery densification | Same frozen ViT-H; FAISS **785,897** / 4,702 spp. Staging 807,267 not cut over | **79.25%** / Tier-1 75.10% |
-| 2026-09-01 | FAISS / label-array desync (live only) | `/reload` rebuilt `KY` without reloading FAISS; terrestrial→marine at 85–100%. Disk evals valid. AutoID wave resumed | **79.25%** aligned |
+| 2026-09-01 | FAISS / label-array desync (live only) | `/reload` rebuilt `KY` without reloading FAISS; terrestrial→marine at 85–100%. Disk evals valid. AutoID wave resumed | **79.25%** harvest; jsonl later **79.10%** |
+| 2026-09-04 | night85 staging densification (in progress) | Parallel harvest∥embed; local JPGs first. Overlay McNemar **282/80 +1.58 pp**. Live FAISS untouched. **No cutover** | **79.10%** jsonl (unchanged) |
 
 \*Trusted metric: observation-stratified `harvest_calib` (not photo-level splits).
 
