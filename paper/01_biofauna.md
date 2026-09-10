@@ -982,6 +982,62 @@ Live identify remains **79.10%** jsonl on FAISS **785,897** (`faiss_aligned=true
 
 McNemar is an **overlay**: one production FAISS mmap on CPU plus the extra vectors, merging global top-15, then the same k=15 + adaptive-prototype vote as a disk replica (**without** live Cubo B / geo). Versus that replica as control (4 Sep ~11:59 CEST): **282 fixed / 80 broken**, **+1.58 pp**, exact p≪0.01, fix/break **3.53**. Versus the official jsonl the same replica is ~2.5 pp below live identify, so that N/M is **not** a promotion metric. A maxsim “ceiling” (~152 photos / +1.19 pp) is also **not** the measured accuracy gain.
 
+### 4.18 Quality-aware gallery refresh and kNN aggregation temperature (2026-09-09/10)
+
+Two independent, cumulative interventions moved the official baseline from 90.5%-adjacent
+territory further upward over a 30-hour window; we report both separately because they act
+on different parts of the pipeline and neither substitutes for the other.
+
+**Quality-aware gallery refresh.** A photo-substitution routine intended to swap
+low-scoring reference photos (`score = 3·[quality_grade=="research"] + min(agreements,5) +
+2·[trusted curator] + min(max(w,h)/1000px, 3)`) for higher-scoring ones, 1:1 and capped at
+1,000 photos/species, shipped with a unit-of-work bug: candidates were grouped by
+*observation* rather than by *file*, so a multi-photo observation could lose more files than
+the single replacement downloaded, producing a **net photo loss** in 232 of 949 processed
+species. Root cause found from operator report (per-species embed counts dropping between
+runs), fixed (substitution unit = file, never > 1,000/species), and the deficit repaired: a
+two-tier backfill (research-grade first, `score ≥ 7.5` otherwise, never below either bar) added
+9,824 + 3,967 photos across 229 + 30 species, then a full non-incremental re-embed of the 508
+species whose embeddings no longer matched disk state (0 errors, 0 regressions across the
+run). Staging FAISS built from the repaired gallery (838,115 vectors, down from 927,890 —
+fewer but better-scored photos) beat the pre-repair production index on an early-stopped
+McNemar (n=2,500): **+2.16 pp** (77.44%→79.60%), fix/break 105/51, ratio 2.06, p=2.2e-05,
+clearing the deployment bar and cut over.
+
+**kNN aggregation temperature.** Independently of gallery content, the per-class kNN score
+aggregator was changed from a plain sum of positive cosine similarities to a softmax-style
+exponential, `Σ exp(max(s,0)/T)` with `T=0.05`, sharpening the vote toward the single
+best-matching neighbor rather than rewarding many mediocre ones. An initial small-n probe
+(n=2,000, +9.50 pp) was flagged as a likely scale artifact — the existing additive
+prototype-boost re-rank term becomes numerically negligible once raw scores are exponentiated
+to the 1e7–1e8 range, effectively disabling that mechanism — and held for a control before any
+deployment decision. A dedicated ablation (sum aggregation with the boost term forced to zero,
+n=4,000) returned a null result (+0.20 pp, p=0.396), falsifying the artifact hypothesis. The
+temperature effect was then confirmed at full pre-registered scale (n=8,000): **+7.81 pp**,
+fix/break 671/46, ratio 14.59, p≈0. Deployed to `identify_service.py` after backup.
+
+**Calibration and net effect.** `calibration.json` was refit on the official n=12,788 corpus
+re-scored under the live decision pipeline (Fusion-ROI query fusion + Bucket B Fisher +
+local-subspace PCA/LDA + geographic prior, `T=0.05` aggregation) at **90.54%** species /
+92.43% genus / 93.83% family — confirmed against 500 live HTTP calls to the production
+endpoint (90.60%, no offline/online gap). A same-day out-of-sample harvest of 370
+observations from species with **zero** prior evaluation coverage (honest exclusion by
+observation id against the reference manifest, same live decision pipeline) scored 93.24% on
+its own and was merged into the official corpus (n=12,788→13,158) after an operator sign-off,
+moving the citable baseline to **90.61%** species / 92.54% genus / 93.91% family and species
+coverage from 1,627 to 1,722 of the 2,989-species catalog (1,267 species still uncovered by
+any evaluation observation).
+
+**Operational note.** The gallery-refresh and temperature interventions are additive, not
+substitutable: better reference photos and a sharper aggregator address different failure
+modes, and neither number above should be read as absorbing the other. A concurrent-write
+collision between two independently running maintenance sessions momentarily corrupted one
+fold-in attempt (an in-flight rescore file was read mid-truncation by a second process); it
+was caught by a pre-commit sanity check (the reported accuracy was arithmetically inconsistent
+with the known per-branch accuracies) before any write to the served calibration file,
+reverted from a pre-change backup, and re-run cleanly. No production artifact was ever served
+in the intermediate, corrupted state.
+
 Harvest of species *N+1* runs in parallel with GPU embed of species *N*. Overlay eval is re-run about every 12 densified species, still one FAISS per process. **No cutover**: even though overlay-vs-control meets p / ratio / +0.3 pp, the scorer is not live identify. Stop file: `night85_STOP`.
 
 ## 5. Discussion

@@ -1,8 +1,20 @@
 # BioFauna — Project Status (public)
 
-> ## Live production (2026-09-04): **79.10%** species jsonl · FAISS aligned · AutoID on · night85 staging **not cut over**
+> ## Live production (2026-09-10): **90.61%** species jsonl · FAISS aligned · AutoID on · kNN `T=0.05`
 >
-> `biofauna-id.service` serves **785,897** embeddings / **4,702** species,
+> `biofauna-id.service` serves **838,115** embeddings / **4,702** species,
+> `faiss_aligned=true`. Official `calib_raw.jsonl` (n=13,158): **90.61%** species
+> (11,923/13,158) / genus **92.54%** / family **93.91%**. Reached via a
+> quality-aware gallery refresh (+2.16pp, cut over) and a kNN aggregation
+> temperature change (+7.81pp, cut over), each independently measured by
+> McNemar, plus a calibration refresh folding in 370 previously-unevaluated
+> species. Coverage: 1,722/2,989 catalog species have ≥1 eval observation.
+> Paper §4.18. The 2026-09-04 baseline (79.10%, FAISS 785,897) is kept below
+> for the historical record.
+>
+> ## Historical — Live production (2026-09-04): **79.10%** species jsonl · FAISS aligned · AutoID on · night85 staging **not cut over**
+>
+> `biofauna-id.service` served **785,897** embeddings / **4,702** species,
 > `faiss_aligned=true`. Official `calib_raw.jsonl` (n=12,788): **79.10%** species
 > (10,115/12,788) / Tier-1 **74.88%**. The 1-Sep autopsia tally of **79.25%** /
 > **75.10%** is the same harvest (Δ19 photos); jsonl is the source of truth.

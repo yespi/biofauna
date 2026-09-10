@@ -1,11 +1,20 @@
 # BioFauna — Experiments (condensed)
 
-> Public summary of ablations through **2026-09-04**.  
+> Public summary of ablations through **2026-09-10**.  
 > Trusted metric: observation-stratified `harvest_calib` / `calib_raw.jsonl` species top-1.
 >
-> **Live official baseline (2026-09-04):** **79.10%** species jsonl (10,115/12,788) /
-> Tier-1 **74.88%**, FAISS **785,897** / 4,702 spp, `faiss_aligned`. The 1-Sep
-> densification harvest row remains 79.25% (Δ19 photos). Paper §4.15–§4.17.
+> **Live official baseline (2026-09-10):** **90.61%** species (11,923/13,158) /
+> genus 92.54% / family 93.91%, FAISS **838,115** / 4,702 spp, `faiss_aligned`,
+> kNN aggregation `T=0.05`. Coverage: 1,722/2,989 catalog species have ≥1
+> evaluation observation (1,267 do not). Reached via two cumulative, independently
+> measured interventions — a quality-aware gallery refresh (+2.16pp, cut over) and
+> a sharper kNN aggregation temperature (+7.81pp, cut over) — plus an out-of-sample
+> calibration refresh. Paper §4.18. Superseded rows below (through 2026-09-04) are
+> kept for the historical record.
+>
+> **2026-09-04 baseline (superseded):** 79.10% species jsonl (10,115/12,788) /
+> Tier-1 74.88%, FAISS 785,897 / 4,702 spp. The 1-Sep densification harvest row
+> remains 79.25% (Δ19 photos). Paper §4.15–§4.17.
 >
 > **night85 overlay (staging, not live):** 282 fixed / 80 broken, +1.58 pp vs the
 > replica scorer; **not cut over**.
@@ -308,3 +317,26 @@ backoff and a memory-capped (`systemd-run --scope -p MemoryMax=12G`, to protect 
 running production service) re-run, reaching 3,209/3,209 with zero errors. Deployed to the
 production `/identify` endpoint (optional `files` list, capped at 5 photos/request; N=1 reduces
 algebraically to the pre-existing single-photo computation). See paper §4.7.
+
+## Quality-aware gallery refresh + kNN aggregation temperature (2026-09-09/10)
+
+A gallery photo-substitution routine (swap low-scoring reference photos for higher-scoring
+ones, 1:1, capped at 1,000/species) shipped with a unit-of-work bug — grouping by observation
+instead of by file caused a net photo loss in 232 of 949 processed species. Found from
+per-species embed-count regressions, fixed, and repaired: two-tier backfill (research-grade
+first, `score≥7.5` otherwise) added 13,791 photos across 259 species, followed by a full
+non-incremental re-embed of the 508 species with stale embeddings (0 errors). Staging FAISS
+from the repaired gallery beat the pre-repair index on McNemar (n=2,500): **+2.16pp**,
+fix/break 105/51, ratio 2.06, p=2.2e-05 — cut over (FAISS 927,890→838,115; fewer but
+better-scored photos).
+
+Independently, the kNN aggregator was changed from a plain sum to `Σ exp(max(s,0)/T)` with
+`T=0.05`. A first small-n probe (+9.50pp) was flagged as a possible artifact — exponentiated
+scores can numerically swamp the existing additive prototype-boost re-rank term — and held for
+a dedicated ablation (sum aggregation, boost forced to 0, n=4,000: +0.20pp, p=0.396, **null**,
+falsifying the artifact hypothesis) before confirming at full scale (n=8,000): **+7.81pp**,
+fix/break 671/46, ratio 14.59, p≈0. Deployed after backup. The two interventions are additive,
+not substitutable — see paper §4.18 for the full account, including the resulting calibration
+refresh (species field_acc 79.10%→90.61%, n=12,788→13,158 after an out-of-sample fold-in of
+370 previously-unevaluated species) and an operational note on a concurrent-write collision
+between two maintenance sessions that was caught and reverted before reaching production.
