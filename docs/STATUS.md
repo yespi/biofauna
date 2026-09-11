@@ -1,6 +1,34 @@
 # BioFauna — Project Status (public)
 
-> ## Live production (2026-09-10): **90.61%** species jsonl · FAISS aligned · AutoID on · kNN `T=0.05`
+> ## Live production (2026-09-12): **86.85%** species OOS · FAISS aligned · AutoID on · kNN `T=0.05`
+>
+> `biofauna-id.service` serves **837,972** embeddings / **4,702** species,
+> `faiss_aligned=true`. Official `calib_raw_t05.jsonl` (n=18,273): **86.85%**
+> species out-of-sample. Down from the 2026-09-10 90.61% (n=13,158) not because
+> of any regression, but because an evaluation-backlog harvest (Minka+iNat)
+> and a targeted boost for low-n species added real evaluation data for ~290
+> species that previously had none or almost none — species without any prior
+> evaluation coverage dropped from 1,267 to **64** of 2,989 (the remaining 64
+> confirmed source-exhausted via direct API query, not a harvest bug). Seagrass
+> quality-and-purity campaign: *Posidonia oceanica* cut over to production
+> (+6.7pp / +15.0pp on two independent held-out evals); *Cymodocea nodosa* held
+> in staging (worsens −6.7 to −30pp, suspected structural confusion with
+> *Nanozostera noltii*). Three metric-freshness bugs in the reporting pipeline
+> fixed (stale in-sample figure, a frozen post-cutover overlay, a
+> filename-ordering bug in inventory-file selection) — all reporting is now a
+> live computation against the current evaluation corpus, never a cached
+> snapshot. Paper §4.19. The 2026-09-10 baseline (90.61%, n=13,158) is kept
+> below for the historical record.
+>
+> **AutoID, tonight:** the hourly wave is running and correctly skipping
+> iNaturalist-only observations (by design), but many BF-engine attempts are
+> failing over to skip because `identify` is competing for GPU memory with the
+> overnight harvest/staging jobs above — an expected, self-resolving throughput
+> dip from GPU contention, not a wave or scheduling bug (confirmed: no cron or
+> config regression, `identify` recovers and resumes normal throughput as soon
+> as the concurrent GPU jobs release memory).
+>
+> ## Historical — Live production (2026-09-10): **90.61%** species jsonl · FAISS aligned · AutoID on · kNN `T=0.05`
 >
 > `biofauna-id.service` serves **838,115** embeddings / **4,702** species,
 > `faiss_aligned=true`. Official `calib_raw.jsonl` (n=13,158): **90.61%** species

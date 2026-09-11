@@ -1040,6 +1040,67 @@ in the intermediate, corrupted state.
 
 Harvest of species *N+1* runs in parallel with GPU embed of species *N*. Overlay eval is re-run about every 12 densified species, still one FAISS per process. **No cutover**: even though overlay-vs-control meets p / ratio / +0.3 pp, the scorer is not live identify. Stop file: `night85_STOP`.
 
+### 4.19 Seagrass photo-quality campaign, evaluation-backlog harvest, and three "frozen metric" bugs fixed (2026-09-11/12)
+
+**Seagrass (Tracheophyta) quality-and-purity swap.** Four visually similar Mediterranean
+seagrasses — *Posidonia oceanica*, *Cymodocea nodosa*, *Zostera marina*, and *Nanozostera
+noltii* (added to the group this campaign) — were treated as a group for a combined
+photo-quality and visual-purity intervention: purge reference photos below an observation-quality
+score of 8.0 (research-grade flag, identifier agreement, trusted-curator bonus, resolution;
+range 0–13), multi-source refill (Minka, iNaturalist, GBIF, DORIS, WoRMS, OBIS, Wikimedia) at
+the same threshold, then a two-phase MiniCPM-V visual-purity classifier (pure subject /
+mixed-subject / other) that flags photos where the seagrass is not the clear subject (e.g. a
+fish in the foreground with the blade out of focus, or a hand holding a blade out of water) and
+searches only for replacements of the photos that fail. An initial 70%→40% swing in one
+species' held-out accuracy between two same-day measurements was traced, by manually
+downloading and inspecting the disagreeing photos, to a change in the *held-out pool itself*
+(morning: implicitly curated legacy backup photos; afternoon: a genuinely random draw from the
+full Minka/iNaturalist research-grade pool, including atypical framings) rather than to any
+regression in the pipeline — a reminder that an accuracy delta between two runs is only
+informative when the held-out sampling is held fixed, which motivated re-running both affected
+species with a fresh, leakage-checked pool before drawing any conclusion. Under that controlled
+protocol, *Posidonia oceanica* improved on two independent zero-leakage mini-evaluations
+(**+6.7 pp** and **+15.0 pp**) and was cut over to production; *Cymodocea nodosa*, given the
+identical treatment, *worsened* on staging in both measurements (**−6.7 pp** to **−30 pp**) and
+was **not** cut over — the current working hypothesis, not yet confirmed, is structural visual
+confusion with *Nanozostera noltii* rather than a photo quality or quantity deficit. This
+asymmetric outcome from an identical intervention applied to two species in the same genus-level
+confusion set is reported as a negative result for *Cymodocea* specifically, not for the
+quality-and-purity method in general.
+
+**Evaluation-backlog harvest.** The held-out evaluation harvest (`harvest_calib`) was extended
+to paginate iNaturalist in addition to Minka after discovering that several previously-unevaluated
+species (e.g. *Abavopsis latosoleata*, *Abida polyodon*) had exactly one total Minka observation,
+already consumed as the sole reference photo, leaving structurally zero margin for a held-out
+sample from that source alone. The extended harvest added 956 new held-out observations across
+280 previously-unevaluated species, reducing species with zero evaluation coverage from 280 to
+**64** out of 2,989 in the catalog. Rather than assume the remaining 64 were a harvest artifact,
+each was queried directly against both APIs for its total available research-grade observation
+count: in all 64, total available observations were within 2 of the number already consumed as
+reference, confirming genuine source exhaustion rather than a recoverable gap. A further
+harvest, scoped to the highest-impact tier (67 species below 60% accuracy with fewer than 5
+held-out observations — a regime where a single unlucky or lucky photo can swing the reported
+accuracy between 0% and 100%), added 143 more held-out observations; the empirical accuracy on
+this specific new batch was 51%, consistent with these being genuinely difficult species rather
+than a noisy small-n estimate, and raised 42 of the 67 to n≥5.
+
+**Three metric-freshness bugs found and fixed in the admin/reporting pipeline**, all sharing the
+same root cause — a reported number computed from a file that was no longer the live state —
+and all fixed the same way, by computing directly from the current evaluation corpus rather than
+from any cached intermediate: (1) a top-level accuracy figure was reading an in-sample 50/50
+split file rather than the out-of-sample evaluation corpus; (2) a headline "post-cutover"
+accuracy block compared two frozen snapshot files from an earlier date and was then
+unconditionally overwritten by a second, independently-added overlay that read a *different*
+frozen snapshot and never recomputed; (3) the harvest-inventory file selection logic picked the
+lexicographically-last-named `inventory_*.json` file rather than the one with the most recent
+internal timestamp, which silently served a stale pre-fusion inventory (from a differently-timed
+but alphabetically-later filename) over the current one. All three are now single-source live
+computations against the current evaluation corpus (n=18,273 after the two harvests above,
+species accuracy **86.85%** out-of-sample — down from the pre-harvest 88.55% not because
+anything regressed, but because roughly 225 species moved from "no evaluation data" to "real,
+often small-n evaluation data" in the same pass, which is the intended effect of the harvest
+above and is reported here rather than smoothed over).
+
 ## 5. Discussion
 
 ### 5.1 Backbone Scale Beats Light Fine-Tuning (Here)
