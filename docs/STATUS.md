@@ -1,23 +1,29 @@
 # BioFauna — Project Status (public)
 
-> ## Live production (2026-09-12): **86.85%** species OOS · FAISS aligned · AutoID on · kNN `T=0.05`
+> ## Live production (2026-09-12 morning): **86.14%** species OOS · FAISS aligned · AutoID on · kNN `T=0.05`
 >
-> `biofauna-id.service` serves **837,972** embeddings / **4,702** species,
-> `faiss_aligned=true`. Official `calib_raw_t05.jsonl` (n=18,273): **86.85%**
-> species out-of-sample. Down from the 2026-09-10 90.61% (n=13,158) not because
-> of any regression, but because an evaluation-backlog harvest (Minka+iNat)
-> and a targeted boost for low-n species added real evaluation data for ~290
-> species that previously had none or almost none — species without any prior
-> evaluation coverage dropped from 1,267 to **64** of 2,989 (the remaining 64
-> confirmed source-exhausted via direct API query, not a harvest bug). Seagrass
-> quality-and-purity campaign: *Posidonia oceanica* cut over to production
-> (+6.7pp / +15.0pp on two independent held-out evals); *Cymodocea nodosa* held
-> in staging (worsens −6.7 to −30pp, suspected structural confusion with
-> *Nanozostera noltii*). Three metric-freshness bugs in the reporting pipeline
-> fixed (stale in-sample figure, a frozen post-cutover overlay, a
-> filename-ordering bug in inventory-file selection) — all reporting is now a
-> live computation against the current evaluation corpus, never a cached
-> snapshot. Paper §4.19. The 2026-09-10 baseline (90.61%, n=13,158) is kept
+> `biofauna-id.service` serves **839,624** embeddings / **4,702** species,
+> `faiss_aligned=true`. Official `calib_raw_t05.jsonl` (n=18,707): **86.14%**
+> species out-of-sample. Continuing the overnight evaluation-backlog harvest
+> (see below), a second seagrass photo-quality pass and a full three-tier
+> low-n boost were completed this morning: *Posidonia oceanica* was
+> re-expanded to 2,535 quality-filtered reference photos (from 883) and
+> cut over to production again on a fresh zero-leakage held-out set (48%→76%,
+> +28pp); *Nanozostera noltii* was cut over to production (already-measured
+> +15pp staging result); the low-n evaluation boost was completed across all
+> three priority tiers (245 species, +577 held-out observations total).
+> *Cymodocea nodosa* investigation is now closed at the data-quality level: a
+> full visual-purity classification pass found zero contaminated reference
+> photos, ruling out photo quality as the cause — the remaining gap is judged
+> to be genuine embedding-space confusion with *Nanozostera*/*Posidonia*,
+> a decision-layer problem (candidate fix: taxonomic-exception abstention,
+> not more photos) left for a follow-up session. A pilot generalizing the
+> visual-purity classifier from seagrass to 16 arbitrary low-accuracy fauna
+> species (630 photos) found the technique doesn't transfer (97.5% already
+> "pure," nothing to fix) — the likely bigger lever there is a handful of
+> confirmed catalog synonym duplicates (e.g. two slugs for the same species
+> differing only by a typo) found via confusion-pair analysis, not yet
+> resolved. Paper §4.19. The 2026-09-10 baseline (90.61%, n=13,158) is kept
 > below for the historical record.
 >
 > **AutoID, tonight:** the hourly wave is running and correctly skipping
