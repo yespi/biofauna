@@ -1,5 +1,32 @@
 # BioFauna — Project Status (public)
 
+> ## Live production (2026-09-12 night): **848,554** embeddings, 85 renames + 4 duplicate merges live
+>
+> Since the afternoon update: a stale-status typo in the nomenclature auditor's WoRMS whitelist
+> was found and fixed (32 species that should have resolved to a clean rename were stuck
+> "ambiguous" instead). Final catalog pass: **85 names updated**, 12 genuinely ambiguous cases
+> triaged by hand (8 need no action, 4 are real taxonomic debates left for human review), and
+> the **4 duplicate-slug pairs flagged in the afternoon update were fully merged** — reference
+> photos consolidated with byte-for-byte duplicate detection (no data loss), catalog updated,
+> affected species re-embedded, and the FAISS index rebuilt and hot-reloaded into the live
+> service (840,102 → 848,554 vectors), all verified end-to-end with no downtime.
+>
+> A held-out evaluation set for four seagrass species (previously n=15/15/8/5, known to be too
+> small to trust) was expanded to n=20 each via a fresh harvest against unseen observations:
+> *Posidonia oceanica* 53.3%→55.0%, *Cymodocea nodosa* 86.7%→80.0%, *Zostera marina*
+> 75.0%→80.0%, *Nanozostera noltii* stable at 80.0%. Reported plainly, including that an
+> earlier informal estimate of ~76% for *P. oceanica* was not confirmed by this larger,
+> official sample — n=20 remains small, and these numbers should still be read as provisional.
+>
+> A systematic photo-quality upgrade pass was run against 96 low-accuracy species (two batches:
+> tier-0 species under 40% accuracy, and thin-gallery species under 60%); only 5 had any better
+> replacement photo actually available in the source pools right now, confirming that most of
+> this cohort's low accuracy is not a recoverable photo-quality problem with current data
+> sources. Two infrastructure bugs unrelated to the model were also found and fixed: an admin
+> health-check that silently failed when triggered from inside a container with different
+> network routing, and a process-supervisor script whose own lock file was being kept alive by
+> processes it launched, silencing its logs for hours without causing any actual harm.
+>
 > ## Live production (2026-09-12 afternoon): **840,583** embeddings, catalog nomenclature auditor shipped
 >
 > Since the morning update: 59 tier-0 species with near-empty reference galleries were
