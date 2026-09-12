@@ -1,5 +1,24 @@
 # BioFauna — Project Status (public)
 
+> ## Live production (2026-09-12 afternoon): **840,583** embeddings, catalog nomenclature auditor shipped
+>
+> Since the morning update: 59 tier-0 species with near-empty reference galleries were
+> multi-source refilled and cut over (thin-gallery pass, FAISS +959 vectors). A new canonical
+> **nomenclature auditor** (`scripts/taxonomy_nomenclature_audit.py`) was built, QA'd against
+> WoRMS + GBIF Backbone Taxonomy, and run against the full 2,989-species catalog: 96.4% of
+> names are already the accepted scientific name; 29 outdated names were updated (stored in a
+> new `accepted_name` field, catalog slugs left untouched — see incident note below); 2 genuine
+> duplicate-slug pairs were found and flagged for manual merge, not yet applied. A morning
+> hypothesis about several "duplicate" species pairs was re-checked against the auditor and
+> mostly retracted — WoRMS confirmed most were independently accepted names, not duplicates.
+>
+> **Incident, caught and fixed within minutes:** the first apply pass overwrote each renamed
+> species' display name directly, which silently broke the on-the-fly slug lookup several
+> internal scripts use to locate that species' reference photos and evaluation history — 29
+> species briefly disappeared from photo/eval counts. Caught immediately by a mandatory
+> post-change verification step, reverted from an automatic backup, and fixed by storing the
+> updated name in a separate field instead of overwriting the identifier-bearing one.
+>
 > ## Live production (2026-09-12 morning): **86.14%** species OOS · FAISS aligned · AutoID on · kNN `T=0.05`
 >
 > `biofauna-id.service` serves **839,624** embeddings / **4,702** species,
