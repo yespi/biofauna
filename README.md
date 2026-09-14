@@ -5,7 +5,7 @@ Formerly YOLOFauna. Production stack: **BioCLIP-2.5 ViT-H + k-NN (k=15)**.
 
 ## Architecture
 - **Encoder**: BioCLIP-2.5 ViT-H (632M params, 1024-dim), frozen
-- **Identification**: k-NN (k=15) over **785,897** embeddings / **4,702** species (Sep 2026)
+- **Identification**: k-NN (k=15) over **848,883** embeddings / **4,702** species (14 Sep 2026)
 - **AutoID**: Publishes to Minka when p≥0.80 (**~95.3%** precision, **~57.4%** coverage)
 - **Fallback**: Hierarchical species→genus→family + iNaturalist CV cross-check
 
