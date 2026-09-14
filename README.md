@@ -27,7 +27,7 @@ curl -s http://127.0.0.1:8090/health
 curl -X POST http://127.0.0.1:8090/identify -F "file=@photo.jpg"
 ```
 
-Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per species. See [`docs/dataset.md`](docs/dataset.md) and [`docs/self_host.md`](docs/self_host.md).
+Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per species. See [`docs/dataset.md`](docs/dataset.md), [`docs/self_host.md`](docs/self_host.md), and [`scripts/README.md`](scripts/README.md).
 
 ## Docs
 

@@ -57,7 +57,7 @@ CMD ["python", "-m", "uvicorn", "src.identify_service:app", "--host", "0.0.0.0",
 
 1. Update `data/patterns/` and/or `data/calibration.json`
 2. Call `POST /reload` or restart the service
-3. Re-validate with observation-stratified `harvest_calib` before trusting new numbers
+3. Re-validate with observation-stratified `scripts/harvest_calib.py` + `scripts/fit_calib.py` before trusting new numbers
 
 ### Monitoring
 

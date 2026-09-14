@@ -5,17 +5,17 @@ from pathlib import Path
 from PIL import Image
 import torch, open_clip
 
-ROOT = Path(os.environ.get("BIOFAUNA_ROOT", "/work"))
-IMAGES = Path(os.environ.get("IMAGES_DIR", "/mnt/gpu/fotofauna-images"))
-PATTERNS = ROOT / "dataset/patterns"
+ROOT = Path(os.environ.get("BIOFAUNA_ROOT", Path(__file__).resolve().parents[1]))
+IMAGES = Path(os.environ.get("IMAGES_DIR", str(ROOT / "dataset/images")))
+PATTERNS = Path(os.environ.get("BIOFAUNA_PATTERNS", str(ROOT / "data/patterns")))
 BATCH = 32
-DEVICE = "cuda"
+DEVICE = "cuda" if __import__("torch").cuda.is_available() else "cpu"
 
 print(f"[vith] ROOT={ROOT}, IMAGES={IMAGES}", flush=True)
 print("[vith] Cargando BioCLIP-2.5 ViT-H...", flush=True)
 model, _, preprocess = open_clip.create_model_and_transforms("hf-hub:imageomics/bioclip-2.5-vith14")
 model = model.to(DEVICE).eval()
-print(f"[vith] VRAM: {torch.cuda.memory_allocated()/1e9:.1f} GB", flush=True)
+print(f"[vith] device={DEVICE}", flush=True)
 
 species_dirs = sorted(d for d in IMAGES.iterdir() if d.is_dir())
 print(f"[vith] {len(species_dirs)} species to process", flush=True)

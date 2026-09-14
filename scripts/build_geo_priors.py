@@ -4,13 +4,13 @@ import json, sys, time, urllib.request, urllib.parse, os
 from pathlib import Path
 from datetime import datetime
 
-ROOT = Path("/work")
-PAT = ROOT / "dataset/patterns"
+ROOT = Path(os.environ.get("BIOFAUNA_ROOT", Path(__file__).resolve().parents[1]))
+PAT = ROOT / "dataset/patterns" if (ROOT / "dataset/patterns").exists() else ROOT / "data/patterns"
 OUT = ROOT / "dataset/geo_priors.json"
 LOCK = ROOT / "dataset/.geo_priors.lock"
 TARGETS = ROOT / "dataset/target_species.json"
 CACHE = ROOT / "dataset/inat_taxon_cache.json"
-UA = "yespi-biofauna/1.0"
+UA = "yespi-fotofauna-yolo/1.0"
 
 PER_PAGE = 30
 MAX_OBS = 100

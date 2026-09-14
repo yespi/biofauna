@@ -19,7 +19,7 @@ Use taxon IDs in `dataset/catalog.json`:
 2. **iNaturalist** — `inat_taxon` when present (`dataset/inat_taxon_cache.json`)
 3. **GBIF** — scientific `name` / `accepted_name` + multimedia
 
-Then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`) and write `embeddings.npy` next to each prototype. The public identifier switches from nearest-centroid to tempered k-NN when those files exist.
+Then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`) and write `embeddings.npy` next to each prototype. Optional FAISS: `scripts/build_faiss_index.py`. Calibrate with `scripts/harvest_calib.py` then `scripts/fit_calib.py`.
 
 ### Layout
 

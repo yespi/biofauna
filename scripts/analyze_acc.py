@@ -1,6 +1,7 @@
+import os
 import numpy as np, statistics
 from pathlib import Path
-PAT=Path('/work/dataset/patterns')
+PAT=Path(os.environ.get("BIOFAUNA_ROOT", Path(__file__).resolve().parents[1])) / "data/patterns"
 names=[]; protos=[]; embs={}
 for d in sorted(PAT.iterdir()):
     if (d/'prototype.npy').exists() and (d/'embeddings.npy').exists():

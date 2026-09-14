@@ -23,8 +23,11 @@ Se calibran TRES niveles, porque Minka acepta identificaciones a género y a fam
 El punto de auto-publicación seguro suele estar en género, no en especie.
 Al final, la tabla que importa: umbral -> cobertura y PRECISIÓN REAL.
 """
-import json, sys, time
+import json, os, sys, time
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+MADRID_TZ = ZoneInfo("Europe/Madrid")
 from pathlib import Path
 
 import numpy as np
@@ -32,7 +35,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.isotonic import IsotonicRegression
 from sklearn.metrics import roc_auc_score, brier_score_loss, log_loss
 
-ROOT = Path("/work")
+ROOT = Path(os.environ.get("BIOFAUNA_ROOT", Path(__file__).resolve().parents[1]))
 RAW = ROOT / "dataset/calib_raw.jsonl"
 OUT = ROOT / "dataset/calibration.json"
 SEED = 7
@@ -247,7 +250,7 @@ def main():
             "genus": round(float(np.mean([r['ok_genus'] for r in s])), 4),
             "family": round(float(np.mean([r['ok_family'] for r in s])), 4)}
 
-    payload = {"created": datetime.now().isoformat(timespec="seconds"),
+    payload = {"created": datetime.now(MADRID_TZ).replace(tzinfo=None).isoformat(timespec="seconds"),
                "n_samples": len(recs), "n_species": len({r["true"] for r in recs}),
                "tier_acc": tier_acc,
                "field_acc": {"species": round(float(acc), 4),
@@ -257,7 +260,7 @@ def main():
                # el servicio lee estos alias para el nivel de especie
                "note": "P(el taxón del top-1 sea correcto a ese nivel). Ajustado "
                        "OUT-OF-SAMPLE: fotos excluidas por obs id contra _manifest.jsonl. "
-                       "Ver BIOFAUNA.md sec. L."}
+                       "Ver YOLOFAUNA.md sec. L."}
     if "species" in levels:
         sp = levels["species"]
         payload.update(kind=sp.get("kind"), model=sp.get("model"),
@@ -271,4 +274,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    sys.path.insert(0, str(__import__("pathlib").Path(__file__).parent))
+    from calib_lock import calib_write_lock, CalibLockBusy
+    try:
+        with calib_write_lock("fit_calib.py"):
+            main()
+    except CalibLockBusy as e:
+        print(f"[LOCK] {e}", flush=True)
+        sys.exit(3)
+
