@@ -13,19 +13,20 @@ Production inference (frozen **BioCLIP-2.5 ViT-H** + k-NN) uses ~**4.4 GB** VRAM
 
 ### Setup
 
-1. **Install dependencies**:
+1. **Clone + install dependencies**:
    ```bash
+   git clone https://github.com/yespi/biofauna.git && cd biofauna
    pip install -r requirements.txt
    ```
 
-2. **Gallery + calibration**:
-   Place species pattern directories under `dataset/patterns/` (each with `embeddings.npy`) and copy `results/calibration.json` (or your own) to `dataset/calibration.json`.
+2. **Gallery + calibration** — ship ready to run, no manual copy needed:
+   `data/patterns/<slug>/prototype.npy` (4,702 species, nearest-centroid gallery) and `data/calibration.json` are already in the repo. This gives you a working nearest-centroid classifier out of the box. For the full k=15 k-NN gallery (per-photo `embeddings.npy`, much larger, not redistributed here — see [`dataset.md`](dataset.md)), rebuild it yourself with `src/embed_crop.py` / `src/reembed_vith.py` over your own photo set and drop `embeddings.npy` next to each species' `prototype.npy`.
 
 3. **First run** (downloads BioCLIP-2.5 ViT-H from HuggingFace on first load):
    ```bash
    python -m uvicorn src.identify_service:app --host 0.0.0.0 --port 8090
    ```
-   Prefer the maintained service entrypoint from your deployment (`scripts/identify_service.py` on HanSolo) with **k=15** and hierarchical fallback enabled.
+   Reads `data/` and `dataset/` relative to the repo root by default; point `BIOFAUNA_ROOT` at a different directory if you keep your own copy elsewhere.
 
 4. **Test**:
    ```bash
@@ -40,6 +41,7 @@ FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+COPY data/ ./data/
 COPY dataset/ ./dataset/
 COPY src/ ./src/
 CMD ["python", "-m", "uvicorn", "src.identify_service:app", "--host", "0.0.0.0", "--port", "8090"]
@@ -53,7 +55,7 @@ CMD ["python", "-m", "uvicorn", "src.identify_service:app", "--host", "0.0.0.0",
 
 ### Model updates
 
-1. Update `dataset/patterns/` and/or `dataset/calibration.json`
+1. Update `data/patterns/` and/or `data/calibration.json`
 2. Call `POST /reload` or restart the service
 3. Re-validate with observation-stratified `harvest_calib` before trusting new numbers
 

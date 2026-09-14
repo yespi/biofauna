@@ -1,13 +1,15 @@
 ## Dataset Information
 
-### Scale (2026-08-10)
+### Scale (2026-09-14, live)
 
 | Resource | Approx. size |
 |----------|--------------|
-| Image folders | ~3,000 Mediterranean species (2,994 with ≥1 photo) |
-| Photographs on disk | ~584K–587K |
-| ViT-H embeddings (full re-embed) | ~553K / 1,358 species |
-| Active production patterns | ~454K / ~1,158 species |
+| Image folders | ~4,700 Mediterranean (+adjacent) species (2,983 with ≥1 photo) |
+| Photographs on disk | ~838K |
+| ViT-H embeddings (production FAISS gallery) | **848,883** / **4,702** species |
+| Prototype centroids published in this repo | `data/patterns/` — 4,702 species (`prototype.npy` per species; full per-photo `embeddings.npy` galleries are not redistributed here, see below) |
+
+> Earlier snapshot (2026-08-10): ~3,000 species, ~585K photos, ~553K embeddings / 1,358 species. Catalog and gallery have since grown substantially (nomenclature audit, gallery-quality campaigns, eval_n expansion — see [`STATUS.md`](STATUS.md) and [`HISTORY.md`](HISTORY.md) for the changelog).
 
 ### Sources
 

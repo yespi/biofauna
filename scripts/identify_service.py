@@ -11,7 +11,8 @@ from PIL import Image
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 
-ROOT = Path("/work"); IMG = ROOT/"dataset/images"; PAT = ROOT/"dataset/patterns"
+ROOT = Path(os.environ.get("BIOFAUNA_ROOT", Path(__file__).resolve().parent.parent))
+IMG = ROOT/"dataset/images"; PAT = ROOT/"data/patterns"
 PAT.mkdir(parents=True, exist_ok=True)
 MIN_IMGS = 10; BATCH = 16
 # ViT-H usa 1024-dim (vs 768-dim de ViT-L). Placeholder dims actualizados.
@@ -54,7 +55,7 @@ def _slug(n): return re.sub(r"[^a-z0-9]+","_",n.lower()).strip("_")
 NAMEMAP={}
 try:
     _inatcache={}
-    try: _inatcache=json.load(open(ROOT/"dataset/inat_taxon_cache.json"))
+    try: _inatcache=json.load(open(ROOT/"data/inat_taxon_cache.json"))
     except Exception: pass
     for _s in json.load(open(ROOT/"dataset/target_species.json")):
         NAMEMAP[_slug(_s["name"])]={"scientific":_s["name"],"common":_s.get("common",""),
@@ -134,7 +135,7 @@ CAL=None
 def load_calib():
     global CAL
     try:
-        c=json.load(open(ROOT/"dataset/calibration.json"))
+        c=json.load(open(ROOT/"data/calibration.json"))
         if not str(c.get("kind","")).startswith("logistic"): CAL=None; return False
         c["_coef"]=np.array(c["coef"],dtype="float32")
         c["_mu"]=np.array(c["mu"],dtype="float32"); c["_sd"]=np.array(c["sd"],dtype="float32")
