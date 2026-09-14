@@ -18,6 +18,16 @@ Hardcoded `/mnt/docker/biofauna` and `/work` paths are replaced by `BIOFAUNA_ROO
 | `analyze_acc.py` | Cheap in-gallery nearest-centroid diagnostic (needs local embeddings) |
 | `api_keys.py` | Env-only tokens (`HF_TOKEN`); no `/mnt/utils` |
 | `package_model.sh` | Tarball of prototypes + JSON |
+| `repesca_diaria.py` | BF-01 — fill species short of the photo cap (iNat) |
+| `autoaprendizaje_minka.py` / `_inat.py` | BF-02 / BF-03 — research-grade downloads + manifests |
+| `reverificar_minka.py` | BF-04 / BF-10 — taxon drift on Minka obs |
+| `archive_processed.py` | BF-08 — keep ~300 photos/species locally |
+| `renovar_especies.py` | BF-09 — drop oldest photos on saturated species |
+| `audit_biofauna.sh` | BF-08 — disk / prototype dim / `/health` |
+| `taxonomy_nomenclature_cron.sh` | Weekly WoRMS/GBIF **dry-run** |
+| `api_http.py` | iNat/Minka User-Agent + optional env tokens |
+
+Weekly schedule and install: [`../docs/cron.md`](../docs/cron.md) · templates: [`../deploy/`](../deploy/).
 
 ```bash
 export BIOFAUNA_ROOT=$PWD

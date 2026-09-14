@@ -1,0 +1,3 @@
+# Extra user crontab (crontab -e). Adjust BIOFAUNA_ROOT.
+# Sunday 03:15 — WoRMS/GBIF dry-run only (does not rename the catalog).
+15 3 * * 0 cd /opt/biofauna && bash scripts/taxonomy_nomenclature_cron.sh

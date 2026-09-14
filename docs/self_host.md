@@ -64,3 +64,5 @@ CMD ["python", "-m", "uvicorn", "src.identify_service:app", "--host", "0.0.0.0",
 - `GET /health` — device + loaded species count
 - `nvidia-smi` — VRAM
 - Only trust accuracy from `harvest_calib` + `fit_calib` (observation ID stratification)
+
+Weekly gallery maintenance (iNat/Minka harvest, re-embed, calibrators): [`cron.md`](cron.md) and templates in [`../deploy/`](../deploy/).

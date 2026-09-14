@@ -299,14 +299,11 @@ def main():
     last_free = time.time()
     fh = OUT.open("a")
     nnew = nskip = nfiltered = nexcluded = nerror = nleaked = 0
-    # LEAK_SIM_THRESHOLD: por encima de esto la foto es (casi) la misma que ya
-    # está en el catalogo de referencia. El chequeo de "ya visto" via
-    # IMG/_manifest.jsonl esta roto para el pipeline actual (IMG apunta al
-    # directorio legacy dataset/images/, que ya no se usa desde la migracion a
-    # /mnt/gpu/fotofauna-images/ y no tiene manifiestos) -- confirmado el
-    # 25-ago-2026: 42.7% de calib_raw_k15.jsonl resulto ser fotos ya
-    # embebidas en el catalogo. Esta comprobacion por similitud de embedding
-    # contra el catalogo real es la defensa que de verdad funciona.
+    # LEAK_SIM_THRESHOLD: above this the photo is almost the same as one already
+    # in the reference gallery. Filename/manifest skip is unreliable if IMAGES_DIR
+    # moved without copying manifests. Embedding similarity against the live
+    # catalog is the check that actually works (25-Aug-2026: 42.7% of
+    # calib_raw_k15.jsonl were already embedded).
     LEAK_SIM_THRESHOLD = 0.999
     for i, sl in enumerate(pool, 1):
         if done.get(sl, 0) >= PER_SP:

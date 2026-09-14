@@ -20,6 +20,7 @@
 # No production paths
 /mnt/
 *.log
+logs/
 tmp/
 temp/
 __pycache__/

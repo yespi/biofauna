@@ -27,7 +27,7 @@ curl -s http://127.0.0.1:8090/health
 curl -X POST http://127.0.0.1:8090/identify -F "file=@photo.jpg"
 ```
 
-Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per species. See [`docs/dataset.md`](docs/dataset.md), [`docs/self_host.md`](docs/self_host.md), and [`scripts/README.md`](scripts/README.md).
+Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per species. See [`docs/dataset.md`](docs/dataset.md), [`docs/self_host.md`](docs/self_host.md), [`docs/cron.md`](docs/cron.md), and [`scripts/README.md`](scripts/README.md).
 
 ## Docs
 
@@ -36,6 +36,7 @@ Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per 
 | [STATUS](docs/STATUS.md) | Current public snapshot |
 | [EXPERIMENTS](docs/EXPERIMENTS.md) | Kept vs rejected trials |
 | [HISTORY](docs/HISTORY.md) | YOLOFauna → BioFauna |
+| [cron](docs/cron.md) | Weekly jobs BF-01…BF-10 + systemd example |
 | [archive](docs/archive/README.md) | Stale August notes (e.g. closed archive gap) |
 
 ## Licence
