@@ -1,44 +1,19 @@
 # Methodology — BioFauna
 
-## Model Architecture
+Production identifier: **frozen BioCLIP-2.5 ViT-H/14** (1024-d) → **k-NN k=15**, tempered votes **T=0.05**, prototype boost, 65% centre-crop fused into the query, optional GPS prior, logistic calibration, taxonomic abstention.
 
-BioFauna uses **BioCLIP-2.5 ViT-H/14** (`hf-hub:imageomics/bioclip-2.5-vith14`), a vision transformer producing **1024-dimensional** L2-normalized embeddings. In production the backbone is **frozen**.
-
-### Identification Pipeline
-
-1. **Embedding**: Input crop → ViT-H → 1024-dim vector  
-2. **k-Nearest Neighbors**: **k=15** over the species gallery (`dataset/patterns/`)  
-3. **Geographic priors** (optional): GPS-weighted boost when coordinates exist  
-4. **Calibration**: Logistic regression on k-NN features → P(species/genus/family correct)  
-5. **Taxonomic abstention / hierarchical fallback**: When the top-1/top-2 margin is small and taxa share genus/family, report the coarser rank (`MIN_RISK`, `FAMILY_MARGIN`)
-
-### What We Tried and Did Not Ship
-
-| Technique | Result |
-|-----------|--------|
-| QLoRA on ViT-L (proj head trainable) | Catastrophic (1.7%) |
-| Triplet on ViT-H | Degrades |
-| ArcFace (frozen ViT-H) | Ties k-NN out-of-sample |
-| LoRA+ArcFace (eval corrected) | +0.0pp |
-| Expert-guide crops / burst dedup | Slightly worse on `harvest_calib` |
-
-## Dataset
-
-- ~**584K–587K** photographs under ~**3,000** species folders (Mediterranean focus)  
-- Gallery: ~**1,158** active species / ~**454K** embeddings in production patterns  
-- Sources: Minka, iNaturalist, expert guides (Pontes / Salvador / Ballesteros)  
-- Taxonomy: WoRMS cross-checks for synonyms
+Details and the kept/rejected ledger: [paper](../paper/01_biofauna.md) and [EXPERIMENTS.md](EXPERIMENTS.md).
 
 ## Validation
 
-Headline metrics come only from **`harvest_calib`** (held-out by **observation ID**, not by photo) + `fit_calib.py`.
+Only **observation-stratified** harvests. Photo-level splits inflate accuracy ~10 pp.
 
-Canonical result (**2026-08-10**): **71.7% / 76.5% / 80.4%** species / genus / family (n=1,946; 810 species).  
-AutoID operating point: **p≥0.90 → 95.5% precision, 30.2% coverage**.
+**Current (2026-09-14):** 85.78% / 89.15% / 91.41% species/genus/family, n=19,087.
+
+**August freeze (same protocol, smaller mix):** 75.97% TTA-era → 79.10% after densification on n=12,788. Do not quote those as the live system.
+
+AutoID (FotoFauna): last published operating point **p≥0.80 → ~95.3% precision, ~57.4% coverage** (August split). The on-disk calibrator was refit 14 Sep.
 
 ## References
 
-- Stevens et al. (2024). BioCLIP: A Vision-Language Model for the Tree of Life. CVPR 2024.
-- Ballesteros, M. (2007). Lista actualizada de los opistobranquios de las costas catalanas. SPIRA 2(3):163-188.
-- Cervera, J.L. et al. (2004). An annotated checklist of the opisthobranchs from the Iberian Peninsula.
-- Pontes, M. et al. Nudibranquios de la Isla de Tarifa. OPK/GROC.
+Stevens et al. 2024 (BioCLIP, CVPR). Ballesteros 2007; Cervera et al. 2004; Salvador et al. 2022 (checklists).

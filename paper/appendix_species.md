@@ -1,3077 +1,2995 @@
-# Appendix A: Per-Species Data for BioFauna
+# Appendix A — Species catalog (reconstruction index)
 
-> Historical per-species export (checklist / guide features).  
-> Canonical system metrics (2026-08-10): **71.7%** species · **76.5%** genus · **80.4%** family (ViT-H, k=15, `harvest_calib`). See [`../docs/STATUS.md`](../docs/STATUS.md).  
-> Many `Acc.` / `Cal.N` cells are empty or predate the ViT-H calibration — do not treat column blanks as 0% accuracy.
+> Snapshot **2026-09-14**. **2,985** catalog taxa. Live identification gallery: **4,702** species / **848,883** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
+>
+> This table is an **index of taxon IDs**, not a training dataset. Photos are **not** redistributed (iNaturalist / Minka licences). Rebuild images via the APIs using `minka_taxon` / `inat_taxon`, then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`).
+>
+> Accuracy columns from earlier drafts were frozen at the August 2026 ~71.7% cohort and are **removed**. Current global OOS: **85.78%** species (n=19,087). Per-species scores are not published here (they move with every harvest).
 
-| Species | Tier | Acc. | Cal.N | Images | Similar to | Key Features |
-|---|------|------|-------|--------|------------|--------------|
-| *Abavopsis latosoleata* | Gold | — | 0 | 0 | — |  |
-| *Abida polyodon* | Gold | — | 0 | 222 | — |  |
-| *Acanthodoris pilosa* | Gold | — | 0 | 0 | — |  |
-| *Acteon tornatilis* | Gold | — | 0 | 229 | — |  |
-| *Aegires leuckartii* | Gold | — | 0 | 214 | — | Nudibranqui molt petit de color blanc amb cap ample i cos recobert de protuberàncies. |
-| *Aegires palensis* | Gold | — | 0 | 82 | — |  |
-| *Aegires punctilucens* | Gold | — | 0 | 7 | — | Nudibranqui molt petit de color blanc cru amb taques marrons on destaquen uns puntets blaus. Cap amp |
-| *Aegires sublaevis* | Gold | — | 0 | 5 | — |  |
-| *Aegires villosus* | Gold | — | 0 | 0 | — |  |
-| *Aeolidia filomenae* | Gold | — | 0 | 7 | — |  |
-| *Aeolidia papillosa* | Gold | — | 0 | 0 | — |  |
-| *Aeolidiella alderi* | Gold | — | 0 | 390 | — | Nudibranqui amb abundants cerates de color gris amb punta blanca i cos de blanc a taronja. Rinófors  |
-| *Aeolidiella sanguinea* | Gold | — | 0 | 22 | — |  |
-| *Aglaja tricolorata* | Gold | — | 0 | 388 | — | Espècie de color fosc (de marró a negre) amb abundants taques rodones blanques i un parell de apèndi |
-| *Akera bullata* | Gold | — | 0 | 106 | — |  |
-| *Aldisa banyulensis* | Gold | — | 0 | 1 | — |  |
-| *Aldisa smaragdina* | Gold | — | 0 | 20 | — | - Flickr del GROC Enllaços |
-| *Ambigolimax valentianus* | Gold | — | 0 | 283 | — |  |
-| *Ammonicera fischeriana* | Gold | — | 0 | 0 | — |  |
-| *Amphorina andra* | Gold | — | 0 | 20 | — |  |
-| *Amphorina farrani* | Gold | — | 0 | 173 | — |  |
-| *Amphorina linensis* | Gold | — | 0 | 20 | — |  |
-| *Ampullaceana balthica* | Gold | — | 0 | 0 | — |  |
-| *Anteaeolidiella lurana* | Gold | — | 0 | 20 | — |  |
-| *Antiopella cristata* | Gold | — | 0 | 1000 | — |  |
-| *Aplysia dactylomela* | Gold | — | 0 | 225 | — |  |
-| *Aplysia depilans* | Gold | — | 0 | 740 | — |  |
-| *Aplysia fasciata* | Gold | — | 0 | 1000 | — |  |
-| *Aplysia japonica* | Gold | — | 0 | 0 | — |  |
-| *Aplysia nigrocincta* | Gold | — | 0 | 0 | — |  |
-| *Aplysia oculifera* | Gold | — | 0 | 0 | — |  |
-| *Aplysia parvula* | Gold | — | 0 | 0 | — |  |
-| *Aplysia punctata* | Gold | — | 0 | 1000 | — |  |
-| *Aplysiopsis elegans* | Gold | — | 0 | 0 | — |  |
-| *Aplysiopsis formosa* | Gold | — | 0 | 0 | — |  |
-| *Aporodoris millegrana* | Gold | — | 0 | 0 | — |  |
-| *Archachatina marginata* | Gold | — | 0 | 0 | — |  |
-| *Archidoris pseudoargus* | Gold | — | 0 | 0 | — |  |
-| *Ardeadoris egretta* | Gold | — | 0 | 0 | — |  |
-| *Arion ater* | Gold | — | 0 | 744 | — |  |
-| *Arion rufus* | Gold | — | 0 | 0 | — |  |
-| *Arion vulgaris* | Gold | — | 0 | 158 | — |  |
-| *Armina maculata* | Gold | — | 0 | 0 | — |  |
-| *Armina tigrina* | Gold | — | 0 | 20 | — |  |
-| *Asteronotus cespitosus* | Gold | — | 0 | 0 | — |  |
-| *Asteronotus hepaticus* | Gold | — | 0 | 0 | — |  |
-| *Atagema gibba* | Gold | — | 0 | 0 | — |  |
-| *Atalodoris inconspicua* | Gold | — | 0 | 0 | — |  |
-| *Atalodoris pictoni* | Gold | — | 0 | 21 | — | Considerat com Onchidoris pusilla abans de la descripció de Knoutsodonta pictoni ( Furfaro &amp; Tra |
-| *Atalodoris sparsa* | Gold | — | 0 | 0 | — |  |
-| *Babakina anadoni* | Gold | — | 0 | 21 | — | Paraflabellina ischitana * |
-| *Baenopsis baetica* | Gold | — | 0 | 0 | — |  |
-| *Baptodoris cinnabarina* | Gold | — | 0 | 99 | — | Aporodoris cf millegrana * |
-| *Berghia coerulescens* | Gold | — | 0 | 470 | — |  |
-| *Berghia marinae* | Gold | — | 0 | 0 | — |  |
-| *Berghia verrucicornis* | Gold | — | 0 | 185 | — |  |
-| *Bermudella mica* | Gold | — | 0 | 16 | — |  |
-| *Bermudella polycerelloides* | Gold | — | 0 | 159 | — |  |
-| *Berthella africana* | Gold | — | 0 | 0 | — |  |
-| *Berthella aurantiaca* | Gold | — | 0 | 8 | — | Les espècies Berthellina edwardsii i Berthella aurantiaca no es poden diferenciar a simple vista, ca |
-| *Berthella ocellata* | Gold | — | 0 | 189 | — |  |
-| *Berthella perforata* | Gold | — | 0 | 188 | — |  |
-| *Berthella plumula* | Gold | — | 0 | 239 | — |  |
-| *Berthellina edwardsii* | Gold | — | 0 | 307 | — | Les espècies Berthellina edwardsii i Berthella aurantiaca no es poden diferenciar a simple vista, ca |
-| *Bielzia coerulans* | Gold | — | 0 | 0 | — |  |
-| *Biuve fulvipunctata* | Gold | — | 0 | 106 | — | Melanochlamys wildpretii * |
-| *Boettgeria lowei* | Gold | — | 0 | 0 | — |  |
-| *Bornella anguilla* | Gold | — | 0 | 0 | — |  |
-| *Bosellia levis* | Gold | — | 0 | 24 | — |  |
-| *Bosellia mimetica* | Gold | — | 0 | 324 | — |  |
-| *Bulla mabillei* | Gold | — | 0 | 0 | — |  |
-| *Bulla striata* | Gold | — | 0 | 580 | — |  |
-| *Bulla vernicosa* | Gold | — | 0 | 0 | — |  |
-| *Bursatella leachii* | Gold | — | 0 | 257 | — |  |
-| *Cadlina laevis* | Gold | — | 0 | 0 | — |  |
-| *Cadlina pellucida* | Gold | — | 0 | 256 | — |  |
-| *Caliphylla mediterranea* | Gold | — | 0 | 121 | — |  |
-| *Caliphylla viridis* | Gold | — | 0 | 8 | — |  |
-| *Calliopaea bellula* | Gold | — | 0 | 26 | — |  |
-| *Calma glaucoides* | Gold | — | 0 | 51 | — |  |
-| *Calma gobioophaga* | Gold | — | 0 | 122 | — |  |
-| *Calmella cavolini* | Gold | — | 0 | 1000 | — |  |
-| *Calmella gaditana* | Gold | — | 0 | 0 | — |  |
-| *Caloria elegans* | Gold | — | 0 | 378 | — |  |
-| *Caloria indica* | Gold | — | 0 | 0 | — |  |
-| *Caloria quatrefagesi* | Gold | — | 0 | 1000 | — |  |
-| *Camachoaglaja africana* | Gold | — | 0 | 99 | — |  |
-| *Candiella cincta* | Gold | — | 0 | 0 | — |  |
-| *Candiella lineata* | Gold | — | 0 | 193 | — |  |
-| *Candiella manicata* | Gold | — | 0 | 343 | — |  |
-| *Candiella odhneri* | Gold | — | 0 | 601 | — |  |
-| *Candiella plebeia* | Gold | — | 0 | 0 | — |  |
-| *Candiella striata* | Gold | — | 0 | 340 | — |  |
-| *Cantareus apertus* | Gold | — | 0 | 1000 | — |  |
-| *Capellinia doriae* | Gold | — | 0 | 21 | — |  |
-| *Capellinia vittata* | Gold | — | 0 | 0 | — |  |
-| *Cargoa problematica* | Gold | — | 0 | 5 | — |  |
-| *Carinorbis clathrata* | Gold | — | 0 | 0 | — |  |
-| *Caucasotachea vindobonensis* | Gold | — | 0 | 139 | — |  |
-| *Cavolinia gibbosa* | Gold | — | 0 | 0 | — |  |
-| *Cavolinia inflexa* | Gold | — | 0 | 26 | — |  |
-| *Cavolinia tridentata* | Gold | — | 0 | 0 | — |  |
-| *Cavolinia uncinata* | Gold | — | 0 | 0 | — |  |
-| *Cepaea hortensis* | Gold | — | 0 | 238 | — |  |
-| *Cepaea nemoralis* | Gold | — | 0 | 1000 | — |  |
-| *Cephalopyge trematoides* | Gold | — | 0 | 0 | — |  |
-| *Ceratodoris hiroi* | Gold | — | 0 | 0 | — |  |
-| *Ceratosoma bicolor* | Gold | — | 0 | 0 | — |  |
-| *Ceratosoma gracillimum* | Gold | — | 0 | 0 | — |  |
-| *Ceratosoma trilobatum* | Gold | — | 0 | 0 | — |  |
-| *Cerberilla bernadettae* | Gold | — | 0 | 33 | — |  |
-| *Cernuella virgata* | Gold | — | 0 | 0 | — |  |
-| *Chelidonura amoena* | Gold | — | 0 | 0 | — |  |
-| *Chelidonura hirundinina* | Gold | — | 0 | 0 | — |  |
-| *Chelidonura livida* | Gold | — | 0 | 0 | — |  |
-| *Chelidonura pallida* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris africana* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris alcalai* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris annae* | Gold | — | 0 | 211 | — |  |
-| *Chromodoris colemani* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris dianae* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris lochi* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris magnifica* | Gold | — | 0 | 0 | — |  |
-| *Chromodoris quadricolor* | Gold | — | 0 | 199 | — |  |
-| *Chromodoris strigata* | Gold | — | 0 | 185 | — |  |
-| *Chromodoris willani* | Gold | — | 0 | 183 | — |  |
-| *Chromolaichma edmundsi* | Gold | — | 0 | 0 | — |  |
-| *Chrysallida canariensis* | Gold | — | 0 | 0 | — |  |
-| *Clausilia baudoni* | Gold | — | 0 | 0 | — |  |
-| *Clio pyramidata* | Gold | — | 0 | 15 | — |  |
-| *Cliopsis krohnii* | Gold | — | 0 | 0 | — |  |
-| *Cochlicella acuta* | Gold | — | 0 | 1000 | — |  |
-| *Cochlicella barbara* | Gold | — | 0 | 1000 | — |  |
-| *Cochlicella conoidea* | Gold | — | 0 | 105 | — |  |
-| *Colpodaspis pusilla* | Gold | — | 0 | 0 | — |  |
-| *Cornu aspersum* | Gold | — | 0 | 773 | — |  |
-| *Corolla ovata* | Gold | — | 0 | 6 | — |  |
-| *Coryphella verrucosa* | Gold | — | 0 | 0 | — |  |
-| *Coryphellina exoptata* | Gold | — | 0 | 198 | — |  |
-| *Coryphellina flamma* | Gold | — | 0 | 0 | — |  |
-| *Coryphellina lotos* | Gold | — | 0 | 0 | — |  |
-| *Coryphellina rubrolineata* | Gold | — | 0 | 0 | — |  |
-| *Costasiella kuroshimae* | Gold | — | 0 | 0 | — |  |
-| *Costasiella ocellifera* | Gold | — | 0 | 0 | — |  |
-| *Costasiella vegae* | Gold | — | 0 | 0 | — |  |
-| *Costasiella virescens* | Gold | — | 0 | 0 | — |  |
-| *Cratena peregrina* | Gold | — | 0 | 1000 | — | Paraflabellina gabinierei * |
-| *Cratena simba* | Gold | — | 0 | 0 | — |  |
-| *Creseis acicula* | Gold | — | 0 | 70 | — |  |
-| *Creseis conica* | Gold | — | 0 | 1 | — |  |
-| *Crimora papillata* | Gold | — | 0 | 168 | — |  |
-| *Cuthona pallida* | Gold | — | 0 | 0 | — |  |
-| *Cuthona willani* | Gold | — | 0 | 0 | — |  |
-| *Cuvierina columnella* | Gold | — | 0 | 0 | — |  |
-| *Cyerce cristallina* | Gold | — | 0 | 0 | — |  |
-| *Cyerce graeca* | Gold | — | 0 | 96 | — |  |
-| *Cylichna alba* | Gold | — | 0 | 19 | — |  |
-| *Cylichna brocchii* | Gold | — | 0 | 0 | — |  |
-| *Cylichna cylindracea* | Gold | — | 0 | 34 | — |  |
-| *Cymbulia peronii* | Gold | — | 0 | 241 | — |  |
-| *Dendrodoris fumata* | Gold | — | 0 | 0 | — |  |
-| *Dendrodoris grandiflora* | Gold | — | 0 | 219 | — |  |
-| *Dendrodoris herytra* | Gold | — | 0 | 0 | — |  |
-| *Dendrodoris limbata* | Gold | — | 0 | 663 | — |  |
-| *Dendrodoris nigra* | Gold | — | 0 | 0 | — |  |
-| *Dendrodoris temarana* | Gold | — | 0 | 223 | — |  |
-| *Diacria trispinosa* | Gold | — | 0 | 0 | — |  |
-| *Diaphorodoris alba* | Gold | — | 0 | 687 | — | Diaphorodoris luteocincta * |
-| *Diaphorodoris luteocincta* | Gold | — | 0 | 102 | — |  |
-| *Diaphorodoris papillata* | Gold | — | 0 | 1000 | — | Diaphorodoris luteocincta * |
-| *Diaulula variolata* | Gold | — | 0 | 0 | — |  |
-| *Dicata odhneri* | Gold | — | 0 | 0 | — |  |
-| *Discodoris boholiensis* | Gold | — | 0 | 0 | — |  |
-| *Discodoris stellifera* | Gold | — | 0 | 0 | — | Les espècies Geitodoris planata i Discodoris stellifera no es poden diferenciar a simple vista, cal  |
-| *Discus rotundatus* | Gold | — | 0 | 863 | — |  |
-| *Dolabella auricularia* | Gold | — | 0 | 0 | — |  |
-| *Dolabrifera edmundsi* | Gold | — | 0 | 190 | — |  |
-| *Dondice trainitoi* | Gold | — | 0 | 17 | — |  |
-| *Doriopsilla areolata* | Gold | — | 0 | 200 | — |  |
-| *Doriopsilla pelseneeri* | Gold | — | 0 | 0 | — |  |
-| *Doriopsilla rarispinosa* | Gold | — | 0 | 56 | — |  |
-| *Doriprismatica atromarginata* | Gold | — | 0 | 177 | — |  |
-| *Doriprismatica balut* | Gold | — | 0 | 0 | — |  |
-| *Doris adrianae* | Gold | — | 0 | 0 | — |  |
-| *Doris berghi* | Gold | — | 0 | 71 | — |  |
-| *Doris bertheloti* | Gold | — | 0 | 0 | — |  |
-| *Doris fontainii* | Gold | — | 0 | 0 | — |  |
-| *Doris kerguelenensis* | Gold | — | 0 | 0 | — |  |
-| *Doris ocelligera* | Gold | — | 0 | 119 | — |  |
-| *Doris verrucosa* | Gold | — | 0 | 306 | — |  |
-| *Doto cavernicola* | Gold | — | 0 | 0 | — |  |
-| *Doto cervicenigra* | Gold | — | 0 | 189 | — |  |
-| *Doto coronata* | Gold | — | 0 | 220 | — |  |
-| *Doto eireana* | Gold | — | 0 | 0 | — |  |
-| *Doto eo* | Gold | — | 0 | 0 | — |  |
-| *Doto escatllari* | Gold | — | 0 | 0 | — |  |
-| *Doto floridicola* | Gold | — | 0 | 194 | — |  |
-| *Doto fluctifraga* | Gold | — | 0 | 0 | — |  |
-| *Doto fragaria* | Gold | — | 0 | 0 | — |  |
-| *Doto fragilis* | Gold | — | 0 | 0 | — |  |
-| *Doto koenneckeri* | Gold | — | 0 | 186 | — |  |
-| *Doto maculata* | Gold | — | 0 | 55 | — |  |
-| *Doto millbayana* | Gold | — | 0 | 122 | — |  |
-| *Doto paulinae* | Gold | — | 0 | 91 | — |  |
-| *Doto pinnatifida* | Gold | — | 0 | 0 | — |  |
-| *Doto pita* | Gold | — | 0 | 0 | — |  |
-| *Doto pygmaea* | Gold | — | 0 | 166 | — |  |
-| *Doto rosea* | Gold | — | 0 | 144 | — |  |
-| *Doto verdicioi* | Gold | — | 0 | 0 | — |  |
-| *Drusia valenciennii* | Gold | — | 0 | 754 | — |  |
-| *Ebala nitidissima* | Gold | — | 0 | 0 | — |  |
-| *Ebala pointeli* | Gold | — | 0 | 0 | — |  |
-| *Edmundsella pedata* | Gold | — | 0 | 1000 | — | Paraflabellina ischitana * |
-| *Elysia azorica* | Gold | — | 0 | 0 | — |  |
-| *Elysia cauze* | Gold | — | 0 | 256 | — |  |
-| *Elysia crispata* | Gold | — | 0 | 0 | — |  |
-| *Elysia flava* | Gold | — | 0 | 207 | — |  |
-| *Elysia gordanae* | Gold | — | 0 | 274 | — |  |
-| *Elysia manriquei* | Gold | — | 0 | 0 | — |  |
-| *Elysia margaritae* | Gold | — | 0 | 10 | — |  |
-| *Elysia marginata* | Gold | — | 0 | 0 | — |  |
-| *Elysia ornata* | Gold | — | 0 | 0 | — |  |
-| *Elysia papillosa* | Gold | — | 0 | 0 | — |  |
-| *Elysia timida* | Gold | — | 0 | 1000 | — |  |
-| *Elysia tomentosa* | Gold | — | 0 | 0 | — |  |
-| *Elysia translucens* | Gold | — | 0 | 10 | — |  |
-| *Elysia viridis* | Gold | — | 0 | 705 | — |  |
-| *Embletonia pulchra* | Gold | — | 0 | 0 | — |  |
-| *Eobania vermiculata* | Gold | — | 0 | 0 | — |  |
-| *Ercolania coerulea* | Gold | — | 0 | 0 | — |  |
-| *Ercolania lozanoi* | Gold | — | 0 | 13 | — |  |
-| *Ercolania selva* | Gold | — | 0 | 0 | — |  |
-| *Ercolania viridis* | Gold | — | 0 | 145 | — |  |
-| *Espinosina terracota* | Gold | — | 0 | 0 | — |  |
-| *Eubranchus arci* | Gold | — | 0 | 0 | — |  |
-| *Eubranchus prietoi* | Gold | — | 0 | 0 | — |  |
-| *Eulimella acicula* | Gold | — | 0 | 0 | — |  |
-| *Facelina annulicornis* | Gold | — | 0 | 372 | — |  |
-| *Facelina auriculata* | Gold | — | 0 | 757 | — |  |
-| *Facelina dubia* | Gold | — | 0 | 0 | — |  |
-| *Facelina fusca* | Gold | — | 0 | 7 | — |  |
-| *Facelina rubrovittata* | Gold | — | 0 | 611 | — |  |
-| *Facelina vicina* | Gold | — | 0 | 316 | — |  |
-| *Facelinopsis marioni* | Gold | — | 0 | 570 | — |  |
-| *Favorinus blianus* | Gold | — | 0 | 0 | — |  |
-| *Favorinus branchialis* | Gold | — | 0 | 414 | — |  |
-| *Favorinus tsuruganus* | Gold | — | 0 | 0 | — |  |
-| *Favorinus vitreus* | Gold | — | 0 | 235 | — |  |
-| *Felimare bilineata* | Gold | — | 0 | 278 | — |  |
-| *Felimare cantabrica* | Gold | — | 0 | 231 | — |  |
-| *Felimare fontandraui* | Gold | — | 0 | 783 | — |  |
-| *Felimare gasconi* | Gold | — | 0 | 14 | — |  |
-| *Felimare lajensis* | Gold | — | 0 | 0 | — |  |
-| *Felimare orsinii* | Gold | — | 0 | 604 | — |  |
-| *Felimare picta* | Gold | — | 0 | 1000 | — |  |
-| *Felimare tema* | Gold | — | 0 | 0 | — |  |
-| *Felimare tricolor* | Gold | — | 0 | 1000 | — |  |
-| *Felimare villafranca* | Gold | — | 0 | 947 | — |  |
-| *Felimida binza* | Gold | — | 0 | 653 | — |  |
-| *Felimida elegantula* | Gold | — | 0 | 0 | — |  |
-| *Felimida luteopunctata* | Gold | — | 0 | 0 | — |  |
-| *Felimida luteorosea* | Gold | — | 0 | 81 | — |  |
-| *Ferussacia folliculum* | Gold | — | 0 | 1000 | — |  |
-| *Fiona pinnata* | Gold | — | 0 | 81 | — |  |
-| *Fjordia lineata* | Gold | — | 0 | 88 | — |  |
-| *Flabellina affinis* | Gold | — | 0 | 1000 | — | Paraflabellina ischitana * |
-| *Flabellina dushia* | Gold | — | 0 | 240 | — |  |
-| *Folinella excavata* | Gold | — | 0 | 0 | — |  |
-| *Fruticicola fruticum* | Gold | — | 0 | 270 | — |  |
-| *Gargamella boucheti* | Gold | — | 0 | 0 | — |  |
-| *Gargamella perezi* | Gold | — | 0 | 0 | — |  |
-| *Gargamella rosi* | Gold | — | 0 | 1 | — |  |
-| *Geitodoris perfossa* | Gold | — | 0 | 0 | — |  |
-| *Geitodoris planata* | Gold | — | 0 | 279 | — | Les espècies Geitodoris planata i Discodoris stellifera no es poden diferenciar a simple vista, cal  |
-| *Geitodoris portmanni* | Gold | — | 0 | 23 | — | Geitodoris cf bacalladoi * |
-| *Geitodoris pusae* | Gold | — | 0 | 0 | — |  |
-| *Gittenbergeria turriplana* | Gold | — | 0 | 310 | — |  |
-| *Glaucus atlanticus* | Gold | — | 0 | 231 | — |  |
-| *Glossodoris acosti* | Gold | — | 0 | 0 | — |  |
-| *Glossodoris buko* | Gold | — | 0 | 0 | — |  |
-| *Glossodoris rufomarginata* | Gold | — | 0 | 0 | — |  |
-| *Godiva quadricolor* | Gold | — | 0 | 91 | — |  |
-| *Goniobranchus albonares* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus cavae* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus coi* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus collingwoodi* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus fidelis* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus geminus* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus geometricus* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus gleniei* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus hintuanensis* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus kuniei* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus preciosus* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus reticulatus* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus setoensis* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus splendidus* | Gold | — | 0 | 0 | — |  |
-| *Goniobranchus tritos* | Gold | — | 0 | 0 | — |  |
-| *Goniodoridella picoensis* | Gold | — | 0 | 626 | — |  |
-| *Goniodoris barroisi* | Gold | — | 0 | 0 | — |  |
-| *Gymnodoris ceylonica* | Gold | — | 0 | 0 | — |  |
-| *Halgerda batangas* | Gold | — | 0 | 0 | — |  |
-| *Halgerda indotessellata* | Gold | — | 0 | 0 | — |  |
-| *Halgerda paulayi* | Gold | — | 0 | 0 | — |  |
-| *Haloa japonica* | Gold | — | 0 | 208 | — |  |
-| *Haminoea exigua* | Gold | — | 0 | 195 | — |  |
-| *Haminoea hydatis* | Gold | — | 0 | 391 | — |  |
-| *Haminoea navicula* | Gold | — | 0 | 0 | — |  |
-| *Haminoea orbignyana* | Gold | — | 0 | 81 | — |  |
-| *Haminoea orteai* | Gold | — | 0 | 278 | — |  |
-| *Hancockia uncinata* | Gold | — | 0 | 154 | — |  |
-| *Hedylopsis spiculifera* | Gold | — | 0 | 0 | — |  |
-| *Heliacus fallaciosus* | Gold | — | 0 | 0 | — |  |
-| *Helicella itala* | Gold | — | 0 | 614 | — |  |
-| *Helicigona lapicida* | Gold | — | 0 | 1000 | — |  |
-| *Helicodonta obvoluta* | Gold | — | 0 | 531 | — |  |
-| *Helix albescens* | Gold | — | 0 | 0 | — |  |
-| *Helix lucorum* | Gold | — | 0 | 0 | — |  |
-| *Helix pomatia* | Gold | — | 0 | 367 | — |  |
-| *Hermaea bifida* | Gold | — | 0 | 112 | — |  |
-| *Hermaea cantabra* | Gold | — | 0 | 0 | — |  |
-| *Hermaea cubana* | Gold | — | 0 | 0 | — |  |
-| *Hermaea paucicirra* | Gold | — | 0 | 0 | — |  |
-| *Hermaea variopicta* | Gold | — | 0 | 214 | — |  |
-| *Hermania scabra* | Gold | — | 0 | 0 | — |  |
-| *Hexabranchus lacer* | Gold | — | 0 | 0 | — |  |
-| *Hexabranchus sanguineus* | Gold | — | 0 | 0 | — |  |
-| *Hyalocylis striata* | Gold | — | 0 | 12 | — |  |
-| *Hydatina physis* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris apolegma* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris bullockii* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris decorata* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris emma* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris festiva* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris ghardaqana* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris iba* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris infucata* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris krakatoa* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris maculosa* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris paradisa* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris purpureomaculosa* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris reidi* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris tryoni* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris whitei* | Gold | — | 0 | 0 | — |  |
-| *Hypselodoris zephyra* | Gold | — | 0 | 0 | — |  |
-| *Iberus gualtieranus* | Gold | — | 0 | 405 | — |  |
-| *Iberus splendidus* | Gold | — | 0 | 1000 | — |  |
-| *Idaliadoris depressa* | Gold | — | 0 | 129 | — |  |
-| *Idaliadoris neapolitana* | Gold | — | 0 | 269 | — |  |
-| *Janolus faustoi* | Gold | — | 0 | 0 | — |  |
-| *Janolus hyalinus* | Gold | — | 0 | 181 | — |  |
-| *Jorunna efe* | Gold | — | 0 | 0 | — |  |
-| *Jorunna evansi* | Gold | — | 0 | 0 | — |  |
-| *Jorunna funebris* | Gold | — | 0 | 0 | — |  |
-| *Jorunna onubensis* | Gold | — | 0 | 0 | — |  |
-| *Jorunna rubescens* | Gold | — | 0 | 0 | — |  |
-| *Jorunna tomentosa* | Gold | — | 0 | 119 | — |  |
-| *Kaloplocamus ramosus* | Gold | — | 0 | 0 | — |  |
-| *Lamprohaminoea ovalis* | Gold | — | 0 | 207 | — |  |
-| *Laona vestita* | Gold | — | 0 | 0 | — |  |
-| *Lauria cylindracea* | Gold | — | 0 | 645 | — |  |
-| *Learchis poica* | Gold | — | 0 | 0 | — |  |
-| *Lehmannia valentiana* | Gold | — | 0 | 278 | — |  |
-| *Leucophytia bidentata* | Gold | — | 0 | 0 | — |  |
-| *Limacia clavigera* | Gold | — | 0 | 0 | — |  |
-| *Limacia inesae* | Gold | — | 0 | 132 | — |  |
-| *Limacus flavus* | Gold | — | 0 | 1000 | — |  |
-| *Limapontia capitata* | Gold | — | 0 | 0 | — |  |
-| *Limapontia senestra* | Gold | — | 0 | 0 | — |  |
-| *Limax cinereoniger* | Gold | — | 0 | 226 | — |  |
-| *Limax maximus* | Gold | — | 0 | 1000 | — |  |
-| *Limenandra nodosa* | Gold | — | 0 | 0 | — |  |
-| *Lobiger serradifalci* | Gold | — | 0 | 0 | — |  |
-| *Lomanotus barlettai* | Gold | — | 0 | 0 | — |  |
-| *Lomanotus genei* | Gold | — | 0 | 0 | — |  |
-| *Lomanotus marmoratus* | Gold | — | 0 | 0 | — |  |
-| *Luisella babai* | Gold | — | 0 | 1000 | — |  |
-| *Lymnaea stagnalis* | Gold | — | 0 | 276 | — |  |
-| *Marionia blainvillea* | Gold | — | 0 | 495 | — |  |
-| *Mathilda retusa* | Gold | — | 0 | 0 | — |  |
-| *Megastomia conoidea* | Gold | — | 0 | 0 | — |  |
-| *Melanochlamys miqueli* | Gold | — | 0 | 0 | — |  |
-| *Mexichromis aurora* | Gold | — | 0 | 0 | — |  |
-| *Mexichromis multituberculata* | Gold | — | 0 | 0 | — |  |
-| *Mexichromis pusilla* | Gold | — | 0 | 0 | — |  |
-| *Mexichromis trilineata* | Gold | — | 0 | 0 | — |  |
-| *Miamira sinuata* | Gold | — | 0 | 0 | — |  |
-| *Microchlamylla gracilis* | Gold | — | 0 | 0 | — |  |
-| *Micromelo undatus* | Gold | — | 0 | 0 | — |  |
-| *Milax gagates* | Gold | — | 0 | 145 | — |  |
-| *Monacha cartusiana* | Gold | — | 0 | 897 | — |  |
-| *Monacha fruticola* | Gold | — | 0 | 0 | — |  |
-| *Mourgona bethencourti* | Gold | — | 0 | 0 | — |  |
-| *Mourgona borgninii* | Gold | — | 0 | 0 | — |  |
-| *Myosotella myosotis* | Gold | — | 0 | 250 | — |  |
-| *Nembrotha aurea* | Gold | — | 0 | 0 | — |  |
-| *Nembrotha chamberlaini* | Gold | — | 0 | 0 | — |  |
-| *Nembrotha cristata* | Gold | — | 0 | 0 | — |  |
-| *Nembrotha kubaryana* | Gold | — | 0 | 0 | — |  |
-| *Nembrotha lineolata* | Gold | — | 0 | 0 | — |  |
-| *Nembrotha milleri* | Gold | — | 0 | 0 | — |  |
-| *Nembrotha mullineri* | Gold | — | 0 | 0 | — |  |
-| *Nemesignis banyulensis* | Gold | — | 0 | 1000 | — |  |
-| *Notarchus punctatus* | Gold | — | 0 | 0 | — |  |
-| *Notodiaphana atlantica* | Gold | — | 0 | 0 | — |  |
-| *Notodoris minor* | Gold | — | 0 | 0 | — |  |
-| *Nudibranchus exiguus* | Gold | — | 0 | 110 | — |  |
-| *Odostomella bicincta* | Gold | — | 0 | 0 | — |  |
-| *Odostomella doliolum* | Gold | — | 0 | 0 | — |  |
-| *Odostomia acuta* | Gold | — | 0 | 0 | — |  |
-| *Odostomia striolata* | Gold | — | 0 | 0 | — |  |
-| *Odostomia unidentata* | Gold | — | 0 | 0 | — |  |
-| *Okenia elegans* | Gold | — | 0 | 0 | — |  |
-| *Okenia mediterranea* | Gold | — | 0 | 0 | — |  |
-| *Okenia nodosa* | Gold | — | 0 | 0 | — |  |
-| *Omalogyra atomus* | Gold | — | 0 | 0 | — |  |
-| *Onchidella celtica* | Gold | — | 0 | 0 | — |  |
-| *Ondina diaphana* | Gold | — | 0 | 0 | — |  |
-| *Otala lactea* | Gold | — | 0 | 1000 | — |  |
-| *Otala punctata* | Gold | — | 0 | 0 | — |  |
-| *Oxychilus draparnaudi* | Gold | — | 0 | 404 | — |  |
-| *Oxyloma elegans* | Gold | — | 0 | 267 | — |  |
-| *Oxynoe benchijigua* | Gold | — | 0 | 0 | — |  |
-| *Oxynoe olivacea* | Gold | — | 0 | 96 | — |  |
-| *Palio nothus* | Gold | — | 0 | 0 | — |  |
-| *Paradoris indecora* | Gold | — | 0 | 545 | — |  |
-| *Paraflabellina gabinierei* | Gold | — | 0 | 95 | — |  |
-| *Paraflabellina ischitana* | Gold | — | 0 | 1000 | — |  |
-| *Parthenina interstincta* | Gold | — | 0 | 0 | — |  |
-| *Pelagella castanea* | Gold | — | 0 | 148 | — |  |
-| *Peltodoris atromaculata* | Gold | — | 0 | 1000 | — |  |
-| *Peltodoris punctifera* | Gold | — | 0 | 0 | — |  |
-| *Peracle reticulata* | Gold | — | 0 | 0 | — |  |
-| *Peronia verruculata* | Gold | — | 0 | 0 | — |  |
-| *Petalifera petalifera* | Gold | — | 0 | 384 | — |  |
-| *Petalifera ramosa* | Gold | — | 0 | 0 | — |  |
-| *Phestilla sibogae* | Gold | — | 0 | 0 | — |  |
-| *Phetia soussi* | Gold | — | 0 | 135 | — |  |
-| *Phidiana lottini* | Gold | — | 0 | 0 | — |  |
-| *Phidiana lynceus* | Gold | — | 0 | 0 | — |  |
-| *Philine catena* | Gold | — | 0 | 0 | — |  |
-| *Philine intricata* | Gold | — | 0 | 0 | — |  |
-| *Philine iris* | Gold | — | 0 | 0 | — |  |
-| *Philine quadripartita* | Gold | — | 0 | 166 | — |  |
-| *Philinopsis depicta* | Gold | — | 0 | 262 | — | Melanochlamys wildpretii * |
-| *Philippia hybrida* | Gold | — | 0 | 0 | — |  |
-| *Phyllaplysia lafonti* | Gold | — | 0 | 83 | — |  |
-| *Phyllidia alyta* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia coelestis* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia elegans* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia flava* | Gold | — | 0 | 347 | — |  |
-| *Phyllidia marindica* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia multifaria* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia ocellata* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia picta* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia rueppelii* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia undula* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia varicosa* | Gold | — | 0 | 0 | — |  |
-| *Phyllidia willani* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiella granulata* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiella pustulosa* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiella rosans* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiella striata* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiella zeylanica* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiopsis annae* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiopsis fissurata* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiopsis krempfi* | Gold | — | 0 | 0 | — |  |
-| *Phyllidiopsis sinaiensis* | Gold | — | 0 | 0 | — |  |
-| *Phylliroe bucephala* | Gold | — | 0 | 0 | — |  |
-| *Phylliroe lichtensteinii* | Gold | — | 0 | 0 | — |  |
-| *Phyllodesmium koehleri* | Gold | — | 0 | 0 | — |  |
-| *Physella acuta* | Gold | — | 0 | 0 | — |  |
-| *Piseinotecus sphaeriferus* | Gold | — | 0 | 0 | — |  |
-| *Placida cremoniana* | Gold | — | 0 | 263 | — |  |
-| *Placida dakariensis* | Gold | — | 0 | 0 | — |  |
-| *Placida dendritica* | Gold | — | 0 | 267 | — |  |
-| *Placida tardyi* | Gold | — | 0 | 153 | — | Línia morada (més o menys difuminada) al llarg de la base del peu, des de la base dels rinòfors a la |
-| *Placida verticilata* | Gold | — | 0 | 242 | — |  |
-| *Placida viridis* | Gold | — | 0 | 0 | — |  |
-| *Plakobranchus papua* | Gold | — | 0 | 0 | — |  |
-| *Planorbella duryi* | Gold | — | 0 | 93 | — |  |
-| *Platydoris argo* | Gold | — | 0 | 482 | — |  |
-| *Platydoris scabra* | Gold | — | 0 | 0 | — |  |
-| *Pleurehdera stellata* | Gold | — | 0 | 290 | — |  |
-| *Pleurobranchaea maculata* | Gold | — | 0 | 0 | — |  |
-| *Pleurobranchaea meckeli* | Gold | — | 0 | 110 | — |  |
-| *Pleurobranchus albiguttatus* | Gold | — | 0 | 0 | — |  |
-| *Pleurobranchus crossei* | Gold | — | 0 | 0 | — |  |
-| *Pleurobranchus forskalii* | Gold | — | 0 | 0 | — |  |
-| *Pleurobranchus grandis* | Gold | — | 0 | 0 | — |  |
-| *Pleurobranchus membranaceus* | Gold | — | 0 | 0 | — | Pleurobranchus testudinarius * |
-| *Pleurobranchus reticulatus* | Gold | — | 0 | 0 | — |  |
-| *Pleurobranchus testudinarius* | Gold | — | 0 | 234 | — | Pleurobranchus membranaceus * |
-| *Pleurobranchus weberi* | Gold | — | 0 | 0 | — |  |
-| *Plocamopherus maderae* | Gold | — | 0 | 0 | — |  |
-| *Pneumoderma mediterraneum* | Gold | — | 0 | 0 | — |  |
-| *Pneumodermopsis canephora* | Gold | — | 0 | 0 | — |  |
-| *Polycera elegans* | Gold | — | 0 | 0 | — |  |
-| *Polycera faeroensis* | Gold | — | 0 | 0 | — |  |
-| *Polycera hedgpethi* | Gold | — | 0 | 329 | — |  |
-| *Polycera kernowensis* | Gold | — | 0 | 0 | — |  |
-| *Polycera quadrilineata* | Gold | — | 0 | 965 | — |  |
-| *Polycerella emertoni* | Gold | — | 0 | 103 | — |  |
-| *Portugala inchoata* | Gold | — | 0 | 0 | — |  |
-| *Prodoris clavigera* | Gold | — | 0 | 0 | — |  |
-| *Pruvotfolia pselliotes* | Gold | — | 0 | 0 | — |  |
-| *Pseudoilbia avellana* | Gold | — | 0 | 0 | — |  |
-| *Pseudotorinia architae* | Gold | — | 0 | 0 | — |  |
-| *Pteraeolidia semperi* | Gold | — | 0 | 0 | — |  |
-| *Pyramidella dolabrata* | Gold | — | 0 | 0 | — |  |
-| *Pyrgisculus jeffreysii* | Gold | — | 0 | 0 | — |  |
-| *Retusa mammillata* | Gold | — | 0 | 0 | — |  |
-| *Retusa obtusa* | Gold | — | 0 | 0 | — |  |
-| *Retusa truncatula* | Gold | — | 0 | 0 | — |  |
-| *Retusa umbilicata* | Gold | — | 0 | 0 | — |  |
-| *Rhodope veranii* | Gold | — | 0 | 0 | — |  |
-| *Ringicula buccinea* | Gold | — | 0 | 0 | — |  |
-| *Ringicula conformis* | Gold | — | 0 | 0 | — |  |
-| *Rissoella contrerasi* | Gold | — | 0 | 0 | — |  |
-| *Rissoella diaphana* | Gold | — | 0 | 0 | — |  |
-| *Rissoella inflata* | Gold | — | 0 | 0 | — |  |
-| *Roboastra gracilis* | Gold | — | 0 | 0 | — |  |
-| *Roboastra tentaculata* | Gold | — | 0 | 0 | — |  |
-| *Rostanga rubra* | Gold | — | 0 | 0 | — |  |
-| *Roxaniella jeffreysi* | Gold | — | 0 | 0 | — |  |
-| *Rubramoena amoena* | Gold | — | 0 | 0 | — |  |
-| *Rubramoena rubescens* | Gold | — | 0 | 0 | — |  |
-| *Rudmania krohni* | Gold | — | 0 | 923 | — |  |
-| *Rudmania purpurea* | Gold | — | 0 | 184 | — |  |
-| *Rumina decollata* | Gold | — | 0 | 101 | — |  |
-| *Runcina adriatica* | Gold | — | 0 | 0 | — |  |
-| *Runcina africana* | Gold | — | 0 | 156 | — |  |
-| *Runcina akaymui* | Gold | — | 0 | 0 | — |  |
-| *Runcina arnoldoi* | Gold | — | 0 | 0 | — |  |
-| *Runcina bahiensis* | Gold | — | 0 | 0 | — |  |
-| *Runcina brenkoae* | Gold | — | 0 | 0 | — |  |
-| *Runcina capreensis* | Gold | — | 0 | 0 | — |  |
-| *Runcina carrilloi* | Gold | — | 0 | 0 | — |  |
-| *Runcina ferruginea* | Gold | — | 0 | 0 | — |  |
-| *Runcina hansbechi* | Gold | — | 0 | 0 | — |  |
-| *Runcina marcosi* | Gold | — | 0 | 0 | — |  |
-| *Runcina ornata* | Gold | — | 0 | 0 | — |  |
-| *Runcina pacoi* | Gold | — | 0 | 0 | — |  |
-| *Sagaminopteron ornatum* | Gold | — | 0 | 0 | — |  |
-| *Sagaminopteron psychedelicum* | Gold | — | 0 | 0 | — |  |
-| *Samla bicolor* | Gold | — | 0 | 0 | — |  |
-| *Samla bilas* | Gold | — | 0 | 0 | — |  |
-| *Samla riwo* | Gold | — | 0 | 0 | — |  |
-| *Scaphander lignarius* | Gold | — | 0 | 0 | — |  |
-| *Scyllaea pelagica* | Gold | — | 0 | 140 | — |  |
-| *Siphonaria naufragum* | Gold | — | 0 | 0 | — |  |
-| *Siphonaria pectinata* | Gold | — | 0 | 383 | — |  |
-| *Siphopteron makisig* | Gold | — | 0 | 0 | — |  |
-| *Solatopupa juliana* | Gold | — | 0 | 0 | — |  |
-| *Solatopupa similis* | Gold | — | 0 | 1000 | — |  |
-| *Spinoaglaja wildpretii* | Gold | — | 0 | 0 | — |  |
-| *Spiralina spiralis* | Gold | — | 0 | 0 | — |  |
-| *Spurilla neapolitana* | Gold | — | 0 | 634 | — |  |
-| *Stiliger auarita* | Gold | — | 0 | 0 | — |  |
-| *Stiliger llerae* | Gold | — | 0 | 0 | — |  |
-| *Styliola subula* | Gold | — | 0 | 0 | — |  |
-| *Stylocheilus polyomma* | Gold | — | 0 | 0 | — |  |
-| *Succinea putris* | Gold | — | 0 | 0 | — |  |
-| *Tambja affinis* | Gold | — | 0 | 0 | — |  |
-| *Tambja ceutae* | Gold | — | 0 | 0 | — |  |
-| *Tambja fantasmalis* | Gold | — | 0 | 0 | — |  |
-| *Tambja gabrielae* | Gold | — | 0 | 0 | — |  |
-| *Tambja marbellensis* | Gold | — | 0 | 0 | — |  |
-| *Tambja morosa* | Gold | — | 0 | 0 | — |  |
-| *Taringa armata* | Gold | — | 0 | 0 | — |  |
-| *Taringa ascitica* | Gold | — | 0 | 0 | — |  |
-| *Tayuva confusa* | Gold | — | 0 | 0 | — |  |
-| *Tayuva maculosa* | Gold | — | 0 | 116 | — |  |
-| *Tenellia adspersa* | Gold | — | 0 | 0 | — |  |
-| *Tenellia albopunctata* | Gold | — | 0 | 0 | — |  |
-| *Tenellia foliata* | Gold | — | 0 | 0 | — |  |
-| *Tenellia genovae* | Gold | — | 0 | 151 | — |  |
-| *Tenellia granosa* | Gold | — | 0 | 0 | — |  |
-| *Tenellia maua* | Gold | — | 0 | 0 | — |  |
-| *Tenellia miniostriata* | Gold | — | 0 | 0 | — |  |
-| *Tenellia ocellata* | Gold | — | 0 | 359 | — |  |
-| *Tenellia pustulata* | Gold | — | 0 | 0 | — |  |
-| *Tenellia sibogae* | Gold | — | 0 | 0 | — |  |
-| *Tergipes tergipes* | Gold | — | 0 | 0 | — | Piseinotecus sphaeriferus * |
-| *Testacella haliotidea* | Gold | — | 0 | 297 | — |  |
-| *Tethys fimbria* | Gold | — | 0 | 0 | — |  |
-| *Theba geminata* | Gold | — | 0 | 0 | — |  |
-| *Theba macandrewiana* | Gold | — | 0 | 0 | — |  |
-| *Theba pisana* | Gold | — | 0 | 1000 | — |  |
-| *Thecacera darwini* | Gold | — | 0 | 0 | — |  |
-| *Thecacera pennigera* | Gold | — | 0 | 0 | — |  |
-| *Thecacera picta* | Gold | — | 0 | 0 | — |  |
-| *Thorunna daniellae* | Gold | — | 0 | 0 | — |  |
-| *Thorunna horologia* | Gold | — | 0 | 0 | — |  |
-| *Thuridilla bayeri* | Gold | — | 0 | 0 | — |  |
-| *Thuridilla gracilis* | Gold | — | 0 | 0 | — |  |
-| *Thuridilla hopei* | Gold | — | 0 | 1000 | — |  |
-| *Thuridilla lineolata* | Gold | — | 0 | 0 | — |  |
-| *Thuridilla livida* | Gold | — | 0 | 0 | — |  |
-| *Thuridilla mazda* | Gold | — | 0 | 0 | — |  |
-| *Trapania bajamarensis* | Gold | — | 0 | 0 | — |  |
-| *Trapania graeffei* | Gold | — | 0 | 0 | — |  |
-| *Trapania lineata* | Gold | — | 0 | 392 | — |  |
-| *Trapania luquei* | Gold | — | 0 | 0 | — |  |
-| *Trapania maculata* | Gold | — | 0 | 198 | — |  |
-| *Trapania orteai* | Gold | — | 0 | 0 | — |  |
-| *Trapania tartanella* | Gold | — | 0 | 0 | — |  |
-| *Trimusculus mammillaris* | Gold | — | 0 | 0 | — |  |
-| *Trinchesia caerulea* | Gold | — | 0 | 321 | — |  |
-| *Trinchesia cuanensis* | Gold | — | 0 | 86 | — |  |
-| *Trinchesia morrowae* | Gold | — | 0 | 834 | — |  |
-| *Tritonia challengeriana* | Gold | — | 0 | 0 | — |  |
-| *Tritonia odhneri* | Gold | — | 0 | 0 | — |  |
-| *Trochoidea elegans* | Gold | — | 0 | 1000 | — |  |
-| *Tubulophilinopsis gardineri* | Gold | — | 0 | 0 | — |  |
-| *Tubulophilinopsis pilsbryi* | Gold | — | 0 | 0 | — |  |
-| *Turbonilla acuta* | Gold | — | 0 | 0 | — |  |
-| *Turbonilla hamata* | Gold | — | 0 | 0 | — |  |
-| *Turbonilla lactea* | Gold | — | 0 | 0 | — |  |
-| *Turbonilla pusilla* | Gold | — | 0 | 0 | — |  |
-| *Tylodina perversa* | Gold | — | 0 | 1000 | — | Pleurobranchus testudinarius * |
-| *Tylodina rafinesquii* | Gold | — | 0 | 87 | — |  |
-| *Tyrinna delicata* | Gold | — | 0 | 0 | — |  |
-| *Umbraculum umbraculum* | Gold | — | 0 | 381 | — | Pleurobranchus testudinarius * |
-| *Verconia simplex* | Gold | — | 0 | 0 | — |  |
-| *Volvulella acuminata* | Gold | — | 0 | 0 | — |  |
-| *Weinkauffia macandrewii* | Gold | — | 0 | 0 | — |  |
-| *Weinkauffia turgidula* | Gold | — | 0 | 0 | — |  |
-| *Williamia gussoni* | Gold | — | 0 | 155 | — |  |
-| *Xenoskenea pellucida* | Gold | — | 0 | 0 | — |  |
-| *Xerolenta obvia* | Gold | — | 0 | 0 | — |  |
-| *Xeropicta krynickii* | Gold | — | 0 | 0 | — |  |
-| *Xerosecta arigonis* | Gold | — | 0 | 504 | — |  |
-| *Xerosecta cespitum* | Gold | — | 0 | 553 | — |  |
-| *Xerotricha conspurcata* | Gold | — | 0 | 1000 | — |  |
-| *Zachrysia provisoria* | Gold | — | 0 | 0 | — |  |
-| *Zonites algirus* | Gold | — | 0 | 1000 | — |  |
-| *Abra alba* | Silver | — | 0 | 121 | — |  |
-| *Abra longicallus* | Silver | — | 0 | 0 | — |  |
-| *Abra nitida* | Silver | — | 0 | 0 | — |  |
-| *Abra prismatica* | Silver | — | 0 | 0 | — |  |
-| *Abra tenuis* | Silver | — | 0 | 0 | — |  |
-| *Abudefduf saxatilis* | Silver | — | 0 | 0 | — |  |
-| *Abylopsis tetragona* | Silver | — | 0 | 0 | — |  |
-| *Acanthella acuta* | Silver | — | 0 | 644 | — |  |
-| *Acanthocardia aculeata* | Silver | — | 0 | 0 | — |  |
-| *Acanthocardia paucicostata* | Silver | — | 0 | 197 | — |  |
-| *Acanthocardia spinosa* | Silver | — | 0 | 0 | — |  |
-| *Acanthocardia tuberculata* | Silver | — | 0 | 1000 | — |  |
-| *Acanthochitona crinita* | Silver | — | 0 | 81 | — |  |
-| *Acanthochitona discrepans* | Silver | — | 0 | 0 | — |  |
-| *Acanthochitona fascicularis* | Silver | — | 0 | 390 | — |  |
-| *Acanthonyx lunulatus* | Silver | — | 0 | 549 | — |  |
-| *Acanthurus dussumieri* | Silver | — | 0 | 0 | — |  |
-| *Acanthurus lineatus* | Silver | — | 0 | 0 | — |  |
-| *Acar clathrata* | Silver | — | 0 | 0 | — |  |
-| *Achelia echinata* | Silver | — | 0 | 0 | — |  |
-| *Achelous hastatus* | Silver | — | 0 | 293 | — |  |
-| *Acrocnida brachiata* | Silver | — | 0 | 0 | — |  |
-| *Acromegalomma vesiculosum* | Silver | — | 0 | 154 | — |  |
-| *Actinia cari* | Silver | — | 0 | 107 | — |  |
-| *Actinia equina* | Silver | — | 0 | 0 | — |  |
-| *Actinia fragacea* | Silver | — | 0 | 0 | — |  |
-| *Actinia mediterranea* | Silver | — | 0 | 1000 | — |  |
-| *Actinia striata* | Silver | — | 0 | 717 | — |  |
-| *Actinostella flosculifera* | Silver | — | 0 | 0 | — |  |
-| *Actinothoe sphyrodeta* | Silver | — | 0 | 0 | — |  |
-| *Adeonella calveti* | Silver | — | 0 | 154 | — |  |
-| *Adna anglica* | Silver | — | 0 | 6 | — |  |
-| *Aega bicarinata* | Silver | — | 0 | 0 | — |  |
-| *Aequipecten opercularis* | Silver | — | 0 | 0 | — |  |
-| *Aequorea forskalea* | Silver | — | 0 | 298 | — |  |
-| *Aequorea pensilis* | Silver | — | 0 | 0 | — |  |
-| *Aequorea vitrina* | Silver | — | 0 | 21 | — |  |
-| *Aetea anguina* | Silver | — | 0 | 0 | — |  |
-| *Aetomylaeus bovinus* | Silver | — | 0 | 0 | — |  |
-| *Afropisa carinimana* | Silver | — | 0 | 0 | — |  |
-| *Agalma okeni* | Silver | — | 0 | 0 | — |  |
-| *Agelas oroides* | Silver | — | 0 | 1000 | — |  |
-| *Aglaophenia acacia* | Silver | — | 0 | 0 | — |  |
-| *Aglaophenia elongata* | Silver | — | 0 | 84 | — |  |
-| *Aglaophenia harpago* | Silver | — | 0 | 103 | — |  |
-| *Aglaophenia kirchenpaueri* | Silver | — | 0 | 0 | — |  |
-| *Aglaophenia pluma* | Silver | — | 0 | 444 | — |  |
-| *Aglaophenia tubiformis* | Silver | — | 0 | 115 | — |  |
-| *Aglaophenia tubulifera* | Silver | — | 0 | 0 | — |  |
-| *Aidablennius sphynx* | Silver | — | 0 | 1000 | — |  |
-| *Aiptasia couchii* | Silver | — | 0 | 1000 | — |  |
-| *Aiptasia mutabilis* | Silver | — | 0 | 1000 | — |  |
-| *Aiptasiogeton hyalinus* | Silver | — | 0 | 20 | — |  |
-| *Alcyonium acaule* | Silver | — | 0 | 344 | — |  |
-| *Alcyonium coralloides* | Silver | — | 0 | 452 | — |  |
-| *Alicia mirabilis* | Silver | — | 0 | 325 | — |  |
-| *Alitta virens* | Silver | — | 0 | 0 | — |  |
-| *Allogalathea elegans* | Silver | — | 0 | 0 | — |  |
-| *Alloteuthis media* | Silver | — | 0 | 0 | — |  |
-| *Alloteuthis subulata* | Silver | — | 0 | 0 | — |  |
-| *Alpheus dentipes* | Silver | — | 0 | 0 | — |  |
-| *Alpheus glaber* | Silver | — | 0 | 0 | — |  |
-| *Alpheus macrocheles* | Silver | — | 0 | 20 | — |  |
-| *Alticus arnoldorum* | Silver | — | 0 | 0 | — |  |
-| *Aluterus scriptus* | Silver | — | 0 | 0 | — |  |
-| *Alvania cancellata* | Silver | — | 0 | 0 | — |  |
-| *Alvania cimex* | Silver | — | 0 | 167 | — |  |
-| *Alvania discors* | Silver | — | 0 | 130 | — |  |
-| *Alvania hirta* | Silver | — | 0 | 0 | — |  |
-| *Alvania hispidula* | Silver | — | 0 | 0 | — |  |
-| *Alvania lineata* | Silver | — | 0 | 185 | — |  |
-| *Amathia lendigera* | Silver | — | 0 | 89 | — |  |
-| *Amathia verticillata* | Silver | — | 0 | 667 | — |  |
-| *Amblyosyllis spectabilis* | Silver | — | 0 | 20 | — |  |
-| *Ammodytes tobianus* | Silver | — | 0 | 0 | — |  |
-| *Ampelisca brevicornis* | Silver | — | 0 | 0 | — |  |
-| *Amphibalanus amphitrite* | Silver | — | 0 | 0 | — |  |
-| *Amphibalanus eburneus* | Silver | — | 0 | 0 | — |  |
-| *Amphictene auricoma* | Silver | — | 0 | 0 | — |  |
-| *Amphiduros fuscescens* | Silver | — | 0 | 21 | — |  |
-| *Amphinema dinema* | Silver | — | 0 | 0 | — |  |
-| *Amphioctopus burryi* | Silver | — | 0 | 0 | — |  |
-| *Amphipholis squamata* | Silver | — | 0 | 325 | — |  |
-| *Amphiprion allardi* | Silver | — | 0 | 0 | — |  |
-| *Amphisbetia distans* | Silver | — | 0 | 0 | — |  |
-| *Amphiura chiajei* | Silver | — | 0 | 0 | — |  |
-| *Amphiura filiformis* | Silver | — | 0 | 16 | — |  |
-| *Ampithoe rubricata* | Silver | — | 0 | 0 | — |  |
-| *Anapagurus laevis* | Silver | — | 0 | 0 | — |  |
-| *Anchylomera blossevillei* | Silver | — | 0 | 0 | — |  |
-| *Ancylocaris brevicarpalis* | Silver | — | 0 | 0 | — |  |
-| *Andresia parthenopea* | Silver | — | 0 | 0 | — |  |
-| *Anemonia sargassensis* | Silver | — | 0 | 20 | — |  |
-| *Anemonia viridis* | Silver | — | 0 | 1000 | — |  |
-| *Anguilla anguilla* | Silver | — | 0 | 1000 | — |  |
-| *Anguinella palmata* | Silver | — | 0 | 0 | — |  |
-| *Anilocra capensis* | Silver | — | 0 | 0 | — |  |
-| *Anilocra frontalis* | Silver | — | 0 | 203 | — |  |
-| *Anilocra physodes* | Silver | — | 0 | 289 | — |  |
-| *Anomia ephippium* | Silver | — | 0 | 1000 | — |  |
-| *Anoplodactylus pygmaeus* | Silver | — | 0 | 0 | — |  |
-| *Antalis dentalis* | Silver | — | 0 | 0 | — |  |
-| *Antalis inaequicostata* | Silver | — | 0 | 83 | — |  |
-| *Antalis vulgaris* | Silver | — | 0 | 103 | — |  |
-| *Antedon bifida* | Silver | — | 0 | 0 | — |  |
-| *Antedon mediterranea* | Silver | — | 0 | 907 | — |  |
-| *Antennella siliquosa* | Silver | — | 0 | 0 | — |  |
-| *Anthias anthias* | Silver | — | 0 | 1000 | — |  |
-| *Anthopleura ballii* | Silver | — | 0 | 20 | — |  |
-| *Antipathella wollastoni* | Silver | — | 0 | 0 | — |  |
-| *Antipathozoanthus macaronesicus* | Silver | — | 0 | 0 | — |  |
-| *Aphia minuta* | Silver | — | 0 | 86 | — |  |
-| *Apletodon dentatus* | Silver | — | 0 | 20 | — |  |
-| *Apletodon incognitus* | Silver | — | 0 | 157 | — |  |
-| *Aplidium asperum* | Silver | — | 0 | 30 | — |  |
-| *Aplidium coeruleum* | Silver | — | 0 | 0 | — |  |
-| *Aplidium conicum* | Silver | — | 0 | 0 | — |  |
-| *Aplidium elegans* | Silver | — | 0 | 588 | — |  |
-| *Aplidium glabrum* | Silver | — | 0 | 0 | — |  |
-| *Aplidium nordmanni* | Silver | — | 0 | 198 | — |  |
-| *Aplidium ocellatum* | Silver | — | 0 | 0 | — |  |
-| *Aplidium punctum* | Silver | — | 0 | 0 | — |  |
-| *Aplidium turbinatum* | Silver | — | 0 | 90 | — |  |
-| *Aplus assimilis* | Silver | — | 0 | 0 | — |  |
-| *Aplus dorbignyi* | Silver | — | 0 | 318 | — |  |
-| *Aplus scaber* | Silver | — | 0 | 0 | — |  |
-| *Aplysilla rosea* | Silver | — | 0 | 20 | — |  |
-| *Aplysilla rubra* | Silver | — | 0 | 0 | — |  |
-| *Aplysilla sulfurea* | Silver | — | 0 | 97 | — |  |
-| *Aplysina aerophoba* | Silver | — | 0 | 1000 | — |  |
-| *Aplysina cavernicola* | Silver | — | 0 | 303 | — |  |
-| *Apogon imberbis* | Silver | — | 0 | 1000 | — |  |
-| *Apolemia uvaria* | Silver | — | 0 | 0 | — |  |
-| *Apomatus similis* | Silver | — | 0 | 0 | — |  |
-| *Aporrhais pespelecani* | Silver | — | 0 | 0 | — |  |
-| *Apseudes talpa* | Silver | — | 0 | 4 | — |  |
-| *Apterichtus caecus* | Silver | — | 0 | 160 | — |  |
-| *Arachnanthus oligopodus* | Silver | — | 0 | 0 | — |  |
-| *Arbacia lixula* | Silver | — | 0 | 1000 | — |  |
-| *Arca noae* | Silver | — | 0 | 1000 | — |  |
-| *Arcopella balaustina* | Silver | — | 0 | 14 | — |  |
-| *Argyrotheca cuneata* | Silver | — | 0 | 0 | — |  |
-| *Ariosoma balearicum* | Silver | — | 0 | 757 | — |  |
-| *Armadillidium granulatum* | Silver | — | 0 | 0 | — |  |
-| *Armadillidium vulgare* | Silver | — | 0 | 0 | — |  |
-| *Armandia polyophthalma* | Silver | — | 0 | 0 | — |  |
-| *Arnoglossus grohmanni* | Silver | — | 0 | 231 | — |  |
-| *Arnoglossus laterna* | Silver | — | 0 | 0 | — |  |
-| *Arnoglossus thori* | Silver | — | 0 | 153 | — |  |
-| *Arothron hispidus* | Silver | — | 0 | 0 | — |  |
-| *Arothron nigropunctatus* | Silver | — | 0 | 0 | — |  |
-| *Arothron stellatus* | Silver | — | 0 | 0 | — |  |
-| *Ascandra contorta* | Silver | — | 0 | 189 | — |  |
-| *Ascandra falcata* | Silver | — | 0 | 0 | — |  |
-| *Ascidia conchilega* | Silver | — | 0 | 0 | — |  |
-| *Ascidia mentula* | Silver | — | 0 | 299 | — |  |
-| *Ascidia virginea* | Silver | — | 0 | 0 | — |  |
-| *Ascidiella aspersa* | Silver | — | 0 | 87 | — |  |
-| *Ascidiella scabra* | Silver | — | 0 | 83 | — |  |
-| *Ascidonia flavomaculata* | Silver | — | 0 | 0 | — |  |
-| *Asterina gibbosa* | Silver | — | 0 | 825 | — |  |
-| *Asterina pancerii* | Silver | — | 0 | 0 | — |  |
-| *Asterina phylactica* | Silver | — | 0 | 20 | — |  |
-| *Asterocarpa humilis* | Silver | — | 0 | 0 | — |  |
-| *Astroides calycularis* | Silver | — | 0 | 489 | — |  |
-| *Astropecten aranciacus* | Silver | — | 0 | 399 | — |  |
-| *Astropecten irregularis* | Silver | — | 0 | 0 | — |  |
-| *Astropecten platyacanthus* | Silver | — | 0 | 624 | — |  |
-| *Astropecten spinulosus* | Silver | — | 0 | 434 | — |  |
-| *Astrospartus mediterraneus* | Silver | — | 0 | 990 | — |  |
-| *Atelecyclus undecimdentatus* | Silver | — | 0 | 0 | — |  |
-| *Athanas nitescens* | Silver | — | 0 | 280 | — |  |
-| *Atherina boyeri* | Silver | — | 0 | 1000 | — |  |
-| *Atherina hepsetus* | Silver | — | 0 | 900 | — |  |
-| *Atherina presbyter* | Silver | — | 0 | 0 | — |  |
-| *Athorybia rosacea* | Silver | — | 0 | 0 | — |  |
-| *Atlanta peronii* | Silver | — | 0 | 0 | — |  |
-| *Aulostomus chinensis* | Silver | — | 0 | 0 | — |  |
-| *Aulostomus strigosus* | Silver | — | 0 | 88 | — |  |
-| *Aurelia aurita* | Silver | — | 0 | 164 | — |  |
-| *Aurelia coerulea* | Silver | — | 0 | 89 | — |  |
-| *Auxis thazard* | Silver | — | 0 | 0 | — |  |
-| *Axinella damicornis* | Silver | — | 0 | 1000 | — |  |
-| *Axinella polypoides* | Silver | — | 0 | 756 | — |  |
-| *Axinella vaceleti* | Silver | — | 0 | 0 | — |  |
-| *Axinella verrucosa* | Silver | — | 0 | 668 | — |  |
-| *Balanophyllia europaea* | Silver | — | 0 | 1000 | — |  |
-| *Balanophyllia regia* | Silver | — | 0 | 459 | — |  |
-| *Balanus trigonus* | Silver | — | 0 | 127 | — |  |
-| *Balistes capriscus* | Silver | — | 0 | 511 | — |  |
-| *Balistoides conspicillum* | Silver | — | 0 | 0 | — |  |
-| *Balistoides viridescens* | Silver | — | 0 | 0 | — |  |
-| *Balssia gasti* | Silver | — | 0 | 0 | — |  |
-| *Barbatia barbata* | Silver | — | 0 | 1000 | — |  |
-| *Barleeia unifasciata* | Silver | — | 0 | 22 | — |  |
-| *Barnea candida* | Silver | — | 0 | 137 | — |  |
-| *Baseodiscus delineatus* | Silver | — | 0 | 20 | — |  |
-| *Bathytoshia centroura* | Silver | — | 0 | 0 | — |  |
-| *Beania cylindrica* | Silver | — | 0 | 0 | — |  |
-| *Beania hirtissima* | Silver | — | 0 | 0 | — |  |
-| *Beania magellanica* | Silver | — | 0 | 20 | — |  |
-| *Beania mirabilis* | Silver | — | 0 | 0 | — |  |
-| *Bela nebula* | Silver | — | 0 | 0 | — |  |
-| *Bela zonata* | Silver | — | 0 | 0 | — |  |
-| *Belone belone* | Silver | — | 0 | 732 | — |  |
-| *Beroe forskalii* | Silver | — | 0 | 0 | — |  |
-| *Beroe gracilis* | Silver | — | 0 | 0 | — |  |
-| *Beroe ovata* | Silver | — | 0 | 249 | — |  |
-| *Bicellariella ciliata* | Silver | — | 0 | 97 | — |  |
-| *Bispira viola* | Silver | — | 0 | 0 | — |  |
-| *Bispira volutacornis* | Silver | — | 0 | 253 | — |  |
-| *Bittium incile* | Silver | — | 0 | 0 | — |  |
-| *Bittium lacteum* | Silver | — | 0 | 0 | — |  |
-| *Bittium latreillii* | Silver | — | 0 | 403 | — |  |
-| *Bittium reticulatum* | Silver | — | 0 | 718 | — |  |
-| *Bittium simplex* | Silver | — | 0 | 0 | — |  |
-| *Bivetiella cancellata* | Silver | — | 0 | 0 | — |  |
-| *Blackfordia virginica* | Silver | — | 0 | 20 | — |  |
-| *Bodianus scrofa* | Silver | — | 0 | 0 | — |  |
-| *Bolbometopon muricatum* | Silver | — | 0 | 0 | — |  |
-| *Bolinopsis infundibulum* | Silver | — | 0 | 279 | — |  |
-| *Bolinus brandaris* | Silver | — | 0 | 1000 | — |  |
-| *Bolma rugosa* | Silver | — | 0 | 1000 | — |  |
-| *Bonellia viridis* | Silver | — | 0 | 1000 | — |  |
-| *Boops boops* | Silver | — | 0 | 1000 | — |  |
-| *Bopyrina ocellata* | Silver | — | 0 | 0 | — |  |
-| *Bopyrus crangorum* | Silver | — | 0 | 0 | — |  |
-| *Bornia sebetia* | Silver | — | 0 | 0 | — |  |
-| *Bosemprella incarnata* | Silver | — | 0 | 405 | — |  |
-| *Bothus podas* | Silver | — | 0 | 1000 | — |  |
-| *Botrylloides violaceus* | Silver | — | 0 | 0 | — |  |
-| *Botryllus schlosseri* | Silver | — | 0 | 795 | — |  |
-| *Brachycarpus biunguiculatus* | Silver | — | 0 | 120 | — |  |
-| *Brachyscelus crusculum* | Silver | — | 0 | 0 | — |  |
-| *Branchellion torpedinis* | Silver | — | 0 | 157 | — |  |
-| *Branchiomma bairdi* | Silver | — | 0 | 103 | — |  |
-| *Branchiomma bombyx* | Silver | — | 0 | 0 | — |  |
-| *Branchiomma luctuosum* | Silver | — | 0 | 1000 | — |  |
-| *Branchiomma moebii* | Silver | — | 0 | 160 | — |  |
-| *Branchiostoma lanceolatum* | Silver | — | 0 | 90 | — |  |
-| *Brissus unicolor* | Silver | — | 0 | 0 | — |  |
-| *Buglossidium luteum* | Silver | — | 0 | 358 | — |  |
-| *Bugula neritina* | Silver | — | 0 | 346 | — |  |
-| *Bugulina calathus* | Silver | — | 0 | 95 | — |  |
-| *Bugulina stolonifera* | Silver | — | 0 | 25 | — |  |
-| *Bugulina turbinata* | Silver | — | 0 | 169 | — |  |
-| *Bunodactis verrucosa* | Silver | — | 0 | 603 | — |  |
-| *Bunodeopsis strumosa* | Silver | — | 0 | 159 | — |  |
-| *Caberea boryi* | Silver | — | 0 | 163 | — |  |
-| *Cabestana cutacea* | Silver | — | 0 | 0 | — |  |
-| *Cacospongia mollior* | Silver | — | 0 | 73 | — |  |
-| *Caecum trachea* | Silver | — | 0 | 81 | — |  |
-| *Calappa granulata* | Silver | — | 0 | 0 | — |  |
-| *Calcinus tubularis* | Silver | — | 0 | 1000 | — |  |
-| *Calliactis palliata* | Silver | — | 0 | 134 | — |  |
-| *Calliactis parasitica* | Silver | — | 0 | 463 | — |  |
-| *Callianira bialata* | Silver | — | 0 | 83 | — |  |
-| *Callinectes sapidus* | Silver | — | 0 | 1000 | — |  |
-| *Callionymus lyra* | Silver | — | 0 | 0 | — |  |
-| *Callionymus pusillus* | Silver | — | 0 | 610 | — |  |
-| *Callionymus risso* | Silver | — | 0 | 301 | — |  |
-| *Calliostoma conulus* | Silver | — | 0 | 0 | — |  |
-| *Calliostoma laugieri* | Silver | — | 0 | 137 | — |  |
-| *Calliostoma zizyphinum* | Silver | — | 0 | 263 | — |  |
-| *Callista chione* | Silver | — | 0 | 1000 | — |  |
-| *Callochiton doriae* | Silver | — | 0 | 38 | — |  |
-| *Callochiton septemvalvis* | Silver | — | 0 | 168 | — |  |
-| *Calpensia nobilis* | Silver | — | 0 | 54 | — |  |
-| *Calyptraea chinensis* | Silver | — | 0 | 0 | — |  |
-| *Calyx nicaeensis* | Silver | — | 0 | 0 | — |  |
-| *Canarya canariensis* | Silver | — | 0 | 0 | — |  |
-| *Cancer pagurus* | Silver | — | 0 | 0 | — |  |
-| *Candelabrum cocksii* | Silver | — | 0 | 213 | — |  |
-| *Canthigaster capistrata* | Silver | — | 0 | 140 | — |  |
-| *Canthigaster valentini* | Silver | — | 0 | 0 | — |  |
-| *Capulus ungaricus* | Silver | — | 0 | 0 | — |  |
-| *Caranx crysos* | Silver | — | 0 | 709 | — |  |
-| *Caranx rhonchus* | Silver | — | 0 | 0 | — |  |
-| *Carapus acus* | Silver | — | 0 | 0 | — |  |
-| *Carcinus aestuarii* | Silver | — | 0 | 1000 | — |  |
-| *Cardita calyculata* | Silver | — | 0 | 396 | — |  |
-| *Cardites antiquatus* | Silver | — | 0 | 532 | — |  |
-| *Carijoa riisei* | Silver | — | 0 | 0 | — |  |
-| *Carinaria lamarckii* | Silver | — | 0 | 0 | — |  |
-| *Carybdea marsupialis* | Silver | — | 0 | 0 | — |  |
-| *Caryophyllia inornata* | Silver | — | 0 | 610 | — |  |
-| *Caryophyllia smithii* | Silver | — | 0 | 102 | — |  |
-| *Cavernularia pusilla* | Silver | — | 0 | 0 | — |  |
-| *Cellepora pumicosa* | Silver | — | 0 | 59 | — |  |
-| *Celleporina mangnevillana* | Silver | — | 0 | 0 | — |  |
-| *Centrolabrus exoletus* | Silver | — | 0 | 0 | — |  |
-| *Centrolabrus melanocercus* | Silver | — | 0 | 708 | — |  |
-| *Centrolabrus trutta* | Silver | — | 0 | 157 | — |  |
-| *Centrolophus niger* | Silver | — | 0 | 50 | — |  |
-| *Centrostephanus longispinus* | Silver | — | 0 | 0 | — |  |
-| *Cephalopholis argus* | Silver | — | 0 | 0 | — |  |
-| *Cephalopholis miniata* | Silver | — | 0 | 0 | — |  |
-| *Cerastoderma edule* | Silver | — | 0 | 0 | — |  |
-| *Cerastoderma glaucum* | Silver | — | 0 | 0 | — |  |
-| *Ceratia proxima* | Silver | — | 0 | 0 | — |  |
-| *Cerebratulus fuscus* | Silver | — | 0 | 0 | — |  |
-| *Cerebratulus marginatus* | Silver | — | 0 | 0 | — |  |
-| *Cereus pedunculatus* | Silver | — | 0 | 1000 | — |  |
-| *Cerianthus membranaceus* | Silver | — | 0 | 1000 | — |  |
-| *Cerithium scabridum* | Silver | — | 0 | 0 | — |  |
-| *Cervera atlantica* | Silver | — | 0 | 0 | — |  |
-| *Cestopagurus timidus* | Silver | — | 0 | 171 | — |  |
-| *Cestoplana rubrocincta* | Silver | — | 0 | 0 | — |  |
-| *Cestum veneris* | Silver | — | 0 | 440 | — |  |
-| *Chaetaster longipes* | Silver | — | 0 | 0 | — |  |
-| *Chaetodon lunula* | Silver | — | 0 | 0 | — |  |
-| *Chaetopterus variopedatus* | Silver | — | 0 | 0 | — |  |
-| *Chalinula parasimulans* | Silver | — | 0 | 0 | — |  |
-| *Chama gryphoides* | Silver | — | 0 | 479 | — |  |
-| *Chamelea gallina* | Silver | — | 0 | 1000 | — |  |
-| *Chamelea striatula* | Silver | — | 0 | 0 | — |  |
-| *Charonia lampas* | Silver | — | 0 | 0 | — |  |
-| *Charonia variegata* | Silver | — | 0 | 0 | — |  |
-| *Chartella papyracea* | Silver | — | 0 | 86 | — |  |
-| *Chauvetia brunnea* | Silver | — | 0 | 131 | — |  |
-| *Chauvetia mamillata* | Silver | — | 0 | 14 | — |  |
-| *Cheilodipterus quinquelineatus* | Silver | — | 0 | 0 | — |  |
-| *Chelidonichthys lastoviza* | Silver | — | 0 | 534 | — |  |
-| *Chelidonichthys lucerna* | Silver | — | 0 | 610 | — |  |
-| *Chelidonichthys obscurus* | Silver | — | 0 | 240 | — |  |
-| *Chelon auratus* | Silver | — | 0 | 904 | — |  |
-| *Chelon labrosus* | Silver | — | 0 | 1000 | — |  |
-| *Chelonaplysilla noevus* | Silver | — | 0 | 33 | — |  |
-| *Chelophyes appendiculata* | Silver | — | 0 | 0 | — |  |
-| *Chelophyes contorta* | Silver | — | 0 | 0 | — |  |
-| *Chilomycterus reticulatus* | Silver | — | 0 | 223 | — |  |
-| *Chiton canariensis* | Silver | — | 0 | 0 | — |  |
-| *Chlidonia pyriformis* | Silver | — | 0 | 16 | — |  |
-| *Chondrilla nucula* | Silver | — | 0 | 0 | — |  |
-| *Chondrochelia savignyi* | Silver | — | 0 | 0 | — |  |
-| *Chondrosia reniformis* | Silver | — | 0 | 1000 | — |  |
-| *Chromis chromis* | Silver | — | 0 | 1000 | — |  |
-| *Chromis limbata* | Silver | — | 0 | 139 | — |  |
-| *Chromogobius quadrivittatus* | Silver | — | 0 | 0 | — |  |
-| *Chromogobius zebratus* | Silver | — | 0 | 0 | — |  |
-| *Chrysaora hysoscella* | Silver | — | 0 | 251 | — |  |
-| *Chthamalus montagui* | Silver | — | 0 | 0 | — |  |
-| *Chthamalus stellatus* | Silver | — | 0 | 459 | — |  |
-| *Cinetorhynchus rigens* | Silver | — | 0 | 170 | — |  |
-| *Ciocalypta penicillus* | Silver | — | 0 | 12 | — |  |
-| *Ciona edwardsi* | Silver | — | 0 | 0 | — |  |
-| *Ciona intermedia* | Silver | — | 0 | 49 | — |  |
-| *Ciona robusta* | Silver | — | 0 | 157 | — |  |
-| *Ciona roulii* | Silver | — | 0 | 0 | — |  |
-| *Ciona savignyi* | Silver | — | 0 | 0 | — |  |
-| *Cirrhitichthys oxycephalus* | Silver | — | 0 | 0 | — |  |
-| *Cirriformia tentaculata* | Silver | — | 0 | 8 | — |  |
-| *Cladocora caespitosa* | Silver | — | 0 | 1000 | — |  |
-| *Clanculus corallinus* | Silver | — | 0 | 0 | — |  |
-| *Clanculus cruciatus* | Silver | — | 0 | 401 | — |  |
-| *Clanculus jussieui* | Silver | — | 0 | 479 | — |  |
-| *Clathria compressa* | Silver | — | 0 | 0 | — |  |
-| *Clathria jolicoeuri* | Silver | — | 0 | 432 | — |  |
-| *Clathrina blanca* | Silver | — | 0 | 34 | — |  |
-| *Clathrina clathrus* | Silver | — | 0 | 1000 | — |  |
-| *Clathrina coriacea* | Silver | — | 0 | 83 | — |  |
-| *Clathrina lacunosa* | Silver | — | 0 | 0 | — |  |
-| *Clathrina rubra* | Silver | — | 0 | 291 | — |  |
-| *Clavelina dellavallei* | Silver | — | 0 | 0 | — |  |
-| *Clavelina lepadiformis* | Silver | — | 0 | 1000 | — |  |
-| *Clavelina oblonga* | Silver | — | 0 | 107 | — |  |
-| *Clavelina sabbadini* | Silver | — | 0 | 18 | — |  |
-| *Clavularia crassa* | Silver | — | 0 | 459 | — |  |
-| *Cleantis prismatica* | Silver | — | 0 | 8 | — |  |
-| *Clibanarius aequabilis* | Silver | — | 0 | 0 | — |  |
-| *Clibanarius erythropus* | Silver | — | 0 | 1000 | — |  |
-| *Clinitrachus argentatus* | Silver | — | 0 | 240 | — |  |
-| *Cliona celata* | Silver | — | 0 | 1000 | — |  |
-| *Cliona rhodensis* | Silver | — | 0 | 162 | — |  |
-| *Cliona schmidtii* | Silver | — | 0 | 62 | — |  |
-| *Cliona viridis* | Silver | — | 0 | 1000 | — |  |
-| *Cnemidocarpa irene* | Silver | — | 0 | 0 | — |  |
-| *Columbella adansoni* | Silver | — | 0 | 227 | — |  |
-| *Columbella rustica* | Silver | — | 0 | 1000 | — |  |
-| *Comoplana agilis* | Silver | — | 0 | 0 | — |  |
-| *Comoplana palmula* | Silver | — | 0 | 0 | — |  |
-| *Conchoderma virgatum* | Silver | — | 0 | 0 | — |  |
-| *Condylactis aurantiaca* | Silver | — | 0 | 240 | — |  |
-| *Conger conger* | Silver | — | 0 | 1000 | — |  |
-| *Conopeum reticulum* | Silver | — | 0 | 0 | — |  |
-| *Conus canariensis* | Silver | — | 0 | 0 | — |  |
-| *Conus genuanus* | Silver | — | 0 | 0 | — |  |
-| *Conus guanche* | Silver | — | 0 | 0 | — |  |
-| *Conus ventricosus* | Silver | — | 0 | 1000 | — |  |
-| *Coralliophila meyendorffii* | Silver | — | 0 | 0 | — |  |
-| *Corallium rubrum* | Silver | — | 0 | 1000 | — |  |
-| *Corcyrogobius liechtensteini* | Silver | — | 0 | 0 | — |  |
-| *Coris julis* | Silver | — | 0 | 1000 | — |  |
-| *Coris melanura* | Silver | — | 0 | 115 | — |  |
-| *Cornularia cornucopiae* | Silver | — | 0 | 120 | — |  |
-| *Corticium candelabrum* | Silver | — | 0 | 245 | — |  |
-| *Corydendrium parasiticum* | Silver | — | 0 | 4 | — |  |
-| *Corymorpha nutans* | Silver | — | 0 | 97 | — |  |
-| *Corynactis viridis* | Silver | — | 0 | 275 | — |  |
-| *Coryphaena hippurus* | Silver | — | 0 | 0 | — |  |
-| *Coryphoblennius galerita* | Silver | — | 0 | 990 | — |  |
-| *Corystes cassivelaunus* | Silver | — | 0 | 0 | — |  |
-| *Coscinasterias tenuispina* | Silver | — | 0 | 1000 | — |  |
-| *Cotylorhiza tuberculata* | Silver | — | 0 | 1000 | — |  |
-| *Crambe crambe* | Silver | — | 0 | 1000 | — |  |
-| *Crangon crangon* | Silver | — | 0 | 0 | — |  |
-| *Crella elegans* | Silver | — | 0 | 0 | — |  |
-| *Crella pulvinar* | Silver | — | 0 | 119 | — |  |
-| *Crella rosea* | Silver | — | 0 | 0 | — |  |
-| *Crepidula moulinsii* | Silver | — | 0 | 5 | — |  |
-| *Crepidula unguiformis* | Silver | — | 0 | 0 | — |  |
-| *Crepipatella dilatata* | Silver | — | 0 | 0 | — |  |
-| *Cribrinopsis crassa* | Silver | — | 0 | 868 | — |  |
-| *Crisia denticulata* | Silver | — | 0 | 9 | — |  |
-| *Crisilla semistriata* | Silver | — | 0 | 104 | — |  |
-| *Cronius ruber* | Silver | — | 0 | 0 | — |  |
-| *Cryptocelis compacta* | Silver | — | 0 | 0 | — |  |
-| *Cryptosoma cristatum* | Silver | — | 0 | 0 | — |  |
-| *Ctena decussata* | Silver | — | 0 | 363 | — |  |
-| *Ctenolabrus rupestris* | Silver | — | 0 | 216 | — |  |
-| *Ctenophoricola rousei* | Silver | — | 0 | 0 | — |  |
-| *Culcita novaeguineae* | Silver | — | 0 | 0 | — |  |
-| *Cunina globosa* | Silver | — | 0 | 0 | — |  |
-| *Cycloporus papillosus* | Silver | — | 0 | 51 | — |  |
-| *Cymodoce truncata* | Silver | — | 0 | 132 | — |  |
-| *Cyprinus carpio* | Silver | — | 0 | 0 | — |  |
-| *Cyrillia linearis* | Silver | — | 0 | 149 | — |  |
-| *Cystodytes dellechiajei* | Silver | — | 0 | 1000 | — |  |
-| *Dactylopterus volitans* | Silver | — | 0 | 1000 | — |  |
-| *Dagetichthys lusitanicus* | Silver | — | 0 | 0 | — |  |
-| *Dalophis imberbis* | Silver | — | 0 | 0 | — |  |
-| *Dardanus arrosor* | Silver | — | 0 | 364 | — |  |
-| *Dardanus calidus* | Silver | — | 0 | 1000 | — |  |
-| *Dascyllus aruanus* | Silver | — | 0 | 0 | — |  |
-| *Dascyllus trimaculatus* | Silver | — | 0 | 0 | — |  |
-| *Dasyatis pastinaca* | Silver | — | 0 | 1000 | — |  |
-| *Dasyatis tortonesei* | Silver | — | 0 | 0 | — |  |
-| *Dasybranchus gajolae* | Silver | — | 0 | 0 | — |  |
-| *Decipisagitta decipiens* | Silver | — | 0 | 0 | — |  |
-| *Deiopea kaloktenota* | Silver | — | 0 | 131 | — |  |
-| *Dendrophyllia ramea* | Silver | — | 0 | 0 | — |  |
-| *Dendroxea lenis* | Silver | — | 0 | 0 | — |  |
-| *Dentex dentex* | Silver | — | 0 | 1000 | — |  |
-| *Dentex gibbosus* | Silver | — | 0 | 0 | — |  |
-| *Derilambrus angulifrons* | Silver | — | 0 | 55 | — |  |
-| *Diadema africanum* | Silver | — | 0 | 121 | — |  |
-| *Diagramma picta* | Silver | — | 0 | 0 | — |  |
-| *Diazona violacea* | Silver | — | 0 | 0 | — |  |
-| *Dicentrarchus labrax* | Silver | — | 0 | 1000 | — |  |
-| *Dicentrarchus punctatus* | Silver | — | 0 | 100 | — |  |
-| *Dictyonella incisa* | Silver | — | 0 | 0 | — |  |
-| *Didemnum coccineum* | Silver | — | 0 | 0 | — |  |
-| *Didemnum commune* | Silver | — | 0 | 144 | — |  |
-| *Didemnum coriaceum* | Silver | — | 0 | 0 | — |  |
-| *Didemnum fulgens* | Silver | — | 0 | 0 | — |  |
-| *Didemnum lahillei* | Silver | — | 0 | 88 | — |  |
-| *Didemnum maculosum* | Silver | — | 0 | 97 | — |  |
-| *Didemnum protectum* | Silver | — | 0 | 0 | — |  |
-| *Didemnum pseudofulgens* | Silver | — | 0 | 0 | — |  |
-| *Didemnum vexillum* | Silver | — | 0 | 214 | — |  |
-| *Didogobius splechtnai* | Silver | — | 0 | 0 | — |  |
-| *Diodon hystrix* | Silver | — | 0 | 0 | — |  |
-| *Diodon liturosus* | Silver | — | 0 | 0 | — |  |
-| *Diodora gibberula* | Silver | — | 0 | 111 | — |  |
-| *Diodora graeca* | Silver | — | 0 | 429 | — |  |
-| *Diodora italica* | Silver | — | 0 | 0 | — |  |
-| *Diogenes curvimanus* | Silver | — | 0 | 0 | — |  |
-| *Diogenes pugilator* | Silver | — | 0 | 639 | — |  |
-| *Diopatra neapolitana* | Silver | — | 0 | 0 | — |  |
-| *Diplastrella bistellata* | Silver | — | 0 | 148 | — |  |
-| *Diplecogaster bimaculata* | Silver | — | 0 | 258 | — |  |
-| *Diplodonta rotundata* | Silver | — | 0 | 66 | — |  |
-| *Diplodus annularis* | Silver | — | 0 | 1000 | — |  |
-| *Diplodus cadenati* | Silver | — | 0 | 297 | — |  |
-| *Diplodus cervinus* | Silver | — | 0 | 1000 | — |  |
-| *Diplodus puntazzo* | Silver | — | 0 | 1000 | — |  |
-| *Diplodus sargus* | Silver | — | 0 | 1000 | — |  |
-| *Diplodus vulgaris* | Silver | — | 0 | 1000 | — |  |
-| *Diplosoma listerianum* | Silver | — | 0 | 189 | — |  |
-| *Diplosoma spongiforme* | Silver | — | 0 | 954 | — |  |
-| *Discocelis tigrina* | Silver | — | 0 | 162 | — |  |
-| *Discomedusa lobata* | Silver | — | 0 | 11 | — |  |
-| *Disporella hispida* | Silver | — | 0 | 0 | — |  |
-| *Distaplia bermudensis* | Silver | — | 0 | 0 | — |  |
-| *Distaplia magnilarva* | Silver | — | 0 | 0 | — |  |
-| *Ditrupa arietina* | Silver | — | 0 | 97 | — |  |
-| *Donacilla cornea* | Silver | — | 0 | 391 | — |  |
-| *Donax semistriatus* | Silver | — | 0 | 559 | — |  |
-| *Donax trunculus* | Silver | — | 0 | 1000 | — |  |
-| *Donax variegatus* | Silver | — | 0 | 150 | — |  |
-| *Donax venustus* | Silver | — | 0 | 154 | — |  |
-| *Donax vittatus* | Silver | — | 0 | 0 | — |  |
-| *Dosinia exoleta* | Silver | — | 0 | 175 | — |  |
-| *Dosinia lupinus* | Silver | — | 0 | 415 | — |  |
-| *Dromia marmorea* | Silver | — | 0 | 0 | — |  |
-| *Dromia personata* | Silver | — | 0 | 673 | — |  |
-| *Dysidea avara* | Silver | — | 0 | 763 | — |  |
-| *Dysidea fragilis* | Silver | — | 0 | 498 | — |  |
-| *Earleria araiae* | Silver | — | 0 | 0 | — |  |
-| *Ebalia edwardsii* | Silver | — | 0 | 0 | — |  |
-| *Ebenomitra ebenus* | Silver | — | 0 | 306 | — |  |
-| *Ebenomitra tricolor* | Silver | — | 0 | 168 | — |  |
-| *Echeneis naucrates* | Silver | — | 0 | 0 | — |  |
-| *Echiichthys vipera* | Silver | — | 0 | 226 | — |  |
-| *Echinaster sepositus* | Silver | — | 0 | 1000 | — |  |
-| *Echinocardium cordatum* | Silver | — | 0 | 371 | — |  |
-| *Echinocyamus pusillus* | Silver | — | 0 | 259 | — |  |
-| *Echinolittorina punctata* | Silver | — | 0 | 620 | — |  |
-| *Ecteinascidia herdmani* | Silver | — | 0 | 144 | — |  |
-| *Ecteinascidia turbinata* | Silver | — | 0 | 0 | — |  |
-| *Ectopleura crocea* | Silver | — | 0 | 0 | — |  |
-| *Electra posidoniae* | Silver | — | 0 | 308 | — |  |
-| *Emarginula adriatica* | Silver | — | 0 | 0 | — |  |
-| *Emarginula huzardii* | Silver | — | 0 | 0 | — |  |
-| *Emarginula octaviana* | Silver | — | 0 | 0 | — |  |
-| *Emarginula sicula* | Silver | — | 0 | 29 | — |  |
-| *Enchelycore anatina* | Silver | — | 0 | 0 | — |  |
-| *Endectyon pilosus* | Silver | — | 0 | 0 | — |  |
-| *Endeis spinosa* | Silver | — | 0 | 37 | — |  |
-| *Engraulis encrasicolus* | Silver | — | 0 | 0 | — |  |
-| *Enoplometopus antillensis* | Silver | — | 0 | 0 | — |  |
-| *Ensis ensis* | Silver | — | 0 | 0 | — |  |
-| *Ensis minor* | Silver | — | 0 | 523 | — |  |
-| *Epinephelus caninus* | Silver | — | 0 | 0 | — |  |
-| *Epinephelus costae* | Silver | — | 0 | 1000 | — |  |
-| *Epinephelus fuscoguttatus* | Silver | — | 0 | 0 | — |  |
-| *Epinephelus marginatus* | Silver | — | 0 | 1000 | — |  |
-| *Epinephelus tukula* | Silver | — | 0 | 0 | — |  |
-| *Episcomitra cornicula* | Silver | — | 0 | 153 | — |  |
-| *Epitonium clathrus* | Silver | — | 0 | 0 | — |  |
-| *Epitonium muricatum* | Silver | — | 0 | 0 | — |  |
-| *Epizoanthus arenaceus* | Silver | — | 0 | 393 | — |  |
-| *Eriphia verrucosa* | Silver | — | 0 | 1000 | — |  |
-| *Escharella variolosa* | Silver | — | 0 | 9 | — |  |
-| *Eualus cranchii* | Silver | — | 0 | 0 | — |  |
-| *Eualus occultus* | Silver | — | 0 | 11 | — |  |
-| *Euapta godeffroyi* | Silver | — | 0 | 0 | — |  |
-| *Euapta lappa* | Silver | — | 0 | 227 | — |  |
-| *Eudendrium racemosum* | Silver | — | 0 | 266 | — |  |
-| *Eudistoma angolanum* | Silver | — | 0 | 0 | — |  |
-| *Eudistoma rubrum* | Silver | — | 0 | 0 | — |  |
-| *Eulalia viridis* | Silver | — | 0 | 0 | — |  |
-| *Eulima glabra* | Silver | — | 0 | 0 | — |  |
-| *Eunice dubitata* | Silver | — | 0 | 0 | — |  |
-| *Eunicella gazella* | Silver | — | 0 | 1000 | — |  |
-| *Eunicella labiata* | Silver | — | 0 | 0 | — |  |
-| *Eunicella singularis* | Silver | — | 0 | 1000 | — |  |
-| *Eunicella verrucosa* | Silver | — | 0 | 215 | — |  |
-| *Euphrosine foliosa* | Silver | — | 0 | 84 | — |  |
-| *Euphysa flammea* | Silver | — | 0 | 0 | — |  |
-| *Eupolymnia nebulosa* | Silver | — | 0 | 259 | — |  |
-| *Eurhamphaea vexilligera* | Silver | — | 0 | 0 | — |  |
-| *Eurylepta cornuta* | Silver | — | 0 | 19 | — |  |
-| *Eurythoe complanata* | Silver | — | 0 | 104 | — |  |
-| *Euspira macilenta* | Silver | — | 0 | 95 | — |  |
-| *Euspira nitida* | Silver | — | 0 | 0 | — |  |
-| *Euthria cornea* | Silver | — | 0 | 803 | — |  |
-| *Eutima gegenbauri* | Silver | — | 0 | 0 | — |  |
-| *Evelineus mcintoshii* | Silver | — | 0 | 0 | — |  |
-| *Exaiptasia diaphana* | Silver | — | 0 | 208 | — |  |
-| *Exidmonea atlantica* | Silver | — | 0 | 0 | — |  |
-| *Fabulina fabula* | Silver | — | 0 | 0 | — |  |
-| *Fasciospongia cavernosa* | Silver | — | 0 | 147 | — |  |
-| *Ficopomatus enigmaticus* | Silver | — | 0 | 0 | — |  |
-| *Filograna implexa* | Silver | — | 0 | 352 | — |  |
-| *Firoloida desmarestia* | Silver | — | 0 | 0 | — |  |
-| *Fissurella nubecula* | Silver | — | 0 | 713 | — |  |
-| *Fistularia commersonii* | Silver | — | 0 | 0 | — |  |
-| *Flabelligera affinis* | Silver | — | 0 | 146 | — |  |
-| *Flexopecten flexuosus* | Silver | — | 0 | 0 | — |  |
-| *Flexopecten glaber* | Silver | — | 0 | 0 | — |  |
-| *Flexopecten hyalinus* | Silver | — | 0 | 150 | — |  |
-| *Forskalia edwardsii* | Silver | — | 0 | 219 | — |  |
-| *Forskalia tholoides* | Silver | — | 0 | 0 | — |  |
-| *Frondipora verrucosa* | Silver | — | 0 | 0 | — |  |
-| *Fustiaria rubescens* | Silver | — | 0 | 25 | — |  |
-| *Gaidropsarus mediterraneus* | Silver | — | 0 | 254 | — |  |
-| *Galathea bolivari* | Silver | — | 0 | 23 | — |  |
-| *Galathea faiali* | Silver | — | 0 | 0 | — |  |
-| *Galathea squamifera* | Silver | — | 0 | 371 | — |  |
-| *Galathea strigosa* | Silver | — | 0 | 312 | — |  |
-| *Galeodea echinophora* | Silver | — | 0 | 157 | — |  |
-| *Galeomma turtoni* | Silver | — | 0 | 0 | — |  |
-| *Gambusia holbrooki* | Silver | — | 0 | 0 | — |  |
-| *Gammogobius steinitzi* | Silver | — | 0 | 39 | — |  |
-| *Gari costulata* | Silver | — | 0 | 18 | — |  |
-| *Gari depressa* | Silver | — | 0 | 464 | — |  |
-| *Gari fervensis* | Silver | — | 0 | 0 | — |  |
-| *Gastrana fragilis* | Silver | — | 0 | 284 | — |  |
-| *Gemophos viverratoides* | Silver | — | 0 | 0 | — |  |
-| *Geodia cydonium* | Silver | — | 0 | 81 | — |  |
-| *Geryonia proboscidalis* | Silver | — | 0 | 111 | — |  |
-| *Gibberula hernandezi* | Silver | — | 0 | 0 | — |  |
-| *Gibberula miliaria* | Silver | — | 0 | 303 | — |  |
-| *Gibberula oryza* | Silver | — | 0 | 0 | — |  |
-| *Gibberula philippii* | Silver | — | 0 | 109 | — |  |
-| *Gibberula secreta* | Silver | — | 0 | 59 | — |  |
-| *Gibbula ardens* | Silver | — | 0 | 0 | — |  |
-| *Gibbula candei* | Silver | — | 0 | 0 | — |  |
-| *Gibbula fanulum* | Silver | — | 0 | 116 | — |  |
-| *Gibbula magus* | Silver | — | 0 | 0 | — |  |
-| *Gibbula racketti* | Silver | — | 0 | 0 | — |  |
-| *Gibbula spurca* | Silver | — | 0 | 0 | — |  |
-| *Gibbula turbinoides* | Silver | — | 0 | 213 | — |  |
-| *Gibbula vimontiae* | Silver | — | 0 | 0 | — |  |
-| *Glans trapezia* | Silver | — | 0 | 192 | — |  |
-| *Glycymeris bimaculata* | Silver | — | 0 | 93 | — |  |
-| *Glycymeris glycymeris* | Silver | — | 0 | 356 | — |  |
-| *Glycymeris nummaria* | Silver | — | 0 | 1000 | — |  |
-| *Gnathia maxillaris* | Silver | — | 0 | 0 | — |  |
-| *Gnatholepis thompsoni* | Silver | — | 0 | 133 | — |  |
-| *Gnathophyllum americanum* | Silver | — | 0 | 258 | — |  |
-| *Gnathophyllum elegans* | Silver | — | 0 | 594 | — |  |
-| *Gobius cobitis* | Silver | — | 0 | 1000 | — |  |
-| *Gobius couchi* | Silver | — | 0 | 87 | — |  |
-| *Gobius cruentatus* | Silver | — | 0 | 1000 | — |  |
-| *Gobius fallax* | Silver | — | 0 | 0 | — |  |
-| *Gobius geniporus* | Silver | — | 0 | 1000 | — |  |
-| *Gobius incognitus* | Silver | — | 0 | 1000 | — |  |
-| *Gobius niger* | Silver | — | 0 | 1000 | — |  |
-| *Gobius paganellus* | Silver | — | 0 | 1000 | — |  |
-| *Gobius roulei* | Silver | — | 0 | 392 | — |  |
-| *Gobius vittatus* | Silver | — | 0 | 258 | — |  |
-| *Gobius xanthocephalus* | Silver | — | 0 | 1000 | — |  |
-| *Golfingia vulgaris* | Silver | — | 0 | 0 | — |  |
-| *Gouania willdenowi* | Silver | — | 0 | 0 | — |  |
-| *Gouldia minima* | Silver | — | 0 | 178 | — |  |
-| *Grammonus ater* | Silver | — | 0 | 0 | — |  |
-| *Grantia compressa* | Silver | — | 0 | 0 | — |  |
-| *Granulina marginata* | Silver | — | 0 | 0 | — |  |
-| *Grapsus adscensionis* | Silver | — | 0 | 0 | — |  |
-| *Gregariella petagnae* | Silver | — | 0 | 106 | — |  |
-| *Gymnammodytes cicerelus* | Silver | — | 0 | 271 | — |  |
-| *Gymnothorax favagineus* | Silver | — | 0 | 0 | — |  |
-| *Gymnothorax miliaris* | Silver | — | 0 | 0 | — |  |
-| *Gymnothorax rueppelliae* | Silver | — | 0 | 0 | — |  |
-| *Gymnothorax unicolor* | Silver | — | 0 | 157 | — |  |
-| *Gymnura altavela* | Silver | — | 0 | 312 | — |  |
-| *Gyroscala commutata* | Silver | — | 0 | 0 | — |  |
-| *Hacelia attenuata* | Silver | — | 0 | 898 | — |  |
-| *Haeckelia rubra* | Silver | — | 0 | 0 | — |  |
-| *Halcampoides purpureus* | Silver | — | 0 | 223 | — |  |
-| *Halichondria bowerbanki* | Silver | — | 0 | 0 | — |  |
-| *Halichondria panicea* | Silver | — | 0 | 0 | — |  |
-| *Haliclona fulva* | Silver | — | 0 | 174 | — |  |
-| *Haliclona latens* | Silver | — | 0 | 0 | — |  |
-| *Haliclona mediterranea* | Silver | — | 0 | 182 | — |  |
-| *Haliclona mucosa* | Silver | — | 0 | 209 | — |  |
-| *Haliclona stirpescens* | Silver | — | 0 | 0 | — |  |
-| *Haliclona viscosa* | Silver | — | 0 | 0 | — |  |
-| *Haliotis tuberculata* | Silver | — | 0 | 1000 | — |  |
-| *Halisarca harmelini* | Silver | — | 0 | 0 | — |  |
-| *Halocynthia papillosa* | Silver | — | 0 | 1000 | — |  |
-| *Halopteris liechtensternii* | Silver | — | 0 | 0 | — |  |
-| *Hamigera hamigera* | Silver | — | 0 | 361 | — |  |
-| *Harmothoe areolata* | Silver | — | 0 | 109 | — |  |
-| *Harmothoe extenuata* | Silver | — | 0 | 0 | — |  |
-| *Helcogramma striata* | Silver | — | 0 | 0 | — |  |
-| *Helicosalpa virgula* | Silver | — | 0 | 0 | — |  |
-| *Hemibdella soleae* | Silver | — | 0 | 0 | — |  |
-| *Hemimycale columella* | Silver | — | 0 | 781 | — |  |
-| *Hemimycale mediterranea* | Silver | — | 0 | 134 | — |  |
-| *Hemimysis lamornae* | Silver | — | 0 | 0 | — |  |
-| *Hemimysis margalefi* | Silver | — | 0 | 0 | — |  |
-| *Herbstia condyliata* | Silver | — | 0 | 660 | — |  |
-| *Hermodice carunculata* | Silver | — | 0 | 981 | — |  |
-| *Hesione splendida* | Silver | — | 0 | 0 | — |  |
-| *Heteroconger longissimus* | Silver | — | 0 | 0 | — |  |
-| *Heteropriacanthus fulgens* | Silver | — | 0 | 0 | — |  |
-| *Hexadella pruvoti* | Silver | — | 0 | 0 | — |  |
-| *Hexadella racovitzai* | Silver | — | 0 | 0 | — |  |
-| *Hexadella topsenti* | Silver | — | 0 | 0 | — |  |
-| *Hexaplex trunculus* | Silver | — | 0 | 1000 | — |  |
-| *Hiatella arctica* | Silver | — | 0 | 148 | — |  |
-| *Hippocampus algiricus* | Silver | — | 0 | 0 | — |  |
-| *Hippocampus guttulatus* | Silver | — | 0 | 1000 | — |  |
-| *Hippocampus hippocampus* | Silver | — | 0 | 1000 | — |  |
-| *Hippolyte coerulescens* | Silver | — | 0 | 0 | — |  |
-| *Hippolyte garciarasoi* | Silver | — | 0 | 0 | — |  |
-| *Hippolyte inermis* | Silver | — | 0 | 0 | — |  |
-| *Hippolyte leptocerus* | Silver | — | 0 | 0 | — |  |
-| *Hippolyte prideauxiana* | Silver | — | 0 | 0 | — |  |
-| *Hippolyte varians* | Silver | — | 0 | 0 | — |  |
-| *Hippopodius hippopus* | Silver | — | 0 | 84 | — |  |
-| *Hippospongia communis* | Silver | — | 0 | 0 | — |  |
-| *Hofstenia miamia* | Silver | — | 0 | 0 | — |  |
-| *Holothuria arguinensis* | Silver | — | 0 | 0 | — |  |
-| *Holothuria forskali* | Silver | — | 0 | 1000 | — |  |
-| *Holothuria mammata* | Silver | — | 0 | 633 | — |  |
-| *Holothuria poli* | Silver | — | 0 | 1000 | — |  |
-| *Holothuria sanctori* | Silver | — | 0 | 1000 | — |  |
-| *Holothuria tubulosa* | Silver | — | 0 | 1000 | — |  |
-| *Homarus gammarus* | Silver | — | 0 | 228 | — |  |
-| *Hoplangia durotrix* | Silver | — | 0 | 0 | — |  |
-| *Hoploplana villosa* | Silver | — | 0 | 0 | — |  |
-| *Hyala vitrea* | Silver | — | 0 | 0 | — |  |
-| *Hydractinia aculeata* | Silver | — | 0 | 0 | — |  |
-| *Hydractinia echinata* | Silver | — | 0 | 0 | — |  |
-| *Hydroides ezoensis* | Silver | — | 0 | 0 | — |  |
-| *Hypleurochilus bananensis* | Silver | — | 0 | 0 | — |  |
-| *Hypleurochilus pseudoaequipinnis* | Silver | — | 0 | 0 | — |  |
-| *Idotea balthica* | Silver | — | 0 | 378 | — |  |
-| *Idotea metallica* | Silver | — | 0 | 230 | — |  |
-| *Ilia nucleus* | Silver | — | 0 | 259 | — |  |
-| *Inachus communissimus* | Silver | — | 0 | 0 | — |  |
-| *Inachus phalangium* | Silver | — | 0 | 829 | — |  |
-| *Ircinia oros* | Silver | — | 0 | 1000 | — |  |
-| *Ircinia retidermata* | Silver | — | 0 | 0 | — |  |
-| *Ircinia variabilis* | Silver | — | 0 | 827 | — |  |
-| *Irus irus* | Silver | — | 0 | 347 | — |  |
-| *Isara cornea* | Silver | — | 0 | 178 | — |  |
-| *Isara nigra* | Silver | — | 0 | 0 | — |  |
-| *Isarachnanthus maderensis* | Silver | — | 0 | 0 | — |  |
-| *Ischnochiton rissoi* | Silver | — | 0 | 112 | — |  |
-| *Isognomon isognomum* | Silver | — | 0 | 0 | — |  |
-| *Isozoanthus sulcatus* | Silver | — | 0 | 105 | — |  |
-| *Janthina janthina* | Silver | — | 0 | 0 | — |  |
-| *Janthina pallida* | Silver | — | 0 | 0 | — |  |
-| *Janua heterostropha* | Silver | — | 0 | 262 | — |  |
-| *Jassa marmorata* | Silver | — | 0 | 0 | — |  |
-| *Jujubinus exasperatus* | Silver | — | 0 | 168 | — |  |
-| *Jujubinus striatus* | Silver | — | 0 | 96 | — |  |
-| *Kellia suborbicularis* | Silver | — | 0 | 0 | — |  |
-| *Kirchenpaueria halecioides* | Silver | — | 0 | 111 | — |  |
-| *Koellikerina fasciculata* | Silver | — | 0 | 0 | — |  |
-| *Kyphosus sectatrix* | Silver | — | 0 | 0 | — |  |
-| *Kyphosus vaigiensis* | Silver | — | 0 | 0 | — |  |
-| *Labrisomus nuchipinnis* | Silver | — | 0 | 0 | — |  |
-| *Labrus bergylta* | Silver | — | 0 | 162 | — |  |
-| *Labrus merula* | Silver | — | 0 | 1000 | — |  |
-| *Labrus mixtus* | Silver | — | 0 | 247 | — |  |
-| *Labrus viridis* | Silver | — | 0 | 680 | — |  |
-| *Laetmonice hystrix* | Silver | — | 0 | 0 | — |  |
-| *Laevicardium crassum* | Silver | — | 0 | 189 | — |  |
-| *Laevicardium oblongum* | Silver | — | 0 | 0 | — |  |
-| *Lagis koreni* | Silver | — | 0 | 0 | — |  |
-| *Lajonkairia lajonkairii* | Silver | — | 0 | 0 | — |  |
-| *Lamellaria latens* | Silver | — | 0 | 0 | — |  |
-| *Lampea pancerina* | Silver | — | 0 | 0 | — |  |
-| *Lanice conchilega* | Silver | — | 0 | 140 | — |  |
-| *Latreutes fucorum* | Silver | — | 0 | 0 | — |  |
-| *Lembulus pella* | Silver | — | 0 | 0 | — |  |
-| *Lentidium mediterraneum* | Silver | — | 0 | 0 | — |  |
-| *Leodice torquata* | Silver | — | 0 | 89 | — |  |
-| *Lepadogaster candolii* | Silver | — | 0 | 928 | — |  |
-| *Lepadogaster lepadogaster* | Silver | — | 0 | 480 | — |  |
-| *Lepadogaster purpurea* | Silver | — | 0 | 0 | — |  |
-| *Lepas anatifera* | Silver | — | 0 | 323 | — |  |
-| *Lepas hillii* | Silver | — | 0 | 0 | — |  |
-| *Lepas pectinata* | Silver | — | 0 | 507 | — |  |
-| *Lepidochitona caprearum* | Silver | — | 0 | 129 | — |  |
-| *Lepidonotus clava* | Silver | — | 0 | 0 | — |  |
-| *Lepidopleurus cajetanus* | Silver | — | 0 | 198 | — |  |
-| *Lepomis gibbosus* | Silver | — | 0 | 0 | — |  |
-| *Leptochiton algesirensis* | Silver | — | 0 | 0 | — |  |
-| *Leptogorgia ruberrima* | Silver | — | 0 | 0 | — |  |
-| *Leptogorgia sarmentosa* | Silver | — | 0 | 1000 | — |  |
-| *Leptogorgia viminalis* | Silver | — | 0 | 0 | — |  |
-| *Leptomysis mediterranea* | Silver | — | 0 | 0 | — |  |
-| *Leptoplana mediterranea* | Silver | — | 0 | 0 | — |  |
-| *Leptoplana tremellaris* | Silver | — | 0 | 0 | — |  |
-| *Leptopsammia pruvoti* | Silver | — | 0 | 1000 | — |  |
-| *Leuckartiara nobilis* | Silver | — | 0 | 0 | — |  |
-| *Leuckartiara octona* | Silver | — | 0 | 0 | — |  |
-| *Leucocephalonemertes aurantiaca* | Silver | — | 0 | 0 | — |  |
-| *Leucosolenia variabilis* | Silver | — | 0 | 0 | — |  |
-| *Leucothea multicornis* | Silver | — | 0 | 667 | — |  |
-| *Leucothoe richiardii* | Silver | — | 0 | 0 | — |  |
-| *Lichia amia* | Silver | — | 0 | 0 | — |  |
-| *Ligia italica* | Silver | — | 0 | 0 | — |  |
-| *Ligia oceanica* | Silver | — | 0 | 0 | — |  |
-| *Lima lima* | Silver | — | 0 | 1000 | — |  |
-| *Limaria hians* | Silver | — | 0 | 481 | — |  |
-| *Limaria loscombi* | Silver | — | 0 | 0 | — |  |
-| *Limaria tuberculata* | Silver | — | 0 | 732 | — |  |
-| *Linckia laevigata* | Silver | — | 0 | 0 | — |  |
-| *Lineus grubei* | Silver | — | 0 | 0 | — |  |
-| *Lineus longissimus* | Silver | — | 0 | 0 | — |  |
-| *Lipophrys pholis* | Silver | — | 0 | 0 | — |  |
-| *Lipophrys trigloides* | Silver | — | 0 | 1000 | — |  |
-| *Liriope tetraphylla* | Silver | — | 0 | 0 | — |  |
-| *Lissoclinum perforatum* | Silver | — | 0 | 612 | — |  |
-| *Lissoclinum weigelei* | Silver | — | 0 | 416 | — |  |
-| *Lithognathus mormyrus* | Silver | — | 0 | 1000 | — |  |
-| *Lithophaga lithophaga* | Silver | — | 0 | 800 | — |  |
-| *Loligo forbesii* | Silver | — | 0 | 0 | — |  |
-| *Loligo vulgaris* | Silver | — | 0 | 550 | — |  |
-| *Lopadorrhynchus brevis* | Silver | — | 0 | 0 | — |  |
-| *Lophius budegassa* | Silver | — | 0 | 144 | — |  |
-| *Lophius piscatorius* | Silver | — | 0 | 319 | — |  |
-| *Loripes orbiculatus* | Silver | — | 0 | 576 | — |  |
-| *Loripinus fragilis* | Silver | — | 0 | 0 | — |  |
-| *Lucina adansoni* | Silver | — | 0 | 0 | — |  |
-| *Lucinella divaricata* | Silver | — | 0 | 133 | — |  |
-| *Luidia ciliaris* | Silver | — | 0 | 0 | — |  |
-| *Lumbricus terrestris* | Silver | — | 0 | 0 | — |  |
-| *Luria lurida* | Silver | — | 0 | 900 | — |  |
-| *Lutjanus bengalensis* | Silver | — | 0 | 0 | — |  |
-| *Lutraria lutraria* | Silver | — | 0 | 139 | — |  |
-| *Lutraria magna* | Silver | — | 0 | 0 | — |  |
-| *Lygdamis wirtzi* | Silver | — | 0 | 0 | — |  |
-| *Lyrodus pedicellatus* | Silver | — | 0 | 0 | — |  |
-| *Lyromangelia taeniata* | Silver | — | 0 | 0 | — |  |
-| *Lysmata grabhami* | Silver | — | 0 | 0 | — |  |
-| *Lysmata nilita* | Silver | — | 0 | 0 | — |  |
-| *Lysmata seticaudata* | Silver | — | 0 | 819 | — |  |
-| *Maasella edwardsii* | Silver | — | 0 | 0 | — |  |
-| *Macolor macularis* | Silver | — | 0 | 0 | — |  |
-| *Macomangulus tenuis* | Silver | — | 0 | 0 | — |  |
-| *Macropodia linaresi* | Silver | — | 0 | 0 | — |  |
-| *Macropodia longirostris* | Silver | — | 0 | 0 | — |  |
-| *Macrorhynchia philippina* | Silver | — | 0 | 0 | — |  |
-| *Macrorhynchia spectabilis* | Silver | — | 0 | 0 | — |  |
-| *Mactra corallina* | Silver | — | 0 | 693 | — |  |
-| *Mactra glauca* | Silver | — | 0 | 105 | — |  |
-| *Mactra stultorum* | Silver | — | 0 | 1000 | — |  |
-| *Madracis asperula* | Silver | — | 0 | 0 | — |  |
-| *Madracis pharensis* | Silver | — | 0 | 193 | — |  |
-| *Magallana gigas* | Silver | — | 0 | 0 | — |  |
-| *Maja brachydactyla* | Silver | — | 0 | 0 | — |  |
-| *Maja crispata* | Silver | — | 0 | 1000 | — |  |
-| *Maja squinado* | Silver | — | 0 | 0 | — |  |
-| *Mangelia costata* | Silver | — | 0 | 0 | — |  |
-| *Mangelia multilineolata* | Silver | — | 0 | 0 | — |  |
-| *Mangelia scabrida* | Silver | — | 0 | 0 | — |  |
-| *Mangelia striolata* | Silver | — | 0 | 0 | — |  |
-| *Manupecten pesfelis* | Silver | — | 0 | 255 | — |  |
-| *Margaretta cereoides* | Silver | — | 0 | 164 | — |  |
-| *Marsenia perspicua* | Silver | — | 0 | 0 | — |  |
-| *Marshallora adversa* | Silver | — | 0 | 95 | — |  |
-| *Marthasterias glacialis* | Silver | — | 0 | 1000 | — |  |
-| *Mauligobius maderensis* | Silver | — | 0 | 189 | — |  |
-| *Megabalanus azoricus* | Silver | — | 0 | 0 | — |  |
-| *Meganyctiphanes norvegica* | Silver | — | 0 | 0 | — |  |
-| *Melanella boscii* | Silver | — | 0 | 0 | — |  |
-| *Melanella polita* | Silver | — | 0 | 0 | — |  |
-| *Melarhaphe neritoides* | Silver | — | 0 | 892 | — |  |
-| *Melithaea ochracea* | Silver | — | 0 | 0 | — |  |
-| *Membranipora membranacea* | Silver | — | 0 | 0 | — |  |
-| *Merluccius merluccius* | Silver | — | 0 | 0 | — |  |
-| *Mesochaetopterus rogeri* | Silver | — | 0 | 163 | — |  |
-| *Metaxia metaxa* | Silver | — | 0 | 0 | — |  |
-| *Microcosmus nudistigma* | Silver | — | 0 | 0 | — |  |
-| *Microcosmus polymorphus* | Silver | — | 0 | 0 | — |  |
-| *Microcosmus sabatieri* | Silver | — | 0 | 269 | — |  |
-| *Microcosmus squamiger* | Silver | — | 0 | 0 | — |  |
-| *Microeuraphia depressa* | Silver | — | 0 | 0 | — |  |
-| *Microlipophrys canevae* | Silver | — | 0 | 1000 | — |  |
-| *Microlipophrys dalmatinus* | Silver | — | 0 | 712 | — |  |
-| *Microlipophrys nigriceps* | Silver | — | 0 | 590 | — |  |
-| *Micromesistius poutassou* | Silver | — | 0 | 0 | — |  |
-| *Microporella verrucosa* | Silver | — | 0 | 0 | — |  |
-| *Micropterus salmoides* | Silver | — | 0 | 0 | — |  |
-| *Millerigobius macrocephalus* | Silver | — | 0 | 0 | — |  |
-| *Mimachlamys varia* | Silver | — | 0 | 1000 | — |  |
-| *Mitrella broderipii* | Silver | — | 0 | 0 | — |  |
-| *Mitrella ocellata* | Silver | — | 0 | 0 | — |  |
-| *Mitrella scripta* | Silver | — | 0 | 82 | — |  |
-| *Mitrocoma annae* | Silver | — | 0 | 0 | — |  |
-| *Mitromorpha olivoidea* | Silver | — | 0 | 0 | — |  |
-| *Mitromorpha swinneni* | Silver | — | 0 | 0 | — |  |
-| *Mnemiopsis leidyi* | Silver | — | 0 | 247 | — |  |
-| *Mobula birostris* | Silver | — | 0 | 0 | — |  |
-| *Mobula mobular* | Silver | — | 0 | 0 | — |  |
-| *Modiolula phaseolina* | Silver | — | 0 | 0 | — |  |
-| *Modiolus adriaticus* | Silver | — | 0 | 0 | — |  |
-| *Modiolus barbatus* | Silver | — | 0 | 500 | — |  |
-| *Moerella donacina* | Silver | — | 0 | 125 | — |  |
-| *Moerella pulchella* | Silver | — | 0 | 338 | — |  |
-| *Mola mola* | Silver | — | 0 | 0 | — |  |
-| *Molgula occulta* | Silver | — | 0 | 0 | — |  |
-| *Monetaria caputserpentis* | Silver | — | 0 | 0 | — |  |
-| *Monochirus hispidus* | Silver | — | 0 | 0 | — |  |
-| *Monophorus perversus* | Silver | — | 0 | 0 | — |  |
-| *Monoplex corrugatus* | Silver | — | 0 | 0 | — |  |
-| *Monoplex parthenopeus* | Silver | — | 0 | 334 | — |  |
-| *Morchellium argus* | Silver | — | 0 | 0 | — |  |
-| *Mugil cephalus* | Silver | — | 0 | 479 | — |  |
-| *Mullus barbatus* | Silver | — | 0 | 967 | — |  |
-| *Mullus surmuletus* | Silver | — | 0 | 1000 | — |  |
-| *Muraena augusti* | Silver | — | 0 | 0 | — |  |
-| *Muraena helena* | Silver | — | 0 | 1000 | — |  |
-| *Muricopsis cristata* | Silver | — | 0 | 373 | — |  |
-| *Musculus costulatus* | Silver | — | 0 | 138 | — |  |
-| *Musculus subpictus* | Silver | — | 0 | 136 | — |  |
-| *Mustelus mustelus* | Silver | — | 0 | 0 | — |  |
-| *Mycale microsigmatosa* | Silver | — | 0 | 0 | — |  |
-| *Mycteroperca fusca* | Silver | — | 0 | 181 | — |  |
-| *Mycteroperca rubra* | Silver | — | 0 | 336 | — |  |
-| *Myliobatis aquila* | Silver | — | 0 | 253 | — |  |
-| *Myrianida pinnigera* | Silver | — | 0 | 0 | — |  |
-| *Myriapora truncata* | Silver | — | 0 | 1000 | — |  |
-| *Myrichthys maculosus* | Silver | — | 0 | 0 | — |  |
-| *Myrichthys pardalis* | Silver | — | 0 | 0 | — |  |
-| *Myrtea spinifera* | Silver | — | 0 | 0 | — |  |
-| *Mytilaster minimus* | Silver | — | 0 | 102 | — |  |
-| *Mytilus edulis* | Silver | — | 0 | 0 | — |  |
-| *Mytilus galloprovincialis* | Silver | — | 0 | 1000 | — |  |
-| *Myxicola aesthetica* | Silver | — | 0 | 0 | — |  |
-| *Myxicola infundibulum* | Silver | — | 0 | 272 | — |  |
-| *Naiades cantrainii* | Silver | — | 0 | 0 | — |  |
-| *Nanomia bijuga* | Silver | — | 0 | 0 | — |  |
-| *Narcissia canariensis* | Silver | — | 0 | 0 | — |  |
-| *Naria spurca* | Silver | — | 0 | 546 | — |  |
-| *Natica livida* | Silver | — | 0 | 0 | — |  |
-| *Naticarius hebraeus* | Silver | — | 0 | 878 | — |  |
-| *Nausithoe punctata* | Silver | — | 0 | 151 | — |  |
-| *Necora puber* | Silver | — | 0 | 309 | — |  |
-| *Nemertesia antennina* | Silver | — | 0 | 0 | — |  |
-| *Neotima lucullana* | Silver | — | 0 | 2 | — |  |
-| *Neoturris pileata* | Silver | — | 0 | 129 | — |  |
-| *Nerocila armata* | Silver | — | 0 | 0 | — |  |
-| *Nerocila bivittata* | Silver | — | 0 | 210 | — |  |
-| *Nerophis maculatus* | Silver | — | 0 | 119 | — |  |
-| *Nerophis ophidion* | Silver | — | 0 | 0 | — |  |
-| *Neverita josephinia* | Silver | — | 0 | 1000 | — |  |
-| *Nipponnemertes pulchra* | Silver | — | 0 | 0 | — |  |
-| *Nolella stipata* | Silver | — | 0 | 0 | — |  |
-| *Notocochlis dillwynii* | Silver | — | 0 | 0 | — |  |
-| *Notospermus geniculatus* | Silver | — | 0 | 189 | — |  |
-| *Nototeredo norvagica* | Silver | — | 0 | 0 | — |  |
-| *Nucula hanleyi* | Silver | — | 0 | 0 | — |  |
-| *Nucula nucleus* | Silver | — | 0 | 0 | — |  |
-| *Nucula sulcata* | Silver | — | 0 | 0 | — |  |
-| *Obelia dichotoma* | Silver | — | 0 | 0 | — |  |
-| *Obelia geniculata* | Silver | — | 0 | 0 | — |  |
-| *Oblada melanurus* | Silver | — | 0 | 1000 | — |  |
-| *Oceanapia isodictyiformis* | Silver | — | 0 | 0 | — |  |
-| *Oceania armata* | Silver | — | 0 | 0 | — |  |
-| *Ocenebra edwardsii* | Silver | — | 0 | 310 | — |  |
-| *Ocenebra erinaceus* | Silver | — | 0 | 997 | — |  |
-| *Ocinebrina aciculata* | Silver | — | 0 | 0 | — |  |
-| *Ocnus lacteus* | Silver | — | 0 | 0 | — |  |
-| *Ocnus planci* | Silver | — | 0 | 231 | — |  |
-| *Octopus vulgaris* | Silver | — | 0 | 1000 | — |  |
-| *Oculina patagonica* | Silver | — | 0 | 1000 | — |  |
-| *Ocyropsis crystallina* | Silver | — | 0 | 0 | — |  |
-| *Odonus niger* | Silver | — | 0 | 0 | — |  |
-| *Oedalechilus labeo* | Silver | — | 0 | 1000 | — |  |
-| *Oestergrenia digitata* | Silver | — | 0 | 0 | — |  |
-| *Olindias muelleri* | Silver | — | 0 | 279 | — |  |
-| *Ophiactis savignyi* | Silver | — | 0 | 0 | — |  |
-| *Ophidiaster ophidianus* | Silver | — | 0 | 1000 | — |  |
-| *Ophidion rochei* | Silver | — | 0 | 115 | — |  |
-| *Ophioblennius atlanticus* | Silver | — | 0 | 0 | — |  |
-| *Ophiocomina nigra* | Silver | — | 0 | 217 | — |  |
-| *Ophioderma longicaudum* | Silver | — | 0 | 1000 | — |  |
-| *Ophiomyxa pentagona* | Silver | — | 0 | 0 | — |  |
-| *Ophiopsila aranea* | Silver | — | 0 | 76 | — |  |
-| *Ophiothrix fragilis* | Silver | — | 0 | 1000 | — |  |
-| *Ophisurus serpens* | Silver | — | 0 | 840 | — |  |
-| *Ophiura ophiura* | Silver | — | 0 | 232 | — |  |
-| *Orchestia gammarellus* | Silver | — | 0 | 0 | — |  |
-| *Oscarella balibaloi* | Silver | — | 0 | 0 | — |  |
-| *Oscarella lobularis* | Silver | — | 0 | 1000 | — |  |
-| *Oscarella tuberculata* | Silver | — | 0 | 0 | — |  |
-| *Oscarella viridis* | Silver | — | 0 | 18 | — |  |
-| *Ostracion meleagris* | Silver | — | 0 | 0 | — |  |
-| *Ostrea edulis* | Silver | — | 0 | 765 | — |  |
-| *Ostrea stentina* | Silver | — | 0 | 0 | — |  |
-| *Oulastrea crispata* | Silver | — | 0 | 0 | — |  |
-| *Ova canaliferus* | Silver | — | 0 | 0 | — |  |
-| *Ovula ovum* | Silver | — | 0 | 0 | — |  |
-| *Pachycerianthus dohrni* | Silver | — | 0 | 0 | — |  |
-| *Pachycerianthus solitarius* | Silver | — | 0 | 879 | — |  |
-| *Pachygrapsus marmoratus* | Silver | — | 0 | 1000 | — |  |
-| *Pachygrapsus transversus* | Silver | — | 0 | 0 | — |  |
-| *Pachymatisma johnstonia* | Silver | — | 0 | 0 | — |  |
-| *Pagellus acarne* | Silver | — | 0 | 767 | — |  |
-| *Pagellus erythrinus* | Silver | — | 0 | 829 | — |  |
-| *Pagrus auriga* | Silver | — | 0 | 129 | — |  |
-| *Pagrus pagrus* | Silver | — | 0 | 1000 | — |  |
-| *Paguristes eremita* | Silver | — | 0 | 210 | — |  |
-| *Pagurus anachoretus* | Silver | — | 0 | 1000 | — |  |
-| *Pagurus chevreuxi* | Silver | — | 0 | 0 | — |  |
-| *Pagurus cuanensis* | Silver | — | 0 | 384 | — |  |
-| *Pagurus prideaux* | Silver | — | 0 | 355 | — |  |
-| *Palaemon adspersus* | Silver | — | 0 | 0 | — |  |
-| *Palaemon elegans* | Silver | — | 0 | 1000 | — |  |
-| *Palaemon macrodactylus* | Silver | — | 0 | 0 | — |  |
-| *Palaemon serratus* | Silver | — | 0 | 1000 | — |  |
-| *Palaemon xiphias* | Silver | — | 0 | 106 | — |  |
-| *Palinurus elephas* | Silver | — | 0 | 1000 | — |  |
-| *Palythoa canariensis* | Silver | — | 0 | 0 | — |  |
-| *Palythoa caribaeorum* | Silver | — | 0 | 0 | — |  |
-| *Pandea conica* | Silver | — | 0 | 0 | — |  |
-| *Pandora inaequivalvis* | Silver | — | 0 | 0 | — |  |
-| *Panulirus versicolor* | Silver | — | 0 | 0 | — |  |
-| *Papillicardium minimum* | Silver | — | 0 | 0 | — |  |
-| *Papillicardium papillosum* | Silver | — | 0 | 488 | — |  |
-| *Papilloculiceps longiceps* | Silver | — | 0 | 0 | — |  |
-| *Parablennius gattorugine* | Silver | — | 0 | 1000 | — |  |
-| *Parablennius goreensis* | Silver | — | 0 | 0 | — |  |
-| *Parablennius incognitus* | Silver | — | 0 | 1000 | — |  |
-| *Parablennius parvicornis* | Silver | — | 0 | 0 | — |  |
-| *Parablennius pilicornis* | Silver | — | 0 | 1000 | — |  |
-| *Parablennius rouxi* | Silver | — | 0 | 1000 | — |  |
-| *Parablennius ruber* | Silver | — | 0 | 0 | — |  |
-| *Parablennius sanguinolentus* | Silver | — | 0 | 1000 | — |  |
-| *Parablennius tentacularis* | Silver | — | 0 | 468 | — |  |
-| *Parablennius zvonimiri* | Silver | — | 0 | 1000 | — |  |
-| *Paracentrotus lividus* | Silver | — | 0 | 1000 | — |  |
-| *Paractaea monodi* | Silver | — | 0 | 0 | — |  |
-| *Paractinia striata* | Silver | — | 0 | 0 | — |  |
-| *Paradrepanophorus crassus* | Silver | — | 0 | 93 | — |  |
-| *Paraleucilla magna* | Silver | — | 0 | 756 | — |  |
-| *Paramuricea clavata* | Silver | — | 0 | 1000 | — |  |
-| *Paranemonia cinerea* | Silver | — | 0 | 265 | — |  |
-| *Parapristipoma octolineatum* | Silver | — | 0 | 87 | — |  |
-| *Parasmittina rouvillei* | Silver | — | 0 | 0 | — |  |
-| *Parazoanthus axinellae* | Silver | — | 0 | 1000 | — |  |
-| *Parazoanthus brevitentacularis* | Silver | — | 0 | 475 | — |  |
-| *Parthenopoides massena* | Silver | — | 0 | 0 | — |  |
-| *Parvicardium exiguum* | Silver | — | 0 | 131 | — |  |
-| *Parvicardium scriptum* | Silver | — | 0 | 137 | — |  |
-| *Parvicardium vroomi* | Silver | — | 0 | 0 | — |  |
-| *Patella aspera* | Silver | — | 0 | 0 | — |  |
-| *Patella caerulea* | Silver | — | 0 | 1000 | — |  |
-| *Patella ordinaria* | Silver | — | 0 | 0 | — |  |
-| *Patella pellucida* | Silver | — | 0 | 0 | — |  |
-| *Patella rustica* | Silver | — | 0 | 962 | — |  |
-| *Patella ulyssiponensis* | Silver | — | 0 | 338 | — |  |
-| *Patinella radiata* | Silver | — | 0 | 242 | — |  |
-| *Pawsonia saxicola* | Silver | — | 0 | 0 | — |  |
-| *Payraudeautia intricata* | Silver | — | 0 | 0 | — |  |
-| *Pecten jacobaeus* | Silver | — | 0 | 520 | — |  |
-| *Pegea confoederata* | Silver | — | 0 | 0 | — |  |
-| *Pegusa lascaris* | Silver | — | 0 | 158 | — |  |
-| *Pegusa nasuta* | Silver | — | 0 | 0 | — |  |
-| *Pelagia noctiluca* | Silver | — | 0 | 1000 | — |  |
-| *Pempheris oualensis* | Silver | — | 0 | 0 | — |  |
-| *Penaeus kerathurus* | Silver | — | 0 | 503 | — |  |
-| *Pennaria disticha* | Silver | — | 0 | 1000 | — |  |
-| *Pentapora fascialis* | Silver | — | 0 | 1000 | — |  |
-| *Pentapora ottomuelleriana* | Silver | — | 0 | 0 | — |  |
-| *Percnon gibbesi* | Silver | — | 0 | 1000 | — |  |
-| *Perforatus perforatus* | Silver | — | 0 | 1000 | — |  |
-| *Pericelis cata* | Silver | — | 0 | 0 | — |  |
-| *Periclimenes aegylios* | Silver | — | 0 | 0 | — |  |
-| *Periclimenes amethysteus* | Silver | — | 0 | 477 | — |  |
-| *Periclimenes sagittifer* | Silver | — | 0 | 0 | — |  |
-| *Periclimenes scriptus* | Silver | — | 0 | 183 | — |  |
-| *Peronaea planata* | Silver | — | 0 | 929 | — |  |
-| *Peronidia albicans* | Silver | — | 0 | 255 | — |  |
-| *Perophora viridis* | Silver | — | 0 | 0 | — |  |
-| *Petrosia ficiformis* | Silver | — | 0 | 1000 | — |  |
-| *Petta pusilla* | Silver | — | 0 | 0 | — |  |
-| *Phalacrophorus uniformis* | Silver | — | 0 | 0 | — |  |
-| *Phallusia fumigata* | Silver | — | 0 | 859 | — |  |
-| *Phallusia mammillata* | Silver | — | 0 | 697 | — |  |
-| *Phallusia nigra* | Silver | — | 0 | 0 | — |  |
-| *Phascolosoma granulatum* | Silver | — | 0 | 0 | — |  |
-| *Pherusella tubulosa* | Silver | — | 0 | 0 | — |  |
-| *Philocheras bispinosus* | Silver | — | 0 | 0 | — |  |
-| *Philocheras fasciatus* | Silver | — | 0 | 0 | — |  |
-| *Philocheras trispinosus* | Silver | — | 0 | 0 | — |  |
-| *Pholas dactylus* | Silver | — | 0 | 0 | — |  |
-| *Phorbas fictitius* | Silver | — | 0 | 0 | — |  |
-| *Phorbas tenacior* | Silver | — | 0 | 1000 | — |  |
-| *Phorbas topsenti* | Silver | — | 0 | 465 | — |  |
-| *Phorcus atratus* | Silver | — | 0 | 0 | — |  |
-| *Phorcus richardi* | Silver | — | 0 | 0 | — |  |
-| *Phorcus sauciatus* | Silver | — | 0 | 210 | — |  |
-| *Phorcus turbinatus* | Silver | — | 0 | 1000 | — |  |
-| *Phoronis australis* | Silver | — | 0 | 0 | — |  |
-| *Phoronis hippocrepia* | Silver | — | 0 | 318 | — |  |
-| *Phoronis psammophila* | Silver | — | 0 | 0 | — |  |
-| *Phronima sedentaria* | Silver | — | 0 | 148 | — |  |
-| *Phrosina semilunata* | Silver | — | 0 | 0 | — |  |
-| *Phtisica marina* | Silver | — | 0 | 0 | — |  |
-| *Phycis phycis* | Silver | — | 0 | 1000 | — |  |
-| *Phyllangia americana* | Silver | — | 0 | 0 | — |  |
-| *Phyllorhiza punctata* | Silver | — | 0 | 0 | — |  |
-| *Phylo foetida* | Silver | — | 0 | 0 | — |  |
-| *Phymanthus pulcher* | Silver | — | 0 | 0 | — |  |
-| *Physalia physalis* | Silver | — | 0 | 0 | — |  |
-| *Pilumnus hirtellus* | Silver | — | 0 | 381 | — |  |
-| *Pilumnus spinifer* | Silver | — | 0 | 0 | — |  |
-| *Pilumnus villosissimus* | Silver | — | 0 | 0 | — |  |
-| *Pinctada imbricata* | Silver | — | 0 | 0 | — |  |
-| *Pinctada radiata* | Silver | — | 0 | 1000 | — |  |
-| *Pinna nobilis* | Silver | — | 0 | 1000 | — |  |
-| *Pinna rudis* | Silver | — | 0 | 1000 | — |  |
-| *Pinnoctopus macropus* | Silver | — | 0 | 990 | — |  |
-| *Pinnotheres bicristatus* | Silver | — | 0 | 0 | — |  |
-| *Pirimela denticulata* | Silver | — | 0 | 291 | — |  |
-| *Pisa armata* | Silver | — | 0 | 0 | — |  |
-| *Pisa nodipes* | Silver | — | 0 | 0 | — |  |
-| *Pisa tetraodon* | Silver | — | 0 | 138 | — |  |
-| *Pisania striata* | Silver | — | 0 | 614 | — |  |
-| *Pisidia bluteli* | Silver | — | 0 | 135 | — |  |
-| *Pisidia longicornis* | Silver | — | 0 | 128 | — |  |
-| *Pisinna glabrata* | Silver | — | 0 | 0 | — |  |
-| *Pitar rudis* | Silver | — | 0 | 108 | — |  |
-| *Plagioecia patina* | Silver | — | 0 | 0 | — |  |
-| *Plagusia depressa* | Silver | — | 0 | 0 | — |  |
-| *Plakina monolopha* | Silver | — | 0 | 97 | — |  |
-| *Planes minutus* | Silver | — | 0 | 0 | — |  |
-| *Planocera ceratommata* | Silver | — | 0 | 188 | — |  |
-| *Planocera graffi* | Silver | — | 0 | 0 | — |  |
-| *Platax orbicularis* | Silver | — | 0 | 0 | — |  |
-| *Platybelone argalus* | Silver | — | 0 | 200 | — |  |
-| *Plectorhinchus flavomaculatus* | Silver | — | 0 | 0 | — |  |
-| *Plectorhinchus lineatus* | Silver | — | 0 | 0 | — |  |
-| *Plectorhinchus vittatus* | Silver | — | 0 | 0 | — |  |
-| *Pleraplysilla spinifera* | Silver | — | 0 | 226 | — |  |
-| *Plesionika narval* | Silver | — | 0 | 0 | — |  |
-| *Pleurobrachia pileus* | Silver | — | 0 | 0 | — |  |
-| *Plotosus lineatus* | Silver | — | 0 | 0 | — |  |
-| *Pocillopora grandis* | Silver | — | 0 | 0 | — |  |
-| *Podocerus variegatus* | Silver | — | 0 | 0 | — |  |
-| *Pododesmus patelliformis* | Silver | — | 0 | 0 | — |  |
-| *Polititapes aureus* | Silver | — | 0 | 609 | — |  |
-| *Polititapes lucens* | Silver | — | 0 | 0 | — |  |
-| *Polititapes rhomboides* | Silver | — | 0 | 0 | — |  |
-| *Pollachius pollachius* | Silver | — | 0 | 0 | — |  |
-| *Pollicipes pollicipes* | Silver | — | 0 | 0 | — |  |
-| *Polyandrocarpa zorritensis* | Silver | — | 0 | 83 | — |  |
-| *Polybius corrugatus* | Silver | — | 0 | 0 | — |  |
-| *Polybius vernalis* | Silver | — | 0 | 326 | — |  |
-| *Polybius zariquieyi* | Silver | — | 0 | 0 | — |  |
-| *Polycarpa aurata* | Silver | — | 0 | 0 | — |  |
-| *Polycarpa insulsa* | Silver | — | 0 | 0 | — |  |
-| *Polycarpa violacea* | Silver | — | 0 | 0 | — |  |
-| *Polycitor adriaticus* | Silver | — | 0 | 0 | — |  |
-| *Polycitor crystallinus* | Silver | — | 0 | 0 | — |  |
-| *Polyclinum aurantium* | Silver | — | 0 | 0 | — |  |
-| *Polycyathus muellerae* | Silver | — | 0 | 202 | — |  |
-| *Polyophthalmus pictus* | Silver | — | 0 | 120 | — |  |
-| *Polysyncraton lacazei* | Silver | — | 0 | 471 | — |  |
-| *Pomacanthus imperator* | Silver | — | 0 | 0 | — |  |
-| *Pomacentrus coelestis* | Silver | — | 0 | 0 | — |  |
-| *Pomadasys incisus* | Silver | — | 0 | 368 | — |  |
-| *Pomatias elegans* | Silver | — | 0 | 0 | — |  |
-| *Pomatomus saltatrix* | Silver | — | 0 | 0 | — |  |
-| *Pomatoschistus bathi* | Silver | — | 0 | 625 | — |  |
-| *Pomatoschistus flavescens* | Silver | — | 0 | 0 | — |  |
-| *Pomatoschistus marmoratus* | Silver | — | 0 | 1000 | — |  |
-| *Pomatoschistus minutus* | Silver | — | 0 | 0 | — |  |
-| *Pomatoschistus pictus* | Silver | — | 0 | 569 | — |  |
-| *Pomatoschistus quagga* | Silver | — | 0 | 0 | — |  |
-| *Pomatostegus stellatus* | Silver | — | 0 | 0 | — |  |
-| *Pontogenia chrysocoma* | Silver | — | 0 | 0 | — |  |
-| *Pontonia pinnophylax* | Silver | — | 0 | 0 | — |  |
-| *Porcellana platycheles* | Silver | — | 0 | 662 | — |  |
-| *Porpita porpita* | Silver | — | 0 | 0 | — |  |
-| *Portumnus latipes* | Silver | — | 0 | 0 | — |  |
-| *Praya dubia* | Silver | — | 0 | 0 | — |  |
-| *Priacanthus hamrur* | Silver | — | 0 | 0 | — |  |
-| *Prionospio multibranchiata* | Silver | — | 0 | 0 | — |  |
-| *Procambarus clarkii* | Silver | — | 0 | 0 | — |  |
-| *Processa edulis* | Silver | — | 0 | 250 | — |  |
-| *Processa elegantula* | Silver | — | 0 | 0 | — |  |
-| *Processa macrophthalma* | Silver | — | 0 | 116 | — |  |
-| *Processa modica* | Silver | — | 0 | 0 | — |  |
-| *Processa robusta* | Silver | — | 0 | 0 | — |  |
-| *Prostheceraeus giesbrechtii* | Silver | — | 0 | 178 | — |  |
-| *Prostheceraeus moseleyi* | Silver | — | 0 | 772 | — |  |
-| *Prostheceraeus roseus* | Silver | — | 0 | 1000 | — |  |
-| *Prostheceraeus rubropunctatus* | Silver | — | 0 | 0 | — |  |
-| *Prostheceraeus vittatus* | Silver | — | 0 | 0 | — |  |
-| *Prosthiostomum siphunculus* | Silver | — | 0 | 84 | — |  |
-| *Prosuberites longispinus* | Silver | — | 0 | 0 | — |  |
-| *Protoreaster lincki* | Silver | — | 0 | 0 | — |  |
-| *Protula intestinum* | Silver | — | 0 | 333 | — |  |
-| *Protula tubularia* | Silver | — | 0 | 1000 | — |  |
-| *Psammechinus microtuberculatus* | Silver | — | 0 | 0 | — |  |
-| *Psenes pellucidus* | Silver | — | 0 | 0 | — |  |
-| *Pseudanthias squamipinnis* | Silver | — | 0 | 0 | — |  |
-| *Pseudaphya ferreri* | Silver | — | 0 | 0 | — |  |
-| *Pseudobiceros bedfordi* | Silver | — | 0 | 0 | — |  |
-| *Pseudobiceros splendidus* | Silver | — | 0 | 273 | — |  |
-| *Pseudocaranx dentex* | Silver | — | 0 | 0 | — |  |
-| *Pseudoceros maximus* | Silver | — | 0 | 154 | — |  |
-| *Pseudoceros velutinus* | Silver | — | 0 | 178 | — |  |
-| *Pseudochama gryphina* | Silver | — | 0 | 151 | — |  |
-| *Pseudocorynactis caribbeorum* | Silver | — | 0 | 0 | — |  |
-| *Pseudodistoma crucigaster* | Silver | — | 0 | 685 | — |  |
-| *Pseudomangelia vauquelini* | Silver | — | 0 | 0 | — |  |
-| *Pseudoprotella phasma* | Silver | — | 0 | 0 | — |  |
-| *Pseudosquillisma oculata* | Silver | — | 0 | 0 | — |  |
-| *Pteria hirundo* | Silver | — | 0 | 0 | — |  |
-| *Pterois antennata* | Silver | — | 0 | 0 | — |  |
-| *Pterois miles* | Silver | — | 0 | 0 | — |  |
-| *Pterois volitans* | Silver | — | 0 | 0 | — |  |
-| *Pteroplatytrygon violacea* | Silver | — | 0 | 0 | — |  |
-| *Pterotrachea coronata* | Silver | — | 0 | 0 | — |  |
-| *Puncturella noachina* | Silver | — | 0 | 0 | — |  |
-| *Pusia zebrina* | Silver | — | 0 | 0 | — |  |
-| *Pusillina lineolata* | Silver | — | 0 | 76 | — |  |
-| *Pusillina philippi* | Silver | — | 0 | 0 | — |  |
-| *Pycnoclavella aurilucens* | Silver | — | 0 | 344 | — |  |
-| *Pycnoclavella brava* | Silver | — | 0 | 0 | — |  |
-| *Pycnoclavella communis* | Silver | — | 0 | 818 | — |  |
-| *Pycnoclavella nana* | Silver | — | 0 | 274 | — |  |
-| *Pycnoclavella stolonialis* | Silver | — | 0 | 0 | — |  |
-| *Pyrosoma atlanticum* | Silver | — | 0 | 0 | — |  |
-| *Pyura dura* | Silver | — | 0 | 537 | — |  |
-| *Pyura microcosmus* | Silver | — | 0 | 0 | — |  |
-| *Pyura squamulosa* | Silver | — | 0 | 0 | — |  |
-| *Raja asterias* | Silver | — | 0 | 0 | — |  |
-| *Raja brachyura* | Silver | — | 0 | 359 | — |  |
-| *Raja clavata* | Silver | — | 0 | 0 | — |  |
-| *Raja montagui* | Silver | — | 0 | 0 | — |  |
-| *Raja undulata* | Silver | — | 0 | 677 | — |  |
-| *Raphitoma bicolor* | Silver | — | 0 | 0 | — |  |
-| *Raphitoma horrida* | Silver | — | 0 | 0 | — |  |
-| *Raspaciona aculeata* | Silver | — | 0 | 115 | — |  |
-| *Reptadeonella violacea* | Silver | — | 0 | 465 | — |  |
-| *Reteporella grimaldii* | Silver | — | 0 | 662 | — |  |
-| *Rhabdosoma whitei* | Silver | — | 0 | 0 | — |  |
-| *Rhinobatos rhinobatos* | Silver | — | 0 | 0 | — |  |
-| *Rhithropanopeus harrisii* | Silver | — | 0 | 0 | — |  |
-| *Rhizophysa filiformis* | Silver | — | 0 | 0 | — |  |
-| *Rhizostoma luteum* | Silver | — | 0 | 0 | — |  |
-| *Rhizostoma pulmo* | Silver | — | 0 | 1000 | — |  |
-| *Rhombosepion orbignyanum* | Silver | — | 0 | 0 | — |  |
-| *Rhopalaea neapolitana* | Silver | — | 0 | 0 | — |  |
-| *Rhopalonema velatum* | Silver | — | 0 | 0 | — |  |
-| *Rhyssoplax corallina* | Silver | — | 0 | 0 | — |  |
-| *Rhyssoplax olivacea* | Silver | — | 0 | 1000 | — |  |
-| *Rissoa auriscalpium* | Silver | — | 0 | 131 | — |  |
-| *Rissoa decorata* | Silver | — | 0 | 0 | — |  |
-| *Rissoa guerinii* | Silver | — | 0 | 0 | — |  |
-| *Rissoa membranacea* | Silver | — | 0 | 0 | — |  |
-| *Rissoa monodonta* | Silver | — | 0 | 0 | — |  |
-| *Rissoa variabilis* | Silver | — | 0 | 167 | — |  |
-| *Rissoa ventricosa* | Silver | — | 0 | 0 | — |  |
-| *Rissoa violacea* | Silver | — | 0 | 94 | — |  |
-| *Rissoina bruguieri* | Silver | — | 0 | 125 | — |  |
-| *Rocellaria dubia* | Silver | — | 0 | 639 | — |  |
-| *Rosacea cymbiformis* | Silver | — | 0 | 0 | — |  |
-| *Rostroraja alba* | Silver | — | 0 | 0 | — |  |
-| *Ruditapes decussatus* | Silver | — | 0 | 0 | — |  |
-| *Ruditapes philippinarum* | Silver | — | 0 | 0 | — |  |
-| *Sabella discifera* | Silver | — | 0 | 0 | — |  |
-| *Sabella pavonina* | Silver | — | 0 | 333 | — |  |
-| *Sabella spallanzanii* | Silver | — | 0 | 1000 | — |  |
-| *Sagartia nigropunctata* | Silver | — | 0 | 0 | — |  |
-| *Sagartia undata* | Silver | — | 0 | 0 | — |  |
-| *Salaria pavo* | Silver | — | 0 | 1000 | — |  |
-| *Salmacina dysteri* | Silver | — | 0 | 0 | — |  |
-| *Salpa fusiformis* | Silver | — | 0 | 210 | — |  |
-| *Salpa maxima* | Silver | — | 0 | 96 | — |  |
-| *Sarcodictyon catenatum* | Silver | — | 0 | 0 | — |  |
-| *Sarcotragus fasciculatus* | Silver | — | 0 | 1000 | — |  |
-| *Sarcotragus spinosulus* | Silver | — | 0 | 1000 | — |  |
-| *Sarda sarda* | Silver | — | 0 | 0 | — |  |
-| *Sardina pilchardus* | Silver | — | 0 | 169 | — |  |
-| *Sardinella aurita* | Silver | — | 0 | 346 | — |  |
-| *Sardinella maderensis* | Silver | — | 0 | 0 | — |  |
-| *Sarpa salpa* | Silver | — | 0 | 1000 | — |  |
-| *Savalia savaglia* | Silver | — | 0 | 0 | — |  |
-| *Savignyella lafontii* | Silver | — | 0 | 0 | — |  |
-| *Scalarispongia scalaris* | Silver | — | 0 | 0 | — |  |
-| *Scartella cristata* | Silver | — | 0 | 716 | — |  |
-| *Scarus rubroviolaceus* | Silver | — | 0 | 0 | — |  |
-| *Schedophilus ovalis* | Silver | — | 0 | 0 | — |  |
-| *Schizobrachiella sanguinea* | Silver | — | 0 | 896 | — |  |
-| *Schizomavella linearis* | Silver | — | 0 | 0 | — |  |
-| *Schizomavella mamillata* | Silver | — | 0 | 319 | — |  |
-| *Schizoporella dunkeri* | Silver | — | 0 | 237 | — |  |
-| *Schizoporella errata* | Silver | — | 0 | 1000 | — |  |
-| *Schizoporella pungens* | Silver | — | 0 | 0 | — |  |
-| *Sciaena umbra* | Silver | — | 0 | 1000 | — |  |
-| *Scissurella costata* | Silver | — | 0 | 0 | — |  |
-| *Scomber japonicus* | Silver | — | 0 | 0 | — |  |
-| *Scopalina canariensis* | Silver | — | 0 | 0 | — |  |
-| *Scopalina lophyropoda* | Silver | — | 0 | 166 | — |  |
-| *Scophthalmus maximus* | Silver | — | 0 | 0 | — |  |
-| *Scophthalmus rhombus* | Silver | — | 0 | 254 | — |  |
-| *Scorpaena maderensis* | Silver | — | 0 | 1000 | — |  |
-| *Scorpaena notata* | Silver | — | 0 | 1000 | — |  |
-| *Scorpaena porcus* | Silver | — | 0 | 1000 | — |  |
-| *Scorpaena scrofa* | Silver | — | 0 | 1000 | — |  |
-| *Scorpaenopsis oxycephala* | Silver | — | 0 | 0 | — |  |
-| *Scrobicularia plana* | Silver | — | 0 | 0 | — |  |
-| *Scrupocellaria delilii* | Silver | — | 0 | 0 | — |  |
-| *Scrupocellaria scrupea* | Silver | — | 0 | 0 | — |  |
-| *Scutigera coleoptrata* | Silver | — | 0 | 0 | — |  |
-| *Scyliorhinus canicula* | Silver | — | 0 | 0 | — |  |
-| *Scyliorhinus stellaris* | Silver | — | 0 | 186 | — |  |
-| *Scyllarides latus* | Silver | — | 0 | 358 | — |  |
-| *Scyllarus arctus* | Silver | — | 0 | 938 | — |  |
-| *Scyllarus pygmaeus* | Silver | — | 0 | 0 | — |  |
-| *Semicassis undulata* | Silver | — | 0 | 857 | — |  |
-| *Sepia officinalis* | Silver | — | 0 | 1000 | — |  |
-| *Sepiola affinis* | Silver | — | 0 | 0 | — |  |
-| *Sepiola rondeletii* | Silver | — | 0 | 0 | — |  |
-| *Sepioteuthis lessoniana* | Silver | — | 0 | 0 | — |  |
-| *Seriola dumerili* | Silver | — | 0 | 1000 | — |  |
-| *Seriola fasciata* | Silver | — | 0 | 0 | — |  |
-| *Seriola rivoliana* | Silver | — | 0 | 0 | — |  |
-| *Serpula concharum* | Silver | — | 0 | 0 | — |  |
-| *Serpula vermicularis* | Silver | — | 0 | 1000 | — |  |
-| *Serranus atricauda* | Silver | — | 0 | 0 | — |  |
-| *Serranus cabrilla* | Silver | — | 0 | 1000 | — |  |
-| *Serranus hepatus* | Silver | — | 0 | 966 | — |  |
-| *Serranus papilionaceus* | Silver | — | 0 | 0 | — |  |
-| *Serranus scriba* | Silver | — | 0 | 1000 | — |  |
-| *Sertularella crassicaulis* | Silver | — | 0 | 100 | — |  |
-| *Sertularella gayi* | Silver | — | 0 | 0 | — |  |
-| *Sertularella mediterranea* | Silver | — | 0 | 245 | — |  |
-| *Sertularella polyzonias* | Silver | — | 0 | 0 | — |  |
-| *Sicyonia carinata* | Silver | — | 0 | 272 | — |  |
-| *Siganus rivulatus* | Silver | — | 0 | 0 | — |  |
-| *Similiparma lurida* | Silver | — | 0 | 115 | — |  |
-| *Simnia spelta* | Silver | — | 0 | 620 | — |  |
-| *Siphonenteron bilineatum* | Silver | — | 0 | 0 | — |  |
-| *Sipunculus nudus* | Silver | — | 0 | 0 | — |  |
-| *Sirpus zariquieyi* | Silver | — | 0 | 0 | — |  |
-| *Smaragdia viridis* | Silver | — | 0 | 658 | — |  |
-| *Smithiella costulata* | Silver | — | 0 | 0 | — |  |
-| *Smittina cervicornis* | Silver | — | 0 | 304 | — |  |
-| *Solea aegyptiaca* | Silver | — | 0 | 0 | — |  |
-| *Solea senegalensis* | Silver | — | 0 | 360 | — |  |
-| *Solea solea* | Silver | — | 0 | 0 | — |  |
-| *Solecurtus strigilatus* | Silver | — | 0 | 231 | — |  |
-| *Soleichthys heterorhinos* | Silver | — | 0 | 0 | — |  |
-| *Solen marginatus* | Silver | — | 0 | 0 | — |  |
-| *Solmissus albescens* | Silver | — | 0 | 0 | — |  |
-| *Solmissus incisa* | Silver | — | 0 | 0 | — |  |
-| *Sparisoma cretense* | Silver | — | 0 | 1000 | — |  |
-| *Sparus aurata* | Silver | — | 0 | 1000 | — |  |
-| *Sphaerechinus granularis* | Silver | — | 0 | 1000 | — |  |
-| *Sphaeroma serratum* | Silver | — | 0 | 0 | — |  |
-| *Sphenia binghami* | Silver | — | 0 | 0 | — |  |
-| *Sphoeroides marmoratus* | Silver | — | 0 | 0 | — |  |
-| *Sphyraena barracuda* | Silver | — | 0 | 0 | — |  |
-| *Sphyraena sphyraena* | Silver | — | 0 | 0 | — |  |
-| *Sphyraena viridensis* | Silver | — | 0 | 1000 | — |  |
-| *Spicara maena* | Silver | — | 0 | 701 | — |  |
-| *Spicara smaris* | Silver | — | 0 | 318 | — |  |
-| *Spirastrella cunctatrix* | Silver | — | 0 | 866 | — |  |
-| *Spirobranchus lamarcki* | Silver | — | 0 | 0 | — |  |
-| *Spirobranchus triqueter* | Silver | — | 0 | 146 | — |  |
-| *Spisula subtruncata* | Silver | — | 0 | 1000 | — |  |
-| *Spondyliosoma cantharus* | Silver | — | 0 | 1000 | — |  |
-| *Spondylus gaederopus* | Silver | — | 0 | 1000 | — |  |
-| *Spondylus senegalensis* | Silver | — | 0 | 0 | — |  |
-| *Spongia lamella* | Silver | — | 0 | 0 | — |  |
-| *Spongia officinalis* | Silver | — | 0 | 0 | — |  |
-| *Spongionella pulchella* | Silver | — | 0 | 0 | — |  |
-| *Sprattus sprattus* | Silver | — | 0 | 135 | — |  |
-| *Squatina squatina* | Silver | — | 0 | 83 | — |  |
-| *Stenopus hispidus* | Silver | — | 0 | 0 | — |  |
-| *Stenopus spinosus* | Silver | — | 0 | 816 | — |  |
-| *Stenorhynchus lanceolatus* | Silver | — | 0 | 87 | — |  |
-| *Stenosoma appendiculatum* | Silver | — | 0 | 0 | — |  |
-| *Stenosoma capito* | Silver | — | 0 | 0 | — |  |
-| *Stenosoma lancifer* | Silver | — | 0 | 0 | — |  |
-| *Stephanolepis hispida* | Silver | — | 0 | 0 | — |  |
-| *Steromphala adansonii* | Silver | — | 0 | 0 | — |  |
-| *Steromphala divaricata* | Silver | — | 0 | 343 | — |  |
-| *Steromphala rarilineata* | Silver | — | 0 | 273 | — |  |
-| *Steromphala umbilicalis* | Silver | — | 0 | 259 | — |  |
-| *Steromphala umbilicaris* | Silver | — | 0 | 0 | — |  |
-| *Steromphala varia* | Silver | — | 0 | 1000 | — |  |
-| *Stichodactyla haddoni* | Silver | — | 0 | 0 | — |  |
-| *Stolonica socialis* | Silver | — | 0 | 0 | — |  |
-| *Stramonita haemastoma* | Silver | — | 0 | 1000 | — |  |
-| *Striarca lactea* | Silver | — | 0 | 796 | — |  |
-| *Styela canopus* | Silver | — | 0 | 0 | — |  |
-| *Styela clava* | Silver | — | 0 | 0 | — |  |
-| *Styela plicata* | Silver | — | 0 | 461 | — |  |
-| *Stylochus mediterraneus* | Silver | — | 0 | 0 | — |  |
-| *Stylochus pilidium* | Silver | — | 0 | 0 | — |  |
-| *Stylochus plessissii* | Silver | — | 0 | 0 | — |  |
-| *Suberites domuncula* | Silver | — | 0 | 0 | — |  |
-| *Suberites massa* | Silver | — | 0 | 0 | — |  |
-| *Sulculeolaria quadrivalvis* | Silver | — | 0 | 0 | — |  |
-| *Sycon ciliatum* | Silver | — | 0 | 0 | — |  |
-| *Sycon elegans* | Silver | — | 0 | 0 | — |  |
-| *Sycon raphanus* | Silver | — | 0 | 258 | — |  |
-| *Symphodus bailloni* | Silver | — | 0 | 0 | — |  |
-| *Symphodus cinereus* | Silver | — | 0 | 1000 | — |  |
-| *Symphodus doderleini* | Silver | — | 0 | 367 | — |  |
-| *Symphodus mediterraneus* | Silver | — | 0 | 1000 | — |  |
-| *Symphodus melops* | Silver | — | 0 | 722 | — |  |
-| *Symphodus ocellatus* | Silver | — | 0 | 1000 | — |  |
-| *Symphodus roissali* | Silver | — | 0 | 1000 | — |  |
-| *Symphodus rostratus* | Silver | — | 0 | 1000 | — |  |
-| *Symphodus tinca* | Silver | — | 0 | 1000 | — |  |
-| *Symplegma brakenhielmi* | Silver | — | 0 | 87 | — |  |
-| *Symsagittifera roscoffensis* | Silver | — | 0 | 0 | — |  |
-| *Synalpheus gambarelloides* | Silver | — | 0 | 0 | — |  |
-| *Synalpheus tumidomanus* | Silver | — | 0 | 0 | — |  |
-| *Synapturichthys kleinii* | Silver | — | 0 | 340 | — |  |
-| *Synarachnactis lloydii* | Silver | — | 0 | 88 | — |  |
-| *Syngnathus abaster* | Silver | — | 0 | 173 | — |  |
-| *Syngnathus acus* | Silver | — | 0 | 133 | — |  |
-| *Syngnathus rostellatus* | Silver | — | 0 | 0 | — |  |
-| *Syngnathus tenuirostris* | Silver | — | 0 | 244 | — |  |
-| *Syngnathus typhle* | Silver | — | 0 | 861 | — |  |
-| *Synischia hectica* | Silver | — | 0 | 0 | — |  |
-| *Synodus saurus* | Silver | — | 0 | 1000 | — |  |
-| *Synodus synodus* | Silver | — | 0 | 0 | — |  |
-| *Synoicum blochmanni* | Silver | — | 0 | 0 | — |  |
-| *Synthecium evansi* | Silver | — | 0 | 0 | — |  |
-| *Taeniura lymma* | Silver | — | 0 | 0 | — |  |
-| *Taeniurops grabatus* | Silver | — | 0 | 0 | — |  |
-| *Talitrus saltator* | Silver | — | 0 | 0 | — |  |
-| *Talochlamys multistriata* | Silver | — | 0 | 308 | — |  |
-| *Talochlamys pusio* | Silver | — | 0 | 0 | — |  |
-| *Tarantinaea lignaria* | Silver | — | 0 | 0 | — |  |
-| *Taurulus bubalis* | Silver | — | 0 | 0 | — |  |
-| *Tectarius striatus* | Silver | — | 0 | 0 | — |  |
-| *Tectonatica prietoi* | Silver | — | 0 | 0 | — |  |
-| *Tectura virginea* | Silver | — | 0 | 127 | — |  |
-| *Tedania anhelans* | Silver | — | 0 | 83 | — |  |
-| *Tellina lactea* | Silver | — | 0 | 0 | — |  |
-| *Telmatactis cricoides* | Silver | — | 0 | 88 | — |  |
-| *Telmatactis forskalii* | Silver | — | 0 | 416 | — |  |
-| *Teredo navalis* | Silver | — | 0 | 0 | — |  |
-| *Terpios fugax* | Silver | — | 0 | 0 | — |  |
-| *Terpios gelatinosus* | Silver | — | 0 | 330 | — |  |
-| *Tethya aurantium* | Silver | — | 0 | 407 | — |  |
-| *Tethya citrina* | Silver | — | 0 | 0 | — |  |
-| *Tethya meloni* | Silver | — | 0 | 0 | — |  |
-| *Tetrastemma melanocephalum* | Silver | — | 0 | 0 | — |  |
-| *Thalamita poissonii* | Silver | — | 0 | 0 | — |  |
-| *Thalassoma pavo* | Silver | — | 0 | 1000 | — |  |
-| *Thalia democratica* | Silver | — | 0 | 107 | — |  |
-| *Thericium lividulum* | Silver | — | 0 | 96 | — |  |
-| *Thericium protractum* | Silver | — | 0 | 0 | — |  |
-| *Thericium renovatum* | Silver | — | 0 | 0 | — |  |
-| *Thericium vulgatum* | Silver | — | 0 | 1000 | — |  |
-| *Thetys vagina* | Silver | — | 0 | 0 | — |  |
-| *Thor amboinensis* | Silver | — | 0 | 0 | — |  |
-| *Thorogobius ephippiatus* | Silver | — | 0 | 179 | — |  |
-| *Thracia pubescens* | Silver | — | 0 | 0 | — |  |
-| *Thunnus thynnus* | Silver | — | 0 | 0 | — |  |
-| *Thylacodes arenarius* | Silver | — | 0 | 368 | — |  |
-| *Thylaeodus rugulosus* | Silver | — | 0 | 0 | — |  |
-| *Thysanozoon brocchii* | Silver | — | 0 | 638 | — |  |
-| *Timoclea ovata* | Silver | — | 0 | 0 | — |  |
-| *Tonna galea* | Silver | — | 0 | 0 | — |  |
-| *Tonna pennata* | Silver | — | 0 | 0 | — |  |
-| *Torpedo marmorata* | Silver | — | 0 | 1000 | — |  |
-| *Torpedo torpedo* | Silver | — | 0 | 753 | — |  |
-| *Trachelobdella lubrica* | Silver | — | 0 | 0 | — |  |
-| *Trachinotus ovatus* | Silver | — | 0 | 948 | — |  |
-| *Trachinus araneus* | Silver | — | 0 | 291 | — |  |
-| *Trachinus draco* | Silver | — | 0 | 1000 | — |  |
-| *Trachinus radiatus* | Silver | — | 0 | 226 | — |  |
-| *Trachurus mediterraneus* | Silver | — | 0 | 0 | — |  |
-| *Trachurus trachurus* | Silver | — | 0 | 0 | — |  |
-| *Tremoctopus violaceus* | Silver | — | 0 | 0 | — |  |
-| *Tricellaria inopinata* | Silver | — | 0 | 0 | — |  |
-| *Tricolia pullus* | Silver | — | 0 | 389 | — |  |
-| *Tricolia speciosa* | Silver | — | 0 | 128 | — |  |
-| *Tricolia tenuis* | Silver | — | 0 | 0 | — |  |
-| *Tridentata perpusilla* | Silver | — | 0 | 169 | — |  |
-| *Trididemnum cereum* | Silver | — | 0 | 0 | — |  |
-| *Tripterygion delaisi* | Silver | — | 0 | 1000 | — |  |
-| *Tripterygion melanurus* | Silver | — | 0 | 1000 | — |  |
-| *Tripterygion tartessicum* | Silver | — | 0 | 0 | — |  |
-| *Tripterygion tripteronotum* | Silver | — | 0 | 1000 | — |  |
-| *Trisopterus luscus* | Silver | — | 0 | 0 | — |  |
-| *Tritia corniculum* | Silver | — | 0 | 387 | — |  |
-| *Tritia corrugata* | Silver | — | 0 | 302 | — |  |
-| *Tritia grana* | Silver | — | 0 | 130 | — |  |
-| *Tritia incrassata* | Silver | — | 0 | 1000 | — |  |
-| *Tritia mutabilis* | Silver | — | 0 | 996 | — |  |
-| *Tritia neritea* | Silver | — | 0 | 607 | — |  |
-| *Tritia nitida* | Silver | — | 0 | 420 | — |  |
-| *Tritia pellucida* | Silver | — | 0 | 158 | — |  |
-| *Tritia reticulata* | Silver | — | 0 | 682 | — |  |
-| *Tritia unifasciata* | Silver | — | 0 | 0 | — |  |
-| *Tritia varicosa* | Silver | — | 0 | 91 | — |  |
-| *Trivia arctica* | Silver | — | 0 | 0 | — |  |
-| *Trivia mediterranea* | Silver | — | 0 | 0 | — |  |
-| *Trivia monacha* | Silver | — | 0 | 0 | — |  |
-| *Truncatella subcylindrica* | Silver | — | 0 | 0 | — |  |
-| *Tubastraea coccinea* | Silver | — | 0 | 0 | — |  |
-| *Tubastraea micranthus* | Silver | — | 0 | 0 | — |  |
-| *Tubulanus annulatus* | Silver | — | 0 | 0 | — |  |
-| *Tubulanus rhabdotus* | Silver | — | 0 | 0 | — |  |
-| *Tubulipora hemiphragmata* | Silver | — | 0 | 0 | — |  |
-| *Tuleariocaris neglecta* | Silver | — | 0 | 0 | — |  |
-| *Tumidodromia dormia* | Silver | — | 0 | 0 | — |  |
-| *Turbicellepora avicularis* | Silver | — | 0 | 146 | — |  |
-| *Turbicellepora magnicostata* | Silver | — | 0 | 0 | — |  |
-| *Turritella turbona* | Silver | — | 0 | 0 | — |  |
-| *Turritellinella tricarinata* | Silver | — | 0 | 580 | — |  |
-| *Tylosurus acus* | Silver | — | 0 | 0 | — |  |
-| *Umbrina canariensis* | Silver | — | 0 | 0 | — |  |
-| *Umbrina cirrosa* | Silver | — | 0 | 0 | — |  |
-| *Upogebia pusilla* | Silver | — | 0 | 226 | — |  |
-| *Uranoscopus scaber* | Silver | — | 0 | 586 | — |  |
-| *Urothoe marina* | Silver | — | 0 | 0 | — |  |
-| *Vallicula multiformis* | Silver | — | 0 | 0 | — |  |
-| *Vanadis formosa* | Silver | — | 0 | 0 | — |  |
-| *Varicorbula gibba* | Silver | — | 0 | 94 | — |  |
-| *Velella velella* | Silver | — | 0 | 1000 | — |  |
-| *Venerupis corrugata* | Silver | — | 0 | 0 | — |  |
-| *Venerupis geographica* | Silver | — | 0 | 166 | — |  |
-| *Venus casina* | Silver | — | 0 | 0 | — |  |
-| *Venus verrucosa* | Silver | — | 0 | 1000 | — |  |
-| *Veretillum cynomorium* | Silver | — | 0 | 321 | — |  |
-| *Vermetus bieleri* | Silver | — | 0 | 0 | — |  |
-| *Vermetus granulatus* | Silver | — | 0 | 0 | — |  |
-| *Vermetus triquetrus* | Silver | — | 0 | 205 | — |  |
-| *Vermiliopsis infundibulum* | Silver | — | 0 | 0 | — |  |
-| *Vibilia armata* | Silver | — | 0 | 0 | — |  |
-| *Vibilia propinqua* | Silver | — | 0 | 0 | — |  |
-| *Virgularia mirabilis* | Silver | — | 0 | 0 | — |  |
-| *Vitreolina philippi* | Silver | — | 0 | 0 | — |  |
-| *Vorticeros auriculatum* | Silver | — | 0 | 0 | — |  |
-| *Vorticeros luteum* | Silver | — | 0 | 0 | — |  |
-| *Walkeria tuberosa* | Silver | — | 0 | 0 | — |  |
-| *Watersipora cucullata* | Silver | — | 0 | 129 | — |  |
-| *Wheelerigobius canariensis* | Silver | — | 0 | 0 | — |  |
-| *Xaiva biguttata* | Silver | — | 0 | 0 | — |  |
-| *Xantho hydrophilus* | Silver | — | 0 | 396 | — |  |
-| *Xantho pilipes* | Silver | — | 0 | 0 | — |  |
-| *Xantho poressa* | Silver | — | 0 | 985 | — |  |
-| *Xestospongia testudinaria* | Silver | — | 0 | 0 | — |  |
-| *Xyrichtys novacula* | Silver | — | 0 | 1000 | — |  |
-| *Yungia aurantiaca* | Silver | — | 0 | 781 | — |  |
-| *Zanclus cornutus* | Silver | — | 0 | 0 | — |  |
-| *Zebrus pallaoroi* | Silver | — | 0 | 0 | — |  |
-| *Zebrus zebrus* | Silver | — | 0 | 301 | — |  |
-| *Zeugopterus punctatus* | Silver | — | 0 | 0 | — |  |
-| *Zeus faber* | Silver | — | 0 | 327 | — |  |
-| *Zonaria pyrum* | Silver | — | 0 | 0 | — |  |
-| *Zosterisessor ophiocephalus* | Silver | — | 0 | 247 | — |  |
-| *Acanthus mollis* | Bronze | — | 0 | 0 | — |  |
-| *Acer negundo* | Bronze | — | 0 | 0 | — |  |
-| *Acetabularia acetabulum* | Bronze | — | 0 | 1000 | — |  |
-| *Acetabularia caliculus* | Bronze | — | 0 | 0 | — |  |
-| *Acinetospora crinita* | Bronze | — | 0 | 427 | — |  |
-| *Acrosymphyton purpuriferum* | Bronze | — | 0 | 0 | — |  |
-| *Actinidia chinensis* | Bronze | — | 0 | 0 | — |  |
-| *Actitis hypoleucos* | Bronze | — | 0 | 1000 | — |  |
-| *Adiantum capillus-veneris* | Bronze | — | 0 | 0 | — |  |
-| *Aedes caspius* | Bronze | — | 0 | 0 | — |  |
-| *Aegithalos caudatus* | Bronze | — | 0 | 0 | — |  |
-| *Aepyceros melampus* | Bronze | — | 0 | 0 | — |  |
-| *Agave americana* | Bronze | — | 0 | 0 | — |  |
-| *Aglaothamnion caudatum* | Bronze | — | 0 | 0 | — |  |
-| *Ailanthus altissima* | Bronze | — | 0 | 0 | — |  |
-| *Alcedo atthis* | Bronze | — | 0 | 0 | — |  |
-| *Alectoris rufa* | Bronze | — | 0 | 0 | — |  |
-| *Allium atroviolaceum* | Bronze | — | 0 | 0 | — |  |
-| *Allium roseum* | Bronze | — | 0 | 0 | — |  |
-| *Aloe maculata* | Bronze | — | 0 | 0 | — |  |
-| *Aloe vera* | Bronze | — | 0 | 0 | — |  |
-| *Alopochen aegyptiaca* | Bronze | — | 0 | 0 | — |  |
-| *Alsidium corallinum* | Bronze | — | 0 | 0 | — |  |
-| *Amanita phalloides* | Bronze | — | 0 | 0 | — |  |
-| *Amaranthus retroflexus* | Bronze | — | 0 | 0 | — |  |
-| *Amphiroa beauvoisii* | Bronze | — | 0 | 232 | — |  |
-| *Amphiroa kuetzingiana* | Bronze | — | 0 | 0 | — |  |
-| *Amphiroa rigida* | Bronze | — | 0 | 646 | — |  |
-| *Amphiroa rubra* | Bronze | — | 0 | 2 | — |  |
-| *Anacridium aegyptium* | Bronze | — | 0 | 0 | — |  |
-| *Anacyclus valentinus* | Bronze | — | 0 | 0 | — |  |
-| *Anadyomene stellata* | Bronze | — | 0 | 20 | — |  |
-| *Anas platyrhynchos* | Bronze | — | 0 | 1000 | — |  |
-| *Ancistrocerus gazella* | Bronze | — | 0 | 0 | — |  |
-| *Anemonoides nemorosa* | Bronze | — | 0 | 0 | — |  |
-| *Anguis fragilis* | Bronze | — | 0 | 0 | — |  |
-| *Anredera cordifolia* | Bronze | — | 0 | 0 | — |  |
-| *Anthocharis cardamines* | Bronze | — | 0 | 0 | — |  |
-| *Anthomyia illocata* | Bronze | — | 0 | 0 | — |  |
-| *Anthophora bimaculata* | Bronze | — | 0 | 0 | — |  |
-| *Anthus pratensis* | Bronze | — | 0 | 0 | — |  |
-| *Aphaenogaster senilis* | Bronze | — | 0 | 0 | — |  |
-| *Aphis fabae* | Bronze | — | 0 | 0 | — |  |
-| *Apis mellifera* | Bronze | — | 0 | 0 | — |  |
-| *Apus apus* | Bronze | — | 0 | 0 | — |  |
-| *Araneus diadematus* | Bronze | — | 0 | 0 | — |  |
-| *Araujia sericifera* | Bronze | — | 0 | 0 | — |  |
-| *Arbutus unedo* | Bronze | — | 0 | 0 | — |  |
-| *Arctotheca calendula* | Bronze | — | 0 | 0 | — |  |
-| *Ardea alba* | Bronze | — | 0 | 0 | — |  |
-| *Ardea cinerea* | Bronze | — | 0 | 1000 | — |  |
-| *Ardea ibis* | Bronze | — | 0 | 0 | — |  |
-| *Ardeola ralloides* | Bronze | — | 0 | 0 | — |  |
-| *Arenaria interpres* | Bronze | — | 0 | 0 | — |  |
-| *Arge ochropus* | Bronze | — | 0 | 0 | — |  |
-| *Artemisia annua* | Bronze | — | 0 | 0 | — |  |
-| *Artemisia scoparia* | Bronze | — | 0 | 0 | — |  |
-| *Arundo donax* | Bronze | — | 0 | 1000 | — |  |
-| *Asparagopsis armata* | Bronze | — | 0 | 819 | — |  |
-| *Asparagopsis taxiformis* | Bronze | — | 0 | 1000 | — |  |
-| *Asparagus acutifolius* | Bronze | — | 0 | 1000 | — |  |
-| *Asperococcus bullosus* | Bronze | — | 0 | 0 | — |  |
-| *Asphodelus fistulosus* | Bronze | — | 0 | 1000 | — |  |
-| *Asplenium fontanum* | Bronze | — | 0 | 0 | — |  |
-| *Asplenium onopteris* | Bronze | — | 0 | 0 | — |  |
-| *Asplenium trichomanes* | Bronze | — | 0 | 0 | — |  |
-| *Athene noctua* | Bronze | — | 0 | 0 | — |  |
-| *Atriplex halimus* | Bronze | — | 0 | 0 | — |  |
-| *Austrocylindropuntia cylindrica* | Bronze | — | 0 | 0 | — |  |
-| *Autographa gamma* | Bronze | — | 0 | 0 | — |  |
-| *Avena barbata* | Bronze | — | 0 | 0 | — |  |
-| *Avena sativa* | Bronze | — | 0 | 0 | — |  |
-| *Batophora occidentalis* | Bronze | — | 0 | 0 | — |  |
-| *Bellis perennis* | Bronze | — | 0 | 0 | — |  |
-| *Belonochilus numenius* | Bronze | — | 0 | 0 | — |  |
-| *Bembix oculata* | Bronze | — | 0 | 0 | — |  |
-| *Beta vulgaris* | Bronze | — | 0 | 0 | — |  |
-| *Bidens aurea* | Bronze | — | 0 | 0 | — |  |
-| *Bifurcaria bifurcata* | Bronze | — | 0 | 0 | — |  |
-| *Bituminaria bituminosa* | Bronze | — | 0 | 1000 | — |  |
-| *Boletus impolitus* | Bronze | — | 0 | 0 | — |  |
-| *Bombus pascuorum* | Bronze | — | 0 | 0 | — |  |
-| *Bombus terrestris* | Bronze | — | 0 | 0 | — |  |
-| *Bonnemaisonia asparagoides* | Bronze | — | 0 | 113 | — |  |
-| *Bonnemaisonia clavata* | Bronze | — | 0 | 0 | — |  |
-| *Borago officinalis* | Bronze | — | 0 | 0 | — |  |
-| *Bornetia secundiflora* | Bronze | — | 0 | 129 | — |  |
-| *Bos taurus* | Bronze | — | 0 | 0 | — |  |
-| *Botryocladia botryoides* | Bronze | — | 0 | 0 | — |  |
-| *Bougainvillea glabra* | Bronze | — | 0 | 0 | — |  |
-| *Brachypodium retusum* | Bronze | — | 0 | 0 | — |  |
-| *Brintesia circe* | Bronze | — | 0 | 0 | — |  |
-| *Brithys crini* | Bronze | — | 0 | 0 | — |  |
-| *Bromus catharticus* | Bronze | — | 0 | 0 | — |  |
-| *Bromus diandrus* | Bronze | — | 0 | 0 | — |  |
-| *Bromus hordeaceus* | Bronze | — | 0 | 0 | — |  |
-| *Bromus madritensis* | Bronze | — | 0 | 0 | — |  |
-| *Bryopsis duplex* | Bronze | — | 0 | 0 | — |  |
-| *Bryopsis muscosa* | Bronze | — | 0 | 0 | — |  |
-| *Bryopsis plumosa* | Bronze | — | 0 | 115 | — |  |
-| *Bucorvus leadbeateri* | Bronze | — | 0 | 0 | — |  |
-| *Buddleja davidii* | Bronze | — | 0 | 0 | — |  |
-| *Bufo spinosus* | Bronze | — | 0 | 0 | — |  |
-| *Buteo buteo* | Bronze | — | 0 | 0 | — |  |
-| *Cakile maritima* | Bronze | — | 0 | 1000 | — |  |
-| *Calamagrostis arenaria* | Bronze | — | 0 | 0 | — |  |
-| *Calendula arvensis* | Bronze | — | 0 | 0 | — |  |
-| *Calicotome spinosa* | Bronze | — | 0 | 0 | — |  |
-| *Calidris alba* | Bronze | — | 0 | 0 | — |  |
-| *Calliblepharis jubata* | Bronze | — | 0 | 0 | — |  |
-| *Calliphora vicina* | Bronze | — | 0 | 0 | — |  |
-| *Calliptamus barbarus* | Bronze | — | 0 | 0 | — |  |
-| *Callistemon speciosus* | Bronze | — | 0 | 0 | — |  |
-| *Calluna vulgaris* | Bronze | — | 0 | 0 | — |  |
-| *Calopteryx haemorrhoidalis* | Bronze | — | 0 | 0 | — |  |
-| *Calystegia sepium* | Bronze | — | 0 | 0 | — |  |
-| *Calystegia silvatica* | Bronze | — | 0 | 0 | — |  |
-| *Calystegia soldanella* | Bronze | — | 0 | 1000 | — |  |
-| *Camponotus cruentatus* | Bronze | — | 0 | 0 | — |  |
-| *Capra hircus* | Bronze | — | 0 | 0 | — |  |
-| *Capsella bursa-pastoris* | Bronze | — | 0 | 0 | — |  |
-| *Carcharodus alceae* | Bronze | — | 0 | 0 | — |  |
-| *Carduelis carduelis* | Bronze | — | 0 | 1000 | — |  |
-| *Carduus pycnocephalus* | Bronze | — | 0 | 0 | — |  |
-| *Caretta caretta* | Bronze | — | 0 | 0 | — |  |
-| *Carpobrotus edulis* | Bronze | — | 0 | 0 | — |  |
-| *Carpocoris mediterraneus* | Bronze | — | 0 | 0 | — |  |
-| *Caulerpa chemnitzia* | Bronze | — | 0 | 0 | — |  |
-| *Caulerpa cylindracea* | Bronze | — | 0 | 863 | — |  |
-| *Caulerpa mexicana* | Bronze | — | 0 | 0 | — |  |
-| *Caulerpa prolifera* | Bronze | — | 0 | 287 | — |  |
-| *Caulerpa racemosa* | Bronze | — | 0 | 0 | — |  |
-| *Caulerpa taxifolia* | Bronze | — | 0 | 0 | — |  |
-| *Caulerpa webbiana* | Bronze | — | 0 | 93 | — |  |
-| *Cedrus deodara* | Bronze | — | 0 | 0 | — |  |
-| *Celtis australis* | Bronze | — | 0 | 0 | — |  |
-| *Cenchrus longisetus* | Bronze | — | 0 | 160 | — |  |
-| *Centaurea aspera* | Bronze | — | 0 | 1000 | — |  |
-| *Centaurea pectinata* | Bronze | — | 0 | 0 | — |  |
-| *Centranthus ruber* | Bronze | — | 0 | 0 | — |  |
-| *Cerastium glomeratum* | Bronze | — | 0 | 0 | — |  |
-| *Ceratonia siliqua* | Bronze | — | 0 | 0 | — |  |
-| *Ceratophyllum demersum* | Bronze | — | 0 | 281 | — |  |
-| *Cercis siliquastrum* | Bronze | — | 0 | 0 | — |  |
-| *Cercopis intermedia* | Bronze | — | 0 | 0 | — |  |
-| *Cerinthe major* | Bronze | — | 0 | 0 | — |  |
-| *Certhia brachydactyla* | Bronze | — | 0 | 0 | — |  |
-| *Cervus elaphus* | Bronze | — | 0 | 0 | — |  |
-| *Chaetomorpha aerea* | Bronze | — | 0 | 71 | — |  |
-| *Chaetomorpha linum* | Bronze | — | 0 | 204 | — |  |
-| *Chaetomorpha mediterranea* | Bronze | — | 0 | 0 | — |  |
-| *Chamaemelum nobile* | Bronze | — | 0 | 0 | — |  |
-| *Chamaerops humilis* | Bronze | — | 0 | 0 | — |  |
-| *Champia parvula* | Bronze | — | 0 | 81 | — |  |
-| *Charadrius dubius* | Bronze | — | 0 | 0 | — |  |
-| *Charaxes jasius* | Bronze | — | 0 | 0 | — |  |
-| *Chelidonium majus* | Bronze | — | 0 | 0 | — |  |
-| *Chelonia mydas* | Bronze | — | 0 | 172 | — |  |
-| *Chenopodiastrum murale* | Bronze | — | 0 | 0 | — |  |
-| *Chenopodium nutans* | Bronze | — | 0 | 0 | — |  |
-| *Chlidonias hybrida* | Bronze | — | 0 | 0 | — |  |
-| *Chloris chloris* | Bronze | — | 0 | 0 | — |  |
-| *Chloromyia formosa* | Bronze | — | 0 | 1000 | — |  |
-| *Chondracanthus acicularis* | Bronze | — | 0 | 0 | — |  |
-| *Chondria coerulescens* | Bronze | — | 0 | 0 | — |  |
-| *Chorthippus jacobsi* | Bronze | — | 0 | 0 | — |  |
-| *Chroicocephalus ridibundus* | Bronze | — | 0 | 1000 | — |  |
-| *Chroogomphus rutilus* | Bronze | — | 0 | 0 | — |  |
-| *Chrysolophus pictus* | Bronze | — | 0 | 0 | — |  |
-| *Chrysonephos lewisii* | Bronze | — | 0 | 14 | — |  |
-| *Chrysotoxum intermedium* | Bronze | — | 0 | 0 | — |  |
-| *Chrysymenia ventricosa* | Bronze | — | 0 | 0 | — |  |
-| *Chylocladia verticillata* | Bronze | — | 0 | 40 | — |  |
-| *Cichorium pumilum* | Bronze | — | 0 | 0 | — |  |
-| *Ciconia ciconia* | Bronze | — | 0 | 0 | — |  |
-| *Circaetus gallicus* | Bronze | — | 0 | 0 | — |  |
-| *Cirsium monspessulanum* | Bronze | — | 0 | 0 | — |  |
-| *Cirsium vulgare* | Bronze | — | 0 | 0 | — |  |
-| *Cisticola juncidis* | Bronze | — | 0 | 0 | — |  |
-| *Cistus albidus* | Bronze | — | 0 | 0 | — |  |
-| *Cistus monspeliensis* | Bronze | — | 0 | 0 | — |  |
-| *Cistus salviifolius* | Bronze | — | 0 | 1000 | — |  |
-| *Cladonia pyxidata* | Bronze | — | 0 | 0 | — |  |
-| *Cladophora prolifera* | Bronze | — | 0 | 0 | — |  |
-| *Cladophora rupestris* | Bronze | — | 0 | 85 | — |  |
-| *Cladosiphon cylindricus* | Bronze | — | 0 | 0 | — |  |
-| *Cladostephus spongiosus* | Bronze | — | 0 | 512 | — |  |
-| *Clavariadelphus pistillaris* | Bronze | — | 0 | 0 | — |  |
-| *Clinopodium nepeta* | Bronze | — | 0 | 0 | — |  |
-| *Closterotomus trivialis* | Bronze | — | 0 | 1000 | — |  |
-| *Coccinella septempunctata* | Bronze | — | 0 | 1000 | — |  |
-| *Codium adhaerens* | Bronze | — | 0 | 216 | — |  |
-| *Codium bursa* | Bronze | — | 0 | 1000 | — |  |
-| *Codium coralloides* | Bronze | — | 0 | 87 | — |  |
-| *Codium effusum* | Bronze | — | 0 | 358 | — |  |
-| *Codium fragile* | Bronze | — | 0 | 195 | — |  |
-| *Codium taylorii* | Bronze | — | 0 | 0 | — |  |
-| *Codium vermilara* | Bronze | — | 0 | 1000 | — |  |
-| *Colias croceus* | Bronze | — | 0 | 0 | — |  |
-| *Collozoum inerme* | Bronze | — | 0 | 105 | — |  |
-| *Collybia sordida* | Bronze | — | 0 | 0 | — |  |
-| *Coloeus monedula* | Bronze | — | 0 | 0 | — |  |
-| *Colpomenia peregrina* | Bronze | — | 0 | 0 | — |  |
-| *Colpomenia sinuosa* | Bronze | — | 0 | 889 | — |  |
-| *Columba livia* | Bronze | — | 0 | 1000 | — |  |
-| *Columba palumbus* | Bronze | — | 0 | 1000 | — |  |
-| *Conium maculatum* | Bronze | — | 0 | 0 | — |  |
-| *Connochaetes taurinus* | Bronze | — | 0 | 0 | — |  |
-| *Contarinia squamariae* | Bronze | — | 0 | 0 | — |  |
-| *Convallaria majalis* | Bronze | — | 0 | 0 | — |  |
-| *Convolvulus althaeoides* | Bronze | — | 0 | 1000 | — |  |
-| *Convolvulus arvensis* | Bronze | — | 0 | 0 | — |  |
-| *Coprinopsis picacea* | Bronze | — | 0 | 0 | — |  |
-| *Coptocephala unifasciata* | Bronze | — | 0 | 0 | — |  |
-| *Coracias caudatus* | Bronze | — | 0 | 0 | — |  |
-| *Corallina ferreyrae* | Bronze | — | 0 | 0 | — |  |
-| *Corallina officinalis* | Bronze | — | 0 | 134 | — |  |
-| *Coriomeris denticulatus* | Bronze | — | 0 | 0 | — |  |
-| *Coronilla glauca* | Bronze | — | 0 | 0 | — |  |
-| *Coronilla valentina* | Bronze | — | 0 | 0 | — |  |
-| *Cortaderia selloana* | Bronze | — | 0 | 0 | — |  |
-| *Corvus corax* | Bronze | — | 0 | 0 | — |  |
-| *Corvus cornix* | Bronze | — | 0 | 0 | — |  |
-| *Corylus avellana* | Bronze | — | 0 | 0 | — |  |
-| *Cossus cossus* | Bronze | — | 0 | 0 | — |  |
-| *Cotoneaster coriaceus* | Bronze | — | 0 | 0 | — |  |
-| *Cottoniella filamentosa* | Bronze | — | 0 | 17 | — |  |
-| *Crataegus monogyna* | Bronze | — | 0 | 0 | — |  |
-| *Craterellus cornucopioides* | Bronze | — | 0 | 0 | — |  |
-| *Craterellus lutescens* | Bronze | — | 0 | 0 | — |  |
-| *Crematogaster scutellaris* | Bronze | — | 0 | 0 | — |  |
-| *Crepis bursifolia* | Bronze | — | 0 | 0 | — |  |
-| *Crioceris asparagi* | Bronze | — | 0 | 0 | — |  |
-| *Crithmum maritimum* | Bronze | — | 0 | 0 | — |  |
-| *Crocodylus niloticus* | Bronze | — | 0 | 0 | — |  |
-| *Crocothemis erythraea* | Bronze | — | 0 | 0 | — |  |
-| *Crocuta crocuta* | Bronze | — | 0 | 0 | — |  |
-| *Cucurbita pepo* | Bronze | — | 0 | 0 | — |  |
-| *Cupressus sempervirens* | Bronze | — | 0 | 0 | — |  |
-| *Curruca melanocephala* | Bronze | — | 0 | 0 | — |  |
-| *Cutleria adspersa* | Bronze | — | 0 | 0 | — |  |
-| *Cutleria multifida* | Bronze | — | 0 | 0 | — |  |
-| *Cyanistes caeruleus* | Bronze | — | 0 | 0 | — |  |
-| *Cyanopica cooki* | Bronze | — | 0 | 0 | — |  |
-| *Cycas revoluta* | Bronze | — | 0 | 0 | — |  |
-| *Cydnus aterrimus* | Bronze | — | 0 | 0 | — |  |
-| *Cygnus cygnus* | Bronze | — | 0 | 0 | — |  |
-| *Cymodocea nodosa* | Bronze | — | 0 | 1000 | — |  |
-| *Cymopolia barbata* | Bronze | — | 0 | 0 | — |  |
-| *Cynodon dactylon* | Bronze | — | 0 | 0 | — |  |
-| *Cynoglossum creticum* | Bronze | — | 0 | 0 | — |  |
-| *Cyperus capitatus* | Bronze | — | 0 | 0 | — |  |
-| *Cyrtophora citricola* | Bronze | — | 0 | 0 | — |  |
-| *Cystoderma amianthinum* | Bronze | — | 0 | 0 | — |  |
-| *Cystoseira compressa* | Bronze | — | 0 | 438 | — |  |
-| *Cystoseira foeniculacea* | Bronze | — | 0 | 32 | — |  |
-| *Cystoseira pustulata* | Bronze | — | 0 | 0 | — |  |
-| *Cytisus scoparius* | Bronze | — | 0 | 0 | — |  |
-| *Daboecia cantabrica* | Bronze | — | 0 | 0 | — |  |
-| *Daphne gnidium* | Bronze | — | 0 | 0 | — |  |
-| *Dasycladus vermicularis* | Bronze | — | 0 | 245 | — |  |
-| *Datura stramonium* | Bronze | — | 0 | 0 | — |  |
-| *Daucus carota* | Bronze | — | 0 | 0 | — |  |
-| *Delichon urbicum* | Bronze | — | 0 | 1000 | — |  |
-| *Derbesia tenuissima* | Bronze | — | 0 | 169 | — |  |
-| *Dichotomaria obtusata* | Bronze | — | 0 | 0 | — |  |
-| *Dictyopteris polypodioides* | Bronze | — | 0 | 373 | — |  |
-| *Dictyota cyanoloma* | Bronze | — | 0 | 580 | — |  |
-| *Dictyota dichotoma* | Bronze | — | 0 | 1000 | — |  |
-| *Dictyota fasciola* | Bronze | — | 0 | 87 | — |  |
-| *Dictyota implexa* | Bronze | — | 0 | 130 | — |  |
-| *Dictyota mediterranea* | Bronze | — | 0 | 0 | — |  |
-| *Dictyota spiralis* | Bronze | — | 0 | 0 | — |  |
-| *Diplotaxis erucoides* | Bronze | — | 0 | 0 | — |  |
-| *Dipsacus fullonum* | Bronze | — | 0 | 0 | — |  |
-| *Dittrichia viscosa* | Bronze | — | 0 | 1000 | — |  |
-| *Dolycoris baccarum* | Bronze | — | 0 | 0 | — |  |
-| *Doridicola agilis* | Bronze | — | 0 | 0 | — |  |
-| *Drachiella spectabilis* | Bronze | — | 0 | 0 | — |  |
-| *Drink cans* | Bronze | — | 0 | 0 | — |  |
-| *Dyroderes umbraculatus* | Bronze | — | 0 | 0 | — |  |
-| *Echinophora spinosa* | Bronze | — | 0 | 0 | — |  |
-| *Echium plantagineum* | Bronze | — | 0 | 0 | — |  |
-| *Echium sabulicola* | Bronze | — | 0 | 0 | — |  |
-| *Echium vulgare* | Bronze | — | 0 | 0 | — |  |
-| *Egretta garzetta* | Bronze | — | 0 | 1000 | — |  |
-| *Elaeagnus angustifolia* | Bronze | — | 0 | 0 | — |  |
-| *Elaeagnus macrophylla* | Bronze | — | 0 | 0 | — |  |
-| *Ellisolandia elongata* | Bronze | — | 0 | 1000 | — |  |
-| *Elodea densa* | Bronze | — | 0 | 0 | — |  |
-| *Emberiza cirlus* | Bronze | — | 0 | 0 | — |  |
-| *Emberiza hortulana* | Bronze | — | 0 | 0 | — |  |
-| *Episyrphus balteatus* | Bronze | — | 0 | 1000 | — |  |
-| *Equus asinus* | Bronze | — | 0 | 0 | — |  |
-| *Equus caballus* | Bronze | — | 0 | 726 | — |  |
-| *Equus quagga* | Bronze | — | 0 | 0 | — |  |
-| *Erica arborea* | Bronze | — | 0 | 0 | — |  |
-| *Erica scoparia* | Bronze | — | 0 | 0 | — |  |
-| *Ericaria amentacea* | Bronze | — | 0 | 0 | — |  |
-| *Ericaria brachycarpa* | Bronze | — | 0 | 0 | — |  |
-| *Ericaria crinita* | Bronze | — | 0 | 0 | — |  |
-| *Ericaria mediterranea* | Bronze | — | 0 | 184 | — |  |
-| *Erigeron sumatrensis* | Bronze | — | 0 | 0 | — |  |
-| *Eriobotrya japonica* | Bronze | — | 0 | 0 | — |  |
-| *Eristalinus taeniops* | Bronze | — | 0 | 0 | — |  |
-| *Eristalis tenax* | Bronze | — | 0 | 0 | — |  |
-| *Erithacus rubecula* | Bronze | — | 0 | 0 | — |  |
-| *Erodium ciconium* | Bronze | — | 0 | 0 | — |  |
-| *Erodium malacoides* | Bronze | — | 0 | 0 | — |  |
-| *Erodium moschatum* | Bronze | — | 0 | 0 | — |  |
-| *Eryngium campestre* | Bronze | — | 0 | 0 | — |  |
-| *Eryngium maritimum* | Bronze | — | 0 | 1000 | — |  |
-| *Estrilda astrild* | Bronze | — | 0 | 1000 | — |  |
-| *Eucalyptus camaldulensis* | Bronze | — | 0 | 0 | — |  |
-| *Euchloe crameri* | Bronze | — | 0 | 0 | — |  |
-| *Eupeodes corollae* | Bronze | — | 0 | 0 | — |  |
-| *Euphorbia amygdaloides* | Bronze | — | 0 | 0 | — |  |
-| *Euphorbia characias* | Bronze | — | 0 | 0 | — |  |
-| *Euphorbia helioscopia* | Bronze | — | 0 | 0 | — |  |
-| *Euphorbia peplis* | Bronze | — | 0 | 0 | — |  |
-| *Euphorbia serrata* | Bronze | — | 0 | 0 | — |  |
-| *Euphorbia terracina* | Bronze | — | 0 | 0 | — |  |
-| *Eupogodon planus* | Bronze | — | 0 | 0 | — |  |
-| *Eurydema oleracea* | Bronze | — | 0 | 0 | — |  |
-| *Eurydema ornata* | Bronze | — | 0 | 0 | — |  |
-| *Eurydema ventralis* | Bronze | — | 0 | 0 | — |  |
-| *Evarcha jucunda* | Bronze | — | 0 | 0 | — |  |
-| *Evergestis frumentalis* | Bronze | — | 0 | 0 | — |  |
-| *Fagus sylvatica* | Bronze | — | 0 | 0 | — |  |
-| *Falco tinnunculus* | Bronze | — | 0 | 0 | — |  |
-| *Felis catus* | Bronze | — | 0 | 0 | — |  |
-| *Ferula communis* | Bronze | — | 0 | 0 | — |  |
-| *Ficus carica* | Bronze | — | 0 | 0 | — |  |
-| *Flabellia petiolata* | Bronze | — | 0 | 1000 | — |  |
-| *Foeniculum vulgare* | Bronze | — | 0 | 1000 | — |  |
-| *Fraxinus angustifolia* | Bronze | — | 0 | 0 | — |  |
-| *Fraxinus ornus* | Bronze | — | 0 | 0 | — |  |
-| *Fringilla coelebs* | Bronze | — | 0 | 1000 | — |  |
-| *Fulica atra* | Bronze | — | 0 | 0 | — |  |
-| *Fumaria capreolata* | Bronze | — | 0 | 0 | — |  |
-| *Galactites tomentosus* | Bronze | — | 0 | 1000 | — |  |
-| *Galaxaura rugosa* | Bronze | — | 0 | 0 | — |  |
-| *Galerida cristata* | Bronze | — | 0 | 0 | — |  |
-| *Galium aparine* | Bronze | — | 0 | 0 | — |  |
-| *Gallinago gallinago* | Bronze | — | 0 | 0 | — |  |
-| *Gallinula chloropus* | Bronze | — | 0 | 1000 | — |  |
-| *Garrulus glandarius* | Bronze | — | 0 | 0 | — |  |
-| *Gastroclonium clavatum* | Bronze | — | 0 | 117 | — |  |
-| *Gelidium bipectinatum* | Bronze | — | 0 | 0 | — |  |
-| *Gelidium spinosum* | Bronze | — | 0 | 0 | — |  |
-| *Genista scorpius* | Bronze | — | 0 | 0 | — |  |
-| *Genista umbellata* | Bronze | — | 0 | 0 | — |  |
-| *Geranium dissectum* | Bronze | — | 0 | 0 | — |  |
-| *Geranium rotundifolium* | Bronze | — | 0 | 0 | — |  |
-| *Giraffa camelopardalis* | Bronze | — | 0 | 0 | — |  |
-| *Gladiolus italicus* | Bronze | — | 0 | 0 | — |  |
-| *Glaucium flavum* | Bronze | — | 0 | 0 | — |  |
-| *Glebionis coronaria* | Bronze | — | 0 | 0 | — |  |
-| *Gonepteryx cleopatra* | Bronze | — | 0 | 0 | — |  |
-| *Gongolaria abies-marina* | Bronze | — | 0 | 0 | — |  |
-| *Gongolaria barbata* | Bronze | — | 0 | 0 | — |  |
-| *Gongolaria elegans* | Bronze | — | 0 | 0 | — |  |
-| *Gongolaria squarrosa* | Bronze | — | 0 | 0 | — |  |
-| *Graphosoma italicum* | Bronze | — | 0 | 0 | — |  |
-| *Graphosoma semipunctatum* | Bronze | — | 0 | 0 | — |  |
-| *Grateloupia turuturu* | Bronze | — | 0 | 0 | — |  |
-| *Grevillea rosmarinifolia* | Bronze | — | 0 | 0 | — |  |
-| *Gulosus aristotelis* | Bronze | — | 0 | 1000 | — |  |
-| *Gulsonia nodulosa* | Bronze | — | 0 | 0 | — |  |
-| *Gyps africanus* | Bronze | — | 0 | 0 | — |  |
-| *Gyps fulvus* | Bronze | — | 0 | 0 | — |  |
-| *Halictus scabiosae* | Bronze | — | 0 | 0 | — |  |
-| *Halimeda discoidea* | Bronze | — | 0 | 0 | — |  |
-| *Halimeda incrassata* | Bronze | — | 0 | 0 | — |  |
-| *Halimeda tuna* | Bronze | — | 0 | 1000 | — |  |
-| *Halopteris filicina* | Bronze | — | 0 | 183 | — |  |
-| *Halopteris scoparia* | Bronze | — | 0 | 904 | — |  |
-| *Hedera helix* | Bronze | — | 0 | 0 | — |  |
-| *Helichrysum stoechas* | Bronze | — | 0 | 0 | — |  |
-| *Heliophanus apiatus* | Bronze | — | 0 | 0 | — |  |
-| *Heliothis peltigera* | Bronze | — | 0 | 0 | — |  |
-| *Helogale parvula* | Bronze | — | 0 | 0 | — |  |
-| *Hepatica nobilis* | Bronze | — | 0 | 0 | — |  |
-| *Hildenbrandia crouaniorum* | Bronze | — | 0 | 0 | — |  |
-| *Hildenbrandia rubra* | Bronze | — | 0 | 94 | — |  |
-| *Hippopotamus amphibius* | Bronze | — | 0 | 0 | — |  |
-| *Hirschfeldia incana* | Bronze | — | 0 | 0 | — |  |
-| *Hirundo rustica* | Bronze | — | 0 | 1000 | — |  |
-| *Homotrema rubra* | Bronze | — | 0 | 0 | — |  |
-| *Hordeum murinum* | Bronze | — | 0 | 0 | — |  |
-| *Humulus lupulus* | Bronze | — | 0 | 0 | — |  |
-| *Hyalopterus pruni* | Bronze | — | 0 | 0 | — |  |
-| *Hydroclathrus clathratus* | Bronze | — | 0 | 0 | — |  |
-| *Hydrolithon farinosum* | Bronze | — | 0 | 246 | — |  |
-| *Hygrocybe conicoides* | Bronze | — | 0 | 0 | — |  |
-| *Hyles euphorbiae* | Bronze | — | 0 | 0 | — |  |
-| *Hyparrhenia hirta* | Bronze | — | 0 | 0 | — |  |
-| *Hypericum perforatum* | Bronze | — | 0 | 0 | — |  |
-| *Hypnea musciformis* | Bronze | — | 0 | 184 | — |  |
-| *Ichthyaetus audouinii* | Bronze | — | 0 | 0 | — |  |
-| *Ichthyaetus melanocephalus* | Bronze | — | 0 | 0 | — |  |
-| *Ilex aquifolium* | Bronze | — | 0 | 0 | — |  |
-| *Iphiclides feisthamelii* | Bronze | — | 0 | 0 | — |  |
-| *Ipomoea indica* | Bronze | — | 0 | 0 | — |  |
-| *Ipomoea purpurea* | Bronze | — | 0 | 0 | — |  |
-| *Iris albicans* | Bronze | — | 0 | 0 | — |  |
-| *Iris florentina* | Bronze | — | 0 | 0 | — |  |
-| *Iris latifolia* | Bronze | — | 0 | 0 | — |  |
-| *Iris lutescens* | Bronze | — | 0 | 0 | — |  |
-| *Iris pseudacorus* | Bronze | — | 0 | 0 | — |  |
-| *Irvinea chiajeana* | Bronze | — | 0 | 0 | — |  |
-| *Ischnura elegans* | Bronze | — | 0 | 0 | — |  |
-| *Ischnura graellsii* | Bronze | — | 0 | 0 | — |  |
-| *Ixobrychus minutus* | Bronze | — | 0 | 0 | — |  |
-| *Jacobaea maritima* | Bronze | — | 0 | 0 | — |  |
-| *Jania adhaerens* | Bronze | — | 0 | 82 | — |  |
-| *Jania longifurca* | Bronze | — | 0 | 0 | — |  |
-| *Jania rubens* | Bronze | — | 0 | 330 | — |  |
-| *Jania virgata* | Bronze | — | 0 | 174 | — |  |
-| *Juncus acutus* | Bronze | — | 0 | 1000 | — |  |
-| *Juniperus oxycedrus* | Bronze | — | 0 | 0 | — |  |
-| *Kallymenia patens* | Bronze | — | 0 | 0 | — |  |
-| *Kobus ellipsiprymnus* | Bronze | — | 0 | 0 | — |  |
-| *Lachnaia paradoxa* | Bronze | — | 0 | 0 | — |  |
-| *Lachnaia tristigma* | Bronze | — | 0 | 0 | — |  |
-| *Lactarius deliciosus* | Bronze | — | 0 | 0 | — |  |
-| *Lactarius sanguifluus* | Bronze | — | 0 | 0 | — |  |
-| *Lagurus ovatus* | Bronze | — | 0 | 1000 | — |  |
-| *Lamarckia aurea* | Bronze | — | 0 | 0 | — |  |
-| *Lampides boeticus* | Bronze | — | 0 | 0 | — |  |
-| *Lanius senator* | Bronze | — | 0 | 0 | — |  |
-| *Lantana camara* | Bronze | — | 0 | 0 | — |  |
-| *Larus michahellis* | Bronze | — | 0 | 1000 | — |  |
-| *Lasiommata megera* | Bronze | — | 0 | 0 | — |  |
-| *Lathyrus clymenum* | Bronze | — | 0 | 0 | — |  |
-| *Laurencia epiphylla* | Bronze | — | 0 | 0 | — |  |
-| *Laurus nobilis* | Bronze | — | 0 | 0 | — |  |
-| *Lavandula stoechas* | Bronze | — | 0 | 0 | — |  |
-| *Leccinellum lepidum* | Bronze | — | 0 | 0 | — |  |
-| *Lemna minor* | Bronze | — | 0 | 0 | — |  |
-| *Lepidium draba* | Bronze | — | 0 | 0 | — |  |
-| *Leptotes pirithous* | Bronze | — | 0 | 0 | — |  |
-| *Lepus granatensis* | Bronze | — | 0 | 0 | — |  |
-| *Liagora distenta* | Bronze | — | 0 | 0 | — |  |
-| *Liagora viscida* | Bronze | — | 0 | 0 | — |  |
-| *Ligustrum lucidum* | Bronze | — | 0 | 0 | — |  |
-| *Limenitis reducta* | Bronze | — | 0 | 0 | — |  |
-| *Linaria cannabina* | Bronze | — | 0 | 0 | — |  |
-| *Linepithema humile* | Bronze | — | 0 | 0 | — |  |
-| *Lithophyllum byssoides* | Bronze | — | 0 | 227 | — |  |
-| *Lithophyllum corallinae* | Bronze | — | 0 | 0 | — |  |
-| *Lithophyllum dentatum* | Bronze | — | 0 | 0 | — |  |
-| *Lithophyllum incrustans* | Bronze | — | 0 | 1000 | — |  |
-| *Lithophyllum papillosum* | Bronze | — | 0 | 0 | — |  |
-| *Lithophyllum stictiforme* | Bronze | — | 0 | 517 | — |  |
-| *Lithothamnion corallioides* | Bronze | — | 0 | 0 | — |  |
-| *Lobophora canariensis* | Bronze | — | 0 | 0 | — |  |
-| *Lobophora variegata* | Bronze | — | 0 | 0 | — |  |
-| *Lobularia maritima* | Bronze | — | 0 | 1000 | — |  |
-| *Locusta migratoria* | Bronze | — | 0 | 0 | — |  |
-| *Lonicera etrusca* | Bronze | — | 0 | 0 | — |  |
-| *Lonicera implexa* | Bronze | — | 0 | 0 | — |  |
-| *Lonicera japonica* | Bronze | — | 0 | 0 | — |  |
-| *Lophophanes cristatus* | Bronze | — | 0 | 0 | — |  |
-| *Lotus creticus* | Bronze | — | 0 | 0 | — |  |
-| *Loxodonta africana* | Bronze | — | 0 | 0 | — |  |
-| *Lucilia sericata* | Bronze | — | 0 | 0 | — |  |
-| *Luscinia megarhynchos* | Bronze | — | 0 | 0 | — |  |
-| *Lycosa tarantula* | Bronze | — | 0 | 0 | — |  |
-| *Lysimachia arvensis* | Bronze | — | 0 | 1000 | — |  |
-| *Macrolepiota procera* | Bronze | — | 0 | 0 | — |  |
-| *Macronemurus appendiculatus* | Bronze | — | 0 | 0 | — |  |
-| *Magnolia grandiflora* | Bronze | — | 0 | 0 | — |  |
-| *Malus domestica* | Bronze | — | 0 | 0 | — |  |
-| *Malva multiflora* | Bronze | — | 0 | 0 | — |  |
-| *Malva sylvestris* | Bronze | — | 0 | 0 | — |  |
-| *Malvaevora timida* | Bronze | — | 0 | 0 | — |  |
-| *Maniola jurtina* | Bronze | — | 0 | 0 | — |  |
-| *Marcus-kochia littorea* | Bronze | — | 0 | 0 | — |  |
-| *Matricaria chamomilla* | Bronze | — | 0 | 0 | — |  |
-| *Mauremys leprosa* | Bronze | — | 0 | 0 | — |  |
-| *Medicago littoralis* | Bronze | — | 0 | 0 | — |  |
-| *Medicago marina* | Bronze | — | 0 | 0 | — |  |
-| *Medicago polymorpha* | Bronze | — | 0 | 0 | — |  |
-| *Medicago sativa* | Bronze | — | 0 | 0 | — |  |
-| *Melanargia lachesis* | Bronze | — | 0 | 0 | — |  |
-| *Melia azedarach* | Bronze | — | 0 | 0 | — |  |
-| *Melica ciliata* | Bronze | — | 0 | 0 | — |  |
-| *Melilotus indicus* | Bronze | — | 0 | 0 | — |  |
-| *Melyvonnea canariensis* | Bronze | — | 0 | 0 | — |  |
-| *Menemerus semilimbatus* | Bronze | — | 0 | 0 | — |  |
-| *Menemerus taeniatus* | Bronze | — | 0 | 0 | — |  |
-| *Mentha spicata* | Bronze | — | 0 | 0 | — |  |
-| *Mentha suaveolens* | Bronze | — | 0 | 0 | — |  |
-| *Mercurialis annua* | Bronze | — | 0 | 0 | — |  |
-| *Merops apiaster* | Bronze | — | 0 | 0 | — |  |
-| *Mesophyllum alternans* | Bronze | — | 0 | 216 | — |  |
-| *Mesophyllum expansum* | Bronze | — | 0 | 935 | — |  |
-| *Mesophyllum lichenoides* | Bronze | — | 0 | 0 | — |  |
-| *Messor barbarus* | Bronze | — | 0 | 0 | — |  |
-| *Milvus migrans* | Bronze | — | 0 | 0 | — |  |
-| *Milvus milvus* | Bronze | — | 0 | 0 | — |  |
-| *Miniacina miniacea* | Bronze | — | 0 | 0 | — |  |
-| *Mirabilis jalapa* | Bronze | — | 0 | 0 | — |  |
-| *Moricandia arvensis* | Bronze | — | 0 | 0 | — |  |
-| *Morus nigra* | Bronze | — | 0 | 0 | — |  |
-| *Motacilla alba* | Bronze | — | 0 | 1000 | — |  |
-| *Motacilla cinerea* | Bronze | — | 0 | 0 | — |  |
-| *Motacilla flava* | Bronze | — | 0 | 0 | — |  |
-| *Myiopsitta monachus* | Bronze | — | 0 | 1000 | — |  |
-| *Mylabris quadripunctata* | Bronze | — | 0 | 0 | — |  |
-| *Myocastor coypus* | Bronze | — | 0 | 0 | — |  |
-| *Nanozostera noltii* | Bronze | — | 0 | 347 | — |  |
-| *Nemalion elminthoides* | Bronze | — | 0 | 0 | — |  |
-| *Nemastoma canariense* | Bronze | — | 0 | 0 | — |  |
-| *Neogoniolithon brassica-florida* | Bronze | — | 0 | 89 | — |  |
-| *Neogoniolithon hauckii* | Bronze | — | 0 | 0 | — |  |
-| *Nerium oleander* | Bronze | — | 0 | 0 | — |  |
-| *Nezara viridula* | Bronze | — | 0 | 0 | — |  |
-| *Nitophyllum punctatum* | Bronze | — | 0 | 98 | — |  |
-| *Nyctophila reichii* | Bronze | — | 0 | 0 | — |  |
-| *Oedemera atrata* | Bronze | — | 0 | 0 | — |  |
-| *Oedemera flavipes* | Bronze | — | 0 | 0 | — |  |
-| *Oedemera nobilis* | Bronze | — | 0 | 0 | — |  |
-| *Oenothera lindheimeri* | Bronze | — | 0 | 0 | — |  |
-| *Olea europaea* | Bronze | — | 0 | 0 | — |  |
-| *Olea europea* | Bronze | — | 0 | 0 | — |  |
-| *Oloptum miliaceum* | Bronze | — | 0 | 0 | — |  |
-| *Ononis natrix* | Bronze | — | 0 | 0 | — |  |
-| *Onopordum acanthium* | Bronze | — | 0 | 0 | — |  |
-| *Onopordum illyricum* | Bronze | — | 0 | 0 | — |  |
-| *Opuntia anahuacensis* | Bronze | — | 0 | 0 | — |  |
-| *Opuntia ficus-indica* | Bronze | — | 0 | 0 | — |  |
-| *Oryctes nasicornis* | Bronze | — | 0 | 0 | — |  |
-| *Oryctolagus cuniculus* | Bronze | — | 0 | 1000 | — |  |
-| *Osmundea verlaquei* | Bronze | — | 0 | 0 | — |  |
-| *Ovis aries* | Bronze | — | 0 | 0 | — |  |
-| *Oxalis pes-caprae* | Bronze | — | 0 | 0 | — |  |
-| *Oxycarenus lavaterae* | Bronze | — | 0 | 0 | — |  |
-| *Oxythyrea funesta* | Bronze | — | 0 | 1000 | — |  |
-| *Padina pavonica* | Bronze | — | 0 | 1000 | — |  |
-| *Paidiscura pallens* | Bronze | — | 0 | 0 | — |  |
-| *Pallenis spinosa* | Bronze | — | 0 | 0 | — |  |
-| *Palmophyllum crassum* | Bronze | — | 0 | 731 | — |  |
-| *Pancratium maritimum* | Bronze | — | 0 | 1000 | — |  |
-| *Pandorea jasminoides* | Bronze | — | 0 | 0 | — |  |
-| *Panorpa meridionalis* | Bronze | — | 0 | 0 | — |  |
-| *Panthera leo* | Bronze | — | 0 | 0 | — |  |
-| *Papaver rhoeas* | Bronze | — | 0 | 0 | — |  |
-| *Papaver somniferum* | Bronze | — | 0 | 0 | — |  |
-| *Papilio machaon* | Bronze | — | 0 | 0 | — |  |
-| *Papio ursinus* | Bronze | — | 0 | 0 | — |  |
-| *Pararge aegeria* | Bronze | — | 0 | 0 | — |  |
-| *Pardosa tenuipes* | Bronze | — | 0 | 0 | — |  |
-| *Parietaria judaica* | Bronze | — | 0 | 0 | — |  |
-| *Parietaria officinalis* | Bronze | — | 0 | 0 | — |  |
-| *Parkinsonia aculeata* | Bronze | — | 0 | 0 | — |  |
-| *Paronychia argentea* | Bronze | — | 0 | 1000 | — |  |
-| *Parthenocissus quinquefolia* | Bronze | — | 0 | 0 | — |  |
-| *Parus major* | Bronze | — | 0 | 0 | — |  |
-| *Parvocaulis parvulus* | Bronze | — | 0 | 0 | — |  |
-| *Parvocaulis polyphysoides* | Bronze | — | 0 | 0 | — |  |
-| *Passer domesticus* | Bronze | — | 0 | 1000 | — |  |
-| *Passer montanus* | Bronze | — | 0 | 1000 | — |  |
-| *Passiflora caerulea* | Bronze | — | 0 | 0 | — |  |
-| *Pedobesia simplex* | Bronze | — | 0 | 0 | — |  |
-| *Pelophylax perezi* | Bronze | — | 0 | 0 | — |  |
-| *Penicillus capitatus* | Bronze | — | 0 | 0 | — |  |
-| *Perotis unicolor* | Bronze | — | 0 | 0 | — |  |
-| *Petronia petronia* | Bronze | — | 0 | 0 | — |  |
-| *Petrosedum rupestre* | Bronze | — | 0 | 0 | — |  |
-| *Petrosedum sediforme* | Bronze | — | 0 | 0 | — |  |
-| *Peyssonnelia rosa-marina* | Bronze | — | 0 | 731 | — |  |
-| *Pezotettix giornae* | Bronze | — | 0 | 0 | — |  |
-| *Phacochoerus africanus* | Bronze | — | 0 | 0 | — |  |
-| *Phalacrocorax carbo* | Bronze | — | 0 | 1000 | — |  |
-| *Phaneroptera nana* | Bronze | — | 0 | 0 | — |  |
-| *Phasianus colchicus* | Bronze | — | 0 | 0 | — |  |
-| *Phillyrea angustifolia* | Bronze | — | 0 | 0 | — |  |
-| *Phillyrea latifolia* | Bronze | — | 0 | 0 | — |  |
-| *Philodromus margaritatus* | Bronze | — | 0 | 0 | — |  |
-| *Phlomis fruticosa* | Bronze | — | 0 | 0 | — |  |
-| *Phlomis purpurea* | Bronze | — | 0 | 0 | — |  |
-| *Phoenicopterus roseus* | Bronze | — | 0 | 0 | — |  |
-| *Phoenicurus ochruros* | Bronze | — | 0 | 1000 | — |  |
-| *Phoenix canariensis* | Bronze | — | 0 | 0 | — |  |
-| *Pholcus phalangioides* | Bronze | — | 0 | 0 | — |  |
-| *Phragmites australis* | Bronze | — | 0 | 0 | — |  |
-| *Phyllariopsis brevipes* | Bronze | — | 0 | 0 | — |  |
-| *Phyllophora crispa* | Bronze | — | 0 | 0 | — |  |
-| *Phylloscopus collybita* | Bronze | — | 0 | 1000 | — |  |
-| *Phymatolithon lenormandii* | Bronze | — | 0 | 0 | — |  |
-| *Phytolacca americana* | Bronze | — | 0 | 0 | — |  |
-| *Pica pica* | Bronze | — | 0 | 1000 | — |  |
-| *Pieris brassicae* | Bronze | — | 0 | 0 | — |  |
-| *Pieris rapae* | Bronze | — | 0 | 0 | — |  |
-| *Pinus halepensis* | Bronze | — | 0 | 0 | — |  |
-| *Pinus pinea* | Bronze | — | 0 | 0 | — |  |
-| *Pinus thunbergii* | Bronze | — | 0 | 0 | — |  |
-| *Pinus uncinata* | Bronze | — | 0 | 0 | — |  |
-| *Pistacia lentiscus* | Bronze | — | 0 | 1000 | — |  |
-| *Pittosporum tobira* | Bronze | — | 0 | 0 | — |  |
-| *Plantago coronopus* | Bronze | — | 0 | 0 | — |  |
-| *Plantago lagopus* | Bronze | — | 0 | 1000 | — |  |
-| *Plantago lanceolata* | Bronze | — | 0 | 0 | — |  |
-| *Platoma cyclocolpum* | Bronze | — | 0 | 0 | — |  |
-| *Platycladus orientalis* | Bronze | — | 0 | 0 | — |  |
-| *Plegadis falcinellus* | Bronze | — | 0 | 0 | — |  |
-| *Pleurotus eryngii* | Bronze | — | 0 | 0 | — |  |
-| *Plocamium cartilagineum* | Bronze | — | 0 | 286 | — |  |
-| *Plutella xylostella* | Bronze | — | 0 | 0 | — |  |
-| *Pneophyllum fragile* | Bronze | — | 0 | 0 | — |  |
-| *Podarcis liolepis* | Bronze | — | 0 | 0 | — |  |
-| *Podarcis muralis* | Bronze | — | 0 | 0 | — |  |
-| *Polistes dominula* | Bronze | — | 0 | 0 | — |  |
-| *Polistes gallicus* | Bronze | — | 0 | 0 | — |  |
-| *Polycarpon tetraphyllum* | Bronze | — | 0 | 0 | — |  |
-| *Polygonum maritimum* | Bronze | — | 0 | 0 | — |  |
-| *Polyommatus icarus* | Bronze | — | 0 | 0 | — |  |
-| *Polypodium cambricum* | Bronze | — | 0 | 0 | — |  |
-| *Polypogon monspeliensis* | Bronze | — | 0 | 0 | — |  |
-| *Polysiphonia opaca* | Bronze | — | 0 | 0 | — |  |
-| *Pontia daplidice* | Bronze | — | 0 | 0 | — |  |
-| *Populus alba* | Bronze | — | 0 | 0 | — |  |
-| *Populus nigra* | Bronze | — | 0 | 0 | — |  |
-| *Portulaca oleracea* | Bronze | — | 0 | 0 | — |  |
-| *Posidonia oceanica* | Bronze | — | 0 | 1000 | — |  |
-| *Predaea ollivieri* | Bronze | — | 0 | 0 | — |  |
-| *Primula veris* | Bronze | — | 0 | 0 | — |  |
-| *Prunus amygdalus* | Bronze | — | 0 | 0 | — |  |
-| *Prunus cerasifera* | Bronze | — | 0 | 0 | — |  |
-| *Prunus domestica* | Bronze | — | 0 | 0 | — |  |
-| *Prunus dulcis* | Bronze | — | 0 | 0 | — |  |
-| *Prunus persica* | Bronze | — | 0 | 0 | — |  |
-| *Psammodromus algirus* | Bronze | — | 0 | 0 | — |  |
-| *Pseudobryopsis myura* | Bronze | — | 0 | 0 | — |  |
-| *Pseudochlorodesmis furcellata* | Bronze | — | 0 | 0 | — |  |
-| *Pseudolithoderma adriaticum* | Bronze | — | 0 | 0 | — |  |
-| *Psilothrix viridicoerulea* | Bronze | — | 0 | 1000 | — |  |
-| *Pterocladiella capillacea* | Bronze | — | 0 | 0 | — |  |
-| *Puccinia malvacearum* | Bronze | — | 0 | 0 | — |  |
-| *Pyracantha coccinea* | Bronze | — | 0 | 0 | — |  |
-| *Pyracantha crenulata* | Bronze | — | 0 | 0 | — |  |
-| *Pyrgomorpha conica* | Bronze | — | 0 | 0 | — |  |
-| *Pyronia bathseba* | Bronze | — | 0 | 0 | — |  |
-| *Pyronia cecilia* | Bronze | — | 0 | 0 | — |  |
-| *Pyrrhocoris apterus* | Bronze | — | 0 | 1000 | — |  |
-| *Pyrus communis* | Bronze | — | 0 | 0 | — |  |
-| *Quercus coccifera* | Bronze | — | 0 | 0 | — |  |
-| *Quercus ilex* | Bronze | — | 0 | 0 | — |  |
-| *Quercus pubescens* | Bronze | — | 0 | 0 | — |  |
-| *Quercus robur* | Bronze | — | 0 | 0 | — |  |
-| *Quercus rotundifolia* | Bronze | — | 0 | 0 | — |  |
-| *Quercus suber* | Bronze | — | 0 | 0 | — |  |
-| *Raphicerus campestris* | Bronze | — | 0 | 0 | — |  |
-| *Rhagonycha fulva* | Bronze | — | 0 | 0 | — |  |
-| *Rhamnus alaternus* | Bronze | — | 0 | 0 | — |  |
-| *Rhodocollybia butyracea* | Bronze | — | 0 | 0 | — |  |
-| *Ricinus communis* | Bronze | — | 0 | 0 | — |  |
-| *Rissoella verruculosa* | Bronze | — | 0 | 92 | — |  |
-| *Rivularia polyotis* | Bronze | — | 0 | 0 | — |  |
-| *Robinia pseudoacacia* | Bronze | — | 0 | 0 | — |  |
-| *Rosa canina* | Bronze | — | 0 | 0 | — |  |
-| *Rosa sempervirens* | Bronze | — | 0 | 0 | — |  |
-| *Rostraria cristata* | Bronze | — | 0 | 0 | — |  |
-| *Rubia peregrina* | Bronze | — | 0 | 0 | — |  |
-| *Rubus ulmifolius* | Bronze | — | 0 | 0 | — |  |
-| *Rugulopteryx okamurae* | Bronze | — | 0 | 991 | — |  |
-| *Rumex crispus* | Bronze | — | 0 | 0 | — |  |
-| *Rumex patientia* | Bronze | — | 0 | 0 | — |  |
-| *Runcinia grammica* | Bronze | — | 0 | 0 | — |  |
-| *Ruscus aculeatus* | Bronze | — | 0 | 0 | — |  |
-| *Sacculina carcini* | Bronze | — | 0 | 0 | — |  |
-| *Salamandra salamandra* | Bronze | — | 0 | 0 | — |  |
-| *Salsola kali* | Bronze | — | 0 | 0 | — |  |
-| *Salticus scenicus* | Bronze | — | 0 | 0 | — |  |
-| *Salvia microphylla* | Bronze | — | 0 | 0 | — |  |
-| *Salvia pratensis* | Bronze | — | 0 | 0 | — |  |
-| *Salvia rosmarinus* | Bronze | — | 0 | 0 | — |  |
-| *Salvia verbenaca* | Bronze | — | 0 | 0 | — |  |
-| *Sambucus nigra* | Bronze | — | 0 | 0 | — |  |
-| *Sargassum muticum* | Bronze | — | 0 | 276 | — |  |
-| *Sargassum vulgare* | Bronze | — | 0 | 0 | — |  |
-| *Saxicola rubicola* | Bronze | — | 0 | 1000 | — |  |
-| *Scabiosa atropurpurea* | Bronze | — | 0 | 0 | — |  |
-| *Scarites buparius* | Bronze | — | 0 | 0 | — |  |
-| *Sceliphron caementarium* | Bronze | — | 0 | 0 | — |  |
-| *Schottera nicaeensis* | Bronze | — | 0 | 0 | — |  |
-| *Scinaia complanata* | Bronze | — | 0 | 0 | — |  |
-| *Scinaia furcellata* | Bronze | — | 0 | 111 | — |  |
-| *Scirpoides holoschoenus* | Bronze | — | 0 | 1000 | — |  |
-| *Scytodes thoracica* | Bronze | — | 0 | 0 | — |  |
-| *Scytosiphon lomentaria* | Bronze | — | 0 | 167 | — |  |
-| *Sebdenia dichotoma* | Bronze | — | 0 | 0 | — |  |
-| *Sebdenia rodrigueziana* | Bronze | — | 0 | 0 | — |  |
-| *Sedum dasyphyllum* | Bronze | — | 0 | 0 | — |  |
-| *Seirospora giraudyi* | Bronze | — | 0 | 0 | — |  |
-| *Senecio pterophorus* | Bronze | — | 0 | 0 | — |  |
-| *Senecio vulgaris* | Bronze | — | 0 | 0 | — |  |
-| *Serinus serinus* | Bronze | — | 0 | 1000 | — |  |
-| *Sherardia arvensis* | Bronze | — | 0 | 0 | — |  |
-| *Silene nicaeensis* | Bronze | — | 0 | 0 | — |  |
-| *Silybum marianum* | Bronze | — | 0 | 1000 | — |  |
-| *Sinapis alba* | Bronze | — | 0 | 0 | — |  |
-| *Sinapis arvensis* | Bronze | — | 0 | 0 | — |  |
-| *Sisymbrium irio* | Bronze | — | 0 | 0 | — |  |
-| *Sisymbrium officinale* | Bronze | — | 0 | 0 | — |  |
-| *Smilax aspera* | Bronze | — | 0 | 0 | — |  |
-| *Solanum nigrum* | Bronze | — | 0 | 0 | — |  |
-| *Sonchus oleraceus* | Bronze | — | 0 | 0 | — |  |
-| *Sonchus tenerrimus* | Bronze | — | 0 | 1000 | — |  |
-| *Sorghum halepense* | Bronze | — | 0 | 0 | — |  |
-| *Spartium junceum* | Bronze | — | 0 | 0 | — |  |
-| *Spatoglossum solieri* | Bronze | — | 0 | 0 | — |  |
-| *Sphacelaria plumula* | Bronze | — | 0 | 0 | — |  |
-| *Sphacelaria tribuloides* | Bronze | — | 0 | 0 | — |  |
-| *Sphaerococcus coronopifolius* | Bronze | — | 0 | 1000 | — |  |
-| *Sphaerophoria scripta* | Bronze | — | 0 | 0 | — |  |
-| *Sphinx ligustri* | Bronze | — | 0 | 0 | — |  |
-| *Spilopelia senegalensis* | Bronze | — | 0 | 0 | — |  |
-| *Spinus spinus* | Bronze | — | 0 | 0 | — |  |
-| *Spoladea recurvalis* | Bronze | — | 0 | 0 | — |  |
-| *Spongites fruticulosus* | Bronze | — | 0 | 0 | — |  |
-| *Sporobolus pungens* | Bronze | — | 0 | 0 | — |  |
-| *Sporochnus pedunculatus* | Bronze | — | 0 | 0 | — |  |
-| *Spyridia filamentosa* | Bronze | — | 0 | 0 | — |  |
-| *Stachys ocymastrum* | Bronze | — | 0 | 0 | — |  |
-| *Staehelina dubia* | Bronze | — | 0 | 0 | — |  |
-| *Steatoda grossa* | Bronze | — | 0 | 0 | — |  |
-| *Steatoda paykulliana* | Bronze | — | 0 | 0 | — |  |
-| *Stellaria media* | Bronze | — | 0 | 0 | — |  |
-| *Stomorhina lunata* | Bronze | — | 0 | 0 | — |  |
-| *Streptopelia decaocto* | Bronze | — | 0 | 1000 | — |  |
-| *Struthio camelus* | Bronze | — | 0 | 0 | — |  |
-| *Struthiopteris spicant* | Bronze | — | 0 | 0 | — |  |
-| *Sturnus vulgaris* | Bronze | — | 0 | 1000 | — |  |
-| *Stypopodium zonale* | Bronze | — | 0 | 0 | — |  |
-| *Suaeda vera* | Bronze | — | 0 | 0 | — |  |
-| *Suillia variegata* | Bronze | — | 0 | 0 | — |  |
-| *Sus scrofa* | Bronze | — | 0 | 0 | — |  |
-| *Sylvia atricapilla* | Bronze | — | 0 | 0 | — |  |
-| *Sympetrum fonscolombii* | Bronze | — | 0 | 0 | — |  |
-| *Symphyocladiella parasitica* | Bronze | — | 0 | 0 | — |  |
-| *Syncerus caffer* | Bronze | — | 0 | 0 | — |  |
-| *Synema globosum* | Bronze | — | 0 | 1000 | — |  |
-| *Syringa vulgaris* | Bronze | — | 0 | 0 | — |  |
-| *Tachina fera* | Bronze | — | 0 | 0 | — |  |
-| *Tachybaptus ruficollis* | Bronze | — | 0 | 0 | — |  |
-| *Tamarix africana* | Bronze | — | 0 | 0 | — |  |
-| *Tamarix gallica* | Bronze | — | 0 | 0 | — |  |
-| *Tampons* | Bronze | — | 0 | 0 | — |  |
-| *Taonia atomaria* | Bronze | — | 0 | 316 | — |  |
-| *Taonia pseudociliata* | Bronze | — | 0 | 0 | — |  |
-| *Taraxacum officinale* | Bronze | — | 0 | 0 | — |  |
-| *Taraxacum rubicundum* | Bronze | — | 0 | 0 | — |  |
-| *Tarentola mauritanica* | Bronze | — | 0 | 0 | — |  |
-| *Tecoma capensis* | Bronze | — | 0 | 0 | — |  |
-| *Tegenaria domestica* | Bronze | — | 0 | 0 | — |  |
-| *Terathopius ecaudatus* | Bronze | — | 0 | 0 | — |  |
-| *Tettigonia viridissima* | Bronze | — | 0 | 0 | — |  |
-| *Teucrium fruticans* | Bronze | — | 0 | 0 | — |  |
-| *Thalasseus sandvicensis* | Bronze | — | 0 | 0 | — |  |
-| *Thaumetopoea pityocampa* | Bronze | — | 0 | 0 | — |  |
-| *Thomisus onustus* | Bronze | — | 0 | 0 | — |  |
-| *Thymelaea hirsuta* | Bronze | — | 0 | 0 | — |  |
-| *Tituboea sexmaculata* | Bronze | — | 0 | 0 | — |  |
-| *Torilis nodosa* | Bronze | — | 0 | 0 | — |  |
-| *Trachemys scripta* | Bronze | — | 0 | 0 | — |  |
-| *Tragelaphus angasii* | Bronze | — | 0 | 0 | — |  |
-| *Tragelaphus scriptus* | Bronze | — | 0 | 0 | — |  |
-| *Tragelaphus strepsiceros* | Bronze | — | 0 | 0 | — |  |
-| *Trametes versicolor* | Bronze | — | 0 | 0 | — |  |
-| *Treptacantha nodicaulis* | Bronze | — | 0 | 0 | — |  |
-| *Tribulus terrestris* | Bronze | — | 0 | 0 | — |  |
-| *Tricholoma atrosquamosum* | Bronze | — | 0 | 0 | — |  |
-| *Tricleocarpa fragilis* | Bronze | — | 0 | 564 | — |  |
-| *Trifolium repens* | Bronze | — | 0 | 0 | — |  |
-| *Tripos fusus* | Bronze | — | 0 | 0 | — |  |
-| *Triticum aestivum* | Bronze | — | 0 | 0 | — |  |
-| *Tropinota squalida* | Bronze | — | 0 | 0 | — |  |
-| *Turdus merula* | Bronze | — | 0 | 0 | — |  |
-| *Ulex parviflorus* | Bronze | — | 0 | 0 | — |  |
-| *Ulmus procera* | Bronze | — | 0 | 0 | — |  |
-| *Ulva compressa* | Bronze | — | 0 | 0 | — |  |
-| *Ulva intestinalis* | Bronze | — | 0 | 122 | — |  |
-| *Ulva lactuca* | Bronze | — | 0 | 0 | — |  |
-| *Ulva rigida* | Bronze | — | 0 | 255 | — |  |
-| *Umbilicus rupestris* | Bronze | — | 0 | 0 | — |  |
-| *Upupa epops* | Bronze | — | 0 | 0 | — |  |
-| *Urospermum dalechampii* | Bronze | — | 0 | 0 | — |  |
-| *Urospermum picroides* | Bronze | — | 0 | 0 | — |  |
-| *Urtica dioica* | Bronze | — | 0 | 0 | — |  |
-| *Urtica urens* | Bronze | — | 0 | 0 | — |  |
-| *Ustilago cynodontis* | Bronze | — | 0 | 0 | — |  |
-| *Valonia macrophysa* | Bronze | — | 0 | 129 | — |  |
-| *Valonia utricularis* | Bronze | — | 0 | 322 | — |  |
-| *Vanellus spinosus* | Bronze | — | 0 | 0 | — |  |
-| *Vanessa atalanta* | Bronze | — | 0 | 0 | — |  |
-| *Vanessa cardui* | Bronze | — | 0 | 1000 | — |  |
-| *Verbascum lychnitis* | Bronze | — | 0 | 0 | — |  |
-| *Verbascum sinuatum* | Bronze | — | 0 | 0 | — |  |
-| *Verbascum virgatum* | Bronze | — | 0 | 0 | — |  |
-| *Verrucaria amphibia* | Bronze | — | 0 | 0 | — |  |
-| *Vespa velutina* | Bronze | — | 0 | 0 | — |  |
-| *Vespula germanica* | Bronze | — | 0 | 0 | — |  |
-| *Viburnum tinus* | Bronze | — | 0 | 0 | — |  |
-| *Vicia faba* | Bronze | — | 0 | 0 | — |  |
-| *Vicia sativa* | Bronze | — | 0 | 0 | — |  |
-| *Vitex agnus-castus* | Bronze | — | 0 | 0 | — |  |
-| *Vitis vinifera* | Bronze | — | 0 | 0 | — |  |
-| *Washingtonia filifera* | Bronze | — | 0 | 0 | — |  |
-| *Washingtonia robusta* | Bronze | — | 0 | 0 | — |  |
-| *Wet wipes* | Bronze | — | 0 | 0 | — |  |
-| *Wrangelia argus* | Bronze | — | 0 | 0 | — |  |
-| *Wrangelia penicillata* | Bronze | — | 0 | 465 | — |  |
-| *Xanthium orientale* | Bronze | — | 0 | 0 | — |  |
-| *Xanthoria parietina* | Bronze | — | 0 | 0 | — |  |
-| *Yucca gigantea* | Bronze | — | 0 | 0 | — |  |
-| *Zanardinia typus* | Bronze | — | 0 | 177 | — |  |
-| *Zantedeschia aethiopica* | Bronze | — | 0 | 0 | — |  |
-| *Zelus renardii* | Bronze | — | 0 | 0 | — |  |
-| *Zeuzera pyrina* | Bronze | — | 0 | 0 | — |  |
-| *Zonaria tournefortii* | Bronze | — | 0 | 98 | — |  |
-| *Zoothamnium niveum* | Bronze | — | 0 | 0 | — |  |
-| *Zostera marina* | Bronze | — | 0 | 106 | — |  |
-| *Zygaena trifolii* | Bronze | — | 0 | 0 | — |  |
-
-## Key Discoveries by Species
-
-### Species with Diagnostic Descriptions (32 from GROC/OPK)
-
-- **Aegires leuckartii**: Nudibranqui molt petit de color blanc amb cap ample i cos recobert de protuberàncies.
-- **Aegires punctilucens**: Nudibranqui molt petit de color blanc cru amb taques marrons on destaquen uns puntets blaus. Cap ample i cos recubert per protuberàncies.
-- **Aeolidiella alderi**: Nudibranqui amb abundants cerates de color gris amb punta blanca i cos de blanc a taronja. Rinófors gruixuts amb la punta ataronjada i arrodonida. Les primeres cerates darrera dels rinòfors son més cu
-- **Aglaja tricolorata**: Espècie de color fosc (de marró a negre) amb abundants taques rodones blanques i un parell de apèndixs caudals assimètrics. No obstant alguns exemplars son completament foscos.
-- **Aldisa smaragdina**: - Flickr del GROC Enllaços
-- **Atalodoris pictoni**: Considerat com Onchidoris pusilla abans de la descripció de Knoutsodonta pictoni ( Furfaro &amp; Trainito 2017)
-- **Babakina anadoni**: Paraflabellina ischitana *
-- **Baptodoris cinnabarina**: Aporodoris cf millegrana *
-- **Berthella aurantiaca**: Les espècies Berthellina edwardsii i Berthella aurantiaca no es poden diferenciar a simple vista, cal analitzar-les al laboratori. Les fotos dels exemplars de la guia són una referència, en aquest cas
-- **Berthellina edwardsii**: Les espècies Berthellina edwardsii i Berthella aurantiaca no es poden diferenciar a simple vista, cal analitzar-les al laboratori. Les fotos dels exemplars de la guia són una referència, en aquest cas
-- **Biuve fulvipunctata**: Melanochlamys wildpretii *
-- **Cratena peregrina**: Paraflabellina gabinierei *
-- **Diaphorodoris alba**: Diaphorodoris luteocincta *
-- **Diaphorodoris papillata**: Diaphorodoris luteocincta *
-- **Discodoris stellifera**: Les espècies Geitodoris planata i Discodoris stellifera no es poden diferenciar a simple vista, cal analitzar-les al laboratori. Les fotos dels exemplars de la guia són una referència, en aquest cas n
-- **Doto no identificat**: Exemplars del gènere Doto que no es corresponen a cap de les espècies descrites.
-- **Edmundsella pedata**: Paraflabellina ischitana *
-- **Flabellina affinis**: Paraflabellina ischitana *
-- **Flabellina cavolini**: Paraflabellina gabinierei *
-- **Geitodoris planata**: Les espècies Geitodoris planata i Discodoris stellifera no es poden diferenciar a simple vista, cal analitzar-les al laboratori. Les fotos dels exemplars de la guia són una referència, en aquest cas n
-- **Geitodoris portmanni**: Geitodoris cf bacalladoi *
-- **Okenia longiductis**: Polycerella emertoni (!) *
-- **Okenia problematica**: Polycerella emertoni (!) *
-- **Philinopsis depicta**: Melanochlamys wildpretii *
-- **Placida tardyi**: Línia morada (més o menys difuminada) al llarg de la base del peu, des de la base dels rinòfors a la cua.
-- **Pleurobranchus membranaceus**: Pleurobranchus testudinarius *
-- **Pleurobranchus testudinarius**: Pleurobranchus membranaceus *
-- **Polycerella emertoni (!)**: Espècie exòtica originària del Carib i l'Atlàntic Nord Occidental ( veure distribució mundial )
-- **Tergipes tergipes**: Piseinotecus sphaeriferus *
-- **Thordisa cf filix**: Espècie molt rara que no es pot diferenciar de manera visual d'altres espècies del gènere com Thordisa amanzii .
-- **Tylodina perversa**: Pleurobranchus testudinarius *
-- **Umbraculum umbraculum**: Pleurobranchus testudinarius *
-
-### High-Accuracy Species (>=85%, >=3 samples): 233
-
-- **aeolidiella_alderi**: 100% (3 samples)
-- **antiopella_cristata**: 100% (3 samples)
-- **aplysia_depilans**: 100% (3 samples)
-- **aplysia_punctata**: 100% (3 samples)
-- **berthellina_edwardsii**: 100% (3 samples)
-- **bursatella_leachii**: 100% (3 samples)
-- **calmella_cavolini**: 100% (3 samples)
-- **cepaea_nemoralis**: 100% (3 samples)
-- **cochlicella_acuta**: 100% (3 samples)
-- **cochlicella_barbara**: 100% (3 samples)
-- **cornu_aspersum**: 100% (3 samples)
-- **cratena_peregrina**: 100% (3 samples)
-- **diaphorodoris_alba**: 100% (3 samples)
-- **doris_verrucosa**: 100% (3 samples)
-- **doto_floridicola**: 100% (3 samples)
-- **edmundsella_pedata**: 100% (3 samples)
-- **elysia_flava**: 100% (3 samples)
-- **felimare_tricolor**: 100% (3 samples)
-- **flabellina_affinis**: 100% (3 samples)
-- **goniodoridella_picoensis**: 100% (3 samples)
-- **iberus_splendidus**: 100% (3 samples)
-- **limapontia_capitata**: 100% (3 samples)
-- **limax_maximus**: 100% (3 samples)
-- **nemesignis_banyulensis**: 100% (3 samples)
-- **otala_lactea**: 100% (3 samples)
-- **paraflabellina_ischitana**: 100% (3 samples)
-- **platydoris_argo**: 100% (3 samples)
-- **rumina_decollata**: 100% (3 samples)
-- **runcina_brenkoae**: 100% (3 samples)
-- **theba_pisana**: 100% (3 samples)
-- **tylodina_perversa**: 100% (3 samples)
-- **acanthocardia_tuberculata**: 100% (3 samples)
-- **acanthonyx_lunulatus**: 100% (3 samples)
-- **aequorea_forskalea**: 100% (3 samples)
-- **agelas_oroides**: 100% (3 samples)
-- **aglaophenia_elongata**: 100% (3 samples)
-- **aidablennius_sphynx**: 100% (3 samples)
-- **aiptasia_mutabilis**: 100% (3 samples)
-- **anemonia_viridis**: 100% (3 samples)
-- **anguilla_anguilla**: 100% (3 samples)
+| Slug | Scientific name | Accepted name | Tier | Family | Genus | Minka taxon | iNat taxon | Live gallery |
+|---|---|---|---:|---|---|---:|---:|:---:|
+| `cratena_peregrina` | *Cratena peregrina* | — | 0 | Facelinidae | Cratena | 35036 | 64486 | yes |
+| `paradoris_indecora` | *Paradoris indecora* | — | 0 | Discodorididae | Paradoris | 252767 | 489147 | yes |
+| `edmundsella_pedata` | *Edmundsella pedata* | — | 0 | Flabellinidae | Edmundsella | 35273 | 605942 | yes |
+| `elysia_timida` | *Elysia timida* | — | 0 | Plakobranchidae | Elysia | 245702 | 481506 | yes |
+| `aplysia_punctata` | *Aplysia punctata* | — | 0 | Aplysiidae | Aplysia | 245605 | 57663 | yes |
+| `calmella_cavolini` | *Calmella cavolini* | Flabellina cavolini | 0 | Flabellinidae | Calmella | 35006 | 489127 | yes |
+| `polycera_quadrilineata` | *Polycera quadrilineata* | — | 0 | Polyceridae | Polycera | 242956 | 425249 | yes |
+| `facelinopsis_marioni` | *Facelinopsis marioni* | — | 0 | Facelinidae | Facelinopsis | 240961 | 461071 | yes |
+| `haminoea_hydatis` | *Haminoea hydatis* | — | 0 | Haminoeidae | Haminoea | 250866 | 482651 | yes |
+| `antiopella_cristata` | *Antiopella cristata* | — | 0 | Janolidae | Antiopella | 254300 | 889135 | yes |
+| `facelina_annulicornis` | *Facelina annulicornis* | — | 0 | Facelinidae | Facelina | 248529 | 489137 | yes |
+| `felimare_picta` | *Felimare picta* | — | 0 | Chromodorididae | Felimare | 35185 | 469400 | yes |
+| `facelina_auriculata` | *Facelina auriculata* | — | 0 | Facelinidae | Facelina | 34806 | 466938 | yes |
+| `spurilla_neapolitana` | *Spurilla neapolitana* | — | 0 | Aeolidiidae | Spurilla | 251270 | 50480 | yes |
+| `idaliadoris_neapolitana` | *Idaliadoris neapolitana* | — | 0 | Onchidorididae | Idaliadoris | 262210 | 1438483 | yes |
+| `flabellina_affinis` | *Flabellina affinis* | — | 0 | Flabellinidae | Flabellina | 34853 | 326338 | yes |
+| `favorinus_branchialis` | *Favorinus branchialis* | — | 0 | Facelinidae | Favorinus | 35211 | 466954 | yes |
+| `tylodina_perversa` | *Tylodina perversa* | — | 0 | Tylodinidae | Tylodina | 253432 | 326336 | yes |
+| `aegires_leuckartii` | *Aegires leuckartii* | — | 0 | Aegiridae | Aegires | 242808 | 489120 | yes |
+| `peltodoris_atromaculata` | *Peltodoris atromaculata* | — | 0 | Discodorididae | Peltodoris | 34917 | 326343 | yes |
+| `elysia_viridis` | *Elysia viridis* | — | 0 | Plakobranchidae | Elysia | 245705 | 470872 | yes |
+| `candiella_manicata` | *Candiella manicata* | — | 0 | Tritoniidae | Candiella | 257875 | 1496144 | yes |
+| `trinchesia_morrowae` | *Trinchesia morrowae* | — | 0 | Trinchesiidae | Trinchesia | 252080 | 888628 | yes |
+| `thuridilla_hopei` | *Thuridilla hopei* | — | 0 | Plakobranchidae | Thuridilla | 35200 | 326335 | yes |
+| `felimare_villafranca` | *Felimare villafranca* | — | 0 | Chromodorididae | Felimare | 248690 | 469610 | yes |
+| `caloria_quatrefagesi` | *Caloria quatrefagesi* | — | 0 | Facelinidae | Caloria | 35073 | 1255141 | yes |
+| `haminoea_orteai` | *Haminoea orteai* | — | 0 | Haminoeidae | Haminoea | 240370 | 510491 | yes |
+| `diaphorodoris_papillata` | *Diaphorodoris papillata* | — | 0 | Calycidorididae | Diaphorodoris | 35218 | 476212 | yes |
+| `doto_rosea` | *Doto rosea* | — | 0 | Dotidae | Doto | 245033 | 489133 | yes |
+| `facelina_rubrovittata` | *Facelina rubrovittata* | — | 0 | Facelinidae | Facelina | 248538 | 446723 | yes |
+| `petalifera_petalifera` | *Petalifera petalifera* | — | 0 | Aplysiidae | Petalifera | 253003 | 343650 | yes |
+| `doto_cervicenigra` | *Doto cervicenigra* | — | 0 | Dotidae | Doto | 245005 | 947269 | yes |
+| `elysia_flava` | *Elysia flava* | — | 0 | Plakobranchidae | Elysia | 245692 | 123402 | yes |
+| `berthellina_edwardsii` | *Berthellina edwardsii* | — | 0 | Pleurobranchidae | Berthellina | 248163 | 489126 | yes |
+| `marionia_blainvillea` | *Marionia blainvillea* | — | 0 | Tritoniidae | Marionia | 34895 | 476101 | yes |
+| `pleurehdera_stellata` | *Pleurehdera stellata* | — | 0 | Pleurobranchidae | Pleurehdera | 35003 | 1532051 | yes |
+| `aplysia_fasciata` | *Aplysia fasciata* | — | 0 | Aplysiidae | Aplysia | 245599 | 253928 | yes |
+| `placida_verticilata` | *Placida verticilata* | — | 0 | Stiligeridae | Placida | 256617 | 905833 | yes |
+| `runcina_africana` | *Runcina africana* | — | 0 | Runcinidae | Runcina | 246819 | 1202141 | yes |
+| `placida_cremoniana` | *Placida cremoniana* | — | 0 | Stiligeridae | Placida | 35057 | 50017 | yes |
+| `nemesignis_banyulensis` | *Nemesignis banyulensis* | — | 0 | Myrrhinidae | Nemesignis | 35243 | 1271671 | yes |
+| `williamia_gussoni` | *Williamia gussoni* | — | 0 | Siphonariidae | Williamia | 253702 | 1202357 | yes |
+| `haminoea_exigua` | *Haminoea exigua* | — | 0 | Haminoeidae | Haminoea | 250863 | 699076 | yes |
+| `rudmania_krohni` | *Rudmania krohni* | — | 0 | Chromodorididae | Rudmania | 35113 | 1657014 | yes |
+| `aglaja_tricolorata` | *Aglaja tricolorata* | — | 0 | Aglajidae | Aglaja | 243178 | 476202 | yes |
+| `felimare_tricolor` | *Felimare tricolor* | — | 0 | Chromodorididae | Felimare | 34988 | 469611 | yes |
+| `aplysia_depilans` | *Aplysia depilans* | — | 0 | Aplysiidae | Aplysia | 245596 | 342265 | yes |
+| `pelagella_castanea` | *Pelagella castanea* | — | 0 | Goniodorididae | Pelagella | 35127 | 1471717 | yes |
+| `platydoris_argo` | *Platydoris argo* | — | 0 | Discodorididae | Platydoris | 242568 | 342276 | yes |
+| `dendrodoris_grandiflora` | *Dendrodoris grandiflora* | — | 0 | Dendrodorididae | Dendrodoris | 244147 | 326345 | yes |
+| `bulla_striata` | *Bulla striata* | — | 0 | Bullidae | Bulla | 34834 | 292307 | yes |
+| `phetia_soussi` | *Phetia soussi* | Piseinotecus soussi | 0 | Unidentiidae | Phetia | 242179 | 1641260 | yes |
+| `bosellia_mimetica` | *Bosellia mimetica* | — | 0 | Plakobranchidae | Bosellia | 246964 | 255200 | yes |
+| `dendrodoris_limbata` | *Dendrodoris limbata* | — | 0 | Dendrodorididae | Dendrodoris | 244150 | 326344 | yes |
+| `hermaea_bifida` | *Hermaea bifida* | — | 0 | Stiligeridae | Hermaea | 251436 | 482689 | yes |
+| `tenellia_genovae` | *Tenellia genovae* | — | 0 | Tergipedidae | Tenellia | 253874 | 1624643 | yes |
+| `elysia_gordanae` | *Elysia gordanae* | — | 0 | Plakobranchidae | Elysia | 261646 | 489134 | yes |
+| `hermaea_variopicta` | *Hermaea variopicta* | — | 0 | Stiligeridae | Hermaea | 251438 | 494438 | yes |
+| `nudibranchus_exiguus` | *Nudibranchus exiguus* | — | 0 | Eubranchidae | Nudibranchus | 253875 | 1685776 | yes |
+| `biuve_fulvipunctata` | *Biuve fulvipunctata* | — | 0 | Aglajidae | Biuve | 240371 | 823934 | yes |
+| `felimare_orsinii` | *Felimare orsinii* | — | 0 | Chromodorididae | Felimare | 248680 | 469727 | yes |
+| `placida_tardyi` | *Placida tardyi* | — | 0 | Stiligeridae | Placida | 35091 | 1077372 | yes |
+| `jorunna_tomentosa` | *Jorunna tomentosa* | — | 0 | Discodorididae | Jorunna | 242337 | 489143 | yes |
+| `janolus_hyalinus` | *Janolus hyalinus* | — | 0 | Janolidae | Janolus | 254480 | 391123 | yes |
+| `taringa_armata` | *Taringa armata* | — | 0 | Discodorididae | Taringa | 254214 | 1202817 | yes |
+| `doto_millbayana` | *Doto millbayana* | — | 0 | Dotidae | Doto | 264870 | 564789 | yes |
+| `facelina_vicina` | *Facelina vicina* | — | 0 | Facelinidae | Facelina | 248544 | 1062512 | yes |
+| `caliphylla_mediterranea` | *Caliphylla mediterranea* | — | 0 | Caliphyllidae | Caliphylla | 248147 | 255201 | yes |
+| `aegires_palensis` | *Aegires palensis* | — | 0 | Aegiridae | Aegires | 254559 | 1074830 | yes |
+| `amphorina_andra` | *Amphorina andra* | — | 0 | Eubranchidae | Amphorina | 265656 | 1047003 | yes |
+| `aplysia_dactylomela` | *Aplysia dactylomela* | — | 0 | Aplysiidae | Aplysia | 240384 | 50543 | yes |
+| `polycerella_emertoni` | *Polycerella emertoni* | — | 0 | Polyceridae | Polycerella | 242958 | 255196 | yes |
+| `doto_pygmaea` | *Doto pygmaea* | — | 0 | Dotidae | Doto | 245025 | 1202778 | yes |
+| `doris_ocelligera` | *Doris ocelligera* | — | 0 | Dorididae | Doris | 254477 | 559398 | yes |
+| `candiella_odhneri` | *Candiella odhneri* | — | 0 | Tritoniidae | Candiella | 254154 | 1496145 | yes |
+| `philine_catena` | *Philine catena* | — | 0 | Philinidae | Philine | 254115 | 482659 | yes |
+| `aeolidiella_alderi` | *Aeolidiella alderi* | — | 0 | Aeolidiidae | Aeolidiella | 242882 | 56591 | yes |
+| `polycera_hedgpethi` | *Polycera hedgpethi* | — | 0 | Polyceridae | Polycera | 253876 | 50089 | yes |
+| `doris_verrucosa` | *Doris verrucosa* | — | 0 | Dorididae | Doris | 254310 | 363660 | yes |
+| `doto_koenneckeri` | *Doto koenneckeri* | — | 0 | Dotidae | Doto | 245008 | 489131 | yes |
+| `tenellia_ocellata` | *Tenellia ocellata* | — | 0 | Tergipedidae | Tenellia | 254329 | 1624638 | yes |
+| `trapania_lineata` | *Trapania lineata* | — | 0 | Goniodorididae | Trapania | 251867 | 489151 | yes |
+| `doto_floridicola` | *Doto floridicola* | — | 0 | Dotidae | Doto | 254305 | 492432 | yes |
+| `paraflabellina_ischitana` | *Paraflabellina ischitana* | Flabellina ischitana | 0 | Flabellinidae | Paraflabellina | 184300 | 606787 | yes |
+| `berghia_coerulescens` | *Berghia coerulescens* | — | 0 | Aeolidiidae | Berghia | 35098 | 56645 | yes |
+| `dendrodoris_temarana` | *Dendrodoris temarana* | — | 0 | Dendrodorididae | Dendrodoris | 254607 | 1405113 | yes |
+| `trinchesia_cuanensis` | *Trinchesia cuanensis* | — | 0 | Trinchesiidae | Trinchesia | 254499 | 888626 | yes |
+| `idaliadoris_depressa` | *Idaliadoris depressa* | — | 0 | Onchidorididae | Idaliadoris | 257609 | 1438477 | yes |
+| `goniodoridella_picoensis` | *Goniodoridella picoensis* | — | 0 | Goniodorididae | Goniodoridella | 256971 | 1521120 | yes |
+| `doto_paulinae` | *Doto paulinae* | — | 0 | Dotidae | Doto | 245016 | 1123553 | yes |
+| `umbraculum_umbraculum` | *Umbraculum umbraculum* | — | 0 | Umbraculidae | Umbraculum | 253481 | 49896 | yes |
+| `mourgona_borgninii` | *Mourgona borgninii* | — | 0 | Caliphyllidae | Mourgona | 240389 | 869190 | yes |
+| `berthella_perforata` | *Berthella perforata* | — | 0 | Pleurobranchidae | Berthella | 254503 | 1146541 | yes |
+| `diaphorodoris_alba` | *Diaphorodoris alba* | — | 0 | Calycidorididae | Diaphorodoris | 35300 | 515995 | yes |
+| `runcina_brenkoae` | *Runcina brenkoae* | — | 0 | Runcinidae | Runcina | 246827 | 1202129 | yes |
+| `baptodoris_cinnabarina` | *Baptodoris cinnabarina* | — | 0 | Discodorididae | Baptodoris | 247829 | 1202854 | yes |
+| `felimare_fontandraui` | *Felimare fontandraui* | — | 0 | Chromodorididae | Felimare | 248674 | 469613 | yes |
+| `berthella_ocellata` | *Berthella ocellata* | — | 0 | Pleurobranchidae | Berthella | 248145 | 489125 | yes |
+| `hancockia_uncinata` | *Hancockia uncinata* | — | 0 | Hancockiidae | Hancockia | 250876 | 489142 | yes |
+| `bermudella_polycerelloides` | *Bermudella polycerelloides* | — | 0 | Goniodorididae | Bermudella | 254989 | 1521021 | yes |
+| `anteaeolidiella_lurana` | *Anteaeolidiella lurana* | — | 0 | Aeolidiidae | Anteaeolidiella | 245151 | 764966 | yes |
+| `amphorina_farrani` | *Amphorina farrani* | — | 0 | Eubranchidae | Amphorina | 253877 | 1047076 | yes |
+| `tayuva_maculosa` | *Tayuva maculosa* | — | 0 | Discodorididae | Tayuva | 146561 |  | yes |
+| `haminoea_orbignyana` | *Haminoea orbignyana* | — | 0 | Haminoeidae | Haminoea | 250873 | 492627 | yes |
+| `philinopsis_depicta` | *Philinopsis depicta* | — | 0 | Aglajidae | Philinopsis | 254539 | 751551 | yes |
+| `palio_nothus` | *Palio nothus* | — | 0 | Polyceridae | Palio | 254617 | 499902 | yes |
+| `philine_quadripartita` | *Philine quadripartita* | — | 0 | Philinidae | Philine | 253141 | 482657 | yes |
+| `felimida_binza` | *Felimida binza* | — | 0 | Chromodorididae | Felimida | 35060 | 504108 | yes |
+| `geitodoris_planata` | *Geitodoris planata* | — | 0 | Discodorididae | Geitodoris | 249982 | 489140 | yes |
+| `rudmania_purpurea` | *Rudmania purpurea* | — | 0 | Chromodorididae | Rudmania | 254252 | 1657015 | yes |
+| `cyerce_graeca` | *Cyerce graeca* | — | 0 | Caliphyllidae | Cyerce | 254324 | 1075486 | yes |
+| `chromodoris_quadricolor` | *Chromodoris quadricolor* | — | 0 | Chromodorididae | Chromodoris | 255435 | 337968 | yes |
+| `camachoaglaja_africana` | *Camachoaglaja africana* | — | 0 | Aglajidae | Camachoaglaja | 142393 | 823935 | yes |
+| `berghia_verrucicornis` | *Berghia verrucicornis* | — | 0 | Aeolidiidae | Berghia | 254266 | 255168 | yes |
+| `trinchesia_caerulea` | *Trinchesia caerulea* | — | 0 | Trinchesiidae | Trinchesia | 254447 | 632165 | yes |
+| `creseis_acicula` | *Creseis acicula* | — | 0 | Cavoliniidae | Creseis | 26690 | 255485 | yes |
+| `ercolania_viridis` | *Ercolania viridis* | — | 0 | Stiligeridae | Ercolania | 246239 | 292749 | yes |
+| `aegires_sublaevis` | *Aegires sublaevis* | — | 0 | Aegiridae | Aegires | 254622 | 50056 | yes |
+| `micromelo_undatus` | *Micromelo undatus* | — | 0 | Aplustridae | Micromelo | 240374 | 253755 | yes |
+| `aldisa_banyulensis` | *Aldisa banyulensis* | — | 0 | Cadlinidae | Aldisa | 243682 | 1123253 | yes |
+| `capellinia_doriae` | *Capellinia doriae* | — | 0 | Eubranchidae | Capellinia | 254126 | 1122246 | yes |
+| `eubranchus_prietoi` | *Eubranchus prietoi* | Capellinia prietoi | 0 | Eubranchidae | Eubranchus | 254623 | 1668585 | yes |
+| `tenellia_miniostriata` | *Tenellia miniostriata* | — | 0 | Tergipedidae | Tenellia | 35230 | 1624631 | yes |
+| `placida_dendritica` | *Placida dendritica* | — | 0 | Stiligeridae | Placida | 242274 | 50018 | yes |
+| `babakina_anadoni` | *Babakina anadoni* | — | 0 | Babakinidae | Babakina | 247672 | 476198 | yes |
+| `tergipes_tergipes` | *Tergipes tergipes* | — | 0 | Tergipedidae | Tergipes | 254538 | 118973 | yes |
+| `luisella_babai` | *Luisella babai* | — | 0 | Samlidae | Luisella | 35231 | 605315 | yes |
+| `trapania_maculata` | *Trapania maculata* | — | 0 | Goniodorididae | Trapania | 35132 | 475698 | yes |
+| `limapontia_capitata` | *Limapontia capitata* | — | 0 | Limapontiidae | Limapontia | 254544 | 482691 | yes |
+| `stylocheilus_polyomma` | *Stylocheilus polyomma* | — | 0 | Notarchidae | Stylocheilus | 264004 | 1104916 | yes |
+| `otala_lactea` | *Otala lactea* | — | 0 | Helicidae | Otala | 252589 | 202861 | yes |
+| `calma_gobioophaga` | *Calma gobioophaga* | — | 0 | Calmidae | Calma | 248282 | 465626 | yes |
+| `retusa_truncatula` | *Retusa truncatula* | — | 0 | Retusidae | Retusa | 255577 | 687283 | yes |
+| `bursatella_leachii` | *Bursatella leachii* | — | 0 | Notarchidae | Bursatella | 35022 | 50559 | yes |
+| `candiella_striata` | *Candiella striata* | — | 0 | Tritoniidae | Candiella | 257876 | 1496148 | yes |
+| `cymbulia_peronii` | *Cymbulia peronii* | — | 0 | Cymbuliidae | Cymbulia | 240435 | 292951 | yes |
+| `phyllaplysia_lafonti` | *Phyllaplysia lafonti* | — | 0 | Aplysiidae | Phyllaplysia | 253240 | 489148 | yes |
+| `stiliger_llerae` | *Stiliger llerae* | — | 0 | Stiligeridae | Stiliger | 254737 | 1202251 | yes |
+| `hermaea_cubana` | *Hermaea cubana* | — | 0 | Stiligeridae | Hermaea | 262391 | 1202214 | yes |
+| `cepaea_nemoralis` | *Cepaea nemoralis* | — | 0 | Helicidae | Cepaea | 250091 | 48586 | yes |
+| `caloria_elegans` | *Caloria elegans* | — | 0 | Facelinidae | Caloria | 254425 | 476103 | yes |
+| `tylodina_rafinesquii` | *Tylodina rafinesquii* | — | 0 | Tylodinidae | Tylodina | 254307 | 1285005 | yes |
+| `fjordia_lineata` | *Fjordia lineata* | Coryphella lineata | 0 | Coryphellidae | Fjordia | 257475 | 1392212 | yes |
+| `doto_cavernicola` | *Doto cavernicola* | — | 0 | Dotidae | Doto | 264869 | 1698012 | yes |
+| `phyllidia_varicosa` | *Phyllidia varicosa* | — | 0 | Phyllidiidae | Phyllidia | 32556 | 49735 | yes |
+| `onchidella_celtica` | *Onchidella celtica* | — | 0 | Onchidiidae | Onchidella | 250175 | 482974 | yes |
+| `crimora_papillata` | *Crimora papillata* | — | 0 | Polyceridae | Crimora | 242449 | 487159 | yes |
+| `diaphorodoris_luteocincta` | *Diaphorodoris luteocincta* | — | 0 | Calycidorididae | Diaphorodoris | 244436 | 469193 | yes |
+| `elysia_translucens` | *Elysia translucens* | — | 0 | Plakobranchidae | Elysia | 254317 | 1075727 | yes |
+| `cylichna_alba` | *Cylichna alba* | — | 0 | Cylichnidae | Cylichna | 264219 | 49790 | yes |
+| `limax_maximus` | *Limax maximus* | — | 0 | Limacidae | Limax | 244045 | 62470 | yes |
+| `chromodoris_annae` | *Chromodoris annae* | — | 0 | Chromodorididae | Chromodoris | 255476 | 119434 | yes |
+| `gittenbergeria_turriplana` | *Gittenbergeria turriplana* | — | 0 | Trissexodontidae | Gittenbergeria | 268580 | 101462 | yes |
+| `phyllidia_flava` | *Phyllidia flava* | — | 0 | Phyllidiidae | Phyllidia | 32558 | 489149 | yes |
+| `acteon_tornatilis` | *Acteon tornatilis* | — | 0 | Acteonidae | Acteon | 242570 | 482506 | yes |
+| `placida_viridis` | *Placida viridis* | — | 0 | Stiligeridae | Placida | 254540 | 1202226 | yes |
+| `phidiana_lynceus` | *Phidiana lynceus* | — | 0 | Facelinidae | Phidiana | 254753 | 328798 | yes |
+| `favorinus_vitreus` | *Favorinus vitreus* | — | 0 | Facelinidae | Favorinus | 254986 | 1075868 | yes |
+| `helix_pomatia` | *Helix pomatia* | — | 0 | Helicidae | Helix | 251252 | 61523 | yes |
+| `dolabrifera_edmundsi` | *Dolabrifera edmundsi* | — | 0 | Notarchidae | Dolabrifera | 240369 | 871799 | yes |
+| `calliopaea_bellula` | *Calliopaea bellula* | — | 0 | Limapontiidae | Calliopaea | 248180 | 912504 | yes |
+| `calma_glaucoides` | *Calma glaucoides* | — | 0 | Calmidae | Calma | 254249 | 469605 | yes |
+| `cavolinia_inflexa` | *Cavolinia inflexa* | — | 0 | Cavoliniidae | Cavolinia | 255062 | 255480 | yes |
+| `turbonilla_hamata` | *Turbonilla hamata* | — | 0 | Pyramidellidae | Turbonilla | 264151 |  | yes |
+| `odostomella_doliolum` | *Odostomella doliolum* | — | 0 | Pyramidellidae | Odostomella | 257171 | 1272255 | yes |
+| `haloa_japonica` | *Haloa japonica* | — | 0 | Haminoeidae | Haloa | 254537 | 437826 | yes |
+| `pleurobranchus_testudinarius` | *Pleurobranchus testudinarius* | — | 0 | Pleurobranchidae | Pleurobranchus | 34978 | 343653 | yes |
+| `runcina_ornata` | *Runcina ornata* | — | 0 | Runcinidae | Runcina | 246835 | 1202137 | yes |
+| `pleurobranchaea_meckeli` | *Pleurobranchaea meckeli* | — | 0 | Pleurobranchaeidae | Pleurobranchaea | 254331 | 343652 | yes |
+| `pneumodermopsis_canephora` | *Pneumodermopsis canephora* | — | 0 | Pneumodermatidae | Pneumodermopsis | 255067 | 867947 | yes |
+| `doris_berghi` | *Doris berghi* | — | 0 | Dorididae | Doris | 263298 | 1562081 | yes |
+| `phyllidiella_zeylanica` | *Phyllidiella zeylanica* | — | 0 | Phyllidiidae | Phyllidiella | 262525 | 51171 | yes |
+| `milax_gagates` | *Milax gagates* | — | 0 | Milacidae | Milax | 247043 | 225159 | yes |
+| `retusa_mammillata` | *Retusa mammillata* | — | 0 | Retusidae | Retusa | 257344 | 482508 | yes |
+| `hexabranchus_sanguineus` | *Hexabranchus sanguineus* | — | 0 | Hexabranchidae | Hexabranchus | 251596 | 244849 | yes |
+| `felimare_bilineata` | *Felimare bilineata* | — | 0 | Chromodorididae | Felimare | 35274 | 469614 | yes |
+| `fiona_pinnata` | *Fiona pinnata* | — | 0 | Fionidae | Fiona | 156547 | 50531 | yes |
+| `limacia_inesae` | *Limacia inesae* | — | 0 | Polyceridae | Limacia | 240425 | 1178097 | yes |
+| `aldisa_smaragdina` | *Aldisa smaragdina* | — | 0 | Cadlinidae | Aldisa | 243691 | 492391 | yes |
+| `parthenina_interstincta` | *Parthenina interstincta* | — | 0 | Pyramidellidae | Parthenina | 257460 | 1672266 | yes |
+| `dondice_trainitoi` | *Dondice trainitoi* | — | 0 | Facelinidae | Dondice | 257546 | 1037798 | yes |
+| `oxynoe_olivacea` | *Oxynoe olivacea* | — | 0 | Oxynoidae | Oxynoe | 254281 | 489146 | yes |
+| `tenellia_maua` | *Tenellia maua* | — | 0 | Tergipedidae | Tenellia | 62171 | 1624656 | yes |
+| `godiva_quadricolor` | *Godiva quadricolor* | — | 0 | Facelinidae | Godiva | 254534 | 487381 | yes |
+| `learchis_poica` | *Learchis poica* | — | 0 | Facelinidae | Learchis | 254739 | 494337 | yes |
+| `ercolania_lozanoi` | *Ercolania lozanoi* | — | 0 | Stiligeridae | Ercolania | 255000 | 1202233 | yes |
+| `scyllaea_pelagica` | *Scyllaea pelagica* | — | 0 | Scyllaeidae | Scyllaea | 255002 | 203788 | yes |
+| `ringicula_conformis` | *Ringicula conformis* | — | 0 | Ringiculidae | Ringicula | 255202 | 949164 | yes |
+| `pyrgisculus_jeffreysii` | *Pyrgisculus jeffreysii* | — | 0 | Pyramidellidae | Pyrgisculus | 257173 | 1637572 | yes |
+| `tambja_affinis` | *Tambja affinis* | — | 0 | Polyceridae | Tambja | 258201 | 499461 | yes |
+| `chromodoris_willani` | *Chromodoris willani* | — | 0 | Chromodorididae | Chromodoris | 265870 | 119429 | yes |
+| `paraflabellina_gabinierei` | *Paraflabellina gabinierei* | Flabellina gabinierei | 0 | Flabellinidae | Paraflabellina | 184298 | 791222 | yes |
+| `weinkauffia_turgidula` | *Weinkauffia turgidula* | — | 0 | Haminoeidae | Weinkauffia | 74111 | 954866 | yes |
+| `turbonilla_pusilla` | *Turbonilla pusilla* | — | 0 | Pyramidellidae | Turbonilla | 253404 | 1297878 | yes |
+| `runcina_adriatica` | *Runcina adriatica* | — | 0 | Runcinidae | Runcina | 254627 | 1202128 | yes |
+| `doto_maculata` | *Doto maculata* | — | 0 | Dotidae | Doto | 254668 | 542073 | yes |
+| `rostanga_rubra` | *Rostanga rubra* | — | 0 | Discodorididae | Rostanga | 254689 | 489150 | yes |
+| `runcina_capreensis` | *Runcina capreensis* | — | 0 | Runcinidae | Runcina | 254696 | 1202139 | yes |
+| `hyalocylis_striata` | *Hyalocylis striata* | — | 0 | Cavoliniidae | Hyalocylis | 254697 | 292231 | yes |
+| `spinoaglaja_wildpretii` | *Spinoaglaja wildpretii* | — | 0 | Aglajidae | Spinoaglaja | 262668 | 1490891 | yes |
+| `tenellia_foliata` | *Tenellia foliata* | — | 0 | Tergipedidae | Tenellia | 253869 | 521160 | yes |
+| `aegires_punctilucens` | *Aegires punctilucens* | — | 0 | Aegiridae | Aegires | 254127 | 418367 | yes |
+| `berthella_aurantiaca` | *Berthella aurantiaca* | — | 0 | Pleurobranchidae | Berthella | 254381 | 489124 | yes |
+| `creseis_conica` | *Creseis conica* | — | 0 | Cavoliniidae | Creseis | 254701 | 255486 | yes |
+| `bosellia_levis` | *Bosellia levis* | Elysia levis | 0 | Plakobranchidae | Bosellia | 254978 | 1663236 | yes |
+| `volvulella_acuminata` | *Volvulella acuminata* | — | 0 | Retusidae | Volvulella | 264220 | 482649 | yes |
+| `caucasotachea_vindobonensis` | *Caucasotachea vindobonensis* | — | 0 | Helicidae | Caucasotachea | 95639 | 922180 | yes |
+| `nembrotha_chamberlaini` | *Nembrotha chamberlaini* | — | 0 | Polyceridae | Nembrotha | 255474 | 121050 | yes |
+| `iberus_splendidus` | *Iberus splendidus* | — | 0 | Helicidae | Iberus | 263500 | 1555576 | yes |
+| `theba_pisana` | *Theba pisana* | — | 0 | Helicidae | Theba | 251080 | 119608 | yes |
+| `felimare_cantabrica` | *Felimare cantabrica* | — | 0 | Chromodorididae | Felimare | 35990 | 469300 | yes |
+| `cochlicella_barbara` | *Cochlicella barbara* | — | 0 | Hygromiidae | Cochlicella | 252178 | 217273 | yes |
+| `pyramidella_dolabrata` | *Pyramidella dolabrata* | — | 0 | Pyramidellidae | Pyramidella | 254754 | 253901 | yes |
+| `flabellina_dushia` | *Flabellina dushia* | Edmundsella dushia | 0 | Flabellinidae | Flabellina | 254979 | 549652 | yes |
+| `elysia_cauze` | *Elysia cauze* | — | 0 | Plakobranchidae | Elysia | 254982 | 255213 | yes |
+| `bermudella_mica` | *Bermudella mica* | — | 0 | Goniodorididae | Bermudella | 254985 | 1521014 | yes |
+| `caliphylla_viridis` | *Caliphylla viridis* | — | 0 | Caliphyllidae | Caliphylla | 254999 | 1202191 | yes |
+| `runcina_carrilloi` | *Runcina carrilloi* | — | 0 | Runcinidae | Runcina | 262477 | 1202113 | yes |
+| `tayuva_confusa` | *Tayuva confusa* | — | 0 | Discodorididae | Tayuva | 264037 |  | yes |
+| `nembrotha_kubaryana` | *Nembrotha kubaryana* | — | 0 | Polyceridae | Nembrotha | 255475 | 126110 | yes |
+| `arion_vulgaris` | *Arion vulgaris* | — | 0 | Arionidae | Arion | 246309 | 54583 | yes |
+| `drusia_valenciennii` | *Drusia valenciennii* | — | 0 | Parmacellidae | Drusia | 136453 | 985396 | yes |
+| `cornu_aspersum` | *Cornu aspersum* | — | 0 | Helicidae | Cornu | 158199 | 480298 | yes |
+| `phylliroe_bucephala` | *Phylliroe bucephala* | — | 0 | Phylliroidae | Phylliroe | 240430 | 255192 | yes |
+| `rumina_decollata` | *Rumina decollata* | — | 0 | Achatinidae | Rumina | 246812 | 125669 | yes |
+| `doris_bertheloti` | *Doris bertheloti* | — | 0 | Dorididae | Doris | 254276 | 751556 | yes |
+| `aplysiopsis_elegans` | *Aplysiopsis elegans* | — | 0 | Stiligeridae | Aplysiopsis | 254530 | 1202207 | yes |
+| `haminoea_navicula` | *Haminoea navicula* | — | 0 | Haminoeidae | Haminoea | 254554 | 482650 | yes |
+| `glaucus_atlanticus` | *Glaucus atlanticus* | — | 0 | Glaucidae | Glaucus | 254752 | 50498 | yes |
+| `runcina_pacoi` | *Runcina pacoi* | — | 0 | Runcinidae | Runcina | 254987 | 1202116 | yes |
+| `cuthona_pallida` | *Cuthona pallida* | — | 0 | Tergipedidae | Cuthona | 257266 | 1045555 | yes |
+| `embletonia_pulchra` | *Embletonia pulchra* | — | 0 | Embletoniidae | Embletonia | 257392 | 482970 | yes |
+| `turbonilla_lactea` | *Turbonilla lactea* | — | 0 | Pyramidellidae | Turbonilla | 257412 | 253910 | yes |
+| `philine_intricata` | *Philine intricata* | — | 0 | Philinidae | Philine | 264094 | 1201951 | yes |
+| `chromodoris_strigata` | *Chromodoris strigata* | — | 0 | Chromodorididae | Chromodoris | 257220 | 143227 | yes |
+| `phyllidia_coelestis` | *Phyllidia coelestis* | — | 0 | Phyllidiidae | Phyllidia | 32560 | 142294 | yes |
+| `siphonaria_pectinata` | *Siphonaria pectinata* | — | 0 | Siphonariidae | Siphonaria | 254766 | 1085670 | yes |
+| `cernuella_virgata` | *Cernuella virgata* | — | 0 | Hygromiidae | Cernuella | 250224 | 118886 | yes |
+| `otala_punctata` | *Otala punctata* | — | 0 | Helicidae | Otala | 252590 | 131833 | yes |
+| `dicata_odhneri` | *Dicata odhneri* | — | 0 | Facelinidae | Dicata | 244486 | 477037 | yes |
+| `atalodoris_pictoni` | *Atalodoris pictoni* | — | 0 | Onchidorididae | Atalodoris | 253924 | 1364193 | yes |
+| `gargamella_rosi` | *Gargamella rosi* | — | 0 | Discodorididae | Gargamella | 254153 | 1668330 | yes |
+| `melanochlamys_miqueli` | *Melanochlamys miqueli* | — | 0 | Aglajidae | Melanochlamys | 254303 | 823911 | yes |
+| `pleurobranchus_reticulatus` | *Pleurobranchus reticulatus* | — | 0 | Pleurobranchidae | Pleurobranchus | 254389 | 698693 | yes |
+| `bulla_mabillei` | *Bulla mabillei* | — | 0 | Bullidae | Bulla | 254405 | 328508 | yes |
+| `doriopsilla_rarispinosa` | *Doriopsilla rarispinosa* | — | 0 | Dendrodorididae | Doriopsilla | 254475 | 1376127 | yes |
+| `aeolidiella_sanguinea` | *Aeolidiella sanguinea* | — | 0 | Aeolidiidae | Aeolidiella | 254595 | 492401 | yes |
+| `doto_fragaria` | *Doto fragaria* | — | 0 | Dotidae | Doto | 254603 | 1123554 | yes |
+| `peltodoris_punctifera` | *Peltodoris punctifera* | — | 0 | Discodorididae | Peltodoris | 254650 | 1202855 | yes |
+| `limenandra_nodosa` | *Limenandra nodosa* | — | 0 | Aeolidiidae | Limenandra | 254703 | 50479 | yes |
+| `clio_pyramidata` | *Clio pyramidata* | — | 0 | Cavoliniidae | Clio | 255126 | 292943 | yes |
+| `cylichna_cylindracea` | *Cylichna cylindracea* | — | 0 | Cylichnidae | Cylichna | 255686 | 482652 | yes |
+| `cavolinia_gibbosa` | *Cavolinia gibbosa* | — | 0 | Cavoliniidae | Cavolinia | 264129 | 292939 | yes |
+| `candiella_cincta` | *Candiella cincta* | — | 0 | Tritoniidae | Candiella | 254626 | 1496155 | yes |
+| `rubramoena_amoena` | *Rubramoena amoena* | — | 0 | Trinchesiidae | Rubramoena | 254665 | 521103 | yes |
+| `ambigolimax_valentianus` | *Ambigolimax valentianus* | — | 0 | Limacidae | Ambigolimax | 263499 | 448331 | yes |
+| `folinella_excavata` | *Folinella excavata* | Ividella excavata | 0 | Pyramidellidae | Folinella | 151389 | 1621220 | yes |
+| `lamprohaminoea_ovalis` | *Lamprohaminoea ovalis* | — | 0 | Haminoeidae | Lamprohaminoea | 148517 | 953092 | yes |
+| `roxaniella_jeffreysi` | *Roxaniella jeffreysi* | — | 0 | Haminoeidae | Roxaniella | 147497 | 1201497 | yes |
+| `cephalopyge_trematoides` | *Cephalopyge trematoides* | — | 0 | Phylliroidae | Cephalopyge | 219084 | 872479 | yes |
+| `hermania_scabra` | *Hermania scabra* | — | 0 | Philinidae | Hermania | 241060 | 1201884 | yes |
+| `doriopsilla_areolata` | *Doriopsilla areolata* | — | 0 | Dendrodorididae | Doriopsilla | 244952 | 338033 | yes |
+| `elysia_margaritae` | *Elysia margaritae* | — | 0 | Plakobranchidae | Elysia | 245695 | 1075727 | yes |
+| `ercolania_coerulea` | *Ercolania coerulea* | — | 0 | Stiligeridae | Ercolania | 246233 | 489135 | yes |
+| `tethys_fimbria` | *Tethys fimbria* | — | 0 | Tethydidae | Tethys | 250850 | 545013 | yes |
+| `doto_eireana` | *Doto eireana* | — | 0 | Dotidae | Doto | 254424 | 492433 | yes |
+| `akera_bullata` | *Akera bullata* | — | 0 | Akeridae | Akera | 254555 | 482656 | yes |
+| `plocamopherus_maderae` | *Plocamopherus maderae* | — | 0 | Polyceridae | Plocamopherus | 254582 | 1199323 | yes |
+| `hermaea_cantabra` | *Hermaea cantabra* | — | 0 | Stiligeridae | Hermaea | 254641 | 716673 | yes |
+| `styliola_subula` | *Styliola subula* | — | 0 | Cavoliniidae | Styliola | 255709 | 253827 | yes |
+| `turbonilla_acuta` | *Turbonilla acuta* | — | 0 | Pyramidellidae | Turbonilla | 256613 | 482674 | yes |
+| `elysia_manriquei` | *Elysia manriquei* | — | 0 | Plakobranchidae | Elysia | 262208 | 1141795 | yes |
+| `odostomia_unidentata` | *Odostomia unidentata* | — | 0 | Pyramidellidae | Odostomia | 264093 | 861631 | yes |
+| `costasiella_virescens` | *Costasiella virescens* | — | 0 | Costasiellidae | Costasiella | 264218 | 1202205 | yes |
+| `doriprismatica_atromarginata` | *Doriprismatica atromarginata* | — | 0 | Chromodorididae | Doriprismatica | 256531 | 468042 | yes |
+| `halgerda_paulayi` | *Halgerda paulayi* | — | 0 | Halgerdidae | Halgerda | 267036 | 1474433 | yes |
+| `elysia_crispata` | *Elysia crispata* | — | 0 | Plakobranchidae | Elysia | 255295 | 119875 | yes |
+| `oxychilus_draparnaudi` | *Oxychilus draparnaudi* | — | 0 | Zonitidae | Oxychilus | 263956 | 226720 | yes |
+| `pleurobranchus_crossei` | *Pleurobranchus crossei* | — | 0 | Pleurobranchidae | Pleurobranchus | 254998 | 1202447 | yes |
+| `ceratosoma_trilobatum` | *Ceratosoma trilobatum* | — | 0 | Chromodorididae | Ceratosoma | 265887 | 199474 | yes |
+| `goniobranchus_reticulatus` | *Goniobranchus reticulatus* | — | 0 | Chromodorididae | Goniobranchus | 256527 | 469414 | yes |
+| `elysia_marginata` | *Elysia marginata* | — | 0 | Plakobranchidae | Elysia | 257184 | 546397 | yes |
+| `chromodoris_colemani` | *Chromodoris colemani* | — | 0 | Chromodorididae | Chromodoris | 265954 | 467977 | yes |
+| `amphorina_linensis` | *Amphorina linensis* | — | 0 | Eubranchidae | Amphorina | 255131 | 1047020 | yes |
+| `arion_ater` | *Arion ater* | — | 0 | Arionidae | Arion | 246295 | 82003 | yes |
+| `weinkauffia_macandrewii` | *Weinkauffia macandrewii* | — | 0 | Haminoeidae | Weinkauffia | 74118 | 1429891 | yes |
+| `ondina_diaphana` | *Ondina diaphana* | — | 0 | Pyramidellidae | Ondina | 83526 | 482686 | yes |
+| `felimida_luteopunctata` | *Felimida luteopunctata* | — | 0 | Chromodorididae | Felimida | 248694 | 469625 | yes |
+| `physella_acuta` | *Physella acuta* | — | 0 | Physidae | Physella | 253295 | 448024 | yes |
+| `facelina_dubia` | *Facelina dubia* | — | 0 | Facelinidae | Facelina | 253868 | 564788 | yes |
+| `geitodoris_portmanni` | *Geitodoris portmanni* | — | 0 | Discodorididae | Geitodoris | 254274 | 489141 | yes |
+| `doto_coronata` | *Doto coronata* | — | 0 | Dotidae | Doto | 254454 | 61909 | yes |
+| `dendrodoris_fumata` | *Dendrodoris fumata* | — | 0 | Dendrodorididae | Dendrodoris | 254536 | 50227 | yes |
+| `hermaea_paucicirra` | *Hermaea paucicirra* | — | 0 | Stiligeridae | Hermaea | 254624 | 1202218 | yes |
+| `okenia_nodosa` | *Okenia nodosa* | — | 0 | Goniodorididae | Okenia | 254664 | 1521443 | yes |
+| `archidoris_pseudoargus` | *Archidoris pseudoargus* | — | 0 | Dorididae | Archidoris | 254669 | 476238 | yes |
+| `janolus_faustoi` | *Janolus faustoi* | — | 0 | Janolidae | Janolus | 254990 | 497256 | yes |
+| `pteraeolidia_semperi` | *Pteraeolidia semperi* | — | 0 | Facelinidae | Pteraeolidia | 255261 | 469568 | yes |
+| `pleurobranchus_forskalii` | *Pleurobranchus forskalii* | — | 0 | Pleurobranchidae | Pleurobranchus | 256476 | 49904 | yes |
+| `tambja_morosa` | *Tambja morosa* | — | 0 | Polyceridae | Tambja | 256506 | 120948 | yes |
+| `retusa_umbilicata` | *Retusa umbilicata* | — | 0 | Retusidae | Retusa | 263350 | 1201799 | yes |
+| `cavolinia_uncinata` | *Cavolinia uncinata* | — | 0 | Cavoliniidae | Cavolinia | 264040 | 255481 | yes |
+| `corolla_ovata` | *Corolla ovata* | — | 0 | Cymbuliidae | Corolla | 264119 | 292950 | yes |
+| `placida_dakariensis` | *Placida dakariensis* | — | 0 | Stiligeridae | Placida | 264235 | 1202227 | yes |
+| `phyllidia_elegans` | *Phyllidia elegans* | — | 0 | Phyllidiidae | Phyllidia | 32559 | 119872 | yes |
+| `candiella_lineata` | *Candiella lineata* | — | 0 | Tritoniidae | Candiella | 264897 | 1496139 | yes |
+| `caloria_indica` | *Caloria indica* | — | 0 | Facelinidae | Caloria | 265867 | 119425 | yes |
+| `halgerda_batangas` | *Halgerda batangas* | — | 0 | Halgerdidae | Halgerda | 257222 | 125934 | yes |
+| `jorunna_funebris` | *Jorunna funebris* | — | 0 | Discodorididae | Jorunna | 256559 | 50300 | yes |
+| `helix_lucorum` | *Helix lucorum* | — | 0 | Helicidae | Helix | 251245 | 336841 | yes |
+| `discodoris_stellifera` | *Discodoris stellifera* | — | 0 | Discodorididae | Discodoris | 262649 | 492588 | yes |
+| `hypselodoris_festiva` | *Hypselodoris festiva* | — | 0 | Chromodorididae | Hypselodoris | 267752 | 469043 | yes |
+| `cadlina_pellucida` | *Cadlina pellucida* | — | 0 | Chromodorididae | Cadlina | 254671 | 492417 | yes |
+| `limax_cinereoniger` | *Limax cinereoniger* | — | 0 | Limacidae | Limax | 244042 | 143291 | yes |
+| `nembrotha_milleri` | *Nembrotha milleri* | — | 0 | Polyceridae | Nembrotha | 257202 | 142953 | yes |
+| `pleurobranchus_grandis` | *Pleurobranchus grandis* | — | 0 | Pleurobranchidae | Pleurobranchus | 263425 | 123404 | yes |
+| `xerosecta_cespitum` | *Xerosecta cespitum* | — | 0 | Geomitridae | Xerosecta | 88566 | 115139 | yes |
+| `goniobranchus_kuniei` | *Goniobranchus kuniei* | — | 0 | Chromodorididae | Goniobranchus | 256552 | 469422 | yes |
+| `chromodoris_lochi` | *Chromodoris lochi* | — | 0 | Chromodorididae | Chromodoris | 257168 | 201640 | yes |
+| `chromodoris_alcalai` | *Chromodoris alcalai* | — | 0 | Chromodorididae | Chromodoris | 257181 | 1263433 | yes |
+| `felimida_luteorosea` | *Felimida luteorosea* | — | 0 | Chromodorididae | Felimida | 254336 | 469622 | yes |
+| `eobania_vermiculata` | *Eobania vermiculata* | — | 0 | Helicidae | Eobania | 245950 | 199875 | yes |
+| `phyllidiella_pustulosa` | *Phyllidiella pustulosa* | — | 0 | Phyllidiidae | Phyllidiella | 32554 | 49728 | yes |
+| `gargamella_boucheti` | *Gargamella boucheti* | — | 0 | Discodorididae | Gargamella | 48448 | 1617733 | yes |
+| `carinorbis_clathrata` | *Carinorbis clathrata* | — | 0 | Amathinidae | Carinorbis | 123053 | 1371015 | yes |
+| `asteronotus_cespitosus` | *Asteronotus cespitosus* | — | 0 | Discodorididae | Asteronotus | 176374 | 52961 | yes |
+| `gargamella_perezi` | *Gargamella perezi* | — | 0 | Discodorididae | Gargamella | 221801 | 827843 | yes |
+| `ercolania_selva` | *Ercolania selva* | — | 0 | Stiligeridae | Ercolania | 240380 | 1202235 | yes |
+| `polycera_elegans` | *Polycera elegans* | — | 0 | Polyceridae | Polycera | 242954 | 951391 | yes |
+| `ampullaceana_balthica` | *Ampullaceana balthica* | — | 0 | Lymnaeidae | Ampullaceana | 245210 | 1074838 | yes |
+| `aplysiopsis_formosa` | *Aplysiopsis formosa* | — | 0 | Stiligeridae | Aplysiopsis | 245622 | 953253 | yes |
+| `calmella_gaditana` | *Calmella gaditana* | Flabellina gaditana | 0 | Flabellinidae | Calmella | 254031 | 1080084 | yes |
+| `cyerce_cristallina` | *Cyerce cristallina* | — | 0 | Caliphyllidae | Cyerce | 254280 | 488715 | yes |
+| `pleurobranchus_membranaceus` | *Pleurobranchus membranaceus* | — | 0 | Pleurobranchidae | Pleurobranchus | 254500 | 482693 | yes |
+| `hydatina_physis` | *Hydatina physis* | — | 0 | Aplustridae | Hydatina | 254584 | 319381 | yes |
+| `limacia_clavigera` | *Limacia clavigera* | — | 0 | Polyceridae | Limacia | 254660 | 467344 | yes |
+| `tenellia_adspersa` | *Tenellia adspersa* | — | 0 | Tergipedidae | Tenellia | 254699 | 50529 | yes |
+| `stiliger_auarita` | *Stiliger auarita* | — | 0 | Stiligeridae | Stiliger | 254768 | 1202248 | yes |
+| `cerberilla_bernadettae` | *Cerberilla bernadettae* | — | 0 | Aeolidiidae | Cerberilla | 254973 | 1075227 | yes |
+| `doto_fluctifraga` | *Doto fluctifraga* | — | 0 | Dotidae | Doto | 255012 | 631557 | yes |
+| `peracle_reticulata` | *Peracle reticulata* | — | 0 | Peraclididae | Peracle | 255065 | 292954 | yes |
+| `ringicula_buccinea` | *Ringicula buccinea* | — | 0 | Ringiculidae | Ringicula | 255597 |  | yes |
+| `phyllidia_marindica` | *Phyllidia marindica* | — | 0 | Phyllidiidae | Phyllidia | 256445 | 359749 | yes |
+| `pleurobranchus_albiguttatus` | *Pleurobranchus albiguttatus* | — | 0 | Pleurobranchidae | Pleurobranchus | 256517 | 123405 | yes |
+| `tambja_marbellensis` | *Tambja marbellensis* | — | 0 | Polyceridae | Tambja | 256623 | 526550 | yes |
+| `tambja_ceutae` | *Tambja ceutae* | — | 0 | Polyceridae | Tambja | 256624 | 68874 | yes |
+| `espinosina_terracota` | *Espinosina terracota* | — | 0 | Aplustridae | Espinosina | 256797 | 1640578 | yes |
+| `rhodope_veranii` | *Rhodope veranii* | — | 0 | Rhodopidae | Rhodope | 257523 |  | yes |
+| `lobiger_serradifalci` | *Lobiger serradifalci* | — | 0 | Oxynoidae | Lobiger | 257973 | 1202323 | yes |
+| `philippia_hybrida` | *Philippia hybrida* | — | 0 | Architectonicidae | Philippia | 262459 | 1266406 | yes |
+| `phyllidia_rueppelii` | *Phyllidia rueppelii* | — | 0 | Phyllidiidae | Phyllidia | 262312 | 359793 | yes |
+| `thuridilla_mazda` | *Thuridilla mazda* | — | 0 | Plakobranchidae | Thuridilla | 254717 | 255210 | yes |
+| `portugala_inchoata` | *Portugala inchoata* | — | 0 | Hygromiidae | Portugala | 268538 | 110166 | yes |
+| `tritonia_odhneri` | *Tritonia odhneri* | — | 0 | Tritoniidae | Tritonia | 259399 | 513713 | yes |
+| `lymnaea_stagnalis` | *Lymnaea stagnalis* | — | 0 | Lymnaeidae | Lymnaea | 245422 | 61770 | yes |
+| `coryphellina_rubrolineata` | *Coryphellina rubrolineata* | — | 0 | Flabellinidae | Coryphellina | 41067 | 699010 | yes |
+| `cuthona_willani` | *Cuthona willani* | — | 0 | Tergipedidae | Cuthona | 261990 | 1202650 | yes |
+| `sagaminopteron_ornatum` | *Sagaminopteron ornatum* | — | 0 | Gastropteridae | Sagaminopteron | 187515 | 418366 | yes |
+| `philine_iris` | *Philine iris* | — | 0 | Philinidae | Philine | 253140 | 1201899 | yes |
+| `trapania_tartanella` | *Trapania tartanella* | — | 0 | Goniodorididae | Trapania | 254613 | 476205 | yes |
+| `phyllidia_alyta` | *Phyllidia alyta* | — | 0 | Phyllidiidae | Phyllidia | 262524 | 49737 | yes |
+| `heliacus_fallaciosus` | *Heliacus fallaciosus* | — | 0 | Architectonicidae | Heliacus | 264785 | 1075891 | yes |
+| `polycera_kernowensis` | *Polycera kernowensis* | — | 0 | Polyceridae | Polycera | 254657 | 1281921 | yes |
+| `cantareus_apertus` | *Cantareus apertus* | — | 0 | Helicidae | Cantareus | 158194 | 96707 | yes |
+| `plakobranchus_papua` | *Plakobranchus papua* | — | 0 | Plakobranchidae | Plakobranchus | 107146 | 723224 | yes |
+| `pruvotfolia_pselliotes` | *Pruvotfolia pselliotes* | — | 0 | Facelinidae | Pruvotfolia | 212853 | 492406 | yes |
+| `tenellia_albopunctata` | *Tenellia albopunctata* | — | 0 | Tergipedidae | Tenellia | 263920 | 1624608 | yes |
+| `aplysia_oculifera` | *Aplysia oculifera* | — | 0 | Aplysiidae | Aplysia | 267719 | 50930 | yes |
+| `eubranchus_arci` | *Eubranchus arci* | — | 0 | Eubranchidae | Eubranchus | 255007 | 1202690 | yes |
+| `eulimella_acicula` | *Eulimella acicula* | — | 0 | Pyramidellidae | Eulimella | 26718 | 1595600 | yes |
+| `goniobranchus_hintuanensis` | *Goniobranchus hintuanensis* | — | 0 | Chromodorididae | Goniobranchus | 256491 | 346899 | yes |
+| `aegires_villosus` | *Aegires villosus* | — | 0 | Aegiridae | Aegires | 265871 | 467975 | yes |
+| `phyllidia_ocellata` | *Phyllidia ocellata* | — | 0 | Phyllidiidae | Phyllidia | 32557 | 50554 | yes |
+| `doto_pita` | *Doto pita* | — | 0 | Dotidae | Doto | 254825 | 60592 | yes |
+| `ardeadoris_egretta` | *Ardeadoris egretta* | — | 0 | Chromodorididae | Ardeadoris | 50307 | 121406 | yes |
+| `oxynoe_benchijigua` | *Oxynoe benchijigua* | — | 0 | Oxynoidae | Oxynoe | 255591 | 1202325 | yes |
+| `phyllidia_picta` | *Phyllidia picta* | — | 0 | Phyllidiidae | Phyllidia | 32553 | 207581 | yes |
+| `glossodoris_rufomarginata` | *Glossodoris rufomarginata* | — | 0 | Chromodorididae | Glossodoris | 157777 | 119863 | yes |
+| `okenia_elegans` | *Okenia elegans* | — | 0 | Goniodorididae | Okenia | 35235 | 482694 | yes |
+| `doriprismatica_balut` | *Doriprismatica balut* | — | 0 | Chromodorididae | Doriprismatica | 65364 | 846509 | yes |
+| `limacus_flavus` | *Limacus flavus* | — | 0 | Limacidae | Limacus | 68113 | 322417 | yes |
+| `myosotella_myosotis` | *Myosotella myosotis* | — | 0 | Ellobiidae | Myosotella | 78849 | 225386 | yes |
+| `dolabella_auricularia` | *Dolabella auricularia* | — | 0 | Aplysiidae | Dolabella | 121160 | 49860 | yes |
+| `asteronotus_hepaticus` | *Asteronotus hepaticus* | — | 0 | Discodorididae | Asteronotus | 176378 | 560006 | yes |
+| `tenellia_pustulata` | *Tenellia pustulata* | — | 0 | Tergipedidae | Tenellia | 179032 | 521096 | yes |
+| `dendrodoris_herytra` | *Dendrodoris herytra* | — | 0 | Dendrodorididae | Dendrodoris | 244149 | 460677 | yes |
+| `berthella_plumula` | *Berthella plumula* | — | 0 | Pleurobranchidae | Berthella | 248149 | 120558 | yes |
+| `succinea_putris` | *Succinea putris* | — | 0 | Succineidae | Succinea | 250525 | 123943 | yes |
+| `helicella_itala` | *Helicella itala* | — | 0 | Hygromiidae | Helicella | 251095 | 83818 | yes |
+| `cochlicella_acuta` | *Cochlicella acuta* | — | 0 | Hygromiidae | Cochlicella | 252174 | 336839 | yes |
+| `oxyloma_elegans` | *Oxyloma elegans* | — | 0 | Succineidae | Oxyloma | 252638 | 451596 | yes |
+| `xerotricha_conspurcata` | *Xerotricha conspurcata* | — | 0 | Geomitridae | Xerotricha | 253738 | 233782 | yes |
+| `elysia_papillosa` | *Elysia papillosa* | — | 0 | Plakobranchidae | Elysia | 254403 | 343649 | yes |
+| `tenellia_granosa` | *Tenellia granosa* | — | 0 | Tergipedidae | Tenellia | 254478 | 1624629 | yes |
+| `ammonicera_fischeriana` | *Ammonicera fischeriana* | — | 0 | Omalogyridae | Ammonicera | 254494 | 1272379 | yes |
+| `piseinotecus_sphaeriferus` | *Piseinotecus sphaeriferus* | — | 0 | Tergipedidae | Piseinotecus | 254593 | 492373 | yes |
+| `cargoa_problematica` | *Cargoa problematica* | — | 0 | Goniodorididae | Cargoa | 254629 | 1521042 | yes |
+| `okenia_mediterranea` | *Okenia mediterranea* | — | 0 | Goniodorididae | Okenia | 254630 | 872523 | yes |
+| `thecacera_pennigera` | *Thecacera pennigera* | — | 0 | Polyceridae | Thecacera | 254631 | 51001 | yes |
+| `doriopsilla_pelseneeri` | *Doriopsilla pelseneeri* | — | 0 | Dendrodorididae | Doriopsilla | 254656 | 338034 | yes |
+| `doto_pinnatifida` | *Doto pinnatifida* | — | 0 | Dotidae | Doto | 254658 | 492431 | yes |
+| `lomanotus_marmoratus` | *Lomanotus marmoratus* | — | 0 | Lomanotidae | Lomanotus | 254662 | 482700 | yes |
+| `aeolidia_filomenae` | *Aeolidia filomenae* | — | 0 | Aeolidiidae | Aeolidia | 254675 | 498062 | yes |
+| `felimare_gasconi` | *Felimare gasconi* | — | 0 | Chromodorididae | Felimare | 254724 | 639212 | yes |
+| `cavolinia_tridentata` | *Cavolinia tridentata* | — | 0 | Cavoliniidae | Cavolinia | 254748 | 292941 | yes |
+| `elysia_ornata` | *Elysia ornata* | — | 0 | Plakobranchidae | Elysia | 254770 | 50566 | yes |
+| `runcina_akaymui` | *Runcina akaymui* | — | 0 | Runcinidae | Runcina | 254988 | 1202111 | yes |
+| `trapania_luquei` | *Trapania luquei* | — | 0 | Goniodorididae | Trapania | 254994 | 1203162 | yes |
+| `odostomia_acuta` | *Odostomia acuta* | — | 0 | Pyramidellidae | Odostomia | 255070 | 861629 | yes |
+| `doto_verdicioi` | *Doto verdicioi* | — | 0 | Dotidae | Doto | 255608 | 1202763 | yes |
+| `phyllidiopsis_annae` | *Phyllidiopsis annae* | — | 0 | Phyllidiidae | Phyllidiopsis | 256447 | 126094 | yes |
+| `coryphellina_exoptata` | *Coryphellina exoptata* | — | 0 | Flabellinidae | Coryphellina | 256464 | 871903 | yes |
+| `goniobranchus_geometricus` | *Goniobranchus geometricus* | — | 0 | Chromodorididae | Goniobranchus | 256490 | 346881 | yes |
+| `goniobranchus_splendidus` | *Goniobranchus splendidus* | — | 0 | Chromodorididae | Goniobranchus | 256492 | 495799 | yes |
+| `hypselodoris_infucata` | *Hypselodoris infucata* | — | 0 | Chromodorididae | Hypselodoris | 256494 | 52862 | yes |
+| `hypselodoris_tryoni` | *Hypselodoris tryoni* | — | 0 | Chromodorididae | Hypselodoris | 256495 | 468033 | yes |
+| `chelidonura_amoena` | *Chelidonura amoena* | — | 0 | Aglajidae | Chelidonura | 256513 | 199475 | yes |
+| `hypselodoris_bullockii` | *Hypselodoris bullockii* | — | 0 | Chromodorididae | Hypselodoris | 256520 | 548309 | yes |
+| `nembrotha_aurea` | *Nembrotha aurea* | — | 0 | Polyceridae | Nembrotha | 256522 | 505622 | yes |
+| `roboastra_tentaculata` | *Roboastra tentaculata* | — | 0 | Polyceridae | Roboastra | 256523 | 842857 | yes |
+| `mexichromis_trilineata` | *Mexichromis trilineata* | — | 0 | Chromodorididae | Mexichromis | 256524 | 319772 | yes |
+| `hypselodoris_emma` | *Hypselodoris emma* | — | 0 | Chromodorididae | Hypselodoris | 256525 | 319379 | yes |
+| `cepaea_hortensis` | *Cepaea hortensis* | — | 0 | Helicidae | Cepaea | 250089 | 51039 | yes |
+| `helicigona_lapicida` | *Helicigona lapicida* | — | 0 | Helicidae | Helicigona | 115686 | 102393 | yes |
+| `armina_maculata` | *Armina maculata* | — | 0 | Arminidae | Armina | 262037 | 492404 | yes |
+| `thuridilla_bayeri` | *Thuridilla bayeri* | — | 0 | Plakobranchidae | Thuridilla | 262579 | 418334 | yes |
+| `chromodoris_dianae` | *Chromodoris dianae* | — | 0 | Chromodorididae | Chromodoris | 265955 | 126096 | yes |
+| `nembrotha_cristata` | *Nembrotha cristata* | — | 0 | Polyceridae | Nembrotha | 256532 | 119438 | yes |
+| `runcina_bahiensis` | *Runcina bahiensis* | — | 0 | Runcinidae | Runcina | 254700 | 1202134 | yes |
+| `petalifera_ramosa` | *Petalifera ramosa* | — | 0 | Aplysiidae | Petalifera | 263258 | 253932 | yes |
+| `xerolenta_obvia` | *Xerolenta obvia* | — | 0 | Geomitridae | Xerolenta | 148610 | 233779 | yes |
+| `glossodoris_acosti` | *Glossodoris acosti* | — | 0 | Chromodorididae | Glossodoris | 256515 | 847499 | yes |
+| `rissoella_contrerasi` | *Rissoella contrerasi* | — | 0 | Rissoellidae | Rissoella | 264139 | 1244802 | yes |
+| `phyllidiopsis_krempfi` | *Phyllidiopsis krempfi* | — | 0 | Phyllidiidae | Phyllidiopsis | 257335 | 143074 | yes |
+| `pseudoilbia_avellana` | *Pseudoilbia avellana* | — | 0 | Runcinidae | Pseudoilbia | 264938 | 1202103 | yes |
+| `chromodoris_magnifica` | *Chromodoris magnifica* | — | 0 | Chromodorididae | Chromodoris | 250972 | 121048 | yes |
+| `trochoidea_elegans` | *Trochoidea elegans* | — | 0 | Hygromiidae | Trochoidea | 253355 | 114508 | yes |
+| `hypselodoris_decorata` | *Hypselodoris decorata* | — | 0 | Chromodorididae | Hypselodoris | 257260 | 782298 | yes |
+| `goniobranchus_gleniei` | *Goniobranchus gleniei* | — | 0 | Chromodorididae | Goniobranchus | 262520 | 326058 | yes |
+| `runcina_arnoldoi` | *Runcina arnoldoi* | — | 0 | Runcinidae | Runcina | 254993 | 1202112 | yes |
+| `chelidonura_pallida` | *Chelidonura pallida* | — | 0 | Aglajidae | Chelidonura | 255446 | 566572 | yes |
+| `phyllidiopsis_fissurata` | *Phyllidiopsis fissurata* | — | 0 | Phyllidiidae | Phyllidiopsis | 257262 | 519522 | yes |
+| `cadlina_laevis` | *Cadlina laevis* | — | 0 | Chromodorididae | Cadlina | 254661 | 492412 | yes |
+| `trapania_graeffei` | *Trapania graeffei* | — | 0 | Goniodorididae | Trapania | 257399 | 1203167 | yes |
+| `coryphellina_flamma` | *Coryphellina flamma* | — | 0 | Flabellinidae | Coryphellina | 267492 | 1375852 | yes |
+| `geitodoris_pusae` | *Geitodoris pusae* | — | 0 | Discodorididae | Geitodoris | 263242 | 1202834 | yes |
+| `cliopsis_krohnii` | *Cliopsis krohnii* | — | 0 | Cliopsidae | Cliopsis | 264131 | 1149649 | yes |
+| `costasiella_kuroshimae` | *Costasiella kuroshimae* | — | 0 | Costasiellidae | Costasiella | 265921 | 469221 | yes |
+| `runcina_hansbechi` | *Runcina hansbechi* | — | 0 | Runcinidae | Runcina | 264893 | 1123246 | yes |
+| `hypselodoris_iba` | *Hypselodoris iba* | — | 0 | Chromodorididae | Hypselodoris | 256528 | 781444 | yes |
+| `boettgeria_lowei` | *Boettgeria lowei* | — | 0 | Clausiliidae | Boettgeria | 102677 | 472514 | yes |
+| `notarchus_punctatus` | *Notarchus punctatus* | — | 0 | Notarchidae | Notarchus | 264939 | 253931 | yes |
+| `doto_escatllari` | *Doto escatllari* | — | 0 | Dotidae | Doto | 264011 | 1202758 | yes |
+| `microchlamylla_gracilis` | *Microchlamylla gracilis* | Coryphella gracilis | 0 | Coryphellidae | Microchlamylla | 197438 | 1392218 | yes |
+| `cochlicella_conoidea` | *Cochlicella conoidea* | — | 0 | Hygromiidae | Cochlicella | 261700 | 361279 | yes |
+| `helicodonta_obvoluta` | *Helicodonta obvoluta* | — | 0 | Helicodontidae | Helicodonta | 112160 | 102399 | yes |
+| `felimida_elegantula` | *Felimida elegantula* | — | 0 | Chromodorididae | Felimida | 264020 | 715088 | yes |
+| `omalogyra_atomus` | *Omalogyra atomus* | — | 0 | Omalogyridae | Omalogyra | 257373 | 482301 | yes |
+| `trapania_bajamarensis` | *Trapania bajamarensis* | — | 0 | Goniodorididae | Trapania | 263275 | 1199322 | yes |
+| `iberus_gualtieranus` | *Iberus gualtieranus* | — | 0 | Helicidae | Iberus | 19065 | 103256 | yes |
+| `candiella_plebeia` | *Candiella plebeia* | — | 0 | Tritoniidae | Candiella | 257877 | 1496147 | yes |
+| `glossodoris_buko` | *Glossodoris buko* | — | 0 | Chromodorididae | Glossodoris | 257152 | 778448 | yes |
+| `cuvierina_columnella` | *Cuvierina columnella* | — | 0 | Cavoliniidae | Cuvierina | 264110 | 388225 | yes |
+| `runcina_marcosi` | *Runcina marcosi* | — | 0 | Runcinidae | Runcina | 264962 | 1202118 | yes |
+| `mourgona_bethencourti` | *Mourgona bethencourti* | — | 0 | Caliphyllidae | Mourgona | 264048 |  | yes |
+| `phyllidia_multifaria` | *Phyllidia multifaria* | — | 0 | Phyllidiidae | Phyllidia | 263284 | 1150135 | yes |
+| `nembrotha_lineolata` | *Nembrotha lineolata* | — | 0 | Polyceridae | Nembrotha | 265950 | 119860 | yes |
+| `chelidonura_livida` | *Chelidonura livida* | — | 0 | Aglajidae | Chelidonura | 255293 | 56647 | yes |
+| `colpodaspis_pusilla` | *Colpodaspis pusilla* | — | 0 | Diaphanidae | Colpodaspis | 264900 | 542067 | yes |
+| `ceratosoma_gracillimum` | *Ceratosoma gracillimum* | — | 0 | Chromodorididae | Ceratosoma | 257185 | 358109 | yes |
+| `discodoris_boholiensis` | *Discodoris boholiensis* | — | 0 | Discodorididae | Discodoris | 265951 | 50442 | yes |
+| `monacha_fruticola` | *Monacha fruticola* | — | 0 | Hygromiidae | Monacha | 266855 | 105979 | yes |
+| `facelina_fusca` | *Facelina fusca* | — | 0 | Facelinidae | Facelina | 258879 | 489138 | yes |
+| `monacha_cartusiana` | *Monacha cartusiana* | — | 0 | Hygromiidae | Monacha | 264642 | 105970 | yes |
+| `lomanotus_barlettai` | *Lomanotus barlettai* | — | 0 | Lomanotidae | Lomanotus | 257467 | 1202992 | yes |
+| `zonites_algirus` | *Zonites algirus* | — | 0 | Zonitidae | Zonites | 25195 | 487693 | yes |
+| `coryphellina_lotos` | *Coryphellina lotos* | — | 0 | Flabellinidae | Coryphellina | 41072 | 873747 | yes |
+| `bornella_anguilla` | *Bornella anguilla* | — | 0 | Bornellidae | Bornella | 246919 | 64717 | yes |
+| `doris_kerguelenensis` | *Doris kerguelenensis* | Austrodoris kerguelenensis | 0 | Dorididae | Doris | 264184 | 1620156 | yes |
+| `samla_bilas` | *Samla bilas* | — | 0 | Samlidae | Samla | 149132 | 778294 | yes |
+| `favorinus_blianus` | *Favorinus blianus* | — | 0 | Facelinidae | Favorinus | 255130 | 468086 | yes |
+| `pleurobranchaea_maculata` | *Pleurobranchaea maculata* | — | 0 | Pleurobranchaeidae | Pleurobranchaea | 265752 | 395366 | yes |
+| `hypselodoris_purpureomaculosa` | *Hypselodoris purpureomaculosa* | — | 0 | Chromodorididae | Hypselodoris | 265956 | 471361 | yes |
+| `sagaminopteron_psychedelicum` | *Sagaminopteron psychedelicum* | — | 0 | Gastropteridae | Sagaminopteron | 187512 | 332450 | yes |
+| `diaulula_variolata` | *Diaulula variolata* | — | 0 | Discodorididae | Diaulula | 259406 | 491332 | yes |
+| `goniodoris_barroisi` | *Goniodoris barroisi* | Pelagella barroisi | 0 | Goniodorididae | Goniodoris | 254411 | 1521532 | yes |
+| `ebala_pointeli` | *Ebala pointeli* | — | 0 | Murchisonellidae | Ebala | 264348 | 1670355 | yes |
+| `phestilla_sibogae` | *Phestilla sibogae* | — | 0 | Tergipedidae | Phestilla | 252089 | 50534 | yes |
+| `phyllidiella_striata` | *Phyllidiella striata* | Phyllidiopsis striata | 0 | Phyllidiidae | Phyllidiella | 262568 | 126109 | yes |
+| `hypselodoris_ghardaqana` | *Hypselodoris ghardaqana* | — | 0 | Chromodorididae | Hypselodoris | 266604 | 715130 | yes |
+| `doris_adrianae` | *Doris adrianae* | — | 0 | Dorididae | Doris | 263299 | 1227858 | yes |
+| `testacella_haliotidea` | *Testacella haliotidea* | — | 0 | Testacellidae | Testacella | 250832 | 232389 | yes |
+| `laona_vestita` | *Laona vestita* | — | 0 | Laonidae | Laona | 264092 |  | yes |
+| `ebala_nitidissima` | *Ebala nitidissima* | — | 0 | Murchisonellidae | Ebala | 264345 | 1670354 | yes |
+| `thecacera_darwini` | *Thecacera darwini* | — | 0 | Polyceridae | Thecacera | 259403 | 557118 | yes |
+| `doris_fontainii` | *Doris fontainii* | — | 0 | Dorididae | Doris | 265751 | 543510 | yes |
+| `nembrotha_mullineri` | *Nembrotha mullineri* | — | 0 | Polyceridae | Nembrotha | 257221 | 468034 | yes |
+| `hypselodoris_zephyra` | *Hypselodoris zephyra* | — | 0 | Chromodorididae | Hypselodoris | 256496 | 415316 | yes |
+| `ferussacia_folliculum` | *Ferussacia folliculum* | — | 0 | Ferussaciidae | Ferussacia | 49700 | 1122766 | yes |
+| `tritonia_challengeriana` | *Tritonia challengeriana* | Myrella challengeriana | 0 | Tritoniidae | Tritonia | 259405 | 1496175 | yes |
+| `abavopsis_latosoleata` | *Abavopsis latosoleata* | — | 0 | Philinoglossidae | Abavopsis | 264103 | 1201823 | yes |
+| `leucophytia_bidentata` | *Leucophytia bidentata* | — | 0 | Ellobiidae | Leucophytia | 67524 | 150734 | yes |
+| `tambja_fantasmalis` | *Tambja fantasmalis* | — | 0 | Polyceridae | Tambja | 265615 | 628402 | yes |
+| `phylliroe_lichtensteinii` | *Phylliroe lichtensteinii* | — | 0 | Phylliroidae | Phylliroe | 255030 | 1203003 | yes |
+| `diacria_trispinosa` | *Diacria trispinosa* | — | 0 | Cavoliniidae | Diacria | 264406 | 253826 | yes |
+| `doto_eo` | *Doto eo* | — | 0 | Dotidae | Doto | 254750 | 1202744 | yes |
+| `prodoris_clavigera` | *Prodoris clavigera* | — | 0 | Bathydorididae | Prodoris | 226240 | 804554 | yes |
+| `berghia_marinae` | *Berghia marinae* | — | 0 | Aeolidiidae | Berghia | 255203 | 1202535 | yes |
+| `mathilda_retusa` | *Mathilda retusa* | — | 0 | Mathildidae | Mathilda | 265320 |  | yes |
+| `discus_rotundatus` | *Discus rotundatus* | Gonyodiscus rotundatus | 0 | Discidae | Discus | 267073 | 1533950 | yes |
+| `tyrinna_delicata` | *Tyrinna delicata* | — | 0 | Chromodorididae | Tyrinna | 229437 | 50230 | yes |
+| `favorinus_tsuruganus` | *Favorinus tsuruganus* | — | 0 | Facelinidae | Favorinus | 256465 | 389587 | yes |
+| `aeolidia_papillosa` | *Aeolidia papillosa* | — | 0 | Aeolidiidae | Aeolidia | 264894 | 498116 | yes |
+| `lauria_cylindracea` | *Lauria cylindracea* | — | 0 | Pupillidae | Lauria | 254296 | 222759 | yes |
+| `chrysallida_canariensis` | *Chrysallida canariensis* | — | 0 | Pyramidellidae | Chrysallida | 262061 | 1522524 | yes |
+| `capellinia_vittata` | *Capellinia vittata* | — | 0 | Eubranchidae | Capellinia | 264914 | 1668581 | yes |
+| `xeropicta_krynickii` | *Xeropicta krynickii* | — | 0 | Geomitridae | Xeropicta | 266758 | 781328 | yes |
+| `phidiana_lottini` | *Phidiana lottini* | — | 0 | Facelinidae | Phidiana | 259407 | 487858 | yes |
+| `mexichromis_pusilla` | *Mexichromis pusilla* | — | 0 | Chromodorididae | Mexichromis | 265957 | 469554 | yes |
+| `lomanotus_genei` | *Lomanotus genei* | — | 0 | Lomanotidae | Lomanotus | 264918 | 564793 | yes |
+| `jorunna_efe` | *Jorunna efe* | — | 0 | Discodorididae | Jorunna | 257397 | 1199312 | yes |
+| `atalodoris_inconspicua` | *Atalodoris inconspicua* | — | 0 | Onchidorididae | Atalodoris | 254676 | 1364200 | yes |
+| `rubramoena_rubescens` | *Rubramoena rubescens* | — | 0 | Trinchesiidae | Rubramoena | 264227 | 559138 | yes |
+| `cylichna_brocchii` | *Cylichna brocchii* | — | 0 | Cylichnidae | Cylichna | 264087 |  | yes |
+| `chromodoris_africana` | *Chromodoris africana* | — | 0 | Chromodorididae | Chromodoris | 250960 | 362198 | yes |
+| `cratena_simba` | *Cratena simba* | — | 0 | Facelinidae | Cratena | 256484 | 467982 | yes |
+| `elysia_azorica` | *Elysia azorica* | — | 0 | Plakobranchidae | Elysia | 264407 | 1492746 | yes |
+| `solatopupa_juliana` | *Solatopupa juliana* | — | 0 | Chondrinidae | Solatopupa | 84575 | 112733 | yes |
+| `atalodoris_sparsa` | *Atalodoris sparsa* | — | 0 | Onchidorididae | Atalodoris | 254685 | 1364190 | yes |
+| `coryphella_verrucosa` | *Coryphella verrucosa* | — | 0 | Flabellinidae | Coryphella | 264895 | 633193 | yes |
+| `tubulophilinopsis_gardineri` | *Tubulophilinopsis gardineri* | — | 0 | Aglajidae | Tubulophilinopsis | 138591 | 823908 | yes |
+| `goniobranchus_albonares` | *Goniobranchus albonares* | — | 0 | Chromodorididae | Goniobranchus | 265984 | 505174 | yes |
+| `scaphander_lignarius` | *Scaphander lignarius* | — | 0 | Cylichnidae | Scaphander | 267789 | 482654 | yes |
+| `hypselodoris_maculosa` | *Hypselodoris maculosa* | — | 0 | Chromodorididae | Hypselodoris | 252381 | 143297 | yes |
+| `chelidonura_hirundinina` | *Chelidonura hirundinina* | — | 0 | Aglajidae | Chelidonura | 262888 | 63087 | yes |
+| `aporodoris_millegrana` | *Aporodoris millegrana* | — | 0 | Discodorididae | Aporodoris | 254991 | 492399 | yes |
+| `hypselodoris_krakatoa` | *Hypselodoris krakatoa* | — | 0 | Chromodorididae | Hypselodoris | 256626 | 471362 | yes |
+| `aplysia_nigrocincta` | *Aplysia nigrocincta* | — | 0 | Aplysiidae | Aplysia | 265993 | 898566 | yes |
+| `elysia_tomentosa` | *Elysia tomentosa* | — | 0 | Plakobranchidae | Elysia | 254995 | 51002 | yes |
+| `theba_macandrewiana` | *Theba macandrewiana* | — | 0 | Helicidae | Theba | 263245 | 605675 | yes |
+| `xenoskenea_pellucida` | *Xenoskenea pellucida* | — | 0 | Hyalogyrinidae | Xenoskenea | 263131 | 1213539 | yes |
+| `phyllidiella_rosans` | *Phyllidiella rosans* | — | 0 | Phyllidiidae | Phyllidiella | 262519 | 121359 | yes |
+| `thorunna_daniellae` | *Thorunna daniellae* | — | 0 | Chromodorididae | Thorunna | 205883 | 355499 | yes |
+| `notodoris_minor` | *Notodoris minor* | — | 0 | Aegiridae | Notodoris | 175829 | 504909 | yes |
+| `odostomella_bicincta` | *Odostomella bicincta* | — | 0 | Pyramidellidae | Odostomella | 258901 |  | yes |
+| `polycera_faeroensis` | *Polycera faeroensis* | — | 0 | Polyceridae | Polycera | 257068 | 338031 | yes |
+| `atagema_gibba` | *Atagema gibba* | — | 0 | Dorididae | Atagema | 255606 | 564796 | yes |
+| `limapontia_senestra` | *Limapontia senestra* | — | 0 | Limapontiidae | Limapontia | 254667 | 482690 | yes |
+| `pseudotorinia_architae` | *Pseudotorinia architae* | — | 0 | Architectonicidae | Pseudotorinia | 263517 | 292222 | yes |
+| `mexichromis_aurora` | *Mexichromis aurora* | — | 0 | Chromodorididae | Mexichromis | 267754 | 559508 | yes |
+| `ceratosoma_bicolor` | *Ceratosoma bicolor* | — | 0 | Chromodorididae | Ceratosoma | 267753 | 505155 | yes |
+| `odostomia_striolata` | *Odostomia striolata* | — | 0 | Pyramidellidae | Odostomia | 267337 |  | yes |
+| `thorunna_horologia` | *Thorunna horologia* | — | 0 | Chromodorididae | Thorunna | 109684 | 693371 | yes |
+| `planorbella_duryi` | *Planorbella duryi* | — | 0 | Planorbidae | Planorbella | 264414 | 129200 | yes |
+| `baenopsis_baetica` | *Baenopsis baetica* | — | 0 | Flabellinopsidae | Baenopsis | 267779 | 949422 | yes |
+| `phyllidia_willani` | *Phyllidia willani* | — | 0 | Phyllidiidae | Phyllidia | 257186 | 469560 | yes |
+| `roboastra_gracilis` | *Roboastra gracilis* | — | 0 | Polyceridae | Roboastra | 255445 | 120982 | yes |
+| `ceratodoris_hiroi` | *Ceratodoris hiroi* | — | 0 | Goniodorididae | Ceratodoris | 267755 | 1521051 | yes |
+| `platydoris_scabra` | *Platydoris scabra* | — | 0 | Discodorididae | Platydoris | 204335 | 50555 | yes |
+| `taringa_ascitica` | *Taringa ascitica* | — | 0 | Discodorididae | Taringa | 262438 | 1202818 | yes |
+| `bulla_vernicosa` | *Bulla vernicosa* | — | 0 | Bullidae | Bulla | 263382 | 368155 | yes |
+| `goniobranchus_geminus` | *Goniobranchus geminus* | — | 0 | Chromodorididae | Goniobranchus | 263469 | 502350 | yes |
+| `fruticicola_fruticum` | *Fruticicola fruticum* | — | 0 | Camaenidae | Fruticicola | 266505 | 101020 | yes |
+| `rissoella_diaphana` | *Rissoella diaphana* | — | 0 | Rissoellidae | Rissoella | 264099 | 482303 | yes |
+| `samla_riwo` | *Samla riwo* | — | 0 | Samlidae | Samla | 149135 | 778296 | yes |
+| `felimare_tema` | *Felimare tema* | — | 0 | Chromodorididae | Felimare | 265616 | 495202 | yes |
+| `jorunna_onubensis` | *Jorunna onubensis* | — | 0 | Discodorididae | Jorunna | 242335 | 492669 | yes |
+| `abida_polyodon` | *Abida polyodon* | — | 0 | Chondrinidae | Abida | 263229 | 92975 | yes |
+| `spiralina_spiralis` | *Spiralina spiralis* | — | 0 | Pyramidellidae | Spiralina | 263160 | 1422615 | yes |
+| `theba_geminata` | *Theba geminata* | — | 0 | Helicidae | Theba | 262463 | 114028 | yes |
+| `thuridilla_livida` | *Thuridilla livida* | — | 0 | Plakobranchidae | Thuridilla | 265142 | 205031 | yes |
+| `goniobranchus_tritos` | *Goniobranchus tritos* | — | 0 | Chromodorididae | Goniobranchus | 21423 | 504305 | yes |
+| `bielzia_coerulans` | *Bielzia coerulans* | — | 0 | Limacidae | Bielzia | 266757 | 467115 | yes |
+| `rissoella_inflata` | *Rissoella inflata* | — | 0 | Rissoellidae | Rissoella | 256382 |  | yes |
+| `pneumoderma_mediterraneum` | *Pneumoderma mediterraneum* | — | 0 | Pneumodermatidae | Pneumoderma | 256852 | 1202060 | yes |
+| `felimare_lajensis` | *Felimare lajensis* | — | 0 | Chromodorididae | Felimare | 267175 | 715076 | yes |
+| `goniobranchus_collingwoodi` | *Goniobranchus collingwoodi* | — | 0 | Chromodorididae | Goniobranchus | 256574 | 549226 | yes |
+| `doto_fragilis` | *Doto fragilis* | — | 0 | Dotidae | Doto | 254686 | 466952 | yes |
+| `acanthodoris_pilosa` | *Acanthodoris pilosa* | — | 0 | Onchidorididae | Acanthodoris | 264910 | 47466 | yes |
+| `hypselodoris_apolegma` | *Hypselodoris apolegma* | — | 0 | Chromodorididae | Hypselodoris | 257133 | 54667 | yes |
+| `hypselodoris_paradisa` | *Hypselodoris paradisa* | — | 0 | Chromodorididae | Hypselodoris | 266509 | 785725 | yes |
+| `solatopupa_similis` | *Solatopupa similis* | — | 0 | Chondrinidae | Solatopupa | 84573 | 112736 | yes |
+| `dendrodoris_nigra` | *Dendrodoris nigra* | — | 0 | Dendrodorididae | Dendrodoris | 256487 | 123422 | yes |
+| `notodiaphana_atlantica` | *Notodiaphana atlantica* | — | 0 | Notodiaphanidae | Notodiaphana | 262472 | 1674706 | yes |
+| `retusa_obtusa` | *Retusa obtusa* | — | 0 | Retusidae | Retusa | 267745 | 487285 | yes |
+| `armina_tigrina` | *Armina tigrina* | — | 0 | Arminidae | Armina | 254974 | 363644 | yes |
+| `goniobranchus_coi` | *Goniobranchus coi* | — | 0 | Chromodorididae | Goniobranchus | 265059 | 481507 | yes |
+| `kaloplocamus_ramosus` | *Kaloplocamus ramosus* | — | 0 | Polyceridae | Kaloplocamus | 264782 | 391145 | yes |
+| `phyllidia_undula` | *Phyllidia undula* | — | 0 | Phyllidiidae | Phyllidia | 258202 | 1150296 | yes |
+| `siphonaria_naufragum` | *Siphonaria naufragum* | — | 0 | Siphonariidae | Siphonaria | 250294 | 1082861 | yes |
+| `verconia_simplex` | *Verconia simplex* | — | 0 | Chromodorididae | Verconia | 262573 | 715156 | yes |
+| `runcina_ferruginea` | *Runcina ferruginea* | — | 0 | Runcinidae | Runcina | 254525 | 1202127 | yes |
+| `thecacera_picta` | *Thecacera picta* | — | 0 | Polyceridae | Thecacera | 267468 | 468030 | yes |
+| `xerosecta_arigonis` | *Xerosecta arigonis* | — | 0 | Geomitridae | Xerosecta | 88570 | 115138 | yes |
+| `goniobranchus_preciosus` | *Goniobranchus preciosus* | — | 0 | Chromodorididae | Goniobranchus | 265889 | 471255 | yes |
+| `hedylopsis_spiculifera` | *Hedylopsis spiculifera* | — | 0 | Microhedylidae | Hedylopsis | 264164 | 1202180 | yes |
+| `aplysia_japonica` | *Aplysia japonica* | — | 0 | Aplysiidae | Aplysia | 267718 | 898529 | yes |
+| `berthella_africana` | *Berthella africana* | — | 0 | Pleurobranchidae | Berthella | 262906 | 1202434 | yes |
+| `costasiella_vegae` | *Costasiella vegae* | — | 0 | Costasiellidae | Costasiella | 257197 | 1202194 | yes |
+| `goniobranchus_setoensis` | *Goniobranchus setoensis* | — | 0 | Chromodorididae | Goniobranchus | 262569 | 349044 | yes |
+| `thuridilla_gracilis` | *Thuridilla gracilis* | — | 0 | Plakobranchidae | Thuridilla | 265989 | 194607 | yes |
+| `tubulophilinopsis_pilsbryi` | *Tubulophilinopsis pilsbryi* | — | 0 | Aglajidae | Tubulophilinopsis | 138592 | 823909 | yes |
+| `peronia_verruculata` | *Peronia verruculata* | — | 0 | Onchidiidae | Peronia | 265775 | 349476 | yes |
+| `helix_albescens` | *Helix albescens* | — | 0 | Helicidae | Helix | 266587 | 102434 | yes |
+| `chromolaichma_edmundsi` | *Chromolaichma edmundsi* | — | 0 | Chromodorididae | Chromolaichma | 157773 | 1230991 | yes |
+| `phyllidiopsis_sinaiensis` | *Phyllidiopsis sinaiensis* | — | 0 | Phyllidiidae | Phyllidiopsis | 263283 | 504194 | yes |
+| `mexichromis_multituberculata` | *Mexichromis multituberculata* | — | 0 | Chromodorididae | Mexichromis | 256497 | 54668 | yes |
+| `halgerda_indotessellata` | *Halgerda indotessellata* | — | 0 | Halgerdidae | Halgerda | 264384 | 823525 | yes |
+| `hexabranchus_lacer` | *Hexabranchus lacer* | — | 0 | Hexabranchidae | Hexabranchus | 267177 | 1475021 | yes |
+| `phyllodesmium_koehleri` | *Phyllodesmium koehleri* | — | 0 | Facelinidae | Phyllodesmium | 256529 | 504309 | yes |
+| `hypselodoris_whitei` | *Hypselodoris whitei* | — | 0 | Chromodorididae | Hypselodoris | 256575 | 147938 | yes |
+| `trimusculus_mammillaris` | *Trimusculus mammillaris* | — | 0 | Trimusculidae | Trimusculus | 265647 | 804541 | yes |
+| `samla_bicolor` | *Samla bicolor* | — | 0 | Samlidae | Samla | 149130 | 696622 | yes |
+| `siphopteron_makisig` | *Siphopteron makisig* | — | 0 | Gastropteridae | Siphopteron | 69932 | 836947 | yes |
+| `jorunna_rubescens` | *Jorunna rubescens* | — | 0 | Discodorididae | Jorunna | 266510 | 467976 | yes |
+| `archachatina_marginata` | *Archachatina marginata* | — | 0 | Achatinidae | Archachatina | 48961 | 429302 | yes |
+| `goniobranchus_fidelis` | *Goniobranchus fidelis* | — | 0 | Chromodorididae | Goniobranchus | 265983 | 469421 | yes |
+| `gymnodoris_ceylonica` | *Gymnodoris ceylonica* | — | 0 | Polyceridae | Gymnodoris | 267244 | 50305 | yes |
+| `goniobranchus_cavae` | *Goniobranchus cavae* | — | 0 | Chromodorididae | Goniobranchus | 256596 | 542336 | yes |
+| `megastomia_conoidea` | *Megastomia conoidea* | — | 0 | Pyramidellidae | Megastomia | 257339 | 1232822 | yes |
+| `arion_rufus` | *Arion rufus* | Arion ater rufus | 0 | Arionidae | Arion | 246304 | 1551690 | yes |
+| `phyllidiella_granulata` | *Phyllidiella granulata* | — | 0 | Phyllidiidae | Phyllidiella | 266000 | 130206 | yes |
+| `zachrysia_provisoria` | *Zachrysia provisoria* | — | 0 | Zachrysiidae | Zachrysia | 56264 | 233921 | yes |
+| `trapania_orteai` | *Trapania orteai* | — | 0 | Goniodorididae | Trapania | 264961 | 1203163 | yes |
+| `tambja_gabrielae` | *Tambja gabrielae* | — | 0 | Polyceridae | Tambja | 256530 | 360101 | yes |
+| `costasiella_ocellifera` | *Costasiella ocellifera* | — | 0 | Costasiellidae | Costasiella | 264363 | 255205 | yes |
+| `jorunna_evansi` | *Jorunna evansi* | — | 0 | Discodorididae | Jorunna | 254674 | 1202913 | yes |
+| `miamira_sinuata` | *Miamira sinuata* | — | 0 | Chromodorididae | Miamira | 154442 | 471382 | yes |
+| `hypselodoris_reidi` | *Hypselodoris reidi* | — | 0 | Chromodorididae | Hypselodoris | 257241 | 469460 | yes |
+| `aplysia_parvula` | *Aplysia parvula* | — | 0 | Aplysiidae | Aplysia | 245602 | 49856 | yes |
+| `pleurobranchus_weberi` | *Pleurobranchus weberi* | — | 0 | Pleurobranchidae | Pleurobranchus | 265874 | 548297 | yes |
+| `clausilia_baudoni` | *Clausilia baudoni* | — | 0 | Clausiliidae | Clausilia | 12595 |  | yes |
+| `geitodoris_perfossa` | *Geitodoris perfossa* | — | 0 | Discodorididae | Geitodoris | 254646 | 1202831 | yes |
+| `thuridilla_lineolata` | *Thuridilla lineolata* | — | 0 | Plakobranchidae | Thuridilla | 257183 | 126108 | yes |
+| `paramuricea_clavata` | *Paramuricea clavata* | — | 1 | Plexauridae | Paramuricea | 35202 | 338005 | yes |
+| `octopus_vulgaris` | *Octopus vulgaris* | — | 1 | Octopodidae | Octopus | 35075 | 49315 | yes |
+| `corallium_rubrum` | *Corallium rubrum* | — | 1 | Coralliidae | Corallium | 35215 | 483326 | yes |
+| `eunicella_singularis` | *Eunicella singularis* | — | 1 | Gorgoniidae | Eunicella | 34807 | 548467 | yes |
+| `sepia_officinalis` | *Sepia officinalis* | — | 1 | Sepiidae | Sepia | 34855 | 151429 | yes |
+| `scorpaena_porcus` | *Scorpaena porcus* | — | 1 | Scorpaenidae | Scorpaena | 34965 | 118631 | yes |
+| `crambe_crambe` | *Crambe crambe* | — | 1 | Crambeidae | Crambe | 242281 | 363864 | yes |
+| `parablennius_pilicornis` | *Parablennius pilicornis* | — | 1 | Blenniidae | Parablennius | 35250 | 338049 | yes |
+| `parazoanthus_axinellae` | *Parazoanthus axinellae* | — | 1 | Parazoanthidae | Parazoanthus | 34869 | 338001 | yes |
+| `myriapora_truncata` | *Myriapora truncata* | — | 1 | Myriaporidae | Myriapora | 34982 | 359113 | yes |
+| `coris_julis` | *Coris julis* | — | 1 | Labridae | Coris | 34835 | 50968 | yes |
+| `diplodus_vulgaris` | *Diplodus vulgaris* | — | 1 | Sparidae | Diplodus | 34798 | 118667 | yes |
+| `mullus_surmuletus` | *Mullus surmuletus* | — | 1 | Mullidae | Mullus | 35125 | 118619 | yes |
+| `chromis_chromis` | *Chromis chromis* | — | 1 | Pomacentridae | Chromis | 35225 | 118682 | yes |
+| `muraena_helena` | *Muraena helena* | — | 1 | Muraenidae | Muraena | 14022 | 118590 | yes |
+| `epinephelus_marginatus` | *Epinephelus marginatus* | — | 1 | Epinephelidae | Epinephelus | 246069 | 100119 | yes |
+| `posidonia_oceanica` | *Posidonia oceanica* | — | 2 | Posidoniaceae | Posidonia | 35128 | 118943 | yes |
+| `parablennius_gattorugine` | *Parablennius gattorugine* | — | 1 | Blenniidae | Parablennius | 34989 | 118685 | yes |
+| `thalassoma_pavo` | *Thalassoma pavo* | — | 1 | Labridae | Thalassoma | 35194 | 50972 | yes |
+| `gobius_paganellus` | *Gobius paganellus* | — | 1 | Gobiidae | Gobius | 240391 | 118706 | yes |
+| `diplodus_sargus` | *Diplodus sargus* | — | 1 | Sparidae | Diplodus | 12553 | 118669 | yes |
+| `bothus_podas` | *Bothus podas* | — | 1 | Bothidae | Bothus | 35282 | 118640 | yes |
+| `gobius_incognitus` | *Gobius incognitus* | — | 1 | Gobiidae | Gobius | 35120 | 505877 | yes |
+| `phorbas_tenacior` | *Phorbas tenacior* | — | 1 | Hymedesmiidae | Phorbas | 253206 | 486442 | yes |
+| `symphodus_tinca` | *Symphodus tinca* | — | 1 | Labridae | Symphodus | 35216 | 52554 | yes |
+| `hippocampus_guttulatus` | *Hippocampus guttulatus* | — | 1 | Syngnathidae | Hippocampus | 35174 | 102821 | yes |
+| `leptogorgia_sarmentosa` | *Leptogorgia sarmentosa* | — | 1 | Gorgoniidae | Leptogorgia | 35248 | 338007 | yes |
+| `apogon_imberbis` | *Apogon imberbis* | — | 1 | Apogonidae | Apogon | 12378 | 118514 | yes |
+| `paracentrotus_lividus` | *Paracentrotus lividus* | — | 1 | Parechinidae | Paracentrotus | 34848 | 48032 | yes |
+| `diplodus_puntazzo` | *Diplodus puntazzo* | — | 1 | Sparidae | Diplodus | 35213 | 53696 | yes |
+| `scorpaena_scrofa` | *Scorpaena scrofa* | — | 1 | Scorpaenidae | Scorpaena | 35053 | 84861 | yes |
+| `tripterygion_tripteronotum` | *Tripterygion tripteronotum* | — | 1 | Tripterygiidae | Tripterygion | 240399 | 188591 | yes |
+| `hippocampus_hippocampus` | *Hippocampus hippocampus* | — | 1 | Syngnathidae | Hippocampus | 35209 | 84969 | yes |
+| `parablennius_zvonimiri` | *Parablennius zvonimiri* | — | 1 | Blenniidae | Parablennius | 34983 | 108412 | yes |
+| `sparus_aurata` | *Sparus aurata* | — | 1 | Sparidae | Sparus | 68960 | 1494783 | yes |
+| `halocynthia_papillosa` | *Halocynthia papillosa* | — | 1 | Pyuridae | Halocynthia | 35134 | 118722 | yes |
+| `parablennius_incognitus` | *Parablennius incognitus* | — | 1 | Blenniidae | Parablennius | 35178 | 120637 | yes |
+| `tripterygion_melanurus` | *Tripterygion melanurus* | — | 1 | Tripterygiidae | Tripterygion | 34870 | 114453 | yes |
+| `aiptasia_couchii` | *Aiptasia couchii* | — | 1 | Aiptasiidae | Aiptasia | 254144 | 542274 | yes |
+| `serranus_cabrilla` | *Serranus cabrilla* | — | 1 | Serranidae | Serranus | 13755 | 118675 | yes |
+| `oculina_patagonica` | *Oculina patagonica* | — | 1 | Oculinidae | Oculina | 34827 | 107341 | yes |
+| `sarpa_salpa` | *Sarpa salpa* | — | 1 | Sparidae | Sarpa | 34805 | 118663 | yes |
+| `scorpaena_notata` | *Scorpaena notata* | — | 1 | Scorpaenidae | Scorpaena | 34796 | 118630 | yes |
+| `leptopsammia_pruvoti` | *Leptopsammia pruvoti* | — | 1 | Dendrophylliidae | Leptopsammia | 35018 | 338000 | yes |
+| `tripterygion_delaisi` | *Tripterygion delaisi* | — | 1 | Tripterygiidae | Tripterygion | 34871 | 118642 | yes |
+| `padina_pavonica` | *Padina pavonica* | — | 2 | Dictyotaceae | Padina | 35106 | 128896 | yes |
+| `torpedo_marmorata` | *Torpedo marmorata* | — | 1 | Torpedinidae | Torpedo | 34863 | 114244 | yes |
+| `anthias_anthias` | *Anthias anthias* | — | 1 | Anthiadidae | Anthias | 149455 | 118672 | yes |
+| `agelas_oroides` | *Agelas oroides* | — | 1 | Agelasidae | Agelas | 243127 | 359238 | yes |
+| `arbacia_lixula` | *Arbacia lixula* | — | 1 | Arbaciidae | Arbacia | 240406 | 143139 | yes |
+| `schizobrachiella_sanguinea` | *Schizobrachiella sanguinea* | — | 1 | Schizoporellidae | Schizobrachiella | 248476 | 634696 | yes |
+| `aidablennius_sphynx` | *Aidablennius sphynx* | — | 1 | Blenniidae | Aidablennius | 35044 | 118693 | yes |
+| `flabellia_petiolata` | *Flabellia petiolata* | — | 2 | Codiaceae | Flabellia | 34884 | 372595 | yes |
+| `symphodus_cinereus` | *Symphodus cinereus* | — | 1 | Labridae | Symphodus | 240390 | 113529 | yes |
+| `symphodus_roissali` | *Symphodus roissali* | — | 1 | Labridae | Symphodus | 34986 | 113535 | yes |
+| `oblada_melanurus` | *Oblada melanurus* | — | 1 | Sparidae | Oblada | 240400 | 118662 | yes |
+| `boops_boops` | *Boops boops* | — | 1 | Sparidae | Boops | 246899 | 118664 | yes |
+| `lipophrys_trigloides` | *Lipophrys trigloides* | — | 1 | Blenniidae | Lipophrys | 34878 | 342285 | yes |
+| `thericium_vulgatum` | *Thericium vulgatum* | — | 1 | Cerithiidae | Thericium | 250214 | 1636936 | yes |
+| `gobius_cruentatus` | *Gobius cruentatus* | — | 1 | Gobiidae | Gobius | 35027 | 118702 | yes |
+| `synodus_saurus` | *Synodus saurus* | — | 1 | Synodontidae | Synodus | 21952 | 113701 | yes |
+| `anemonia_viridis` | *Anemonia viridis* | — | 1 | Actiniidae | Anemonia | 35220 | 118895 | yes |
+| `serpula_vermicularis` | *Serpula vermicularis* | — | 1 | Serpulidae | Serpula | 249709 | 117576 | yes |
+| `parablennius_sanguinolentus` | *Parablennius sanguinolentus* | — | 1 | Blenniidae | Parablennius | 35244 | 118686 | yes |
+| `gobius_niger` | *Gobius niger* | — | 1 | Gobiidae | Gobius | 35154 | 118704 | yes |
+| `echinaster_sepositus` | *Echinaster sepositus* | Echinaster (Echinaster) sepositus | 1 | Echinasteridae | Echinaster | 35260 | 117446 | yes |
+| `serranus_scriba` | *Serranus scriba* | — | 1 | Serranidae | Serranus | 13765 | 118674 | yes |
+| `ellisolandia_elongata` | *Ellisolandia elongata* | — | 2 | Lithophyllaceae | Ellisolandia | 35123 | 461577 | yes |
+| `cereus_pedunculatus` | *Cereus pedunculatus* | — | 1 | Sagartiidae | Cereus | 34789 | 481214 | yes |
+| `dicentrarchus_labrax` | *Dicentrarchus labrax* | — | 1 | Moronidae | Dicentrarchus | 34837 | 99269 | yes |
+| `dictyota_dichotoma` | *Dictyota dichotoma* | — | 2 | Dictyotaceae | Dictyota | 35063 | 51024 | yes |
+| `diplodus_annularis` | *Diplodus annularis* | — | 1 | Sparidae | Diplodus | 34841 | 118665 | yes |
+| `gobius_geniporus` | *Gobius geniporus* | — | 1 | Gobiidae | Gobius | 35077 | 101621 | yes |
+| `scorpaena_maderensis` | *Scorpaena maderensis* | — | 1 | Scorpaenidae | Scorpaena | 248737 | 342288 | yes |
+| `serranus_hepatus` | *Serranus hepatus* | — | 1 | Serranidae | Serranus | 13760 | 118673 | yes |
+| `labrus_merula` | *Labrus merula* | — | 1 | Labridae | Labrus | 34840 | 103912 | yes |
+| `rhyssoplax_olivacea` | *Rhyssoplax olivacea* | — | 1 | Chitonidae | Rhyssoplax | 254010 | 1075231 | yes |
+| `microlipophrys_nigriceps` | *Microlipophrys nigriceps* | — | 1 | Blenniidae | Microlipophrys | 240428 | 105789 | yes |
+| `caulerpa_cylindracea` | *Caulerpa cylindracea* | — | 2 | Caulerpaceae | Caulerpa | 253942 | 734863 | yes |
+| `dentex_dentex` | *Dentex dentex* | — | 1 | Sparidae | Dentex | 244172 | 118654 | yes |
+| `gobius_cobitis` | *Gobius cobitis* | — | 1 | Gobiidae | Gobius | 34847 | 118703 | yes |
+| `parablennius_tentacularis` | *Parablennius tentacularis* | — | 1 | Blenniidae | Parablennius | 252756 | 118687 | yes |
+| `lithophyllum_incrustans` | *Lithophyllum incrustans* | — | 2 | Lithophyllaceae | Lithophyllum | 244641 | 326759 | yes |
+| `palinurus_elephas` | *Palinurus elephas* | — | 1 | Palinuridae | Palinurus | 252689 | 324536 | yes |
+| `trachinus_draco` | *Trachinus draco* | — | 1 | Trachinidae | Trachinus | 34890 | 118652 | yes |
+| `lithognathus_mormyrus` | *Lithognathus mormyrus* | — | 1 | Sparidae | Lithognathus | 48596 | 118660 | yes |
+| `gnathophyllum_elegans` | *Gnathophyllum elegans* | — | 1 | Gnathophyllidae | Gnathophyllum | 35037 | 835218 | yes |
+| `chondrosia_reniformis` | *Chondrosia reniformis* | — | 1 | Chondrillidae | Chondrosia | 250915 | 342104 | yes |
+| `stramonita_haemastoma` | *Stramonita haemastoma* | — | 1 | Muricidae | Stramonita | 53500 | 292602 | yes |
+| `pentapora_fascialis` | *Pentapora fascialis* | — | 1 | Bitectiporidae | Pentapora | 252951 | 359116 | yes |
+| `lepadogaster_candolii` | *Lepadogaster candolii* | — | 1 | Gobiesocidae | Lepadogaster | 35055 | 118606 | yes |
+| `cliona_celata` | *Cliona celata* | — | 1 | Clionaidae | Cliona | 34842 | 117715 | yes |
+| `microlipophrys_canevae` | *Microlipophrys canevae* | — | 1 | Blenniidae | Microlipophrys | 35045 | 446216 | yes |
+| `halimeda_tuna` | *Halimeda tuna* | — | 2 | Halimedaceae | Halimeda | 35004 | 326163 | yes |
+| `protula_tubularia` | *Protula tubularia* | — | 1 | Serpulidae | Protula | 244097 | 359065 | yes |
+| `arca_noae` | *Arca noae* | — | 1 | Arcidae | Arca | 253944 | 324550 | yes |
+| `symphodus_ocellatus` | *Symphodus ocellatus* | — | 1 | Labridae | Symphodus | 240397 | 113534 | yes |
+| `lysmata_seticaudata` | *Lysmata seticaudata* | — | 1 | Hippolytidae | Lysmata | 35140 | 342261 | yes |
+| `hexaplex_trunculus` | *Hexaplex trunculus* | — | 1 | Muricidae | Hexaplex | 34875 | 326443 | yes |
+| `aiptasia_mutabilis` | *Aiptasia mutabilis* | — | 1 | Aiptasiidae | Aiptasia | 35047 | 578162 | yes |
+| `xyrichtys_novacula` | *Xyrichtys novacula* | — | 1 | Labridae | Xyrichtys | 34980 | 115188 | yes |
+| `ophiothrix_fragilis` | *Ophiothrix fragilis* | — | 1 | Ophiotrichidae | Ophiothrix | 35016 | 326334 | yes |
+| `anomia_ephippium` | *Anomia ephippium* | — | 1 | Anomiidae | Anomia | 245061 | 469347 | yes |
+| `zebrus_zebrus` | *Zebrus zebrus* | — | 1 | Gobiidae | Zebrus | 35249 | 115246 | yes |
+| `gobius_xanthocephalus` | *Gobius xanthocephalus* | — | 1 | Gobiidae | Gobius | 35065 | 101626 | yes |
+| `phycis_phycis` | *Phycis phycis* | — | 1 | Phycidae | Phycis | 34971 | 118614 | yes |
+| `pagrus_pagrus` | *Pagrus pagrus* | — | 1 | Sparidae | Pagrus | 35082 | 108196 | yes |
+| `callionymus_pusillus` | *Callionymus pusillus* | — | 1 | Callionymidae | Callionymus | 35172 | 118716 | yes |
+| `codium_bursa` | *Codium bursa* | — | 2 | Codiaceae | Codium | 252189 | 118947 | yes |
+| `schizoporella_errata` | *Schizoporella errata* | — | 1 | Schizoporellidae | Schizoporella | 248503 | 363680 | yes |
+| `aplysina_aerophoba` | *Aplysina aerophoba* | — | 1 | Aplysinidae | Aplysina | 35180 | 326154 | yes |
+| `cystodytes_dellechiajei` | *Cystodytes dellechiajei* | — | 1 | Polycitoridae | Cystodytes | 243537 | 195377 | yes |
+| `botryllus_schlosseri` | *Botryllus schlosseri* | — | 1 | Styelidae | Botryllus | 246995 | 62408 | yes |
+| `actinia_mediterranea` | *Actinia mediterranea* | — | 1 | Actiniidae | Actinia | 34999 | 627669 | yes |
+| `raja_undulata` | *Raja undulata* | — | 1 | Rajidae | Raja | 34861 | 111535 | yes |
+| `spondyliosoma_cantharus` | *Spondyliosoma cantharus* | — | 1 | Sparidae | Spondyliosoma | 251231 | 118655 | yes |
+| `microlipophrys_dalmatinus` | *Microlipophrys dalmatinus* | — | 1 | Blenniidae | Microlipophrys | 35201 | 187675 | yes |
+| `atherina_hepsetus` | *Atherina hepsetus* | — | 1 | Atherinidae | Atherina | 61912 | 118595 | yes |
+| `petrosia_ficiformis` | *Petrosia ficiformis* | Petrosia (Petrosia) ficiformis | 1 | Petrosiidae | Petrosia | 253021 | 342248 | yes |
+| `sphaerococcus_coronopifolius` | *Sphaerococcus coronopifolius* | — | 2 | Sphaerococcaceae | Sphaerococcus | 35146 | 469288 | yes |
+| `rocellaria_dubia` | *Rocellaria dubia* | — | 1 | Gastrochaenidae | Rocellaria | 138559 | 483144 | yes |
+| `haliotis_tuberculata` | *Haliotis tuberculata* | — | 1 | Haliotidae | Haliotis | 35092 | 210285 | yes |
+| `bugula_neritina` | *Bugula neritina* | — | 1 | Bugulidae | Bugula | 247594 | 81637 | yes |
+| `sciaena_umbra` | *Sciaena umbra* | — | 1 | Sciaenidae | Sciaena | 34993 | 118683 | yes |
+| `sphyraena_viridensis` | *Sphyraena viridensis* | — | 1 | Sphyraenidae | Sphyraena | 250657 | 47260 | yes |
+| `pelagia_noctiluca` | *Pelagia noctiluca* | — | 1 | Pelagiidae | Pelagia | 252904 | 256089 | yes |
+| `mimachlamys_varia` | *Mimachlamys varia* | — | 1 | Pectinidae | Mimachlamys | 247092 | 363962 | yes |
+| `conger_conger` | *Conger conger* | — | 1 | Congridae | Conger | 31017 | 118589 | yes |
+| `mesophyllum_expansum` | *Mesophyllum expansum* | — | 2 | Lithophyllaceae | Mesophyllum | 246781 | 326165 | yes |
+| `holothuria_tubulosa` | *Holothuria tubulosa* | Holothuria (Holothuria) tubulosa | 1 | Holothuriidae | Holothuria | 251875 | 324819 | yes |
+| `peyssonnelia_rosa_marina` | *Peyssonnelia rosa-marina* | — | 2 | Peyssonneliaceae | Peyssonnelia | 253035 | 1281935 | yes |
+| `thysanozoon_brocchii` | *Thysanozoon brocchii* | — | 1 | Pseudoceritidae | Thysanozoon | 35049 | 363912 | yes |
+| `sarcotragus_fasciculatus` | *Sarcotragus fasciculatus* | — | 1 | Irciniidae | Sarcotragus | 34987 | 791761 | yes |
+| `phallusia_fumigata` | *Phallusia fumigata* | — | 1 | Ascidiidae | Phallusia | 35219 | 493326 | yes |
+| `diplosoma_spongiforme` | *Diplosoma spongiforme* | — | 1 | Didemnidae | Diplosoma | 244801 | 542729 | yes |
+| `anas_platyrhynchos` | *Anas platyrhynchos* | — | 2 | Anatidae | Anas | 244592 | 6930 | yes |
+| `raja_brachyura` | *Raja brachyura* | — | 1 | Rajidae | Raja | 35121 | 111518 | yes |
+| `coryphoblennius_galerita` | *Coryphoblennius galerita* | — | 1 | Blenniidae | Coryphoblennius | 206772 | 118692 | yes |
+| `tritia_incrassata` | *Tritia incrassata* | — | 1 | Nassariidae | Tritia | 59022 | 635178 | yes |
+| `herbstia_condyliata` | *Herbstia condyliata* | — | 1 | Epialtidae | Herbstia | 35074 | 524240 | yes |
+| `symphodus_mediterraneus` | *Symphodus mediterraneus* | — | 1 | Labridae | Symphodus | 240398 | 113531 | yes |
+| `ophioderma_longicaudum` | *Ophioderma longicaudum* | — | 1 | Ophiodermatidae | Ophioderma | 255230 | 154578 | yes |
+| `palmophyllum_crassum` | *Palmophyllum crassum* | — | 2 | Palmellopsidaceae | Palmophyllum | 252692 | 734860 | yes |
+| `paraleucilla_magna` | *Paraleucilla magna* | — | 1 | Amphoriscidae | Paraleucilla | 252776 | 363849 | yes |
+| `telmatactis_forskalii` | *Telmatactis forskalii* | — | 1 | Isophelliidae | Telmatactis | 250750 | 569613 | yes |
+| `dactylopterus_volitans` | *Dactylopterus volitans* | — | 1 | Dactylopteridae | Dactylopterus | 240408 | 55016 | yes |
+| `sycon_raphanus` | *Sycon raphanus* | — | 1 | Sycettidae | Sycon | 246221 | 637201 | yes |
+| `sabella_spallanzanii` | *Sabella spallanzanii* | — | 1 | Sabellidae | Sabella | 247041 | 338012 | yes |
+| `patella_caerulea` | *Patella caerulea* | — | 1 | Patellidae | Patella | 35107 | 359068 | yes |
+| `axinella_damicornis` | *Axinella damicornis* | — | 1 | Axinellidae | Axinella | 253956 | 485763 | yes |
+| `sarcotragus_spinosulus` | *Sarcotragus spinosulus* | — | 1 | Irciniidae | Sarcotragus | 247621 | 507766 | yes |
+| `oscarella_lobularis` | *Oscarella lobularis* | — | 1 | Oscarellidae | Oscarella | 252576 | 337974 | yes |
+| `symphodus_rostratus` | *Symphodus rostratus* | — | 1 | Labridae | Symphodus | 35079 | 113536 | yes |
+| `pomatoschistus_pictus` | *Pomatoschistus pictus* | — | 1 | Gobiidae | Pomatoschistus | 35051 | 342287 | yes |
+| `balanophyllia_europaea` | *Balanophyllia europaea* | Balanophyllia (Balanophyllia) europaea | 1 | Dendrophylliidae | Balanophyllia | 35187 | 95060 | yes |
+| `calcinus_tubularis` | *Calcinus tubularis* | — | 1 | Diogenidae | Calcinus | 248096 | 342257 | yes |
+| `amathia_verticillata` | *Amathia verticillata* | — | 1 | Vesiculariidae | Amathia | 244238 | 501630 | yes |
+| `palaemon_elegans` | *Palaemon elegans* | — | 1 | Palaemonidae | Palaemon | 35067 | 153169 | yes |
+| `palaemon_serratus` | *Palaemon serratus* | — | 1 | Palaemonidae | Palaemon | 35030 | 130385 | yes |
+| `oedalechilus_labeo` | *Oedalechilus labeo* | — | 1 | Mugilidae | Oedalechilus | 250040 | 118617 | yes |
+| `pomatoschistus_bathi` | *Pomatoschistus bathi* | — | 1 | Gobiidae | Pomatoschistus | 35212 | 110039 | yes |
+| `parablennius_rouxi` | *Parablennius rouxi* | — | 1 | Blenniidae | Parablennius | 35012 | 108410 | yes |
+| `ircinia_oros` | *Ircinia oros* | — | 1 | Irciniidae | Ircinia | 241990 | 337981 | yes |
+| `columbella_rustica` | *Columbella rustica* | — | 1 | Columbellidae | Columbella | 35087 | 448231 | yes |
+| `epizoanthus_arenaceus` | *Epizoanthus arenaceus* | — | 1 | Epizoanthidae | Epizoanthus | 35021 | 543527 | yes |
+| `dysidea_avara` | *Dysidea avara* | — | 1 | Dysideidae | Dysidea | 245346 | 734859 | yes |
+| `marthasterias_glacialis` | *Marthasterias glacialis* | — | 1 | Asteriidae | Marthasterias | 246045 | 1017167 | yes |
+| `clathrina_clathrus` | *Clathrina clathrus* | — | 1 | Clathrinidae | Clathrina | 251805 | 324861 | yes |
+| `pagellus_erythrinus` | *Pagellus erythrinus* | — | 1 | Sparidae | Pagellus | 33801 | 118659 | yes |
+| `holothuria_sanctori` | *Holothuria sanctori* | Holothuria (Platyperona) sanctori | 1 | Holothuriidae | Holothuria | 251873 | 432925 | yes |
+| `amphiroa_rigida` | *Amphiroa rigida* | — | 2 | Lithophyllaceae | Amphiroa | 244409 | 322727 | yes |
+| `uranoscopus_scaber` | *Uranoscopus scaber* | — | 1 | Uranoscopidae | Uranoscopus | 34888 | 118641 | yes |
+| `bonellia_viridis` | *Bonellia viridis* | — | 1 | Bonelliidae | Bonellia | 35119 | 205252 | yes |
+| `maja_crispata` | *Maja crispata* | — | 1 | Majidae | Maja | 34883 | 326069 | yes |
+| `actinia_striata` | *Actinia striata* | — | 1 | Actiniidae | Actinia | 253919 | 634435 | yes |
+| `lissoclinum_perforatum` | *Lissoclinum perforatum* | — | 1 | Didemnidae | Lissoclinum | 244588 | 542089 | yes |
+| `luria_lurida` | *Luria lurida* | — | 1 | Cypraeidae | Luria | 245125 | 342274 | yes |
+| `pinnoctopus_macropus` | *Pinnoctopus macropus* | — | 1 | Octopodidae | Pinnoctopus | 265620 | 1678340 | yes |
+| `caryophyllia_inornata` | *Caryophyllia inornata* | Caryophyllia (Caryophyllia) inornata | 1 | Caryophylliidae | Caryophyllia | 35130 | 363901 | yes |
+| `cliona_viridis` | *Cliona viridis* | — | 1 | Clionaidae | Cliona | 252081 | 363860 | yes |
+| `pachycerianthus_solitarius` | *Pachycerianthus solitarius* | — | 1 | Cerianthidae | Pachycerianthus | 35181 | 487685 | yes |
+| `clathria_jolicoeuri` | *Clathria jolicoeuri* | Clathria (Thalysias) jolicoeuri | 1 | Microcionidae | Clathria | 251802 | 1075270 | yes |
+| `dasyatis_pastinaca` | *Dasyatis pastinaca* | — | 1 | Dasyatidae | Dasyatis | 31067 | 47276 | yes |
+| `codium_vermilara` | *Codium vermilara* | — | 2 | Codiaceae | Codium | 35032 | 343402 | yes |
+| `pagurus_anachoretus` | *Pagurus anachoretus* | — | 1 | Paguridae | Pagurus | 252680 | 326065 | yes |
+| `scyllarus_arctus` | *Scyllarus arctus* | — | 1 | Scyllaridae | Scyllarus | 35015 | 112400 | yes |
+| `pachygrapsus_marmoratus` | *Pachygrapsus marmoratus* | — | 1 | Grapsidae | Pachygrapsus | 240381 | 59283 | yes |
+| `acetabularia_acetabulum` | *Acetabularia acetabulum* | — | 2 | Polyphysaceae | Acetabularia | 35158 | 59704 | yes |
+| `acanthochitona_fascicularis` | *Acanthochitona fascicularis* | — | 1 | Acanthochitonidae | Acanthochitona | 34794 | 493947 | yes |
+| `terpios_gelatinosus` | *Terpios gelatinosus* | — | 1 | Suberitidae | Terpios | 250822 | 636446 | yes |
+| `symphodus_doderleini` | *Symphodus doderleini* | — | 1 | Labridae | Symphodus | 240404 | 113530 | yes |
+| `perforatus_perforatus` | *Perforatus perforatus* | — | 1 | Balanidae | Perforatus | 237075 | 639057 | yes |
+| `atherina_boyeri` | *Atherina boyeri* | — | 1 | Atherinidae | Atherina | 240394 | 94786 | yes |
+| `sphaerechinus_granularis` | *Sphaerechinus granularis* | — | 1 | Toxopneustidae | Sphaerechinus | 250594 | 118753 | yes |
+| `spirastrella_cunctatrix` | *Spirastrella cunctatrix* | — | 1 | Spirastrellidae | Spirastrella | 251208 | 337987 | yes |
+| `coscinasterias_tenuispina` | *Coscinasterias tenuispina* | — | 1 | Asteriidae | Coscinasterias | 35255 | 255717 | yes |
+| `diplecogaster_bimaculata` | *Diplecogaster bimaculata* | — | 1 | Gobiesocidae | Diplecogaster | 244761 | 118607 | yes |
+| `ariosoma_balearicum` | *Ariosoma balearicum* | — | 1 | Congridae | Ariosoma | 246314 | 120641 | yes |
+| `halopteris_scoparia` | *Halopteris scoparia* | — | 2 | Stypocaulaceae | Halopteris | 253945 | 1145700 | yes |
+| `balanophyllia_regia` | *Balanophyllia regia* | Balanophyllia (Balanophyllia) regia | 1 | Dendrophylliidae | Balanophyllia | 34836 | 637404 | yes |
+| `myxicola_infundibulum` | *Myxicola infundibulum* | — | 1 | Sabellidae | Myxicola | 35308 | 49533 | yes |
+| `clavelina_lepadiformis` | *Clavelina lepadiformis* | — | 1 | Clavelinidae | Clavelina | 35058 | 338044 | yes |
+| `clathrina_rubra` | *Clathrina rubra* | — | 1 | Clathrinidae | Clathrina | 251814 | 918811 | yes |
+| `lepadogaster_lepadogaster` | *Lepadogaster lepadogaster* | — | 1 | Gobiesocidae | Lepadogaster | 243584 | 472138 | yes |
+| `valonia_utricularis` | *Valonia utricularis* | — | 2 | Valoniaceae | Valonia | 253543 | 342240 | yes |
+| `chelon_auratus` | *Chelon auratus* | — | 1 | Mugilidae | Chelon | 250650 | 786323 | yes |
+| `syngnathus_typhle` | *Syngnathus typhle* | — | 1 | Syngnathidae | Syngnathus | 240405 | 118625 | yes |
+| `acinetospora_crinita` | *Acinetospora crinita* | — | 2 | Acinetosporaceae | Acinetospora | 242228 | 1074826 | yes |
+| `spondylus_gaederopus` | *Spondylus gaederopus* | — | 1 | Spondylidae | Spondylus | 34974 | 326346 | yes |
+| `corynactis_viridis` | *Corynactis viridis* | — | 1 | Corallimorphidae | Corynactis | 34891 | 337998 | yes |
+| `reteporella_grimaldii` | *Reteporella grimaldii* | — | 1 | Phidoloporidae | Reteporella | 245741 | 359118 | yes |
+| `rhizostoma_pulmo` | *Rhizostoma pulmo* | — | 1 | Rhizostomatidae | Rhizostoma | 35206 | 319371 | yes |
+| `clavularia_crassa` | *Clavularia crassa* | — | 1 | Clavulariidae | Clavularia | 34829 | 363886 | yes |
+| `pagellus_acarne` | *Pagellus acarne* | — | 1 | Sparidae | Pagellus | 240402 | 118656 | yes |
+| `amphipholis_squamata` | *Amphipholis squamata* | — | 1 | Amphiuridae | Amphipholis | 244382 | 56690 | yes |
+| `pica_pica` | *Pica pica* | — | 2 | Corvidae | Pica | 253889 | 891696 | yes |
+| `astrospartus_mediterraneus` | *Astrospartus mediterraneus* | — | 1 | Gorgonocephalidae | Astrospartus | 35131 | 359123 | yes |
+| `fissurella_nubecula` | *Fissurella nubecula* | — | 1 | Fissurellidae | Fissurella | 248921 | 635246 | yes |
+| `lithophaga_lithophaga` | *Lithophaga lithophaga* | — | 1 | Mytilidae | Lithophaga | 244625 | 324589 | yes |
+| `stenopus_spinosus` | *Stenopus spinosus* | — | 1 | Stenopodidae | Stenopus | 251506 | 342264 | yes |
+| `chelidonichthys_lastoviza` | *Chelidonichthys lastoviza* | — | 1 | Triglidae | Chelidonichthys | 254138 | 621911 | yes |
+| `periclimenes_amethysteus` | *Periclimenes amethysteus* | — | 1 | Palaemonidae | Periclimenes | 35116 | 326062 | yes |
+| `mullus_barbatus` | *Mullus barbatus* | — | 1 | Mullidae | Mullus | 247634 | 118618 | yes |
+| `diplodus_cervinus` | *Diplodus cervinus* | — | 1 | Sparidae | Diplodus | 35138 | 49984 | yes |
+| `cymodocea_nodosa` | *Cymodocea nodosa* | — | 2 | Cymodoceaceae | Cymodocea | 243333 | 131135 | yes |
+| `diplosoma_listerianum` | *Diplosoma listerianum* | — | 1 | Didemnidae | Diplosoma | 244800 | 81778 | yes |
+| `asterina_gibbosa` | *Asterina gibbosa* | — | 1 | Asterinidae | Asterina | 247184 | 210121 | yes |
+| `cystoseira_compressa` | *Cystoseira compressa* | — | 2 | Sargassaceae | Cystoseira | 243545 | 790233 | yes |
+| `acanthonyx_lunulatus` | *Acanthonyx lunulatus* | — | 1 | Epialtidae | Acanthonyx | 240427 | 494436 | yes |
+| `pycnoclavella_aurilucens` | *Pycnoclavella aurilucens* | — | 1 | Pycnoclavellidae | Pycnoclavella | 35038 | 493325 | yes |
+| `pinna_nobilis` | *Pinna nobilis* | — | 1 | Pinnidae | Pinna | 242002 | 118945 | yes |
+| `diodora_graeca` | *Diodora graeca* | — | 1 | Fissurellidae | Diodora | 244718 | 482206 | yes |
+| `dromia_personata` | *Dromia personata* | — | 1 | Dromiidae | Dromia | 34867 | 359111 | yes |
+| `prostheceraeus_roseus` | *Prostheceraeus roseus* | — | 1 | Euryleptidae | Prostheceraeus | 244061 | 338008 | yes |
+| `bittium_reticulatum` | *Bittium reticulatum* | — | 1 | Cerithiidae | Bittium | 34782 | 483170 | yes |
+| `acanthella_acuta` | *Acanthella acuta* | — | 1 | Dictyonellidae | Acanthella | 241853 | 363861 | yes |
+| `smittina_cervicornis` | *Smittina cervicornis* | — | 1 | Smittinidae | Smittina | 254151 | 359117 | yes |
+| `porcellana_platycheles` | *Porcellana platycheles* | — | 1 | Porcellanidae | Porcellana | 34877 | 130089 | yes |
+| `colpomenia_sinuosa` | *Colpomenia sinuosa* | — | 2 | Scytosiphonaceae | Colpomenia | 34968 | 328391 | yes |
+| `phoronis_hippocrepia` | *Phoronis hippocrepia* | — | 1 | Phoronidae | Phoronis | 253211 | 256101 | yes |
+| `tethya_aurantium` | *Tethya aurantium* | — | 1 | Tethyidae | Tethya | 250844 | 132490 | yes |
+| `branchiomma_luctuosum` | *Branchiomma luctuosum* | — | 1 | Sabellidae | Branchiomma | 34800 | 533476 | yes |
+| `asparagopsis_taxiformis` | *Asparagopsis taxiformis* | — | 2 | Bonnemaisoniaceae | Asparagopsis | 246914 | 208548 | yes |
+| `ircinia_variabilis` | *Ircinia variabilis* | — | 1 | Irciniidae | Ircinia | 241994 | 118779 | yes |
+| `plocamium_cartilagineum` | *Plocamium cartilagineum* | — | 2 | Plocamiaceae | Plocamium | 242668 | 327046 | yes |
+| `phorcus_turbinatus` | *Phorcus turbinatus* | — | 1 | Trochidae | Phorcus | 253209 | 506745 | yes |
+| `bicellariella_ciliata` | *Bicellariella ciliata* | — | 1 | Bugulidae | Bicellariella | 248246 | 919707 | yes |
+| `cladocora_caespitosa` | *Cladocora caespitosa* | — | 1 | Caryophylliidae | Cladocora | 35166 | 97903 | yes |
+| `acanthocardia_tuberculata` | *Acanthocardia tuberculata* | — | 1 | Cardiidae | Acanthocardia | 241878 | 363963 | yes |
+| `passer_domesticus` | *Passer domesticus* | — | 2 | Passeridae | Passer | 252848 | 13858 | yes |
+| `smaragdia_viridis` | *Smaragdia viridis* | — | 1 | Neritidae | Smaragdia | 250350 | 254242 | yes |
+| `chama_gryphoides` | *Chama gryphoides* | — | 1 | Chamidae | Chama | 250452 | 534654 | yes |
+| `synapturichthys_kleinii` | *Synapturichthys kleinii* | — | 1 | Soleidae | Synapturichthys | 240407 | 120638 | yes |
+| `eriphia_verrucosa` | *Eriphia verrucosa* | — | 1 | Eriphiidae | Eriphia | 35010 | 128834 | yes |
+| `acromegalomma_vesiculosum` | *Acromegalomma vesiculosum* | — | 1 | Sabellidae | Acromegalomma | 34921 | 781293 | yes |
+| `branchiomma_moebii` | *Branchiomma moebii* | — | 1 | Sabellidae | Branchiomma | 247157 | 1579622 | yes |
+| `bornetia_secundiflora` | *Bornetia secundiflora* | — | 2 | Ceramiaceae | Bornetia | 246923 | 1226172 | yes |
+| `cladostephus_spongiosus` | *Cladostephus spongiosus* | — | 2 | Sphacelariaceae | Cladostephus | 251777 | 182858 | yes |
+| `labrus_viridis` | *Labrus viridis* | — | 1 | Labridae | Labrus | 240396 | 103914 | yes |
+| `mytilus_galloprovincialis` | *Mytilus galloprovincialis* | — | 1 | Mytilidae | Mytilus | 248495 | 81648 | yes |
+| `holothuria_mammata` | *Holothuria mammata* | Holothuria (Holothuria) mammata | 1 | Holothuriidae | Holothuria | 35112 | 432899 | yes |
+| `loligo_vulgaris` | *Loligo vulgaris* | — | 1 | Loliginidae | Loligo | 35229 | 324558 | yes |
+| `venus_verrucosa` | *Venus verrucosa* | — | 1 | Veneridae | Venus | 253572 | 324540 | yes |
+| `yungia_aurantiaca` | *Yungia aurantiaca* | — | 1 | Pseudocerotidae | Yungia | 236177 | 425286 | yes |
+| `seriola_dumerili` | *Seriola dumerili* | — | 1 | Carangidae | Seriola | 35245 | 51549 | yes |
+| `aplus_dorbignyi` | *Aplus dorbignyi* | — | 1 | Pisaniidae | Aplus | 94370 | 518744 | yes |
+| `clibanarius_erythropus` | *Clibanarius erythropus* | — | 1 | Diogenidae | Clibanarius | 252060 | 210291 | yes |
+| `reptadeonella_violacea` | *Reptadeonella violacea* | — | 1 | Adeonidae | Reptadeonella | 245658 | 196138 | yes |
+| `striarca_lactea` | *Striarca lactea* | — | 1 | Noetiidae | Striacta | 51246 | 494761 | yes |
+| `patinella_radiata` | *Patinella radiata* | — | 1 | Lichenoporidae | Patinella | 252877 | 537722 | yes |
+| `gobius_roulei` | *Gobius roulei* | — | 1 | Gobiidae | Gobius | 249142 | 446061 | yes |
+| `symphodus_melops` | *Symphodus melops* | — | 1 | Labridae | Symphodus | 246349 | 113533 | yes |
+| `dictyopteris_polypodioides` | *Dictyopteris polypodioides* | — | 2 | Dictyotaceae | Dictyopteris | 244596 | 342238 | yes |
+| `athanas_nitescens` | *Athanas nitescens* | — | 1 | Alpheidae | Athanas | 35056 | 568953 | yes |
+| `dardanus_calidus` | *Dardanus calidus* | — | 1 | Diogenidae | Dardanus | 35084 | 342258 | yes |
+| `holothuria_poli` | *Holothuria poli* | Holothuria (Roweothuria) poli | 1 | Holothuriidae | Holothuria | 251868 | 359120 | yes |
+| `amathia_lendigera` | *Amathia lendigera* | — | 1 | Vesiculariidae | Amathia | 244233 | 1074835 | yes |
+| `spicara_maena` | *Spicara maena* | — | 1 | Centracanthidae | Spicara | 250662 | 118711 | yes |
+| `derbesia_tenuissima` | *Derbesia tenuissima* | — | 2 | Derbesiaceae | Derbesia | 244209 | 497078 | yes |
+| `egretta_garzetta` | *Egretta garzetta* | — | 2 | Ardeidae | Egretta | 245522 | 4943 | yes |
+| `kirchenpaueria_halecioides` | *Kirchenpaueria halecioides* | — | 1 | Kirchenpaueriidae | Kirchenpaueria | 242483 | 195450 | yes |
+| `bunodactis_verrucosa` | *Bunodactis verrucosa* | — | 1 | Actiniidae | Bunodactis | 262066 | 1500741 | yes |
+| `gibberula_philippii` | *Gibberula philippii* | — | 1 | Cystiscidae | Gibberula | 248897 | 1111294 | yes |
+| `sertularella_mediterranea` | *Sertularella mediterranea* | — | 1 | Sertulariidae | Sertularella | 35145 | 689591 | yes |
+| `wrangelia_penicillata` | *Wrangelia penicillata* | — | 2 | Ceramiaceae | Wrangelia | 253705 | 129658 | yes |
+| `ostrea_edulis` | *Ostrea edulis* | — | 1 | Ostreidae | Ostrea | 31938 | 53462 | yes |
+| `pyura_dura` | *Pyura dura* | — | 1 | Pyuridae | Pyura | 34972 | 800276 | yes |
+| `alicia_mirabilis` | *Alicia mirabilis* | — | 1 | Aliciidae | Alicia | 243718 | 342249 | yes |
+| `percnon_gibbesi` | *Percnon gibbesi* | — | 1 | Percnidae | Percnon | 35046 | 61372 | yes |
+| `centrolabrus_melanocercus` | *Centrolabrus melanocercus* | — | 1 | Labridae | Centrolabrus | 240403 | 1316741 | yes |
+| `tritia_corniculum` | *Tritia corniculum* | — | 1 | Nassariidae | Tritia | 253345 | 699077 | yes |
+| `ascandra_contorta` | *Ascandra contorta* | — | 1 | Leucaltidae | Ascandra | 246841 | 964070 | yes |
+| `protula_intestinum` | *Protula intestinum* | — | 1 | Serpulidae | Protula | 244092 | 479817 | yes |
+| `pinctada_radiata` | *Pinctada radiata* | — | 1 | Pteriidae | Pinctada | 259449 | 1362871 | yes |
+| `muricopsis_cristata` | *Muricopsis cristata* | — | 1 | Muricidae | Muricopsis | 247665 | 525730 | yes |
+| `belone_belone` | *Belone belone* | — | 1 | Belonidae | Belone | 84267 | 118597 | yes |
+| `caberea_boryi` | *Caberea boryi* | — | 1 | Candidae | Caberea | 247874 | 628208 | yes |
+| `corticium_candelabrum` | *Corticium candelabrum* | — | 1 | Plakinidae | Corticium | 241986 | 604291 | yes |
+| `euthria_cornea` | *Euthria cornea* | — | 1 | Tudiclidae | Euthria | 22424 | 326290 | yes |
+| `columba_palumbus` | *Columba palumbus* | — | 2 | Columbidae | Columba | 252272 | 3048 | yes |
+| `filograna_implexa` | *Filograna implexa* | — | 1 | Serpulidae | Filograna | 248904 | 363919 | yes |
+| `cotylorhiza_tuberculata` | *Cotylorhiza tuberculata* | — | 1 | Cepheidae | Cotylorhiza | 242270 | 324852 | yes |
+| `ulva_rigida` | *Ulva rigida* | — | 2 | Ulvaceae | Ulva | 253478 | 372549 | yes |
+| `galathea_squamifera` | *Galathea squamifera* | — | 1 | Galatheidae | Galathea | 34998 | 342260 | yes |
+| `paradrepanophorus_crassus` | *Paradrepanophorus crassus* | — | 1 | Paradrepanophoridae | Paradrepanophorus | 252768 | 497447 | yes |
+| `ophisurus_serpens` | *Ophisurus serpens* | — | 1 | Ophichthidae | Ophisurus | 35034 | 118592 | yes |
+| `gibberula_miliaria` | *Gibberula miliaria* | — | 1 | Cystiscidae | Gibberula | 241477 | 904662 | yes |
+| `gibbula_turbinoides` | *Gibbula turbinoides* | — | 1 | Trochidae | Gibbula | 248915 | 883905 | yes |
+| `spisula_subtruncata` | *Spisula subtruncata* | — | 1 | Mactridae | Spisula | 251218 | 483135 | yes |
+| `watersipora_cucullata` | *Watersipora cucullata* | — | 1 | Watersiporidae | Watersipora | 254491 | 464069 | yes |
+| `pennaria_disticha` | *Pennaria disticha* | — | 1 | Pennariidae | Pennaria | 35011 | 195464 | yes |
+| `lima_lima` | *Lima lima* | — | 1 | Limidae | Lima | 34801 | 62470 | yes |
+| `ocenebra_erinaceus` | *Ocenebra erinaceus* | — | 1 | Muricidae | Ocenebra | 249673 | 467402 | yes |
+| `barbatia_barbata` | *Barbatia barbata* | — | 1 | Arcidae | Barbatia | 247849 | 634957 | yes |
+| `microcosmus_sabatieri` | *Microcosmus sabatieri* | — | 1 | Pyuridae | Microcosmus | 246928 | 800245 | yes |
+| `phronima_sedentaria` | *Phronima sedentaria* | — | 1 | Phronimidae | Phronima | 240414 | 260959 | yes |
+| `axinella_polypoides` | *Axinella polypoides* | — | 1 | Axinellidae | Axinella | 247633 | 357375 | yes |
+| `cerianthus_membranaceus` | *Cerianthus membranaceus* | — | 1 | Cerianthidae | Cerianthus | 250194 | 338002 | yes |
+| `eupolymnia_nebulosa` | *Eupolymnia nebulosa* | — | 1 | Terebellidae | Eupolymnia | 248181 | 492602 | yes |
+| `aplysilla_sulfurea` | *Aplysilla sulfurea* | — | 1 | Darwinellidae | Aplysilla | 245618 | 196370 | yes |
+| `eudendrium_racemosum` | *Eudendrium racemosum* | — | 1 | Eudendriidae | Eudendrium | 247455 | 1095901 | yes |
+| `callista_chione` | *Callista chione* | — | 1 | Veneridae | Callista | 248225 | 324549 | yes |
+| `salaria_pavo` | *Salaria pavo* | — | 1 | Blenniidae | Salaria | 35114 | 118688 | yes |
+| `gymnammodytes_cicerelus` | *Gymnammodytes cicerelus* | — | 1 | Ammodytidae | Gymnammodytes | 241305 | 118615 | yes |
+| `scartella_cristata` | *Scartella cristata* | — | 1 | Blenniidae | Scartella | 248415 | 120708 | yes |
+| `clanculus_jussieui` | *Clanculus jussieui* | — | 1 | Trochidae | Clanculus | 254492 | 883899 | yes |
+| `chamelea_gallina` | *Chamelea gallina* | — | 1 | Veneridae | Chamelea | 250465 | 448229 | yes |
+| `astropecten_spinulosus` | *Astropecten spinulosus* | — | 1 | Astropectinidae | Astropecten | 35292 | 797954 | yes |
+| `neoturris_pileata` | *Neoturris pileata* | — | 1 | Pandeidae | Neoturris | 240429 | 537084 | yes |
+| `pilumnus_hirtellus` | *Pilumnus hirtellus* | — | 1 | Pilumnidae | Pilumnus | 241889 | 320290 | yes |
+| `eualus_occultus` | *Eualus occultus* | — | 1 | Hippolytidae | Eualus | 247218 | 785382 | yes |
+| `pomadasys_incisus` | *Pomadasys incisus* | — | 1 | Haemulidae | Pomadasys | 35002 | 110029 | yes |
+| `abra_alba` | *Abra alba* | — | 1 | Semelidae | Abra | 241766 | 483093 | yes |
+| `dictyota_cyanoloma` | *Dictyota cyanoloma* | — | 2 | Dictyotaceae | Dictyota | 35214 | 1116174 | yes |
+| `phorbas_topsenti` | *Phorbas topsenti* | — | 1 | Hymedesmiidae | Phorbas | 253207 | 481979 | yes |
+| `leucothea_multicornis` | *Leucothea multicornis* | — | 1 | Leucotheidae | Leucothea | 243916 | 708730 | yes |
+| `nausithoe_punctata` | *Nausithoe punctata* | — | 1 | Nausithoidae | Nausithoe | 35256 | 293224 | yes |
+| `sparisoma_cretense` | *Sparisoma cretense* | — | 1 | Labridae | Sparisoma | 83277 | 112860 | yes |
+| `vermetus_triquetrus` | *Vermetus triquetrus* | — | 1 | Vermetidae | Vermetus | 34916 | 634698 | yes |
+| `polititapes_aureus` | *Polititapes aureus* | — | 1 | Veneridae | Polititapes | 242914 | 533195 | yes |
+| `processa_edulis` | *Processa edulis* | — | 1 | Processidae | Processa | 262602 | 785365 | yes |
+| `axinella_verrucosa` | *Axinella verrucosa* | — | 1 | Axinellidae | Axinella | 247636 | 625928 | yes |
+| `jania_rubens` | *Jania rubens* | — | 2 | Lithophyllaceae | Jania | 242231 | 361840 | yes |
+| `prostheceraeus_moseleyi` | *Prostheceraeus moseleyi* | — | 1 | Euryleptidae | Prostheceraeus | 35020 | 363917 | yes |
+| `gaidropsarus_mediterraneus` | *Gaidropsarus mediterraneus* | — | 1 | Lotidae | Gaidropsarus | 170748 | 118602 | yes |
+| `dosinia_lupinus` | *Dosinia lupinus* | — | 1 | Veneridae | Dosinia | 245001 | 448234 | yes |
+| `astropecten_platyacanthus` | *Astropecten platyacanthus* | — | 1 | Astropectinidae | Astropecten | 247293 | 504380 | yes |
+| `euphrosine_foliosa` | *Euphrosine foliosa* | — | 1 | Euphrosinidae | Euphrosine | 248031 | 942541 | yes |
+| `lithophyllum_stictiforme` | *Lithophyllum stictiforme* | — | 2 | Lithophyllaceae | Lithophyllum | 256615 | 785895 | yes |
+| `codium_effusum` | *Codium effusum* | — | 2 | Codiaceae | Codium | 252192 | 343403 | yes |
+| `limaria_tuberculata` | *Limaria tuberculata* | — | 1 | Limidae | Limaria | 35017 | 474205 | yes |
+| `pycnoclavella_communis` | *Pycnoclavella communis* | — | 1 | Pycnoclavellidae | Pycnoclavella | 244755 | 472690 | yes |
+| `margaretta_cereoides` | *Margaretta cereoides* | — | 1 | Margarettidae | Margaretta | 245991 | 535153 | yes |
+| `pseudoceros_velutinus` | *Pseudoceros velutinus* | — | 1 | Pseudoceritidae | Pseudoceros | 34860 | 461137 | yes |
+| `cornularia_cornucopiae` | *Cornularia cornucopiae* | — | 1 | Cornulariidae | Cornularia | 254565 | 949675 | yes |
+| `diogenes_pugilator` | *Diogenes pugilator* | — | 1 | Diogenidae | Diogenes | 35193 | 326066 | yes |
+| `branchellion_torpedinis` | *Branchellion torpedinis* | — | 1 | Piscicolidae | Branchellion | 240419 | 702469 | yes |
+| `moerella_donacina` | *Moerella donacina* | — | 1 | Tellinidae | Moerella | 247283 | 483086 | yes |
+| `lissoclinum_weigelei` | *Lissoclinum weigelei* | — | 1 | Didemnidae | Lissoclinum | 244591 | 798731 | yes |
+| `polysyncraton_lacazei` | *Polysyncraton lacazei* | — | 1 | Didemnidae | Polysyncraton | 243470 | 487581 | yes |
+| `gouldia_minima` | *Gouldia minima* | — | 1 | Veneridae | Gouldia | 249223 | 483064 | yes |
+| `pegusa_lascaris` | *Pegusa lascaris* | — | 1 | Soleidae | Pegusa | 16925 | 118635 | yes |
+| `ebenomitra_ebenus` | *Ebenomitra ebenus* | — | 1 | Costellariidae | Ebenomitra | 244736 | 1647691 | yes |
+| `talochlamys_multistriata` | *Talochlamys multistriata* | — | 1 | Pectinidae | Talochlamys | 250573 | 692381 | yes |
+| `nanozostera_noltii` | *Nanozostera noltii* | Zostera noltei | 2 | Zosteraceae | Nanozostera | 264318 | 1613714 | yes |
+| `ericaria_mediterranea` | *Ericaria mediterranea* | — | 2 | Sargassaceae | Ericaria | 255563 | 1183121 | yes |
+| `papillicardium_papillosum` | *Papillicardium papillosum* | — | 1 | Cardiidae | Papillicardium | 75433 | 483059 | yes |
+| `apterichtus_caecus` | *Apterichtus caecus* | — | 1 | Ophichthidae | Apterichtus | 240540 | 618436 | yes |
+| `styela_canopus` | *Styela canopus* | — | 1 | Styelidae | Styela | 250488 | 479907 | yes |
+| `antedon_mediterranea` | *Antedon mediterranea* | — | 1 | Antedonidae | Antedon | 93160 | 326322 | yes |
+| `hemimycale_columella` | *Hemimycale columella* | — | 1 | Hymedesmiidae | Hemimycale | 251363 | 118727 | yes |
+| `sabella_pavonina` | *Sabella pavonina* | — | 1 | Sabellidae | Sabella | 247039 | 338014 | yes |
+| `grantia_compressa` | *Grantia compressa* | — | 1 | Grantiidae | Grantia | 249257 | 949664 | yes |
+| `serinus_serinus` | *Serinus serinus* | — | 2 | Fringillidae | Serinus | 249670 | 9236 | yes |
+| `chthamalus_stellatus` | *Chthamalus stellatus* | — | 1 | Chthamalidae | Chthamalus | 251234 | 210292 | yes |
+| `granulina_marginata` | *Granulina marginata* | — | 1 | Cystiscidae | Granulina | 249262 | 1123873 | yes |
+| `aglaophenia_pluma` | *Aglaophenia pluma* | — | 1 | Aglaopheniidae | Aglaophenia | 243186 | 363868 | yes |
+| `echinocyamus_pusillus` | *Echinocyamus pusillus* | — | 1 | Echinocyamidae | Echinocyamus | 245420 | 354581 | yes |
+| `phalacrocorax_carbo` | *Phalacrocorax carbo* | — | 2 | Phalacrocoracidae | Phalacrocorax | 253078 | 4270 | yes |
+| `discocelis_tigrina` | *Discocelis tigrina* | — | 1 | Discocelidae | Discocelis | 244836 | 713894 | yes |
+| `tritia_reticulata` | *Tritia reticulata* | — | 1 | Nassariidae | Tritia | 34979 | 507770 | yes |
+| `rissoa_variabilis` | *Rissoa variabilis* | — | 1 | Rissoidae | Rissoa | 246338 | 884042 | yes |
+| `arnoglossus_grohmanni` | *Arnoglossus grohmanni* | — | 1 | Bothidae | Arnoglossus | 257012 | 445669 | yes |
+| `eunicella_gazella` | *Eunicella gazella* | — | 1 | Gorgoniidae | Eunicella | 35252 | 363892 | yes |
+| `steromphala_varia` | *Steromphala varia* | — | 1 | Trochidae | Steromphala | 35008 | 732761 | yes |
+| `echinocardium_cordatum` | *Echinocardium cordatum* | — | 1 | Loveniidae | Echinocardium | 245411 | 122232 | yes |
+| `ecteinascidia_herdmani` | *Ecteinascidia herdmani* | — | 1 | Perophoridae | Ecteinascidia | 245497 | 799863 | yes |
+| `xantho_poressa` | *Xantho poressa* | — | 1 | Xanthidae | Xantho | 253717 | 544721 | yes |
+| `ardea_cinerea` | *Ardea cinerea* | — | 2 | Ardeidae | Ardea | 245911 | 4954 | yes |
+| `hermodice_carunculata` | *Hermodice carunculata* | — | 1 | Amphinomidae | Hermodice | 251451 | 49520 | yes |
+| `canthigaster_capistrata` | *Canthigaster capistrata* | — | 1 | Tetraodontidae | Canthigaster | 254208 | 128858 | yes |
+| `marshallora_adversa` | *Marshallora adversa* | — | 1 | Triphoridae | Marshallora | 246029 | 861621 | yes |
+| `pseudoceros_maximus` | *Pseudoceros maximus* | — | 1 | Pseudoceritidae | Pseudoceros | 254001 | 543245 | yes |
+| `lucinella_divaricata` | *Lucinella divaricata* | — | 1 | Lucinidae | Lucinella | 257172 | 861589 | yes |
+| `aequorea_forskalea` | *Aequorea forskalea* | — | 1 | Aequoreidae | Aequorea | 240423 | 345076 | yes |
+| `chelon_labrosus` | *Chelon labrosus* | — | 1 | Mugilidae | Chelon | 250654 | 97345 | yes |
+| `limaria_hians` | *Limaria hians* | — | 1 | Limidae | Limaria | 244030 | 493183 | yes |
+| `sardinella_aurita` | *Sardinella aurita* | — | 1 | Clupeidae | Sardinella | 31549 | 118599 | yes |
+| `schizoporella_dunkeri` | *Schizoporella dunkeri* | — | 1 | Schizoporellidae | Schizoporella | 248502 | 852335 | yes |
+| `ebenomitra_tricolor` | *Ebenomitra tricolor* | — | 1 | Costellariidae | Ebenomitra | 244746 | 1647697 | yes |
+| `branchiomma_bairdi` | *Branchiomma bairdi* | — | 1 | Sabellidae | Branchiomma | 254723 | 209225 | yes |
+| `thericium_renovatum` | *Thericium renovatum* | — | 1 | Cerithiidae | Thericium | 263344 | 1638053 | yes |
+| `dysidea_fragilis` | *Dysidea fragilis* | — | 1 | Dysideidae | Dysidea | 245348 | 131694 | yes |
+| `inachus_phalangium` | *Inachus phalangium* | — | 1 | Inachidae | Inachus | 34865 | 326067 | yes |
+| `pinna_rudis` | *Pinna rudis* | — | 1 | Pinnidae | Pinna | 34923 | 292173 | yes |
+| `anilocra_physodes` | *Anilocra physodes* | — | 1 | Cymothoidae | Anilocra | 245036 | 363939 | yes |
+| `semicassis_undulata` | *Semicassis undulata* | — | 1 | Cassidae | Semicassis | 249412 | 632251 | yes |
+| `mactra_stultorum` | *Mactra stultorum* | — | 1 | Mactridae | Mactra | 245729 | 366852 | yes |
+| `clinitrachus_argentatus` | *Clinitrachus argentatus* | — | 1 | Clinidae | Clinitrachus | 252063 | 118714 | yes |
+| `ascidiella_scabra` | *Ascidiella scabra* | — | 1 | Ascidiidae | Ascidiella | 254150 | 632653 | yes |
+| `hacelia_attenuata` | *Hacelia attenuata* | — | 1 | Ophidiasteridae | Hacelia | 249708 | 326332 | yes |
+| `cliona_rhodensis` | *Cliona rhodensis* | Cliothosa rhodensis | 1 | Clionaidae | Cliona | 252078 | 834121 | yes |
+| `ascidia_mentula` | *Ascidia mentula* | — | 1 | Ascidiidae | Ascidia | 246845 | 472689 | yes |
+| `motacilla_alba` | *Motacilla alba* | — | 2 | Motacillidae | Motacilla | 247528 | 13695 | yes |
+| `sturnus_vulgaris` | *Sturnus vulgaris* | — | 2 | Sturnidae | Sturnus | 250485 | 14850 | yes |
+| `trachinotus_ovatus` | *Trachinotus ovatus* | — | 1 | Carangidae | Trachinotus | 251762 | 51401 | yes |
+| `diplastrella_bistellata` | *Diplastrella bistellata* | — | 1 | Spirastrellidae | Diplastrella | 256915 | 949650 | yes |
+| `simnia_spelta` | *Simnia spelta* | — | 1 | Ovulidae | Simnia | 34832 | 476229 | yes |
+| `bryopsis_plumosa` | *Bryopsis plumosa* | — | 2 | Bryopsidaceae | Bryopsis | 247460 | 201265 | yes |
+| `gari_depressa` | *Gari depressa* | — | 1 | Psammobiidae | Gari | 249904 | 483096 | yes |
+| `pagurus_cuanensis` | *Pagurus cuanensis* | — | 1 | Paguridae | Pagurus | 254248 | 574162 | yes |
+| `mesochaetopterus_rogeri` | *Mesochaetopterus rogeri* | — | 1 | Chaetopteridae | Mesochaetopterus | 35259 | 479700 | yes |
+| `cymodoce_truncata` | *Cymodoce truncata* | — | 1 | Sphaeromatidae | Cymodoce | 240375 | 797111 | yes |
+| `pomatoschistus_marmoratus` | *Pomatoschistus marmoratus* | — | 1 | Gobiidae | Pomatoschistus | 243512 | 338050 | yes |
+| `moerella_pulchella` | *Moerella pulchella* | — | 1 | Tellinidae | Moerella | 247289 | 865392 | yes |
+| `penaeus_kerathurus` | *Penaeus kerathurus* | Penaeus (Melicertus) kerathurus | 1 | Penaeidae | Penaeus | 254140 | 962394 | yes |
+| `amphiroa_beauvoisii` | *Amphiroa beauvoisii* | — | 2 | Lithophyllaceae | Amphiroa | 244404 | 327143 | yes |
+| `calliactis_parasitica` | *Calliactis parasitica* | — | 1 | Hormathiidae | Calliactis | 248155 | 358550 | yes |
+| `electra_posidoniae` | *Electra posidoniae* | — | 1 | Electridae | Electra | 245637 | 702587 | yes |
+| `anilocra_frontalis` | *Anilocra frontalis* | — | 1 | Cymothoidae | Anilocra | 257095 | 854538 | yes |
+| `torpedo_torpedo` | *Torpedo torpedo* | — | 1 | Torpedinidae | Torpedo | 35265 | 114252 | yes |
+| `patella_rustica` | *Patella rustica* | — | 1 | Patellidae | Patella | 252874 | 546796 | yes |
+| `pedobesia_simplex` | *Pedobesia simplex* | — | 2 | Derbesiaceae | Pedobesia | 252901 | 343401 | yes |
+| `peronaea_planata` | *Peronaea planata* | — | 1 | Tellinidae | Peronaea | 250748 | 488553 | yes |
+| `hypnea_musciformis` | *Hypnea musciformis* | — | 2 | Hypneaceae | Hypnea | 26192 | 67672 | yes |
+| `nerophis_maculatus` | *Nerophis maculatus* | — | 1 | Syngnathidae | Nerophis | 249047 | 446243 | yes |
+| `parazoanthus_brevitentacularis` | *Parazoanthus brevitentacularis* | — | 1 | Parazoanthidae | Parazoanthus | 264981 | 1657838 | yes |
+| `taonia_atomaria` | *Taonia atomaria* | — | 2 | Dictyotaceae | Taonia | 9369 | 803495 | yes |
+| `xantho_hydrophilus` | *Xantho hydrophilus* | — | 1 | Xanthidae | Xantho | 253715 | 603932 | yes |
+| `phallusia_mammillata` | *Phallusia mammillata* | — | 1 | Ascidiidae | Phallusia | 34872 | 338512 | yes |
+| `alvania_lineata` | *Alvania lineata* | — | 1 | Rissoidae | Alvania | 244058 | 1260093 | yes |
+| `squatina_squatina` | *Squatina squatina* | — | 1 | Squatinidae | Squatina | 127589 | 113064 | yes |
+| `nitophyllum_punctatum` | *Nitophyllum punctatum* | — | 2 | Delesseriaceae | Nitophyllum | 249138 | 1027509 | yes |
+| `chelidonichthys_lucerna` | *Chelidonichthys lucerna* | — | 1 | Triglidae | Chelidonichthys | 100584 | 118628 | yes |
+| `loripinus_fragilis` | *Loripinus fragilis* | — | 1 | Lucinidae | Loripinus | 155741 | 1208087 | yes |
+| `asparagopsis_armata` | *Asparagopsis armata* | — | 2 | Bonnemaisoniaceae | Asparagopsis | 34887 | 57779 | yes |
+| `spicara_smaris` | *Spicara smaris* | — | 1 | Centracanthidae | Spicara | 79111 | 118712 | yes |
+| `jania_virgata` | *Jania virgata* | — | 2 | Lithophyllaceae | Jania | 254335 | 1074935 | yes |
+| `ensis_minor` | *Ensis minor* | — | 1 | Pharidae | Ensis | 245882 | 253502 | yes |
+| `pusillina_philippi` | *Pusillina philippi* | — | 1 | Rissoidae | Pusillina | 263359 | 884033 | yes |
+| `rhyssoplax_corallina` | *Rhyssoplax corallina* | — | 1 | Chitonidae | Rhyssoplax | 246235 | 1075230 | yes |
+| `musculus_costulatus` | *Musculus costulatus* | — | 1 | Mytilidae | Musculus | 247723 | 171919 | yes |
+| `upogebia_pusilla` | *Upogebia pusilla* | — | 1 | Upogebiidae | Upogebia | 34898 | 856244 | yes |
+| `alvania_cimex` | *Alvania cimex* | — | 1 | Rissoidae | Alvania | 244044 | 1362093 | yes |
+| `mactra_glauca` | *Mactra glauca* | — | 1 | Mactridae | Mactra | 245726 | 483133 | yes |
+| `zeus_faber` | *Zeus faber* | — | 1 | Zeidae | Zeus | 226487 | 118622 | yes |
+| `hippopodius_hippopus` | *Hippopodius hippopus* | — | 1 | Hippopodiidae | Hippopodius | 194884 | 669555 | yes |
+| `callianira_bialata` | *Callianira bialata* | — | 1 | Mertensiidae | Callianira | 240418 | 1074877 | yes |
+| `prosthiostomum_siphunculus` | *Prosthiostomum siphunculus* | — | 1 | Prosthiostomidae | Prosthiostomum | 244064 | 543247 | yes |
+| `ciona_robusta` | *Ciona robusta* | — | 1 | Cionidae | Ciona | 251437 | 712964 | yes |
+| `clavelina_sabbadini` | *Clavelina sabbadini* | — | 1 | Clavelinidae | Clavelina | 256795 | 798309 | yes |
+| `isozoanthus_sulcatus` | *Isozoanthus sulcatus* | — | 1 | Parazoanthidae | Isozoanthus | 257191 | 628211 | yes |
+| `sertularella_crassicaulis` | *Sertularella crassicaulis* | — | 1 | Sertulariidae | Sertularella | 254572 | 881298 | yes |
+| `tricleocarpa_fragilis` | *Tricleocarpa fragilis* | — | 2 | Galaxauraceae | Tricleocarpa | 251996 | 131349 | yes |
+| `clanculus_cruciatus` | *Clanculus cruciatus* | — | 1 | Trochidae | Clanculus | 251793 | 528874 | yes |
+| `lepas_pectinata` | *Lepas pectinata* | Lepas (Lepas) pectinata | 1 | Lepadidae | Lepas | 243588 | 329099 | yes |
+| `sicyonia_carinata` | *Sicyonia carinata* | — | 1 | Sicyoniidae | Sicyonia | 249872 | 326064 | yes |
+| `ctenolabrus_rupestris` | *Ctenolabrus rupestris* | — | 1 | Labridae | Ctenolabrus | 242809 | 98753 | yes |
+| `jujubinus_exasperatus` | *Jujubinus exasperatus* | — | 1 | Trochidae | Jujubinus | 242354 | 482222 | yes |
+| `ditrupa_arietina` | *Ditrupa arietina* | — | 1 | Serpulidae | Ditrupa | 244861 | 342255 | yes |
+| `valonia_macrophysa` | *Valonia macrophysa* | — | 2 | Valoniaceae | Valonia | 201803 | 131307 | yes |
+| `zanardinia_typus` | *Zanardinia typus* | — | 2 | Cutleriaceae | Zanardinia | 253784 | 925116 | yes |
+| `planocera_ceratommata` | *Planocera ceratommata* | — | 1 | Planoceridae | Planocera | 242305 | 953395 | yes |
+| `callionymus_risso` | *Callionymus risso* | — | 1 | Callionymidae | Callionymus | 248176 | 118715 | yes |
+| `pseudodistoma_crucigaster` | *Pseudodistoma crucigaster* | — | 1 | Pseudodistomidae | Pseudodistoma | 244327 | 799564 | yes |
+| `janua_heterostropha` | *Janua heterostropha* | — | 1 | Serpulidae | Janua | 242255 | 1123725 | yes |
+| `bugulina_calathus` | *Bugulina calathus* | — | 1 | Bugulidae | Bugulina | 93688 | 551805 | yes |
+| `cestum_veneris` | *Cestum veneris* | — | 1 | Cestidae | Cestum | 250278 | 153456 | yes |
+| `myiopsitta_monachus` | *Myiopsitta monachus* | — | 2 | Psittacidae | Myiopsitta | 247963 | 19349 | yes |
+| `brachycarpus_biunguiculatus` | *Brachycarpus biunguiculatus* | — | 1 | Palaemonidae | Brachycarpus | 240385 | 195179 | yes |
+| `irus_irus` | *Irus irus* | — | 1 | Veneridae | Irus | 242071 | 483076 | yes |
+| `polybius_vernalis` | *Polybius vernalis* | — | 1 | Carcinidae | Polybius | 244545 | 1551492 | yes |
+| `microcosmus_squamiger` | *Microcosmus squamiger* | — | 1 | Pyuridae | Microcosmus | 246932 | 516001 | yes |
+| `trachinus_radiatus` | *Trachinus radiatus* | — | 1 | Trachinidae | Trachinus | 251772 | 120699 | yes |
+| `loripes_orbiculatus` | *Loripes orbiculatus* | — | 1 | Lucinidae | Loripes | 252195 | 1093096 | yes |
+| `pseudobiceros_splendidus` | *Pseudobiceros splendidus* | — | 1 | Pseudocerotidae | Pseudobiceros | 254186 | 324818 | yes |
+| `beania_magellanica` | *Beania magellanica* | — | 1 | Beaniidae | Beania | 247982 | 566172 | yes |
+| `salpa_fusiformis` | *Salpa fusiformis* | — | 1 | Salpidae | Salpa | 254261 | 324775 | yes |
+| `paranemonia_cinerea` | *Paranemonia cinerea* | — | 1 | Actiniidae | Paranemonia | 252779 | 487686 | yes |
+| `gallinula_chloropus` | *Gallinula chloropus* | — | 2 | Rallidae | Gallinula | 249839 | 201282 | yes |
+| `oryctolagus_cuniculus` | *Oryctolagus cuniculus* | — | 2 | Leporidae | Oryctolagus | 102488 | 43151 | yes |
+| `gastroclonium_clavatum` | *Gastroclonium clavatum* | — | 2 | Champiaceae | Gastroclonium | 35014 | 873578 | yes |
+| `flexopecten_hyalinus` | *Flexopecten hyalinus* | — | 1 | Pectinidae | Flexopecten | 83812 | 732759 | yes |
+| `salpa_maxima` | *Salpa maxima* | — | 1 | Salpidae | Salpa | 240420 | 800859 | yes |
+| `lophius_budegassa` | *Lophius budegassa* | — | 1 | Lophiidae | Lophius | 244911 | 118611 | yes |
+| `echiichthys_vipera` | *Echiichthys vipera* | — | 1 | Trachinidae | Echiichthys | 245401 | 118649 | yes |
+| `asterina_phylactica` | *Asterina phylactica* | — | 1 | Asterinidae | Asterina | 247190 | 775351 | yes |
+| `hiatella_arctica` | *Hiatella arctica* | — | 1 | Hiatellidae | Hiatella | 251602 | 117617 | yes |
+| `tritia_corrugata` | *Tritia corrugata* | — | 1 | Nassariidae | Tritia | 253346 | 1632225 | yes |
+| `ophiocomina_nigra` | *Ophiocomina nigra* | — | 1 | Ophiocomidae | Ophiocomina | 250306 | 210283 | yes |
+| `bispira_volutacornis` | *Bispira volutacornis* | — | 1 | Sabellidae | Bispira | 246477 | 338011 | yes |
+| `lophius_piscatorius` | *Lophius piscatorius* | — | 1 | Lophiidae | Lophius | 131494 | 118610 | yes |
+| `forskalia_edwardsii` | *Forskalia edwardsii* | — | 1 | Forskaliidae | Forskalia | 240421 | 1637951 | yes |
+| `pilumnus_villosissimus` | *Pilumnus villosissimus* | — | 1 | Pilumnidae | Pilumnus | 241893 | 493259 | yes |
+| `hamigera_hamigera` | *Hamigera hamigera* | — | 1 | Hymedesmiidae | Hamigera | 256921 | 342246 | yes |
+| `epinephelus_costae` | *Epinephelus costae* | — | 1 | Epinephelidae | Epinephelus | 254149 | 100091 | yes |
+| `phoenicurus_ochruros` | *Phoenicurus ochruros* | — | 2 | Muscicapidae | Phoenicurus | 253189 | 13000 | yes |
+| `styela_plicata` | *Styela plicata* | — | 1 | Styelidae | Styela | 250491 | 179830 | yes |
+| `apletodon_dentatus` | *Apletodon dentatus* | — | 1 | Gobiesocidae | Apletodon | 240426 | 118608 | yes |
+| `aiptasiogeton_hyalinus` | *Aiptasiogeton hyalinus* | — | 1 | Aiptasiidae | Aiptasiogeton | 243453 | 570594 | yes |
+| `codium_coralloides` | *Codium coralloides* | — | 2 | Codiaceae | Codium | 252190 | 773612 | yes |
+| `idotea_metallica` | *Idotea metallica* | — | 1 | Idoteidae | Idotea | 252571 | 67962 | yes |
+| `naria_spurca` | *Naria spurca* | — | 1 | Cypraeidae | Naria | 254282 | 747590 | yes |
+| `caecum_trachea` | *Caecum trachea* | — | 1 | Caecidae | Caecum | 257028 | 482306 | yes |
+| `hildenbrandia_crouaniorum` | *Hildenbrandia crouaniorum* | — | 2 | Hildenbrandiaceae | Hildenbrandia | 251665 | 1226217 | yes |
+| `bolinus_brandaris` | *Bolinus brandaris* | — | 1 | Muricidae | Bolinus | 44234 | 59285 | yes |
+| `halopteris_filicina` | *Halopteris filicina* | — | 2 | Stypocaulaceae | Halopteris | 250855 | 342096 | yes |
+| `caryophyllia_smithii` | *Caryophyllia smithii* | Caryophyllia (Caryophyllia) smithii | 1 | Caryophylliidae | Caryophyllia | 35296 | 120577 | yes |
+| `deiopea_kaloktenota` | *Deiopea kaloktenota* | — | 1 | Eurhamphaeidae | Deiopea | 253973 | 949340 | yes |
+| `tricolia_pullus` | *Tricolia pullus* | — | 1 | Tricoliidae | Tricolia | 119691 | 482235 | yes |
+| `sphoeroides_marmoratus` | *Sphoeroides marmoratus* | — | 1 | Tetraodontidae | Sphoeroides | 254206 | 342289 | yes |
+| `synarachnactis_lloydii` | *Synarachnactis lloydii* | — | 1 | Synarachnactidae | Synarachnactis | 34793 | 1492689 | yes |
+| `ctena_decussata` | *Ctena decussata* | — | 1 | Lucinidae | Ctena | 242794 | 976586 | yes |
+| `chauvetia_brunnea` | *Chauvetia brunnea* | — | 1 | Buccinidae | Chauvetia | 250586 | 482471 | yes |
+| `tethya_citrina` | *Tethya citrina* | — | 1 | Tethyidae | Tethya | 250847 | 363852 | yes |
+| `varicorbula_gibba` | *Varicorbula gibba* | — | 1 | Corbulidae | Varicorbula | 253559 | 483139 | yes |
+| `zosterisessor_ophiocephalus` | *Zosterisessor ophiocephalus* | — | 1 | Gobiidae | Zosterisessor | 254541 | 1316692 | yes |
+| `mitrella_scripta` | *Mitrella scripta* | — | 1 | Columbellidae | Mitrella | 254640 | 370401 | yes |
+| `spirobranchus_triqueter` | *Spirobranchus triqueter* | — | 1 | Serpulidae | Spirobranchus | 251212 | 320286 | yes |
+| `callinectes_sapidus` | *Callinectes sapidus* | — | 1 | Portunidae | Callinectes | 34966 | 49504 | yes |
+| `estrilda_astrild` | *Estrilda astrild* | — | 2 | Estrildidae | Estrilda | 247147 | 13770 | yes |
+| `melarhaphe_neritoides` | *Melarhaphe neritoides* | — | 1 | Littorinidae | Melarhaphe | 61683 | 359918 | yes |
+| `blackfordia_virginica` | *Blackfordia virginica* | — | 1 | Blackfordiidae | Blackfordia | 240431 | 292725 | yes |
+| `lepidonotus_clava` | *Lepidonotus clava* | — | 1 | Polynoidae | Lepidonotus | 243626 | 492601 | yes |
+| `thracia_pubescens` | *Thracia pubescens* | — | 1 | Thraciidae | Thracia | 251142 | 483158 | yes |
+| `geryonia_proboscidalis` | *Geryonia proboscidalis* | — | 1 | Geryoniidae | Geryonia | 255225 | 256082 | yes |
+| `clathrina_blanca` | *Clathrina blanca* | — | 1 | Clathrinidae | Clathrina | 256917 | 1389225 | yes |
+| `raspaciona_aculeata` | *Raspaciona aculeata* | — | 1 | Raspailiidae | Raspaciona | 256919 | 949653 | yes |
+| `schizomavella_mamillata` | *Schizomavella mamillata* | Schizomavella (Schizomavella) mamillata | 1 | Bitectiporidae | Schizomavella | 248487 | 950287 | yes |
+| `pycnoclavella_nana` | *Pycnoclavella nana* | — | 1 | Pycnoclavellidae | Pycnoclavella | 244763 | 798324 | yes |
+| `stenorhynchus_lanceolatus` | *Stenorhynchus lanceolatus* | — | 1 | Inachoididae | Stenorhynchus | 251510 | 363949 | yes |
+| `stephanolepis_hispida` | *Stephanolepis hispida* | — | 1 | Monacanthidae | Stephanolepis | 254239 | 132526 | yes |
+| `fustiaria_rubescens` | *Fustiaria rubescens* | Pseudantalis rubescens | 1 | Fustiariidae | Fustiaria | 255590 | 1665945 | yes |
+| `ophioblennius_atlanticus` | *Ophioblennius atlanticus* | — | 1 | Blenniidae | Ophioblennius | 35251 | 63412 | yes |
+| `mytilaster_minimus` | *Mytilaster minimus* | — | 1 | Mytilidae | Mytilaster | 48058 | 1080474 | yes |
+| `pitar_rudis` | *Pitar rudis* | — | 1 | Veneridae | Pitar | 242242 | 918622 | yes |
+| `diplodonta_rotundata` | *Diplodonta rotundata* | — | 1 | Ungulinidae | Diplodonta | 244766 | 483025 | yes |
+| `donax_variegatus` | *Donax variegatus* | — | 1 | Donacidae | Donax | 244941 | 483079 | yes |
+| `naticarius_hebraeus` | *Naticarius hebraeus* | — | 1 | Naticidae | Naticarius | 248666 | 558682 | yes |
+| `scytosiphon_lomentaria` | *Scytosiphon lomentaria* | — | 2 | Scytosiphonaceae | Scytosiphon | 248981 | 182932 | yes |
+| `caranx_crysos` | *Caranx crysos* | — | 1 | Carangidae | Caranx | 240991 | 96740 | yes |
+| `terpios_fugax` | *Terpios fugax* | — | 1 | Suberitidae | Terpios | 250820 | 131726 | yes |
+| `diodora_gibberula` | *Diodora gibberula* | — | 1 | Fissurellidae | Diodora | 244716 | 634954 | yes |
+| `rissoa_auriscalpium` | *Rissoa auriscalpium* | — | 1 | Rissoidae | Rissoa | 246297 | 884131 | yes |
+| `clathrina_coriacea` | *Clathrina coriacea* | — | 1 | Clathrinidae | Clathrina | 251810 | 342244 | yes |
+| `carduelis_carduelis` | *Carduelis carduelis* | — | 2 | Fringillidae | Carduelis | 249190 | 9398 | yes |
+| `dasycladus_vermicularis` | *Dasycladus vermicularis* | — | 2 | Dasycladaceae | Dasycladus | 243876 | 604756 | yes |
+| `bosemprella_incarnata` | *Bosemprella incarnata* | — | 1 | Tellinidae | Bosemprella | 164125 | 511388 | yes |
+| `pseudolithoderma_adriaticum` | *Pseudolithoderma adriaticum* | — | 2 | Ralfsiaceae | Pseudolithoderma | 244341 | 1286745 | yes |
+| `aplysilla_rosea` | *Aplysilla rosea* | — | 1 | Darwinellidae | Aplysilla | 245608 | 484089 | yes |
+| `geodia_cydonium` | *Geodia cydonium* | — | 1 | Geodiidae | Geodia | 248727 | 1283826 | yes |
+| `cladophora_rupestris` | *Cladophora rupestris* | Rama rupestris | 2 | Cladophoraceae | Cladophora | 251774 | 505597 | yes |
+| `tritia_mutabilis` | *Tritia mutabilis* | — | 1 | Nassariidae | Tritia | 253347 | 709758 | yes |
+| `venerupis_geographica` | *Venerupis geographica* | — | 1 | Veneridae | Venerupis | 253569 | 534653 | yes |
+| `aurelia_aurita` | *Aurelia aurita* | — | 1 | Ulmaridae | Aurelia | 240415 | 48328 | yes |
+| `bunodeopsis_strumosa` | *Bunodeopsis strumosa* | — | 1 | Boloceroididae | Bunodeopsis | 247631 | 743092 | yes |
+| `amphiroa_rubra` | *Amphiroa rubra* | — | 2 | Lithophyllaceae | Amphiroa | 255578 | 793512 | yes |
+| `pisania_striata` | *Pisania striata* | — | 1 | Buccinidae | Pisania | 242160 | 357179 | yes |
+| `myliobatis_aquila` | *Myliobatis aquila* | — | 1 | Myliobatidae | Myliobatis | 57777 | 49311 | yes |
+| `dosinia_exoleta` | *Dosinia exoleta* | — | 1 | Veneridae | Dosinia | 244999 | 467140 | yes |
+| `astropecten_aranciacus` | *Astropecten aranciacus* | — | 1 | Astropectinidae | Astropecten | 247287 | 326330 | yes |
+| `ocnus_planci` | *Ocnus planci* | — | 1 | Cucumariidae | Ocnus | 249805 | 696630 | yes |
+| `hildenbrandia_rubra` | *Hildenbrandia rubra* | — | 2 | Hildenbrandiaceae | Hildenbrandia | 251668 | 183033 | yes |
+| `chauvetia_mamillata` | *Chauvetia mamillata* | — | 1 | Buccinidae | Chauvetia | 254963 | 1075229 | yes |
+| `petta_pusilla` | *Petta pusilla* | — | 1 | Pectinariidae | Petta | 255689 | 1578232 | yes |
+| `mesophyllum_alternans` | *Mesophyllum alternans* | — | 2 | Lithophyllaceae | Mesophyllum | 256385 | 1645878 | yes |
+| `plakina_monolopha` | *Plakina monolopha* | — | 1 | Plakinidae | Plakina | 255638 | 459808 | yes |
+| `eudistoma_rubrum` | *Eudistoma rubrum* | — | 1 | Polycitoridae | Eudistoma | 254962 | 799105 | yes |
+| `columba_livia` | *Columba livia* | — | 2 | Columbidae | Columba | 252264 | 3017 | yes |
+| `gymnura_altavela` | *Gymnura altavela* | — | 1 | Gymnuridae | Gymnura | 31064 | 101906 | yes |
+| `pisidia_longicornis` | *Pisidia longicornis* | — | 1 | Porcellanidae | Pisidia | 254191 | 622518 | yes |
+| `lepidopleurus_cajetanus` | *Lepidopleurus cajetanus* | — | 1 | Leptochitonidae | Lepidopleurus | 243632 | 1076064 | yes |
+| `lithophyllum_byssoides` | *Lithophyllum byssoides* | — | 2 | Lithophyllaceae | Lithophyllum | 244636 | 785917 | yes |
+| `apletodon_incognitus` | *Apletodon incognitus* | — | 1 | Gobiesocidae | Apletodon | 245574 | 445664 | yes |
+| `sycon_elegans` | *Sycon elegans* | — | 1 | Sycettidae | Sycon | 246217 | 1227297 | yes |
+| `bittium_latreillii` | *Bittium latreillii* | — | 1 | Cerithiidae | Bittium | 246518 | 878168 | yes |
+| `salmacina_dysteri` | *Salmacina dysteri* | — | 1 | Serpulidae | Salmacina | 247253 | 736857 | yes |
+| `isarachnanthus_maderensis` | *Isarachnanthus maderensis* | — | 1 | Arachnactidae | Isarachnanthus | 254402 | 132474 | yes |
+| `brachyscelus_crusculum` | *Brachyscelus crusculum* | — | 1 | Lycaeidae | Brachyscelus | 254692 | 260814 | yes |
+| `rissoa_decorata` | *Rissoa decorata* | — | 1 | Rissoidae | Rissoa | 257372 | 958433 | yes |
+| `bugulina_turbinata` | *Bugulina turbinata* | — | 1 | Bugulidae | Bugulina | 254246 | 578008 | yes |
+| `holothuria_forskali` | *Holothuria forskali* | — | 1 | Holothuriidae | Holothuria | 251866 | 210353 | yes |
+| `bolma_rugosa` | *Bolma rugosa* | — | 1 | Turbinidae | Bolma | 246741 | 359085 | yes |
+| `gulosus_aristotelis` | *Gulosus aristotelis* | — | 2 | Phalacrocoracidae | Gulosus | 257383 | 1289604 | yes |
+| `steromphala_divaricata` | *Steromphala divaricata* | — | 1 | Trochidae | Steromphala | 251581 | 874244 | yes |
+| `cestopagurus_timidus` | *Cestopagurus timidus* | — | 1 | Paguridae | Cestopagurus | 174756 | 603997 | yes |
+| `lepidochitona_caprearum` | *Lepidochitona caprearum* | — | 1 | Ischnochitonidae | Lepidochitona | 243610 | 701934 | yes |
+| `pterocladiella_capillacea` | *Pterocladiella capillacea* | — | 2 | Gelidiaceae | Pterocladiella | 244502 | 67667 | yes |
+| `branchiostoma_lanceolatum` | *Branchiostoma lanceolatum* | — | 1 | Branchiostomatidae | Branchiostoma | 247162 | 363793 | yes |
+| `balanus_trigonus` | *Balanus trigonus* | — | 1 | Balanidae | Balanus | 247759 | 195043 | yes |
+| `parvicardium_scriptum` | *Parvicardium scriptum* | — | 1 | Cardiidae | Parvicardium | 252837 | 1111728 | yes |
+| `tritia_pellucida` | *Tritia pellucida* | — | 1 | Nassariidae | Tritia | 253348 | 717189 | yes |
+| `euapta_lappa` | *Euapta lappa* | — | 1 | Synaptidae | Euapta | 254407 | 255692 | yes |
+| `musculus_subpictus` | *Musculus subpictus* | — | 1 | Mytilidae | Musculus | 254504 | 981696 | yes |
+| `chelonaplysilla_noevus` | *Chelonaplysilla noevus* | — | 1 | Darwinellidae | Chelonaplysilla | 254653 | 623056 | yes |
+| `cardita_calyculata` | *Cardita calyculata* | — | 1 | Carditidae | Cardita | 255629 | 537766 | yes |
+| `rissoina_bruguieri` | *Rissoina bruguieri* | — | 1 | Rissoidae | Rissoina | 255681 | 884048 | yes |
+| `tritia_varicosa` | *Tritia varicosa* | — | 1 | Nassariidae | Tritia | 263305 | 1039463 | yes |
+| `hemimycale_mediterranea` | *Hemimycale mediterranea* | — | 1 | Hymedesmiidae | Hemimycale | 254200 | 1075892 | yes |
+| `isara_cornea` | *Isara cornea* | — | 1 | Mitridae | Isara | 242076 | 962393 | yes |
+| `episcomitra_cornicula` | *Episcomitra cornicula* | — | 1 | Mitridae | Episcomitra | 96958 | 903617 | yes |
+| `exaiptasia_diaphana` | *Exaiptasia diaphana* | — | 1 | Aiptasiidae | Exaiptasia | 257192 | 785634 | yes |
+| `taeniurops_grabatus` | *Taeniurops grabatus* | — | 1 | Dasyatidae | Taeniurops | 257020 | 1303403 | yes |
+| `schizomavella_linearis` | *Schizomavella linearis* | Schizomavella (Schizomavella) linearis | 1 | Bitectiporidae | Schizomavella | 254495 | 543333 | yes |
+| `tritia_grana` | *Tritia grana* | — | 1 | Nassariidae | Tritia | 35240 | 884112 | yes |
+| `alvania_discors` | *Alvania discors* | — | 1 | Rissoidae | Alvania | 244052 | 884057 | yes |
+| `pseudochama_gryphina` | *Pseudochama gryphina* | — | 1 | Chamidae | Pseudochama | 244321 | 784251 | yes |
+| `harmothoe_areolata` | *Harmothoe areolata* | — | 1 | Polynoidae | Harmothoe | 250903 | 773613 | yes |
+| `hippolyte_inermis` | *Hippolyte inermis* | — | 1 | Hippolytidae | Hippolyte | 253966 | 874479 | yes |
+| `phascolosoma_granulatum` | *Phascolosoma granulatum* | Phascolosoma (Phascolosoma) granulatum | 1 | Phascolosomatidae | Phascolosoma | 254325 | 1402521 | yes |
+| `caulerpa_webbiana` | *Caulerpa webbiana* | — | 2 | Caulerpaceae | Caulerpa | 254386 | 131323 | yes |
+| `neotima_lucullana` | *Neotima lucullana* | — | 1 | Eirenidae | Neotima | 254419 | 1540439 | yes |
+| `pusia_zebrina` | *Pusia zebrina* | — | 1 | Costellariidae | Pusia | 254652 | 1244011 | yes |
+| `crisilla_semistriata` | *Crisilla semistriata* | — | 1 | Rissoidae | Crisilla | 257174 | 482250 | yes |
+| `cellepora_pumicosa` | *Cellepora pumicosa* | — | 1 | Celleporidae | Cellepora | 249834 | 628216 | yes |
+| `pagurus_prideaux` | *Pagurus prideaux* | — | 1 | Paguridae | Pagurus | 252682 | 464225 | yes |
+| `scyllarides_latus` | *Scyllarides latus* | — | 1 | Scyllaridae | Scyllarides | 248944 | 112393 | yes |
+| `thalia_democratica` | *Thalia democratica* | — | 1 | Salpidae | Thalia | 251024 | 693123 | yes |
+| `fringilla_coelebs` | *Fringilla coelebs* | — | 2 | Fringillidae | Fringilla | 241269 | 10070 | yes |
+| `phylloscopus_collybita` | *Phylloscopus collybita* | — | 2 | Sylviidae | Phylloscopus | 253262 | 117016 | yes |
+| `aulostomus_strigosus` | *Aulostomus strigosus* | — | 1 | Aulostomidae | Aulostomus | 38061 | 47241 | yes |
+| `sycon_ciliatum` | *Sycon ciliatum* | — | 1 | Sycettidae | Sycon | 246214 | 363848 | yes |
+| `ulva_compressa` | *Ulva compressa* | — | 2 | Ulvaceae | Ulva | 253475 | 372556 | yes |
+| `eurylepta_cornuta` | *Eurylepta cornuta* | — | 1 | Euryleptidae | Eurylepta | 248307 | 876991 | yes |
+| `similiparma_lurida` | *Similiparma lurida* | — | 1 | Pomacentridae | Similiparma | 254209 | 1256672 | yes |
+| `synodus_synodus` | *Synodus synodus* | — | 1 | Synodontidae | Synodus | 254213 | 131428 | yes |
+| `ischnochiton_rissoi` | *Ischnochiton rissoi* | — | 1 | Ischnochitonidae | Ischnochiton | 254250 | 458037 | yes |
+| `marsenia_perspicua` | *Marsenia perspicua* | — | 1 | Velutinidae | Marsenia | 254314 | 1452047 | yes |
+| `nanomia_bijuga` | *Nanomia bijuga* | — | 1 | Agalmatidae | Nanomia | 254611 | 506580 | yes |
+| `labrus_mixtus` | *Labrus mixtus* | — | 1 | Labridae | Labrus | 254203 | 103913 | yes |
+| `thylacodes_arenarius` | *Thylacodes arenarius* | — | 1 | Vermetidae | Thylacodes | 253593 | 703000 | yes |
+| `periclimenes_scriptus` | *Periclimenes scriptus* | — | 1 | Palaemonidae | Periclimenes | 254291 | 326063 | yes |
+| `cirriformia_tentaculata` | *Cirriformia tentaculata* | — | 1 | Cirratulidae | Cirriformia | 251463 | 657879 | yes |
+| `passer_montanus` | *Passer montanus* | — | 2 | Passeridae | Passer | 252853 | 13851 | yes |
+| `tritia_nitida` | *Tritia nitida* | — | 1 | Nassariidae | Tritia | 254493 | 796590 | yes |
+| `oxythyrea_funesta` | *Oxythyrea funesta* | — | 2 | Cetoniidae | Oxythyrea | 252648 | 68328 | yes |
+| `cutleria_adspersa` | *Cutleria adspersa* | — | 2 | Cutleriaceae | Cutleria | 243011 | 1468770 | yes |
+| `pyura_squamulosa` | *Pyura squamulosa* | — | 1 | Pyuridae | Pyura | 245059 | 800322 | yes |
+| `monoplex_parthenopeus` | *Monoplex parthenopeus* | — | 1 | Ranellidae | Monoplex | 247418 | 602100 | yes |
+| `golfingia_vulgaris` | *Golfingia vulgaris* | Golfingia (Golfingia) vulgaris vulgaris | 1 | Golfingiidae | Golfingia | 249144 | 874030 | yes |
+| `notospermus_geniculatus` | *Notospermus geniculatus* | — | 1 | Lineidae | Notospermus | 254273 | 461129 | yes |
+| `stenosoma_appendiculatum` | *Stenosoma appendiculatum* | — | 1 | Idoteidae | Stenosoma | 254636 | 1071222 | yes |
+| `lysmata_nilita` | *Lysmata nilita* | — | 1 | Hippolytidae | Lysmata | 255023 | 880893 | yes |
+| `processa_macrophthalma` | *Processa macrophthalma* | — | 1 | Processidae | Processa | 255457 | 785381 | yes |
+| `cystoseira_foeniculacea` | *Cystoseira foeniculacea* | — | 2 | Sargassaceae | Cystoseira | 262021 | 311386 | yes |
+| `rugulopteryx_okamurae` | *Rugulopteryx okamurae* | — | 2 | Dictyotaceae | Rugulopteryx | 262168 | 956931 | yes |
+| `aglaophenia_elongata` | *Aglaophenia elongata* | — | 1 | Aglaopheniidae | Aglaophenia | 243182 | 836493 | yes |
+| `alcyonium_acaule` | *Alcyonium acaule* | — | 1 | Alcyoniidae | Alcyonium | 243665 | 479804 | yes |
+| `dictyota_fasciola` | *Dictyota fasciola* | — | 2 | Dictyotaceae | Dictyota | 244603 | 548094 | yes |
+| `didemnum_lahillei` | *Didemnum lahillei* | — | 1 | Didemnidae | Didemnum | 257109 | 218428 | yes |
+| `donax_trunculus` | *Donax trunculus* | — | 1 | Donacidae | Donax | 244937 | 59392 | yes |
+| `conus_ventricosus` | *Conus ventricosus* | — | 1 | Conidae | Conus | 252407 | 150382 | yes |
+| `calliactis_palliata` | *Calliactis palliata* | — | 1 | Hormathiidae | Calliactis | 254147 | 1500743 | yes |
+| `telmatactis_cricoides` | *Telmatactis cricoides* | — | 1 | Isophelliidae | Telmatactis | 117164 | 357417 | yes |
+| `jassa_marmorata` | *Jassa marmorata* | — | 1 | Ischyroceridae | Jassa | 242322 | 345361 | yes |
+| `tritia_neritea` | *Tritia neritea* | — | 1 | Nassariidae | Tritia | 11694 | 795085 | yes |
+| `derilambrus_angulifrons` | *Derilambrus angulifrons* | — | 1 | Parthenopidae | Derilambrus | 244217 | 326059 | yes |
+| `donax_venustus` | *Donax venustus* | — | 1 | Donacidae | Donax | 244945 | 784832 | yes |
+| `solmissus_albescens` | *Solmissus albescens* | — | 1 | Cuninidae | Solmissus | 250474 | 965428 | yes |
+| `ciocalypta_penicillus` | *Ciocalypta penicillus* | — | 1 | Halichondriidae | Ciocalypta | 251433 | 337977 | yes |
+| `codium_adhaerens` | *Codium adhaerens* | — | 2 | Codiaceae | Codium | 254467 | 342095 | yes |
+| `millerigobius_macrocephalus` | *Millerigobius macrocephalus* | — | 1 | Gobiidae | Millerigobius | 254690 | 105894 | yes |
+| `tricolia_speciosa` | *Tricolia speciosa* | — | 1 | Tricoliidae | Tricolia | 254878 | 622675 | yes |
+| `vitreolina_philippi` | *Vitreolina philippi* | — | 1 | Eulimidae | Vitreolina | 255672 | 1220908 | yes |
+| `monophorus_perversus` | *Monophorus perversus* | — | 1 | Triphoridae | Monophorus | 255680 | 482315 | yes |
+| `madracis_pharensis` | *Madracis pharensis* | — | 1 | Pocilloporidae | Madracis | 254287 | 105095 | yes |
+| `manupecten_pesfelis` | *Manupecten pesfelis* | — | 1 | Pectinidae | Manupecten | 241384 | 938598 | yes |
+| `cribrinopsis_crassa` | *Cribrinopsis crassa* | — | 1 | Actiniidae | Cribrinopsis | 242443 | 488935 | yes |
+| `glycymeris_glycymeris` | *Glycymeris glycymeris* | — | 1 | Glycymerididae | Glycymeris | 249089 | 324553 | yes |
+| `astroides_calycularis` | *Astroides calycularis* | — | 1 | Dendrophylliidae | Astroides | 247284 | 357373 | yes |
+| `collozoum_inerme` | *Collozoum inerme* | — | 2 | Collozoidae | Collozoum | 223634 | 907922 | yes |
+| `dittrichia_viscosa` | *Dittrichia viscosa* | — | 2 | Asteraceae | Dittrichia | 25747 | 82646 | yes |
+| `mugil_cephalus` | *Mugil cephalus* | — | 1 | Mugilidae | Mugil | 14582 | 106222 | yes |
+| `eurythoe_complanata` | *Eurythoe complanata* | — | 1 | Amphinomidae | Eurythoe | 240386 | 194929 | yes |
+| `discomedusa_lobata` | *Discomedusa lobata* | — | 1 | Ulmaridae | Discomedusa | 240436 | 662586 | yes |
+| `peronidia_albicans` | *Peronidia albicans* | — | 1 | Tellinidae | Peronidia | 241374 | 498771 | yes |
+| `antalis_vulgaris` | *Antalis vulgaris* | — | 1 | Dentaliidae | Antalis | 245136 | 482976 | yes |
+| `modiolus_barbatus` | *Modiolus barbatus* | — | 1 | Mytilidae | Modiolus | 247263 | 482994 | yes |
+| `buglossidium_luteum` | *Buglossidium luteum* | — | 1 | Soleidae | Buglossidium | 247580 | 96130 | yes |
+| `scinaia_furcellata` | *Scinaia furcellata* | — | 2 | Galaxauraceae | Scinaia | 248535 | 1022946 | yes |
+| `steromphala_rarilineata` | *Steromphala rarilineata* | — | 1 | Trochidae | Steromphala | 248914 | 922410 | yes |
+| `ophidion_rochei` | *Ophidion rochei* | — | 1 | Ophidiidae | Ophidion | 250304 | 187795 | yes |
+| `gouania_willdenowi` | *Gouania willdenowi* | — | 1 | Gobiesocidae | Gouania | 254199 | 101777 | yes |
+| `parablennius_goreensis` | *Parablennius goreensis* | — | 1 | Blenniidae | Parablennius | 254236 | 446336 | yes |
+| `syngnathus_tenuirostris` | *Syngnathus tenuirostris* | — | 1 | Syngnathidae | Syngnathus | 254277 | 188499 | yes |
+| `aplidium_turbinatum` | *Aplidium turbinatum* | — | 1 | Polyclinidae | Aplidium | 254553 | 542241 | yes |
+| `chlidonia_pyriformis` | *Chlidonia pyriformis* | — | 1 | Chlidoniidae | Chlidonia | 254637 | 1365356 | yes |
+| `turbicellepora_avicularis` | *Turbicellepora avicularis* | — | 1 | Celleporidae | Turbicellepora | 253403 | 950289 | yes |
+| `crella_pulvinar` | *Crella pulvinar* | Crella (Grayella) pulvinar | 1 | Crellidae | Crella | 242375 | 949657 | yes |
+| `chylocladia_verticillata` | *Chylocladia verticillata* | — | 2 | Champiaceae | Chylocladia | 251240 | 712834 | yes |
+| `bugulina_stolonifera` | *Bugulina stolonifera* | — | 1 | Bugulidae | Bugulina | 254600 | 565442 | yes |
+| `jania_pedunculata` | *Jania pedunculata* | Jania verrucosa | 2 | Lithophyllaceae | Jania | 242229 | 1600667 | yes |
+| `echinolittorina_punctata` | *Echinolittorina punctata* | — | 1 | Littorinidae | Echinolittorina | 35195 | 429999 | yes |
+| `condylactis_aurantiaca` | *Condylactis aurantiaca* | — | 1 | Actiniidae | Condylactis | 252330 | 358841 | yes |
+| `callochiton_doriae` | *Callochiton doriae* | — | 1 | Ischnochitonidae | Callochiton | 263291 | 1272183 | yes |
+| `thorogobius_ephippiatus` | *Thorogobius ephippiatus* | — | 1 | Gobiidae | Thorogobius | 35169 | 118698 | yes |
+| `pseudocaranx_dentex` | *Pseudocaranx dentex* | — | 1 | Carangidae | Pseudocaranx | 90467 | 204776 | yes |
+| `cycloporus_papillosus` | *Cycloporus papillosus* | — | 1 | Euryleptidae | Cycloporus | 109707 | 346961 | yes |
+| `mauligobius_maderensis` | *Mauligobius maderensis* | — | 1 | Gobiidae | Mauligobius | 240392 | 118707 | yes |
+| `pegea_confoederata` | *Pegea confoederata* | — | 1 | Salpidae | Pegea | 240412 | 627402 | yes |
+| `alpheus_macrocheles` | *Alpheus macrocheles* | — | 1 | Alpheidae | Alpheus | 243988 | 492616 | yes |
+| `anoplodactylus_pygmaeus` | *Anoplodactylus pygmaeus* | — | 1 | Phoxichilidiidae | Anoplodactylus | 245091 | 813665 | yes |
+| `ascidiella_aspersa` | *Ascidiella aspersa* | — | 1 | Ascidiidae | Ascidiella | 246853 | 199327 | yes |
+| `gammogobius_steinitzi` | *Gammogobius steinitzi* | — | 1 | Gobiidae | Gammogobius | 249889 | 101218 | yes |
+| `chaetomorpha_linum` | *Chaetomorpha linum* | — | 2 | Cladophoraceae | Chaetomorpha | 250423 | 182820 | yes |
+| `solea_senegalensis` | *Solea senegalensis* | — | 1 | Soleidae | Solea | 250436 | 120669 | yes |
+| `monochirus_hispidus` | *Monochirus hispidus* | — | 1 | Soleidae | Monochirus | 254166 | 118632 | yes |
+| `gnatholepis_thompsoni` | *Gnatholepis thompsoni* | — | 1 | Gobiidae | Gnatholepis | 254221 | 131500 | yes |
+| `serranus_atricauda` | *Serranus atricauda* | — | 1 | Serranidae | Serranus | 254230 | 112497 | yes |
+| `parablennius_parvicornis` | *Parablennius parvicornis* | — | 1 | Blenniidae | Parablennius | 254240 | 108409 | yes |
+| `candelabrum_cocksii` | *Candelabrum cocksii* | — | 1 | Candelabridae | Candelabrum | 254767 | 949669 | yes |
+| `pherusella_tubulosa` | *Pherusella tubulosa* | — | 1 | Pherusellidae | Pherusella | 255623 | 1077361 | yes |
+| `nucula_nucleus` | *Nucula nucleus* | — | 1 | Nuculidae | Nucula | 255673 | 482980 | yes |
+| `parvicardium_exiguum` | *Parvicardium exiguum* | — | 1 | Cardiidae | Parvicardium | 255674 | 483063 | yes |
+| `tedania_anhelans` | *Tedania anhelans* | Tedania (Tedania) anhelans | 1 | Tedaniidae | Tedania | 263341 | 634469 | yes |
+| `symsagittifera_roscoffensis` | *Symsagittifera roscoffensis* | — | 1 | Convolutidae | Symsagittifera | 264078 | 553600 | yes |
+| `aplysina_cavernicola` | *Aplysina cavernicola* | — | 1 | Aplysinidae | Aplysina | 254148 | 359504 | yes |
+| `aglaophenia_tubiformis` | *Aglaophenia tubiformis* | — | 1 | Aglaopheniidae | Aglaophenia | 243190 | 603500 | yes |
+| `dictyota_implexa` | *Dictyota implexa* | — | 2 | Dictyotaceae | Dictyota | 255632 | 1226211 | yes |
+| `nerocila_bivittata` | *Nerocila bivittata* | — | 1 | Cymothoidae | Nerocila | 249041 | 1071205 | yes |
+| `didemnum_maculosum` | *Didemnum maculosum* | — | 1 | Didemnidae | Didemnum | 254953 | 542984 | yes |
+| `turritellinella_tricarinata` | *Turritellinella tricarinata* | — | 1 | Turritellidae | Turritellinella | 182492 | 1043219 | yes |
+| `heteropriacanthus_fulgens` | *Heteropriacanthus fulgens* | — | 1 | Priacanthidae | Heteropriacanthus | 256819 | 580747 | yes |
+| `arcopella_balaustina` | *Arcopella balaustina* | — | 1 | Tellinidae | Arcopella | 186305 | 1207678 | yes |
+| `abra_longicallus` | *Abra longicallus* | — | 1 | Semelidae | Abra | 241770 | 253577 | yes |
+| `pseudaphya_ferreri` | *Pseudaphya ferreri* | — | 1 | Gobiidae | Pseudaphya | 244288 | 110915 | yes |
+| `synema_globosum` | *Synema globosum* | — | 2 | Thomisidae | Synema | 246479 | 245656 | yes |
+| `calliostoma_laugieri` | *Calliostoma laugieri* | — | 1 | Calliostomatidae | Calliostoma | 248194 | 528788 | yes |
+| `ophiura_ophiura` | *Ophiura ophiura* | — | 1 | Ophiuridae | Ophiura | 250327 | 521679 | yes |
+| `tricolia_tenuis` | *Tricolia tenuis* | — | 1 | Tricoliidae | Tricolia | 251998 | 884054 | yes |
+| `leptoplana_tremellaris` | *Leptoplana tremellaris* | — | 1 | Leptoplanidae | Leptoplana | 253866 | 885280 | yes |
+| `callochiton_septemvalvis` | *Callochiton septemvalvis* | — | 1 | Ischnochitonidae | Callochiton | 254185 | 482196 | yes |
+| `haliclona_mediterranea` | *Haliclona mediterranea* | Haliclona (Reniera) mediterranea | 1 | Chalinidae | Haliclona | 254247 | 359237 | yes |
+| `mangelia_multilineolata` | *Mangelia multilineolata* | — | 1 | Conidae | Mangelia | 254628 | 1245223 | yes |
+| `mactra_corallina` | *Mactra corallina* | — | 1 | Mactridae | Mactra | 264236 | 871642 | yes |
+| `caulerpa_prolifera` | *Caulerpa prolifera* | — | 2 | Caulerpaceae | Caulerpa | 35093 | 51384 | yes |
+| `cutleria_multifida` | *Cutleria multifida* | — | 2 | Cutleriaceae | Cutleria | 243013 | 342237 | yes |
+| `alcyonium_coralloides` | *Alcyonium coralloides* | — | 1 | Alcyoniidae | Alcyonium | 243674 | 363874 | yes |
+| `gobius_vittatus` | *Gobius vittatus* | — | 1 | Gobiidae | Gobius | 254188 | 101625 | yes |
+| `lanice_conchilega` | *Lanice conchilega* | — | 1 | Terebellidae | Lanice | 41649 | 204568 | yes |
+| `corydendrium_parasiticum` | *Corydendrium parasiticum* | — | 1 | Oceaniidae | Corydendrium | 242168 | 195465 | yes |
+| `ophiopsila_aranea` | *Ophiopsila aranea* | — | 1 | Ophiocomidae | Ophiopsila | 254279 | 255856 | yes |
+| `foeniculum_vulgare` | *Foeniculum vulgare* | — | 2 | Apiaceae | Foeniculum | 248995 | 53052 | yes |
+| `velella_velella` | *Velella velella* | — | 1 | Porpitidae | Velella | 253561 | 59698 | yes |
+| `rissoella_verruculosa` | *Rissoella verruculosa* | — | 2 | Rissoellaceae | Rissoella | 246342 | 751488 | yes |
+| `lobularia_maritima` | *Lobularia maritima* | — | 2 | Brassicaceae | Lobularia | 244728 | 56992 | yes |
+| `chromis_limbata` | *Chromis limbata* | — | 1 | Pomacentridae | Chromis | 254229 | 342041 | yes |
+| `necora_puber` | *Necora puber* | — | 1 | Carcinidae | Necora | 35207 | 210219 | yes |
+| `beroe_ovata` | *Beroe ovata* | — | 1 | Beroidae | Beroe | 240422 | 339903 | yes |
+| `jujubinus_striatus` | *Jujubinus striatus* | — | 1 | Trochidae | Jujubinus | 242355 | 482225 | yes |
+| `polyophthalmus_pictus` | *Polyophthalmus pictus* | — | 1 | Opheliidae | Polyophthalmus | 243378 | 450087 | yes |
+| `dardanus_arrosor` | *Dardanus arrosor* | — | 1 | Diogenidae | Dardanus | 243844 | 466901 | yes |
+| `bryopsis_muscosa` | *Bryopsis muscosa* | — | 2 | Bryopsidaceae | Bryopsis | 247456 | 1074688 | yes |
+| `chelidonichthys_obscurus` | *Chelidonichthys obscurus* | — | 1 | Triglidae | Chelidonichthys | 250618 | 118626 | yes |
+| `hemibdella_soleae` | *Hemibdella soleae* | — | 1 | Piscicolidae | Hemibdella | 251344 | 944863 | yes |
+| `syngnathus_abaster` | *Syngnathus abaster* | — | 1 | Syngnathidae | Syngnathus | 254311 | 113578 | yes |
+| `cinetorhynchus_rigens` | *Cinetorhynchus rigens* | — | 1 | Rhynchocinetidae | Cinetorhynchus | 254394 | 480269 | yes |
+| `antalis_inaequicostata` | *Antalis inaequicostata* | — | 1 | Dentaliidae | Antalis | 254709 | 883092 | yes |
+| `polycyathus_muellerae` | *Polycyathus muellerae* | — | 1 | Caryophylliidae | Polycyathus | 43112 | 546995 | yes |
+| `hydrolithon_farinosum` | *Hydrolithon farinosum* | — | 2 | Lithophyllaceae | Hydrolithon | 256585 | 1022901 | yes |
+| `prostheceraeus_giesbrechtii` | *Prostheceraeus giesbrechtii* | — | 1 | Euryleptidae | Prostheceraeus | 35242 | 478508 | yes |
+| `ciona_intermedia` | *Ciona intermedia* | — | 1 | Cionidae | Ciona | 254302 | 1317117 | yes |
+| `larus_michahellis` | *Larus michahellis* | — | 2 | Laridae | Larus | 243187 | 59202 | yes |
+| `plantago_lagopus` | *Plantago lagopus* | — | 2 | Plantaginaceae | Plantago | 262854 | 82867 | yes |
+| `bituminaria_bituminosa` | *Bituminaria bituminosa* | — | 2 | Fabaceae | Bituminaria | 246522 | 75771 | yes |
+| `centaurea_aspera` | *Centaurea aspera* | — | 2 | Asteraceae | Centaurea | 249924 | 71180 | yes |
+| `parapristipoma_octolineatum` | *Parapristipoma octolineatum* | — | 1 | Haemulidae | Parapristipoma | 254399 | 359901 | yes |
+| `inachus_communissimus` | *Inachus communissimus* | — | 1 | Inachidae | Inachus | 241854 | 696632 | yes |
+| `acanthochitona_crinita` | *Acanthochitona crinita* | — | 1 | Acanthochitonidae | Acanthochitona | 241880 | 446757 | yes |
+| `pontogenia_chrysocoma` | *Pontogenia chrysocoma* | — | 1 | Aphroditidae | Pontogenia | 243556 | 684796 | yes |
+| `leptoplana_mediterranea` | *Leptoplana mediterranea* | — | 1 | Leptoplanidae | Leptoplana | 243751 | 775349 | yes |
+| `lithophyllum_papillosum` | *Lithophyllum papillosum* | — | 2 | Lithophyllaceae | Lithophyllum | 244644 | 1362835 | yes |
+| `donax_semistriatus` | *Donax semistriatus* | — | 1 | Donacidae | Donax | 244925 | 1139014 | yes |
+| `mangelia_striolata` | *Mangelia striolata* | — | 1 | Conidae | Mangelia | 245935 | 1115146 | yes |
+| `calliostoma_zizyphinum` | *Calliostoma zizyphinum* | — | 1 | Calliostomatidae | Calliostoma | 248200 | 210224 | yes |
+| `carcinus_aestuarii` | *Carcinus aestuarii* | — | 1 | Carcinidae | Carcinus | 249098 | 492333 | yes |
+| `chloromyia_formosa` | *Chloromyia formosa* | — | 2 | Stratiomyidae | Chloromyia | 250825 | 326598 | yes |
+| `plagusia_depressa` | *Plagusia depressa* | — | 1 | Plagusiidae | Plagusia | 254207 | 295350 | yes |
+| `mycteroperca_fusca` | *Mycteroperca fusca* | — | 1 | Epinephelidae | Mycteroperca | 254234 | 106306 | yes |
+| `microcosmus_nudistigma` | *Microcosmus nudistigma* | — | 1 | Pyuridae | Microcosmus | 254255 | 800239 | yes |
+| `loligo_forbesii` | *Loligo forbesii* | — | 1 | Loliginidae | Loligo | 254473 | 201536 | yes |
+| `symplegma_brakenhielmi` | *Symplegma brakenhielmi* | — | 1 | Styelidae | Symplegma | 255003 | 691932 | yes |
+| `polyclinum_aurantium` | *Polyclinum aurantium* | — | 1 | Polyclinidae | Polyclinum | 255037 | 799421 | yes |
+| `lampea_pancerina` | *Lampea pancerina* | — | 1 | Lampeidae | Lampea | 263221 | 1090853 | yes |
+| `tridentata_perpusilla` | *Tridentata perpusilla* | — | 1 | Sertulariidae | Tridentata | 257148 | 1679853 | yes |
+| `liagora_viscida` | *Liagora viscida* | — | 2 | Liagoraceae | Liagora | 243950 | 1007747 | yes |
+| `eunicella_verrucosa` | *Eunicella verrucosa* | — | 1 | Gorgoniidae | Eunicella | 34985 | 100720 | yes |
+| `pseudochlorodesmis_furcellata` | *Pseudochlorodesmis furcellata* | — | 2 | Udoteaceae | Pseudochlorodesmis | 254267 | 925117 | yes |
+| `fasciospongia_cavernosa` | *Fasciospongia cavernosa* | — | 1 | Thorectidae | Fasciospongia | 248640 | 1075867 | yes |
+| `vanessa_cardui` | *Vanessa cardui* | — | 2 | Nymphalidae | Vanessa | 253552 | 48548 | yes |
+| `balistes_capriscus` | *Balistes capriscus* | — | 1 | Balistidae | Balistes | 86037 | 49606 | yes |
+| `champia_parvula` | *Champia parvula* | — | 2 | Champiaceae | Champia | 250481 | 131304 | yes |
+| `gastrana_fragilis` | *Gastrana fragilis* | — | 1 | Tellinidae | Gastrana | 58858 | 483090 | yes |
+| `lepas_anatifera` | *Lepas anatifera* | Lepas (Lepas) anatifera | 1 | Lepadidae | Lepas | 211127 | 69949 | yes |
+| `platybelone_argalus` | *Platybelone argalus* | — | 1 | Belonidae | Platybelone | 241120 | 109633 | yes |
+| `pseudobryopsis_myura` | *Pseudobryopsis myura* | — | 2 | Bryopsidaceae | Pseudobryopsis | 244302 | 1626862 | yes |
+| `aphia_minuta` | *Aphia minuta* | — | 1 | Gobiidae | Aphia | 245535 | 344754 | yes |
+| `mnemiopsis_leidyi` | *Mnemiopsis leidyi* | — | 1 | Bolinopsidae | Mnemiopsis | 247239 | 180788 | yes |
+| `barnea_candida` | *Barnea candida* | — | 1 | Pholadidae | Barnea | 247872 | 483146 | yes |
+| `scophthalmus_rhombus` | *Scophthalmus rhombus* | — | 1 | Scophthalmidae | Scophthalmus | 248675 | 118636 | yes |
+| `gregariella_petagnae` | *Gregariella petagnae* | — | 1 | Mytilidae | Gregariella | 249384 | 667601 | yes |
+| `galathea_bolivari` | *Galathea bolivari* | — | 1 | Galatheidae | Galathea | 249552 | 1071176 | yes |
+| `trachinus_araneus` | *Trachinus araneus* | — | 1 | Trachinidae | Trachinus | 251767 | 118648 | yes |
+| `hippolyte_varians` | *Hippolyte varians* | — | 1 | Hippolytidae | Hippolyte | 251778 | 493968 | yes |
+| `xantho_pilipes` | *Xantho pilipes* | — | 1 | Xanthidae | Xantho | 253716 | 701003 | yes |
+| `emarginula_sicula` | *Emarginula sicula* | — | 1 | Fissurellidae | Emarginula | 254278 | 531756 | yes |
+| `osmundea_verlaquei` | *Osmundea verlaquei* | — | 2 | Rhodomelaceae | Osmundea | 254308 | 635049 | yes |
+| `gongolaria_barbata` | *Gongolaria barbata* | — | 2 | Sargassaceae | Gongolaria | 254309 | 1183115 | yes |
+| `escharella_variolosa` | *Escharella variolosa* | — | 1 | Romancheinidae | Escharella | 254498 | 1402508 | yes |
+| `anadyomene_stellata` | *Anadyomene stellata* | — | 2 | Anadyomenaceae | Anadyomene | 254649 | 498751 | yes |
+| `mitrella_ocellata` | *Mitrella ocellata* | — | 1 | Columbellidae | Mitrella | 254655 | 254763 | yes |
+| `gibberula_secreta` | *Gibberula secreta* | — | 1 | Cystiscidae | Gibberula | 254980 | 1246748 | yes |
+| `achelous_hastatus` | *Achelous hastatus* | — | 1 | Portunidae | Achelous | 255589 | 1242117 | yes |
+| `sulculeolaria_quadrivalvis` | *Sulculeolaria quadrivalvis* | — | 1 | Diphyidae | Sulculeolaria | 262988 | 691847 | yes |
+| `pleraplysilla_spinifera` | *Pleraplysilla spinifera* | — | 1 | Dysideidae | Pleraplysilla | 254143 | 638598 | yes |
+| `chartella_papyracea` | *Chartella papyracea* | — | 1 | Flustridae | Chartella | 254436 | 628213 | yes |
+| `neogoniolithon_hauckii` | *Neogoniolithon hauckii* | — | 2 | Lithophyllaceae | Neogoniolithon | 262847 | 1535106 | yes |
+| `neogoniolithon_brassica_florida` | *Neogoniolithon brassica-florida* | — | 2 | Lithophyllaceae | Neogoniolithon | 248838 | 327121 | yes |
+| `halopteris_liechtensternii` | *Halopteris liechtensternii* | — | 1 | Halopterididae | Halopteris | 261836 | 857769 | yes |
+| `lutraria_lutraria` | *Lutraria lutraria* | — | 1 | Mactridae | Lutraria | 245150 | 469345 | yes |
+| `savignyella_lafontii` | *Savignyella lafontii* | — | 1 | Savignyellidae | Savignyella | 254421 | 196075 | yes |
+| `diplodus_cadenati` | *Diplodus cadenati* | — | 1 | Sparidae | Diplodus | 254647 | 624069 | yes |
+| `ophidiaster_ophidianus` | *Ophidiaster ophidianus* | — | 1 | Ophidiasteridae | Ophidiaster | 250303 | 154577 | yes |
+| `taonia_pseudociliata` | *Taonia pseudociliata* | — | 2 | Dictyotaceae | Taonia | 264039 | 1446276 | yes |
+| `pecten_jacobaeus` | *Pecten jacobaeus* | — | 1 | Pectinidae | Pecten | 252888 | 324539 | yes |
+| `chrysonephos_lewisii` | *Chrysonephos lewisii* | — | 2 | Sarcinochrysidaceae | Chrysonephos | 255621 | 1165125 | yes |
+| `schottera_nicaeensis` | *Schottera nicaeensis* | — | 2 | Phyllophoraceae | Schottera | 35228 | 488329 | yes |
+| `syngnathus_rostellatus` | *Syngnathus rostellatus* | — | 1 | Syngnathidae | Syngnathus | 35313 | 446544 | yes |
+| `ilia_nucleus` | *Ilia nucleus* | — | 1 | Leucosiidae | Ilia | 241796 | 570289 | yes |
+| `crepidula_moulinsii` | *Crepidula moulinsii* | — | 1 | Calyptraeidae | Crepidula | 242387 | 991474 | yes |
+| `amphiduros_fuscescens` | *Amphiduros fuscescens* | — | 1 | Hesionidae | Amphiduros | 244371 | 1246758 | yes |
+| `arnoglossus_thori` | *Arnoglossus thori* | — | 1 | Bothidae | Arnoglossus | 246575 | 120667 | yes |
+| `bolinopsis_infundibulum` | *Bolinopsis infundibulum* | — | 1 | Bolinopsidae | Bolinopsis | 246734 | 492705 | yes |
+| `bryopsis_duplex` | *Bryopsis duplex* | — | 2 | Bryopsidaceae | Bryopsis | 247452 | 1074684 | yes |
+| `solecurtus_strigilatus` | *Solecurtus strigilatus* | — | 1 | Solecurtidae | Solecurtus | 250441 | 498442 | yes |
+| `talochlamys_pusio` | *Talochlamys pusio* | — | 1 | Pectinidae | Talochlamys | 250574 | 861601 | yes |
+| `tectura_virginea` | *Tectura virginea* | — | 1 | Lottiidae | Tectura | 250732 | 482207 | yes |
+| `walkeria_tuberosa` | *Walkeria tuberosa* | — | 1 | Walkeriidae | Walkeria | 253692 | 1077909 | yes |
+| `zostera_marina` | *Zostera marina* | — | 2 | Zosteraceae | Zostera | 253832 | 52614 | yes |
+| `leodice_torquata` | *Leodice torquata* | — | 1 | Eunicidae | Leodice | 254193 | 944214 | yes |
+| `sporochnus_pedunculatus` | *Sporochnus pedunculatus* | — | 2 | Sporochnaceae | Sporochnus | 254271 | 1077687 | yes |
+| `sardinella_maderensis` | *Sardinella maderensis* | — | 1 | Clupeidae | Sardinella | 254395 | 120632 | yes |
+| `thor_amboinensis` | *Thor amboinensis* | — | 1 | Hippolytidae | Thor | 254408 | 128161 | yes |
+| `pisidia_bluteli` | *Pisidia bluteli* | — | 1 | Porcellanidae | Pisidia | 254461 | 604154 | yes |
+| `rissoa_violacea` | *Rissoa violacea* | — | 1 | Rissoidae | Rissoa | 254965 | 884046 | yes |
+| `leuckartiara_octona` | *Leuckartiara octona* | — | 1 | Pandeidae | Leuckartiara | 255056 | 537085 | yes |
+| `euspira_macilenta` | *Euspira macilenta* | — | 1 | Naticidae | Euspira | 262060 | 918210 | yes |
+| `thalamita_poissonii` | *Thalamita poissonii* | — | 1 | Portunidae | Thalamita | 262278 | 1201310 | yes |
+| `bonnemaisonia_asparagoides` | *Bonnemaisonia asparagoides* | — | 2 | Bonnemaisoniaceae | Bonnemaisonia | 246894 | 747501 | yes |
+| `adeonella_calveti` | *Adeonella calveti* | — | 1 | Adeonellidae | Adeonella | 242682 | 625930 | yes |
+| `sertularella_polyzonias` | *Sertularella polyzonias* | — | 1 | Sertulariidae | Sertularella | 257356 | 542110 | yes |
+| `scopalina_lophyropoda` | *Scopalina lophyropoda* | — | 1 | Dictyonellidae | Scopalina | 264237 | 604292 | yes |
+| `neverita_josephinia` | *Neverita josephinia* | — | 1 | Naticidae | Neverita | 195447 | 59354 | yes |
+| `zonaria_tournefortii` | *Zonaria tournefortii* | — | 2 | Dictyotaceae | Zonaria | 254290 | 131273 | yes |
+| `cliona_schmidtii` | *Cliona schmidtii* | — | 1 | Clionaidae | Cliona | 255439 | 834108 | yes |
+| `saxicola_rubicola` | *Saxicola rubicola* | — | 2 | Muscicapidae | Saxicola | 247994 | 201192 | yes |
+| `galactites_tomentosus` | *Galactites tomentosus* | — | 2 | Asteraceae | Galactites | 249514 | 545482 | yes |
+| `patella_ulyssiponensis` | *Patella ulyssiponensis* | — | 1 | Patellidae | Patella | 35108 | 450561 | yes |
+| `idotea_balthica` | *Idotea balthica* | — | 1 | Idoteidae | Idotea | 252568 | 203466 | yes |
+| `cakile_maritima` | *Cakile maritima* | — | 2 | Brassicaceae | Cakile | 248008 | 60982 | yes |
+| `adna_anglica` | *Adna anglica* | — | 1 | Pyrgomatidae | Adna | 254496 | 775609 | yes |
+| `psilothrix_viridicoerulea` | *Psilothrix viridicoerulea* | — | 2 | Dasytidae | Psilothrix | 50251 | 470237 | yes |
+| `veretillum_cynomorium` | *Veretillum cynomorium* | — | 1 | Veretillidae | Veretillum | 35135 | 363894 | yes |
+| `syngnathus_acus` | *Syngnathus acus* | — | 1 | Syngnathidae | Syngnathus | 59580 | 118624 | yes |
+| `naiades_cantrainii` | *Naiades cantrainii* | — | 1 | Alciopidae | Naiades | 240413 | 676963 | yes |
+| `crisia_denticulata` | *Crisia denticulata* | — | 1 | Crisiidae | Crisia | 242468 | 1070615 | yes |
+| `laevicardium_crassum` | *Laevicardium crassum* | — | 1 | Cardiidae | Laevicardium | 242806 | 363965 | yes |
+| `rissoa_monodonta` | *Rissoa monodonta* | — | 1 | Rissoidae | Rissoa | 246328 | 1564293 | yes |
+| `scrupocellaria_delilii` | *Scrupocellaria delilii* | — | 1 | Candidae | Scrupocellaria | 248900 | 1077656 | yes |
+| `glans_trapezia` | *Glans trapezia* | — | 1 | Carditidae | Glans | 248959 | 958431 | yes |
+| `cistus_salviifolius` | *Cistus salviifolius* | — | 2 | Cistaceae | Cistus | 251660 | 76365 | yes |
+| `hydroclathrus_clathratus` | *Hydroclathrus clathratus* | — | 2 | Chordariaceae | Hydroclathrus | 251995 | 354676 | yes |
+| `pagrus_auriga` | *Pagrus auriga* | — | 1 | Sparidae | Pagrus | 252679 | 120610 | yes |
+| `ulva_intestinalis` | *Ulva intestinalis* | — | 2 | Ulvaceae | Ulva | 253476 | 130197 | yes |
+| `platoma_cyclocolpum` | *Platoma cyclocolpum* | — | 2 | Schizymeniaceae | Platoma | 254137 | 1226136 | yes |
+| `aplidium_asperum` | *Aplidium asperum* | — | 1 | Polyclinidae | Aplidium | 254189 | 799192 | yes |
+| `phyllophora_crispa` | *Phyllophora crispa* | — | 2 | Phyllophoraceae | Phyllophora | 254195 | 632488 | yes |
+| `centrolabrus_trutta` | *Centrolabrus trutta* | Symphodus trutta | 1 | Labridae | Centrolabrus | 254210 | 359902 | yes |
+| `turbicellepora_magnicostata` | *Turbicellepora magnicostata* | — | 1 | Celleporidae | Turbicellepora | 254490 | 1077900 | yes |
+| `apseudes_talpa` | *Apseudes talpa* | — | 1 | Apseudidae | Apseudes | 254763 | 295904 | yes |
+| `vibilia_armata` | *Vibilia armata* | — | 1 | Vibiliidae | Vibilia | 255061 | 295888 | yes |
+| `phrosina_semilunata` | *Phrosina semilunata* | — | 1 | Phrosinidae | Phrosina | 255125 | 260962 | yes |
+| `phorcus_sauciatus` | *Phorcus sauciatus* | — | 1 | Trochidae | Phorcus | 256811 | 943726 | yes |
+| `diadema_africanum` | *Diadema africanum* | — | 1 | Diadematidae | Diadema | 257013 | 481956 | yes |
+| `processa_robusta` | *Processa robusta* | — | 1 | Processidae | Processa | 262335 | 1071220 | yes |
+| `nototeredo_norvagica` | *Nototeredo norvagica* | — | 1 | Teredinidae | Nototeredo | 264953 | 1206322 | yes |
+| `didemnum_commune` | *Didemnum commune* | — | 1 | Didemnidae | Didemnum | 244613 | 798395 | yes |
+| `glycymeris_nummaria` | *Glycymeris nummaria* | — | 1 | Glycymerididae | Glycymeris | 249091 | 448334 | yes |
+| `ocenebra_edwardsii` | *Ocenebra edwardsii* | — | 1 | Muricidae | Ocenebra | 249653 | 1248945 | yes |
+| `haliclona_mucosa` | *Haliclona mucosa* | Haliclona (Soestella) mucosa | 1 | Chalinidae | Haliclona | 253955 | 905456 | yes |
+| `arundo_donax` | *Arundo donax* | — | 2 | Poaceae | Arundo | 246807 | 64017 | yes |
+| `streptopelia_decaocto` | *Streptopelia decaocto* | — | 2 | Columbidae | Streptopelia | 251759 | 2969 | yes |
+| `pistacia_lentiscus` | *Pistacia lentiscus* | — | 2 | Anacardiaceae | Pistacia | 242219 | 82600 | yes |
+| `homarus_gammarus` | *Homarus gammarus* | — | 1 | Nephropidae | Homarus | 254141 | 62410 | yes |
+| `coccinella_septempunctata` | *Coccinella septempunctata* | — | 2 | Coccinellidae | Coccinella | 252164 | 51702 | yes |
+| `sprattus_sprattus` | *Sprattus sprattus* | — | 1 | Clupeidae | Sprattus | 31555 | 324532 | yes |
+| `columbella_adansoni` | *Columbella adansoni* | — | 1 | Columbellidae | Columbella | 35089 | 342267 | yes |
+| `donacilla_cornea` | *Donacilla cornea* | — | 1 | Mesodesmatidae | Donacilla | 120151 | 469322 | yes |
+| `mycteroperca_rubra` | *Mycteroperca rubra* | — | 1 | Epinephelidae | Mycteroperca | 146448 | 64452 | yes |
+| `scyliorhinus_stellaris` | *Scyliorhinus stellaris* | — | 1 | Scyliorhinidae | Scyliorhinus | 206771 | 112381 | yes |
+| `paronychia_argentea` | *Paronychia argentea* | — | 2 | Caryophyllaceae | Paronychia | 221647 | 208322 | yes |
+| `gnathophyllum_americanum` | *Gnathophyllum americanum* | — | 1 | Gnathophyllidae | Gnathophyllum | 240373 | 295163 | yes |
+| `vallicula_multiformis` | *Vallicula multiformis* | — | 1 | Coeloplanidae | Vallicula | 240376 | 1134719 | yes |
+| `koellikerina_fasciculata` | *Koellikerina fasciculata* | — | 1 | Bougainvilliidae | Koellikerina | 240434 | 671592 | yes |
+| `pirimela_denticulata` | *Pirimela denticulata* | — | 1 | Pirimelidae | Pirimela | 242158 | 777268 | yes |
+| `pododesmus_patelliformis` | *Pododesmus patelliformis* | — | 1 | Anomiidae | Pododesmus | 242855 | 627027 | yes |
+| `polyandrocarpa_zorritensis` | *Polyandrocarpa zorritensis* | — | 1 | Styelidae | Polyandrocarpa | 242937 | 209152 | yes |
+| `endeis_spinosa` | *Endeis spinosa* | — | 1 | Endeidae | Endeis | 245810 | 307501 | yes |
+| `sargassum_muticum` | *Sargassum muticum* | — | 2 | Sargassaceae | Sargassum | 247625 | 130177 | yes |
+| `glycymeris_bimaculata` | *Glycymeris bimaculata* | — | 1 | Glycymerididae | Glycymeris | 249088 | 785641 | yes |
+| `gari_costulata` | *Gari costulata* | — | 1 | Psammobiidae | Gari | 249901 | 483098 | yes |
+| `sirpus_zariquieyi` | *Sirpus zariquieyi* | — | 1 | Pirimelidae | Sirpus | 250318 | 1146538 | yes |
+| `chelonia_mydas` | *Chelonia mydas* | — | 2 | Cheloniidae | Chelonia | 250666 | 39659 | yes |
+| `trachelobdella_lubrica` | *Trachelobdella lubrica* | — | 1 | Piscicolidae | Trachelobdella | 253871 | 1077726 | yes |
+| `anemonia_sargassensis` | *Anemonia sargassensis* | — | 1 | Actiniidae | Anemonia | 254220 | 1409006 | yes |
+| `lobophora_variegata` | *Lobophora variegata* | — | 2 | Dictyotaceae | Lobophora | 254226 | 131277 | yes |
+| `labrisomus_nuchipinnis` | *Labrisomus nuchipinnis* | — | 1 | Labrisomidae | Labrisomus | 254228 | 179551 | yes |
+| `palaemon_xiphias` | *Palaemon xiphias* | — | 1 | Palaemonidae | Palaemon | 254292 | 785126 | yes |
+| `amblyosyllis_spectabilis` | *Amblyosyllis spectabilis* | — | 1 | Syllidae | Amblyosyllis | 254315 | 1415058 | yes |
+| `hoploplana_villosa` | *Hoploplana villosa* | — | 1 | Hoploplanidae | Hoploplana | 254431 | 1075909 | yes |
+| `stylochus_plessissii` | *Stylochus plessissii* | Stylochus plessisii | 1 | Stylochidae | Stylochus | 254479 | 1077691 | yes |
+| `labrus_bergylta` | *Labrus bergylta* | — | 1 | Labridae | Labrus | 254714 | 103911 | yes |
+| `nolella_stipata` | *Nolella stipata* | — | 1 | Nolellidae | Nolella | 257194 | 1077092 | yes |
+| `aplidium_nordmanni` | *Aplidium nordmanni* | — | 1 | Polyclinidae | Aplidium | 257415 | 476228 | yes |
+| `thericium_lividulum` | *Thericium lividulum* | — | 1 | Cerithiidae | Thericium | 257564 | 1638050 | yes |
+| `gobius_couchi` | *Gobius couchi* | — | 1 | Gobiidae | Gobius | 263024 | 446060 | yes |
+| `leucosolenia_variabilis` | *Leucosolenia variabilis* | — | 1 | Leucosoleniidae | Leucosolenia | 257557 | 1076068 | yes |
+| `hippospongia_communis` | *Hippospongia communis* | — | 1 | Spongiidae | Hippospongia | 264352 | 469007 | yes |
+| `aplidium_elegans` | *Aplidium elegans* | — | 1 | Polyclinidae | Aplidium | 254215 | 338046 | yes |
+| `aplidium_coeruleum` | *Aplidium coeruleum* | — | 1 | Polyclinidae | Aplidium | 255514 | 799212 | yes |
+| `maasella_edwardsii` | *Maasella edwardsii* | — | 1 | Paralcyoniidae | Maasella | 254264 |  | yes |
+| `galathea_strigosa` | *Galathea strigosa* | — | 1 | Galatheidae | Galathea | 249563 | 338037 | yes |
+| `cardites_antiquatus` | *Cardites antiquatus* | — | 1 | Carditidae | Cardites | 253565 | 528962 | yes |
+| `delichon_urbicum` | *Delichon urbicum* | — | 2 | Hirundinidae | Delichon | 243973 | 64705 | yes |
+| `chroicocephalus_ridibundus` | *Chroicocephalus ridibundus* | Larus ridibundus | 2 | Laridae | Chroicocephalus | 250950 | 144510 | yes |
+| `convolvulus_althaeoides` | *Convolvulus althaeoides* | — | 2 | Convolvulaceae | Convolvulus | 252413 | 1521906 | yes |
+| `hirundo_rustica` | *Hirundo rustica* | — | 2 | Hirundinidae | Hirundo | 251811 | 11901 | yes |
+| `sonchus_tenerrimus` | *Sonchus tenerrimus* | — | 2 | Asteraceae | Sonchus | 250509 | 79157 | yes |
+| `pancratium_maritimum` | *Pancratium maritimum* | — | 2 | Amaryllidaceae | Pancratium | 252707 | 78334 | yes |
+| `coris_melanura` | *Coris melanura* | — | 1 | Labridae | Coris | 254288 | 1360107 | yes |
+| `pyrrhocoris_apterus` | *Pyrrhocoris apterus* | — | 2 | Pyrrhocoridae | Pyrrhocoris | 244988 | 55610 | yes |
+| `anguilla_anguilla` | *Anguilla anguilla* | — | 1 | Anguillidae | Anguilla | 21877 | 94105 | yes |
+| `gymnothorax_unicolor` | *Gymnothorax unicolor* | — | 1 | Muraenidae | Gymnothorax | 131113 | 118591 | yes |
+| `pinctada_imbricata` | *Pinctada imbricata* | — | 1 | Pteriidae | Pinctada | 241950 | 292174 | yes |
+| `rissoa_guerinii` | *Rissoa guerinii* | — | 1 | Rissoidae | Rissoa | 246310 | 482270 | yes |
+| `baseodiscus_delineatus` | *Baseodiscus delineatus* | — | 1 | Valenciniidae | Baseodiscus | 247879 | 497475 | yes |
+| `scirpoides_holoschoenus` | *Scirpoides holoschoenus* | — | 2 | Cyperaceae | Scirpoides | 248549 | 168639 | yes |
+| `galeodea_echinophora` | *Galeodea echinophora* | — | 1 | Cassidae | Galeodea | 249607 | 528786 | yes |
+| `steromphala_umbilicalis` | *Steromphala umbilicalis* | — | 1 | Trochidae | Steromphala | 251589 | 711719 | yes |
+| `hippolyte_leptocerus` | *Hippolyte leptocerus* | — | 1 | Hippolytidae | Hippolyte | 251775 | 783283 | yes |
+| `cleantis_prismatica` | *Cleantis prismatica* | — | 1 | Holognathidae | Cleantis | 251841 | 1071245 | yes |
+| `clavelina_oblonga` | *Clavelina oblonga* | — | 1 | Clavelinidae | Clavelina | 253979 | 493328 | yes |
+| `olindias_muelleri` | *Olindias muelleri* | — | 1 | Olindiasidae | Olindias | 254139 | 1044480 | yes |
+| `lygdamis_wirtzi` | *Lygdamis wirtzi* | — | 1 | Sabellariidae | Lygdamis | 254235 | 344693 | yes |
+| `vanadis_formosa` | *Vanadis formosa* | — | 1 | Alciopidae | Vanadis | 254695 | 695000 | yes |
+| `gibbula_fanulum` | *Gibbula fanulum* | — | 1 | Trochidae | Gibbula | 255069 | 528963 | yes |
+| `mitromorpha_olivoidea` | *Mitromorpha olivoidea* | — | 1 | Conidae | Mitromorpha | 255685 | 1500912 | yes |
+| `cyrillia_linearis` | *Cyrillia linearis* | — | 1 | Raphitomidae | Cyrillia | 255705 | 1230518 | yes |
+| `puncturella_noachina` | *Puncturella noachina* | — | 1 | Fissurellidae | Puncturella | 256972 | 482205 | yes |
+| `pusillina_lineolata` | *Pusillina lineolata* | — | 1 | Rissoidae | Pusillina | 263413 | 1077632 | yes |
+| `haliclona_fulva` | *Haliclona fulva* | Haliclona (Halichoclona) fulva | 1 | Chalinidae | Haliclona | 249854 | 893711 | yes |
+| `cacospongia_mollior` | *Cacospongia mollior* | — | 1 | Thorectidae | Cacospongia | 261997 | 1074876 | yes |
+| `oscarella_viridis` | *Oscarella viridis* | — | 1 | Oscarellidae | Oscarella | 256957 | 874416 | yes |
+| `gongolaria_elegans` | *Gongolaria elegans* | — | 2 | Sargassaceae | Gongolaria | 264376 | 1424547 | yes |
+| `aglaophenia_harpago` | *Aglaophenia harpago* | — | 1 | Aglaopheniidae | Aglaophenia | 130799 | 1074831 | yes |
+| `obelia_geniculata` | *Obelia geniculata* | — | 1 | Campanulariidae | Obelia | 249633 | 195411 | yes |
+| `didemnum_vexillum` | *Didemnum vexillum* | — | 1 | Didemnidae | Didemnum | 265125 | 126506 | yes |
+| `actitis_hypoleucos` | *Actitis hypoleucos* | — | 2 | Scolopacidae | Actitis | 242596 | 3978 | yes |
+| `equus_caballus` | *Equus caballus* | — | 2 | Equidae | Equus | 246190 | 209233 | yes |
+| `asphodelus_fistulosus` | *Asphodelus fistulosus* | — | 2 | Xanthorrhoeaceae | Asphodelus | 246991 | 75606 | yes |
+| `silybum_marianum` | *Silybum marianum* | — | 2 | Asteraceae | Silybum | 250267 | 52586 | yes |
+| `asparagus_acutifolius` | *Asparagus acutifolius* | — | 2 | Asparagaceae | Asparagus | 246918 | 210513 | yes |
+| `episyrphus_balteatus` | *Episyrphus balteatus* | — | 2 | Syrphidae | Episyrphus | 246134 | 52482 | yes |
+| `cottoniella_filamentosa` | *Cottoniella filamentosa* | — | 2 | Sarcomeniaceae | Cottoniella | 242256 | 1075479 | yes |
+| `barleeia_unifasciata` | *Barleeia unifasciata* | — | 1 | Barleeiidae | Barleeia | 247864 | 482280 | yes |
+| `ceratophyllum_demersum` | *Ceratophyllum demersum* | — | 2 | Ceratophyllaceae | Ceratophyllum | 250166 | 60997 | yes |
+| `closterotomus_trivialis` | *Closterotomus trivialis* | — | 2 | Miridae | Closterotomus | 252144 | 356404 | yes |
+| `lysimachia_arvensis` | *Lysimachia arvensis* | — | 2 | Primulaceae | Lysimachia | 258628 | 791928 | yes |
+| `chilomycterus_reticulatus` | *Chilomycterus reticulatus* | — | 1 | Diodontidae | Chilomycterus | 87208 | 49927 | yes |
+| `calystegia_soldanella` | *Calystegia soldanella* | — | 2 | Convolvulaceae | Calystegia | 90169 | 60880 | yes |
+| `sardina_pilchardus` | *Sardina pilchardus* | — | 1 | Clupeidae | Sardina | 93311 | 118600 | yes |
+| `pterotrachea_coronata` | *Pterotrachea coronata* | — | 1 | Pterotracheidae | Pterotrachea | 240438 | 254616 | yes |
+| `acanthocardia_paucicostata` | *Acanthocardia paucicostata* | — | 1 | Cardiidae | Acanthocardia | 241864 | 528964 | yes |
+| `juncus_acutus` | *Juncus acutus* | — | 2 | Juncaceae | Juncus | 242357 | 77550 | yes |
+| `lagurus_ovatus` | *Lagurus ovatus* | — | 2 | Poaceae | Lagurus | 242870 | 61068 | yes |
+| `dicentrarchus_punctatus` | *Dicentrarchus punctatus* | — | 1 | Moronidae | Dicentrarchus | 244488 | 118616 | yes |
+| `rhizophysa_filiformis` | *Rhizophysa filiformis* | — | 1 | Rhizophysidae | Rhizophysa | 246027 | 687647 | yes |
+| `eryngium_maritimum` | *Eryngium maritimum* | — | 2 | Apiaceae | Eryngium | 247078 | 162707 | yes |
+| `modiolus_adriaticus` | *Modiolus adriaticus* | — | 1 | Mytilidae | Modiolus | 247261 | 482995 | yes |
+| `calpensia_nobilis` | *Calpensia nobilis* | — | 1 | Microporidae | Calpensia | 248377 | 1074878 | yes |
+| `flabelligera_affinis` | *Flabelligera affinis* | — | 1 | Flabelligeridae | Flabelligera | 248929 | 389612 | yes |
+| `scyllarus_pygmaeus` | *Scyllarus pygmaeus* | — | 1 | Scyllaridae | Scyllarus | 248948 | 112406 | yes |
+| `halcampoides_purpureus` | *Halcampoides purpureus* | — | 1 | Halcampoididae | Halcampoides | 249800 | 460123 | yes |
+| `chrysaora_hysoscella` | *Chrysaora hysoscella* | — | 1 | Pelagiidae | Chrysaora | 250986 | 360314 | yes |
+| `codium_fragile` | *Codium fragile* | — | 2 | Codiaceae | Codium | 252194 | 67555 | yes |
+| `parthenopoides_massena` | *Parthenopoides massena* | — | 1 | Parthenopidae | Parthenopoides | 252830 | 877158 | yes |
+| `centrolophus_niger` | *Centrolophus niger* | — | 1 | Centrolophidae | Centrolophus | 254146 | 450428 | yes |
+| `anthopleura_ballii` | *Anthopleura ballii* | — | 1 | Actiniidae | Anthopleura | 254217 | 477396 | yes |
+| `trivia_arctica` | *Trivia arctica* | — | 1 | Triviidae | Trivia | 254318 | 461776 | yes |
+| `actinia_cari` | *Actinia cari* | — | 1 | Actiniidae | Actinia | 254430 | 569608 | yes |
+| `vorticeros_luteum` | *Vorticeros luteum* | — | 1 | Cylindrostomidae | Vorticeros | 254434 | 492612 | yes |
+| `chaetomorpha_aerea` | *Chaetomorpha aerea* | — | 2 | Cladophoraceae | Chaetomorpha | 254483 | 345249 | yes |
+| `paguristes_eremita` | *Paguristes eremita* | — | 1 | Diogenidae | Paguristes | 254594 | 324584 | yes |
+| `pisa_tetraodon` | *Pisa tetraodon* | — | 1 | Epialtidae | Pisa | 254972 | 831262 | yes |
+| `aequorea_vitrina` | *Aequorea vitrina* | — | 1 | Aequoreidae | Aequorea | 255057 | 732708 | yes |
+| `corymorpha_nutans` | *Corymorpha nutans* | — | 1 | Corymorphidae | Corymorpha | 255075 | 461662 | yes |
+| `corallina_officinalis` | *Corallina officinalis* | — | 2 | Lithophyllaceae | Corallina | 255129 | 123632 | yes |
+| `rissoa_membranacea` | *Rissoa membranacea* | — | 1 | Rissoidae | Rissoa | 257188 | 482275 | yes |
+| `aurelia_coerulea` | *Aurelia coerulea* | — | 1 | Ulmaridae | Aurelia | 257370 | 501587 | yes |
+| `bela_zonata` | *Bela zonata* | — | 1 | Mangeliidae | Bela | 263306 | 1653395 | yes |
+| `amphiura_filiformis` | *Amphiura filiformis* | — | 1 | Amphiuridae | Amphiura | 263332 | 255786 | yes |
+| `cenchrus_longisetus` | *Cenchrus longisetus* | — | 2 | Poaceae | Cenchrus | 263537 | 430578 | yes |
+| `isognomon_isognomum` | *Isognomon isognomum* | — | 1 | Isognomonidae | Isognomon | 264118 | 701312 | yes |
+| `sarcodictyon_catenatum` | *Sarcodictyon catenatum* | — | 1 | Clavulariidae | Sarcodictyon | 34778 | 487700 | yes |
+| `chrysymenia_ventricosa` | *Chrysymenia ventricosa* | — | 2 | Rhodymeniaceae | Chrysymenia | 251230 | 699017 | yes |
+| `frondipora_verrucosa` | *Frondipora verrucosa* | — | 1 | Frondiporidae | Frondipora | 254254 | 1075875 | yes |
+| `aglaophenia_kirchenpaueri` | *Aglaophenia kirchenpaueri* | — | 1 | Aglaopheniidae | Aglaophenia | 243184 | 476230 | yes |
+| `didemnum_protectum` | *Didemnum protectum* | — | 1 | Didemnidae | Didemnum | 244615 | 798512 | yes |
+| `microcosmus_polymorphus` | *Microcosmus polymorphus* | — | 1 | Pyuridae | Microcosmus | 246925 | 800242 | yes |
+| `periclimenes_aegylios` | *Periclimenes aegylios* | — | 1 | Palaemonidae | Periclimenes | 254260 | 865364 | yes |
+| `spatoglossum_solieri` | *Spatoglossum solieri* | — | 2 | Dictyotaceae | Spatoglossum | 254439 | 1077672 | yes |
+| `borago_officinalis` | *Borago officinalis* | — | 2 | Boraginaceae | Borago | 246907 | 52287 | yes |
+| `parus_major` | *Parus major* | — | 2 | Paridae | Parus | 252835 | 203153 | yes |
+| `phasianus_colchicus` | *Phasianus colchicus* | — | 2 | Phasianidae | Phasianus | 253110 | 981 | yes |
+| `pieris_rapae` | *Pieris rapae* | — | 2 | Pieridae | Pieris | 241863 | 55626 | yes |
+| `hordeum_murinum` | *Hordeum murinum* | — | 2 | Poaceae | Hordeum | 251910 | 52796 | yes |
+| `medicago_sativa` | *Medicago sativa* | — | 2 | Fabaceae | Medicago | 100585 | 57057 | yes |
+| `smilax_aspera` | *Smilax aspera* | — | 2 | Smilacaceae | Smilax | 250364 | 82903 | yes |
+| `hedera_helix` | *Hedera helix* | — | 2 | Araliaceae | Hedera | 250962 | 55882 | yes |
+| `upupa_epops` | *Upupa epops* | — | 2 | Upupidae | Upupa | 253488 | 20969 | yes |
+| `drachiella_spectabilis` | *Drachiella spectabilis* | — | 2 | Delesseriaceae | Drachiella | 245075 | 747503 | yes |
+| `cronius_ruber` | *Cronius ruber* | — | 1 | Portunidae | Cronius | 254580 | 195117 | yes |
+| `aetomylaeus_bovinus` | *Aetomylaeus bovinus* | — | 1 | Myliobatidae | Aetomylaeus | 257011 | 607460 | yes |
+| `ocinebrina_aciculata` | *Ocinebrina aciculata* | — | 1 | Muricidae | Ocinebrina | 249735 | 493180 | yes |
+| `asterina_pancerii` | *Asterina pancerii* | — | 1 | Asterinidae | Asterina | 247188 | 481243 | yes |
+| `tethya_meloni` | *Tethya meloni* | — | 1 | Tethyidae | Tethya | 262442 | 1077715 | yes |
+| `amphibalanus_amphitrite` | *Amphibalanus amphitrite* | — | 1 | Balanidae | Amphibalanus | 32869 | 119104 | yes |
+| `bela_nebula` | *Bela nebula* | — | 1 | Mangeliidae | Bela | 33004 | 482495 | yes |
+| `lachnaia_tristigma` | *Lachnaia tristigma* | — | 2 | Chrysomelidae | Lachnaia | 40515 | 467526 | yes |
+| `magallana_gigas` | *Magallana gigas* | — | 1 | Ostreidae | Magallana | 74352 | 605992 | yes |
+| `flexopecten_glaber` | *Flexopecten glaber* | — | 1 | Pectinidae | Flexopecten | 83805 | 469342 | yes |
+| `mola_mola` | *Mola mola* | — | 1 | Molidae | Mola | 86040 | 49601 | yes |
+| `thalasseus_sandvicensis` | *Thalasseus sandvicensis* | — | 2 | Laridae | Thalasseus | 93460 | 144541 | yes |
+| `atherina_presbyter` | *Atherina presbyter* | — | 1 | Atherinidae | Atherina | 96779 | 118594 | yes |
+| `fabulina_fabula` | *Fabulina fabula* | — | 1 | Tellinidae | Fabulina | 214499 | 1408756 | yes |
+| `crematogaster_scutellaris` | *Crematogaster scutellaris* | — | 2 | Formicidae | Crematogaster | 242376 | 342899 | yes |
+| `plutella_xylostella` | *Plutella xylostella* | — | 2 | Plutellidae | Plutella | 242685 | 126765 | yes |
+| `laurencia_epiphylla` | *Laurencia epiphylla* | — | 2 | Rhodomelaceae | Laurencia | 243317 | 1473506 | yes |
+| `cyperus_capitatus` | *Cyperus capitatus* | — | 2 | Cyperaceae | Cyperus | 243449 | 334577 | yes |
+| `portumnus_latipes` | *Portumnus latipes* | — | 1 | Portunidae | Portumnus | 243676 | 362698 | yes |
+| `alitta_virens` | *Alitta virens* | — | 1 | Nereididae | Alitta | 243727 | 152971 | yes |
+| `leptogorgia_viminalis` | *Leptogorgia viminalis* | — | 1 | Gorgoniidae | Leptogorgia | 243740 | 557431 | yes |
+| `dendroxea_lenis` | *Dendroxea lenis* | — | 1 | Chalinidae | Dendroxea | 244167 | 1075493 | yes |
+| `linepithema_humile` | *Linepithema humile* | — | 2 | Formicidae | Linepithema | 244410 | 68165 | yes |
+| `polybius_zariquieyi` | *Polybius zariquieyi* | — | 1 | Carcinidae | Polybius | 244547 | 1071186 | yes |
+| `lotus_creticus` | *Lotus creticus* | — | 2 | Fabaceae | Lotus | 244972 | 337708 | yes |
+| `echinophora_spinosa` | *Echinophora spinosa* | — | 2 | Apiaceae | Echinophora | 245425 | 319702 | yes |
+| `aplysilla_rubra` | *Aplysilla rubra* | — | 1 | Darwinellidae | Aplysilla | 245616 | 874406 | yes |
+| `arctotheca_calendula` | *Arctotheca calendula* | — | 2 | Asteraceae | Arctotheca | 245902 | 56024 | yes |
+| `ruditapes_decussatus` | *Ruditapes decussatus* | — | 1 | Veneridae | Ruditapes | 246678 | 324548 | yes |
+| `bornia_sebetia` | *Bornia sebetia* | — | 1 | Lasaeidae | Bornia | 246927 | 1208713 | yes |
+| `euphorbia_terracina` | *Euphorbia terracina* | — | 2 | Euphorbiaceae | Euphorbia | 247985 | 77119 | yes |
+| `mytilus_edulis` | *Mytilus edulis* | — | 1 | Mytilidae | Mytilus | 248489 | 117650 | yes |
+| `scyliorhinus_canicula` | *Scyliorhinus canicula* | — | 1 | Scyliorhinidae | Scyliorhinus | 248942 | 112372 | yes |
+| `graphosoma_italicum` | *Graphosoma italicum* | — | 2 | Pentatomidae | Graphosoma | 249343 | 84804 | yes |
+| `galeomma_turtoni` | *Galeomma turtoni* | — | 1 | Galeommatidae | Galeomma | 249612 | 483047 | yes |
+| `sepiola_rondeletii` | *Sepiola rondeletii* | — | 1 | Sepiolidae | Sepiola | 249618 | 764634 | yes |
+| `oceania_armata` | *Oceania armata* | — | 1 | Oceaniidae | Oceania | 249642 | 293263 | yes |
+| `gari_fervensis` | *Gari fervensis* | — | 1 | Psammobiidae | Gari | 249906 | 481569 | yes |
+| `cestoplana_rubrocincta` | *Cestoplana rubrocincta* | — | 1 | Cestoplanidae | Cestoplana | 250262 | 774952 | yes |
+| `charonia_lampas` | *Charonia lampas* | — | 1 | Ranellidae | Charonia | 250577 | 338021 | yes |
+| `orchestia_gammarellus` | *Orchestia gammarellus* | — | 1 | Talitridae | Orchestia | 252320 | 680130 | yes |
+| `tubulipora_hemiphragmata` | *Tubulipora hemiphragmata* | — | 1 | Tubuliporidae | Tubulipora | 253392 | 1077897 | yes |
+| `ulva_lactuca` | *Ulva lactuca* | — | 2 | Ulvaceae | Ulva | 253477 | 67423 | yes |
+| `leptochiton_algesirensis` | *Leptochiton algesirensis* | — | 1 | Leptochitonidae | Leptochiton | 253880 | 1147340 | yes |
+| `dagetichthys_lusitanicus` | *Dagetichthys lusitanicus* | — | 1 | Soleidae | Dagetichthys | 254130 | 621005 | yes |
+| `laetmonice_hystrix` | *Laetmonice hystrix* | — | 1 | Aphroditidae | Laetmonice | 254251 | 671867 | yes |
+| `balssia_gasti` | *Balssia gasti* | — | 1 | Palaemonidae | Balssia | 254258 | 492434 | yes |
+| `lamellaria_latens` | *Lamellaria latens* | — | 1 | Velutinidae | Lamellaria | 254332 | 482349 | yes |
+| `grateloupia_turuturu` | *Grateloupia turuturu* | — | 2 | Dasyaceae | Grateloupia | 254547 | 447071 | yes |
+| `vorticeros_auriculatum` | *Vorticeros auriculatum* | — | 1 | Cylindrostomidae | Vorticeros | 254698 | 1077912 | yes |
+| `chiton_canariensis` | *Chiton canariensis* | Rhyssoplax canariensis | 1 | Chitonidae | Chiton | 254756 | 1296716 | yes |
+| `clanculus_corallinus` | *Clanculus corallinus* | — | 1 | Trochidae | Clanculus | 255565 | 528787 | yes |
+| `alvania_hirta` | *Alvania hirta* | — | 1 | Rissoidae | Alvania | 255683 | 884045 | yes |
+| `euspira_nitida` | *Euspira nitida* | — | 1 | Naticidae | Euspira | 255692 | 1075737 | yes |
+| `mycale_microsigmatosa` | *Mycale microsigmatosa* | Mycale (Carmia) microsigmatosa | 1 | Mycalidae | Mycale | 257165 | 487722 | yes |
+| `celleporina_mangnevillana` | *Celleporina mangnevillana* | — | 1 | Celleporidae | Celleporina | 257195 | 1075226 | yes |
+| `pseudomangelia_vauquelini` | *Pseudomangelia vauquelini* | — | 1 | Mangeliidae | Pseudomangelia | 257265 | 1446919 | yes |
+| `pyura_microcosmus` | *Pyura microcosmus* | — | 1 | Pyuridae | Pyura | 257364 | 542079 | yes |
+| `tricellaria_inopinata` | *Tricellaria inopinata* | — | 1 | Candidae | Tricellaria | 262341 | 484296 | yes |
+| `penicillus_capitatus` | *Penicillus capitatus* | — | 2 | Udoteaceae | Penicillus | 262946 | 131313 | yes |
+| `haeckelia_rubra` | *Haeckelia rubra* | — | 1 | Haeckeliidae | Haeckelia | 263069 | 1159658 | yes |
+| `aega_bicarinata` | *Aega bicarinata* | — | 1 | Aegidae | Aega | 263546 | 1454712 | yes |
+| `hexadella_topsenti` | *Hexadella topsenti* | — | 1 | Ianthellidae | Hexadella | 257048 | 626832 | yes |
+| `sabella_discifera` | *Sabella discifera* | — | 1 | Sabellidae | Sabella | 254951 | 363918 | yes |
+| `aplidium_punctum` | *Aplidium punctum* | — | 1 | Polyclinidae | Aplidium | 28736 | 338045 | yes |
+| `spirobranchus_lamarcki` | *Spirobranchus lamarcki* | — | 1 | Serpulidae | Spirobranchus | 257468 | 603592 | yes |
+| `aegithalos_caudatus` | *Aegithalos caudatus* | — | 2 | Aegithalidae | Aegithalos | 242811 | 7278 | yes |
+| `apus_apus` | *Apus apus* | — | 2 | Apodidae | Apus | 245686 | 6638 | yes |
+| `rubus_ulmifolius` | *Rubus ulmifolius* | — | 2 | Rosaceae | Rubus | 246657 | 78895 | yes |
+| `ficus_carica` | *Ficus carica* | — | 2 | Moraceae | Ficus | 248800 | 60218 | yes |
+| `nerium_oleander` | *Nerium oleander* | — | 2 | Apocynaceae | Nerium | 249038 | 47563 | yes |
+| `senecio_pterophorus` | *Senecio pterophorus* | — | 2 | Asteraceae | Senecio | 249580 | 487096 | yes |
+| `papaver_rhoeas` | *Papaver rhoeas* | — | 2 | Papaveraceae | Papaver | 252738 | 54404 | yes |
+| `sphacelaria_plumula` | *Sphacelaria plumula* | — | 2 | Sphacelariaceae | Sphacelaria | 261987 | 1284678 | yes |
+| `pinus_pinea` | *Pinus pinea* | — | 2 | Pinaceae | Pinus | 242058 | 63621 | yes |
+| `aplidium_conicum` | *Aplidium conicum* | — | 1 | Polyclinidae | Aplidium | 245576 | 481215 | yes |
+| `serranus_papilionaceus` | *Serranus papilionaceus* | — | 1 | Serranidae | Serranus | 256793 | 1316085 | yes |
+| `calamagrostis_arenaria` | *Calamagrostis arenaria* | — | 2 | Poaceae | Calamagrostis | 266181 | 942779 | yes |
+| `scabiosa_atropurpurea` | *Scabiosa atropurpurea* | Sixalix atropurpurea atropurpurea | 2 | Dipsacaceae | Scabiosa | 90449 | 372376 | yes |
+| `pollachius_pollachius` | *Pollachius pollachius* | — | 1 | Gadidae | Pollachius | 195678 | 332553 | yes |
+| `malvaevora_timida` | *Malvaevora timida* | — | 2 | Curculionidae | Malvaevora | 241367 | 493444 | yes |
+| `plantago_coronopus` | *Plantago coronopus* | — | 2 | Plantaginaceae | Plantago | 242353 | 58960 | yes |
+| `polybius_corrugatus` | *Polybius corrugatus* | — | 1 | Carcinidae | Polybius | 244544 | 1562918 | yes |
+| `dictyota_spiralis` | *Dictyota spiralis* | — | 2 | Dictyotaceae | Dictyota | 244605 | 955318 | yes |
+| `diopatra_neapolitana` | *Diopatra neapolitana* | — | 1 | Onuphidae | Diopatra | 244734 | 210216 | yes |
+| `bopyrus_crangorum` | *Bopyrus crangorum* | — | 1 | Bopyridae | Bopyrus | 246904 | 1543982 | yes |
+| `halichondria_panicea` | *Halichondria panicea* | Halichondria (Halichondria) panicea | 1 | Halichondriidae | Halichondria | 249851 | 186854 | yes |
+| `sipunculus_nudus` | *Sipunculus nudus* | Sipunculus (Sipunculus) nudus | 1 | Sipunculidae | Sipunculus | 250314 | 117577 | yes |
+| `chamelea_striatula` | *Chamelea striatula* | — | 1 | Veneridae | Chamelea | 250471 | 485806 | yes |
+| `chondrilla_nucula` | *Chondrilla nucula* | — | 1 | Chondrillidae | Chondrilla | 250904 | 372228 | yes |
+| `hydroides_ezoensis` | *Hydroides ezoensis* | — | 1 | Serpulidae | Hydroides | 252018 | 390784 | yes |
+| `ebalia_edwardsii` | *Ebalia edwardsii* | — | 1 | Leucosiidae | Ebalia | 253879 | 885740 | yes |
+| `clavelina_dellavallei` | *Clavelina dellavallei* | — | 1 | Clavelinidae | Clavelina | 253954 | 541976 | yes |
+| `aluterus_scriptus` | *Aluterus scriptus* | — | 1 | Monacanthidae | Aluterus | 254223 | 49498 | yes |
+| `seriola_fasciata` | *Seriola fasciata* | — | 1 | Carangidae | Seriola | 254245 | 120689 | yes |
+| `carapus_acus` | *Carapus acus* | — | 1 | Carapidae | Carapus | 254275 | 118612 | yes |
+| `eualus_cranchii` | *Eualus cranchii* | — | 1 | Hippolytidae | Eualus | 254320 | 849342 | yes |
+| `hesione_splendida` | *Hesione splendida* | — | 1 | Hesionidae | Hesione | 254462 | 474746 | yes |
+| `palythoa_canariensis` | *Palythoa canariensis* | — | 1 | Zoanthidae | Palythoa | 254651 | 1246763 | yes |
+| `thetys_vagina` | *Thetys vagina* | — | 1 | Salpidae | Thetys | 254694 | 133222 | yes |
+| `beroe_forskalii` | *Beroe forskalii* | — | 1 | Beroidae | Beroe | 254719 | 210415 | yes |
+| `gemophos_viverratoides` | *Gemophos viverratoides* | — | 1 | Pisaniidae | Gemophos | 254745 | 1124415 | yes |
+| `leucocephalonemertes_aurantiaca` | *Leucocephalonemertes aurantiaca* | — | 1 | Lineidae | Leucocephalonemertes | 254967 | 497461 | yes |
+| `lithothamnion_corallioides` | *Lithothamnion corallioides* | Boreolithothamnion corallioides | 2 | Lithophyllaceae | Lithothamnion | 255008 | 339350 | yes |
+| `arothron_nigropunctatus` | *Arothron nigropunctatus* | — | 1 | Tetraodontidae | Arothron | 255349 | 119385 | yes |
+| `trididemnum_cereum` | *Trididemnum cereum* | — | 1 | Didemnidae | Trididemnum | 255440 | 798830 | yes |
+| `miniacina_miniacea` | *Miniacina miniacea* | — | 2 | Homotrematidae | Miniacina | 255572 | 342241 | yes |
+| `codium_taylorii` | *Codium taylorii* | — | 2 | Codiaceae | Codium | 255595 | 131321 | yes |
+| `payraudeautia_intricata` | *Payraudeautia intricata* | — | 1 | Naticidae | Payraudeautia | 255660 | 1392517 | yes |
+| `antalis_dentalis` | *Antalis dentalis* | — | 1 | Dentaliidae | Antalis | 256413 | 922433 | yes |
+| `venus_casina` | *Venus casina* | — | 1 | Veneridae | Venus | 256618 | 483065 | yes |
+| `pachygrapsus_transversus` | *Pachygrapsus transversus* | — | 1 | Grapsidae | Pachygrapsus | 256794 | 195201 | yes |
+| `alvania_hispidula` | *Alvania hispidula* | — | 1 | Rissoidae | Alvania | 257376 |  | yes |
+| `ophiomyxa_pentagona` | *Ophiomyxa pentagona* | — | 1 | Ophiomyxidae | Ophiomyxa | 258081 | 636732 | yes |
+| `limaria_loscombi` | *Limaria loscombi* | — | 1 | Limidae | Limaria | 263349 | 1210910 | yes |
+| `acar_clathrata` | *Acar clathrata* | — | 1 | Arcidae | Acar | 263360 | 1127346 | yes |
+| `cnemidocarpa_irene` | *Cnemidocarpa irene* | — | 1 | Styelidae | Cnemidocarpa | 264111 | 800432 | yes |
+| `polycitor_crystallinus` | *Polycitor crystallinus* | — | 1 | Polycitoridae | Polycitor | 254142 | 493329 | yes |
+| `acrosymphyton_purpuriferum` | *Acrosymphyton purpuriferum* | — | 2 | Acrosymphytaceae | Acrosymphyton | 241754 | 498928 | yes |
+| `didemnum_fulgens` | *Didemnum fulgens* | — | 1 | Didemnidae | Didemnum | 261962 | 798430 | yes |
+| `predaea_ollivieri` | *Predaea ollivieri* | — | 2 | Nemastomataceae | Predaea | 243833 | 1429483 | yes |
+| `hoplangia_durotrix` | *Hoplangia durotrix* | — | 1 | Caryophylliidae | Hoplangia | 254459 | 949684 | yes |
+| `seirospora_giraudyi` | *Seirospora giraudyi* | — | 2 | Ceramiaceae | Seirospora | 262024 | 880897 | yes |
+| `brissus_unicolor` | *Brissus unicolor* | — | 1 | Brissidae | Brissus | 254257 | 293066 | yes |
+| `sphacelaria_tribuloides` | *Sphacelaria tribuloides* | — | 2 | Sphacelariaceae | Sphacelaria | 263301 | 1100463 | yes |
+| `spartium_junceum` | *Spartium junceum* | — | 2 | Fabaceae | Spartium | 38802 | 47406 | yes |
+| `prunus_persica` | *Prunus persica* | — | 2 | Rosaceae | Prunus | 244197 | 78755 | yes |
+| `curruca_melanocephala` | *Curruca melanocephala* | — | 2 | Sylviidae | Curruca | 257136 | 1289472 | yes |
+| `chloris_chloris` | *Chloris chloris* | — | 2 | Fringillidae | Chloris | 250773 | 145360 | yes |
+| `podarcis_liolepis` | *Podarcis liolepis* | — | 2 | Lacertidae | Podarcis | 254136 | 35666 | yes |
+| `pararge_aegeria` | *Pararge aegeria* | — | 2 | Nymphalidae | Pararge | 252782 | 52592 | yes |
+| `pinus_halepensis` | *Pinus halepensis* | — | 2 | Pinaceae | Pinus | 242032 | 82722 | yes |
+| `juniperus_oxycedrus` | *Juniperus oxycedrus* | — | 2 | Cupressaceae | Juniperus | 242385 | 133994 | yes |
+| `echium_vulgare` | *Echium vulgare* | — | 2 | Boraginaceae | Echium | 245478 | 56174 | yes |
+| `muraena_augusti` | *Muraena augusti* | — | 1 | Muraenidae | Muraena | 254231 | 342089 | yes |
+| `galium_aparine` | *Galium aparine* | — | 2 | Rubiaceae | Galium | 27352 | 53059 | yes |
+| `felis_catus` | *Felis catus* | — | 2 | Felidae | Felis | 248696 | 118552 | yes |
+| `parietaria_judaica` | *Parietaria judaica* | — | 2 | Urticaceae | Parietaria | 252806 | 57281 | yes |
+| `phoenicopterus_ruber` | *Phoenicopterus ruber* | — | 2 | Phoenicopteridae | Phoenicopterus | 256663 |  |  |
+| `locusta_migratoria` | *Locusta migratoria* | — | 2 | Acrididae | Locusta | 244738 | 201627 | yes |
+| `apis_mellifera` | *Apis mellifera* | — | 2 | Apidae | Apis | 245563 | 47219 | yes |
+| `erodium_malacoides` | *Erodium malacoides* | — | 2 | Geraniaceae | Erodium | 246965 | 77056 | yes |
+| `salvia_rosmarinus` | *Salvia rosmarinus* | — | 2 | Lamiaceae | Salvia | 247427 | 636795 | yes |
+| `oxycarenus_lavaterae` | *Oxycarenus lavaterae* | — | 2 | Oxycarenidae | Oxycarenus | 252635 | 209661 | yes |
+| `turdus_merula` | *Turdus merula* | — | 2 | Turdidae | Turdus | 253420 | 12716 | yes |
+| `pteroplatytrygon_violacea` | *Pteroplatytrygon violacea* | — | 1 | Dasyatidae | Pteroplatytrygon | 31057 | 111212 | yes |
+| `papillicardium_minimum` | *Papillicardium minimum* | — | 1 | Cardiidae | Papillicardium | 75442 | 1389337 | yes |
+| `solea_solea` | *Solea solea* | — | 1 | Soleidae | Solea | 205532 | 55396 | yes |
+| `kobus_ellipsiprymnus` | *Kobus ellipsiprymnus* | — | 2 | Bovidae | Kobus | 242528 | 42328 | yes |
+| `aepyceros_melampus` | *Aepyceros melampus* | — | 2 | Bovidae | Aepyceros | 242919 | 42278 | yes |
+| `pomatoschistus_minutus` | *Pomatoschistus minutus* | — | 1 | Gobiidae | Pomatoschistus | 243516 | 344748 | yes |
+| `puccinia_malvacearum` | *Puccinia malvacearum* | — | 2 | Pucciniaceae | Puccinia | 244624 | 343592 | yes |
+| `ecteinascidia_turbinata` | *Ecteinascidia turbinata* | — | 1 | Perophoridae | Ecteinascidia | 245498 | 132500 | yes |
+| `aphis_fabae` | *Aphis fabae* | — | 2 | Aphididae | Aphis | 245544 | 55216 | yes |
+| `emarginula_octaviana` | *Emarginula octaviana* | — | 1 | Fissurellidae | Emarginula | 245710 | 1212806 | yes |
+| `rhithropanopeus_harrisii` | *Rhithropanopeus harrisii* | — | 1 | Panopeidae | Rhithropanopeus | 246020 | 81612 | yes |
+| `medicago_polymorpha` | *Medicago polymorpha* | — | 2 | Fabaceae | Medicago | 246178 | 53151 | yes |
+| `rivularia_polyotis` | *Rivularia polyotis* | — | 2 | Nostocaceae | Rivularia | 246367 | 745703 | yes |
+| `rubia_peregrina` | *Rubia peregrina* | — | 2 | Rubiaceae | Rubia | 246573 | 82848 | yes |
+| `eristalis_tenax` | *Eristalis tenax* | — | 2 | Syrphidae | Eristalis | 246789 | 55719 | yes |
+| `scalarispongia_scalaris` | *Scalarispongia scalaris* | — | 1 | Thorectidae | Scalarispongia | 248364 | 905466 | yes |
+| `gelidium_spinosum` | *Gelidium spinosum* | — | 2 | Gelidiaceae | Gelidium | 249988 | 117802 | yes |
+| `pachycerianthus_dohrni` | *Pachycerianthus dohrni* | — | 1 | Cerianthidae | Pachycerianthus | 250197 | 626814 | yes |
+| `solen_marginatus` | *Solen marginatus* | — | 1 | Solenidae | Solen | 250443 | 210229 | yes |
+| `harmothoe_extenuata` | *Harmothoe extenuata* | — | 1 | Polynoidae | Harmothoe | 250905 | 347325 | yes |
+| `trifolium_repens` | *Trifolium repens* | — | 2 | Fabaceae | Trifolium | 252049 | 55745 | yes |
+| `ostrea_stentina` | *Ostrea stentina* | — | 1 | Ostreidae | Ostrea | 252586 | 1106009 | yes |
+| `philocheras_bispinosus` | *Philocheras bispinosus* | — | 1 | Crangonidae | Philocheras | 253143 | 1402363 | yes |
+| `philocheras_trispinosus` | *Philocheras trispinosus* | — | 1 | Crangonidae | Philocheras | 253147 | 1236986 | yes |
+| `trivia_monacha` | *Trivia monacha* | — | 1 | Triviidae | Trivia | 253353 | 180524 | yes |
+| `corystes_cassivelaunus` | *Corystes cassivelaunus* | — | 1 | Corystidae | Corystes | 253867 | 549751 | yes |
+| `paractinia_striata` | *Paractinia striata* | — | 1 | Hormathiidae | Paractinia | 253920 | 577788 | yes |
+| `caulerpa_mexicana` | *Caulerpa mexicana* | — | 2 | Caulerpaceae | Caulerpa | 254390 | 131271 | yes |
+| `arachnanthus_oligopodus` | *Arachnanthus oligopodus* | — | 1 | Arachnactidae | Arachnanthus | 254470 | 734810 | yes |
+| `tarantinaea_lignaria` | *Tarantinaea lignaria* | Tarantinaea lignarius | 1 | Fasciolariidae | Tarantinaea | 254586 | 1647789 | yes |
+| `sagartia_nigropunctata` | *Sagartia nigropunctata* | Cylista nigropunctata | 1 | Sagartiidae | Sagartia | 254654 | 1429622 | yes |
+| `chaetopterus_variopedatus` | *Chaetopterus variopedatus* | — | 1 | Chaetopteridae | Chaetopterus | 254702 | 216631 | yes |
+| `synalpheus_gambarelloides` | *Synalpheus gambarelloides* | — | 1 | Alpheidae | Synalpheus | 254731 | 1670333 | yes |
+| `eudistoma_angolanum` | *Eudistoma angolanum* | — | 1 | Polycitoridae | Eudistoma | 254761 | 799022 | yes |
+| `plagioecia_patina` | *Plagioecia patina* | — | 1 | Plagioeciidae | Plagioecia | 255599 | 195928 | yes |
+| `caulerpa_chemnitzia` | *Caulerpa chemnitzia* | — | 2 | Caulerpaceae | Caulerpa | 257568 | 777430 | yes |
+| `eunicella_labiata` | *Eunicella labiata* | — | 1 | Gorgoniidae | Eunicella | 262023 | 363893 | yes |
+| `processa_modica` | *Processa modica* | — | 1 | Processidae | Processa | 262334 | 1139320 | yes |
+| `phymatolithon_lenormandii` | *Phymatolithon lenormandii* | — | 2 | Lithophyllaceae | Phymatolithon | 263347 | 183035 | yes |
+| `urothoe_marina` | *Urothoe marina* | — | 1 | Urothoidae | Urothoe | 266469 | 1402381 | yes |
+| `vermiliopsis_infundibulum` | *Vermiliopsis infundibulum* | — | 1 | Serpulidae | Vermiliopsis | 258199 | 1402147 | yes |
+| `oscarella_tuberculata` | *Oscarella tuberculata* | — | 1 | Oscarellidae | Oscarella | 263335 | 363851 | yes |
+| `prosuberites_longispinus` | *Prosuberites longispinus* | — | 1 | Suberitidae | Prosuberites | 266609 | 1077434 | yes |
+| `obelia_dichotoma` | *Obelia dichotoma* | — | 1 | Campanulariidae | Obelia | 249629 | 195415 | yes |
+| `phtisica_marina` | *Phtisica marina* | — | 1 | Caprellidae | Phtisica | 253235 | 295606 | yes |
+| `spongia_lamella` | *Spongia lamella* | Spongia (Spongia) lamella | 1 | Spongiidae | Spongia | 254202 | 341970 | yes |
+| `calliostoma_conulus` | *Calliostoma conulus* | — | 1 | Calliostomatidae | Calliostoma | 254319 | 528682 | yes |
+| `cystoseira_pustulata` | *Cystoseira pustulata* | — | 2 | Sargassaceae | Cystoseira | 264405 | 1522848 | yes |
+| `cortaderia_selloana` | *Cortaderia selloana* | — | 2 | Poaceae | Cortaderia | 240757 | 64240 | yes |
+| `celtis_australis` | *Celtis australis* | — | 2 | Ulmaceae | Celtis | 249838 | 76202 | yes |
+| `sus_scrofa` | *Sus scrofa* | — | 2 | Suidae | Sus | 246192 | 42134 | yes |
+| `nemalion_elminthoides` | *Nemalion elminthoides* | — | 2 | Liagoraceae | Nemalion | 248739 | 973569 | yes |
+| `rhamnus_alaternus` | *Rhamnus alaternus* | — | 2 | Rhamnaceae | Rhamnus | 245800 | 82856 | yes |
+| `arbutus_unedo` | *Arbutus unedo* | — | 2 | Ericaceae | Arbutus | 245852 | 82689 | yes |
+| `pittosporum_tobira` | *Pittosporum tobira* | — | 2 | Pittosporaceae | Pittosporum | 242266 | 78592 | yes |
+| `erodium_moschatum` | *Erodium moschatum* | — | 2 | Geraniaceae | Erodium | 246968 | 57092 | yes |
+| `euphorbia_helioscopia` | *Euphorbia helioscopia* | — | 2 | Euphorbiaceae | Euphorbia | 247811 | 56292 | yes |
+| `lachnaia_paradoxa` | *Lachnaia paradoxa* | — | 2 | Chrysomelidae | Lachnaia | 40513 | 469149 | yes |
+| `hirschfeldia_incana` | *Hirschfeldia incana* | — | 2 | Brassicaceae | Hirschfeldia | 251796 | 53097 | yes |
+| `macrorhynchia_philippina` | *Macrorhynchia philippina* | — | 1 | Aglaopheniidae | Macrorhynchia | 254648 | 124345 | yes |
+| `oloptum_miliaceum` | *Oloptum miliaceum* | — | 2 | Poaceae | Oloptum | 263178 | 524183 | yes |
+| `amphiroa_kuetzingiana` | *Amphiroa kuetzingiana* | — | 2 | Lithophyllaceae | Amphiroa | 264859 | 1428460 | yes |
+| `gonepteryx_cleopatra` | *Gonepteryx cleopatra* | — | 2 | Pieridae | Gonepteryx | 32954 | 123815 | yes |
+| `lasiommata_megera` | *Lasiommata megera* | — | 2 | Nymphalidae | Lasiommata | 101291 | 147298 | yes |
+| `agave_americana` | *Agave americana* | — | 2 | Asparagaceae | Agave | 243104 | 64103 | yes |
+| `galerida_cristata` | *Galerida cristata* | — | 2 | Alaudidae | Galerida | 249641 | 578607 | yes |
+| `plantago_lanceolata` | *Plantago lanceolata* | — | 2 | Plantaginaceae | Plantago | 242395 | 53178 | yes |
+| `pyronia_bathseba` | *Pyronia bathseba* | — | 2 | Nymphalidae | Pyronia | 244942 | 208973 | yes |
+| `ascandra_falcata` | *Ascandra falcata* | — | 1 | Leucaltidae | Ascandra | 254263 | 824685 | yes |
+| `geranium_rotundifolium` | *Geranium rotundifolium* | — | 2 | Geraniaceae | Geranium | 248846 | 77261 | yes |
+| `pterois_miles` | *Pterois miles* | — | 1 | Scorpaenidae | Pterois | 13672 | 123459 | yes |
+| `dentex_gibbosus` | *Dentex gibbosus* | — | 1 | Sparidae | Dentex | 19557 | 120680 | yes |
+| `lichia_amia` | *Lichia amia* | — | 1 | Carangidae | Lichia | 23195 | 118709 | yes |
+| `hippopotamus_amphibius` | *Hippopotamus amphibius* | — | 2 | Hippopotamidae | Hippopotamus | 64109 | 42149 | yes |
+| `pomatomus_saltatrix` | *Pomatomus saltatrix* | — | 1 | Pomatomidae | Pomatomus | 76940 | 50984 | yes |
+| `aplus_scaber` | *Aplus scaber* | — | 1 | Pisaniidae | Aplus | 94367 | 1445466 | yes |
+| `graphosoma_semipunctatum` | *Graphosoma semipunctatum* | — | 2 | Pentatomidae | Graphosoma | 115088 | 61967 | yes |
+| `bathytoshia_centroura` | *Bathytoshia centroura* | — | 1 | Dasyatidae | Bathytoshia | 126107 | 623822 | yes |
+| `alloteuthis_media` | *Alloteuthis media* | — | 1 | Loliginidae | Alloteuthis | 132585 | 324560 | yes |
+| `carinaria_lamarckii` | *Carinaria lamarckii* | — | 1 | Carinariidae | Carinaria | 198474 | 253534 | yes |
+| `lepas_hillii` | *Lepas hillii* | — | 1 | Lepadidae | Lepas | 211128 | 546703 | yes |
+| `homotrema_rubra` | *Homotrema rubra* | Homotrema rubrum | 2 | Homotrematidae | Homotrema | 240382 | 538618 | yes |
+| `tylosurus_acus` | *Tylosurus acus* | — | 1 | Belonidae | Tylosurus | 241102 | 147189 | yes |
+| `polistes_gallicus` | *Polistes gallicus* | — | 2 | Vespidae | Polistes | 242910 | 154442 | yes |
+| `diodora_italica` | *Diodora italica* | — | 1 | Fissurellidae | Diodora | 244726 | 883540 | yes |
+| `loxodonta_africana` | *Loxodonta africana* | — | 2 | Elephantidae | Loxodonta | 245000 | 43694 | yes |
+| `antennella_siliquosa` | *Antennella siliquosa* | — | 1 | Halopterididae | Antennella | 245162 | 493417 | yes |
+| `rhizostoma_luteum` | *Rhizostoma luteum* | — | 1 | Rhizostomatidae | Rhizostoma | 246038 | 506641 | yes |
+| `armadillidium_vulgare` | *Armadillidium vulgare* | — | 1 | Armadillidiidae | Armadillidium | 246372 | 56083 | yes |
+| `scophthalmus_maximus` | *Scophthalmus maximus* | — | 1 | Scophthalmidae | Scophthalmus | 248673 | 416585 | yes |
+| `gibbula_ardens` | *Gibbula ardens* | — | 1 | Trochidae | Gibbula | 248906 | 556071 | yes |
+| `cerastoderma_edule` | *Cerastoderma edule* | — | 1 | Cardiidae | Cerastoderma | 250157 | 210230 | yes |
+| `chondracanthus_acicularis` | *Chondracanthus acicularis* | — | 2 | Gigartinaceae | Chondracanthus | 250900 | 327092 | yes |
+| `chromogobius_quadrivittatus` | *Chromogobius quadrivittatus* | — | 1 | Gobiidae | Chromogobius | 250974 | 97761 | yes |
+| `cladophora_prolifera` | *Cladophora prolifera* | — | 2 | Cladophoraceae | Cladophora | 251770 | 322735 | yes |
+| `tragelaphus_strepsiceros` | *Tragelaphus strepsiceros* | — | 2 | Bovidae | Tragelaphus | 251839 | 42339 | yes |
+| `hyparrhenia_hirta` | *Hyparrhenia hirta* | — | 2 | Poaceae | Hyparrhenia | 252167 | 77479 | yes |
+| `periclimenes_sagittifer` | *Periclimenes sagittifer* | — | 1 | Palaemonidae | Periclimenes | 252969 | 477036 | yes |
+| `ulex_parviflorus` | *Ulex parviflorus* | — | 2 | Fabaceae | Ulex | 253458 | 82727 | yes |
+| `lysmata_grabhami` | *Lysmata grabhami* | — | 1 | Hippolytidae | Lysmata | 254192 | 363940 | yes |
+| `cryptosoma_cristatum` | *Cryptosoma cristatum* | — | 1 | Calappidae | Cryptosoma | 254211 | 1241310 | yes |
+| `hexadella_racovitzai` | *Hexadella racovitzai* | — | 1 | Ianthellidae | Hexadella | 254295 | 481980 | yes |
+| `emarginula_huzardii` | *Emarginula huzardii* | — | 1 | Fissurellidae | Emarginula | 254339 | 1212858 | yes |
+| `antedon_bifida` | *Antedon bifida* | — | 1 | Antedonidae | Antedon | 254380 | 342278 | yes |
+| `cymopolia_barbata` | *Cymopolia barbata* | — | 2 | Dasycladaceae | Cymopolia | 254388 | 505222 | yes |
+| `calappa_granulata` | *Calappa granulata* | — | 1 | Calappidae | Calappa | 254412 | 359110 | yes |
+| `ascidia_conchilega` | *Ascidia conchilega* | — | 1 | Ascidiidae | Ascidia | 254501 | 799662 | yes |
+| `apolemia_uvaria` | *Apolemia uvaria* | — | 1 | Apolemiidae | Apolemia | 254571 | 650937 | yes |
+| `turritella_turbona` | *Turritella turbona* | — | 1 | Turritellidae | Turritella | 254581 | 495705 | yes |
+| `bispira_viola` | *Bispira viola* | — | 1 | Sabellidae | Bispira | 254615 | 1242601 | yes |
+| `symphodus_bailloni` | *Symphodus bailloni* | — | 1 | Labridae | Symphodus | 254677 | 113528 | yes |
+| `callionymus_lyra` | *Callionymus lyra* | — | 1 | Callionymidae | Callionymus | 254680 | 118717 | yes |
+| `pinnotheres_bicristatus` | *Pinnotheres bicristatus* | — | 1 | Pinnotheridae | Pinnotheres | 254707 |  | yes |
+| `verrucaria_amphibia` | *Verrucaria amphibia* | — | 2 | Verrucariaceae | Verrucaria | 254718 | 1026319 | yes |
+| `trivia_mediterranea` | *Trivia mediterranea* | — | 1 | Triviidae | Trivia | 254730 | 733243 | yes |
+| `ophiactis_savignyi` | *Ophiactis savignyi* | — | 1 | Ophiactidae | Ophiactis | 254743 | 311974 | yes |
+| `eurhamphaea_vexilligera` | *Eurhamphaea vexilligera* | — | 1 | Eurhamphaeidae | Eurhamphaea | 254746 | 605549 | yes |
+| `agalma_okeni` | *Agalma okeni* | Agalma okenii | 1 | Agalmatidae | Agalma | 254749 | 1458984 | yes |
+| `planes_minutus` | *Planes minutus* | — | 1 | Grapsidae | Planes | 254751 | 295349 | yes |
+| `gibberula_hernandezi` | *Gibberula hernandezi* | — | 1 | Cystiscidae | Gibberula | 254764 | 1496079 | yes |
+| `morchellium_argus` | *Morchellium argus* | — | 1 | Polyclinidae | Morchellium | 254949 | 542841 | yes |
+| `halimeda_discoidea` | *Halimeda discoidea* | — | 2 | Halimedaceae | Halimeda | 254977 | 131317 | yes |
+| `tectarius_striatus` | *Tectarius striatus* | — | 1 | Littorinidae | Tectarius | 255019 | 124369 | yes |
+| `sphaerophoria_scripta` | *Sphaerophoria scripta* | — | 2 | Syrphidae | Sphaerophoria | 255081 | 52964 | yes |
+| `arothron_hispidus` | *Arothron hispidus* | — | 1 | Tetraodontidae | Arothron | 255465 | 144017 | yes |
+| `maja_brachydactyla` | *Maja brachydactyla* | — | 1 | Majidae | Maja | 255593 | 447552 | yes |
+| `dictyota_mediterranea` | *Dictyota mediterranea* | — | 2 | Dictyotaceae | Dictyota | 255633 | 1483161 | yes |
+| `tectonatica_prietoi` | *Tectonatica prietoi* | — | 1 | Naticidae | Tectonatica | 255694 | 1400470 | yes |
+| `xestospongia_testudinaria` | *Xestospongia testudinaria* | — | 1 | Petrosiidae | Xestospongia | 256419 | 319598 | yes |
+| `clibanarius_aequabilis` | *Clibanarius aequabilis* | — | 1 | Diogenidae | Clibanarius | 256791 | 954396 | yes |
+| `cryptocelis_compacta` | *Cryptocelis compacta* | — | 1 | Cryptocelidae | Cryptocelis | 256845 | 916819 | yes |
+| `crocodylus_niloticus` | *Crocodylus niloticus* | — | 2 | Crocodylidae | Crocodylus | 256891 | 341972 | yes |
+| `aglaothamnion_caudatum` | *Aglaothamnion caudatum* | — | 2 | Ceramiaceae | Aglaothamnion | 256970 | 1447281 | yes |
+| `crella_rosea` | *Crella rosea* | Crella (Yvesia) rosea | 1 | Crellidae | Crella | 257045 | 337989 | yes |
+| `armandia_polyophthalma` | *Armandia polyophthalma* | — | 1 | Opheliidae | Armandia | 257187 | 1341587 | yes |
+| `crepidula_unguiformis` | *Crepidula unguiformis* | — | 1 | Calyptraeidae | Crepidula | 257391 | 883539 | yes |
+| `suberites_massa` | *Suberites massa* | — | 1 | Suberitidae | Suberites | 257419 | 542738 | yes |
+| `aetea_anguina` | *Aetea anguina* | — | 1 | Aeteidae | Aetea | 257530 | 196152 | yes |
+| `polygonum_maritimum` | *Polygonum maritimum* | — | 2 | Polygonaceae | Polygonum | 258214 | 514999 | yes |
+| `wrangelia_argus` | *Wrangelia argus* | — | 2 | Ceramiaceae | Wrangelia | 262386 | 322729 | yes |
+| `lucina_adansoni` | *Lucina adansoni* | — | 1 | Lucinidae | Lucina | 262446 | 1208197 | yes |
+| `sagartia_undata` | *Sagartia undata* | — | 1 | Sagartiidae | Sagartia | 262600 | 1500748 | yes |
+| `pagurus_chevreuxi` | *Pagurus chevreuxi* | — | 1 | Paguridae | Pagurus | 262947 | 1071207 | yes |
+| `ericaria_amentacea` | *Ericaria amentacea* | — | 2 | Sargassaceae | Ericaria | 263310 | 1183113 | yes |
+| `branchiomma_bombyx` | *Branchiomma bombyx* | — | 1 | Sabellidae | Branchiomma | 264097 | 950274 | yes |
+| `kyphosus_vaigiensis` | *Kyphosus vaigiensis* | — | 1 | Kyphosidae | Kyphosus | 264120 | 210173 | yes |
+| `leuckartiara_nobilis` | *Leuckartiara nobilis* | — | 1 | Pandeidae | Leuckartiara | 264163 | 776375 | yes |
+| `marcus_kochia_littorea` | *Marcus-kochia littorea* | — | 2 | Brassicaceae | Marcus-kochia | 264401 | 902550 | yes |
+| `acanthochitona_discrepans` | *Acanthochitona discrepans* | — | 1 | Acanthochitonidae | Acanthochitona | 265111 | 1569106 | yes |
+| `wet_wipes` | *Wet wipes* | — | 2 | Hygiene plastic |  | 265375 |  | yes |
+| `polycitor_adriaticus` | *Polycitor adriaticus* | — | 1 | Polycitoridae | Polycitor | 257169 | 799132 | yes |
+| `ciona_savignyi` | *Ciona savignyi* | — | 1 | Cionidae | Ciona | 264956 | 81614 | yes |
+| `disporella_hispida` | *Disporella hispida* | — | 1 | Lichenoporidae | Disporella | 244850 | 203436 | yes |
+| `synoicum_blochmanni` | *Synoicum blochmanni* | — | 1 | Polyclinidae | Synoicum | 254427 | 799475 | yes |
+| `aplidium_ocellatum` | *Aplidium ocellatum* | — | 1 | Polyclinidae | Aplidium | 254609 | 788193 | yes |
+| `populus_nigra` | *Populus nigra* | — | 2 | Salicaceae | Populus | 243576 | 47565 | yes |
+| `alcedo_atthis` | *Alcedo atthis* | — | 2 | Alcedinidae | Alcedo | 243600 | 2599 | yes |
+| `prunus_dulcis` | *Prunus dulcis* | — | 2 | Rosaceae | Prunus | 244166 | 69936 | yes |
+| `anacyclus_valentinus` | *Anacyclus valentinus* | Porophyllum leiocarpum | 2 | Asteraceae | Anacyclus | 244452 | 509582 | yes |
+| `anthus_pratensis` | *Anthus pratensis* | — | 2 | Motacillidae | Anthus | 245344 | 13729 | yes |
+| `araujia_sericifera` | *Araujia sericifera* | — | 2 | Asclepiadaceae | Araujia | 245846 | 75499 | yes |
+| `erithacus_rubecula` | *Erithacus rubecula* | — | 2 | Muscicapidae | Erithacus | 246793 | 13094 | yes |
+| `diplotaxis_erucoides` | *Diplotaxis erucoides* | — | 2 | Brassicaceae | Diplotaxis | 244804 | 181891 | yes |
+| `oedemera_nobilis` | *Oedemera nobilis* | — | 2 | Oedemeridae | Oedemera | 18482 | 61844 | yes |
+| `mercurialis_annua` | *Mercurialis annua* | — | 2 | Euphorbiaceae | Mercurialis | 246701 | 68838 | yes |
+| `jania_longifurca` | *Jania longifurca* | — | 2 | Lithophyllaceae | Jania | 263368 | 1226222 | yes |
+| `maja_squinado` | *Maja squinado* | — | 1 | Majidae | Maja | 245751 | 324537 | yes |
+| `messor_barbarus` | *Messor barbarus* | — | 2 | Formicidae | Messor | 246794 | 118487 | yes |
+| `bromus_madritensis` | *Bromus madritensis* | — | 2 | Poaceae | Bromus | 247269 | 52707 | yes |
+| `salsola_kali` | *Salsola kali* | — | 2 | Chenopodiaceae | Salsola | 247270 | 57897 | yes |
+| `euphorbia_serrata` | *Euphorbia serrata* | — | 2 | Euphorbiaceae | Euphorbia | 247970 | 162851 | yes |
+| `chthamalus_montagui` | *Chthamalus montagui* | — | 1 | Chthamalidae | Chthamalus | 251232 | 197140 | yes |
+| `vicia_sativa` | *Vicia sativa* | — | 2 | Fabaceae | Vicia | 253626 | 53324 | yes |
+| `phyllangia_americana` | *Phyllangia americana* | — | 1 | Caryophylliidae | Phyllangia | 254385 | 324980 | yes |
+| `didemnum_pseudofulgens` | *Didemnum pseudofulgens* | — | 1 | Didemnidae | Didemnum | 265124 | 798514 | yes |
+| `eriobotrya_japonica` | *Eriobotrya japonica* | — | 2 | Rosaceae | Eriobotrya | 241180 | 76949 | yes |
+| `taraxacum_officinale` | *Taraxacum officinale* | — | 2 | Asteraceae | Taraxacum | 250710 | 47602 | yes |
+| `phlomis_fruticosa` | *Phlomis fruticosa* | — | 2 | Lamiaceae | Phlomis | 253166 | 135327 | yes |
+| `ruscus_aculeatus` | *Ruscus aculeatus* | — | 2 | Asparagaceae | Ruscus | 246855 | 82904 | yes |
+| `sonchus_oleraceus` | *Sonchus oleraceus* | — | 2 | Asteraceae | Sonchus | 250500 | 53294 | yes |
+| `carpocoris_mediterraneus` | *Carpocoris mediterraneus* | — | 2 | Pentatomidae | Carpocoris | 122261 | 327154 | yes |
+| `pomatias_elegans` | *Pomatias elegans* | — | 1 | Pomatiidae | Pomatias | 14350 | 336731 | yes |
+| `physalia_physalis` | *Physalia physalis* | — | 1 | Physaliidae | Physalia | 24847 | 117302 | yes |
+| `parablennius_ruber` | *Parablennius ruber* | — | 1 | Blenniidae | Parablennius | 34990 | 118684 | yes |
+| `umbrina_cirrosa` | *Umbrina cirrosa* | — | 1 | Sciaenidae | Umbrina | 34995 | 118680 | yes |
+| `pachymatisma_johnstonia` | *Pachymatisma johnstonia* | — | 1 | Geodiidae | Pachymatisma | 35203 | 337982 | yes |
+| `phillyrea_angustifolia` | *Phillyrea angustifolia* | — | 2 | Oleaceae | Phillyrea | 50148 | 82871 | yes |
+| `phorcus_richardi` | *Phorcus richardi* | — | 1 | Trochidae | Phorcus | 89003 | 883903 | yes |
+| `lentidium_mediterraneum` | *Lentidium mediterraneum* | — | 1 | Corbulidae | Lentidium | 130369 | 781134 | yes |
+| `polyommatus_icarus` | *Polyommatus icarus* | — | 2 | Lycaenidae | Polyommatus | 159939 | 55641 | yes |
+| `grapsus_adscensionis` | *Grapsus adscensionis* | — | 1 | Grapsidae | Grapsus | 240387 | 67578 | yes |
+| `pericelis_cata` | *Pericelis cata* | — | 1 | Pericelidae | Pericelis | 240388 | 972508 | yes |
+| `acanthocardia_spinosa` | *Acanthocardia spinosa* | — | 1 | Cardiidae | Acanthocardia | 241875 | 962592 | yes |
+| `acetabularia_caliculus` | *Acetabularia caliculus* | — | 2 | Polyphysaceae | Acetabularia | 242173 | 1345965 | yes |
+| `actinothoe_sphyrodeta` | *Actinothoe sphyrodeta* | — | 1 | Sagartiidae | Actinothoe | 242594 | 337993 | yes |
+| `porpita_porpita` | *Porpita porpita* | — | 1 | Porpitidae | Porpita | 243666 | 59683 | yes |
+| `dalophis_imberbis` | *Dalophis imberbis* | — | 1 | Ophichthidae | Dalophis | 243722 | 618483 | yes |
+| `alopochen_aegyptiaca` | *Alopochen aegyptiaca* | — | 2 | Anatidae | Alopochen | 243926 | 72486 | yes |
+| `alpheus_dentipes` | *Alpheus dentipes* | — | 1 | Alpheidae | Alpheus | 243983 | 908641 | yes |
+| `alvania_cancellata` | *Alvania cancellata* | — | 1 | Rissoidae | Alvania | 244041 | 482261 | yes |
+| `lipophrys_pholis` | *Lipophrys pholis* | — | 1 | Blenniidae | Lipophrys | 244565 | 210294 | yes |
+| `lithophyllum_dentatum` | *Lithophyllum dentatum* | — | 2 | Lithophyllaceae | Lithophyllum | 244639 | 639688 | yes |
+| `lonicera_implexa` | *Lonicera implexa* | — | 2 | Caprifoliaceae | Lonicera | 244842 | 82664 | yes |
+| `donax_vittatus` | *Donax vittatus* | — | 1 | Donacidae | Donax | 244938 | 363775 | yes |
+| `lucilia_sericata` | *Lucilia sericata* | — | 2 | Calliphoridae | Lucilia | 245030 | 128824 | yes |
+| `enoplometopus_antillensis` | *Enoplometopus antillensis* | Hoplometopus antillensis | 1 | Enoplometopidae | Enoplometopus | 245876 | 1439271 | yes |
+| `medicago_marina` | *Medicago marina* | — | 2 | Fabaceae | Medicago | 246170 | 210354 | yes |
+| `bittium_lacteum` | *Bittium lacteum* | — | 1 | Cerithiidae | Bittium | 246506 | 884139 | yes |
+| `menemerus_taeniatus` | *Menemerus taeniatus* | — | 2 | Salticidae | Menemerus | 246637 | 468013 | yes |
+| `runcinia_grammica` | *Runcinia grammica* | — | 2 | Thomisidae | Runcinia | 246839 | 318818 | yes |
+| `ascidia_virginea` | *Ascidia virginea* | — | 1 | Ascidiidae | Ascidia | 246849 | 474163 | yes |
+| `calyptraea_chinensis` | *Calyptraea chinensis* | — | 1 | Calyptraeidae | Calyptraea | 248396 | 129678 | yes |
+| `capsella_bursa_pastoris` | *Capsella bursa-pastoris* | — | 2 | Brassicaceae | Capsella | 248813 | 56121 | yes |
+| `gibbula_magus` | *Gibbula magus* | — | 1 | Trochidae | Gibbula | 248911 | 469321 | yes |
+| `petrosedum_sediforme` | *Petrosedum sediforme* | — | 2 | Crassulaceae | Petrosedum | 249268 | 734833 | yes |
+| `fulica_atra` | *Fulica atra* | — | 2 | Rallidae | Fulica | 249327 | 482 | yes |
+| `nucula_hanleyi` | *Nucula hanleyi* | — | 1 | Nuculidae | Nucula | 249494 | 482981 | yes |
+| `haliclona_latens` | *Haliclona latens* | Haliclona (Halichoclona) latens | 1 | Chalinidae | Haliclona | 249857 | 834328 | yes |
+| `halictus_scabiosae` | *Halictus scabiosae* | — | 2 | Halictidae | Halictus | 249862 | 415589 | yes |
+| `oestergrenia_digitata` | *Oestergrenia digitata* | — | 1 | Synaptidae | Oestergrenia | 250094 | 1162587 | yes |
+| `chelophyes_appendiculata` | *Chelophyes appendiculata* | — | 1 | Diphyidae | Chelophyes | 250681 | 549343 | yes |
+| `chenopodium_nutans` | *Chenopodium nutans* | — | 2 | Chenopodiaceae | Chenopodium | 250694 | 467323 | yes |
+| `tettigonia_viridissima` | *Tettigonia viridissima* | — | 2 | Tettigoniidae | Tettigonia | 250892 | 133250 | yes |
+| `chondrochelia_savignyi` | *Chondrochelia savignyi* | — | 1 | Leptocheliidae | Chondrochelia | 250913 | 1242062 | yes |
+| `hydractinia_echinata` | *Hydractinia echinata* | — | 1 | Hydractiniidae | Hydractinia | 251971 | 203796 | yes |
+| `hypleurochilus_bananensis` | *Hypleurochilus bananensis* | — | 1 | Blenniidae | Hypleurochilus | 252293 | 103088 | yes |
+| `connochaetes_taurinus` | *Connochaetes taurinus* | — | 2 | Bovidae | Connochaetes | 252379 | 42280 | yes |
+| `oxalis_pes_caprae` | *Oxalis pes-caprae* | — | 2 | Oxalidaceae | Oxalis | 252625 | 53169 | yes |
+| `patella_aspera` | *Patella aspera* | — | 1 | Patellidae | Patella | 252872 | 339394 | yes |
+| `umbrina_canariensis` | *Umbrina canariensis* | — | 1 | Sciaenidae | Umbrina | 253482 | 120647 | yes |
+| `epinephelus_caninus` | *Epinephelus caninus* | — | 1 | Epinephelidae | Epinephelus | 254196 | 100083 | yes |
+| `heteroconger_longissimus` | *Heteroconger longissimus* | — | 1 | Congridae | Heteroconger | 254241 | 127706 | yes |
+| `diodon_liturosus` | *Diodon liturosus* | — | 1 | Diodontidae | Diodon | 254357 | 123268 | yes |
+| `stypopodium_zonale` | *Stypopodium zonale* | — | 2 | Dictyotaceae | Stypopodium | 254383 | 131274 | yes |
+| `myrichthys_pardalis` | *Myrichthys pardalis* | — | 1 | Ophichthidae | Myrichthys | 254391 | 504432 | yes |
+| `madracis_asperula` | *Madracis asperula* | — | 1 | Pocilloporidae | Madracis | 254400 | 105089 | yes |
+| `phyllariopsis_brevipes` | *Phyllariopsis brevipes* | — | 2 | Phyllariaceae | Phyllariopsis | 254414 | 343397 | yes |
+| `ciona_roulii` | *Ciona roulii* | — | 1 | Cionidae | Ciona | 254429 | 569079 | yes |
+| `holothuria_arguinensis` | *Holothuria arguinensis* | Holothuria (Roweothuria) arguinensis | 1 | Holothuriidae | Holothuria | 254464 | 349373 | yes |
+| `epitonium_clathrus` | *Epitonium clathrus* | — | 1 | Epitoniidae | Epitonium | 254505 | 482316 | yes |
+| `synischia_hectica` | *Synischia hectica* | — | 1 | Idoteidae | Synischia | 254532 | 820506 | yes |
+| `styela_clava` | *Styela clava* | — | 1 | Styelidae | Styela | 254542 | 81615 | yes |
+| `dasyatis_tortonesei` | *Dasyatis tortonesei* | — | 1 | Dasyatidae | Dasyatis | 254556 | 120666 | yes |
+| `podocerus_variegatus` | *Podocerus variegatus* | — | 1 | Podoceridae | Podocerus | 254564 | 1071216 | yes |
+| `gnathia_maxillaris` | *Gnathia maxillaris* | — | 1 | Gnathiidae | Gnathia | 254612 | 1141991 | yes |
+| `eunice_dubitata` | *Eunice dubitata* | — | 1 | Eunicidae | Eunice | 254616 | 943976 | yes |
+| `pomatoschistus_flavescens` | *Pomatoschistus flavescens* | — | 1 | Gobiidae | Pomatoschistus | 254687 | 1316614 | yes |
+| `lobophora_canariensis` | *Lobophora canariensis* | — | 2 | Dictyotaceae | Lobophora | 254755 | 1006754 | yes |
+| `parvocaulis_polyphysoides` | *Parvocaulis polyphysoides* | — | 2 | Polyphysaceae | Parvocaulis | 254762 | 1130166 | yes |
+| `tripterygion_tartessicum` | *Tripterygion tartessicum* | — | 1 | Tripterygiidae | Tripterygion | 254976 | 446588 | yes |
+| `nerocila_armata` | *Nerocila armata* | — | 1 | Cymothoidae | Nerocila | 255025 | 1299014 | yes |
+| `abylopsis_tetragona` | *Abylopsis tetragona* | — | 1 | Abylidae | Abylopsis | 255059 | 201723 | yes |
+| `ericaria_brachycarpa` | *Ericaria brachycarpa* | — | 2 | Sargassaceae | Ericaria | 255200 | 1183117 | yes |
+| `zebrus_pallaoroi` | *Zebrus pallaoroi* | — | 1 | Gobiidae | Zebrus | 255211 | 1313296 | yes |
+| `parvocaulis_parvulus` | *Parvocaulis parvulus* | — | 2 | Polyphysaceae | Parvocaulis | 255596 | 331032 | yes |
+| `capulus_ungaricus` | *Capulus ungaricus* | — | 1 | Capulidae | Capulus | 255678 | 482335 | yes |
+| `pholas_dactylus` | *Pholas dactylus* | — | 1 | Pholadidae | Pholas | 255687 | 451072 | yes |
+| `smithiella_costulata` | *Smithiella costulata* | — | 1 | Mangeliidae | Smithiella | 255707 | 1549931 | yes |
+| `plectorhinchus_flavomaculatus` | *Plectorhinchus flavomaculatus* | — | 1 | Haemulidae | Plectorhinchus | 256603 | 341862 | yes |
+| `hydractinia_aculeata` | *Hydractinia aculeata* | — | 1 | Hydractiniidae | Hydractinia | 257149 | 857575 | yes |
+| `cerebratulus_fuscus` | *Cerebratulus fuscus* | — | 1 | Lineidae | Cerebratulus | 257190 | 497481 | yes |
+| `scissurella_costata` | *Scissurella costata* | — | 1 | Scissurellidae | Scissurella | 257459 | 1212386 | yes |
+| `batophora_occidentalis` | *Batophora occidentalis* | — | 2 | Dasycladaceae | Batophora | 257527 | 1424271 | yes |
+| `gibbula_candei` | *Gibbula candei* | — | 1 | Trochidae | Gibbula | 262308 | 1199306 | yes |
+| `amphioctopus_burryi` | *Amphioctopus burryi* | — | 1 | Octopodidae | Amphioctopus | 262324 | 253677 | yes |
+| `processa_elegantula` | *Processa elegantula* | — | 1 | Processidae | Processa | 262336 | 1071219 | yes |
+| `galaxaura_rugosa` | *Galaxaura rugosa* | — | 2 | Galaxauraceae | Galaxaura | 262439 | 131364 | yes |
+| `bittium_incile` | *Bittium incile* | — | 1 | Cerithiidae | Bittium | 262451 | 1216168 | yes |
+| `cervera_atlantica` | *Cervera atlantica* | — | 1 | Cornulariidae | Cervera | 262466 | 859013 | yes |
+| `pomatostegus_stellatus` | *Pomatostegus stellatus* | — | 1 | Serpulidae | Pomatostegus | 262479 | 62611 | yes |
+| `chalinula_parasimulans` | *Chalinula parasimulans* | Haliclona (Chalinula) parasimulans | 1 | Chalinidae | Chalinula | 262486 | 1682066 | yes |
+| `asperococcus_bullosus` | *Asperococcus bullosus* | — | 2 | Chordariaceae | Asperococcus | 263038 | 840727 | yes |
+| `halichondria_bowerbanki` | *Halichondria bowerbanki* | Halichondria (Halichondria) bowerbanki | 1 | Halichondriidae | Halichondria | 263219 | 120498 | yes |
+| `distaplia_bermudensis` | *Distaplia bermudensis* | — | 1 | Holozoidae | Distaplia | 263339 | 798902 | yes |
+| `halimeda_incrassata` | *Halimeda incrassata* | — | 2 | Halimedaceae | Halimeda | 263353 | 196612 | yes |
+| `oscarella_balibaloi` | *Oscarella balibaloi* | — | 1 | Oscarellidae | Oscarella | 263457 | 702590 | yes |
+| `patella_ordinaria` | *Patella ordinaria* | — | 1 | Patellidae | Patella | 263523 | 1362730 | yes |
+| `nemastoma_canariense` | *Nemastoma canariense* | — | 2 | Nemastomataceae | Nemastoma | 263548 | 1392744 | yes |
+| `phallusia_nigra` | *Phallusia nigra* | — | 1 | Ascidiidae | Phallusia | 264042 | 566447 | yes |
+| `helicosalpa_virgula` | *Helicosalpa virgula* | — | 1 | Salpidae | Helicosalpa | 264122 | 520111 | yes |
+| `prostheceraeus_rubropunctatus` | *Prostheceraeus rubropunctatus* | — | 1 | Euryleptidae | Prostheceraeus | 264180 |  | yes |
+| `truncatella_subcylindrica` | *Truncatella subcylindrica* | — | 1 | Truncatellidae | Truncatella | 265120 | 336741 | yes |
+| `thericium_protractum` | *Thericium protractum* | — | 1 | Cerithiidae | Thericium | 265459 | 1638051 | yes |
+| `evelineus_mcintoshii` | *Evelineus mcintoshii* | — | 1 | Lineidae | Evelineus | 267264 | 1237622 | yes |
+| `pteria_hirundo` | *Pteria hirundo* | — | 1 | Pteriidae | Pteria | 244480 | 359109 | yes |
+| `aglaophenia_acacia` | *Aglaophenia acacia* | — | 1 | Aglaopheniidae | Aglaophenia | 258212 | 1442082 | yes |
+| `gongolaria_squarrosa` | *Gongolaria squarrosa* | — | 2 | Sargassaceae | Gongolaria | 254002 | 1424542 | yes |
+| `didemnum_coriaceum` | *Didemnum coriaceum* | — | 1 | Didemnidae | Didemnum | 254145 | 558820 | yes |
+| `ensis_ensis` | *Ensis ensis* | — | 1 | Pharidae | Ensis | 254711 | 450208 | yes |
+| `didemnum_coccineum` | *Didemnum coccineum* | — | 1 | Didemnidae | Didemnum | 255516 | 798394 | yes |
+| `hexadella_pruvoti` | *Hexadella pruvoti* | — | 1 | Ianthellidae | Hexadella | 262032 | 1075901 | yes |
+| `ciona_edwardsi` | *Ciona edwardsi* | — | 1 | Cionidae | Ciona | 251435 | 799774 | yes |
+| `microporella_verrucosa` | *Microporella verrucosa* | — | 1 | Microporellidae | Microporella | 262355 | 1661053 | yes |
+| `pneophyllum_fragile` | *Pneophyllum fragile* | — | 2 | Lithophyllaceae | Pneophyllum | 264860 | 203743 | yes |
+| `acanthus_mollis` | *Acanthus mollis* | — | 2 | Acanthaceae | Acanthus | 241915 | 70045 | yes |
+| `iris_pseudacorus` | *Iris pseudacorus* | — | 2 | Iridaceae | Iris | 242061 | 47779 | yes |
+| `aloe_maculata` | *Aloe maculata* | — | 2 | Xanthorrhoeaceae | Aloe | 243910 | 75379 | yes |
+| `artemisia_annua` | *Artemisia annua* | — | 2 | Asteraceae | Artemisia | 246738 | 75584 | yes |
+| `morus_nigra` | *Morus nigra* | — | 2 | Moraceae | Morus | 247523 | 126741 | yes |
+| `cercis_siliquastrum` | *Cercis siliquastrum* | — | 2 | Fabaceae | Cercis | 250174 | 153440 | yes |
+| `papaver_somniferum` | *Papaver somniferum* | — | 2 | Papaveraceae | Papaver | 252741 | 78346 | yes |
+| `trachemys_scripta` | *Trachemys scripta* | — | 2 | Emydidae | Trachemys | 251750 | 39782 | yes |
+| `urospermum_dalechampii` | *Urospermum dalechampii* | — | 2 | Asteraceae | Urospermum | 253501 | 59343 | yes |
+| `verbascum_sinuatum` | *Verbascum sinuatum* | — | 2 | Scrophulariaceae | Verbascum | 253585 | 82838 | yes |
+| `pieris_brassicae` | *Pieris brassicae* | — | 2 | Pieridae | Pieris | 241830 | 55401 | yes |
+| `cyanistes_caeruleus` | *Cyanistes caeruleus* | — | 2 | Paridae | Cyanistes | 243037 | 144849 | yes |
+| `dendrophyllia_ramea` | *Dendrophyllia ramea* | — | 1 | Dendrophylliidae | Dendrophyllia | 244160 | 357418 | yes |
+| `lonicera_japonica` | *Lonicera japonica* | — | 2 | Caprifoliaceae | Lonicera | 244846 | 77835 | yes |
+| `quercus_suber` | *Quercus suber* | — | 2 | Fagaceae | Quercus | 245190 | 50868 | yes |
+| `rostraria_cristata` | *Rostraria cristata* | — | 2 | Poaceae | Rostraria | 246559 | 167999 | yes |
+| `opuntia_ficus_indica` | *Opuntia ficus-indica* | — | 2 | Cactaceae | Opuntia | 250460 | 64119 | yes |
+| `convolvulus_arvensis` | *Convolvulus arvensis* | — | 2 | Convolvulaceae | Convolvulus | 252415 | 53021 | yes |
+| `xanthoria_parietina` | *Xanthoria parietina* | — | 2 | Teloschistaceae | Xanthoria | 253726 | 55576 | yes |
+| `pyrosoma_atlanticum` | *Pyrosoma atlanticum* | — | 1 | Pyrosomatidae | Pyrosoma | 254693 | 51108 | yes |
+| `heliophanus_apiatus` | *Heliophanus apiatus* | — | 2 | Salticidae | Heliophanus | 251143 | 466264 | yes |
+| `corvus_cornix` | *Corvus cornix* | — | 2 | Corvidae | Corvus | 242135 | 144757 | yes |
+| `linaria_cannabina` | *Linaria cannabina* | — | 2 | Fringillidae | Linaria | 244169 | 558634 | yes |
+| `quercus_ilex` | *Quercus ilex* | — | 2 | Fagaceae | Quercus | 245137 | 78805 | yes |
+| `merops_apiaster` | *Merops apiaster* | — | 2 | Meropidae | Merops | 246744 | 2191 | yes |
+| `cistus_albidus` | *Cistus albidus* | — | 2 | Cistaceae | Cistus | 251521 | 82673 | yes |
+| `papilio_machaon` | *Papilio machaon* | — | 2 | Papilionidae | Papilio | 252748 | 56529 | yes |
+| `urtica_dioica` | *Urtica dioica* | — | 2 | Urticaceae | Urtica | 253508 | 51884 | yes |
+| `plegadis_falcinellus` | *Plegadis falcinellus* | — | 2 | Threskiornithidae | Plegadis | 242634 | 3756 | yes |
+| `tarentola_mauritanica` | *Tarentola mauritanica* | — | 2 | Phyllodactylidae |  | 156225 | 33602 | yes |
+| `beta_vulgaris` | *Beta vulgaris* | — | 2 | Chenopodiaceae | Beta | 248167 | 54498 | yes |
+| `glebionis_coronaria` | *Glebionis coronaria* | — | 2 | Asteraceae | Glebionis | 248989 | 59904 | yes |
+| `sisymbrium_officinale` | *Sisymbrium officinale* | — | 2 | Brassicaceae | Sisymbrium | 250331 | 53266 | yes |
+| `helichrysum_stoechas` | *Helichrysum stoechas* | — | 2 | Asteraceae | Helichrysum | 251116 | 82641 | yes |
+| `oedemera_flavipes` | *Oedemera flavipes* | — | 2 | Oedemeridae | Oedemera | 18485 | 319088 | yes |
+| `epinephelus_fuscoguttatus` | *Epinephelus fuscoguttatus* | — | 1 | Epinephelidae | Epinephelus | 29815 | 56559 | yes |
+| `botrylloides_violaceus` | *Botrylloides violaceus* | — | 1 | Styelidae | Botrylloides | 35099 | 81776 | yes |
+| `nerophis_ophidion` | *Nerophis ophidion* | — | 1 | Syngnathidae | Nerophis | 45801 | 118623 | yes |
+| `polititapes_lucens` | *Polititapes lucens* | — | 1 | Veneridae | Polititapes | 46414 | 1470734 | yes |
+| `comoplana_palmula` | *Comoplana palmula* | — | 1 | Stylochoplanidae | Comoplana | 78068 | 1075288 | yes |
+| `eurydema_ornata` | *Eurydema ornata* | — | 2 | Pentatomidae | Eurydema | 83471 | 132069 | yes |
+| `phorcus_atratus` | *Phorcus atratus* | — | 1 | Trochidae | Phorcus | 89004 | 546989 | yes |
+| `scarus_rubroviolaceus` | *Scarus rubroviolaceus* | — | 1 | Labridae | Scarus | 91153 | 83297 | yes |
+| `pempheris_oualensis` | *Pempheris oualensis* | — | 1 | Pempheridae | Pempheris | 91971 | 196845 | yes |
+| `aplus_assimilis` | *Aplus assimilis* | Aplus scacchianus | 1 | Pisaniidae | Aplus | 94369 | 1031202 | yes |
+| `bivetiella_cancellata` | *Bivetiella cancellata* | — | 1 | Cancellariidae | Bivetiella | 102852 | 781543 | yes |
+| `sphyraena_sphyraena` | *Sphyraena sphyraena* | — | 1 | Sphyraenidae | Sphyraena | 119897 | 47255 | yes |
+| `lathyrus_clymenum` | *Lathyrus clymenum* | — | 2 | Fabaceae | Lathyrus | 129044 | 82741 | yes |
+| `micromesistius_poutassou` | *Micromesistius poutassou* | — | 1 | Gadidae | Micromesistius | 170843 | 120702 | yes |
+| `zygaena_trifolii` | *Zygaena trifolii* | — | 2 | Zygaenidae | Zygaena | 220050 | 130403 | yes |
+| `tubastraea_micranthus` | *Tubastraea micranthus* | — | 1 | Dendrophylliidae | Tubastraea | 241644 | 355665 | yes |
+| `tubastraea_coccinea` | *Tubastraea coccinea* | — | 1 | Dendrophylliidae | Tubastraea | 241648 | 51802 | yes |
+| `acanthocardia_aculeata` | *Acanthocardia aculeata* | — | 1 | Cardiidae | Acanthocardia | 241855 | 424302 | yes |
+| `jacobaea_maritima` | *Jacobaea maritima* | — | 2 | Asteraceae | Jacobaea | 242208 | 357682 | yes |
+| `janthina_pallida` | *Janthina pallida* | — | 1 | Janthinidae | Janthina | 242237 | 254082 | yes |
+| `craterellus_cornucopioides` | *Craterellus cornucopioides* | — | 2 | Cantharellaceae | Craterellus | 242361 | 48607 | yes |
+| `crithmum_maritimum` | *Crithmum maritimum* | — | 2 | Apiaceae | Crithmum | 242470 | 82602 | yes |
+| `laevicardium_oblongum` | *Laevicardium oblongum* | — | 1 | Cardiidae | Laevicardium | 242825 | 1026233 | yes |
+| `polistes_dominula` | *Polistes dominula* | — | 2 | Vespidae | Polistes | 242908 | 84640 | yes |
+| `polypodium_cambricum` | *Polypodium cambricum* | — | 2 | Polypodiaceae | Polypodium | 243388 | 346413 | yes |
+| `cynoglossum_creticum` | *Cynoglossum creticum* | — | 2 | Boraginaceae | Cynoglossum | 243413 | 319120 | yes |
+| `alsidium_corallinum` | *Alsidium corallinum* | — | 2 | Rhodomelaceae | Alsidium | 243991 | 1286724 | yes |
+| `raja_montagui` | *Raja montagui* | — | 1 | Rajidae | Raja | 245239 | 111527 | yes |
+| `anthophora_bimaculata` | *Anthophora bimaculata* | — | 2 | Apidae | Anthophora | 245274 | 484631 | yes |
+| `medicago_littoralis` | *Medicago littoralis* | — | 2 | Fabaceae | Medicago | 246164 | 165209 | yes |
+| `menemerus_semilimbatus` | *Menemerus semilimbatus* | — | 2 | Salticidae | Menemerus | 246633 | 157990 | yes |
+| `sacculina_carcini` | *Sacculina carcini* | — | 2 | Sacculinidae | Sacculina | 247049 | 210286 | yes |
+| `eupeodes_corollae` | *Eupeodes corollae* | — | 2 | Syrphidae | Eupeodes | 247674 | 69190 | yes |
+| `cabestana_cutacea` | *Cabestana cutacea* | — | 1 | Ranellidae | Cabestana | 247890 | 704853 | yes |
+| `calystegia_sepium` | *Calystegia sepium* | — | 2 | Convolvulaceae | Calystegia | 248399 | 57481 | yes |
+| `evarcha_jucunda` | *Evarcha jucunda* | — | 2 | Salticidae | Evarcha | 248402 | 194133 | yes |
+| `ficopomatus_enigmaticus` | *Ficopomatus enigmaticus* | — | 1 | Serpulidae | Ficopomatus | 248789 | 85363 | yes |
+| `giraffa_camelopardalis` | *Giraffa camelopardalis* | — | 2 | Giraffidae | Giraffa | 248927 | 42157 | yes |
+| `carybdea_marsupialis` | *Carybdea marsupialis* | — | 1 | Carybdeidae | Carybdea | 249462 | 255959 | yes |
+| `sepiola_affinis` | *Sepiola affinis* | — | 1 | Sepiolidae | Sepiola | 249614 | 151485 | yes |
+| `centaurea_pectinata` | *Centaurea pectinata* | — | 2 | Asteraceae | Centaurea | 249955 | 133244 | yes |
+| `chromogobius_zebratus` | *Chromogobius zebratus* | — | 1 | Gobiidae | Chromogobius | 250976 | 97762 | yes |
+| `sporobolus_pungens` | *Sporobolus pungens* | — | 2 | Poaceae | Sporobolus | 251239 | 1465654 | yes |
+| `cistus_monspeliensis` | *Cistus monspeliensis* | — | 2 | Cistaceae | Cistus | 251619 | 76363 | yes |
+| `trachurus_trachurus` | *Trachurus trachurus* | — | 1 | Carangidae | Trachurus | 251782 | 118695 | yes |
+| `palaemon_macrodactylus` | *Palaemon macrodactylus* | — | 1 | Palaemonidae | Palaemon | 252685 | 81640 | yes |
+| `papio_ursinus` | *Papio ursinus* | — | 2 | Cercopithecidae | Papio | 252752 | 57556 | yes |
+| `phacochoerus_africanus` | *Phacochoerus africanus* | — | 2 | Suidae | Phacochoerus | 253051 | 42122 | yes |
+| `phorbas_fictitius` | *Phorbas fictitius* | — | 1 | Hymedesmiidae | Phorbas | 253205 | 337984 | yes |
+| `astropecten_irregularis` | *Astropecten irregularis* | — | 1 | Astropectinidae | Astropecten | 253887 | 461704 | yes |
+| `zoothamnium_niveum` | *Zoothamnium niveum* | — | 2 | Zoothamniidae | Zoothamnium | 253971 | 1077915 | yes |
+| `actinostella_flosculifera` | *Actinostella flosculifera* | — | 1 | Actiniidae | Actinostella | 254225 | 195588 | yes |
+| `pseudocorynactis_caribbeorum` | *Pseudocorynactis caribbeorum* | — | 1 | Corallimorphidae | Pseudocorynactis | 254232 | 603304 | yes |
+| `liagora_distenta` | *Liagora distenta* | — | 2 | Liagoraceae | Liagora | 254256 | 1076070 | yes |
+| `sarda_sarda` | *Sarda sarda* | — | 1 | Scombridae |  | 254262 | 78832 | yes |
+| `pawsonia_saxicola` | *Pawsonia saxicola* | — | 1 | Cucumariidae | Pawsonia | 254293 | 363968 | yes |
+| `ocnus_lacteus` | *Ocnus lacteus* | — | 1 | Cucumariidae | Ocnus | 254316 | 542604 | yes |
+| `tuleariocaris_neglecta` | *Tuleariocaris neglecta* | — | 1 | Palaemonidae | Tuleariocaris | 254396 | 1242040 | yes |
+| `plesionika_narval` | *Plesionika narval* | — | 1 | Pandalidae | Plesionika | 254406 | 497190 | yes |
+| `contarinia_squamariae` | *Contarinia squamariae* | — | 2 | Rhizophyllidaceae | Contarinia | 254417 | 1403785 | yes |
+| `eutima_gegenbauri` | *Eutima gegenbauri* | — | 1 | Eirenidae | Eutima | 254418 | 666053 | yes |
+| `comoplana_agilis` | *Comoplana agilis* | — | 1 | Stylochoplanidae | Comoplana | 254560 | 1075287 | yes |
+| `meganyctiphanes_norvegica` | *Meganyctiphanes norvegica* | — | 1 | Euphausiidae | Meganyctiphanes | 254561 | 639178 | yes |
+| `savalia_savaglia` | *Savalia savaglia* | — | 1 | Parazoanthidae | Savalia | 254569 | 496435 | yes |
+| `cerebratulus_marginatus` | *Cerebratulus marginatus* | — | 1 | Lineidae | Cerebratulus | 254596 | 424750 | yes |
+| `zeugopterus_punctatus` | *Zeugopterus punctatus* | — | 1 | Scophthalmidae | Zeugopterus | 254663 | 338048 | yes |
+| `wheelerigobius_canariensis` | *Wheelerigobius canariensis* | — | 1 | Gobiidae | Wheelerigobius | 254741 | 1649739 | yes |
+| `ocyropsis_crystallina` | *Ocyropsis crystallina* | — | 1 | Ocyropsidae | Ocyropsis | 254758 | 362176 | yes |
+| `planocera_graffi` | *Planocera graffi* | — | 1 | Planoceridae | Planocera | 254952 | 1077378 | yes |
+| `gibberula_oryza` | *Gibberula oryza* | — | 1 | Cystiscidae | Gibberula | 254964 | 1111321 | yes |
+| `sphaeroma_serratum` | *Sphaeroma serratum* | — | 1 | Sphaeromatidae | Sphaeroma | 254970 | 337884 | yes |
+| `natica_livida` | *Natica livida* | — | 1 | Naticidae | Natica | 254981 | 254095 | yes |
+| `hippocampus_algiricus` | *Hippocampus algiricus* | — | 1 | Syngnathidae | Hippocampus | 255004 | 102809 | yes |
+| `distaplia_magnilarva` | *Distaplia magnilarva* | — | 1 | Holozoidae | Distaplia | 255018 | 798921 | yes |
+| `gymnothorax_miliaris` | *Gymnothorax miliaris* | — | 1 | Muraenidae | Gymnothorax | 255024 | 49256 | yes |
+| `aequorea_pensilis` | *Aequorea pensilis* | — | 1 | Aequoreidae | Aequorea | 255029 | 647476 | yes |
+| `mitrocoma_annae` | *Mitrocoma annae* | — | 1 | Mitrocomidae | Mitrocoma | 255060 |  | yes |
+| `pandea_conica` | *Pandea conica* | — | 1 | Pandeidae | Pandea | 255064 | 293267 | yes |
+| `atlanta_peronii` | *Atlanta peronii* | — | 1 | Atlantidae | Atlanta | 255066 | 254505 | yes |
+| `cunina_globosa` | *Cunina globosa* | — | 1 | Cuninidae | Cunina | 255076 | 660503 | yes |
+| `priacanthus_hamrur` | *Priacanthus hamrur* | — | 1 | Priacanthidae | Priacanthus | 255350 | 84116 | yes |
+| `odonus_niger` | *Odonus niger* | — | 1 | Balistidae | Odonus | 255399 | 53669 | yes |
+| `linckia_laevigata` | *Linckia laevigata* | — | 1 | Ophidiasteridae | Linckia | 255469 | 57745 | yes |
+| `emarginula_adriatica` | *Emarginula adriatica* | — | 1 | Fissurellidae | Emarginula | 255566 | 1112367 | yes |
+| `centrolabrus_exoletus` | *Centrolabrus exoletus* | — | 1 | Labridae | Centrolabrus | 255601 | 96913 | yes |
+| `patella_pellucida` | *Patella pellucida* | — | 1 | Patellidae | Patella | 255603 | 130087 | yes |
+| `macropodia_linaresi` | *Macropodia linaresi* | — | 1 | Inachidae | Macropodia | 255634 | 603988 | yes |
+| `notocochlis_dillwynii` | *Notocochlis dillwynii* | — | 1 | Naticidae | Notocochlis | 255697 | 532897 | yes |
+| `raphitoma_horrida` | *Raphitoma horrida* | — | 1 | Raphitomidae | Raphitoma | 255704 | 509476 | yes |
+| `cerastoderma_glaucum` | *Cerastoderma glaucum* | — | 1 | Cardiidae | Cerastoderma | 255708 | 339365 | yes |
+| `rissoa_ventricosa` | *Rissoa ventricosa* | — | 1 | Rissoidae | Rissoa | 255712 | 884036 | yes |
+| `gymnothorax_favagineus` | *Gymnothorax favagineus* | — | 1 | Muraenidae | Gymnothorax | 256417 | 51028 | yes |
+| `canthigaster_valentini` | *Canthigaster valentini* | — | 1 | Tetraodontidae | Canthigaster | 256427 | 129549 | yes |
+| `bolbometopon_muricatum` | *Bolbometopon muricatum* | — | 1 | Labridae | Bolbometopon | 256452 | 95867 | yes |
+| `haliclona_stirpescens` | *Haliclona stirpescens* | — | 1 | Chalinidae | Haliclona | 256686 | 1075886 | yes |
+| `stylochus_mediterraneus` | *Stylochus mediterraneus* | — | 1 | Stylochidae | Stylochus | 256780 |  | yes |
+| `clathrina_lacunosa` | *Clathrina lacunosa* | — | 1 | Clathrinidae | Clathrina | 256918 | 1227383 | yes |
+| `oceanapia_isodictyiformis` | *Oceanapia isodictyiformis* | — | 1 | Phloeodictyidae | Oceanapia | 257053 | 1044698 | yes |
+| `raphitoma_bicolor` | *Raphitoma bicolor* | — | 1 | Raphitomidae | Raphitoma | 257189 | 1239187 | yes |
+| `athorybia_rosacea` | *Athorybia rosacea* | — | 1 | Athorybiidae | Athorybia | 257201 | 651908 | yes |
+| `anchylomera_blossevillei` | *Anchylomera blossevillei* | — | 1 | Phrosinidae | Anchylomera | 257367 | 260960 | yes |
+| `hemimysis_lamornae` | *Hemimysis lamornae* | — | 1 | Mysidae | Hemimysis | 257414 | 937172 | yes |
+| `aplidium_glabrum` | *Aplidium glabrum* | — | 1 | Polyclinidae | Aplidium | 257416 | 332871 | yes |
+| `firoloida_desmarestia` | *Firoloida desmarestia* | — | 1 | Pterotracheidae | Firoloida | 257474 | 254615 | yes |
+| `chaetomorpha_mediterranea` | *Chaetomorpha mediterranea* | Chaetomorpha ligustica | 2 | Cladophoraceae | Chaetomorpha | 261981 | 345106 | yes |
+| `trachurus_mediterraneus` | *Trachurus mediterraneus* | — | 1 | Carangidae | Trachurus | 262052 | 118694 | yes |
+| `corcyrogobius_liechtensteini` | *Corcyrogobius liechtensteini* | — | 1 | Gobiidae | Corcyrogobius | 262053 | 98411 | yes |
+| `scopalina_canariensis` | *Scopalina canariensis* | — | 1 | Dictyonellidae | Scopalina | 262056 | 1290841 | yes |
+| `amphisbetia_distans` | *Amphisbetia distans* | — | 1 | Sertulariidae | Amphisbetia | 262192 | 1458986 | yes |
+| `actinia_equina` | *Actinia equina* | — | 1 | Actiniidae | Actinia | 262598 | 130085 | yes |
+| `anthomyia_illocata` | *Anthomyia illocata* | — | 2 | Muscidae | Anthomyia | 263173 | 424957 | yes |
+| `sphenia_binghami` | *Sphenia binghami* | — | 1 | Myidae | Sphenia | 263318 | 483138 | yes |
+| `modiolula_phaseolina` | *Modiolula phaseolina* | — | 1 | Mytilidae | Modiolula | 263337 | 482996 | yes |
+| `gibbula_vimontiae` | *Gibbula vimontiae* | — | 1 | Trochidae | Gibbula | 263411 | 1214333 | yes |
+| `perophora_viridis` | *Perophora viridis* | — | 1 | Perophoridae | Perophora | 263519 | 474254 | yes |
+| `hofstenia_miamia` | *Hofstenia miamia* | — | 1 | Hofsteniidae | Hofstenia | 264022 | 1167294 | yes |
+| `chelophyes_contorta` | *Chelophyes contorta* | — | 1 | Diphyidae | Chelophyes | 264398 | 656927 | yes |
+| `argyrotheca_cuneata` | *Argyrotheca cuneata* | — | 1 | Megathyrididae | Argyrotheca | 264825 | 1478297 | yes |
+| `drink_cans` | *Drink cans* | — | 2 | Consumption metal | Food cans | 265251 |  | yes |
+| `schizoporella_pungens` | *Schizoporella pungens* | — | 1 | Schizoporellidae | Schizoporella | 265851 | 714330 | yes |
+| `dichotomaria_obtusata` | *Dichotomaria obtusata* | — | 2 | Galaxauraceae | Dichotomaria | 266462 | 327064 | yes |
+| `ampelisca_brevicornis` | *Ampelisca brevicornis* | — | 1 | Ampeliscidae | Ampelisca | 266471 | 64624 | yes |
+| `pleurobrachia_pileus` | *Pleurobrachia pileus* | — | 1 | Pleurobrachiidae | Pleurobrachia | 267714 | 191599 | yes |
+| `mobula_mobular` | *Mobula mobular* | — | 1 | Myliobatidae | Mobula | 90068 | 105923 | yes |
+| `beania_hirtissima` | *Beania hirtissima* | — | 1 | Beaniidae | Beania | 254568 | 1260786 | yes |
+| `haliclona_viscosa` | *Haliclona viscosa* | — | 1 | Chalinidae | Haliclona | 257417 | 363865 | yes |
+| `parasmittina_rouvillei` | *Parasmittina rouvillei* | — | 1 | Smittinidae | Parasmittina | 257470 | 1077345 | yes |
+| `centrostephanus_longispinus` | *Centrostephanus longispinus* | — | 1 | Diadematidae | Centrostephanus | 87869 | 255607 | yes |
+| `lutraria_magna` | *Lutraria magna* | Lutraria oblonga | 1 | Mactridae | Lutraria | 257403 | 1167692 | yes |
+| `gambusia_holbrooki` | *Gambusia holbrooki* | — | 1 | Poeciliidae | Gambusia | 20445 | 101204 | yes |
+| `parkinsonia_aculeata` | *Parkinsonia aculeata* | — | 2 | Fabaceae | Parkinsonia | 43644 | 62829 | yes |
+| `ardea_alba` | *Ardea alba* | — | 2 | Ardeidae | Ardea | 240672 | 144455 | yes |
+| `pinus_uncinata` | *Pinus uncinata* | — | 2 | Pinaceae | Pinus | 242096 | 198880 | yes |
+| `cupressus_sempervirens` | *Cupressus sempervirens* | — | 2 | Cupressaceae | Cupressus | 242974 | 64261 | yes |
+| `cyprinus_carpio` | *Cyprinus carpio* | — | 1 | Cyprinidae | Cyprinus | 243511 | 53911 | yes |
+| `prunus_domestica` | *Prunus domestica* | — | 2 | Rosaceae | Prunus | 244163 | 63735 | yes |
+| `echium_plantagineum` | *Echium plantagineum* | — | 2 | Boraginaceae | Echium | 245454 | 76764 | yes |
+| `rosa_sempervirens` | *Rosa sempervirens* | — | 2 | Rosaceae | Rosa | 246520 | 204401 | yes |
+| `bombus_terrestris` | *Bombus terrestris* | — | 2 | Apidae | Bombus | 246859 | 57516 | yes |
+| `bos_taurus` | *Bos taurus* | — | 2 | Bovidae | Bos | 246931 | 74113 | yes |
+| `ciconia_ciconia` | *Ciconia ciconia* | — | 2 | Ciconiidae | Ciconia | 251321 | 4733 | yes |
+| `viburnum_tinus` | *Viburnum tinus* | — | 2 | Viburnaceae | Viburnum | 253610 | 82666 | yes |
+| `cirsium_vulgare` | *Cirsium vulgare* | — | 2 | Asteraceae | Cirsium | 254486 | 52989 | yes |
+| `ardeola_ralloides` | *Ardeola ralloides* | — | 2 | Ardeidae | Ardeola | 245945 | 4994 | yes |
+| `bromus_hordeaceus` | *Bromus hordeaceus* | — | 2 | Poaceae | Bromus | 247288 | 52703 | yes |
+| `olea_europaea` | *Olea europaea* | — | 2 | Oleaceae | Olea | 250103 | 57140 | yes |
+| `phytolacca_americana` | *Phytolacca americana* | — | 2 | Phytolaccaceae | Phytolacca | 253307 | 48599 | yes |
+| `datura_stramonium` | *Datura stramonium* | — | 2 | Solanaceae | Datura | 243905 | 55854 | yes |
+| `quercus_pubescens` | *Quercus pubescens* | — | 2 | Fagaceae | Quercus | 245090 | 125849 | yes |
+| `erigeron_sumatrensis` | *Erigeron sumatrensis* | — | 2 | Asteraceae | Erigeron | 246664 | 76943 | yes |
+| `brithys_crini` | *Brithys crini* | — | 2 | Noctuidae | Brithys | 247244 | 132092 | yes |
+| `salvia_verbenaca` | *Salvia verbenaca* | — | 2 | Lamiaceae | Salvia | 247470 | 82925 | yes |
+| `bubulcus_ibis` | *Bubulcus ibis* | — | 2 | Ardeidae | Ardea | 247515 |  |  |
+| `fumaria_capreolata` | *Fumaria capreolata* | — | 2 | Fumariaceae | Fumaria | 249419 | 57852 | yes |
+| `gyps_fulvus` | *Gyps fulvus* | — | 2 | Accipitridae | Gyps | 249644 | 5366 | yes |
+| `garrulus_glandarius` | *Garrulus glandarius* | — | 2 | Corvidae | Garrulus | 249912 | 8088 | yes |
+| `vitis_vinifera` | *Vitis vinifera* | — | 2 | Vitaceae | Vitis | 253672 | 79519 | yes |
+| `bonnemaisonia_clavata` | *Bonnemaisonia clavata* | — | 2 | Bonnemaisoniaceae | Bonnemaisonia | 257481 | 1576623 | yes |
+| `iphiclides_feisthamelii` | *Iphiclides feisthamelii* | — | 2 | Papilionidae | Iphiclides | 241966 | 130391 | yes |
+| `crataegus_monogyna` | *Crataegus monogyna* | — | 2 | Rosaceae | Crataegus | 242348 | 51147 | yes |
+| `alectoris_rufa` | *Alectoris rufa* | — | 2 | Phasianidae | Alectoris | 243698 | 867 | yes |
+| `lepus_granatensis` | *Lepus granatensis* | — | 2 | Leporidae | Lepus | 243783 | 43119 | yes |
+| `psammodromus_algirus` | *Psammodromus algirus* | — | 2 | Lacertidae | Psammodromus | 244235 | 35519 | yes |
+| `pyronia_cecilia` | *Pyronia cecilia* | — | 2 | Nymphalidae | Pyronia | 244943 | 62452 | yes |
+| `maniola_jurtina` | *Maniola jurtina* | — | 2 | Nymphalidae | Maniola | 245939 | 55653 | yes |
+| `mauremys_leprosa` | *Mauremys leprosa* | — | 2 | Geoemydidae | Mauremys | 246083 | 39976 | yes |
+| `bellis_perennis` | *Bellis perennis* | — | 2 | Asteraceae | Bellis | 248015 | 55563 | yes |
+| `lactarius_sanguifluus` | *Lactarius sanguifluus* | — | 2 | Russulaceae | Lactarius | 242754 | 332501 | yes |
+| `pelophylax_perezi` | *Pelophylax perezi* | — | 2 | Ranidae | Pelophylax | 252931 | 66331 | yes |
+| `cydnus_aterrimus` | *Cydnus aterrimus* | — | 2 | Cydnidae | Cydnus | 243241 | 363434 | yes |
+| `anacridium_aegyptium` | *Anacridium aegyptium* | — | 2 | Acrididae | Anacridium | 244443 | 132892 | yes |
+| `dipsacus_fullonum` | *Dipsacus fullonum* | — | 2 | Dipsacaceae | Dipsacus | 244823 | 56002 | yes |
+| `araneus_diadematus` | *Araneus diadematus* | — | 2 | Araneidae | Araneus | 245814 | 52628 | yes |
+| `bombus_pascuorum` | *Bombus pascuorum* | — | 2 | Apidae | Bombus | 246848 | 55637 | yes |
+| `tribulus_terrestris` | *Tribulus terrestris* | — | 2 | Zygophyllaceae | Tribulus | 251884 | 64238 | yes |
+| `caulerpa_taxifolia` | *Caulerpa taxifolia* | — | 2 | Caulerpaceae | Caulerpa | 14395 | 50919 | yes |
+| `cephalopholis_miniata` | *Cephalopholis miniata* | — | 1 | Epinephelidae | Cephalopholis | 29836 | 49639 | yes |
+| `bodianus_scrofa` | *Bodianus scrofa* | — | 1 | Labridae | Bodianus | 38087 | 50971 | yes |
+| `rhinobatos_rhinobatos` | *Rhinobatos rhinobatos* | — | 1 | Rhinobatidae | Rhinobatos | 38100 | 607510 | yes |
+| `anredera_cordifolia` | *Anredera cordifolia* | — | 2 | Basellaceae | Anredera | 40704 | 75457 | yes |
+| `polititapes_rhomboides` | *Polititapes rhomboides* | — | 1 | Veneridae | Polititapes | 46418 | 752393 | yes |
+| `phillyrea_latifolia` | *Phillyrea latifolia* | — | 2 | Oleaceae | Phillyrea | 50150 | 82876 | yes |
+| `flexopecten_flexuosus` | *Flexopecten flexuosus* | — | 1 | Pectinidae | Flexopecten | 83808 | 733254 | yes |
+| `heliothis_peltigera` | *Heliothis peltigera* | — | 2 | Noctuidae | Heliothis | 87470 | 347024 | yes |
+| `lembulus_pella` | *Lembulus pella* | — | 1 | Nuculanidae | Lembulus | 98244 | 1400532 | yes |
+| `macomangulus_tenuis` | *Macomangulus tenuis* | — | 1 | Tellinidae | Macomangulus | 109616 | 896207 | yes |
+| `microeuraphia_depressa` | *Microeuraphia depressa* | — | 1 | Chthamalidae | Microeuraphia | 113316 | 1074675 | yes |
+| `pomacanthus_imperator` | *Pomacanthus imperator* | — | 1 | Pomacanthidae | Pomacanthus | 120136 | 84181 | yes |
+| `diodon_hystrix` | *Diodon hystrix* | — | 1 | Diodontidae | Diodon | 143609 | 52313 | yes |
+| `thylaeodus_rugulosus` | *Thylaeodus rugulosus* | — | 1 | Vermetidae | Thylaeodus | 158458 | 1077720 | yes |
+| `hyala_vitrea` | *Hyala vitrea* | — | 1 | Iravadiidae | Hyala | 190744 | 1224045 | yes |
+| `abra_prismatica` | *Abra prismatica* | — | 1 | Semelidae | Abra | 241774 | 483094 | yes |
+| `coriomeris_denticulatus` | *Coriomeris denticulatus* | — | 2 | Coreidae | Coriomeris | 241877 | 327164 | yes |
+| `ipomoea_indica` | *Ipomoea indica* | — | 2 | Convolvulaceae | Ipomoea | 241978 | 77496 | yes |
+| `ischnura_elegans` | *Ischnura elegans* | — | 2 | Coenagrionidae | Ischnura | 242085 | 61508 | yes |
+| `ischnura_graellsii` | *Ischnura graellsii* | — | 2 | Coenagrionidae | Ischnura | 242087 | 103492 | yes |
+| `achelia_echinata` | *Achelia echinata* | — | 1 | Ammotheidae | Achelia | 242181 | 812722 | yes |
+| `pollicipes_pollicipes` | *Pollicipes pollicipes* | — | 1 | Pollicipedidae | Pollicipes | 242934 | 332554 | yes |
+| `cynodon_dactylon` | *Cynodon dactylon* | — | 2 | Poaceae | Cynodon | 243377 | 58371 | yes |
+| `lavandula_stoechas` | *Lavandula stoechas* | — | 2 | Lamiaceae | Lavandula | 243391 | 61904 | yes |
+| `pontonia_pinnophylax` | *Pontonia pinnophylax* | — | 1 | Palaemonidae | Pontonia | 243558 | 785343 | yes |
+| `cytisus_scoparius` | *Cytisus scoparius* | — | 2 | Fabaceae | Cytisus | 243601 | 48538 | yes |
+| `leptomysis_mediterranea` | *Leptomysis mediterranea* | — | 1 | Mysidae | Leptomysis | 243742 | 1080705 | yes |
+| `leptotes_pirithous` | *Leptotes pirithous* | — | 2 | Lycaenidae | Leptotes | 243767 | 209691 | yes |
+| `alpheus_glaber` | *Alpheus glaber* | — | 1 | Alpheidae | Alpheus | 243986 | 488975 | yes |
+| `ligia_italica` | *Ligia italica* | — | 1 | Ligiidae | Ligia | 243987 | 369808 | yes |
+| `ancistrocerus_gazella` | *Ancistrocerus gazella* | — | 2 | Vespidae | Ancistrocerus | 244690 | 318882 | yes |
+| `aphaenogaster_senilis` | *Aphaenogaster senilis* | — | 2 | Formicidae | Aphaenogaster | 245526 | 347417 | yes |
+| `elaeagnus_angustifolia` | *Elaeagnus angustifolia* | — | 2 | Elaeagnaceae | Elaeagnus | 245585 | 64694 | yes |
+| `macropodia_longirostris` | *Macropodia longirostris* | — | 1 | Inachidae | Macropodia | 245707 | 1071192 | yes |
+| `equus_quagga` | *Equus quagga* | — | 2 | Equidae | Equus | 246216 | 43335 | yes |
+| `erica_arborea` | *Erica arborea* | — | 2 | Ericaceae | Erica | 246445 | 82688 | yes |
+| `syncerus_caffer` | *Syncerus caffer* | — | 2 | Bovidae | Syncerus | 246447 | 42405 | yes |
+| `membranipora_membranacea` | *Membranipora membranacea* | — | 1 | Membraniporidae | Membranipora | 246618 | 51027 | yes |
+| `bromus_catharticus` | *Bromus catharticus* | — | 2 | Poaceae | Bromus | 247259 | 60276 | yes |
+| `bromus_diandrus` | *Bromus diandrus* | — | 2 | Poaceae | Bromus | 247265 | 52702 | yes |
+| `atelecyclus_undecimdentatus` | *Atelecyclus undecimdentatus* | — | 1 | Atelecyclidae | Atelecyclus | 247306 | 363950 | yes |
+| `sargassum_vulgare` | *Sargassum vulgare* | — | 2 | Sargassaceae | Sargassum | 247628 | 322821 | yes |
+| `calidris_alba` | *Calidris alba* | — | 2 | Scolopacidae | Calidris | 248112 | 3849 | yes |
+| `calliptamus_barbarus` | *Calliptamus barbarus* | — | 2 | Acrididae | Calliptamus | 248215 | 367312 | yes |
+| `carpobrotus_edulis` | *Carpobrotus edulis* | — | 2 | Aizoaceae | Carpobrotus | 249420 | 49322 | yes |
+| `tripos_fusus` | *Tripos fusus* | — | 2 | Ceratiaceae | Tripos | 250161 | 1061275 | yes |
+| `ononis_natrix` | *Ononis natrix* | — | 2 | Fabaceae | Ononis | 250243 | 57504 | yes |
+| `solanum_nigrum` | *Solanum nigrum* | — | 2 | Solanaceae | Solanum | 250417 | 79141 | yes |
+| `stomorhina_lunata` | *Stomorhina lunata* | — | 2 | Rhiniidae | Stomorhina | 251679 | 326655 | yes |
+| `clavariadelphus_pistillaris` | *Clavariadelphus pistillaris* | — | 2 | Clavariadelphaceae | Clavariadelphus | 251833 | 55156 | yes |
+| `hyles_euphorbiae` | *Hyles euphorbiae* | — | 2 | Sphingidae | Hyles | 252125 | 70071 | yes |
+| `pallenis_spinosa` | *Pallenis spinosa* | — | 2 | Asteraceae | Pallenis | 252691 | 633980 | yes |
+| `phaneroptera_nana` | *Phaneroptera nana* | — | 2 | Tettigoniidae | Phaneroptera | 253100 | 132070 | yes |
+| `tropinota_squalida` | *Tropinota squalida* | — | 2 | Cetoniidae | Tropinota | 253378 | 71093 | yes |
+| `ustilago_cynodontis` | *Ustilago cynodontis* | — | 2 | Ustilaginaceae | Ustilago | 253515 | 384700 | yes |
+| `xanthium_orientale` | *Xanthium orientale* | — | 2 | Asteraceae | Xanthium | 253711 | 506262 | yes |
+| `yucca_gigantea` | *Yucca gigantea* | — | 2 | Asparagaceae | Yucca | 253777 | 201452 | yes |
+| `acrocnida_brachiata` | *Acrocnida brachiata* | — | 1 | Amphiuridae | Acrocnida | 253881 | 807424 | yes |
+| `andresia_parthenopea` | *Andresia parthenopea* | Andresia partenopea | 1 | Andresiidae | Andresia | 253885 | 568591 | yes |
+| `phoronis_psammophila` | *Phoronis psammophila* | — | 1 | Phoronidae | Phoronis | 253886 | 353643 | yes |
+| `virgularia_mirabilis` | *Virgularia mirabilis* | — | 1 | Virgulariidae | Virgularia | 253888 | 459892 | yes |
+| `synthecium_evansi` | *Synthecium evansi* | — | 1 | Syntheciidae | Synthecium | 254197 | 1077710 | yes |
+| `phoronis_australis` | *Phoronis australis* | — | 1 | Phoronidae | Phoronis | 254204 | 348480 | yes |
+| `kyphosus_sectatrix` | *Kyphosus sectatrix* | — | 1 | Kyphosidae | Kyphosus | 254222 | 131523 | yes |
+| `antipathella_wollastoni` | *Antipathella wollastoni* | — | 1 | Myriopathidae | Antipathella | 254244 | 342251 | yes |
+| `anilocra_capensis` | *Anilocra capensis* | — | 1 | Cymothoidae | Anilocra | 254382 | 649769 | yes |
+| `enchelycore_anatina` | *Enchelycore anatina* | — | 1 | Muraenidae | Enchelycore | 254393 | 243643 | yes |
+| `scinaia_complanata` | *Scinaia complanata* | — | 2 | Galaxauraceae | Scinaia | 254415 | 327055 | yes |
+| `clathria_compressa` | *Clathria compressa* | — | 1 | Microcionidae | Clathria | 254433 | 1075263 | yes |
+| `paractaea_monodi` | *Paractaea monodi* | — | 1 | Xanthidae | Paractaea | 254453 | 342263 | yes |
+| `arnoglossus_laterna` | *Arnoglossus laterna* | — | 1 | Bothidae | Arnoglossus | 254466 | 120617 | yes |
+| `doridicola_agilis` | *Doridicola agilis* | — | 2 | Rhynchomolgidae | Doridicola | 254543 | 1074674 | yes |
+| `conopeum_reticulum` | *Conopeum reticulum* | — | 1 | Electridae | Conopeum | 254549 | 558729 | yes |
+| `tetrastemma_melanocephalum` | *Tetrastemma melanocephalum* | — | 1 | Tetrastemmatidae | Tetrastemma | 254566 | 497434 | yes |
+| `didogobius_splechtnai` | *Didogobius splechtnai* | — | 1 | Gobiidae | Didogobius | 254588 | 1520931 | yes |
+| `ericaria_crinita` | *Ericaria crinita* | — | 2 | Sargassaceae | Ericaria | 254590 | 1183120 | yes |
+| `chaetaster_longipes` | *Chaetaster longipes* | — | 1 | Chaetasteridae | Chaetaster | 254605 | 359121 | yes |
+| `stenosoma_capito` | *Stenosoma capito* | — | 1 | Idoteidae | Stenosoma | 254625 | 1071223 | yes |
+| `cancer_pagurus` | *Cancer pagurus* | — | 1 | Cancridae | Cancer | 254673 | 120553 | yes |
+| `lepadogaster_purpurea` | *Lepadogaster purpurea* | — | 1 | Gobiesocidae | Lepadogaster | 254683 | 472137 | yes |
+| `bifurcaria_bifurcata` | *Bifurcaria bifurcata* | — | 2 | Sargassaceae | Bifurcaria | 254688 | 343396 | yes |
+| `stylochus_pilidium` | *Stylochus pilidium* | — | 1 | Stylochidae | Stylochus | 254708 | 1077692 | yes |
+| `cavernularia_pusilla` | *Cavernularia pusilla* | — | 1 | Veretillidae | Cavernularia | 254710 | 1075223 | yes |
+| `aequipecten_opercularis` | *Aequipecten opercularis* | — | 1 | Pectinidae | Aequipecten | 254727 | 324572 | yes |
+| `abudefduf_saxatilis` | *Abudefduf saxatilis* | — | 1 | Pomacentridae | Abudefduf | 254736 | 49402 | yes |
+| `latreutes_fucorum` | *Latreutes fucorum* | — | 1 | Hippolytidae | Latreutes | 254759 | 260300 | yes |
+| `hippolyte_garciarasoi` | *Hippolyte garciarasoi* | — | 1 | Hippolytidae | Hippolyte | 255001 | 1259785 | yes |
+| `conus_canariensis` | *Conus canariensis* | — | 1 | Conidae | Conus | 255005 | 1279523 | yes |
+| `hippolyte_coerulescens` | *Hippolyte coerulescens* | — | 1 | Hippolytidae | Hippolyte | 255006 | 459587 | yes |
+| `rosacea_cymbiformis` | *Rosacea cymbiformis* | — | 1 | Prayidae | Rosacea | 255016 | 687911 | yes |
+| `leptogorgia_ruberrima` | *Leptogorgia ruberrima* | — | 1 | Gorgoniidae | Leptogorgia | 255017 | 626428 | yes |
+| `hypleurochilus_pseudoaequipinnis` | *Hypleurochilus pseudoaequipinnis* | — | 1 | Blenniidae | Hypleurochilus | 255020 | 317159 | yes |
+| `pseudosquillisma_oculata` | *Pseudosquillisma oculata* | — | 1 | Pseudosquillidae | Pseudosquillisma | 255031 | 1248100 | yes |
+| `gongolaria_abies_marina` | *Gongolaria abies-marina* | — | 2 | Sargassaceae | Gongolaria | 255032 | 1183109 | yes |
+| `anapagurus_laevis` | *Anapagurus laevis* | — | 1 | Paguridae | Anapagurus | 255038 | 363941 | yes |
+| `culcita_novaeguineae` | *Culcita novaeguineae* | — | 1 | Oreasteridae | Culcita | 255253 | 50406 | yes |
+| `polycarpa_aurata` | *Polycarpa aurata* | — | 1 | Styelidae | Polycarpa | 255265 | 155047 | yes |
+| `corallina_ferreyrae` | *Corallina ferreyrae* | — | 2 | Lithophyllaceae | Corallina | 255343 | 1422986 | yes |
+| `acanthurus_dussumieri` | *Acanthurus dussumieri* | — | 1 | Acanthuridae | Acanthurus | 255348 | 121597 | yes |
+| `taeniura_lymma` | *Taeniura lymma* | — | 1 | Dasyatidae | Taeniura | 255403 | 113735 | yes |
+| `papilloculiceps_longiceps` | *Papilloculiceps longiceps* | — | 1 | Platycephalidae | Papilloculiceps | 255436 | 372161 | yes |
+| `cephalopholis_argus` | *Cephalopholis argus* | — | 1 | Epinephelidae | Cephalopholis | 255454 | 52456 | yes |
+| `actinia_fragacea` | *Actinia fragacea* | — | 1 | Actiniidae | Actinia | 255598 | 129493 | yes |
+| `mitrella_broderipii` | *Mitrella broderipii* | — | 1 | Columbellidae | Mitrella | 255612 | 1243246 | yes |
+| `myrtea_spinifera` | *Myrtea spinifera* | — | 1 | Lucinidae | Myrtea | 255676 | 483023 | yes |
+| `amphictene_auricoma` | *Amphictene auricoma* | — | 1 | Pectinariidae | Amphictene | 255684 | 1280042 | yes |
+| `metaxia_metaxa` | *Metaxia metaxa* | — | 1 | Triphoridae | Metaxia | 255691 | 254149 | yes |
+| `pandora_inaequivalvis` | *Pandora inaequivalvis* | — | 1 | Pandoridae | Pandora | 255698 | 785629 | yes |
+| `mangelia_scabrida` | *Mangelia scabrida* | — | 1 | Conidae | Mangelia | 255701 | 1646144 | yes |
+| `mangelia_costata` | *Mangelia costata* | — | 1 | Conidae | Mangelia | 255702 | 482490 | yes |
+| `melanella_polita` | *Melanella polita* | — | 1 | Eulimidae | Melanella | 256380 | 734577 | yes |
+| `scorpaenopsis_oxycephala` | *Scorpaenopsis oxycephala* | — | 1 | Scorpaenidae | Scorpaenopsis | 256418 | 1556597 | yes |
+| `pocillopora_grandis` | *Pocillopora grandis* | — | 1 | Pocilloporidae | Pocillopora | 256437 | 734705 | yes |
+| `plectorhinchus_lineatus` | *Plectorhinchus lineatus* | — | 1 | Haemulidae | Plectorhinchus | 256440 | 134158 | yes |
+| `plectorhinchus_vittatus` | *Plectorhinchus vittatus* | — | 1 | Haemulidae | Plectorhinchus | 256475 | 120999 | yes |
+| `protoreaster_lincki` | *Protoreaster lincki* | — | 1 | Oreasteridae | Protoreaster | 256534 | 50411 | yes |
+| `amphiprion_allardi` | *Amphiprion allardi* | — | 1 | Pomacentridae | Amphiprion | 256545 | 180787 | yes |
+| `gobius_fallax` | *Gobius fallax* | — | 1 | Gobiidae | Gobius | 256649 | 101620 | yes |
+| `trisopterus_luscus` | *Trisopterus luscus* | — | 1 | Gadidae | Trisopterus | 256652 | 118601 | yes |
+| `ctenophoricola_rousei` | *Ctenophoricola rousei* | — | 1 | Phyllodocidae | Ctenophoricola | 256812 | 1293356 | yes |
+| `gyps_africanus` | *Gyps africanus* | — | 2 | Accipitridae | Gyps | 256878 | 5363 | yes |
+| `pentapora_ottomuelleriana` | *Pentapora ottomuelleriana* | — | 1 | Bitectiporidae | Pentapora | 257438 | 1077352 | yes |
+| `eulima_glabra` | *Eulima glabra* | — | 1 | Eulimidae | Eulima | 257466 | 482327 | yes |
+| `chondria_coerulescens` | *Chondria coerulescens* | — | 2 | Rhodomelaceae | Chondria | 257508 | 568745 | yes |
+| `myxicola_aesthetica` | *Myxicola aesthetica* | — | 1 | Sabellidae | Myxicola | 257576 | 492594 | yes |
+| `liriope_tetraphylla` | *Liriope tetraphylla* | — | 1 | Geryoniidae | Liriope | 257583 | 256083 | yes |
+| `coptocephala_unifasciata` | *Coptocephala unifasciata* | — | 2 | Chrysomelidae | Coptocephala | 258209 | 326430 | yes |
+| `timoclea_ovata` | *Timoclea ovata* | — | 1 | Veneridae | Timoclea | 258900 | 483066 | yes |
+| `cerithium_scabridum` | *Cerithium scabridum* | — | 1 | Cerithiidae | Cerithium | 259073 | 461748 | yes |
+| `lagis_koreni` | *Lagis koreni* | — | 1 | Pectinariidae | Lagis | 259074 | 521680 | yes |
+| `pisa_nodipes` | *Pisa nodipes* | — | 1 | Epialtidae | Pisa | 261648 | 493184 | yes |
+| `gyroscala_commutata` | *Gyroscala commutata* | — | 1 | Epitoniidae | Gyroscala | 262012 | 1275882 | yes |
+| `rhabdosoma_whitei` | *Rhabdosoma whitei* | — | 1 | Oxycephalidae | Rhabdosoma | 262280 | 295774 | yes |
+| `pycnoclavella_stolonialis` | *Pycnoclavella stolonialis* | — | 1 | Pycnoclavellidae | Pycnoclavella | 262303 | 632291 | yes |
+| `antipathozoanthus_macaronesicus` | *Antipathozoanthus macaronesicus* | — | 1 | Parazoanthidae | Antipathozoanthus | 262322 | 883233 | yes |
+| `rostroraja_alba` | *Rostroraja alba* | — | 1 | Rajidae | Rostroraja | 262339 | 61753 | yes |
+| `conus_guanche` | *Conus guanche* | — | 1 | Conidae | Conus | 262441 | 150345 | yes |
+| `galathea_faiali` | *Galathea faiali* | — | 1 | Galatheidae | Galathea | 262445 | 1243111 | yes |
+| `mitromorpha_swinneni` | *Mitromorpha swinneni* | — | 1 | Conidae | Mitromorpha | 262449 | 1284570 | yes |
+| `caulerpa_racemosa` | *Caulerpa racemosa* | — | 2 | Caulerpaceae | Caulerpa | 262461 | 50926 | yes |
+| `stolonica_socialis` | *Stolonica socialis* | — | 1 | Styelidae | Stolonica | 262475 | 477427 | yes |
+| `synalpheus_tumidomanus` | *Synalpheus tumidomanus* | — | 1 | Alpheidae | Synalpheus | 262488 | 696897 | yes |
+| `kellia_suborbicularis` | *Kellia suborbicularis* | — | 1 | Lasaeidae | Kellia | 262489 | 253475 | yes |
+| `chenopodiastrum_murale` | *Chenopodiastrum murale* | — | 2 | Amaranthaceae | Chenopodiastrum | 262699 | 514012 | yes |
+| `rhombosepion_orbignyanum` | *Rhombosepion orbignyanum* | — | 1 | Sepiidae | Rhombosepion | 262799 | 1500700 | yes |
+| `mustelus_mustelus` | *Mustelus mustelus* | — | 1 | Triakidae | Mustelus | 262813 | 56050 | yes |
+| `pegusa_nasuta` | *Pegusa nasuta* | — | 1 | Soleidae | Pegusa | 262855 | 367968 | yes |
+| `lyromangelia_taeniata` | *Lyromangelia taeniata* | — | 1 | Mangeliidae | Lyromangelia | 262944 | 1490890 | yes |
+| `beania_mirabilis` | *Beania mirabilis* | — | 1 | Beaniidae | Beania | 263023 | 196134 | yes |
+| `aedes_caspius` | *Aedes caspius* | — | 2 | Culicidae | Aedes | 263174 | 1112066 | yes |
+| `lithophyllum_corallinae` | *Lithophyllum corallinae* | — | 2 | Lithophyllaceae | Lithophyllum | 263345 | 1225870 | yes |
+| `steromphala_umbilicaris` | *Steromphala umbilicaris* | — | 1 | Trochidae | Steromphala | 263419 | 921630 | yes |
+| `gibbula_spurca` | *Gibbula spurca* | — | 1 | Trochidae | Gibbula | 263439 | 1214340 | yes |
+| `gibbula_racketti` | *Gibbula racketti* | Steromphala racketti | 1 | Trochidae | Gibbula | 263445 | 1325152 | yes |
+| `monoplex_corrugatus` | *Monoplex corrugatus* | — | 1 | Ranellidae | Monoplex | 263466 | 469326 | yes |
+| `parvicardium_vroomi` | *Parvicardium vroomi* | — | 1 | Cardiidae | Parvicardium | 263524 | 1207361 | yes |
+| `rhodocollybia_butyracea` | *Rhodocollybia butyracea* | — | 2 | Marasmiaceae | Rhodocollybia | 263636 | 118166 | yes |
+| `polycarpa_insulsa` | *Polycarpa insulsa* | — | 1 | Styelidae | Polycarpa | 264047 | 684621 | yes |
+| `suillia_variegata` | *Suillia variegata* | — | 2 | Heleomyzidae | Suillia | 264053 | 343752 | yes |
+| `paidiscura_pallens` | *Paidiscura pallens* | — | 2 | Theridiidae | Paidiscura | 264054 | 468241 | yes |
+| `amphinema_dinema` | *Amphinema dinema* | — | 1 | Pandeidae | Amphinema | 264141 | 256063 | yes |
+| `amphiura_chiajei` | *Amphiura chiajei* | — | 1 | Amphiuridae | Amphiura | 264152 | 354827 | yes |
+| `ceratia_proxima` | *Ceratia proxima* | — | 1 | Iravadiidae | Ceratia | 264158 | 1224028 | yes |
+| `earleria_araiae` | *Earleria araiae* | — | 1 | Mitrocomidae | Earleria | 264160 |  | yes |
+| `solmissus_incisa` | *Solmissus incisa* | — | 1 | Cuninidae | Solmissus | 264166 | 293279 | yes |
+| `ectopleura_crocea` | *Ectopleura crocea* | — | 1 | Tubulariidae | Ectopleura | 264175 | 324497 | yes |
+| `vermetus_bieleri` | *Vermetus bieleri* | — | 1 | Vermetidae | Vermetus | 264225 |  | yes |
+| `nipponnemertes_pulchra` | *Nipponnemertes pulchra* | — | 1 | Cratenemertidae | Nipponnemertes | 264229 | 559314 | yes |
+| `rhopalonema_velatum` | *Rhopalonema velatum* | — | 1 | Rhopalonematidae | Rhopalonema | 264251 | 255970 | yes |
+| `solea_aegyptiaca` | *Solea aegyptiaca* | — | 1 | Soleidae | Solea | 264842 | 120605 | yes |
+| `lyrodus_pedicellatus` | *Lyrodus pedicellatus* | — | 1 | Teredinidae | Lyrodus | 264952 | 253342 | yes |
+| `diogenes_curvimanus` | *Diogenes curvimanus* | — | 1 | Diogenidae | Diogenes | 265046 | 1557612 | yes |
+| `molgula_occulta` | *Molgula occulta* | — | 1 | Molgulidae | Molgula | 265135 | 800027 | yes |
+| `polycarpa_violacea` | *Polycarpa violacea* | — | 1 | Styelidae | Polycarpa | 265136 | 800691 | yes |
+| `coralliophila_meyendorffii` | *Coralliophila meyendorffii* | — | 1 | Muricidae | Coralliophila | 265279 | 528873 | yes |
+| `tampons` | *Tampons* | — | 2 | Hygiene plastic |  | 265373 |  | yes |
+| `afropisa_carinimana` | *Afropisa carinimana* | — | 1 | Epialtidae | Afropisa | 265458 | 1530305 | yes |
+| `axinella_vaceleti` | *Axinella vaceleti* | — | 1 | Axinellidae | Axinella | 265514 | 1270065 | yes |
+| `tubulanus_rhabdotus` | *Tubulanus rhabdotus* | — | 1 | Tubulanidae | Tubulanus | 267265 | 1077895 | yes |
+| `beania_cylindrica` | *Beania cylindrica* | — | 1 | Beaniidae | Beania | 254567 | 1074869 | yes |
+| `hippolyte_prideauxiana` | *Hippolyte prideauxiana* | — | 1 | Hippolytidae | Hippolyte | 254715 | 852504 | yes |
+| `apomatus_similis` | *Apomatus similis* | — | 1 | Serpulidae | Apomatus | 262005 | 1074849 | yes |
+| `oulastrea_crispata` | *Oulastrea crispata* | — | 1 | Faviidae | Oulastrea | 35115 | 503818 | yes |
+| `mesophyllum_lichenoides` | *Mesophyllum lichenoides* | — | 2 | Lithophyllaceae | Mesophyllum | 246782 | 985381 | yes |
+| `thunnus_thynnus` | *Thunnus thynnus* | — | 1 | Scombridae | Thunnus | 251170 | 114126 | yes |
+| `diazona_violacea` | *Diazona violacea* | — | 1 | Diazonidae | Diazona | 254299 | 542086 | yes |
+| `calyx_nicaeensis` | *Calyx nicaeensis* | — | 1 | Phloeodictyidae | Calyx | 254435 | 962395 | yes |
+| `rhopalaea_neapolitana` | *Rhopalaea neapolitana* | — | 1 | Diazonidae | Rhopalaea | 254441 | 472691 | yes |
+| `exidmonea_atlantica` | *Exidmonea atlantica* | — | 1 | Tubuliporidae | Exidmonea | 254602 | 1148886 | yes |
+| `palaemon_adspersus` | *Palaemon adspersus* | — | 1 | Palaemonidae | Palaemon | 254725 | 526549 | yes |
+| `pisa_armata` | *Pisa armata* | — | 1 | Epialtidae | Pisa | 255662 | 363945 | yes |
+| `ailanthus_altissima` | *Ailanthus altissima* | — | 2 | Simaroubaceae | Ailanthus | 91140 | 57278 | yes |
+| `pinus_thunbergii` | *Pinus thunbergii* | — | 2 | Pinaceae | Pinus | 117286 | 135655 | yes |
+| `populus_alba` | *Populus alba* | — | 2 | Salicaceae | Populus | 243563 | 47570 | yes |
+| `prunus_cerasifera` | *Prunus cerasifera* | — | 2 | Rosaceae | Prunus | 244141 | 55837 | yes |
+| `pyrus_communis` | *Pyrus communis* | — | 2 | Rosaceae | Pyrus | 245027 | 63951 | yes |
+| `malva_sylvestris` | *Malva sylvestris* | — | 2 | Malvaceae | Malva | 245857 | 56162 | yes |
+| `melica_ciliata` | *Melica ciliata* | — | 2 | Poaceae | Melica | 246463 | 333961 | yes |
+| `rumex_crispus` | *Rumex crispus* | — | 2 | Polygonaceae | Rumex | 246712 | 53197 | yes |
+| `eryngium_campestre` | *Eryngium campestre* | — | 2 | Apiaceae | Eryngium | 247060 | 162699 | yes |
+| `mirabilis_jalapa` | *Mirabilis jalapa* | — | 2 | Nyctaginaceae | Mirabilis | 247209 | 50616 | yes |
+| `euchloe_crameri` | *Euchloe crameri* | — | 2 | Pieridae | Euchloe | 247375 | 123811 | yes |
+| `motacilla_cinerea` | *Motacilla cinerea* | — | 2 | Motacillidae | Motacilla | 247539 | 13688 | yes |
+| `motacilla_flava` | *Motacilla flava* | — | 2 | Motacillidae | Motacilla | 247561 | 204545 | yes |
+| `bidens_aurea` | *Bidens aurea* | — | 2 | Asteraceae | Bidens | 248263 | 159235 | yes |
+| `capra_hircus` | *Capra hircus* | — | 2 | Bovidae | Capra | 248757 | 123070 | yes |
+| `sinapis_alba` | *Sinapis alba* | — | 2 | Brassicaceae | Sinapis | 250274 | 79123 | yes |
+| `teucrium_fruticans` | *Teucrium fruticans* | — | 2 | Lamiaceae | Teucrium | 250963 | 181666 | yes |
+| `thaumetopoea_pityocampa` | *Thaumetopoea pityocampa* | — | 2 | Notodontidae | Thaumetopoea | 251075 | 61293 | yes |
+| `cichorium_pumilum` | *Cichorium pumilum* | — | 2 | Asteraceae | Cichorium | 251255 | 492060 | yes |
+| `cisticola_juncidis` | *Cisticola juncidis* | — | 2 | Cisticolidae | Cisticola | 251499 | 7697 | yes |
+| `parthenocissus_quinquefolia` | *Parthenocissus quinquefolia* | — | 2 | Vitaceae | Parthenocissus | 252828 | 50278 | yes |
+| `vitex_agnus_castus` | *Vitex agnus-castus* | — | 2 | Verbenaceae | Vitex | 253670 | 170271 | yes |
+| `equus_asinus` | *Equus asinus* | — | 2 | Equidae | Equus | 256361 | 148030 | yes |
+| `carijoa_riisei` | *Carijoa riisei* | — | 1 | Clavulariidae | Carijoa | 197460 | 51012 | yes |
+| `quercus_coccifera` | *Quercus coccifera* | — | 2 | Fagaceae | Quercus | 245100 | 82942 | yes |
+| `melanargia_lachesis` | *Melanargia lachesis* | — | 2 | Nymphalidae | Melanargia | 246334 | 105458 | yes |
+| `melia_azedarach` | *Melia azedarach* | — | 2 | Meliaceae | Melia | 246451 | 53720 | yes |
+| `calluna_vulgaris` | *Calluna vulgaris* | — | 2 | Ericaceae | Calluna | 248281 | 119450 | yes |
+| `caretta_caretta` | *Caretta caretta* | — | 2 | Cheloniidae | Caretta | 249277 | 39665 | yes |
+| `cedrus_deodara` | *Cedrus deodara* | — | 2 | Pinaceae | Cedrus | 249755 | 69820 | yes |
+| `chamaerops_humilis` | *Chamaerops humilis* | — | 2 | Arecaceae | Chamaerops | 250461 | 132759 | yes |
+| `tecoma_capensis` | *Tecoma capensis* | — | 2 | Bignoniaceae | Tecoma | 250729 | 286772 | yes |
+| `stachys_ocymastrum` | *Stachys ocymastrum* | — | 2 | Lamiaceae | Stachys | 251303 | 82914 | yes |
+| `oryctes_nasicornis` | *Oryctes nasicornis* | — | 2 | Dynastidae | Oryctes | 252567 | 82774 | yes |
+| `botryocladia_botryoides` | *Botryocladia botryoides* | — | 2 | Rhodymeniaceae | Botryocladia | 254620 | 925120 | yes |
+| `spongites_fruticulosus` | *Spongites fruticulosus* | — | 2 | Lithophyllaceae | Spongites | 255443 | 1576651 | yes |
+| `erica_scoparia` | *Erica scoparia* | — | 2 | Ericaceae | Erica | 256047 | 771657 | yes |
+| `prunus_amygdalus` | *Prunus amygdalus* | — | 2 | Rosaceae | Prunus | 262696 | 69936 | yes |
+| `anguis_fragilis` | *Anguis fragilis* | — | 2 | Anguidae | Anguis | 245028 | 343021 | yes |
+| `spinus_spinus` | *Spinus spinus* | — | 2 | Fringillidae | Spinus | 21266 | 145303 | yes |
+| `spilopelia_senegalensis` | *Spilopelia senegalensis* | — | 2 | Columbidae | Spilopelia | 106877 | 1455922 | yes |
+| `ichthyaetus_melanocephalus` | *Ichthyaetus melanocephalus* | — | 2 | Laridae | Ichthyaetus | 158466 | 144517 | yes |
+| `ichthyaetus_audouinii` | *Ichthyaetus audouinii* | — | 2 | Laridae | Ichthyaetus | 158468 | 144522 | yes |
+| `brintesia_circe` | *Brintesia circe* | Loweia tityrus | 2 | Nymphalidae | Brintesia | 199810 | 334385 | yes |
+| `coronilla_valentina` | *Coronilla valentina* | — | 2 | Fabaceae | Coronilla | 241962 | 76449 | yes |
+| `coronilla_glauca` | *Coronilla glauca* | — | 2 | Fabaceae | Coronilla | 241964 | 79765 | yes |
+| `iris_latifolia` | *Iris latifolia* | — | 2 | Iridaceae | Iris | 242039 | 243782 | yes |
+| `podarcis_muralis` | *Podarcis muralis* | — | 2 | Lacertidae | Podarcis | 242792 | 55990 | yes |
+| `lanius_senator` | *Lanius senator* | — | 2 | Laniidae | Lanius | 243044 | 12039 | yes |
+| `pontia_daplidice` | *Pontia daplidice* | — | 2 | Pieridae | Pontia | 243553 | 123810 | yes |
+| `lepidium_draba` | *Lepidium draba* | — | 2 | Brassicaceae | Lepidium | 243602 | 63352 | yes |
+| `procambarus_clarkii` | *Procambarus clarkii* | — | 1 | Cambaridae | Procambarus | 243954 | 51221 | yes |
+| `limenitis_reducta` | *Limenitis reducta* | — | 2 | Nymphalidae | Limenitis | 244048 | 155030 | yes |
+| `luscinia_megarhynchos` | *Luscinia megarhynchos* | — | 2 | Muscicapidae | Luscinia | 245135 | 13079 | yes |
+| `matricaria_chamomilla` | *Matricaria chamomilla* | — | 2 | Asteraceae | Matricaria | 246063 | 77965 | yes |
+| `mentha_spicata` | *Mentha spicata* | — | 2 | Lamiaceae | Mentha | 246675 | 62652 | yes |
+| `mentha_suaveolens` | *Mentha suaveolens* | — | 2 | Lamiaceae | Mentha | 246693 | 77993 | yes |
+| `milvus_milvus` | *Milvus milvus* | — | 2 | Accipitridae | Milvus | 247068 | 5267 | yes |
+| `athene_noctua` | *Athene noctua* | — | 2 | Strigidae | Athene | 247359 | 19998 | yes |
+| `salvia_microphylla` | *Salvia microphylla* | — | 2 | Lamiaceae | Salvia | 247405 | 168386 | yes |
+| `certhia_brachydactyla` | *Certhia brachydactyla* | — | 2 | Certhiidae | Certhia | 250245 | 7462 | yes |
+| `chroogomphus_rutilus` | *Chroogomphus rutilus* | — | 2 | Gomphidiaceae | Chroogomphus | 250979 | 194275 | yes |
+| `hypericum_perforatum` | *Hypericum perforatum* | — | 2 | Hypericaceae | Hypericum | 252267 | 56077 | yes |
+| `urospermum_picroides` | *Urospermum picroides* | — | 2 | Asteraceae | Urospermum | 253502 | 59361 | yes |
+| `vespula_germanica` | *Vespula germanica* | — | 2 | Vespidae | Vespula | 253604 | 126155 | yes |
+| `zantedeschia_aethiopica` | *Zantedeschia aethiopica* | — | 2 | Araceae | Zantedeschia | 253787 | 56006 | yes |
+| `engraulis_encrasicolus` | *Engraulis encrasicolus* | — | 1 | Engraulidae | Engraulis | 36021 | 51910 | yes |
+| `lantana_camara` | *Lantana camara* | — | 2 | Verbenaceae | Lantana | 42982 | 50333 | yes |
+| `eristalinus_taeniops` | *Eristalinus taeniops* | — | 2 | Syrphidae | Eristalinus | 246763 | 145540 | yes |
+| `phragmites_australis` | *Phragmites australis* | — | 2 | Poaceae | Phragmites | 246809 | 64237 | yes |
+| `conchoderma_virgatum` | *Conchoderma virgatum* | — | 1 | Lepadidae | Conchoderma | 254205 | 53643 | yes |
+| `rhagonycha_fulva` | *Rhagonycha fulva* | — | 2 | Cantharidae | Rhagonycha | 10286 | 62456 | yes |
+| `raja_clavata` | *Raja clavata* | — | 1 | Rajidae | Raja | 11991 | 48397 | yes |
+| `raja_asterias` | *Raja asterias* | — | 1 | Rajidae | Raja | 11995 | 111515 | yes |
+| `oedemera_atrata` | *Oedemera atrata* | — | 2 | Oedemeridae | Oedemera | 18486 | 709603 | yes |
+| `merluccius_merluccius` | *Merluccius merluccius* | — | 1 | Merlucciidae | Merluccius | 19868 | 118603 | yes |
+| `tonna_galea` | *Tonna galea* | — | 1 | Tonnidae | Tonna | 25554 | 254661 | yes |
+| `amphibalanus_eburneus` | *Amphibalanus eburneus* | — | 1 | Balanidae | Amphibalanus | 32864 | 122023 | yes |
+| `cervus_elaphus` | *Cervus elaphus* | — | 2 | Cervidae | Cervus | 33561 | 204113 | yes |
+| `pseudobiceros_bedfordi` | *Pseudobiceros bedfordi* | — | 1 | Pseudocerotidae | Pseudobiceros | 41652 | 121378 | yes |
+| `isara_nigra` | *Isara nigra* | — | 1 | Mitridae | Isara | 42166 |  | yes |
+| `tamarix_africana` | *Tamarix africana* | — | 2 | Tamaricaceae | Tamarix | 44511 | 56018 | yes |
+| `platax_orbicularis` | *Platax orbicularis* | — | 1 | Ephippidae | Platax | 44721 | 69858 | yes |
+| `charonia_variegata` | *Charonia variegata* | — | 1 | Ranellidae | Charonia | 50715 | 254640 | yes |
+| `lajonkairia_lajonkairii` | *Lajonkairia lajonkairii* | — | 1 | Veneridae | Lajonkairia | 51909 | 1209638 | yes |
+| `echeneis_naucrates` | *Echeneis naucrates* | — | 1 | Echeneidae | Echeneis | 69120 | 48844 | yes |
+| `umbilicus_rupestris` | *Umbilicus rupestris* | — | 2 | Crassulaceae | Umbilicus | 80948 | 129454 | yes |
+| `vicia_faba` | *Vicia faba* | — | 2 | Fabaceae | Vicia | 82653 | 57309 | yes |
+| `janthina_janthina` | *Janthina janthina* | — | 1 | Janthinidae | Janthina | 89388 | 121654 | yes |
+| `cheilodipterus_quinquelineatus` | *Cheilodipterus quinquelineatus* | — | 1 | Apogonidae | Cheilodipterus | 91982 | 194784 | yes |
+| `scomber_japonicus` | *Scomber japonicus* | — | 1 | Scombridae | Scomber | 95539 | 69840 | yes |
+| `auxis_thazard` | *Auxis thazard* | — | 1 | Scombridae | Auxis | 101074 | 177104 | yes |
+| `sphyraena_barracuda` | *Sphyraena barracuda* | — | 1 | Sphyraenidae | Sphyraena | 102311 | 47251 | yes |
+| `gymnothorax_rueppelliae` | *Gymnothorax rueppelliae* | — | 1 | Muraenidae | Gymnothorax | 110789 | 617715 | yes |
+| `aulostomus_chinensis` | *Aulostomus chinensis* | — | 1 | Aulostomidae | Aulostomus | 120245 | 47239 | yes |
+| `thomisus_onustus` | *Thomisus onustus* | — | 2 | Thomisidae | Thomisus | 130378 | 59281 | yes |
+| `alloteuthis_subulata` | *Alloteuthis subulata* | — | 1 | Loliginidae | Alloteuthis | 132586 | 700305 | yes |
+| `panthera_leo` | *Panthera leo* | — | 2 | Felidae | Panthera | 140250 | 41964 | yes |
+| `caranx_rhonchus` | *Caranx rhonchus* | — | 1 | Carangidae | Caranx | 146446 | 120693 | yes |
+| `asterocarpa_humilis` | *Asterocarpa humilis* | — | 1 | Styelidae | Asterocarpa | 155961 | 651661 | yes |
+| `siphonenteron_bilineatum` | *Siphonenteron bilineatum* | — | 1 | Lineidae | Siphonenteron | 172437 | 1427714 | yes |
+| `allogalathea_elegans` | *Allogalathea elegans* | — | 1 | Galatheidae | Allogalathea | 173150 | 200992 | yes |
+| `ascidonia_flavomaculata` | *Ascidonia flavomaculata* | — | 1 | Palaemonidae | Ascidonia | 178048 | 1296684 | yes |
+| `decipisagitta_decipiens` | *Decipisagitta decipiens* | — | 1 | Sagittidae | Decipisagitta | 200005 |  | yes |
+| `colpomenia_peregrina` | *Colpomenia peregrina* | — | 2 | Scytosiphonaceae | Colpomenia | 240146 | 129737 | yes |
+| `treptacantha_nodicaulis` | *Treptacantha nodicaulis* | Gongolaria nodicaulis | 2 | Sargassaceae | Treptacantha | 241596 |  | yes |
+| `pseudoprotella_phasma` | *Pseudoprotella phasma* | — | 1 | Caprellidae | Pseudoprotella | 241638 | 493940 | yes |
+| `abra_nitida` | *Abra nitida* | — | 1 | Semelidae | Abra | 241772 | 483095 | yes |
+| `coracias_caudatus` | *Coracias caudatus* | — | 2 | Coraciidae | Coracias | 241808 | 2269 | yes |
+| `pilumnus_spinifer` | *Pilumnus spinifer* | — | 1 | Pilumnidae | Pilumnus | 241892 | 524236 | yes |
+| `acanthurus_lineatus` | *Acanthurus lineatus* | — | 1 | Acanthuridae | Acanthurus | 241903 | 135283 | yes |
+| `crangon_crangon` | *Crangon crangon* | — | 1 | Crangonidae | Crangon | 242312 | 118851 | yes |
+| `crepipatella_dilatata` | *Crepipatella dilatata* | — | 1 | Calyptraeidae | Crepipatella | 242391 | 328531 | yes |
+| `crepis_bursifolia` | *Crepis bursifolia* | — | 2 | Asteraceae | Crepis | 242400 | 76473 | yes |
+| `crocuta_crocuta` | *Crocuta crocuta* | — | 2 | Hyaenidae | Crocuta | 242556 | 41886 | yes |
+| `polycarpon_tetraphyllum` | *Polycarpon tetraphyllum* | — | 2 | Caryophyllaceae | Polycarpon | 242940 | 58876 | yes |
+| `lampides_boeticus` | *Lampides boeticus* | — | 2 | Lycaenidae | Lampides | 242951 | 121993 | yes |
+| `polysiphonia_opaca` | *Polysiphonia opaca* | — | 2 | Rhodomelaceae | Polysiphonia | 243425 | 1226134 | yes |
+| `leccinellum_lepidum` | *Leccinellum lepidum* | — | 2 | Boletaceae | Leccinellum | 243443 | 332502 | yes |
+| `pomatoschistus_quagga` | *Pomatoschistus quagga* | — | 1 | Gobiidae | Pomatoschistus | 243518 | 110044 | yes |
+| `cyrtophora_citricola` | *Cyrtophora citricola* | — | 2 | Araneidae | Cyrtophora | 243525 | 130082 | yes |
+| `cystoderma_amianthinum` | *Cystoderma amianthinum* | — | 2 | Agaricaceae | Cystoderma | 243532 | 337956 | yes |
+| `portulaca_oleracea` | *Portulaca oleracea* | — | 2 | Portulacaceae | Portulaca | 243670 | 58991 | yes |
+| `lepomis_gibbosus` | *Lepomis gibbosus* | — | 1 | Centrarchidae | Lepomis | 243694 | 49614 | yes |
+| `daphne_gnidium` | *Daphne gnidium* | — | 2 | Thymelaeaceae | Daphne | 243808 | 82836 | yes |
+| `aloe_vera` | *Aloe vera* | — | 2 | Xanthorrhoeaceae | Aloe | 243911 | 126882 | yes |
+| `prionospio_multibranchiata` | *Prionospio multibranchiata* | — | 1 | Spionidae | Prionospio | 243940 | 497157 | yes |
+| `amanita_phalloides` | *Amanita phalloides* | — | 2 | Amanitaceae | Amanita | 244124 | 52135 | yes |
+| `psammechinus_microtuberculatus` | *Psammechinus microtuberculatus* | — | 1 | Parechinidae | Psammechinus | 244228 | 627408 | yes |
+| `ammodytes_tobianus` | *Ammodytes tobianus* | — | 1 | Ammodytidae | Ammodytes | 244335 | 367966 | yes |
+| `lineus_longissimus` | *Lineus longissimus* | — | 1 | Lineidae | Lineus | 244412 | 467341 | yes |
+| `pyrgomorpha_conica` | *Pyrgomorpha conica* | — | 2 | Pyrgomorphidae | Pyrgomorpha | 244859 | 154231 | yes |
+| `anguinella_palmata` | *Anguinella palmata* | — | 1 | Nolellidae | Anguinella | 245024 | 339203 | yes |
+| `echium_sabulicola` | *Echium sabulicola* | — | 2 | Boraginaceae | Echium | 245468 | 537849 | yes |
+| `raphicerus_campestris` | *Raphicerus campestris* | — | 2 | Bovidae | Raphicerus | 245595 | 42375 | yes |
+| `aporrhais_pespelecani` | *Aporrhais pespelecani* | — | 1 | Aporrhaidae | Aporrhais | 245663 | 59399 | yes |
+| `macrolepiota_procera` | *Macrolepiota procera* | — | 2 | Agaricaceae | Macrolepiota | 245697 | 63401 | yes |
+| `macronemurus_appendiculatus` | *Macronemurus appendiculatus* | — | 2 | Myrmeleontidae | Macronemurus | 245701 | 469367 | yes |
+| `arenaria_interpres` | *Arenaria interpres* | — | 2 | Scolopacidae | Arenaria | 245949 | 3938 | yes |
+| `arge_ochropus` | *Arge ochropus* | — | 2 | Argidae | Arge | 246104 | 447507 | yes |
+| `armadillidium_granulatum` | *Armadillidium granulatum* | — | 1 | Armadillidiidae | Armadillidium | 246368 | 464846 | yes |
+| `melilotus_indicus` | *Melilotus indicus* | — | 2 | Fabaceae | Melilotus | 246472 | 57065 | yes |
+| `bittium_simplex` | *Bittium simplex* | Bittium lactescens | 1 | Cerithiidae | Bittium | 246508 | 1549780 | yes |
+| `ruditapes_philippinarum` | *Ruditapes philippinarum* | — | 1 | Veneridae | Ruditapes | 246688 | 343269 | yes |
+| `micropterus_salmoides` | *Micropterus salmoides* | — | 1 | Centrarchidae | Micropterus | 247022 | 49587 | yes |
+| `asplenium_onopteris` | *Asplenium onopteris* | — | 2 | Aspleniaceae | Asplenium | 247137 | 82592 | yes |
+| `brachypodium_retusum` | *Brachypodium retusum* | — | 2 | Poaceae | Brachypodium | 247146 | 82863 | yes |
+| `salticus_scenicus` | *Salticus scenicus* | — | 2 | Salticidae | Salticus | 247312 | 68901 | yes |
+| `atriplex_halimus` | *Atriplex halimus* | — | 2 | Chenopodiaceae | Atriplex | 247408 | 82671 | yes |
+| `eulalia_viridis` | *Eulalia viridis* | — | 1 | Phyllodocidae | Eulalia | 247513 | 464006 | yes |
+| `bucorvus_leadbeateri` | *Bucorvus leadbeateri* | — | 2 | Bucorvidae | Bucorvus | 247534 | 144281 | yes |
+| `autographa_gamma` | *Autographa gamma* | — | 2 | Noctuidae | Autographa | 247571 | 55651 | yes |
+| `avena_barbata` | *Avena barbata* | — | 2 | Poaceae | Avena | 247608 | 52696 | yes |
+| `euphorbia_peplis` | *Euphorbia peplis* | — | 2 | Euphorbiaceae | Euphorbia | 247900 | 334741 | yes |
+| `belonochilus_numenius` | *Belonochilus numenius* | — | 2 | Lygaeidae | Belonochilus | 248023 | 261558 | yes |
+| `bembix_oculata` | *Bembix oculata* | — | 2 | Crabronidae | Bembix | 248052 | 337929 | yes |
+| `calicotome_spinosa` | *Calicotome spinosa* | — | 2 | Fabaceae | Calicotome | 248105 | 339416 | yes |
+| `calliphora_vicina` | *Calliphora vicina* | — | 2 | Calliphoridae | Calliphora | 248208 | 119115 | yes |
+| `eurydema_oleracea` | *Eurydema oleracea* | — | 2 | Pentatomidae | Eurydema | 248259 | 70192 | yes |
+| `scarites_buparius` | *Scarites buparius* | — | 2 | Carabidae | Scarites | 248403 | 461475 | yes |
+| `evergestis_frumentalis` | *Evergestis frumentalis* | — | 2 | Crambidae | Evergestis | 248423 | 319096 | yes |
+| `sceliphron_caementarium` | *Sceliphron caementarium* | — | 2 | Sphecidae | Sceliphron | 248434 | 121821 | yes |
+| `camponotus_cruentatus` | *Camponotus cruentatus* | — | 2 | Formicidae | Camponotus | 248507 | 131030 | yes |
+| `scrobicularia_plana` | *Scrobicularia plana* | — | 1 | Semelidae | Scrobicularia | 248795 | 210232 | yes |
+| `fistularia_commersonii` | *Fistularia commersonii* | — | 1 | Fistulariidae | Fistularia | 248924 | 57399 | yes |
+| `scutigera_coleoptrata` | *Scutigera coleoptrata* | — | 1 | Scutigeridae | Scutigera | 248940 | 49552 | yes |
+| `scytodes_thoracica` | *Scytodes thoracica* | — | 2 | Scytodidae | Scytodes | 248979 | 57450 | yes |
+| `carcharodus_alceae` | *Carcharodus alceae* | — | 2 | Hesperiidae | Carcharodus | 249057 | 325871 | yes |
+| `carduus_pycnocephalus` | *Carduus pycnocephalus* | — | 2 | Asteraceae | Carduus | 249267 | 52990 | yes |
+| `nucula_sulcata` | *Nucula sulcata* | — | 1 | Nuculidae | Nucula | 249498 | 482979 | yes |
+| `senecio_vulgaris` | *Senecio vulgaris* | — | 2 | Asteraceae | Senecio | 249599 | 53211 | yes |
+| `sertularella_gayi` | *Sertularella gayi* | — | 1 | Sertulariidae | Sertularella | 249720 | 493415 | yes |
+| `sherardia_arvensis` | *Sherardia arvensis* | — | 2 | Rubiaceae | Sherardia | 249841 | 47691 | yes |
+| `silene_nicaeensis` | *Silene nicaeensis* | — | 2 | Caryophyllaceae | Silene | 250128 | 418789 | yes |
+| `cerastium_glomeratum` | *Cerastium glomeratum* | — | 2 | Caryophyllaceae | Cerastium | 250148 | 52973 | yes |
+| `ceratonia_siliqua` | *Ceratonia siliqua* | — | 2 | Fabaceae | Ceratonia | 250165 | 82742 | yes |
+| `cerinthe_major` | *Cerinthe major* | — | 2 | Boraginaceae | Cerinthe | 250200 | 59265 | yes |
+| `sinapis_arvensis` | *Sinapis arvensis* | — | 2 | Brassicaceae | Sinapis | 250276 | 1562069 | yes |
+| `sisymbrium_irio` | *Sisymbrium irio* | — | 2 | Brassicaceae | Sisymbrium | 250328 | 58085 | yes |
+| `chaetodon_lunula` | *Chaetodon lunula* | — | 1 | Chaetodontidae | Chaetodon | 250412 | 47316 | yes |
+| `suaeda_vera` | *Suaeda vera* | — | 2 | Chenopodiaceae | Suaeda | 250512 | 338460 | yes |
+| `talitrus_saltator` | *Talitrus saltator* | — | 1 | Talitridae | Talitrus | 250571 | 210201 | yes |
+| `chlidonias_hybrida` | *Chlidonias hybrida* | — | 2 | Laridae | Chlidonias | 250758 | 62148 | yes |
+| `terathopius_ecaudatus` | *Terathopius ecaudatus* | — | 2 | Accipitridae | Terathopius | 250815 | 5231 | yes |
+| `teredo_navalis` | *Teredo navalis* | — | 1 | Teredinidae | Teredo | 250816 | 209057 | yes |
+| `chorthippus_jacobsi` | *Chorthippus jacobsi* | — | 2 | Acrididae | Chorthippus | 250939 | 541756 | yes |
+| `chrysotoxum_intermedium` | *Chrysotoxum intermedium* | — | 2 | Syrphidae | Chrysotoxum | 251227 | 469493 | yes |
+| `thymelaea_hirsuta` | *Thymelaea hirsuta* | — | 2 | Thymelaeaceae | Thymelaea | 251228 | 333734 | yes |
+| `helogale_parvula` | *Helogale parvula* | — | 2 | Herpestidae | Helogale | 251289 | 41906 | yes |
+| `hemimysis_margalefi` | *Hemimysis margalefi* | — | 1 | Mysidae | Hemimysis | 251369 | 1494588 | yes |
+| `steatoda_grossa` | *Steatoda grossa* | — | 2 | Theridiidae | Steatoda | 251372 | 61997 | yes |
+| `stellaria_media` | *Stellaria media* | — | 2 | Caryophyllaceae | Stellaria | 251404 | 53298 | yes |
+| `cirsium_monspessulanum` | *Cirsium monspessulanum* | — | 2 | Asteraceae | Cirsium | 251480 | 363107 | yes |
+| `stenosoma_lancifer` | *Stenosoma lancifer* | — | 1 | Idoteidae | Stenosoma | 251522 | 623652 | yes |
+| `steromphala_adansonii` | *Steromphala adansonii* | — | 1 | Trochidae | Steromphala | 251579 | 1325151 | yes |
+| `tituboea_sexmaculata` | *Tituboea sexmaculata* | — | 2 | Chrysomelidae | Tituboea | 251680 | 469157 | yes |
+| `torilis_nodosa` | *Torilis nodosa* | — | 2 | Apiaceae | Torilis | 251722 | 53304 | yes |
+| `cladonia_pyxidata` | *Cladonia pyxidata* | — | 2 | Cladoniaceae | Cladonia | 251736 | 123894 | yes |
+| `struthio_camelus` | *Struthio camelus* | — | 2 | Struthionidae | Struthio | 251817 | 20526 | yes |
+| `tragelaphus_angasii` | *Tragelaphus angasii* | — | 2 | Bovidae | Tragelaphus | 251826 | 42342 | yes |
+| `tragelaphus_scriptus` | *Tragelaphus scriptus* | — | 2 | Bovidae | Tragelaphus | 251838 | 42341 | yes |
+| `hyalopterus_pruni` | *Hyalopterus pruni* | — | 2 | Aphididae | Hyalopterus | 251945 | 143343 | yes |
+| `tricholoma_atrosquamosum` | *Tricholoma atrosquamosum* | — | 2 | Tricholomataceae | Tricholoma | 251972 | 194807 | yes |
+| `coprinopsis_picacea` | *Coprinopsis picacea* | — | 2 | Psathyrellaceae | Coprinopsis | 252503 | 63224 | yes |
+| `ovula_ovum` | *Ovula ovum* | — | 1 | Ovulidae | Ovula | 252613 | 355372 | yes |
+| `pezotettix_giornae` | *Pezotettix giornae* | — | 2 | Acrididae | Pezotettix | 253047 | 333530 | yes |
+| `pholcus_phalangioides` | *Pholcus phalangioides* | — | 2 | Pholcidae | Pholcus | 253197 | 67328 | yes |
+| `phyllorhiza_punctata` | *Phyllorhiza punctata* | — | 1 | Mastigiidae | Phyllorhiza | 253256 | 199347 | yes |
+| `phylo_foetida` | *Phylo foetida* | — | 1 | Orbiniidae | Phylo | 253280 | 697661 | yes |
+| `urtica_urens` | *Urtica urens* | — | 2 | Urticaceae | Urtica | 253510 | 53315 | yes |
+| `venerupis_corrugata` | *Venerupis corrugata* | — | 1 | Veneridae | Venerupis | 253566 | 366851 | yes |
+| `washingtonia_filifera` | *Washingtonia filifera* | — | 2 | Arecaceae | Washingtonia | 253693 | 50184 | yes |
+| `washingtonia_robusta` | *Washingtonia robusta* | — | 2 | Arecaceae | Washingtonia | 253694 | 79521 | yes |
+| `zanclus_cornutus` | *Zanclus cornutus* | — | 1 | Zanclidae | Zanclus | 253786 | 83290 | yes |
+| `zelus_renardii` | *Zelus renardii* | — | 2 | Reduviidae | Zelus | 253801 | 244407 | yes |
+| `zeuzera_pyrina` | *Zeuzera pyrina* | — | 2 | Cossidae | Zeuzera | 253810 | 200930 | yes |
+| `zonaria_pyrum` | *Zonaria pyrum* | — | 1 | Cypraeidae | Zonaria | 253819 | 553339 | yes |
+| `irvinea_chiajeana` | *Irvinea chiajeana* | — | 2 | Rhodymeniaceae | Irvinea | 254003 |  | yes |
+| `halisarca_harmelini` | *Halisarca harmelini* | — | 1 | Halisarcidae | Halisarca | 254152 | 366904 | yes |
+| `pycnoclavella_brava` | *Pycnoclavella brava* | — | 1 | Pycnoclavellidae | Pycnoclavella | 254201 | 798317 | yes |
+| `spongionella_pulchella` | *Spongionella pulchella* | — | 1 | Dictyodendrillidae | Spongionella | 254242 | 459814 | yes |
+| `seriola_rivoliana` | *Seriola rivoliana* | — | 1 | Carangidae | Seriola | 254243 | 51553 | yes |
+| `phymanthus_pulcher` | *Phymanthus pulcher* | — | 1 | Minyadidae | Phymanthus | 254269 | 569538 | yes |
+| `tubulanus_annulatus` | *Tubulanus annulatus* | — | 1 | Tubulanidae | Tubulanus | 254313 | 462145 | yes |
+| `philocheras_fasciatus` | *Philocheras fasciatus* | — | 1 | Crangonidae | Philocheras | 254330 | 874645 | yes |
+| `balistoides_viridescens` | *Balistoides viridescens* | — | 1 | Balistidae | Balistoides | 254349 | 123392 | yes |
+| `arothron_stellatus` | *Arothron stellatus* | — | 1 | Tetraodontidae | Arothron | 254350 | 196936 | yes |
+| `dascyllus_aruanus` | *Dascyllus aruanus* | — | 1 | Pomacentridae | Dascyllus | 254359 | 952775 | yes |
+| `dascyllus_trimaculatus` | *Dascyllus trimaculatus* | — | 1 | Pomacentridae | Dascyllus | 254360 | 49303 | yes |
+| `pterois_volitans` | *Pterois volitans* | — | 1 | Scorpaenidae | Pterois | 254375 | 47280 | yes |
+| `grammonus_ater` | *Grammonus ater* | — | 1 | Bythitidae | Grammonus | 254413 | 101793 | yes |
+| `gulsonia_nodulosa` | *Gulsonia nodulosa* | — | 2 | Callithamniaceae | Gulsonia | 254428 | 1576772 | yes |
+| `sebdenia_rodrigueziana` | *Sebdenia rodrigueziana* | — | 2 | Sebdeniaceae | Sebdenia | 254438 | 1077666 | yes |
+| `suberites_domuncula` | *Suberites domuncula* | — | 1 | Suberitidae | Suberites | 254440 | 202039 | yes |
+| `luidia_ciliaris` | *Luidia ciliaris* | — | 1 | Luidiidae | Luidia | 254472 | 363970 | yes |
+| `endectyon_pilosus` | *Endectyon pilosus* | Endectyon (Endectyon) pilosum | 1 | Raspailiidae | Endectyon | 254546 |  | yes |
+| `myrianida_pinnigera` | *Myrianida pinnigera* | — | 1 | Syllidae | Myrianida | 254548 | 461228 | yes |
+| `vibilia_propinqua` | *Vibilia propinqua* | — | 1 | Vibiliidae | Vibilia | 254558 | 295892 | yes |
+| `eupogodon_planus` | *Eupogodon planus* | — | 2 | Dasyaceae | Eupogodon | 254573 | 1323436 | yes |
+| `palythoa_caribaeorum` | *Palythoa caribaeorum* | — | 1 | Zoanthidae | Palythoa | 254576 | 324157 | yes |
+| `dromia_marmorea` | *Dromia marmorea* | — | 1 | Dromiidae | Dromia | 254579 | 342259 | yes |
+| `tritia_unifasciata` | *Tritia unifasciata* | — | 1 | Nassariidae | Tritia | 254585 | 922507 | yes |
+| `scrupocellaria_scrupea` | *Scrupocellaria scrupea* | — | 1 | Candidae | Scrupocellaria | 254591 | 1077658 | yes |
+| `conus_genuanus` | *Conus genuanus* | — | 1 | Conidae | Conus | 254644 | 150343 | yes |
+| `narcissia_canariensis` | *Narcissia canariensis* | — | 1 | Ophidiasteridae | Narcissia | 254645 | 255871 | yes |
+| `nemertesia_antennina` | *Nemertesia antennina* | — | 1 | Plumulariidae | Nemertesia | 254659 | 363870 | yes |
+| `psenes_pellucidus` | *Psenes pellucidus* | — | 1 | Nomeidae | Psenes | 254720 | 194902 | yes |
+| `melanella_boscii` | *Melanella boscii* | — | 1 | Eulimidae | Melanella | 254726 | 1221226 | yes |
+| `coryphaena_hippurus` | *Coryphaena hippurus* | — | 1 | Coryphaenidae | Coryphaena | 254939 | 98531 | yes |
+| `gelidium_bipectinatum` | *Gelidium bipectinatum* | Gelidium pectinatum | 2 | Gelidiaceae | Gelidium | 254948 | 1601374 | yes |
+| `leucothoe_richiardii` | *Leucothoe richiardii* | — | 1 | Leucothoidae | Leucothoe | 254957 | 672946 | yes |
+| `bopyrina_ocellata` | *Bopyrina ocellata* | — | 1 | Bopyridae | Bopyrina | 254959 | 1071240 | yes |
+| `dasybranchus_gajolae` | *Dasybranchus gajolae* | — | 1 | Capitellidae | Dasybranchus | 254975 | 1578131 | yes |
+| `pisinna_glabrata` | *Pisinna glabrata* | — | 1 | Anabathridae | Pisinna | 255021 | 1223742 | yes |
+| `forskalia_tholoides` | *Forskalia tholoides* | — | 1 | Forskaliidae | Forskalia | 255028 | 666569 | yes |
+| `megabalanus_azoricus` | *Megabalanus azoricus* | — | 1 | Balanidae | Megabalanus | 255034 | 342262 | yes |
+| `tremoctopus_violaceus` | *Tremoctopus violaceus* | — | 1 | Tremoctopodidae | Tremoctopus | 255058 | 253696 | yes |
+| `beroe_gracilis` | *Beroe gracilis* | — | 1 | Beroidae | Beroe | 255063 | 1074871 | yes |
+| `xaiva_biguttata` | *Xaiva biguttata* | — | 1 | Portunidae | Xaiva | 255068 | 787826 | yes |
+| `lineus_grubei` | *Lineus grubei* | Bilucernus grubei | 1 | Lineidae | Lineus | 255074 | 497460 | yes |
+| `tellina_lactea` | *Tellina lactea* | — | 1 | Tellinidae | Tellina | 255197 |  | yes |
+| `symphyocladiella_parasitica` | *Symphyocladiella parasitica* | Deltalsia parasitica | 2 | Rhodomelaceae | Symphyocladiella | 255213 |  | yes |
+| `euphysa_flammea` | *Euphysa flammea* | — | 1 | Corymorphidae | Euphysa | 255220 | 465161 | yes |
+| `phalacrophorus_uniformis` | *Phalacrophorus uniformis* | — | 1 | Iospilidae | Phalacrophorus | 255221 | 682919 | yes |
+| `melithaea_ochracea` | *Melithaea ochracea* | — | 1 | Melithaeidae | Melithaea | 255247 | 604330 | yes |
+| `pseudanthias_squamipinnis` | *Pseudanthias squamipinnis* | — | 1 | Anthiadidae | Pseudanthias | 255312 | 127530 | yes |
+| `stenopus_hispidus` | *Stenopus hispidus* | — | 1 | Stenopodidae | Stenopus | 255315 | 121669 | yes |
+| `sepioteuthis_lessoniana` | *Sepioteuthis lessoniana* | — | 1 | Loliginidae | Sepioteuthis | 255334 | 121187 | yes |
+| `cirrhitichthys_oxycephalus` | *Cirrhitichthys oxycephalus* | — | 1 | Cirrhitidae | Cirrhitichthys | 255340 | 132687 | yes |
+| `macolor_macularis` | *Macolor macularis* | — | 1 | Lutjanidae | Macolor | 255354 | 135281 | yes |
+| `siganus_rivulatus` | *Siganus rivulatus* | — | 1 | Siganidae | Siganus | 255410 | 112568 | yes |
+| `panulirus_versicolor` | *Panulirus versicolor* | — | 1 | Palinuridae | Panulirus | 255458 | 108371 | yes |
+| `lutjanus_bengalensis` | *Lutjanus bengalensis* | — | 1 | Lutjanidae | Lutjanus | 255464 | 447971 | yes |
+| `pomacentrus_coelestis` | *Pomacentrus coelestis* | — | 1 | Pomacentridae | Pomacentrus | 255470 | 132371 | yes |
+| `praya_dubia` | *Praya dubia* | — | 1 | Prayidae | Praya | 255559 | 128784 | yes |
+| `tonna_pennata` | *Tonna pennata* | — | 1 | Tonnidae | Tonna | 255592 | 254662 | yes |
+| `ampithoe_rubricata` | *Ampithoe rubricata* | — | 1 | Ampithoidae | Ampithoe | 255594 | 295412 | yes |
+| `taurulus_bubalis` | *Taurulus bubalis* | — | 1 | Cottidae | Taurulus | 255607 | 130386 | yes |
+| `sebdenia_dichotoma` | *Sebdenia dichotoma* | — | 2 | Sebdeniaceae | Sebdenia | 255622 | 734861 | yes |
+| `abra_tenuis` | *Abra tenuis* | — | 1 | Semelidae | Abra | 255677 | 483092 | yes |
+| `lopadorrhynchus_brevis` | *Lopadorrhynchus brevis* | — | 1 | Lopadorrhynchidae | Lopadorrhynchus | 255690 | 983048 | yes |
+| `spyridia_filamentosa` | *Spyridia filamentosa* | — | 2 | Ceramiaceae | Spyridia | 256003 | 183101 | yes |
+| `vermetus_granulatus` | *Vermetus granulatus* | — | 1 | Vermetidae | Vermetus | 256381 | 840104 | yes |
+| `epitonium_muricatum` | *Epitonium muricatum* | — | 1 | Epitoniidae | Epitonium | 256414 | 1216744 | yes |
+| `stichodactyla_haddoni` | *Stichodactyla haddoni* | — | 1 | Stichodactylidae | Stichodactyla | 256415 | 424142 | yes |
+| `epinephelus_tukula` | *Epinephelus tukula* | — | 1 | Epinephelidae | Epinephelus | 256416 | 53857 | yes |
+| `balistoides_conspicillum` | *Balistoides conspicillum* | — | 1 | Balistidae | Balistoides | 256420 | 154282 | yes |
+| `macrorhynchia_spectabilis` | *Macrorhynchia spectabilis* | — | 1 | Aglaopheniidae | Macrorhynchia | 256431 |  | yes |
+| `mobula_birostris` | *Mobula birostris* | — | 1 | Myliobatidae | Mobula | 256432 | 623966 | yes |
+| `pterois_antennata` | *Pterois antennata* | Pteropterus antennatus | 1 | Scorpaenidae | Pterois | 256434 | 1571801 | yes |
+| `plotosus_lineatus` | *Plotosus lineatus* | — | 1 | Plotosidae | Plotosus | 256438 | 49210 | yes |
+| `alticus_arnoldorum` | *Alticus arnoldorum* | — | 1 | Blenniidae | Alticus | 256450 | 445633 | yes |
+| `myrichthys_maculosus` | *Myrichthys maculosus* | — | 1 | Ophichthidae | Myrichthys | 256469 | 54679 | yes |
+| `ostracion_meleagris` | *Ostracion meleagris* | — | 1 | Ostraciidae | Ostracion | 256470 | 47527 | yes |
+| `ancylocaris_brevicarpalis` | *Ancylocaris brevicarpalis* | — | 1 | Palaemonidae | Ancylocaris | 256473 | 962418 | yes |
+| `soleichthys_heterorhinos` | *Soleichthys heterorhinos* | — | 1 | Soleidae | Soleichthys | 256480 | 450567 | yes |
+| `euapta_godeffroyi` | *Euapta godeffroyi* | — | 1 | Synaptidae | Euapta | 256489 | 50787 | yes |
+| `monetaria_caputserpentis` | *Monetaria caputserpentis* | — | 1 | Cypraeidae | Monetaria | 256499 | 506307 | yes |
+| `tumidodromia_dormia` | *Tumidodromia dormia* | — | 1 | Dromiidae | Tumidodromia | 256508 | 968919 | yes |
+| `diagramma_picta` | *Diagramma picta* | Diagramma pictum | 1 | Haemulidae | Diagramma | 256564 | 132396 | yes |
+| `helcogramma_striata` | *Helcogramma striata* | — | 1 | Tripterygiidae | Helcogramma | 256566 | 102353 | yes |
+| `prostheceraeus_vittatus` | *Prostheceraeus vittatus* | — | 1 | Euryleptidae | Prostheceraeus | 254604 | 477095 | yes |
+| `crella_elegans` | *Crella elegans* | Crella (Crella) elegans | 1 | Crellidae | Crella | 255472 | 966268 | yes |
+| `dictyonella_incisa` | *Dictyonella incisa* | — | 1 | Dictyonellidae | Dictyonella | 257180 | 1075709 | yes |
+| `serpula_concharum` | *Serpula concharum* | — | 1 | Serpulidae | Serpula | 257453 | 1402149 | yes |
+| `cladosiphon_cylindricus` | *Cladosiphon cylindricus* | — | 2 | Chordariaceae | Cladosiphon | 257566 | 1576842 | yes |
+| `ircinia_retidermata` | *Ircinia retidermata* | — | 1 | Irciniidae | Ircinia | 264041 | 902127 | yes |
+| `schedophilus_ovalis` | *Schedophilus ovalis* | — | 1 | Centrolophidae | Schedophilus | 264838 | 609968 | yes |
+| `daboecia_cantabrica` | *Daboecia cantabrica* | — | 2 | Ericaceae | Daboecia | 35986 | 371651 | yes |
+| `tamarix_gallica` | *Tamarix gallica* | — | 2 | Tamaricaceae | Tamarix | 44528 | 51303 | yes |
+| `hepatica_nobilis` | *Hepatica nobilis* | — | 2 | Ranunculaceae | Hepatica | 81089 | 639660 | yes |
+| `struthiopteris_spicant` | *Struthiopteris spicant* | — | 2 | Blechnaceae | Struthiopteris | 96441 | 774894 | yes |
+| `corylus_avellana` | *Corylus avellana* | — | 2 | Betulaceae | Corylus | 224676 | 54491 | yes |
+| `ilex_aquifolium` | *Ilex aquifolium* | — | 2 | Aquifoliaceae | Ilex | 241779 | 53856 | yes |
+| `ipomoea_purpurea` | *Ipomoea purpurea* | — | 2 | Convolvulaceae | Ipomoea | 241982 | 52344 | yes |
+| `acer_negundo` | *Acer negundo* | — | 2 | Sapindaceae | Acer | 242069 | 47726 | yes |
+| `cossus_cossus` | *Cossus cossus* | — | 2 | Cossidae | Cossus | 242214 | 362611 | yes |
+| `cotoneaster_coriaceus` | *Cotoneaster coriaceus* | — | 2 | Rosaceae | Cotoneaster | 242241 | 411074 | yes |
+| `crocothemis_erythraea` | *Crocothemis erythraea* | — | 2 | Libellulidae | Crocothemis | 242509 | 85030 | yes |
+| `platycladus_orientalis` | *Platycladus orientalis* | — | 2 | Cupressaceae | Platycladus | 242534 | 135659 | yes |
+| `actinidia_chinensis` | *Actinidia chinensis* | — | 2 | Actinidiaceae | Actinidia | 242586 | 55149 | yes |
+| `cucurbita_pepo` | *Cucurbita pepo* | — | 2 | Cucurbitaceae | Cucurbita | 242872 | 76541 | yes |
+| `lamarckia_aurea` | *Lamarckia aurea* | — | 2 | Poaceae | Lamarckia | 242901 | 58379 | yes |
+| `laurus_nobilis` | *Laurus nobilis* | — | 2 | Lauraceae | Laurus | 243322 | 54759 | yes |
+| `polypogon_monspeliensis` | *Polypogon monspeliensis* | — | 2 | Poaceae | Polypogon | 243407 | 57197 | yes |
+| `ligia_oceanica` | *Ligia oceanica* | — | 1 | Ligiidae | Ligia | 243989 | 55356 | yes |
+| `ligustrum_lucidum` | *Ligustrum lucidum* | — | 2 | Oleaceae | Ligustrum | 243992 | 77740 | yes |
+| `amaranthus_retroflexus` | *Amaranthus retroflexus* | — | 2 | Amaranthaceae | Amaranthus | 244214 | 58776 | yes |
+| `lonicera_etrusca` | *Lonicera etrusca* | — | 2 | Caprifoliaceae | Lonicera | 244815 | 77834 | yes |
+| `pyracantha_coccinea` | *Pyracantha coccinea* | — | 2 | Rosaceae | Pyracantha | 244827 | 57254 | yes |
+| `malus_domestica` | *Malus domestica* | — | 2 | Rosaceae | Malus | 245046 | 469472 | yes |
+| `quercus_robur` | *Quercus robur* | — | 2 | Fagaceae | Quercus | 245112 | 56133 | yes |
+| `elodea_densa` | *Elodea densa* | — | 2 | Hydrocharitaceae | Elodea | 245516 | 1555600 | yes |
+| `malva_multiflora` | *Malva multiflora* | — | 2 | Malvaceae | Malva | 245841 | 501208 | yes |
+| `sympetrum_fonscolombii` | *Sympetrum fonscolombii* | — | 2 | Libellulidae | Sympetrum | 246320 | 113507 | yes |
+| `syringa_vulgaris` | *Syringa vulgaris* | — | 2 | Oleaceae | Syringa | 246513 | 83072 | yes |
+| `tachybaptus_ruficollis` | *Tachybaptus ruficollis* | — | 2 | Podicipedidae | Tachybaptus | 246541 | 4237 | yes |
+| `erodium_ciconium` | *Erodium ciconium* | — | 2 | Geraniaceae | Erodium | 246901 | 53058 | yes |
+| `bougainvillea_glabra` | *Bougainvillea glabra* | — | 2 | Nyctaginaceae | Bougainvillea | 247013 | 159346 | yes |
+| `salamandra_salamandra` | *Salamandra salamandra* | — | 2 | Salamandridae | Salamandra | 247070 | 27726 | yes |
+| `sambucus_nigra` | *Sambucus nigra* | — | 2 | Caprifoliaceae | Sambucus | 247483 | 765394 | yes |
+| `moricandia_arvensis` | *Moricandia arvensis* | — | 2 | Brassicaceae | Moricandia | 247499 | 165527 | yes |
+| `bufo_spinosus` | *Bufo spinosus* | — | 2 | Bufonidae | Bufo | 247577 | 134693 | yes |
+| `avena_sativa` | *Avena sativa* | — | 2 | Poaceae | Avena | 247618 | 57156 | yes |
+| `euphorbia_amygdaloides` | *Euphorbia amygdaloides* | — | 2 | Euphorbiaceae | Euphorbia | 247728 | 57662 | yes |
+| `buteo_buteo` | *Buteo buteo* | — | 2 | Accipitridae | Buteo | 247786 | 204472 | yes |
+| `myocastor_coypus` | *Myocastor coypus* | — | 2 | Echimyidae | Myocastor | 248029 | 43997 | yes |
+| `calystegia_silvatica` | *Calystegia silvatica* | — | 2 | Convolvulaceae | Calystegia | 248401 | 75968 | yes |
+| `fagus_sylvatica` | *Fagus sylvatica* | — | 2 | Fagaceae | Fagus | 248565 | 54227 | yes |
+| `falco_tinnunculus` | *Falco tinnunculus* | — | 2 | Falconidae | Falco | 248606 | 472766 | yes |
+| `nyctophila_reichii` | *Nyctophila reichii* | — | 2 | Lampyridae | Nyctophila | 249587 | 367018 | yes |
+| `gallinago_gallinago` | *Gallinago gallinago* | — | 2 | Scolopacidae | Gallinago | 249829 | 318836 | yes |
+| `centranthus_ruber` | *Centranthus ruber* | — | 2 | Valerianaceae | Centranthus | 250066 | 57283 | yes |
+| `onopordum_illyricum` | *Onopordum illyricum* | — | 2 | Asteraceae | Onopordum | 250280 | 78260 | yes |
+| `sorghum_halepense` | *Sorghum halepense* | — | 2 | Poaceae | Sorghum | 250545 | 58387 | yes |
+| `spoladea_recurvalis` | *Spoladea recurvalis* | — | 2 | Crambidae | Spoladea | 251229 | 52043 | yes |
+| `spongia_officinalis` | *Spongia officinalis* | Spongia (Spongia) officinalis | 1 | Spongiidae | Spongia | 251233 | 357376 | yes |
+| `staehelina_dubia` | *Staehelina dubia* | — | 2 | Asteraceae | Staehelina | 251311 | 82628 | yes |
+| `trametes_versicolor` | *Trametes versicolor* | — | 2 | Polyporaceae | Trametes | 251865 | 54134 | yes |
+| `humulus_lupulus` | *Humulus lupulus* | — | 2 | Cannabaceae | Humulus | 251931 | 53779 | yes |
+| `colias_croceus` | *Colias croceus* | — | 2 | Pieridae | Colias | 252243 | 143294 | yes |
+| `ova_canaliferus` | *Ova canaliferus* | Ova canalifera | 1 | Schizasteridae | Ova | 252610 | 1480018 | yes |
+| `pandorea_jasminoides` | *Pandorea jasminoides* | — | 2 | Bignoniaceae | Pandorea | 252714 | 346424 | yes |
+| `passiflora_caerulea` | *Passiflora caerulea* | — | 2 | Passifloraceae | Passiflora | 252855 | 51454 | yes |
+| `petronia_petronia` | *Petronia petronia* | — | 2 | Passeridae | Petronia | 253014 | 14076 | yes |
+| `philodromus_margaritatus` | *Philodromus margaritatus* | — | 2 | Philodromidae | Philodromus | 253151 | 360677 | yes |
+| `triticum_aestivum` | *Triticum aestivum* | — | 2 | Poaceae | Triticum | 253349 | 64161 | yes |
+| `ulmus_procera` | *Ulmus procera* | — | 2 | Ulmaceae | Ulmus | 253470 | 1567961 | yes |
+| `vespa_velutina` | *Vespa velutina* | — | 2 | Vespidae | Vespa | 253603 | 119019 | yes |
+| `calendula_arvensis` | *Calendula arvensis* | — | 2 | Asteraceae | Calendula | 253911 | 59260 | yes |
+| `fraxinus_angustifolia` | *Fraxinus angustifolia* | — | 2 | Oleaceae | Fraxinus | 255860 | 82881 | yes |
+| `spondylus_senegalensis` | *Spondylus senegalensis* | — | 1 | Spondylidae | Spondylus | 256818 | 342110 | yes |
+| `canarya_canariensis` | *Canarya canariensis* | — | 1 | Primnoidae | Canarya | 257199 | 1242895 | yes |
+| `aglaophenia_tubulifera` | *Aglaophenia tubulifera* | — | 1 | Aglaopheniidae | Aglaophenia | 261992 | 542087 | yes |
+| `opuntia_anahuacensis` | *Opuntia anahuacensis* | — | 2 | Cactaceae | Opuntia | 262704 | 809289 | yes |
+| `elaeagnus_macrophylla` | *Elaeagnus macrophylla* | — | 2 | Elaeagnaceae | Elaeagnus | 262789 | 450324 | yes |
+| `pyracantha_crenulata` | *Pyracantha crenulata* | — | 2 | Rosaceae | Pyracantha | 263211 | 78790 | yes |
+| `grevillea_rosmarinifolia` | *Grevillea rosmarinifolia* | — | 2 | Proteaceae | Grevillea | 263957 | 547335 | yes |
+| `anemonoides_nemorosa` | *Anemonoides nemorosa* | Anemone nemorosa | 2 | Ranunculaceae | Anemonoides | 264624 | 950603 | yes |
+| `rumex_patientia` | *Rumex patientia* | — | 2 | Polygonaceae | Rumex | 264750 | 168248 | yes |
+| `melyvonnea_canariensis` | *Melyvonnea canariensis* | — | 2 | Hapalidiaceae | Melyvonnea | 266464 |  | yes |
+| `artemisia_scoparia` | *Artemisia scoparia* | — | 2 | Asteraceae | Artemisia | 267049 | 158721 | yes |
+| `lycosa_tarantula` | *Lycosa tarantula* | — | 2 | Lycosidae | Lycosa | 245363 | 347861 | yes |
+| `nezara_viridula` | *Nezara viridula* | — | 2 | Pentatomidae | Nezara | 249075 | 141725 | yes |
+| `tegenaria_domestica` | *Tegenaria domestica* | — | 2 | Agelenidae | Tegenaria | 250738 | 153507 | yes |
+| `steatoda_paykulliana` | *Steatoda paykulliana* | — | 2 | Theridiidae | Steatoda | 251377 | 343356 | yes |
+| `austrocylindropuntia_cylindrica` | *Austrocylindropuntia cylindrica* | — | 2 | Cactaceae | Austrocylindropuntia | 77959 | 320090 | yes |
+| `eurydema_ventralis` | *Eurydema ventralis* | — | 2 | Pentatomidae | Eurydema | 83472 | 327172 | yes |
+| `coloeus_monedula` | *Coloeus monedula* | — | 2 | Corvidae | Coloeus | 157275 | 336399 | yes |
+| `dyroderes_umbraculatus` | *Dyroderes umbraculatus* | — | 2 | Pentatomidae | Dyroderes | 240897 | 338533 | yes |
+| `iris_lutescens` | *Iris lutescens* | — | 2 | Iridaceae | Iris | 242041 | 358135 | yes |
+| `corvus_corax` | *Corvus corax* | — | 2 | Corvidae | Corvus | 242128 | 8010 | yes |
+| `ixobrychus_minutus` | *Ixobrychus minutus* | — | 2 | Ardeidae | Ixobrychus | 242175 | 1578961 | yes |
+| `crioceris_asparagi` | *Crioceris asparagi* | — | 2 | Chrysomelidae | Crioceris | 242454 | 127309 | yes |
+| `pleurotus_eryngii` | *Pleurotus eryngii* | — | 2 | Pleurotaceae | Pleurotus | 242653 | 205516 | yes |
+| `adiantum_capillus_veneris` | *Adiantum capillus-veneris* | — | 2 | Pteridaceae | Adiantum | 242686 | 63916 | yes |
+| `lactarius_deliciosus` | *Lactarius deliciosus* | — | 2 | Russulaceae | Lactarius | 242717 | 155197 | yes |
+| `cyanopica_cooki` | *Cyanopica cooki* | — | 2 | Corvidae | Cyanopica | 243056 | 339684 | yes |
+| `cycas_revoluta` | *Cycas revoluta* | — | 2 | Cycadaceae | Cycas | 243123 | 129783 | yes |
+| `cygnus_cygnus` | *Cygnus cygnus* | — | 2 | Anatidae | Cygnus | 243248 | 6916 | yes |
+| `lemna_minor` | *Lemna minor* | — | 2 | Araceae | Lemna | 243493 | 54518 | yes |
+| `allium_roseum` | *Allium roseum* | — | 2 | Amaryllidaceae | Allium | 243820 | 82895 | yes |
+| `daucus_carota` | *Daucus carota* | — | 2 | Apiaceae | Daucus | 243907 | 76610 | yes |
+| `primula_veris` | *Primula veris* | — | 2 | Primulaceae | Primula | 243928 | 55819 | yes |
+| `dolycoris_baccarum` | *Dolycoris baccarum* | — | 2 | Pentatomidae | Dolycoris | 244895 | 51666 | yes |
+| `lophophanes_cristatus` | *Lophophanes cristatus* | — | 2 | Paridae | Lophophanes | 244919 | 144830 | yes |
+| `quercus_rotundifolia` | *Quercus rotundifolia* | — | 2 | Fagaceae | Quercus | 245062 | 82946 | yes |
+| `lumbricus_terrestris` | *Lumbricus terrestris* | — | 1 | Lumbricidae | Lumbricus | 245063 | 81545 | yes |
+| `anthocharis_cardamines` | *Anthocharis cardamines* | — | 2 | Pieridae | Anthocharis | 245256 | 51495 | yes |
+| `emberiza_cirlus` | *Emberiza cirlus* | — | 2 | Emberizidae | Emberiza | 245728 | 9192 | yes |
+| `emberiza_hortulana` | *Emberiza hortulana* | — | 2 | Emberizidae | Emberiza | 245734 | 9196 | yes |
+| `magnolia_grandiflora` | *Magnolia grandiflora* | — | 2 | Magnoliaceae | Magnolia | 245737 | 83074 | yes |
+| `sylvia_atricapilla` | *Sylvia atricapilla* | — | 2 | Sylviidae | Sylvia | 246236 | 15282 | yes |
+| `ricinus_communis` | *Ricinus communis* | — | 2 | Euphorbiaceae | Ricinus | 246277 | 56739 | yes |
+| `robinia_pseudoacacia` | *Robinia pseudoacacia* | — | 2 | Fabaceae | Robinia | 246378 | 56088 | yes |
+| `rosa_canina` | *Rosa canina* | — | 2 | Rosaceae | Rosa | 246449 | 55884 | yes |
+| `tachina_fera` | *Tachina fera* | — | 2 | Sarcophagidae | Tachina | 246533 | 52591 | yes |
+| `boletus_impolitus` | *Boletus impolitus* | Hemileccinum impolitum | 2 | Boletaceae | Boletus | 246684 | 542661 | yes |
+| `milvus_migrans` | *Milvus migrans* | — | 2 | Accipitridae | Milvus | 247063 | 5268 | yes |
+| `asplenium_trichomanes` | *Asplenium trichomanes* | — | 2 | Aspleniaceae | Asplenium | 247165 | 75609 | yes |
+| `eucalyptus_camaldulensis` | *Eucalyptus camaldulensis* | — | 2 | Myrtaceae | Eucalyptus | 247315 | 64128 | yes |
+| `salvia_pratensis` | *Salvia pratensis* | — | 2 | Lamiaceae | Salvia | 247353 | 85338 | yes |
+| `buddleja_davidii` | *Buddleja davidii* | — | 2 | Buddlejaceae | Buddleja | 247563 | 75916 | yes |
+| `clinopodium_nepeta` | *Clinopodium nepeta* | — | 2 | Lamiaceae | Clinopodium | 247702 | 493202 | yes |
+| `euphorbia_characias` | *Euphorbia characias* | — | 2 | Euphorbiaceae | Euphorbia | 247767 | 181594 | yes |
+| `mylabris_quadripunctata` | *Mylabris quadripunctata* | — | 2 | Meloidae | Mylabris | 247992 | 346032 | yes |
+| `calopteryx_haemorrhoidalis` | *Calopteryx haemorrhoidalis* | — | 2 | Calopterygidae | Calopteryx | 248359 | 96487 | yes |
+| `ferula_communis` | *Ferula communis* | — | 2 | Apiaceae | Ferula | 248725 | 333677 | yes |
+| `geranium_dissectum` | *Geranium dissectum* | — | 2 | Geraniaceae | Geranium | 248818 | 53075 | yes |
+| `gladiolus_italicus` | *Gladiolus italicus* | — | 2 | Iridaceae | Gladiolus | 248951 | 71162 | yes |
+| `glaucium_flavum` | *Glaucium flavum* | — | 2 | Papaveraceae | Glaucium | 248980 | 77279 | yes |
+| `sedum_dasyphyllum` | *Sedum dasyphyllum* | — | 2 | Crassulaceae | Sedum | 249117 | 208966 | yes |
+| `fraxinus_ornus` | *Fraxinus ornus* | — | 2 | Oleaceae | Fraxinus | 249204 | 319281 | yes |
+| `genista_scorpius` | *Genista scorpius* | — | 2 | Fabaceae | Genista | 250021 | 328040 | yes |
+| `cercopis_intermedia` | *Cercopis intermedia* | — | 2 | Cercopidae | Cercopis | 250181 | 323017 | yes |
+| `onopordum_acanthium` | *Onopordum acanthium* | — | 2 | Asteraceae | Onopordum | 250275 | 78259 | yes |
+| `chamaemelum_nobile` | *Chamaemelum nobile* | — | 2 | Asteraceae | Chamaemelum | 250459 | 143243 | yes |
+| `charadrius_dubius` | *Charadrius dubius* | — | 2 | Charadriidae | Charadrius | 250497 | 1580336 | yes |
+| `charaxes_jasius` | *Charaxes jasius* | — | 2 | Nymphalidae | Charaxes | 250523 | 123912 | yes |
+| `chelidonium_majus` | *Chelidonium majus* | — | 2 | Papaveraceae | Chelidonium | 250620 | 55757 | yes |
+| `sphinx_ligustri` | *Sphinx ligustri* | — | 2 | Sphingidae | Sphinx | 250643 | 362591 | yes |
+| `chrysolophus_pictus` | *Chrysolophus pictus* | — | 2 | Phasianidae | Chrysolophus | 251115 | 1230 | yes |
+| `circaetus_gallicus` | *Circaetus gallicus* | — | 2 | Accipitridae | Circaetus | 251441 | 5242 | yes |
+| `conium_maculatum` | *Conium maculatum* | — | 2 | Apiaceae | Conium | 252378 | 52998 | yes |
+| `convallaria_majalis` | *Convallaria majalis* | — | 2 | Asparagaceae | Convallaria | 252411 | 48206 | yes |
+| `ovis_aries` | *Ovis aries* | — | 2 | Bovidae | Ovis | 252612 | 121578 | yes |
+| `panorpa_meridionalis` | *Panorpa meridionalis* | — | 2 | Panorpidae | Panorpa | 252722 | 466290 | yes |
+| `parietaria_officinalis` | *Parietaria officinalis* | — | 2 | Urticaceae | Parietaria | 252808 | 84889 | yes |
+| `phlomis_purpurea` | *Phlomis purpurea* | — | 2 | Lamiaceae | Phlomis | 253171 | 320779 | yes |
+| `phoenix_canariensis` | *Phoenix canariensis* | — | 2 | Arecaceae | Phoenix | 253191 | 78554 | yes |
+| `vanessa_atalanta` | *Vanessa atalanta* | — | 2 | Nymphalidae | Vanessa | 253551 | 49133 | yes |
+| `verbascum_lychnitis` | *Verbascum lychnitis* | — | 2 | Scrophulariaceae | Verbascum | 253578 | 133231 | yes |
+| `verbascum_virgatum` | *Verbascum virgatum* | — | 2 | Scrophulariaceae | Verbascum | 253588 | 64130 | yes |
+| `kallymenia_patens` | *Kallymenia patens* | — | 2 | Kallymeniaceae | Kallymenia | 254416 | 1628294 | yes |
+| `callistemon_speciosus` | *Callistemon speciosus* | — | 2 | Myrtaceae | Callistemon | 254457 | 589711 | yes |
+| `craterellus_lutescens` | *Craterellus lutescens* | — | 2 | Cantharellaceae | Craterellus | 255052 | 514218 | yes |
+| `hygrocybe_conicoides` | *Hygrocybe conicoides* | — | 2 | Hygrophoraceae | Hygrocybe | 257085 | 179147 | yes |
+| `calliblepharis_jubata` | *Calliblepharis jubata* | — | 2 | Cystocloniaceae | Calliblepharis | 257504 | 706346 | yes |
+| `oenothera_lindheimeri` | *Oenothera lindheimeri* | — | 2 | Onagraceae | Oenothera | 262678 | 590726 | yes |
+| `petrosedum_rupestre` | *Petrosedum rupestre* | — | 2 | Crassulaceae | Petrosedum | 262768 | 734805 | yes |
+| `vanellus_spinosus` | *Vanellus spinosus* | — | 2 | Charadriidae | Vanellus | 262775 | 4866 | yes |
+| `genista_umbellata` | *Genista umbellata* | — | 2 | Fabaceae | Genista | 263170 | 484814 | yes |
+| `taraxacum_rubicundum` | *Taraxacum rubicundum* | — | 2 | Asteraceae | Taraxacum | 263191 | 747359 | yes |
+| `perotis_unicolor` | *Perotis unicolor* | — | 2 | Buprestidae | Perotis | 263238 | 907560 | yes |
+| `allium_atroviolaceum` | *Allium atroviolaceum* | — | 2 | Amaryllidaceae | Allium | 263288 | 738854 | yes |
+| `pardosa_tenuipes` | *Pardosa tenuipes* | — | 2 | Lycosidae | Pardosa | 263342 | 783696 | yes |
+| `asplenium_fontanum` | *Asplenium fontanum* | — | 2 | Aspleniaceae | Asplenium | 264777 | 424972 | yes |
+| `iris_florentina` | *Iris florentina* | — | 2 | Iridaceae | Iris | 264799 | 1472012 | yes |
+| `collybia_sordida` | *Collybia sordida* | — | 2 | Tricholomataceae | Collybia | 268635 | 1525549 | yes |

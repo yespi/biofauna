@@ -6,11 +6,41 @@
     "geitodoris_planata": "discodoris_stellifera",
     "thordisa_filix": "thordisa_amanzii",
     "actinia_striata": "actinia_mediterranea",
-    "actinia_mediterranea": "actinia_striata"
+    "actinia_mediterranea": "actinia_striata",
+    "washingtonia_robusta": "washingtonia_filifera",
+    "washingtonia_filifera": "washingtonia_robusta",
+    "spicara_maena": "spicara_smaris",
+    "spicara_smaris": "spicara_maena",
+    "taonia_atomaria": "dictyota_dichotoma",
+    "dictyota_dichotoma": "taonia_atomaria",
+    "halopteris_scoparia": "halopteris_filicina",
+    "halopteris_filicina": "halopteris_scoparia",
+    "zostera_marina": "nanozostera_noltii",
+    "nanozostera_noltii": "zostera_marina"
   },
   "abstain_genera": [
-    "cuthona", "trinchesia", "tenellia", "runcina", "eubranchus", 
-    "doto", "fjordia", "coryphella", "cuthonella", "rubramoena"
+    "cuthona",
+    "trinchesia",
+    "tenellia",
+    "runcina",
+    "eubranchus",
+    "doto",
+    "fjordia",
+    "coryphella",
+    "cuthonella",
+    "rubramoena"
   ],
-  "note": "Expert-validated visual indistinguishability rules from GROC/OPK and taxonomic literature"
+  "abstain_groups": [
+    {
+      "name": "esponjas incrustantes indistinguibles (Chondrosia/Crambe/Phorbas/Ircinia)",
+      "slugs": [
+        "chondrosia_reniformis",
+        "crambe_crambe",
+        "phorbas_tenacior",
+        "ircinia_oros"
+      ],
+      "note": "Confusion sistemática confirmada en eval 2026-09-09 (McNemar/confusion matrix); requieren identificación por espículas al microscopio, no distinguibles de forma fiable por foto."
+    }
+  ],
+  "note": "Expert-validated visual indistinguishability rules from GROC/OPK and taxonomic literature. abstain_groups: pares/grupos sin género o familia común pero con confusión sistemática confirmada por datos -- se abstiene a nivel de grupo cuando top1/top2 caen ambos en el mismo grupo."
 }

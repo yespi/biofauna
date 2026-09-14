@@ -1,8 +1,7 @@
-# BioFauna — Session status (public pointer)
+# BioFauna — session status (public pointer)
 
-> **Canonical internal doc (HanSolo):** `hansolo-docs/biofauna/BIOFAUNA_SESION_STATUS.md`  
-> **Public status page:** [STATUS.md](STATUS.md) · **Archive gap:** [ARCHIVE_GAP.md](ARCHIVE_GAP.md)  
-> **Last sync:** 2026-09-04 — live **79.10%** jsonl / FAISS 785,897 aligned / AutoID on /
-> night85 overlay **not cut over**. Paper §4.15–§4.17.
+Operational diary lives in the private `hansolo-docs` tree (`BIOFAUNA_SESION_STATUS.md`).
 
-This file is a stub. Operational session detail lives in the private `hansolo-docs` repository. The public project status is maintained in [STATUS.md](STATUS.md).
+**Public snapshot (2026-09-14):** [STATUS.md](STATUS.md) — 85.78% species OOS, FAISS 848,883 aligned, AutoID on.
+
+Closed historical note (SSD archive gap, Aug 2026): [archive/ARCHIVE_GAP.md](archive/ARCHIVE_GAP.md).

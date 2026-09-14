@@ -9,7 +9,7 @@
 | Disk | ~5 GB (model + patterns) | 50+ GB if mirroring images |
 | OS | Linux | Ubuntu 22.04+ |
 
-Production inference (frozen **BioCLIP-2.5 ViT-H** + k-NN) uses ~**4.4 GB** VRAM on an RTX 3060. Fine-tuning experiments are optional and not required to run the identifier.
+Production inference (frozen **BioCLIP-2.5 ViT-H** + prototypes or k-NN) uses ~**4.4 GB** VRAM on an RTX 3060 when the full gallery is loaded; the public prototype-only demo is much smaller.
 
 ### Setup
 

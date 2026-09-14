@@ -1,41 +1,36 @@
-## Dataset Information
+## Dataset — what to download vs what we ship
 
-### Scale (2026-09-14, live)
+### Live scale (2026-09-14)
 
-| Resource | Approx. size |
-|----------|--------------|
-| Image folders | ~4,700 Mediterranean (+adjacent) species (2,983 with ≥1 photo) |
-| Photographs on disk | ~838K |
-| ViT-H embeddings (production FAISS gallery) | **848,883** / **4,702** species |
-| Prototype centroids published in this repo | `data/patterns/` — 4,702 species (`prototype.npy` per species; full per-photo `embeddings.npy` galleries are not redistributed here, see below) |
+| Resource | Production | This repository |
+|----------|------------|-----------------|
+| Photographs | ~838k on disk | **Not released** (iNaturalist / Minka licences) |
+| Per-photo ViT-H embeddings | **848,883** / **4,702** species | **Not released** (~3+ GB, derived from photos) |
+| Prototype centroids | 4,702 × 1024 float32 | **`data/patterns/<slug>/prototype.npy`** |
+| Checklist + taxon IDs | 2,985 taxa | **`dataset/catalog.json`** (no photographer `obs` maps) |
+| Calibrator | `calibration.json` n=19,087 | `data/calibration.json` |
+| Geo priors / cryptic pairs / exceptions | live JSON | `dataset/` |
 
-> Earlier snapshot (2026-08-10): ~3,000 species, ~585K photos, ~553K embeddings / 1,358 species. Catalog and gallery have since grown substantially (nomenclature audit, gallery-quality campaigns, eval_n expansion — see [`STATUS.md`](STATUS.md) and [`HISTORY.md`](HISTORY.md) for the changelog).
+### Rebuild photos
 
-### Sources
+Use taxon IDs in `dataset/catalog.json`:
 
-Primary sources: **Minka** (Mediterranean citizen science) and **iNaturalist** (research-grade / community). Expert field-guide crops (Pontes, Salvador, Ballesteros) were OCR-labeled and tested as ablations; they are not required to reproduce the 71.7% baseline.
+1. **Minka** — `minka_taxon`
+2. **iNaturalist** — `inat_taxon` when present (`dataset/inat_taxon_cache.json`)
+3. **GBIF** — scientific `name` / `accepted_name` + multimedia
 
-### Obtaining the Dataset
+Then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`) and write `embeddings.npy` next to each prototype. The public identifier switches from nearest-centroid to tempered k-NN when those files exist.
 
-Images cannot be redistributed directly due to licensing, but can be reproduced:
-
-1. **iNaturalist API** — taxon IDs in `docs/species_table.md`
-2. **Minka API** — Minka taxon IDs
-3. **GBIF** — scientific name + multimedia filter
-
-### Directory Structure
+### Layout
 
 ```
-dataset/
-├── patterns/                 # Active gallery (embeddings.npy per species)
-├── calibration.json          # Logistic calibrator + field_acc
-├── calib_raw_k15.jsonl       # harvest_calib rows (when published)
-└── papers/                   # Optional guide crops / OCR labels
+data/patterns/<slug>/prototype.npy   # shipped
+data/patterns/<slug>/embeddings.npy  # you rebuild
+dataset/catalog.json                 # taxon index
+dataset/taxonomic_exceptions.json
+dataset/cryptic_pairs.jsonl
+dataset/geo_priors.json
+dataset/calibration.json
 ```
 
-### Species Catalog
-
-Historical checklist size in early drafts: **1,369** named taxa.  
-Current image corpus spans ~**3,000** folders; the live identifier serves the active patterns subset (~**1,158** species).
-
-Full historical table: `docs/species_table.md`
+Expert field-guide crops were tested as an ablation and **hurt** k-NN; they are not required.

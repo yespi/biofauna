@@ -1,273 +1,39 @@
-# BioFauna — Project Status (public)
+# BioFauna — public status
 
-> ## Live production (2026-09-12 night): **848,554** embeddings, 85 renames + 4 duplicate merges live
->
-> Since the afternoon update: a stale-status typo in the nomenclature auditor's WoRMS whitelist
-> was found and fixed (32 species that should have resolved to a clean rename were stuck
-> "ambiguous" instead). Final catalog pass: **85 names updated**, 12 genuinely ambiguous cases
-> triaged by hand (8 need no action, 4 are real taxonomic debates left for human review), and
-> the **4 duplicate-slug pairs flagged in the afternoon update were fully merged** — reference
-> photos consolidated with byte-for-byte duplicate detection (no data loss), catalog updated,
-> affected species re-embedded, and the FAISS index rebuilt and hot-reloaded into the live
-> service (840,102 → 848,554 vectors), all verified end-to-end with no downtime.
->
-> A held-out evaluation set for four seagrass species (previously n=15/15/8/5, known to be too
-> small to trust) was expanded to n=20 each via a fresh harvest against unseen observations:
-> *Posidonia oceanica* 53.3%→55.0%, *Cymodocea nodosa* 86.7%→80.0%, *Zostera marina*
-> 75.0%→80.0%, *Nanozostera noltii* stable at 80.0%. Reported plainly, including that an
-> earlier informal estimate of ~76% for *P. oceanica* was not confirmed by this larger,
-> official sample — n=20 remains small, and these numbers should still be read as provisional.
->
-> A systematic photo-quality upgrade pass was run against 96 low-accuracy species (two batches:
-> tier-0 species under 40% accuracy, and thin-gallery species under 60%); only 5 had any better
-> replacement photo actually available in the source pools right now, confirming that most of
-> this cohort's low accuracy is not a recoverable photo-quality problem with current data
-> sources. Two infrastructure bugs unrelated to the model were also found and fixed: an admin
-> health-check that silently failed when triggered from inside a container with different
-> network routing, and a process-supervisor script whose own lock file was being kept alive by
-> processes it launched, silencing its logs for hours without causing any actual harm.
->
-> ## Live production (2026-09-12 afternoon): **840,583** embeddings, catalog nomenclature auditor shipped
->
-> Since the morning update: 59 tier-0 species with near-empty reference galleries were
-> multi-source refilled and cut over (thin-gallery pass, FAISS +959 vectors). A new canonical
-> **nomenclature auditor** (`scripts/taxonomy_nomenclature_audit.py`) was built, QA'd against
-> WoRMS + GBIF Backbone Taxonomy, and run against the full 2,989-species catalog: 96.4% of
-> names are already the accepted scientific name; 29 outdated names were updated (stored in a
-> new `accepted_name` field, catalog slugs left untouched — see incident note below); 2 genuine
-> duplicate-slug pairs were found and flagged for manual merge, not yet applied. A morning
-> hypothesis about several "duplicate" species pairs was re-checked against the auditor and
-> mostly retracted — WoRMS confirmed most were independently accepted names, not duplicates.
->
-> **Incident, caught and fixed within minutes:** the first apply pass overwrote each renamed
-> species' display name directly, which silently broke the on-the-fly slug lookup several
-> internal scripts use to locate that species' reference photos and evaluation history — 29
-> species briefly disappeared from photo/eval counts. Caught immediately by a mandatory
-> post-change verification step, reverted from an automatic backup, and fixed by storing the
-> updated name in a separate field instead of overwriting the identifier-bearing one.
->
-> ## Live production (2026-09-12 morning): **86.14%** species OOS · FAISS aligned · AutoID on · kNN `T=0.05`
->
-> `biofauna-id.service` serves **839,624** embeddings / **4,702** species,
-> `faiss_aligned=true`. Official `calib_raw_t05.jsonl` (n=18,707): **86.14%**
-> species out-of-sample. Continuing the overnight evaluation-backlog harvest
-> (see below), a second seagrass photo-quality pass and a full three-tier
-> low-n boost were completed this morning: *Posidonia oceanica* was
-> re-expanded to 2,535 quality-filtered reference photos (from 883) and
-> cut over to production again on a fresh zero-leakage held-out set (48%→76%,
-> +28pp); *Nanozostera noltii* was cut over to production (already-measured
-> +15pp staging result); the low-n evaluation boost was completed across all
-> three priority tiers (245 species, +577 held-out observations total).
-> *Cymodocea nodosa* investigation is now closed at the data-quality level: a
-> full visual-purity classification pass found zero contaminated reference
-> photos, ruling out photo quality as the cause — the remaining gap is judged
-> to be genuine embedding-space confusion with *Nanozostera*/*Posidonia*,
-> a decision-layer problem (candidate fix: taxonomic-exception abstention,
-> not more photos) left for a follow-up session. A pilot generalizing the
-> visual-purity classifier from seagrass to 16 arbitrary low-accuracy fauna
-> species (630 photos) found the technique doesn't transfer (97.5% already
-> "pure," nothing to fix) — the likely bigger lever there is a handful of
-> confirmed catalog synonym duplicates (e.g. two slugs for the same species
-> differing only by a typo) found via confusion-pair analysis, not yet
-> resolved. Paper §4.19. The 2026-09-10 baseline (90.61%, n=13,158) is kept
-> below for the historical record.
->
-> **AutoID, tonight:** the hourly wave is running and correctly skipping
-> iNaturalist-only observations (by design), but many BF-engine attempts are
-> failing over to skip because `identify` is competing for GPU memory with the
-> overnight harvest/staging jobs above — an expected, self-resolving throughput
-> dip from GPU contention, not a wave or scheduling bug (confirmed: no cron or
-> config regression, `identify` recovers and resumes normal throughput as soon
-> as the concurrent GPU jobs release memory).
->
-> ## Historical — Live production (2026-09-10): **90.61%** species jsonl · FAISS aligned · AutoID on · kNN `T=0.05`
->
-> `biofauna-id.service` serves **838,115** embeddings / **4,702** species,
-> `faiss_aligned=true`. Official `calib_raw.jsonl` (n=13,158): **90.61%** species
-> (11,923/13,158) / genus **92.54%** / family **93.91%**. Reached via a
-> quality-aware gallery refresh (+2.16pp, cut over) and a kNN aggregation
-> temperature change (+7.81pp, cut over), each independently measured by
-> McNemar, plus a calibration refresh folding in 370 previously-unevaluated
-> species. Coverage: 1,722/2,989 catalog species have ≥1 eval observation.
-> Paper §4.18. The 2026-09-04 baseline (79.10%, FAISS 785,897) is kept below
-> for the historical record.
->
-> ## Historical — Live production (2026-09-04): **79.10%** species jsonl · FAISS aligned · AutoID on · night85 staging **not cut over**
->
-> `biofauna-id.service` served **785,897** embeddings / **4,702** species,
-> `faiss_aligned=true`. Official `calib_raw.jsonl` (n=12,788): **79.10%** species
-> (10,115/12,788) / Tier-1 **74.88%**. The 1-Sep autopsia tally of **79.25%** /
-> **75.10%** is the same harvest (Δ19 photos); jsonl is the source of truth.
-> Staging **807,267** (79.10%, −0.15pp) **was not cut over**. Paper §4.15–§4.17.
->
-> **night85 (in progress, 4 Sep):** parallel harvest∥embed, local archive JPGs
-> first. Overlay McNemar (same replica scorer, not live identify): **282 fixed /
-> 80 broken**, **+1.58 pp**, ratio 3.53. Maxsim ceiling is not that delta.
-> **No live FAISS write. No cutover.**
->
-> **Incident (closed):** from 31 Aug ~12:03 to 1 Sep 22:42 CEST, live `/identify`
-> translated FAISS neighbors with a rebuilt in-memory label array `KY` that no
-> longer matched the loaded index — terrestrial photos were named as marine
-> species at 85–100% confidence. Disk embeddings and official evals were never
-> scrambled. Neighbor translation now uses `species_ids.npy`; `/reload` reloads
-> FAISS; `/health` reports `faiss_aligned`. AutoID hourly wave is **on** again
-> (20/h, p≥0.80, unidentified only). Default FotoFauna PRE crop remains YOLO COCO
-> (YOLOE marine prompts recover boxes but lower BioFauna accuracy after the crop).
->
-> Inference-time architecture remains **frozen** (0/5 post-77.77% hypotheses).
-> 77.77% → 79.25% is **gallery densification**, not a new scorer.
->
-> ## Historical — 🧊 Production frozen at 77.77% (2026-08-30)
->
-> The post-77.77% optimization phase is **formally closed**. Five independent hypotheses
-> (substrate/background neutralization, external geographic/ecological priors, DINOv2 fusion
-> — mislabeled "DINOv3", Tier1 morphological multi-prototypes, ancestral subspace inheritance
-> for low-reference species) were pre-registered, piloted under the McNemar+OOF protocol, and
-> evaluated on the full n=12,788 corpus. **Zero returned a significant positive result** — see
-> [EXPERIMENTS.md § "Post-77.77% optimization phase — closed"](EXPERIMENTS.md) for the
-> consolidated verdict table. `biofauna-id.service` is **frozen at its current configuration**
-> — BioCLIP-2.5 ViT-H + ROI fusion + Bucket B Fisher + adaptive k-NN-margin boost + dual-trigger
-> local-subspace PCA/LDA — serving **77.77% species / 82.38% genus / 85.65% family** (n=12,788),
-> confirmed via `/health` and live HTTP smoke tests. No further inference-time tuning is
-> planned without a genuinely new input (more reference photos, or a real DINOv3 checkpoint).
-> This freeze prioritizes stability and clean, predictable latency over further chasing
-> diminishing-returns accuracy gains on the current catalog/encoder.
->
-> **Structural investigation ("Option B"), exploratory, does not touch the frozen
-> configuration**: a DINOv2-Giant (1.1B params, `vit_giant_patch14_reg4_dinov2.lvd142m`)
-> top-5 rerank pilot (900 queries biased toward inter-family confusion, real per-image
-> reference photos) found **no discriminative signal** — 40 fixed / 42 broken (0.95:1),
-> exact McNemar p=0.9122. See [EXPERIMENTS.md § "Structural investigation"](EXPERIMENTS.md).
+> **2026-09-14.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary.
 
-> **2026-08-30** · Official calibration harvest, full corpus: **77.77% species / 82.38% genus / 85.65% family** with ROI multi-crop fusion + Bucket B Fisher-diagonal re-ranking (τ=0.20) + adaptive prototype boost by local k-NN margin + local-subspace PCA/LDA projection, now dual-triggered for both same-genus (τ=0.485, Bucket B) and same-family/different-genus (τ=0.6151, 5-fold median) pairs (n=12,788, geo prior included). `biofauna-id.service` **was restarted four times across Aug 29-30, each with explicit authorization**, and is now serving **77.77% as its live baseline**, confirmed via `/health`, the admin panel, and live HTTP smoke tests. Also live: **76.76% species with multi-photo late fusion** on the older crop90 baseline — the *combined* full-corpus accuracy of every mechanism stacked has not yet been independently re-measured, see note below  
-> **Archive-gap remediation closed** (Aug 21-23); **calibration-set data leakage found & fixed** (Aug 25-26); **TTA integrated + calibration re-fit, SupCon re-ranker attempt killed by design** (Aug 26-27); **multi-photo observation fusion shipped to production, taxonomic consensus re-ranking closed as negative, ROI multi-crop fusion shipped to production replacing crop90 TTA** (Aug 27); **seasonal prior closed as negative at full-catalog scale** (Aug 28); **Bucket B Fisher-diagonal re-ranking (τ=0.20) shipped to production, biofauna-id.service restarted and pipeline live** (Aug 29); **asymmetric TTA flip and species-level adaptive prototype dispersion closed as negative, query-level adaptive prototype boost by local k-NN margin shipped to production and service restarted (77.08% live)** (Aug 29); **a reduced-holdout significance audit (p=0.312) nearly triggered reverting Bucket B and the k-NN-margin mechanism — full-corpus exact McNemar confirmed p=0.0022, nothing reverted, new McNemar+OOF protocol adopted for dynamic-threshold mechanisms; attention-guided crop for Bucket B piloted and closed as negative (p=0.7663, ~1:1 fix/break ratio)** (Aug 29); **local-subspace PCA/LDA projection for Bucket B piloted with 5-fold OOF calibration (τ=0.485), independently audited and approved, shipped to production with lazy per-pair loading (eager precompute measured at 916.8s, replaced with on-demand construction ~0.4-0.5s/pair, cached), biofauna-id.service restarted and verified live at 77.44%** (Aug 29); **hierarchical family-consensus k-NN constraint re-tested with proper 5-fold OOF and closed as a significant regression (77.44%→77.03%, p=0.0005); local-subspace mechanism extended to inter-genus/same-family pairs (τ=0.6151, 5-fold median), piloted (+0.25pp, p=0.0008) and shipped to production as a second trigger on the same PCA/LDA cache, official re-harvest 77.77%, biofauna-id.service restarted and verified live** (Aug 30); **ancestral subspace inheritance for low-reference species diagnosed infeasible pre-registration (addressable population of 1 observation, no compute spent); substrate/background neutralization piloted on the full corpus and closed as a significant regression (77.77%→74.29%, −3.48pp, p<0.0001) — substrate is real signal for epibiont species, not just noise; external geographic prior (Minka point-cloud proxy, no WoRMS/GBIF range data available) piloted with 5-fold OOF, 4/5 folds picked "no penalty" as optimal, closed as not significant (p=0.1338) — geographic distance doesn't discriminate species already competing in the top-5; "DINOv3" fusion (found to actually be mislabeled DINOv2, 2-photo prototypes) piloted and closed as a significant regression (75.88%→69.12%, −6.75pp on the aligned subset, p<0.0001); Tier1 morphological multi-prototype sub-clustering piloted with 5-fold OOF, 4/5 folds picked "no change" as optimal, closed as not significant (p=0.3438)** (Aug 30) — see notes below
+| | |
+|---|---|
+| Encoder | Frozen **BioCLIP-2.5 ViT-H/14** (`imageomics/bioclip-2.5-vith14`) |
+| Classifier | k-NN **k=15**, vote aggregator **T=0.05**, prototype boost, 65% ROI fusion |
+| Live gallery | **848,883** embeddings / **4,702** species, `faiss_aligned=true` |
+| Catalog | **2,985** Mediterranean checklist taxa ([`../dataset/catalog.json`](../dataset/catalog.json)) |
+| Out-of-sample | **85.78%** species / **89.15%** genus / **91.41%** family (n=**19,087**) |
+| AutoID | FotoFauna publishes at calibrated **p≥0.80** (August operating-point study: ~95.3% precision / ~57.4% coverage; calibrator file refreshed 14 Sep) |
+| Service | https://fotofauna.yespi.es · GPU RTX 3060 12 GB |
 
-## Production stack
+**Two labelled metrics** (do not mix them): August leak-checked harvest n=12,788 peaked around **75.97–79.10%** while the inference stack and gallery grew. The 14 Sep figure is a **larger, harder** evaluation mix after T=0.05 and quality campaigns. Paper: [`../paper/01_biofauna.md`](../paper/01_biofauna.md).
 
-| Piece | Setting |
-|-------|---------|
-| Encoder | BioCLIP-2.5 ViT-H (1024-dim), **frozen** |
-| Retrieval | k-NN **k=15** + logistic calibration, **ROI multi-crop fusion** (query + strict 65% center crop, 50/50 weighted average, re-normalized — replaces the prior 90%-crop TTA, see §4.9) + **Bucket B Fisher-diagonal re-ranking** (τ=0.20 confidence-gated top-1/top-2 swap for documented same-genus cryptic pairs, **live in production**, see §4.11) + **adaptive prototype boost by local k-NN margin** (query-level dynamic `arc_weight`, ARC 1.0–5.0 by empirical margin percentiles, **live in production**, see §4.12) + **local-subspace PCA/LDA projection, dual-triggered** (per-pair PCA+LDA on top of the Fisher rerank, τ=0.485 same-genus / τ=0.6151 same-family-different-genus, lazily built and cached per pair on first use, **live in production**, see §4.13/§4.14) |
-| Storage | Active SSD gallery + **HDD archive** (full-resolution backup per species), now unified in re-embedding |
-| AutoID | p≥0.80 → ~95.3% precision at ~57.4% coverage (lowered from p≥0.90/95.5%/30.2% on 2026-08-27 to raise automation volume; see AutoID note below) |
-| Fallback | Hierarchical species→genus→family + iNaturalist CV cross-check |
+## This repository contains
 
-## Published baseline vs current
+- Prototype centroids (4,702 × 1024) — nearest-centroid demo without photos
+- Taxon IDs to rebuild images from Minka / iNaturalist / GBIF
+- Calibrators, geo priors, cryptic pairs, taxonomic exceptions
+- Experiment ledger (kept vs rejected)
 
-| Cohort | Species accuracy | Notes |
-|--------|------------------|-------|
-| **Paper baseline** (Aug 2026, ~810 spp cohort) | **71.7%** | Original observation-stratified `harvest_calib` |
-| **Full corpus, deduplicated** (Aug 25-26 2026, n=12,788) | **75.8%** | Post archive-gap fix + calibration-set dedup; genus 81.1%, family 84.5% |
-| **+ TTA, current** (Aug 27 2026, n=12,788) | **75.97%** | Test-time augmentation added, calibration re-fit end-to-end; genus 81.29%, family 84.90% |
-| **+ Multi-photo late fusion** (Aug 27 2026, n=12,788) | **76.76%** | Zero-training inference-time fusion for observations with 2+ photos (25.1% of corpus); 84.70% on that subset alone. See paper §4.7. Measured on top of the crop90 TTA baseline (75.97%), not the ROI fusion below |
-| **ROI multi-crop fusion, current** (Aug 27 2026, n=12,788, single photo) | **76.84%** | Global (100%) + strict center crop (65%) embeddings, 50/50 weighted, replaces crop90 TTA in production; +1.63pp vs. its own no-TTA baseline (75.21%), cleanly recovers 130 of 1,038 cross-taxonomic-group errors. See paper §4.9 |
-| **+ Bucket B Fisher-diagonal re-ranking** (Aug 28-29 2026, n=12,788, single photo) | **76.92%** | +0.14pp net on top of the 76.78% ROI-fusion official harvest (geo included); confidence-gated (τ=0.20) top-1/top-2 swap for documented same-genus cryptic pairs, 58 fixed / 41 broken; genus 81.88%, family 85.53%. **Live in production** (service restarted Aug 29 with explicit authorization). See paper §4.11 |
-| **+ Adaptive prototype boost by local k-NN margin** (Aug 29 2026, n=12,788, single photo) | **77.08%** | +0.16pp net on top of the 76.92% Bucket B official harvest; query-level dynamic `arc_weight` (ARC 1.0–5.0) by empirical p25/p75 margin percentiles, 37 fixed / 17 broken (2.18:1, beats Bucket B's own ratio). Genus 82.08%, family 85.65%. Shipped to `identify_service.py`, calibration re-harvested and re-fit. See paper §4.12 |
-| **+ Bucket B local-subspace PCA/LDA projection** (Aug 29 2026, n=12,788, single photo) | **77.44%** | +0.36pp net on top of the 77.08% official harvest (pilot on the 1,731-obs trigger zone alone measured +0.34pp/77.42% before the full re-harvest); per-pair PCA (K≤30, sample-size-bounded) + LDA on top of the existing Fisher rerank, τ=0.485 frozen after 5-fold OOF calibration (all 5 folds independently converged on the same value). 109 fixed / 65 broken (1.68:1) in the pilot; exact McNemar p=0.0011. Independently audited (`BIOFAUNA_AUDIT_SUBSPACE_20260829.md`, approved). Genus 82.08%, family 85.65%. Shipped to `identify_service.py` with **lazy per-pair loading** (eager precompute of all 2,042 documented pairs measured at 916.8s — unacceptable for service startup — replaced with on-demand construction on first trigger, ~0.4-0.5s, cached thereafter). See paper §4.13 |
-| **+ Local-subspace projection extended to inter-genus/same-family pairs** (Aug 30 2026, n=12,788, single photo) | **77.77%** | +0.33pp net on top of the 77.44% official harvest (pilot on the 577-obs inter-genus trigger zone alone measured +0.25pp/77.69% before the full re-harvest); same PCA(K≤30)+LDA mechanism and cache, second trigger for same-family/different-genus pairs, τ=0.6151 (5-fold OOF did not converge to one value — froze the **median** of {1.1812, 0.6151, 0.6059, 1.1825, 0.5078} rather than the mean, so the two high-outlier folds don't skew production). 60 fixed / 28 broken (2.14:1) in the pilot; exact McNemar p=0.0008. Genus 82.38%, family 85.65%. Shipped to `identify_service.py` reusing the existing lazy per-pair cache (no separate precompute or extra startup cost). **`biofauna-id.service` restarted with explicit authorization — this is the live-served figure**. See paper §4.14 |
-| **+ Tier-1/Tier-3 gallery densification (mass lot), current** (Aug 31 2026, n=12,788, single photo) | **79.25%** | Same frozen ViT-H encoder; FAISS **785,897** / 4,702 spp; Tier-1 **75.10%**. Overnight 726-spp staging 807,267 measured 79.10% globally (not cut over). See paper §4.15 |
-| **FAISS/label alignment fix** (Sep 1 2026, operational) | **79.25% harvest / 79.10% jsonl** | Live `/reload` had rebuilt `KY` without reloading FAISS — high-confidence wrong names. Disk evals valid. Operational jsonl **79.10%** (10,115/12,788). See paper §4.16 |
-| **night85 staging densification overlay** (Sep 3–4 2026, not serving) | **79.10% live unchanged** | Extra gallery vectors scored as CPU mmap overlay; same-scorer McNemar **282/80 +1.58 pp** (ratio 3.53). Replica omits Cubo B/geo. **Not cut over.** See paper §4.17 |
+## This repository does not contain
 
-Do not compare these numbers without noting corpus size and embedding coverage. The 76.84% ROI-fusion row above measures an isolated no-geo ablation baseline; the 76.78%/76.92%/77.08%/77.44%/77.77% figures in this note and the Bucket B/adaptive-prototype/local-subspace rows are the official geo-inclusive `calibration.json` harvest, each measured against the immediately preceding row's own official baseline. The multi-photo fusion row was measured against the older crop90 baseline in isolation — the combined full-corpus number with all mechanisms stacked has not yet been independently re-measured.
+- Photographs or per-photo `embeddings.npy` (licence + size)
+- HanSolo AutoID / MiniCPM sidecars
 
-## Archive gap (August 2026) — closed
-
-During disk management, excess photos were moved to an HDD archive while a **~300-photo sample** stayed on SSD for fast access. Re-embedding pipelines accidentally read **SSD only**, so:
-
-- Many species had **1000+ total photos** but the model only saw **~300 embeddings**.
-- Download jobs thought species were “incomplete” and re-fetched photos already in archive.
-- Accuracy dropped on rich archived species (especially heterobranchs), down to ~51-64% tier-1 OOS during remediation.
-
-**Fix, closed 2026-08-23:** unified photo counting (`species_photos.py`), paused redundant iNat downloads, and a GPU consolidation job that merged SSD+archive → full ViT-H re-embed → re-archive excess. Result: full-corpus baseline recovered and improved past the original paper figure, to **75.8% species / 81.1% genus / 84.5% family** (n=12,788 deduplicated; see the separate data-leakage note below for why n changed from 22,332), without changing the encoder.
-
-## Verified techniques (`harvest_calib`)
-
-| Technique | Result | Verdict |
-|-----------|--------|---------|
-| ViT-L → ViT-H | 63.9% → 70.6% | ✅ +6.8pp |
-| k=25 → k=15 | 70.6% → 71.7% | ✅ +1.1pp |
-| Full SSD+archive re-embed (catalog expanded to ~4,700 target spp) | 71.7% → 75.4% (n=22,332) | ✅ +3.7pp vs. original cohort, closes archive gap |
-| Hierarchical fallback | +2pp weighted | ✅ |
-| QLoRA (ViT-L base, Aug 2026) | Base-model mismatch vs. production ViT-H | ❌ discarded before eval |
-| LoRA fine-tune, full catalog scale (1,358/2,934 spp) | **−31.2pp** species on n=22,332 | ❌ severe overfit to fine-tuned subset |
-| Linear head sidecar on frozen ViT-H (no backbone change) | **−0.6 to −1.1pp** across species/genus/family | ❌ net regression, no cutover |
-| **Test-time augmentation** (query + 90% center crop, averaged) | **+0.21 to +0.75pp** species depending on eval protocol (both positive, see paper §"Post-publication development") | ✅ **only single-photo technique to beat frozen k-NN baseline** — live in production |
-| **Multi-photo late fusion** (mean k-NN score across an observation's 2+ photos, geo prior applied once post-fusion) | **+0.79pp** species full corpus (75.97%→76.76%), **+3.15pp** on the 25.1% multi-photo subset (81.55%→84.70%); early (embedding-mean) fusion also positive but weaker (+0.65pp / +2.59pp) | ✅ zero-training, zero extra GPU compute beyond the extra photos themselves — live in production, capped at 5 photos/request, N=1 reduces exactly to prior behavior (paper §4.7) |
-| Prototype/embedding outlier filtering (median-cosine, thr 0.5/0.7) | **−0.21pp / −1.45pp** species | ❌ filtered legitimate intra-species variation, not noise |
-| Widened same-genus abstention margin (0.06→0.10+) for cryptic pairs | 9:1 cost/benefit (152 correct predictions lost per 17 errors fixed) | ❌ |
-| Non-oracle "prefer epibiont" re-ranking rule for parasite/host pairs | **−0.23pp** species, **−0.26pp** genus | ❌ |
-| SupCon contrastive re-ranker, scoped to 20 heaviest cryptic pairs, frozen backbone | Per-pair validation loss diverged from epoch 1 in **two independent hyperparameter regimes** — memorization, no generalization; **kill-switch invoked before touching the eval set** | ❌ third independent architecture to fail on this data regime |
-| **ROI multi-crop fusion** (global + strict 65% center crop, 50/50 weighted, replaces crop90 TTA) | **+1.63pp** species vs. its own no-TTA baseline (75.21%→76.84%) | ✅ live in production, see paper §4.9 |
-| Seasonal (monthly) prior, full catalog scale | PoC positive on 376 dense-data species (+0.93pp) but **never crosses positive** at full-catalog scale via public API (best: −0.19pp, month-balanced sampling) | ❌ mechanism works, data density doesn't scale — no cutover, see paper §4.10 |
-| **Bucket B Fisher-diagonal re-ranking** (pair-local discriminant, confidence-gated τ=0.20, documented cryptic pairs only) | **+0.14pp** net on top of ROI fusion, official geo-inclusive harvest (76.78%→76.92%), 58 fixed / 41 broken | ✅ **live in production** |
-| **Adaptive prototype boost by local k-NN margin** (query-level dynamic `arc_weight`, empirical p25/p75 margin percentiles) | **+0.16pp** net on top of Bucket B, official harvest (76.92%→77.08%), 37 fixed / 17 broken (2.18:1) | ✅ **live in production**, see paper §4.12 |
-| Asymmetric TTA (orig + crop65 + horizontal flip, equal weights) | **−0.13pp** net on the consolidated pipeline, 162 fixed / 179 broken | ❌ flip adds morphological variance, doesn't remove noise like the center crop does |
-| Adaptive per-species prototype weighting (intra-species dispersion) | **−0.09pp** net, 48 fixed / 60 broken | ❌ species-level dispersion says nothing about a specific query photo — motivated the k-NN-margin mechanism above |
-| **Attention-guided crop for Bucket B** (ViT-H last-layer CLS→patch attention centroid, 50% crop, fused 50/50 with production embedding) | **+0.04pp** net on the 1,731-obs Bucket B trigger zone, 93 fixed / 88 broken (1.06:1) — exact McNemar **p=0.7663, not significant** | ❌ ~1:1 ratio and p≈0.77 indicate near-random movement, not discriminative signal; no cutover |
-| **Bucket B local-subspace PCA/LDA projection** (per-pair PCA+LDA generalizing the diagonal Fisher rerank to full covariance in a sample-size-bounded low-dim subspace, τ=0.485 via 5-fold OOF) | **+0.34-0.36pp** net on top of Bucket B+k-NN-margin (77.08%→77.42% pilot / 77.44% full re-harvest), 109 fixed / 65 broken (1.68:1) — exact McNemar **p=0.0011, significant** | ✅ **live in production**, independently audited and approved, see paper §4.13 |
-| Hierarchical family-consensus k-NN constraint (re-test with proper 5-fold OOF, closes the earlier locked-protocol version) | **−0.41pp** net (77.44%→77.03%), exact McNemar **p=0.0005, significant regression** | ❌ real harm, not noise — no cutover |
-| **Local-subspace PCA/LDA projection extended to inter-genus/same-family pairs** (same mechanism as Bucket B, second trigger τ=0.6151 via 5-fold OOF median) | **+0.25pp** net on the 577-obs pilot zone (77.44%→77.69%), 60 fixed / 28 broken (2.14:1) — exact McNemar **p=0.0008, significant**; **77.77%** on the full official re-harvest | ✅ **live in production**, see paper §4.14 |
-| Ancestral subspace inheritance for low-reference (<5 ref) species — pre-registration diagnosis, no pilot run | Addressable population against the 77.77% official eval set: **1 observation** (only 3 unique low-ref species appear as ground truth at all, 7 obs, 6/7 far-family) | ❌ diagnosed infeasible before spending GPU compute — no statistical power possible at n=1 |
-| **Substrate/background neutralization** (border-color background model, z-score foreground mask, neutral fill, 50/50 fusion with global embedding — all fixed a priori, no OOF-tuned parameter) | **−0.92pp** net vs. own global control (75.21%→74.29%), 245 fixed / 363 broken (0.67:1) — exact McNemar **p<0.0001, significant regression**; **−3.48pp** vs. official 77.77% (325/770, 0.42:1, p<0.0001) | ❌ substrate is real signal for epibiont/encrusting species, border-only background model too coarse for non-uniform backgrounds — no cutover |
-| **External geographic/ecological prior** (log-penalty on kNN candidates far from their documented range, using the existing production geo point-cloud as a proxy — no WoRMS/GBIF range data available locally, out of scope for this pilot), 5-fold OOF | 4/5 folds picked STRENGTH=0 (no penalty) as optimal on their own training data; exact McNemar vs. own clean control: 7 fixed / 15 broken (0.47:1), **p=0.1338, not significant** | ❌ geographic distance doesn't discriminate species that already compete visually in the top-5 (they typically co-occur) — no cutover; true WoRMS/GBIF range data remains untested |
-| **"DINOv3" fusion** (in reality DINOv2 ViT-B/14, mislabeled throughout the existing pipeline — verified before piloting; extraction also used only 2 photos/species, prototype-only, no per-image gallery) | DINOv2 alone 52.74% (confirms the historic −19.9pp finding); fusion with BioCLIP (5-fold OOF, α=0.8) vs. own weak control looks positive (+782/−156, 5.01:1) but that control lacks kNN/geo/rerank — the number that matters is vs. the real 77.77% official: **75.88%→69.12% (−6.75pp)** on the 8,796-obs aligned subset, 354 fixed / 948 broken (0.37:1), exact McNemar **p<0.0001, significant regression** | ❌ no cutover — mislabeling and 2-photo prototypes both confirmed as real, independent problems; a fair test of genuine DINOv3 with a proper reference gallery remains undone |
-| **Tier1 multi-prototype + morphological sub-clustering** (species with ≥15 refs, k-means k∈{2,3,4} by silhouette, max-similarity to any sub-prototype, blend weight via 5-fold OOF) | 4/5 folds picked BLEND=0 (no change) as optimal; exact McNemar vs. own clean control (global n=12,788 ≈ Tier1 n=12,766, nearly identical): 3 fixed / 7 broken (0.43:1), **p=0.3438, not significant** | ❌ the single global prototype already captures what production's boost needs — no cutover |
-
-Full log: [EXPERIMENTS.md](EXPERIMENTS.md).
-
-## AutoID confidence/volume tuning (2026-08-27)
-
-Production auto-publication volume was running at ~5 identifications/hour against a configured
-cap of 20/hour. Two independent causes, both fixed: (1) a hardcoded 900-second per-wave scan
-timeout was cutting off the hourly Minka page-scan well before the hourly quota could be reached
-— raised to 1800s; (2) the confidence threshold (p≥0.90, 95.5% precision at 30.2% coverage) was
-conservative relative to what the freshly re-fit calibration curve supports — lowered to p≥0.80
-(≈95.3% precision at ≈57.4% coverage per the re-fit calibration curve, a ~33% relative increase
-in the fraction of candidates that clear the bar for an estimated ~1.5pp precision cost). A
-further lever (broadening the Minka observation pool from "zero identifications" to "pending
-confirmation, may have partial IDs") is documented but not yet exercised, held in reserve for if
-the narrower pool runs dry.
-
-## Development roadmap (public summary)
-
-1. ~~Consolidate SSD + archive per species~~ ✅ done (Aug 21-23)
-2. ~~Rebuild FAISS index + recalibrate~~ ✅ done
-3. ~~Test-time augmentation~~ ✅ done (Aug 26-27), only single-photo technique so far to beat the frozen-backbone k-NN baseline
-4. ~~Multi-photo observation fusion~~ ✅ done (Aug 27), zero-training inference-time ensemble over an observation's existing extra photos — see paper §4.7
-5. Explore encoder-level improvements beyond parameter-efficient fine-tuning and beyond frozen-backbone contrastive heads (closed as ineffective at this scale across three independent architectures — see EXPERIMENTS.md)
-6. Resume targeted downloads only where **total** photos &lt; 1000/spp, or where a specific species is confirmed photo-starved relative to its confusion rivals (not just Tier assignment — see EXPERIMENTS.md, three species closed this way on 2026-08-27)
-
-## Evaluation rule
-
-Only observation-stratified `harvest_calib` numbers are trusted. Photo-level splits inflate accuracy. During remediation, prefer tier-scoped OOS metrics on the full calibration corpus.
-
-## Docs map
+## Read next
 
 | Doc | Role |
 |-----|------|
-| [Paper](../paper/01_biofauna.md) | Scientific write-up (baseline results) |
-| [BIOFAUNA_MASTER.md](BIOFAUNA_MASTER.md) | Short public master |
-| [species_coverage.md](species_coverage.md) | Coverage metrics |
-| [methodology.md](methodology.md) | Pipeline |
-| [HISTORY.md](HISTORY.md) | YOLOFauna → BioFauna rename |
+| [Paper EN](../paper/01_biofauna.md) · [ES](../paper/01_biofauna_es.md) | Methods + experiment catalog |
+| [EXPERIMENTS](EXPERIMENTS.md) | Same ledger, more McNemar detail |
+| [dataset](dataset.md) · [self_host](self_host.md) · [api](api.md) | Reconstruct / run |
+| [HISTORY](HISTORY.md) | YOLOFauna → BioFauna |
+| [archive/](archive/README.md) | August 2026 notes, including the **closed** archive-gap |
 
-Private operational detail (HanSolo): see internal `hansolo-docs` repo — `biofauna/BIOFAUNA_ARCHIVE_SSD_GAP.md`.
-
-## Calibration-set data leakage (August 2026) — found & fixed
-
-On 2026-08-25/26, while grid-searching the k-NN neighbor count, an anomalous accuracy curve
-(monotonically *improving* toward k=1, which a healthy k-NN classifier should not do) led to
-discovering that **42.7% (9,544/22,332) of the calibration photos were also embedded in the
-reference gallery** — the same photo served as both query and answer. Root cause: the
-calibration harvester's "already trained on this observation?" check pointed at a manifest path
-abandoned during an earlier image-directory migration, so deduplication silently stopped
-working. Fixed with a direct embedding-similarity check against the live reference catalog
-instead of manifest files; validated on a real (non-synthetic) harvest run before merging.
-
-The clean subset (n=12,788, no leakage) is now the reference calibration set. Verified with the
-project's official metrics script: **75.8% species / 81.1% genus / 84.5% family** — close to the
-previously-reported 75.4%/81.8%/85.7%, and the leakage does not change any closed-experiment
-verdict (LoRA and head-sidecar regressions are an order of magnitude larger than the ~1pp shift
-introduced by the leak at k=15; the effect was much larger only at low k, which is what first
-made it visible).
+Private ops diary stays in `hansolo-docs` (`BIOFAUNA_SESION_STATUS.md`). This file is the public snapshot.

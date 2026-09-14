@@ -1,46 +1,33 @@
-## API Reference (Self-Hosted)
+## API — reconstruction service
 
-The identification service runs as a FastAPI server on port 8090 (`scripts/identify_service.py`).
+`src.identify_service:app` on port 8090. Encoder **BioCLIP-2.5 ViT-H**. Gallery: prototypes in `data/patterns/`; k-NN if `embeddings.npy` exist.
 
-### Endpoints
+### `POST /identify`
 
-#### `POST /identify`
+Multipart `file` (JPEG/PNG). Optional query: `topk`, `lat`, `lon`.
 
-Upload an image for species identification.
-
-**Request**: Multipart form with `file` field (JPEG/PNG)  
-**Query params**: `topk` (default 5), `lat`, `lon`, `date`
-
-**Response** (shape may vary slightly by build):
 ```json
 {
-  "source": "biofauna-local",
-  "method": "knn",
+  "source": "biofauna-public",
+  "method": "prototype",
   "prediction": {
     "rank": "species",
     "name": "Actinia striata",
-    "confidence": 0.6973,
-    "p_species": 0.9234,
+    "confidence": 0.71,
+    "p_species": 0.92,
     "calibrated": true
   }
 }
 ```
 
-**Fields**:
-- `rank`: `species`, `genus`, or `family`
-- `p_species`: Calibrated probability
-- `confidence`: Raw k-NN score (not a calibrated probability)
+`method` is `"knn"` when a local per-photo gallery is present. `rank` may be `species`, `genus`, `family`, or `group`. `confidence` is raw similarity, not a probability; `p_species` is the logistic calibrator.
 
-#### `GET /health`
+### `GET /health`
 
-Reports device and loaded species count (active gallery size depends on `dataset/patterns/`).
+Device, species count, k-NN vector count.
 
-#### `POST /reload`
+### `POST /reload`
 
-Hot-reload patterns and calibration without restarting (when enabled).
+Reload prototypes / embeddings without restarting.
 
-### Auto-Publication Thresholds
-
-Production recommendation: **`p_species >= 0.90`** → **95.5% precision**, **30.2% coverage** (ViT-H, k=15, 2026-08-10 calibration).
-
-Below threshold, FotoFauna cross-checks with iNaturalist CV before publishing.
+Production FotoFauna AutoID uses **p≥0.80**. The public service does not publish to Minka.

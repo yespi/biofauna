@@ -16,9 +16,11 @@
 | 2026-08-27–30 | TTA, ROI fusion, Bucket B, local subspace | Inference stack frozen at 77.77% after five negative post-freeze hypotheses | **77.77%** |
 | 2026-08-31 | Tier-1 gallery densification | Same frozen ViT-H; FAISS **785,897** / 4,702 spp. Staging 807,267 not cut over | **79.25%** / Tier-1 75.10% |
 | 2026-09-01 | FAISS / label-array desync (live only) | `/reload` rebuilt `KY` without reloading FAISS; terrestrial→marine at 85–100%. Disk evals valid. AutoID wave resumed | **79.25%** harvest; jsonl later **79.10%** |
-| 2026-09-04 | night85 staging densification (in progress) | Parallel harvest∥embed; local JPGs first. Overlay McNemar **282/80 +1.58 pp**. Live FAISS untouched. **No cutover** | **79.10%** jsonl (unchanged) |
+| 2026-09-04 | night85 staging densification | Overlay McNemar **282/80 +1.58 pp**. Later absorbed into gallery work | **79.10%** jsonl |
+| 2026-09-10 | Quality gallery refresh + **k-NN T=0.05** | +2.16 pp (quality) and **+7.81 pp** (T=0.05) on their McNemar tests; FAISS 838,115 | New scorer; not the same cohort as 79.10% |
+| 2026-09-11–14 | Eval harvest expansion, Q≥8 swaps, nomenclature, seagrass n=60 | Live calibrator n=19,087 | **85.78%** species / 89.15% genus / 91.41% family; FAISS **848,883** / 4,702 |
 
-\*Trusted metric: observation-stratified `harvest_calib` (not photo-level splits).
+\*Trusted metric: observation-stratified harvest (not photo-level splits). **Do not subtract 79.10 from 85.78** and call it a model gain — different evaluation mix.
 
 ## Why “YOLOFauna”?
 
