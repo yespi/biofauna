@@ -44,7 +44,7 @@
 | R6 | LoRA full-catalog scale | **−31.2 pp** | Subset FT poisons space |
 | R7 | Linear head, frozen backbone | −0.6 to −1.1 pp | Train mini-set lied |
 | R8 | Expert-guide crops weighted | −0.9 pp | Plates ≠ field photos |
-| R9 | Burst dedup cos>0.99 | −1.6 pp | Bursts help k-NN |
+| R9 | Burst dedup cos>0.99 | −1.6 pp originally; **re-tested 2026-09-16** on 18 species that had just grown from a few dozen to ~1,000 photos each (177 near-duplicate photos removed): 0/18 improved, 17/18 tied, 1/18 regressed (100%→92.3%, n=13); global accuracy unchanged (90.93%→90.93%) | Bursts help k-NN — confirmed again with denser, more recent galleries, not just small-sample noise from the original test |
 | R10 | Embedding outlier filter | −0.21 to −1.45 pp | Removed variation |
 | R11 | Wider same-genus abstention | ~9:1 cost | Keep tight τ |
 | R12 | Prefer-epibiont re-rank | −0.23 pp (64/116) | Hosts in top-k |
@@ -72,10 +72,9 @@ The lesson that prompted this section: if bulk harvest had started with a lower,
 |----|----|----|
 | R24 | Selective marine re-embed (36 spp, ~0pp) was tested on galleries an order of magnitude smaller for several of those species than what the Q≥6.0 growth pass (K15) now provides for many catalog species | Gallery size/quality floor |
 | R25 | Seagrass VLM / generic densify: "quality helped Posidonia only" was true *given the Minka+iNat pool available that week* — Cymodocea's specific failure mode was diagnosed as cryptic confusion with Nanozostera, not gallery quality, so this one is a weaker re-test candidate than R24, flagged for completeness rather than expectation | Diagnosis was structural, not data — re-test unlikely to change the verdict |
-| R9 | Burst dedup (cos>0.99, −1.6pp): the loss came from removing near-duplicate frames that still helped k-NN vote weight. Worth re-checking now that gallery sizes are less uniform across species — the effect may not hold the same way for species that only just crossed from <50 to several hundred photos | Gallery size distribution shifted |
 | R10 | Embedding outlier filter (−0.21 to −1.45pp): outliers may have included legitimately hard/rare poses that were the *only* representative of that pose at the time; with denser galleries some of those poses may no longer be singletons | Gallery density |
 
-None of these have been re-run yet — this is a prioritized list, not a result.
+R24, R25 and R10 have not been re-run yet.
 
 ## Operational (read numbers with these in mind)
 
