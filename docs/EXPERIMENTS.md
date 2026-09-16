@@ -1,8 +1,10 @@
 # BioFauna — Experiments
 
-> Public ledger through **2026-09-14**. Trusted metric: observation-stratified harvest, not photo-level splits.
+> Public ledger through **2026-09-16**. Trusted metric: observation-stratified harvest, not photo-level splits.
 >
-> **Live (cohort B):** 85.78% species / 89.15% genus / 91.41% family, n=19,087, FAISS **848,883** / 4,702 spp, k-NN **T=0.05**.
+> **Live (cohort B, production, unchanged since 2026-09-14 09:29):** FAISS **855,548** / 4,702 spp, k-NN **T=0.05**. True species accuracy **90.52%** (n=16,676) — see O5 below for why this was reported as a stale 85.78% for most of a session before being caught and fixed; the underlying model never changed, only the measurement.
+>
+> **Candidate on disk (not yet promoted to production):** FAISS 864,806, `overall_accuracy` 87.44% (n covers 2,972/2,985 species — lower than 90.52% purely because coverage grew by 548 species that were previously invisible to the metric, see K18; not a regression). 68 species carry a verified strict improvement and are the only ones actually changed relative to production; everything else reverts to the pre-campaign backup automatically if it does not beat its own prior result.
 >
 > **August freeze (cohort A):** leak-checked n=12,788; TTA-era 75.97% → inference stack 77.77% → densification jsonl 79.10%. Ablations below that cite 75–78% are cohort A unless noted.
 >
@@ -25,6 +27,10 @@
 | K12 | MiniCPM gate on 2 pairs | 12/1, p=0.003 | Sidecar, not general VLM |
 | K13 | WoRMS/GBIF nomenclature | 85 accepted names; 4 slug merges | Catalog hygiene |
 | K14 | Extra indistinguishability pairs + sponge group | From eval confusion | Where vision saturates |
+| K15 | Lower quality floor for gallery growth (Q≥8.0 → Q≥6.0, ~13-pt scale) | Strict-improvement rate on grown species jumped 4.7%→20.5% (19/403 → 49/239) | Candidate scarcity, not encoder quality, was the bottleneck for most stuck species |
+| K16 | API health circuit breaker for bulk harvest scripts | Caught and self-stopped a real production-impacting overload within seconds, across parallel workers, with zero human intervention | Any scripted bulk client of a third-party API needs this, not just this one incident |
+| K17 | Leave-one-out synthetic eval (query = own gallery's top-quality photos, physically excluded before indexing) | 561 → 13 species now have zero eval coverage (down from ~562 uncovered at session start counting an earlier related backlog) | Cheap way to close "we have data but never tested it" gaps; see caveat under O9 |
+| K18 | Per-observation calibrated decision threshold (from the hierarchical calibration already built) instead of one fixed global threshold | Real held-out case: p_species=0.8926 with its own calibrated threshold=0.8697 was being wrongly rejected by the fixed 0.90 floor | A single global confidence floor punishes species whose calibration already says a lower bar is safe |
 
 ## Rejected
 
@@ -58,6 +64,19 @@
 | R26 | MiniCPM purity on fauna | 97.5% already pure | No transfer |
 | R27 | Q≥8 on exhausted taxa | Uneven yield | Only if better photos exist |
 
+## Candidates for re-test now that gallery quality/size has moved (2026-09-16)
+
+The lesson that prompted this section: if bulk harvest had started with a lower, data-driven quality floor (K15) instead of the conservative Q≥8.0 used through mid-September, several rounds of "stuck at N candidates" investigation earlier in the project would have been unnecessary. Several `Rejected` results above were measured against the gallery as it existed *at the time* — some may have failed for reasons that a materially bigger or cleaner gallery removes, not because the underlying idea was wrong. Flagging rather than re-running silently, since re-testing costs real GPU time and should be prioritized on purpose:
+
+| ID | Why it might behave differently now | What changed |
+|----|----|----|
+| R24 | Selective marine re-embed (36 spp, ~0pp) was tested on galleries an order of magnitude smaller for several of those species than what the Q≥6.0 growth pass (K15) now provides for many catalog species | Gallery size/quality floor |
+| R25 | Seagrass VLM / generic densify: "quality helped Posidonia only" was true *given the Minka+iNat pool available that week* — Cymodocea's specific failure mode was diagnosed as cryptic confusion with Nanozostera, not gallery quality, so this one is a weaker re-test candidate than R24, flagged for completeness rather than expectation | Diagnosis was structural, not data — re-test unlikely to change the verdict |
+| R9 | Burst dedup (cos>0.99, −1.6pp): the loss came from removing near-duplicate frames that still helped k-NN vote weight. Worth re-checking now that gallery sizes are less uniform across species — the effect may not hold the same way for species that only just crossed from <50 to several hundred photos | Gallery size distribution shifted |
+| R10 | Embedding outlier filter (−0.21 to −1.45pp): outliers may have included legitimately hard/rare poses that were the *only* representative of that pose at the time; with denser galleries some of those poses may no longer be singletons | Gallery density |
+
+None of these have been re-run yet — this is a prioritized list, not a result.
+
 ## Operational (read numbers with these in mind)
 
 | ID | What broke | Lesson |
@@ -66,5 +85,10 @@
 | O2 | FAISS vs label array after `/reload` | Load index and IDs together |
 | O3 | Admin metrics from frozen files | Compute from current jsonl |
 | O4 | Empty `--species` after nested SSH | Pass slug files |
+| O5 | `gen_stats.py` scored against a `top` field frozen at harvest time in the eval jsonl; a full pipeline session ran without the refresh step that keeps it live | Reported 85.78% for a session; true concurrent accuracy was 90.52% — the encoder/gallery never changed, only the measurement. Chained with a second bug: even after refreshing predictions, the accuracy script preferred a calibration file field set *before* the refresh over the live number. Fix: refresh predictions before refitting calibration, not after |
+| O6 | 3 parallel bulk-harvest workers overloaded a third-party API's production infrastructure (self-reported by the operator mid-incident) | Any scripted client hitting an API you don't control needs a latency/error circuit breaker (K16) before it needs more throughput |
+| O7 | Backup script's global error trap fired on a transient third-party quota error inside a retry loop that was explicitly written to handle that exact failure gracefully — the trap fired before the retry logic's own exit-code check ran | A `trap ... ERR` and a hand-rolled retry loop for the same command will race; chain the exit-code capture (`cmd && ok=0 \|\| ok=$?`) so a transient failure can't short-circuit past logic written to tolerate it |
+| O8 | A calibrated per-observation decision field existed in the serving API response and was being ignored in favor of a fixed constant one call site away | Second source of truth beats a hardcoded copy — if the calibrated value already ships in the response, use it, don't shadow it |
+| O9 | Leave-one-out eval (K17) selects query photos by *highest quality score* per species, not at random | Likely optimistic relative to real incoming photo quality; partially offset by smaller-than-final reference galleries for low-photo-count species during the test. Net direction not yet quantified — would need a repeat with randomly-selected (not top-quality) held-out queries to bound it |
 
-Do not reopen R1–R23 as-is on this gallery and 12 GB GPU. Reopen fine-tuning only with a different backbone or much more photos per confused pair.
+Do not reopen R1–R23 as-is on this gallery and 12 GB GPU. Reopen fine-tuning only with a different backbone or much more photos per confused pair. R24/R25/R9/R10 are re-test candidates (see above), not confirmed reversals.
