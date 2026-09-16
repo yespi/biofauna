@@ -92,3 +92,15 @@ None of these have been re-run yet — this is a prioritized list, not a result.
 | O9 | Leave-one-out eval (K17) selects query photos by *highest quality score* per species, not at random | Likely optimistic relative to real incoming photo quality; partially offset by smaller-than-final reference galleries for low-photo-count species during the test. Net direction not yet quantified — would need a repeat with randomly-selected (not top-quality) held-out queries to bound it |
 
 Do not reopen R1–R23 as-is on this gallery and 12 GB GPU. Reopen fine-tuning only with a different backbone or much more photos per confused pair. R24/R25/R9/R10 are re-test candidates (see above), not confirmed reversals.
+
+## Considered and declined (no GPU spent — reasoning only, not measured)
+
+Ideas evaluated and set aside before running anything, with the specific reason each was dropped. Recorded so they aren't re-investigated later without new information.
+
+| ID | Idea | Why declined |
+|----|------|----|
+| D1 | Generative AI upscaler (diffusion-based, e.g. Crystal/Clarity Upscaler) to improve gallery photo quality | Diffusion upscalers hallucinate plausible detail rather than recovering real information — a real risk for species ID, where invented texture/pattern could actively mislead the encoder. Also trained/optimized for portraits and faces, a domain mismatch with wildlife. Same failure family as R20 (background neutralization, −0.92 to −3.48pp) and R8 (weighted expert crops, −0.9pp): altering the image beyond what the sensor captured has consistently hurt here. Separately: if offered as a user-facing photo filter, the enhanced (not original) image is what gets published to the source observation platform — an accuracy risk becomes a data-integrity risk for the wider citizen-science record. Not tested. |
+| D2 | pgvector (Postgres extension) to replace/complement FAISS for serving k-NN search | Would simplify operations (embeddings already live next to the rest of the app's data in Postgres; today every gallery change means rebuilding a separate FAISS index file and reloading the service) but does not change the underlying similarity computation — no accuracy path. The bottleneck this project has actually hit is embedding compute (GPU), not search latency. Queued as an infrastructure simplification, not prioritized against anything that moves accuracy. Not tested. |
+| D3 | BIOSCAN-5M (5.15M-specimen multimodal insect dataset, image+DNA+taxonomy) as extra training/reference data | Checked against the actual catalog before assuming it would help: only 121/2,985 species (~4%) are insects, and they already average 95.3% accuracy (88/121 at 100%, none below 20%) — not an underperforming group with room to gain from extra data. The dataset's open-world/zero-shot classification methodology (recognizing "not any known class" rather than forcing a wrong label) may still be worth reading for the unrelated question of abstention on genuinely novel observations. Not tested. |
+
+
