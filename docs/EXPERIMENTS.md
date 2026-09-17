@@ -45,7 +45,7 @@
 | R7 | Linear head, frozen backbone | −0.6 to −1.1 pp | Train mini-set lied |
 | R8 | Expert-guide crops weighted | −0.9 pp | Plates ≠ field photos |
 | R9 | Burst dedup cos>0.99 | −1.6 pp originally; **re-tested 2026-09-16** on 18 species that had just grown from a few dozen to ~1,000 photos each (177 near-duplicate photos removed): 0/18 improved, 17/18 tied, 1/18 regressed (100%→92.3%, n=13); global accuracy unchanged (90.93%→90.93%) | Bursts help k-NN — confirmed again with denser, more recent galleries, not just small-sample noise from the original test |
-| R10 | Embedding outlier filter | −0.21 to −1.45 pp | Removed variation |
+| R10 | Embedding outlier filter | −0.21 to −1.45 pp originally; **re-tested 2026-09-17** on the same 18 densely-regrown species used for R9 (bottom 10% by mean cosine similarity to the rest of the species' own gallery removed, ~1,700 photos across 18 species): 0/18 improved, 14/18 tied, 4/18 regressed (worst: xerosecta_cespitum 100%→60%, n=5); reverted | Outliers still cost accuracy with denser galleries too — not a small-gallery artifact |
 | R11 | Wider same-genus abstention | ~9:1 cost | Keep tight τ |
 | R12 | Prefer-epibiont re-rank | −0.23 pp (64/116) | Hosts in top-k |
 | R13 | Scoped SupCon (20 pairs) | Val loss ↑ epoch 1; killed pre-eval | Same failure mode |
@@ -72,9 +72,8 @@ The lesson that prompted this section: if bulk harvest had started with a lower,
 |----|----|----|
 | R24 | Selective marine re-embed (36 spp, ~0pp) was tested on galleries an order of magnitude smaller for several of those species than what the Q≥6.0 growth pass (K15) now provides for many catalog species | Gallery size/quality floor |
 | R25 | Seagrass VLM / generic densify: "quality helped Posidonia only" was true *given the Minka+iNat pool available that week* — Cymodocea's specific failure mode was diagnosed as cryptic confusion with Nanozostera, not gallery quality, so this one is a weaker re-test candidate than R24, flagged for completeness rather than expectation | Diagnosis was structural, not data — re-test unlikely to change the verdict |
-| R10 | Embedding outlier filter (−0.21 to −1.45pp): outliers may have included legitimately hard/rare poses that were the *only* representative of that pose at the time; with denser galleries some of those poses may no longer be singletons | Gallery density |
 
-R24, R25 and R10 have not been re-run yet.
+R24 and R25 have not been re-run yet; R9 and R10 have (both confirmed rejected again, see above).
 
 ## Operational (read numbers with these in mind)
 
@@ -89,8 +88,10 @@ R24, R25 and R10 have not been re-run yet.
 | O7 | Backup script's global error trap fired on a transient third-party quota error inside a retry loop that was explicitly written to handle that exact failure gracefully — the trap fired before the retry logic's own exit-code check ran | A `trap ... ERR` and a hand-rolled retry loop for the same command will race; chain the exit-code capture (`cmd && ok=0 \|\| ok=$?`) so a transient failure can't short-circuit past logic written to tolerate it |
 | O8 | A calibrated per-observation decision field existed in the serving API response and was being ignored in favor of a fixed constant one call site away | Second source of truth beats a hardcoded copy — if the calibrated value already ships in the response, use it, don't shadow it |
 | O9 | Leave-one-out eval (K17) selects query photos by *highest quality score* per species, not at random | Likely optimistic relative to real incoming photo quality; partially offset by smaller-than-final reference galleries for low-photo-count species during the test. Net direction not yet quantified — would need a repeat with randomly-selected (not top-quality) held-out queries to bound it |
+| O10 | A rescore script's `obs_list` was the *intersection* of (query embeddings already cached) and (rows in the live eval file), then it rewrote that eval file from scratch with only what it processed | Rows added by a concurrent harvest process, lacking a cached query embedding yet, were silently excluded from the plan and then wiped when the file was overwritten — lost a day of held-out-eval harvest progress. Fixed two ways: the rescorer now computes any missing query embeddings before scoring, and every write in this chain (FAISS index, per-species embeddings, the query-embedding cache, and the eval file itself) now writes to a temp file and renames on success, so a process killed mid-write can no longer leave a truncated file for the next reader |
+| O11 | A User-Agent fix applied to one Minka-calling file was not propagated to two sibling files (a shared photo-download helper and the AutoID scheduler's own client) that had the identical missing-header bug | AutoID published zero identifications for a full day; the failure mode (repeated "8 consecutive errors, aborting") looked like a Minka-side outage but was fully reproducible with a bare `curl` lacking the header. Fixing one call site for a third-party API quirk means finding every other call site to the same host, not just the one that happened to be reported |
 
-Do not reopen R1–R23 as-is on this gallery and 12 GB GPU. Reopen fine-tuning only with a different backbone or much more photos per confused pair. R24/R25/R9/R10 are re-test candidates (see above), not confirmed reversals.
+Do not reopen R1–R23 as-is on this gallery and 12 GB GPU. Reopen fine-tuning only with a different backbone or much more photos per confused pair. R24 and R25 are re-test candidates (see above), not confirmed reversals.
 
 ## Considered and declined (no GPU spent — reasoning only, not measured)
 
