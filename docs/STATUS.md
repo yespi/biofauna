@@ -26,6 +26,8 @@
 - Photographs or per-photo `embeddings.npy` (licence + size)
 - HanSolo AutoID / MiniCPM sidecars
 
+Admins can export live gallery ZIPs from FotoFauna (**BioFauna Fotos**). See [`ff_download.md`](ff_download.md).
+
 ## Read next
 
 | Doc | Role |

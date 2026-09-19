@@ -36,6 +36,7 @@ Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per 
 | [STATUS](docs/STATUS.md) | Current public snapshot |
 | [EXPERIMENTS](docs/EXPERIMENTS.md) | Kept vs rejected trials |
 | [HISTORY](docs/HISTORY.md) | YOLOFauna → BioFauna |
+| [FotoFauna bulk photos](docs/ff_download.md) | Admin ZIP export from FotoFauna (photos not in this repo) |
 | [cron](docs/cron.md) | Weekly jobs BF-01…BF-10 + systemd example |
 | [archive](docs/archive/README.md) | Stale August notes (e.g. closed archive gap) |
 
