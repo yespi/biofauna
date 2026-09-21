@@ -1,15 +1,15 @@
 # BioFauna — public status
 
-> **2026-09-14.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary.
+> **2026-09-21.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary. (Table below: 2026-09-21; older 14 Sep figures kept in `EXPERIMENTS.md`.)
 
 | | |
 |---|---|
 | Encoder | Frozen **BioCLIP-2.5 ViT-H/14** (`imageomics/bioclip-2.5-vith14`) |
 | Classifier | k-NN **k=15**, vote aggregator **T=0.05**, prototype boost, 65% ROI fusion |
-| Live gallery | **848,883** embeddings / **4,702** species, `faiss_aligned=true` |
+| Live gallery | **1,072,233** embeddings / **4,705** species (1,720 of them outside the 2,985-species target catalog: 1.8% of vectors), `faiss_aligned=true` |
 | Catalog | **2,985** Mediterranean checklist taxa ([`../dataset/catalog.json`](../dataset/catalog.json)) |
-| Out-of-sample | **85.78%** species / **89.15%** genus / **91.41%** family (n=**19,087**) |
-| AutoID | FotoFauna publishes at calibrated **p≥0.80** (August operating-point study: ~95.3% precision / ~57.4% coverage; calibrator file refreshed 14 Sep) |
+| Out-of-sample (panel) | **92.36%** species overlay (n=24,475; 314 species <80%, 500 at 80–99%, 2,008 at 100%, 163 without eval). **Real-world check: ~80%** on 300 recent Minka research-grade observations (in-catalog birds 84% vs 96% on the panel) — see `EXPERIMENTS.md` O16 |
+| AutoID | Trial since 2026-09-21: publishes on BioFauna alone (no iNaturalist requirement) with domain guards (Mediterranean bbox; birds only when an independent BioCLIP zero-shot agrees, 98.5% precision at 69% coverage), 15/h cap. Community-ID audit pending |
 | Service | https://fotofauna.yespi.es · GPU RTX 3060 12 GB |
 
 **Two labelled metrics** (do not mix them): August leak-checked harvest n=12,788 peaked around **75.97–79.10%** while the inference stack and gallery grew. The 14 Sep figure is a **larger, harder** evaluation mix after T=0.05 and quality campaigns. Paper: [`../paper/01_biofauna.md`](../paper/01_biofauna.md).

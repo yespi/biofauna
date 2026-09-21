@@ -26,6 +26,8 @@ BioFauna identifies Mediterranean (and incidental adjacent) taxa from photograph
 
 Those accuracy figures are **observation-stratified and leak-checked**. They are **not** comparable to the August 2026 headline of 75.97% on a smaller, earlier cohort (n=12,788) without re-running that same harvest; mixing cohorts is how this project previously overstated progress. Both numbers are kept below, labelled by protocol.
 
+**Update 2026-09-21.** Production now serves **1,072,233** embeddings / **4,705** species (1,720 are gallery classes outside the 2,985-species catalog: 1.8% of vectors) after two growth waves (K19–K20). The panel (out-of-sample overlay, n=24,475) reads **92.36%** species; a check on 300 recent Minka research-grade observations gives **~80%** (in-catalog birds 84% vs 96% on the panel) — the panel is a closed-set evaluation and overstates real-world accuracy (O16). Closed-set retrieval answers confidently for species missing from the catalog; an independent BioCLIP zero-shot second opinion removes most of those errors in birds (K21).
+
 A systematic search for extra species top-1 from **training on this embedding space** (QLoRA, LoRA, triplet, ArcFace, linear head, scoped SupCon) **did not beat frozen retrieval**. Gains that shipped were backbone scale, gallery completeness/quality, inference-time fusion, a tempered k-NN aggregator, and taxonomic abstention. We publish the experiment ledger, taxon IDs, prototype centroids, and a self-hostable identifier. **Photographs and per-photo `embeddings.npy` are not redistributed**; they can be rebuilt from Minka / iNaturalist / GBIF using the catalog.
 
 **Keywords**: BioCLIP-2.5, ViT-H, k-NN, fine-grained visual classification, marine biodiversity, citizen science, taxonomic abstention, calibration, Mediterranean Sea
@@ -139,6 +141,10 @@ Each row: **hypothesis → result → contribution to the project.** Details and
 | K12 | MiniCPM gate on two confusion pairs (Branchiomma/Myxicola, Cerianthus/Pachycerianthus) | Small-n McNemar 12/1, p=0.003 | Gated sidecar, not a general VLM re-ranker. |
 | K13 | Nomenclature audit (WoRMS + GBIF) | 85 accepted-name fields; 4 duplicate-slug merges | Catalog hygiene; slugs never used as WoRMS names. |
 | K14 | Expert indistinguishability list + sponge group abstain | Extra pairs from eval confusion (≥33% reciprocal) | Decision layer where vision saturates. |
+| K19 | Grow reference photos to ~1,000/species where the sources have them + full per-species re-embed | McNemar n=18,000: **+0.57 pp** (313/211, p=1e-5). By species: grew ≥+300 vectors **+7.7 pp**, +100–299 **+12.0 pp**, +1–99 +3.4 pp; species that did not grow −0.63 pp (dilution) | Data works where it exists; 77% of remaining errors sit in species that did not change. |
+| K20 | Second growth wave (121 species, 21.9k photos), rebuild to 1,072,233 vectors | McNemar n=21,000: **+0.22 pp** (84/38, p=5e-5); touched species **83.3%→89.5%** (83/1); 31 improve, 0 worsen | In production 2026-09-21. |
+| K21 | Independent second opinion for the closed-set retriever: BioCLIP zero-shot over a regional checklist | 300 Mediterranean bird observations: BF≥0.85 **and** zero-shot≥0.80 agree → **98.5% precision at 69% coverage** (BF alone 91.2% at 79%). All groups: 95.9% at 49% with a rescue tier vs BF alone 93.8% at 48% | Open-set guard for AutoID (birds in production; other groups pending). |
+| K22 | Promotion criterion counted in species | 173 species improve / 153 worsen / 2,186 unchanged (previous→current index) | Report the per-species balance next to Δ and p. |
 
 ### 4.2 Rejected (do not repeat as-is)
 
@@ -171,6 +177,8 @@ Each row: **hypothesis → result → contribution to the project.** Details and
 | R25 | Seagrass VLM / generic densification | Null | Quality swap helped *Posidonia*, not *Cymodocea*. |
 | R26 | MiniCPM “pure subject” filter on fauna (16 spp) | 97.5% already “pure” | Does not transfer from seagrass. |
 | R27 | Broad Q≥8 photo swap on already-exhausted taxa | Very low yield on some batches; high yield on others | Quality helps **when** better photos exist; not a universal lever. |
+| R28 | Raise the confidence threshold to cut confident errors | Live backtest n=184: precision flat at 90–92% for p≥0.80…0.95; only coverage falls (52%→11%) | Calibration saturates; not a lever. |
+| R29 | Require iNaturalist CV agreement before publishing | Of 81 BF answers ≥0.85: iNat agreed on 51 (BF right 96%), returned nothing on 29 (BF right 83%), disagreed on 1; ~4 correct answers blocked per error avoided | Replaced by domain guards + zero-shot consensus (1-day trial, audit pending). |
 
 ### 4.3 Operational failures (not model ideas, still public)
 
@@ -182,6 +190,12 @@ These are included because they change how numbers should be read.
 | O2 | FAISS index vs `species_ids` desync after `/reload` (1 Sep 2026) | Live IDs assigned terrestrial queries marine names at 85–100% confidence; **disk evals valid** | Reload index and labels together. |
 | O3 | Admin metrics reading frozen snapshot files | Panel showed stale/in-sample accuracy | Live metrics from the current jsonl. |
 | O4 | Empty `--species` list after nested SSH (13 Sep 2026) | Quality-swap ran on extra taxa for ~35 min | Pass slug files, never interpolated lists. |
+| O12 | The serving process translated FAISS labels with the live species folder list, not the index's own name list; three new folders shifted every label while `/health` still reported aligned | Wrong species at 0.92 similarity for hours (2026-09-20/21); AutoID published nothing | Guard cron compares index names ↔ loaded species ↔ folders (extends O2). |
+| O13 | An unattended job rebuilt the production FAISS directory and refit calibration before validation finished | Production index overwritten by an unvalidated build | Unattended jobs never write production paths. |
+| O14 | The Minka web host returns 403 to the default `python-httpx` User-Agent (login and photo downloads) | AutoID zero publications for days (second recurrence of the missing-header class) | One shared HTTP client; alarm on zero-publication days. |
+| O15 | Two agent sessions ran the same cycle in parallel; one promotion overwrote the other; GPU OOM with sidecar + serving + re-embed | Duplicated compute; index/calibration mismatch for ~30 min | Single active session with a written registry. |
+| O16 | Closed-set, observer-correlated evaluation: panel 92.4% vs ~80% on 300 recent research-grade observations; 12% of bird observations are species outside the catalog | Panel overstates real-world accuracy | Recent-observation sample as operating KPI. |
+| O17 | Dashboard accuracy per species changes only when the eval is re-scored against the serving index | Numbers frozen after promotions | Daily automated re-score; re-score after every promotion. |
 
 ---
 
@@ -209,6 +223,9 @@ Seagrass (n=60 each, 14 Sep): *Posidonia oceanica* 73.3%; *Cymodocea nodosa* 70.
 3. Public code is a **reconstruction identifier** (prototypes + optional local k-NN), not a dump of HanSolo’s 1,300-line service (sidecars, AutoID, GPU contention with MiniCPM).
 4. AutoID precision/coverage table is older than the 14 Sep calibrator.
 5. Curator corrections are not yet a closed training loop.
+6. **Closed-set retrieval:** species absent from the catalog get a confident wrong answer; the calibrator only saw catalog species. Mitigated for birds by a zero-shot consensus guard (K21); not yet for other groups.
+7. **Evaluation optimism:** the panel/OOS metric (92.4%) is closed-set and observer-correlated; a recent-observation sample (~80%) is the operating KPI (O16).
+8. **AutoID without iNaturalist verification** has run for one day only (guards: Mediterranean bounding box, bird consensus, 15/h cap); the audit against community identifications is pending.
 
 ---
 

@@ -17,3 +17,8 @@ AutoID (FotoFauna): last published operating point **p≥0.80 → ~95.3% precisi
 ## References
 
 Stevens et al. 2024 (BioCLIP, CVPR). Ballesteros 2007; Cervera et al. 2004; Salvador et al. 2022 (checklists).
+
+## Live check and open-set caveat (2026-09-21)
+
+The panel/OOS metric is a **closed-set** evaluation: held-out observations of species that exist in the catalog, correlated by observer and site, from research-grade records. It overstates what happens on incoming photos (species outside the catalog, phone-quality images, unidentified observations). Operating KPI going forward: a **recent-observation sample** (research-grade, last ~25 days, split by time and observer, same pipeline as AutoID: crop + BioFauna), reported next to the panel. Promotions report Δ, p **and** the per-species balance (improved / worsened / unchanged, touched species first). Accuracy per species shown in dashboards is refreshed by a daily re-score against the serving index; a promotion always re-scores.
+

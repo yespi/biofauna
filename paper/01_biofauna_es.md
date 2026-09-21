@@ -133,6 +133,10 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 | K12 | Gate MiniCPM en dos pares | McNemar pequeño 12/1, p=0,003 | Sidecar acotado, no VLM general. |
 | K13 | Auditor de nomenclatura WoRMS+GBIF | 85 nombres aceptados; 4 fusiones de slug duplicado | Higiene de catálogo. |
 | K14 | Lista de indistinguibles + grupo esponjas | Pares extra desde confusión de eval | Capa de decisión donde la visión satura. |
+| K19 | Crecer las fotos de referencia hasta ~1.000/especie donde las fuentes lo permiten + re-embed completo por especie | McNemar n=18.000: **+0,57 pp** (313/211, p=1e-5). Por especies: crecen ≥+300 vectores **+7,7 pp**, +100–299 **+12,0 pp**, +1–99 +3,4 pp; las que no crecen −0,63 pp (dilución) | Los datos funcionan donde existen; el 77% de los errores restantes está en especies que no cambiaron. |
+| K20 | Segunda oleada de crecimiento (121 especies, 21,9k fotos), reconstrucción a 1.072.233 vectores | McNemar n=21.000: **+0,22 pp** (84/38, p=5e-5); especies tocadas **83,3%→89,5%** (83/1); 31 mejoran, 0 empeoran | En producción el 21-sep-2026. |
+| K21 | Segunda opinión independiente para el recuperador de conjunto cerrado: BioCLIP zero-shot sobre una lista regional | 300 observaciones de aves mediterráneas: BF≥0,85 **y** zero-shot≥0,80 coinciden → **98,5% de precisión con 69% de cobertura** (BF solo 91,2% con 79%). Todos los grupos: 95,9% al 49% con nivel de rescate frente a BF solo 93,8% al 48% | Guarda open-set de AutoID (aves en producción; resto de grupos pendiente). |
+| K22 | Criterio de promoción contado en especies | 173 especies mejoran / 153 empeoran / 2.186 sin cambio (índice anterior→actual) | Reportar el balance por especie junto a Δ y p. |
 
 ### 4.2 Rechazados (no repetir tal cual)
 
@@ -165,6 +169,8 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 | R25 | VLM / densificación genérica en fanerógamas | Nulo | El swap de calidad ayudó a *Posidonia*, no a *Cymodocea*. |
 | R26 | Filtro MiniCPM “sujeto puro” en fauna (16 spp) | 97,5% ya “puro” | No transfiere desde fanerógamas. |
 | R27 | Swap Q≥8 en taxones ya agotados | Rendimiento muy desigual | La calidad ayuda **si** hay fotos mejores. |
+| R28 | Subir el umbral de confianza para reducir errores confiados | Backtest vivo n=184: precisión plana 90–92% para p≥0,80…0,95; solo cae la cobertura (52%→11%) | La calibración satura; no es palanca. |
+| R29 | Exigir acuerdo de iNaturalist CV antes de publicar | De 81 respuestas BF ≥0,85: iNat coincidió en 51 (BF acierta 96%), no devolvió nada en 29 (BF acierta 83%), discrepó en 1; ~4 aciertos bloqueados por cada error evitado | Sustituido por guardas de dominio + consenso zero-shot (prueba de 1 día, auditoría pendiente). |
 
 ### 4.3 Fallos operativos (no son ideas de modelo; sí son públicos)
 
@@ -174,6 +180,16 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 | O2 | Desync FAISS vs etiquetas tras `/reload` (1-sep-2026) | IDs vivos absurdas a 85–100%; **evals en disco válidas** | Recargar índice y labels juntos. |
 | O3 | Métricas de admin leyendo snapshots congelados | Panel in-sample / viejo | Métricas desde el jsonl actual. |
 | O4 | `--species` vacío tras SSH anidado (13-sep-2026) | Swap de calidad en taxones de más ~35 min | Pasar ficheros de slugs, nunca listas interpoladas. |
+| O12 | El servicio traducía las etiquetas de FAISS con la lista viva de carpetas de especies, no con la lista de nombres del propio índice; tres carpetas nuevas desplazaron todas las etiquetas mientras `/health` seguía diciendo alineado | Especie equivocada con similitud 0,92 durante horas (20/21-sep-2026); AutoID no publicó nada | Cron guardián compara nombres del índice ↔ especies cargadas ↔ carpetas (amplía O2). |
+| O13 | Un trabajo desatendido reconstruyó el directorio FAISS de producción y refiteó la calibración antes de validar | Índice de producción sobrescrito por una build sin validar | Los trabajos desatendidos nunca escriben rutas de producción. |
+| O14 | La web de Minka devuelve 403 al User-Agent por defecto de `python-httpx` (login y descargas de fotos) | AutoID sin publicar durante días (segunda recurrencia de la clase «cabecera ausente») | Un único cliente HTTP compartido; alarma de días sin publicaciones. |
+| O15 | Dos sesiones de agente ejecutaron el mismo ciclo en paralelo; una promoción sobrescribió la otra; OOM de GPU con sidecar + servicio + reembed | Cómputo duplicado; desajuste índice/calibración ~30 min | Sesión activa única con registro escrito. |
+| O16 | Evaluación de conjunto cerrado y correlada por observador: panel 92,4% frente a ~80% en 300 observaciones recientes research grade; el 12% de las observaciones de aves son especies fuera del catálogo | El panel sobreestima la precisión real | Muestra de observaciones recientes como KPI operativo. |
+| O17 | La precisión por especie de los paneles solo cambia cuando el eval se re-puntúa contra el índice servido | Cifras congeladas tras promociones | Re-score diario automático; re-score tras cada promoción. |
+
+---
+
+**Actualización 2026-09-21.** Producción sirve ahora **1.072.233** embeddings / **4.705** especies (1.720 son clases de galería fuera del catálogo de 2.985 especies: 1,8% de los vectores) tras dos oleadas de crecimiento (K19–K20). El panel (overlay fuera de muestra, n=24.475) marca **92,36%** de especie; una comprobación sobre 300 observaciones recientes research grade de Minka da **~80%** (aves del catálogo 84% frente a 96% en el panel): el panel es una evaluación de conjunto cerrado y sobreestima la precisión real (O16). El recuperador de conjunto cerrado responde con confianza a especies que no están en el catálogo; una segunda opinión independiente de BioCLIP zero-shot elimina la mayoría de esos errores en aves (K21).
 
 ---
 
@@ -201,6 +217,9 @@ Fanerógamas (n=60, 14-sep): *Posidonia oceanica* 73,3%; *Cymodocea nodosa* 70,0
 3. El código público es un **identificador de reconstrucción**, no el volcado del servicio de 1.300 líneas de HanSolo.
 4. La tabla precisión/cobertura de AutoID es anterior al calibrador del 14-sep.
 5. Las correcciones de curadores aún no cierran un bucle de entrenamiento.
+6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; el calibrador solo vio especies del catálogo. Mitigado en aves con una guarda de consenso zero-shot (K21); todavía no en otros grupos.
+7. **Optimismo de la evaluación:** la métrica del panel/OOS (92,4%) es de conjunto cerrado y correlada por observador; una muestra de observaciones recientes (~80%) es el KPI operativo (O16).
+8. **AutoID sin verificación de iNaturalist** solo lleva un día en marcha (guardas: caja mediterránea, consenso en aves, tope 15/h); la auditoría contra identificaciones de la comunidad está pendiente.
 
 ---
 
