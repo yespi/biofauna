@@ -2,7 +2,7 @@
 
 > Public ledger through **2026-09-23**. Trusted metric: observation-stratified harvest, not photo-level splits.
 >
-> **Live (cohort B, production, unchanged since 2026-09-14 09:29):** FAISS **855,548** / 4,702 spp, k-NN **T=0.05**. True species accuracy **90.52%** (n=16,676) — see O5 below for why this was reported as a stale 85.78% for most of a session before being caught and fixed; the underlying model never changed, only the measurement.
+> **Historical (cohort B, 2026-09-14 09:29 — superseded, see the 2026-09-23 update above):** FAISS **855,548** / 4,702 spp, k-NN **T=0.05**. True species accuracy **90.52%** (n=16,676) — see O5 below for why this was reported as a stale 85.78% for most of a session before being caught and fixed; the underlying model never changed, only the measurement.
 >
 > **Update 2026-09-23 (production) — read first.** An audit found that 50.8% of the evaluation rows were copies of gallery photos (O18); they scored 97.6%. Leak-free panel: **88.11%** species / 90.55% genus / 92.46% family (n=12,373, 2,091 species; 1,429 at 100%, 431 <80%). Every panel figure below dated 2026-09-14…22 (85.78%, 90.52%, 92.36%, 93.4%) contained the leak; relative McNemar deltas between two indexes on the same rows remain valid. Calibrator refit on clean rows: p≥0.80 → 97.0% precision / 80.6% coverage (species-disjoint test split). k-NN vote capped at 3 per species since 2026-09-22 (K23).
 >

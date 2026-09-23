@@ -14,17 +14,17 @@
 
 BioFauna identifies Mediterranean (and incidental adjacent) taxa from photographs by **retrieval** over a regional gallery, not by fine-tuning a new classifier. The production encoder is **BioCLIP-2.5 ViT-H/14** (632M parameters, 1024-d embeddings), **frozen**. Queries are encoded (with a 65% centre-crop fused into the global embedding), searched with **k-NN (k=15)** using a tempered vote aggregator, optionally re-weighted by a geographic prior, then mapped to calibrated probabilities and, when the margin is weak, **abstained** to genus, family, or a curated indistinguishability group.
 
-**Production snapshot (2026-09-14, live `/health` + `calibration.json`):**
+**Production snapshot (2026-09-23, live `/health` + `calibration.json`):**
 
 | Quantity | Value |
 |----------|-------|
-| Gallery | **848,883** embeddings / **4,702** species, FAISS row-aligned |
+| Gallery | **1,072,233** embeddings / **4,705** species, FAISS row-aligned |
 | Catalog (Mediterranean checklist) | **2,985** taxa (`dataset/catalog.json`) |
-| Out-of-sample accuracy | **85.78%** species / **89.15%** genus / **91.41%** family |
-| Evaluation size | n=**19,087** observations, **2,926** species with ≥1 eval sample |
+| Out-of-sample accuracy (leak-free) | **88.11%** species / **90.55%** genus / **92.46%** family |
+| Evaluation size | n=**12,373** observations, **2,091** species with ≥1 eval sample (gallery copies removed, O18) |
 | Hardware | NVIDIA RTX 3060 12 GB (~4.4 GB VRAM at inference) |
 
-Those accuracy figures are **observation-stratified and leak-checked**. They are **not** comparable to the August 2026 headline of 75.97% on a smaller, earlier cohort (n=12,788) without re-running that same harvest; mixing cohorts is how this project previously overstated progress. Both numbers are kept below, labelled by protocol.
+Those accuracy figures are **observation-stratified and leak-checked with a global-embedding gate** (the earlier 85.78% on n=19,087 and the later 92–93% panel contained gallery copies — see the update box and O18). They are **not** comparable to the August 2026 headline of 75.97% on a smaller, earlier cohort (n=12,788) without re-running that same harvest; mixing cohorts is how this project previously overstated progress. Both numbers are kept below, labelled by protocol.
 
 **Update 2026-09-23 — evaluation leak found and removed.** An audit that embeds every evaluation photo *globally* (no TTA, exactly like the gallery) and compares it with its own species' gallery found that **30.0%** of the 25,143 evaluation rows were byte-level copies of a gallery photo (cosine ≥0.995) and **50.8%** were copies or rescaled/cropped copies (≥0.98). The harvest leak gate compared a *TTA-averaged* query embedding against a 0.999 threshold, which an identical image never reaches (~0.99), so it silently passed everything after the August fix (§3). Leaked rows scored **97.6%**; the remaining clean rows score **88.11%** species / 90.55% genus / 92.46% family (n=12,373, 2,091 species). The panel figure of 92.4–93.4% quoted on 2026-09-21/22 is therefore withdrawn; **88.1% is the current closed-set figure**, and the ~80% recent-observation KPI (O16) still stands as the operating number. For rare species with new, genuinely unseen photos from other sources (Wikimedia, GBIF, museum media), accuracy was only **24%** (n=130) — the leak had hidden it. Gate fixed in all harvesters, leaked rows moved aside (not deleted), calibrator refit on clean data (O18). Also in production since 2026-09-22: per-species cap of 3 votes in the k-NN aggregator (K23).
 
@@ -79,9 +79,9 @@ This public repository ships **prototype centroids** (`data/patterns/<slug>/prot
 
 | Layer | Production | This repo |
 |-------|------------|-----------|
-| Photographs | ~838k on disk (Minka, iNaturalist, GBIF, …) | **Not released** (licence) |
-| Per-photo embeddings | 848,883 vectors | **Not released** (size + derived from photos) |
-| Prototype per species | 4,702 × 1024 float32 | **Released** (~15 MB) |
+| Photographs | ~1.06M on disk (Minka, iNaturalist, GBIF, …) | **Not released** (licence) |
+| Per-photo embeddings | 1,072,233 vectors | **Not released** (size + derived from photos) |
+| Prototype per species | 4,705 × 1024 float32 | **Released** (~15 MB) |
 | Taxon IDs / names | 2,985 catalog rows | **Released** (`dataset/catalog.json`) |
 | Calibrator, geo priors, cryptic pairs, exceptions | live JSON | **Released** |
 

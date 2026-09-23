@@ -20,7 +20,7 @@ Production inference (frozen **BioCLIP-2.5 ViT-H** + prototypes or k-NN) uses ~*
    ```
 
 2. **Gallery + calibration** — ship ready to run, no manual copy needed:
-   `data/patterns/<slug>/prototype.npy` (4,702 species, nearest-centroid gallery) and `data/calibration.json` are already in the repo. This gives you a working nearest-centroid classifier out of the box. For the full k=15 k-NN gallery (per-photo `embeddings.npy`, much larger, not redistributed here — see [`dataset.md`](dataset.md)), rebuild it yourself with `src/embed_crop.py` / `src/reembed_vith.py` over your own photo set and drop `embeddings.npy` next to each species' `prototype.npy`.
+   `data/patterns/<slug>/prototype.npy` (4,705 species, nearest-centroid gallery) and `data/calibration.json` are already in the repo. This gives you a working nearest-centroid classifier out of the box. For the full k=15 k-NN gallery (per-photo `embeddings.npy`, much larger, not redistributed here — see [`dataset.md`](dataset.md)), rebuild it yourself with `src/embed_crop.py` / `src/reembed_vith.py` over your own photo set and drop `embeddings.npy` next to each species' `prototype.npy`.
 
 3. **First run** (downloads BioCLIP-2.5 ViT-H from HuggingFace on first load):
    ```bash

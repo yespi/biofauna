@@ -14,17 +14,17 @@
 
 BioFauna identifica taxones mediterráneos (y algunos adyacentes incidentales) a partir de fotografías por **recuperación** sobre una galería regional, no entrenando un clasificador cerrado. El encoder de producción es **BioCLIP-2.5 ViT-H/14** (632M parámetros, embeddings de 1024 dimensiones), **congelado**. La consulta se embebe (fusión del encuadre global con un recorte central al 65%), se busca con **k-NN (k=15)** y un agregador de votos temperado, se puede reponderar con un prior geográfico, se convierte en probabilidad calibrada y, si el margen es débil, se **abstiene** a género, familia o un grupo de indistinguibilidad curado.
 
-**Corte de producción (2026-09-14, `/health` en vivo + `calibration.json`):**
+**Corte de producción (2026-09-23, `/health` en vivo + `calibration.json`):**
 
 | Magnitud | Valor |
 |----------|-------|
-| Galería | **848.883** embeddings / **4.702** especies, FAISS alineado |
+| Galería | **1.072.233** embeddings / **4.705** especies, FAISS alineado |
 | Catálogo (lista mediterránea) | **2.985** taxones (`dataset/catalog.json`) |
-| Acierto fuera de muestra | **85,78%** especie / **89,15%** género / **91,41%** familia |
-| Evaluación | n=**19.087** observaciones, **2.926** especies con ≥1 muestra |
+| Acierto fuera de muestra (sin fuga) | **88,11%** especie / **90,55%** género / **92,46%** familia |
+| Evaluación | n=**12.373** observaciones, **2.091** especies con ≥1 muestra (sin copias de la galería, O18) |
 | Hardware | NVIDIA RTX 3060 12 GB (~4,4 GB VRAM en inferencia) |
 
-Esas cifras son **estratificadas por observación** y con control de fugas. **No** se pueden comparar a ciegas con el 75,97% de agosto de 2026 (n=12.788, otra cosecha). Mezclar cohortes es el error que este proyecto ya documentó. Ambos números aparecen abajo, etiquetados por protocolo.
+Esas cifras son **estratificadas por observación** y con control de fugas por embedding global (el 85,78% anterior sobre n=19.087 y el panel de 92–93% contenían copias de la galería: ver la actualización y O18). **No** se pueden comparar a ciegas con el 75,97% de agosto de 2026 (n=12.788, otra cosecha). Mezclar cohortes es el error que este proyecto ya documentó. Ambos números aparecen abajo, etiquetados por protocolo.
 
 Una búsqueda sistemática de más top-1 de especie **entrenando sobre este espacio** (QLoRA, LoRA, triplet, ArcFace, cabeza lineal, SupCon acotado) **no superó** la recuperación congelada. Lo que sí se quedó en producción: escala del backbone, completitud/calidad de galería, fusión en inferencia, agregador k-NN temperado y abstención taxonómica. Publicamos el libro de experimentos, los IDs de taxón, los centroides y un identificador autoalojable. **No se redistribuyen fotos ni `embeddings.npy` por foto**; se pueden reconstruir desde Minka / iNaturalist / GBIF.
 
@@ -75,9 +75,9 @@ Este repositorio publica **centroides** (`data/patterns/<slug>/prototype.npy`): 
 
 | Capa | Producción | Este repo |
 |------|------------|-----------|
-| Fotografías | ~838 mil en disco | **No** (licencia) |
-| Embeddings por foto | 848.883 vectores | **No** (tamaño + derivados de fotos) |
-| Prototipo por especie | 4.702 × 1024 float32 | **Sí** (~15 MB) |
+| Fotografías | ~1,06 M en disco | **No** (licencia) |
+| Embeddings por foto | 1.072.233 vectores | **No** (tamaño + derivados de fotos) |
+| Prototipo por especie | 4.705 × 1024 float32 | **Sí** (~15 MB) |
 | IDs / nombres | 2.985 filas | **Sí** (`dataset/catalog.json`) |
 | Calibrador, geo, pares, excepciones | JSON vivo | **Sí** |
 
