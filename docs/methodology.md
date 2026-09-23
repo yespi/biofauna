@@ -1,6 +1,6 @@
 # Methodology — BioFauna
 
-Production identifier: **frozen BioCLIP-2.5 ViT-H/14** (1024-d) → **k-NN k=15**, tempered votes **T=0.05**, prototype boost, 65% centre-crop fused into the query, optional GPS prior, logistic calibration, taxonomic abstention.
+Production identifier: **frozen BioCLIP-2.5 ViT-H/14** (1024-d) → **k-NN k=15**, tempered votes **T=0.05** with at most 3 votes per species, prototype boost, 65% centre-crop fused into the query, optional GPS prior, logistic calibration, taxonomic abstention.
 
 Details and the kept/rejected ledger: [paper](../paper/01_biofauna.md) and [EXPERIMENTS.md](EXPERIMENTS.md).
 
@@ -8,11 +8,15 @@ Details and the kept/rejected ledger: [paper](../paper/01_biofauna.md) and [EXPE
 
 Only **observation-stratified** harvests. Photo-level splits inflate accuracy ~10 pp.
 
-**Current (2026-09-14):** 85.78% / 89.15% / 91.41% species/genus/family, n=19,087.
+**Current (2026-09-23, leak-free):** 88.11% / 90.55% / 92.46% species/genus/family, n=12,373 (2,091 species).
+
+**Leak gate (mandatory for every evaluation photo):** embed the candidate **globally** (no TTA, no ROI fusion — the same way gallery photos are embedded) and drop it if its cosine with any gallery photo of its species is **≥0.98**. Comparing a TTA/fusion embedding instead lets identical photos through (they score ~0.97–0.99), which is how 50.8% of the evaluation set became gallery copies before 2026-09-23. After any gallery growth, re-run `scripts/leak_audit_calib.py` and `scripts/purge_leaked_eval.py` (leaked rows are moved to a side file, never deleted).
+
+**Species with no evaluation:** harvest held-out observations not used in the gallery (Minka, iNaturalist, GBIF), then multi-source searches for rare taxa (Wikimedia Commons, museum media via iDigBio/GBIF, EOL, Wikipedia, Zenodo/Biodiversity Literature Repository figures, Openverse, Observation.org, WoRMS synonyms), each photo through the leak gate and a genus-plausibility check. Leave-one-out on the gallery is reported separately and never mixed into the headline.
 
 **August freeze (same protocol, smaller mix):** 75.97% TTA-era → 79.10% after densification on n=12,788. Do not quote those as the live system.
 
-AutoID (FotoFauna): last published operating point **p≥0.80 → ~95.3% precision, ~57.4% coverage** (August split). The on-disk calibrator was refit 14 Sep.
+AutoID (FotoFauna): calibrator refit 2026-09-23 on leak-free rows; **p≥0.80 → 97.0% precision, 80.6% coverage** on a species-disjoint test split (closed-set; see the live-check caveat below).
 
 ## References
 

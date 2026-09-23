@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 KNN_K = int(os.environ.get("BIOFAUNA_KNN_K", "15"))
 KNN_TEMP = float(os.environ.get("BIOFAUNA_KNN_TEMP", "0.05"))
+KNN_CLASS_CAP = int(__import__("os").environ.get("BIOFAUNA_KNN_CLASS_CAP", "3"))  # K23: max votes per species (0 = off)
 ARC_WEIGHT = float(os.environ.get("BIOFAUNA_ARC_WEIGHT", "3.0"))
 GEO_BOOST = float(
     os.environ.get("BIOFAUNA_GEO_BOOST", os.environ.get("YOLOFAUNA_GEO_BOOST", "2.0"))
@@ -107,9 +108,13 @@ def knn_scores(q, E, Y, k: int | None = None):
     sc: dict[int, float] = {}
     mx: dict[int, float] = {}
     cnt: dict[int, int] = {}
-    for j, i in enumerate(top):
+    order = np.argsort(-np.asarray(topsims))  # cap keeps the strongest neighbours of each species
+    for j in order:
+        i = top[j]
         l = int(Y[i])
         s = float(topsims[j])
+        if KNN_CLASS_CAP > 0 and cnt.get(l, 0) >= KNN_CLASS_CAP:
+            continue
         pos = max(s, 0.0)
         contrib = pos if KNN_TEMP <= 0 else float(__import__("math").exp(min(pos / KNN_TEMP, 40.0)))
         sc[l] = sc.get(l, 0.0) + contrib

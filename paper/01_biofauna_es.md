@@ -58,16 +58,16 @@ BioFauna es el identificador de FotoFauna. Decisión de diseño: **no entrenar u
 | Entrada | 224×224 |
 | Entrenamiento en BioFauna | **Congelado** |
 
-### 2.2 Identificación (producción, 2026-09-14)
+### 2.2 Identificación (producción, 2026-09-23)
 
 1. Embeber la consulta; fusionar **encuadre global + recorte central 65%**.
 2. Recuperar **k=15** vecinos (FAISS si hay galería completa; centroide más cercano con los prototipos publicados si no).
-3. Agregar votos **temperados** `Σ exp(max(s,0)/T)`, **T=0,05**, más un boost al prototipo.
+3. Agregar votos **temperados** `Σ exp(max(s,0)/T)`, **T=0,05**, más un boost al prototipo. Cada especie aporta **como máximo 3** de los 15 vecinos al voto (`KNN_CLASS_CAP=3`, K23), para que una especie con una galería enorme no gane a una escasa solo por número.
 4. Prior geográfico multiplicativo si hay GPS.
 5. **Abstener** si el margen top-1/top-2 es pequeño y comparten género/familia, o si el par/género/grupo está en `dataset/taxonomic_exceptions.json`.
 6. Pasar features k-NN → **P(acierto)** con regresión logística.
 
-AutoID en FotoFauna publica si **p ≥ 0,80**. El estudio de umbral publicado (agosto 2026) estimó **~95,3% de precisión a ~57,4% de cobertura**. Esa curva no se ha vuelto a tabular como paper tras cada cambio de galería; el calibrador vivo es `created=2026-09-14T07:04:26`.
+AutoID en FotoFauna publica si **p ≥ 0,80**. Con el calibrador reajustado sobre datos sin fuga (`created=2026-09-23T08:22`, ajuste 8.509 / test 3.864 filas, partición disjunta por especie) ese umbral da **97,0% de precisión con 80,6% de cobertura** en el test (conjunto cerrado; el KPI de observaciones recientes es más bajo, O16). La estimación de agosto (95,3% al 57,4%) queda superada.
 
 Este repositorio publica **centroides** (`data/patterns/<slug>/prototype.npy`): basta para un demo nearest-centroid. El k-NN completo exige reconstruir embeddings por foto en local ([`docs/dataset.md`](../docs/dataset.md)).
 
@@ -98,6 +98,8 @@ Los números de cabecera usan **observaciones** retenidas (un encuentro, a menud
 | Mismo protocolo entre ablaciones | McNemar comparable |
 | No mezclar cosechas al citar un delta | Otro mix de especies ≠ ganancia de modelo |
 
+**Incidente (23-sep-2026).** La puerta de agosto de abajo tampoco funcionaba: comparaba un embedding promediado con TTA (original + recorte 90%) con los de la galería a coseno >0,999; una foto idéntica da ~0,99 así. El 50,8% del eval había vuelto a entrar en la galería. La puerta compara ahora el embedding **global** (el mismo que guarda la galería) a **≥0,98**, y un script de auditoría revisa todas las filas de eval tras cada crecimiento de galería (O18).
+
 **Incidente (25/26-ago-2026).** La lista de IDs ya vistos apuntaba a una ruta abandonada y no coincidía con nada. El **42,7%** de una cosecha de 22.332 fotos ya estaba en la galería. Con k=15 el titular solo se movió ~1 pp; con k pequeño la curva era absurda. Arreglo: embeber cada candidato y tirar near-duplicates. Sigue como puerta de la cosecha.
 
 **Dos métricas etiquetadas**
@@ -105,7 +107,8 @@ Los números de cabecera usan **observaciones** retenidas (un encuentro, a menud
 | Etiqueta | Cohorte | Top-1 especie | Uso |
 |----------|---------|---------------|-----|
 | **A — corte TTA** | `harvest_calib` n=12.788 (ago 2026, sin fuga) | 75,97% (luego 77,77% con pila de inferencia; 79,10% jsonl tras densificar) | Ablaciones comparables §4.1–4.2 |
-| **B — calibrador vivo** | `calib_raw_t05` n=19.087 (2026-09-14) | **85,78%** | Informe de producción actual |
+| **B — calibrador vivo** | `calib_raw_t05` n=19.087 (2026-09-14) | **85,78%** | Histórico (afectado por la fuga O18) |
+| **C — sin fuga** | `calib_raw_t05` n=12.373 (2026-09-23, auditado, copias ≥0,98 fuera) | **88,11%** | Informe de producción actual (§5) |
 
 B es más grande, cubre más especies difíciles y usa T=0,05 y campañas de calidad posteriores. **A no es “peor ingeniería”; B no es un salto mágico de 10 puntos sobre las mismas fotos.**
 
@@ -136,6 +139,7 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 | K19 | Crecer las fotos de referencia hasta ~1.000/especie donde las fuentes lo permiten + re-embed completo por especie | McNemar n=18.000: **+0,57 pp** (313/211, p=1e-5). Por especies: crecen ≥+300 vectores **+7,7 pp**, +100–299 **+12,0 pp**, +1–99 +3,4 pp; las que no crecen −0,63 pp (dilución) | Los datos funcionan donde existen; el 77% de los errores restantes está en especies que no cambiaron. |
 | K20 | Segunda oleada de crecimiento (121 especies, 21,9k fotos), reconstrucción a 1.072.233 vectores | McNemar n=21.000: **+0,22 pp** (84/38, p=5e-5); especies tocadas **83,3%→89,5%** (83/1); 31 mejoran, 0 empeoran | En producción el 21-sep-2026. |
 | K21 | Segunda opinión independiente para el recuperador de conjunto cerrado: BioCLIP zero-shot sobre una lista regional | 300 observaciones de aves mediterráneas: BF≥0,85 **y** zero-shot≥0,80 coinciden → **98,5% de precisión con 69% de cobertura** (BF solo 91,2% con 79%). Todos los grupos: 95,9% al 49% con nivel de rescate frente a BF solo 93,8% al 48% | Guarda open-set de AutoID (aves en producción; resto de grupos pendiente). |
+| K23 | Tope de votos por especie en el agregador k-NN (`KNN_CLASS_CAP=3`) | McNemar n=12.000 obs held-out: **+1,13 pp** (92,33%→93,47%; 228 arreglos / 92 roturas); **177 especies mejoran / 70 empeoran**; más ganancia en especies con <25 fotos de galería (+3,2–3,5 pp). cap1 −0,19, cap2 +0,82, cap4 +1,08, cap5 +0,94 pp | En producción el 22-sep-2026 07:17 CEST. (Medido antes de la purga O18; cuenta la ganancia relativa.) |
 | K22 | Criterio de promoción contado en especies | 173 especies mejoran / 153 empeoran / 2.186 sin cambio (índice anterior→actual) | Reportar el balance por especie junto a Δ y p. |
 
 ### 4.2 Rechazados (no repetir tal cual)
@@ -185,15 +189,31 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 | O14 | La web de Minka devuelve 403 al User-Agent por defecto de `python-httpx` (login y descargas de fotos) | AutoID sin publicar durante días (segunda recurrencia de la clase «cabecera ausente») | Un único cliente HTTP compartido; alarma de días sin publicaciones. |
 | O15 | Dos sesiones de agente ejecutaron el mismo ciclo en paralelo; una promoción sobrescribió la otra; OOM de GPU con sidecar + servicio + reembed | Cómputo duplicado; desajuste índice/calibración ~30 min | Sesión activa única con registro escrito. |
 | O16 | Evaluación de conjunto cerrado y correlada por observador: panel 92,4% frente a ~80% en 300 observaciones recientes research grade; el 12% de las observaciones de aves son especies fuera del catálogo | El panel sobreestima la precisión real | Muestra de observaciones recientes como KPI operativo. |
+| O18 | La puerta de fuga del eval comparaba un embedding promediado con TTA con umbral 0,999; una foto idéntica da ~0,99 y la puerta nunca saltaba. Las búsquedas ad hoc posteriores (Wikimedia/GBIF/iNat de cualquier grado) no tenían puerta | El 50,8% de las filas de eval eran copias de la galería; panel 92,4–93,4% frente a 88,1% limpio; el 24% real en especies raras con fotos no vistas aparecía como 57% | Puerta con embedding global ≥0,98 en todas las cosechas; `leak_audit_calib.py` tras cada crecimiento; filas con fuga apartadas y calibrador reajustado (23-sep-2026). |
 | O17 | La precisión por especie de los paneles solo cambia cuando el eval se re-puntúa contra el índice servido | Cifras congeladas tras promociones | Re-score diario automático; re-score tras cada promoción. |
 
 ---
+
+**Actualización 2026-09-23 — fuga en la evaluación detectada y eliminada.** Una auditoría que embebe cada foto de evaluación en *global* (sin TTA, igual que la galería) y la compara con la galería de su propia especie encontró que el **30,0%** de las 25.143 filas de evaluación eran copias exactas de una foto de la galería (coseno ≥0,995) y el **50,8%** copias o copias reescaladas/recortadas (≥0,98). El filtro de fuga de la cosecha comparaba un embedding *promediado con TTA* contra un umbral de 0,999 que una imagen idéntica nunca alcanza (~0,99), así que dejaba pasar todo tras el arreglo de agosto (§3). Las filas con fuga acertaban el **97,6%**; las limpias dan **88,11%** especie / 90,55% género / 92,46% familia (n=12.373, 2.091 especies). La cifra de panel de 92,4–93,4% citada el 21/22-sep queda retirada; **88,1% es la cifra actual de conjunto cerrado**, y el KPI de ~80% sobre observaciones recientes (O16) sigue siendo la cifra operativa. En especies raras con fotos nuevas de verdad de otras fuentes (Wikimedia, GBIF, museos) el acierto fue solo del **24%** (n=130): la fuga lo ocultaba. Filtro arreglado en todas las cosechas, filas con fuga apartadas (no borradas) y calibrador reajustado con datos limpios (O18). También en producción desde el 22-sep: tope de 3 votos por especie en el agregador k-NN (K23).
 
 **Actualización 2026-09-21.** Producción sirve ahora **1.072.233** embeddings / **4.705** especies (1.720 son clases de galería fuera del catálogo de 2.985 especies: 1,8% de los vectores) tras dos oleadas de crecimiento (K19–K20). El panel (overlay fuera de muestra, n=24.475) marca **92,36%** de especie; una comprobación sobre 300 observaciones recientes research grade de Minka da **~80%** (aves del catálogo 84% frente a 96% en el panel): el panel es una evaluación de conjunto cerrado y sobreestima la precisión real (O16). El recuperador de conjunto cerrado responde con confianza a especies que no están en el catálogo; una segunda opinión independiente de BioCLIP zero-shot elimina la mayoría de esos errores en aves (K21).
 
 ---
 
-## 5. Informe de producción actual (cohorte B)
+## 5. Informe de producción actual (cohorte C, sin fuga, 2026-09-23)
+
+| Nivel | Acierto | n |
+|-------|---------|---|
+| Especie | **88,11%** | 12.373 |
+| Género | **90,55%** | 12.373 |
+| Familia | **92,46%** | 12.373 |
+| Tier 0 (heterobranquios) | 85,12% | 2.446 |
+| Tier 1 (otros marinos) | 87,72% | 5.633 |
+| Tier 2 (terrestres/incidentales) | 90,34% | 4.294 |
+
+Por especie (2.091 con eval limpio): 1.429 al 100%, 431 por debajo del 80%. 894 especies del catálogo perdieron sus únicas filas de eval en la purga y se están volviendo a cosechar con la puerta arreglada. La cohorte B de abajo se conserva como histórico; estaba afectada por la misma fuga.
+
+### Cohorte B (histórico, 14-sep)
 
 | Nivel | Acierto | n |
 |-------|---------|---|
@@ -218,8 +238,8 @@ Fanerógamas (n=60, 14-sep): *Posidonia oceanica* 73,3%; *Cymodocea nodosa* 70,0
 4. La tabla precisión/cobertura de AutoID es anterior al calibrador del 14-sep.
 5. Las correcciones de curadores aún no cierran un bucle de entrenamiento.
 6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; el calibrador solo vio especies del catálogo. Mitigado en aves con una guarda de consenso zero-shot (K21); todavía no en otros grupos.
-7. **Optimismo de la evaluación:** la métrica del panel/OOS (92,4%) es de conjunto cerrado y correlada por observador; una muestra de observaciones recientes (~80%) es el KPI operativo (O16).
-8. **AutoID sin verificación de iNaturalist** solo lleva un día en marcha (guardas: caja mediterránea, consenso en aves, tope 15/h); la auditoría contra identificaciones de la comunidad está pendiente.
+7. **Optimismo de la evaluación:** la métrica del panel sin fuga (88,1%) sigue siendo de conjunto cerrado y correlada por observador; una muestra de observaciones recientes (~80%) es el KPI operativo (O16). Hasta el 23-sep el panel contenía además copias de la galería (O18).
+8. **AutoID sin verificación de iNaturalist** solo lleva un día en marcha (guardas: caja mediterránea, consenso en aves, tope horario, ahora 30/h y 1.000/día; al llegar al tope de la hora se pausa esa hora en vez de disparar el cortocircuito); la auditoría contra identificaciones de la comunidad está pendiente.
 
 ---
 

@@ -1,8 +1,10 @@
 # BioFauna — Experiments
 
-> Public ledger through **2026-09-21**. Trusted metric: observation-stratified harvest, not photo-level splits.
+> Public ledger through **2026-09-23**. Trusted metric: observation-stratified harvest, not photo-level splits.
 >
 > **Live (cohort B, production, unchanged since 2026-09-14 09:29):** FAISS **855,548** / 4,702 spp, k-NN **T=0.05**. True species accuracy **90.52%** (n=16,676) — see O5 below for why this was reported as a stale 85.78% for most of a session before being caught and fixed; the underlying model never changed, only the measurement.
+>
+> **Update 2026-09-23 (production) — read first.** An audit found that 50.8% of the evaluation rows were copies of gallery photos (O18); they scored 97.6%. Leak-free panel: **88.11%** species / 90.55% genus / 92.46% family (n=12,373, 2,091 species; 1,429 at 100%, 431 <80%). Every panel figure below dated 2026-09-14…22 (85.78%, 90.52%, 92.36%, 93.4%) contained the leak; relative McNemar deltas between two indexes on the same rows remain valid. Calibrator refit on clean rows: p≥0.80 → 97.0% precision / 80.6% coverage (species-disjoint test split). k-NN vote capped at 3 per species since 2026-09-22 (K23).
 >
 > **Update 2026-09-21 (production).** Live: FAISS **1,072,233** / 4,705 species (K19–K20), k-NN T=0.05, calibration refit on n=24,475. Panel metric (out-of-sample overlay, n=24,475) **92.36%** — read it with O16: on 300 recent Minka research-grade observations the same system scores ~80% (in-catalog birds 84% vs 96% on the panel). Per-species panel distribution: 314 species <80%, 500 at 80–99%, 2,008 at 100%, 163 without eval. The two bullets below describe 2026-09-14/16 and are kept for history.
 >
@@ -37,6 +39,7 @@
 | K20 | Second growth wave (121 species, 21.9k photos) + rebuild (1,072,233 vectors) | McNemar n=21,000 early stop: **+0.22 pp** (84/38, p=5e-5); the 121 touched species **83.3%→89.5%** (83/1); 31 species improve, 0 worsen | Confirms K19 at species level. In production 2026-09-21 |
 | K21 | Independent second opinion for a closed-set retriever: BioCLIP zero-shot over a regional checklist (birds, 366 labels) | 300 Mediterranean bird observations: BF≥0.85 **and** zero-shot≥0.80 agree → **98.5% precision at 69% coverage** (BF alone 91.2% at 79%; zero-shot alone 85.7%, BF 73.7%). All groups (3,257 labels, 300 obs): agreement 96.8% at 41%; adding a rescue tier (BF<0.80, zero-shot≥0.95 agrees) 95.9% at 49% vs BF alone 93.8% at 48% | Open-set guard. In production for birds (CPU sidecar, fail-closed); other groups pending |
 | K22 | Promotion criterion counted in species, not only in observations | Previous→current index: 173 species improve / 153 worsen / 2,186 unchanged (n≈7 eval obs per species — noisy, so read touched species first) | Report the per-species balance next to Δ and p; promote when many species improve even if the pooled score does not |
+| K23 | Per-species cap of 3 votes in the k-NN aggregator (candidate C4) | McNemar n=12,000 held-out obs, T=0.05: cap3 **+1.13 pp** (92.33%→93.47%, 228/92), **177 species improve / 70 worsen**; better than cap1 (−0.19), cap2 (+0.82), cap4 (+1.08); cap5 +0.94 but breaks fewer perfect species (23 vs 50 of 2,005). Gains in every gallery-size band, largest under 25 photos (+3.2–3.5 pp) | In production 2026-09-22 07:17 CEST (`KNN_CLASS_CAP=3` in the service and in the re-scorer) |
 
 ## Rejected
 
@@ -106,15 +109,16 @@ R24 and R25 have not been re-run yet; R9 and R10 have (both confirmed rejected a
 | O17 | Per-species accuracy shown in the admin panel and in the photo-download portal is read from a scored file that only changes when the eval is **re-scored** against the serving index | Numbers stayed frozen after promotions (same failure class as O5) | Daily automated re-score + stats refresh; re-score after every promotion |
 
 Do not reopen R1–R23 as-is on this gallery and 12 GB GPU. Reopen fine-tuning only with a different backbone or much more photos per confused pair. R24 and R25 are re-test candidates (see above), not confirmed reversals.
+| O18 | The harvest leak gate compared a TTA-averaged query embedding (orig + 90% crop) with the gallery at cosine >0.999; identical photos score ≈0.99 that way, so it never fired. The per-species uneval harvest used ROI-fusion embeddings at 0.995 (same problem) and the ad-hoc multi-source searches had no gate | 30.0% of 25,143 evaluation rows were exact copies (≥0.995 global), 50.8% copies or rescaled copies (≥0.98); leaked rows 97.6% vs clean 88.1%; for rare species searched on Wikimedia/GBIF/museum media the true accuracy on unseen photos was 24% (n=130), shown as 57% | Gate on the **global** embedding at ≥0.98 in every harvester; `leak_audit_calib.py` re-audits after every gallery growth; `purge_leaked_eval.py` moves leaked rows to a side file; calibrator refit (2026-09-23) |
 
 ## Candidate queue (2026-09-21)
 
 | ID | Idea | How it will be judged |
 |----|----|----|
-| C1 | kNN-neighbourhood density / dispersion as an out-of-catalog score | AUROC on observations of species outside the catalog |
+| C1 | kNN-neighbourhood density / dispersion as an out-of-catalog score | **Measured 2026-09-22** (n=8,000, simulated out-of-catalog by leave-species-out; eval set before the O18 purge): single features AUROC 0.73–0.91 (top-1 similarity best); gradient-boosted combination of 11 k-NN features **AUROC 0.954** in-catalog vs out-of-catalog. At the coverage of the current share≥0.7 rule, out-of-catalog acceptance drops **34.9% → 6.6%**. Not wired into AutoID yet; to be re-measured on the leak-free set |
 | C2 | High entropy + disagreement with zero-shot → publish at genus/family only | Precision/coverage vs species-level publication |
 | C3 | Temporal (month) prior P(species \| month, location) next to the existing geographic prior | Paired McNemar, per-species balance |
-| C4 | Class-size-compensated k-NN vote (cap/normalise per species) | Recover the ≈−0.6 pp dilution on species that did not grow without new photos |
+| C4 | Class-size-compensated k-NN vote (cap/normalise per species) | **Done → K23** |
 | C5 | Zero-shot second opinion for non-bird groups (catalog + regional lists) and the rescue tier | Recent-observation KPI, 1-day AutoID trial audit against community IDs |
 | C6 | Publish at genus for confusable complexes (gulls, warblers, shearwaters, Accipiter/Astur) | Precision at genus vs species abstention |
 | C7 | Ablation: index without the 1,720 “no catalog” classes (19,460 vectors, 1.8%; median 16 vectors/species; 0.16% of eval observations land in one) | McNemar on catalog eval + recent-observation sample |

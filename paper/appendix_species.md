@@ -1,10 +1,10 @@
 # Appendix A — Species catalog (reconstruction index)
 
-> Snapshot **2026-09-14**. **2,985** catalog taxa. Live identification gallery: **4,702** species / **848,883** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
+> Snapshot **2026-09-23**. **2,985** catalog taxa. Live identification gallery: **4,705** species / **1,072,233** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
 >
 > This table is an **index of taxon IDs**, not a training dataset. Photos are **not** redistributed (iNaturalist / Minka licences). Rebuild images via the APIs using `minka_taxon` / `inat_taxon`, then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`).
 >
-> Accuracy columns from earlier drafts were frozen at the August 2026 ~71.7% cohort and are **removed**. Current global OOS: **85.78%** species (n=19,087). Per-species scores are not published here (they move with every harvest).
+> Accuracy columns from earlier drafts were frozen at the August 2026 ~71.7% cohort and are **removed**. Current global OOS (leak-free, 2026-09-23): **88.11%** species (n=12,373). Per-species scores are not published here (they move with every harvest).
 
 | Slug | Scientific name | Accepted name | Tier | Family | Genus | Minka taxon | iNat taxon | Live gallery |
 |---|---|---|---:|---|---|---:|---:|:---:|

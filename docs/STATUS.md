@@ -1,15 +1,16 @@
 # BioFauna — public status
 
-> **2026-09-21.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary. (Table below: 2026-09-21; older 14 Sep figures kept in `EXPERIMENTS.md`.)
+> **2026-09-23.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary. Older figures kept in `EXPERIMENTS.md`; **every panel figure before 2026-09-23 contained an evaluation leak (O18).**
 
 | | |
 |---|---|
 | Encoder | Frozen **BioCLIP-2.5 ViT-H/14** (`imageomics/bioclip-2.5-vith14`) |
-| Classifier | k-NN **k=15**, vote aggregator **T=0.05**, prototype boost, 65% ROI fusion |
+| Classifier | k-NN **k=15**, vote aggregator **T=0.05** with **max 3 votes per species** (K23, since 2026-09-22), prototype boost, 65% ROI fusion |
 | Live gallery | **1,072,233** embeddings / **4,705** species (1,720 of them outside the 2,985-species target catalog: 1.8% of vectors), `faiss_aligned=true` |
 | Catalog | **2,985** Mediterranean checklist taxa ([`../dataset/catalog.json`](../dataset/catalog.json)) |
-| Out-of-sample (panel) | **92.36%** species overlay (n=24,475; 314 species <80%, 500 at 80–99%, 2,008 at 100%, 163 without eval). **Real-world check: ~80%** on 300 recent Minka research-grade observations (in-catalog birds 84% vs 96% on the panel) — see `EXPERIMENTS.md` O16 |
-| AutoID | Trial since 2026-09-21: publishes on BioFauna alone (no iNaturalist requirement) with domain guards (Mediterranean bbox; birds only when an independent BioCLIP zero-shot agrees, 98.5% precision at 69% coverage), 15/h cap. Community-ID audit pending |
+| Out-of-sample (panel) | **88.11%** species / 90.55% genus / 92.46% family on the leak-free set (n=12,373; 2,091 species with eval: 1,429 at 100%, 431 <80%; 894 catalog species being re-harvested after the leak purge). **Real-world check: ~80%** on 300 recent Minka research-grade observations (in-catalog birds 84% vs 96% on the panel) — see `EXPERIMENTS.md` O16 |
+| Calibrator | Refit 2026-09-23 on leak-free rows: p≥0.80 → 97.0% precision / 80.6% coverage (species-disjoint test split, closed-set) |
+| AutoID | Since 2026-09-21: publishes on BioFauna alone (no iNaturalist requirement) with domain guards (Mediterranean bbox; birds only when an independent BioCLIP zero-shot agrees, 98.5% precision at 69% coverage). Throughput 30/h and 1,000/day, managed from the FotoFauna admin; reaching the hourly cap pauses until the next hour (volume alerts are warnings; quality alerts still trip the breaker). Community-ID audit pending |
 | Service | https://fotofauna.yespi.es · GPU RTX 3060 12 GB |
 
 **Two labelled metrics** (do not mix them): August leak-checked harvest n=12,788 peaked around **75.97–79.10%** while the inference stack and gallery grew. The 14 Sep figure is a **larger, harder** evaluation mix after T=0.05 and quality campaigns. Paper: [`../paper/01_biofauna.md`](../paper/01_biofauna.md).

@@ -22,6 +22,7 @@ PAT = Path(os.environ.get("BIOFAUNA_PATTERNS", ROOT / "data" / "patterns"))
 EMBED_DIM = 1024
 K = int(os.environ.get("BIOFAUNA_K", "15"))
 KNN_TEMP = float(os.environ.get("BIOFAUNA_KNN_TEMP", "0.05"))
+KNN_CLASS_CAP = int(os.environ.get("BIOFAUNA_KNN_CLASS_CAP", "3"))  # max votes per species among the k neighbours (K23, 2026-09-22); 0 = off
 FAMILY_MARGIN = float(os.environ.get("BIOFAUNA_FAMILY_MARGIN", "0.08"))
 ARC_WEIGHT = float(os.environ.get("BIOFAUNA_ARC_WEIGHT", "3.0"))
 CROP = float(os.environ.get("BIOFAUNA_ROI_CROP", "0.65"))
@@ -174,7 +175,7 @@ def _abstain(top_slug, second_slug, margin):
         return "family"
     return "species"
 
-app = FastAPI(title="BioFauna", version="2026-09-14")
+app = FastAPI(title="BioFauna", version="2026-09-23")
 
 @app.get("/health")
 def health():
@@ -187,6 +188,7 @@ def health():
         "encoder": "bioclip-2.5-vith14",
         "k": K,
         "knn_temp": KNN_TEMP,
+        "knn_class_cap": KNN_CLASS_CAP,
         "note": "prototype-only unless embeddings.npy present beside each prototype",
     }
 
@@ -194,6 +196,14 @@ def health():
 def reload_():
     load_gallery()
     return {"ok": True, "species": len(NAMES), "knn_gallery": int(KE.shape[0])}
+
+@app.post("/embed")
+async def embed(file: UploadFile = File(...)):
+    """Global L2-normalised embedding of the whole image (no ROI fusion) -- what the gallery stores.
+    Used by scripts/leak_audit_calib.py for the evaluation leak gate."""
+    im = Image.open(io.BytesIO(await file.read())).convert("RGB")
+    v = _embed_pil(im)
+    return {"vec": [float(x) for x in np.asarray(v).reshape(-1)]}
 
 @app.post("/identify")
 async def identify(file: UploadFile = File(...), topk: int = 5, lat: float | None = None, lon: float | None = None):
@@ -212,9 +222,12 @@ async def identify(file: UploadFile = File(...), topk: int = 5, lat: float | Non
         k = min(K, KE.shape[0])
         idx = np.argpartition(-sims, k - 1)[:k]
         idx = idx[np.argsort(-sims[idx])]
-        scores = {}
+        scores, taken = {}, {}
         for i in idx:
             gi = int(KY[i])
+            if KNN_CLASS_CAP > 0 and taken.get(gi, 0) >= KNN_CLASS_CAP:
+                continue
+            taken[gi] = taken.get(gi, 0) + 1
             scores[gi] = scores.get(gi, 0.0) + _knn_contrib(float(sims[i]))
         proto_s = PROTOS @ q
         for gi, sc in list(scores.items()):

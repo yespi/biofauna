@@ -4,17 +4,19 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](paper/01_biofauna.md) · [ES](paper/01_biofauna_es.md)
 
-## Snapshot (2026-09-14)
+## Snapshot (2026-09-23)
 
 | | |
 |---|---|
-| Gallery | **848,883** embeddings / **4,702** species (FAISS aligned) |
+| Gallery | **1,072,233** embeddings / **4,705** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
-| OOS accuracy | **85.78%** species / **89.15%** genus / **91.41%** family (n=19,087) |
-| This repo ships | Prototypes (4,702×1024), calibrator, geo priors, exceptions, taxon IDs |
+| Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention |
+| OOS accuracy (leak-free) | **88.11%** species / **90.55%** genus / **92.46%** family (n=12,373, 2,091 species) |
+| Real-world check | ~80% on recent research-grade Minka observations (operating KPI) |
+| This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts |
 | Not shipped | Photographs, per-photo `embeddings.npy` |
 
-August 2026 papers quoted ~76–79% on a **different, smaller** harvest. Those rows stay in the experiment ledger; they are not the live number.
+**2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](paper/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
 
 ## Quick start (nearest-centroid demo)
 

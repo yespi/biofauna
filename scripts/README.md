@@ -1,15 +1,17 @@
 # Scripts in this repository
 
-Canonical reconstruction tools, synced from HanSolo production **logic** on 2026-09-14.
+Canonical reconstruction tools, synced from HanSolo production **logic** on 2026-09-23.
 Hardcoded `/mnt/docker/biofauna` and `/work` paths are replaced by `BIOFAUNA_ROOT` (default: this repo). Photographs are **not** included.
 
 | Script | Role |
 |--------|------|
 | `../src/identify_service.py` | Public identifier (ViT-H + prototypes; k-NN if you rebuild `embeddings.npy`) |
-| `inference_decide.py` | Shared k-NN (k=15, **T=0.05**) + prototype boost + geo blend |
+| `inference_decide.py` | Shared k-NN (k=15, **T=0.05**, max 3 votes per species) + prototype boost + geo blend |
 | `reembed_vith.py` | Embed a local photo tree with BioCLIP-2.5 ViT-H |
 | `build_faiss_index.py` | FAISS index from `embeddings.npy` (optional `faiss`) |
-| `harvest_calib.py` | Observation-stratified Minka harvest + **embedding leak check** (sim>0.999) + ROI 65% |
+| `harvest_calib.py` | Observation-stratified Minka harvest + **leak gate on the global embedding** (≥0.98, fixed 2026-09-23 — O18) + ROI 65% |
+| `leak_audit_calib.py` | Re-audits every evaluation row against its species' gallery (global embedding via `/embed`); run after any gallery growth |
+| `purge_leaked_eval.py` | Moves leaked rows (≥0.98) out of the evaluation files into a side file, with backup |
 | `fit_calib.py` | Logistic calibrator → `dataset/calibration.json` |
 | `fit_calib_hierarchical.py` | Per-taxon AutoID thresholds |
 | `build_geo_priors.py` | GPS priors from Minka |

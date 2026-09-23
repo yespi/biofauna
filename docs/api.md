@@ -2,6 +2,10 @@
 
 `src.identify_service:app` on port 8090. Encoder **BioCLIP-2.5 ViT-H**. Gallery: prototypes in `data/patterns/`; k-NN if `embeddings.npy` exist.
 
+### `POST /embed`
+
+Multipart `file`. Returns `{"vec": [1024 floats]}`: the global L2-normalised ViT-H embedding of the whole image (no ROI fusion), i.e. what the gallery stores. Used by `scripts/leak_audit_calib.py` (evaluation leak gate).
+
 ### `POST /identify`
 
 Multipart `file` (JPEG/PNG). Optional query: `topk`, `lat`, `lon`.

@@ -1,14 +1,14 @@
 ## Dataset — what to download vs what we ship
 
-### Live scale (2026-09-14)
+### Live scale (2026-09-23)
 
 | Resource | Production | This repository |
 |----------|------------|-----------------|
-| Photographs | ~838k on disk | **Not released** (iNaturalist / Minka licences) |
-| Per-photo ViT-H embeddings | **848,883** / **4,702** species | **Not released** (~3+ GB, derived from photos) |
+| Photographs | ~1.06M on disk (SSD + archive) | **Not released** (iNaturalist / Minka licences) |
+| Per-photo ViT-H embeddings | **1,072,233** / **4,705** species | **Not released** (~3+ GB, derived from photos) |
 | Prototype centroids | 4,702 × 1024 float32 | **`data/patterns/<slug>/prototype.npy`** |
 | Checklist + taxon IDs | 2,985 taxa | **`dataset/catalog.json`** (no photographer `obs` maps) |
-| Calibrator | `calibration.json` n=19,087 | `data/calibration.json` |
+| Calibrator | `calibration.json` refit 2026-09-23 on the leak-free set (n=12,373) | `data/calibration.json` |
 | Geo priors / cryptic pairs / exceptions | live JSON | `dataset/` |
 
 ### Rebuild photos

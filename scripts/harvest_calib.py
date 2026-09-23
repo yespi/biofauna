@@ -304,7 +304,7 @@ def main():
     # moved without copying manifests. Embedding similarity against the live
     # catalog is the check that actually works (25-Aug-2026: 42.7% of
     # calib_raw_k15.jsonl were already embedded).
-    LEAK_SIM_THRESHOLD = 0.999
+    LEAK_SIM_THRESHOLD = 0.98  # 2026-09-23: global-vs-global; identical photos 0.995-0.999, rescaled/cropped copies >=0.98 (O18)
     for i, sl in enumerate(pool, 1):
         if done.get(sl, 0) >= PER_SP:
             continue
@@ -390,10 +390,15 @@ def main():
                     q = q / q.norm(dim=-1, keepdim=True)
                     q = (q[0].float() if torch.is_tensor(E) and E.is_cuda
                          else q.cpu().numpy()[0].astype("float32"))
+                    # Leak gate on the GLOBAL embedding (as stored in the gallery), not the TTA mean:
+                    # with the TTA mean an identical photo scores ~0.99 and never tripped 0.999 (O18).
+                    qg = q_batch[0:1] / q_batch[0:1].norm(dim=-1, keepdim=True)
+                    qg = (qg[0].float() if torch.is_tensor(E) and E.is_cuda
+                          else qg.cpu().numpy()[0].astype("float32"))
                 if torch.is_tensor(E) and E.is_cuda:
-                    max_sim = float((E @ q).max())
+                    max_sim = float((E @ qg).max())
                 else:
-                    max_sim = float((np.asarray(E) @ np.asarray(q)).max())
+                    max_sim = float((np.asarray(E) @ np.asarray(qg)).max())
                 if max_sim > LEAK_SIM_THRESHOLD:
                     nleaked += 1
                     continue

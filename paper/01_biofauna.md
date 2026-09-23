@@ -26,6 +26,8 @@ BioFauna identifies Mediterranean (and incidental adjacent) taxa from photograph
 
 Those accuracy figures are **observation-stratified and leak-checked**. They are **not** comparable to the August 2026 headline of 75.97% on a smaller, earlier cohort (n=12,788) without re-running that same harvest; mixing cohorts is how this project previously overstated progress. Both numbers are kept below, labelled by protocol.
 
+**Update 2026-09-23 — evaluation leak found and removed.** An audit that embeds every evaluation photo *globally* (no TTA, exactly like the gallery) and compares it with its own species' gallery found that **30.0%** of the 25,143 evaluation rows were byte-level copies of a gallery photo (cosine ≥0.995) and **50.8%** were copies or rescaled/cropped copies (≥0.98). The harvest leak gate compared a *TTA-averaged* query embedding against a 0.999 threshold, which an identical image never reaches (~0.99), so it silently passed everything after the August fix (§3). Leaked rows scored **97.6%**; the remaining clean rows score **88.11%** species / 90.55% genus / 92.46% family (n=12,373, 2,091 species). The panel figure of 92.4–93.4% quoted on 2026-09-21/22 is therefore withdrawn; **88.1% is the current closed-set figure**, and the ~80% recent-observation KPI (O16) still stands as the operating number. For rare species with new, genuinely unseen photos from other sources (Wikimedia, GBIF, museum media), accuracy was only **24%** (n=130) — the leak had hidden it. Gate fixed in all harvesters, leaked rows moved aside (not deleted), calibrator refit on clean data (O18). Also in production since 2026-09-22: per-species cap of 3 votes in the k-NN aggregator (K23).
+
 **Update 2026-09-21.** Production now serves **1,072,233** embeddings / **4,705** species (1,720 are gallery classes outside the 2,985-species catalog: 1.8% of vectors) after two growth waves (K19–K20). The panel (out-of-sample overlay, n=24,475) reads **92.36%** species; a check on 300 recent Minka research-grade observations gives **~80%** (in-catalog birds 84% vs 96% on the panel) — the panel is a closed-set evaluation and overstates real-world accuracy (O16). Closed-set retrieval answers confidently for species missing from the catalog; an independent BioCLIP zero-shot second opinion removes most of those errors in birds (K21).
 
 A systematic search for extra species top-1 from **training on this embedding space** (QLoRA, LoRA, triplet, ArcFace, linear head, scoped SupCon) **did not beat frozen retrieval**. Gains that shipped were backbone scale, gallery completeness/quality, inference-time fusion, a tempered k-NN aggregator, and taxonomic abstention. We publish the experiment ledger, taxon IDs, prototype centroids, and a self-hostable identifier. **Photographs and per-photo `embeddings.npy` are not redistributed**; they can be rebuilt from Minka / iNaturalist / GBIF using the catalog.
@@ -60,16 +62,16 @@ BioFauna is the identifier behind FotoFauna. Design choice: **do not train a clo
 | Input | 224×224 |
 | Training in BioFauna | **Frozen** |
 
-### 2.2 Identification (production, 2026-09-14)
+### 2.2 Identification (production, 2026-09-23)
 
 1. Embed the query; fuse **global frame + 65% centre crop** (ROI fusion; replaces an earlier 90% TTA).
 2. Retrieve **k=15** gallery neighbours (cosine / inner product via FAISS when the full gallery is present; nearest-centroid over published prototypes otherwise).
-3. Aggregate neighbour scores with **tempered votes** `Σ exp(max(s,0)/T)`, **T=0.05**, plus a prototype-similarity boost.
+3. Aggregate neighbour scores with **tempered votes** `Σ exp(max(s,0)/T)`, **T=0.05**, plus a prototype-similarity boost. Each species contributes **at most 3** of the 15 neighbours to the vote (`KNN_CLASS_CAP=3`, K23), so a species with a huge gallery cannot outvote a sparse one by sheer count.
 4. Optional **multiplicative geographic prior** when GPS is present.
 5. **Abstain** when the top-1/top-2 margin is small and taxa share genus/family, or when the pair/genus/group is in `dataset/taxonomic_exceptions.json`.
 6. Map k-NN features → **P(correct)** with logistic regression (`dataset/calibration.json`).
 
-AutoID on FotoFauna publishes when calibrated **p ≥ 0.80**. The last published operating-point study on that threshold (August 2026 calibration split) estimated **~95.3% precision at ~57.4% coverage**. That curve has not been re-fit as a standalone paper table after every later gallery change; the live calibrator `created=2026-09-14T07:04:26` is what production uses.
+AutoID on FotoFauna publishes when calibrated **p ≥ 0.80**. With the calibrator refit on leak-free data (`created=2026-09-23T08:22`, fit 8,509 / test 3,864 rows, species-disjoint split) that threshold gives **97.0% precision at 80.6% coverage** on the test split (closed-set; the recent-observation KPI is lower, O16). The August estimate (95.3% at 57.4%) is superseded.
 
 This public repository ships **prototype centroids** (`data/patterns/<slug>/prototype.npy`). That is enough for a nearest-centroid demo. Full k-NN accuracy requires rebuilding per-photo embeddings locally (see [`docs/dataset.md`](../docs/dataset.md)).
 
@@ -106,6 +108,8 @@ Headline numbers use held-out **observations** (an encounter, often several phot
 | Same protocol across ablations | Comparable McNemar |
 | Do not mix harvests when citing a delta | Different species mix ≠ model gain |
 
+**Incident (2026-09-23).** The August gate below was itself ineffective: it compared a TTA-averaged (orig + 90% crop) query embedding with gallery embeddings at cosine >0.999; an identical photo scores ~0.99 that way. 50.8% of the evaluation set had re-entered the gallery. The gate now compares the **global** embedding (as stored in the gallery) at **≥0.98**, and an audit script re-checks every evaluation row after any gallery growth (O18).
+
 **Incident (2026-08-25/26).** An observation-ID denylist pointed at an abandoned path and silently matched nothing. **42.7%** of a 22,332-photo harvest were already in the gallery. At k=15 the headline only moved ~1 pp; at small k the curve was absurd (accuracy rising toward k=1). Fix: embed each candidate and drop near-duplicates. Kept as a standing harvest gate.
 
 **Two labelled metrics in this paper**
@@ -114,6 +118,8 @@ Headline numbers use held-out **observations** (an encounter, often several phot
 |-------|--------|---------------|-----|
 | **A — TTA-era freeze** | `harvest_calib` n=12,788 (Aug 2026, leak-checked) | 75.97% (later 77.77% with inference stack; 79.10% jsonl after densification) | Comparable ablations in §4.1–4.2 |
 | **B — live calibrator** | `calib_raw_t05` n=19,087 (2026-09-14) | **85.78%** | Current production report |
+
+| **C — leak-free** | `calib_raw_t05` n=12,373 (2026-09-23, audited, ≥0.98 copies removed) | **88.11%** | Current production report (§5) |
 
 B is larger, covers more hard/rare species, and uses T=0.05 + later gallery quality work. **A is not “worse engineering”; B is not a 10-point magic leap on the same photos.**
 
@@ -144,6 +150,7 @@ Each row: **hypothesis → result → contribution to the project.** Details and
 | K19 | Grow reference photos to ~1,000/species where the sources have them + full per-species re-embed | McNemar n=18,000: **+0.57 pp** (313/211, p=1e-5). By species: grew ≥+300 vectors **+7.7 pp**, +100–299 **+12.0 pp**, +1–99 +3.4 pp; species that did not grow −0.63 pp (dilution) | Data works where it exists; 77% of remaining errors sit in species that did not change. |
 | K20 | Second growth wave (121 species, 21.9k photos), rebuild to 1,072,233 vectors | McNemar n=21,000: **+0.22 pp** (84/38, p=5e-5); touched species **83.3%→89.5%** (83/1); 31 improve, 0 worsen | In production 2026-09-21. |
 | K21 | Independent second opinion for the closed-set retriever: BioCLIP zero-shot over a regional checklist | 300 Mediterranean bird observations: BF≥0.85 **and** zero-shot≥0.80 agree → **98.5% precision at 69% coverage** (BF alone 91.2% at 79%). All groups: 95.9% at 49% with a rescue tier vs BF alone 93.8% at 48% | Open-set guard for AutoID (birds in production; other groups pending). |
+| K23 | Per-species vote cap in the k-NN aggregator (`KNN_CLASS_CAP=3`) | McNemar n=12,000 held-out obs: **+1.13 pp** (92.33%→93.47%; 228 fixes / 92 breaks); **177 species improve / 70 worsen**; gains largest for species with <25 gallery photos (+3.2–3.5 pp). cap1 −0.19, cap2 +0.82, cap4 +1.08, cap5 +0.94 pp | In production 2026-09-22 07:17 CEST. (Measured before the O18 purge; the relative gain is what counts.) |
 | K22 | Promotion criterion counted in species | 173 species improve / 153 worsen / 2,186 unchanged (previous→current index) | Report the per-species balance next to Δ and p. |
 
 ### 4.2 Rejected (do not repeat as-is)
@@ -195,20 +202,23 @@ These are included because they change how numbers should be read.
 | O14 | The Minka web host returns 403 to the default `python-httpx` User-Agent (login and photo downloads) | AutoID zero publications for days (second recurrence of the missing-header class) | One shared HTTP client; alarm on zero-publication days. |
 | O15 | Two agent sessions ran the same cycle in parallel; one promotion overwrote the other; GPU OOM with sidecar + serving + re-embed | Duplicated compute; index/calibration mismatch for ~30 min | Single active session with a written registry. |
 | O16 | Closed-set, observer-correlated evaluation: panel 92.4% vs ~80% on 300 recent research-grade observations; 12% of bird observations are species outside the catalog | Panel overstates real-world accuracy | Recent-observation sample as operating KPI. |
+| O18 | Evaluation leak gate compared a TTA-averaged embedding with a 0.999 threshold; identical photos score ~0.99, so the gate never fired. Later ad-hoc searches (Wikimedia/GBIF/iNat any grade) had no gate at all | 50.8% of evaluation rows were gallery copies; panel 92.4–93.4% vs 88.1% clean; rare-species accuracy on unseen photos 24% hidden as 57% | Global-embedding gate ≥0.98 in every harvester; `leak_audit_calib.py` after every gallery growth; leaked rows kept aside, calibrator refit (2026-09-23). |
 | O17 | Dashboard accuracy per species changes only when the eval is re-scored against the serving index | Numbers frozen after promotions | Daily automated re-score; re-score after every promotion. |
 
 ---
 
-## 5. Current production report (cohort B)
+## 5. Current production report (cohort C, leak-free, 2026-09-23)
 
 | Level | Accuracy | n |
 |-------|----------|---|
-| Species | **85.78%** | 19,087 |
-| Genus | **89.15%** | 19,087 |
-| Family | **91.41%** | 19,087 |
-| Tier 0 (heterobranchs) | 76.86% | 2,528 |
-| Tier 1 (other marine) | 86.56% | 10,207 |
-| Tier 2 (terrestrial/incidental) | 88.08% | 6,352 |
+| Species | **88.11%** | 12,373 |
+| Genus | **90.55%** | 12,373 |
+| Family | **92.46%** | 12,373 |
+| Tier 0 (heterobranchs) | 85.12% | 2,446 |
+| Tier 1 (other marine) | 87.72% | 5,633 |
+| Tier 2 (terrestrial/incidental) | 90.34% | 4,294 |
+
+Per species (2,091 with clean evaluation): 1,429 at 100%, 431 below 80%. 894 catalog species lost their only evaluation rows in the purge and are being re-harvested with the fixed gate. Cohort B (85.78%, n=19,087, 14 Sep) is kept for history; it was affected by the same leak.
 
 Remaining error is dominated by **visual cripsis and morphological convergence** (sponges, filamentous algae, some fishes, seagrass blades), not by “we need LoRA”. Coverage: most catalog species now have ≥1 held-out observation; a small tail is exhausted on Minka+iNaturalist (dozens of taxa with essentially no extra research-grade photos).
 
@@ -221,11 +231,11 @@ Seagrass (n=60 each, 14 Sep): *Posidonia oceanica* 73.3%; *Cymodocea nodosa* 70.
 1. Species top-1 is not expert-level on cryptic invertebrates.
 2. No geographic generalization study outside the Mediterranean.
 3. Public code is a **reconstruction identifier** (prototypes + optional local k-NN), not a dump of HanSolo’s 1,300-line service (sidecars, AutoID, GPU contention with MiniCPM).
-4. AutoID precision/coverage table is older than the 14 Sep calibrator.
+4. AutoID precision/coverage is measured on a species-disjoint split of the leak-free set (§2.2); it is closed-set and has not yet been audited against community identifications.
 5. Curator corrections are not yet a closed training loop.
 6. **Closed-set retrieval:** species absent from the catalog get a confident wrong answer; the calibrator only saw catalog species. Mitigated for birds by a zero-shot consensus guard (K21); not yet for other groups.
-7. **Evaluation optimism:** the panel/OOS metric (92.4%) is closed-set and observer-correlated; a recent-observation sample (~80%) is the operating KPI (O16).
-8. **AutoID without iNaturalist verification** has run for one day only (guards: Mediterranean bounding box, bird consensus, 15/h cap); the audit against community identifications is pending.
+7. **Evaluation optimism:** the leak-free panel metric (88.1%) is still closed-set and observer-correlated; a recent-observation sample (~80%) is the operating KPI (O16). Until 2026-09-23 the panel also contained gallery copies (O18).
+8. **AutoID without iNaturalist verification** has run for one day only (guards: Mediterranean bounding box, bird consensus, hourly cap, now 30/h and 1,000/day; reaching the hourly cap pauses that hour instead of tripping the circuit breaker); the audit against community identifications is pending.
 
 ---
 

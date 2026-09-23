@@ -20,6 +20,10 @@
 | 2026-09-10 | Quality gallery refresh + **k-NN T=0.05** | +2.16 pp (quality) and **+7.81 pp** (T=0.05) on their McNemar tests; FAISS 838,115 | New scorer; not the same cohort as 79.10% |
 | 2026-09-11–14 | Eval harvest expansion, Q≥8 swaps, nomenclature, seagrass n=60 | Live calibrator n=19,087 | **85.78%** species / 89.15% genus / 91.41% family; FAISS **848,883** / 4,702 |
 
+| 2026-09-20–21 | Growth waves K19–K20, contamination clean-up, label-alignment guard | FAISS **1,072,233** / 4,705 | Panel then read 92.36% (contained leak, see 2026-09-23) |
+| 2026-09-22 | Per-species vote cap 3 (K23) | McNemar +1.13 pp, 177/70 species | In production 07:17 CEST |
+| 2026-09-23 | Evaluation leak audit (O18): 50.8% of eval rows were gallery copies; gate fixed, rows purged, calibrator refit | — | **88.11%** species / 90.55% genus / 92.46% family, n=12,373 (leak-free) |
+
 \*Trusted metric: observation-stratified harvest (not photo-level splits). **Do not subtract 79.10 from 85.78** and call it a model gain — different evaluation mix.
 
 ## Why “YOLOFauna”?
