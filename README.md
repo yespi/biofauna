@@ -35,6 +35,7 @@ Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per 
 
 | | |
 |---|---|
+| [API](docs/api.md) | Public `X-API-Key` flow + `/vision/biofauna/identify` and self-hosted endpoints |
 | [STATUS](docs/STATUS.md) | Current public snapshot |
 | [EXPERIMENTS](docs/EXPERIMENTS.md) | Kept vs rejected trials |
 | [HISTORY](docs/HISTORY.md) | YOLOFauna → BioFauna |
