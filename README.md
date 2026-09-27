@@ -4,11 +4,11 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](paper/01_biofauna.md) · [ES](paper/01_biofauna_es.md)
 
-## Snapshot (2026-09-23)
+## Snapshot (2026-09-27)
 
 | | |
 |---|---|
-| Gallery | **1,072,233** embeddings / **4,705** species (FAISS aligned) |
+| Gallery | **1,116,885** embeddings / **4,553** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
 | Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention |
 | OOS accuracy (leak-free) | **88.11%** species / **90.55%** genus / **92.46%** family (n=12,373, 2,091 species) |

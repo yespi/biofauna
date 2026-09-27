@@ -6,7 +6,7 @@
 |---|---|
 | Encoder | Frozen **BioCLIP-2.5 ViT-H/14** (`imageomics/bioclip-2.5-vith14`) |
 | Classifier | k-NN **k=15**, vote aggregator **T=0.05** with **max 3 votes per species** (K23, since 2026-09-22), prototype boost, 65% ROI fusion |
-| Live gallery | **1,072,233** embeddings / **4,705** species (1,720 of them outside the 2,985-species target catalog: 1.8% of vectors), `faiss_aligned=true` |
+| Live gallery | **1,116,885** embeddings / **4,553** species (1577 of them outside the 2,985-species target catalog), `faiss_aligned=true` |
 | Catalog | **2,985** Mediterranean checklist taxa ([`../dataset/catalog.json`](../dataset/catalog.json)) |
 | Out-of-sample (panel) | **88.11%** species / 90.55% genus / 92.46% family on the leak-free set (n=12,373; 2,091 species with eval: 1,429 at 100%, 431 <80%; 894 catalog species being re-harvested after the leak purge). **Real-world check: ~80%** on 300 recent Minka research-grade observations (in-catalog birds 84% vs 96% on the panel) — see `EXPERIMENTS.md` O16 |
 | Calibrator | Refit 2026-09-23 on leak-free rows: p≥0.80 → 97.0% precision / 80.6% coverage (species-disjoint test split, closed-set) |
@@ -17,7 +17,7 @@
 
 ## This repository contains
 
-- Prototype centroids (4,702 × 1024) — nearest-centroid demo without photos
+- Prototype centroids (4,553 × 1024) — nearest-centroid demo without photos
 - Taxon IDs to rebuild images from Minka / iNaturalist / GBIF
 - Calibrators, geo priors, cryptic pairs, taxonomic exceptions
 - Experiment ledger (kept vs rejected)
