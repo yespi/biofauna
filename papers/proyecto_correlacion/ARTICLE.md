@@ -124,6 +124,20 @@ Sources verified during the literature review (28-sep-2026):
 
 ## 4. Discussion
 
+### 4.1 Theoretical background: co-occurrence and citizen-science biases
+
+Species co-occurrence is a classic ecological signal (shared habitat, predation, symbiosis, commensalism),
+but reading it from citizen-science data requires controlling well-documented biases: **geographic bias**
+(accessible areas are sampled more), **effort bias** (bioblitz-type events inflate certain localities),
+**observer bias** (variable ability to detect and identify species) and **reporting bias** (preference for
+charismatic species). Opportunistic data lack a sampling plan and explicit absences, so any inference must
+explicitly mitigate these biases (Isaac et al., 2014; Johnston et al., 2018; Aceves-Bueno et al., 2017;
+Boyd et al., 2021; Milanesi et al., 2020). Our design responds with: (1) *event* = effort unit per observer
+and 3-h window (controls effort bias), (2) required repeatability across ≥3 localities, ≥3 days and **≥5
+distinct observers** (controls observer and dive-trip bias), and (3) the **geographic-range filter** on
+species (removes the dive-trip artefact found in this review). Geographic bias is addressed with the
+locality·date stratified null currently under development (§6 of Methods).
+
 Candidates fall into three interpretative classes: **commensalism/phoresy** (jellyfish—amphipod), **cleaning
 symbiosis** (shrimp—anemone) and **substrate co-habitation** (infauna; hard bottoms; coralline algae). The
 central methodological challenge is separating **interaction** from **coincidence** driven by habitat, season
@@ -163,5 +177,43 @@ Project** for driving marine citizen science and observer training; to **Minka S
 the platforms and the data; and to **GBIF**, **Wikimedia Commons**, **DORIS/FFESSM**, **SeaSlugForum**,
 **WoRMS** and **FishBase** for images and taxonomic data. This analysis has been possible thanks to the
 **BioFauna identifier** (BioCLIP-2.5 ViT-H/14 + FAISS) developed in the project.
+
+## References
+
+- Aceves-Bueno, E., Adeleye, A. S., Feraud, M., Huang, Y., Tao, M., Yang, Y., & Anderson, S. E. (2017). The
+  accuracy of citizen science data: a quantitative review. *The Bulletin of the Ecological Society of
+  America*, 98(4), 278–290.
+- Avila, C. (1996). The growth of *Peltodoris atromaculata* Bergh, 1880 (Gastropoda, Nudibranchia) in the
+  laboratory. *Journal of Molluscan Studies*, 62, 151–157. — exclusive diet on *Petrosia ficiformis*;
+  petroformyne accumulation.
+- Barroso, R., Klautau, M., Solé-Cava, A. M., & Paiva, P. C. (2010). *Eurythoe complanata* (Polychaeta:
+  Amphinomidae), the 'cosmopolitan' fireworm, consists of at least three cryptic species. *Marine Biology*,
+  157(1), 69–80.
+- Boyd, R. J., Powers, M., & Pescott, O. L. (2021). occAssess: an R package for assessing potential biases in
+  species occurrence data. *Ecology and Evolution*, 11(22).
+- Diebel, C. E. (1988). Observations on the anatomy and behavior of *Phronima sedentaria* (Forskål)
+  (Amphipoda: Hyperiidea). *Journal of Crustacean Biology*, 8(1), 79–90.
+- Isaac, N. J. B., van Strien, A. J., August, T. A., de Zeeuw, M. P., & Roy, D. B. (2014). Statistics for
+  citizen science: extracting signals of change from noisy ecological data. *Methods in Ecology and
+  Evolution*, 5(10), 1052–1060.
+- Johnston, A., Fink, D., Hochachka, W. M., & Kelling, S. (2018). Estimates of observer expertise improve
+  species distributions from citizen science data. *Methods in Ecology and Evolution*, 9(4), 880–890.
+- Keil, K. E., & Osborn, K. J. Associations between hyperiid amphipods and gelatinous zooplankton
+  (Smithsonian Institution, NMNH; MBARI ROV footage).
+- Laval, P. (1978). The barrel of the pelagic amphipod *Phronima sedentaria* (Forsk.). *Journal of
+  Experimental Marine Biology and Ecology*, 33(3), 187–211.
+- McDonald, G. R., & Nybakken, J. W. (2001). A worldwide review of the food of nudibranch mollusks. II. The
+  suborder Doridacea. *The Veliger*.
+- Milanesi, P., Mori, E., & Menchetti, M. (2020). Observer-oriented approach improves species distribution
+  models from citizen science data. *Ecology and Evolution*, 10(21), 12104–12114.
+- Peraza, E., Pérez, J. A., Abdul-Jalbar, B., Chinea, J., & Clemente, S. (2024). Exploring the association
+  between the arrow crab *Stenorhynchus lanceolatus* and the sea anemone *Telmatactis cricoides* in the
+  Canary Islands. *Regional Studies in Marine Science*.
+- Riera, R., Espina, F., & Moro, L. (2016). Progressing the invasion of the hydrozoan *Macrorhynchia
+  philippina* (Kirchenpauer, 1872) in Atlantic archipelagos. *Vieraea*, 44, 117–120.
+- Taylor, J., & Glover, E. (2021). *Biology, evolution and generic review of the chemosymbiotic bivalve
+  family Lucinidae*. The Ray Society, London.
+- Valdés, Á., & Muniain, C. (2002). Revision and taxonomic reassessment of Magellanic species assigned to
+  *Anisodoris* Bergh, 1898 (Nudibranchia: Doridoidea). *Journal of Molluscan Studies*, 68, 345–351.
 
 

@@ -131,6 +131,21 @@ Las fuentes que sustentan la clasificación anterior, verificadas durante la rev
 
 ## 4. Discusión
 
+### 4.1 Marco teórico: co-ocurrencia y sesgos de la ciencia ciudadana
+
+La co-ocurrencia de especies es una señal ecológica clásica (hábitat compartido, depredación, simbiosis,
+comensalismo), pero su lectura en datos de ciencia ciudadana exige controlar sesgos bien documentados:
+**sesgo geográfico** (las zonas accesibles se muestrean más), **de esfuerzo** (los eventos tipo *bioblitz*
+inflacionan ciertas localidades), **de observador** (varía la habilidad de detectar e identificar) y **de
+reporte** (preferencia por especies carismáticas). Los datos oportunistas carecen de plan de muestreo y de
+ausencias explícitas, por lo que cualquier inferencia debe mitigar explícitamente estos sesgos
+(Isaac et al., 2014; Johnston et al., 2018; Aceves-Bueno et al., 2017; Boyd et al., 2021; Milanesi et al.,
+2020). Nuestro diseño responde con: (1) *evento* = unidad de esfuerzo por observador y franja de 3 h
+(controla el sesgo de esfuerzo), (2) repetibilidad exigida en ≥3 localidades, ≥3 días y **≥5 observadores**
+(controla el sesgo de observador y de salida), y (3) el **filtro por rango geográfico** de las especies
+(elimina el artefacto de viajes de buceo detectado en esta revisión). El sesgo geográfico se aborda con el
+nulo estratificado por localidad·fecha en curso (§6 de Métodos).
+
 Las candidatas se agrupan en tres clases de interpretación: **comensalismo/foresia** (medusa—anfípodo),
 **simbiosis de limpieza** (gamba—anémona) y **co-habitación de sustrato** (fauna infaunal, fondo duro, algas coralinas). El reto metodológico central es distinguir **interacción** de
 **coincidencia** por hábitat, estación o esfuerzo de observación; de ahí la exigencia de repetibilidad
@@ -169,6 +184,44 @@ la comunidad de curaduría de **Minka SDG** e **iNaturalist**. Mención especial
 **iNaturalist** por las plataformas y los datos; y a **GBIF**, **Wikimedia Commons**, **DORIS/FFESSM**,
 **SeaSlugForum**, **WoRMS** y **FishBase** por las imágenes y los datos taxonómicos. Este análisis ha sido
 posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 + FAISS) desarrollado en el proyecto.
+
+## Referencias
+
+- Aceves-Bueno, E., Adeleye, A. S., Feraud, M., Huang, Y., Tao, M., Yang, Y., & Anderson, S. E. (2017). The
+  accuracy of citizen science data: a quantitative review. *The Bulletin of the Ecological Society of
+  America*, 98(4), 278–290.
+- Avila, C. (1996). The growth of *Peltodoris atromaculata* Bergh, 1880 (Gastropoda, Nudibranchia) in the
+  laboratory. *Journal of Molluscan Studies*, 62, 151–157. — dieta exclusiva sobre *Petrosia ficiformis*;
+  acumulación de petroformynas.
+- Barroso, R., Klautau, M., Solé-Cava, A. M., & Paiva, P. C. (2010). *Eurythoe complanata* (Polychaeta:
+  Amphinomidae), the 'cosmopolitan' fireworm, consists of at least three cryptic species. *Marine Biology*,
+  157(1), 69–80.
+- Boyd, R. J., Powers, M., & Pescott, O. L. (2021). occAssess: an R package for assessing potential biases in
+  species occurrence data. *Ecology and Evolution*, 11(22).
+- Diebel, C. E. (1988). Observations on the anatomy and behavior of *Phronima sedentaria* (Forskål)
+  (Amphipoda: Hyperiidea). *Journal of Crustacean Biology*, 8(1), 79–90.
+- Isaac, N. J. B., van Strien, A. J., August, T. A., de Zeeuw, M. P., & Roy, D. B. (2014). Statistics for
+  citizen science: extracting signals of change from noisy ecological data. *Methods in Ecology and
+  Evolution*, 5(10), 1052–1060.
+- Johnston, A., Fink, D., Hochachka, W. M., & Kelling, S. (2018). Estimates of observer expertise improve
+  species distributions from citizen science data. *Methods in Ecology and Evolution*, 9(4), 880–890.
+- Keil, K. E., & Osborn, K. J. Associations between hyperiid amphipods and gelatinous zooplankton
+  (Smithsonian Institution, NMNH; MBARI ROV footage).
+- Laval, P. (1978). The barrel of the pelagic amphipod *Phronima sedentaria* (Forsk.). *Journal of
+  Experimental Marine Biology and Ecology*, 33(3), 187–211.
+- McDonald, G. R., & Nybakken, J. W. (2001). A worldwide review of the food of nudibranch mollusks. II. The
+  suborder Doridacea. *The Veliger*.
+- Milanesi, P., Mori, E., & Menchetti, M. (2020). Observer-oriented approach improves species distribution
+  models from citizen science data. *Ecology and Evolution*, 10(21), 12104–12114.
+- Peraza, E., Pérez, J. A., Abdul-Jalbar, B., Chinea, J., & Clemente, S. (2024). Exploring the association
+  between the arrow crab *Stenorhynchus lanceolatus* and the sea anemone *Telmatactis cricoides* in the
+  Canary Islands. *Regional Studies in Marine Science*.
+- Riera, R., Espina, F., & Moro, L. (2016). Progressing the invasion of the hydrozoan *Macrorhynchia
+  philippina* (Kirchenpauer, 1872) in Atlantic archipelagos. *Vieraea*, 44, 117–120.
+- Taylor, J., & Glover, E. (2021). *Biology, evolution and generic review of the chemosymbiotic bivalve
+  family Lucinidae*. The Ray Society, London.
+- Valdés, Á., & Muniain, C. (2002). Revision and taxonomic reassessment of Magellanic species assigned to
+  *Anisodoris* Bergh, 1898 (Nudibranchia: Doridoidea). *Journal of Molluscan Studies*, 68, 345–351.
 
 ## Material suplementario
 
