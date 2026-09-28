@@ -19,25 +19,36 @@ recuperación k-NN sobre FAISS, calibrator jerárquico y servicio de identificac
 
 | Fuente | Fotografías en la galería |
 |---|---:|
+| **Minka SDG** (`minka-sdg.org`) — plataforma de ciencia ciudadana marina del ecosistema **FECDAS** | 377.476 |
 | **iNaturalist** (`inaturalist.org`, incluye iNaturalist Open Data) | 779.411 |
-| **Minka SDG** (`minka-sdg.org`) | 377.476 |
-| **GBIF** (`gbif.org`, multimedia de colecciones y ciencia ciudadana) | 39.570 |
-| **Wikimedia Commons** | 6.677 |
-| **DORIS / FFESSM** (`doris.ffessm.fr`) | 5.091 |
-| **SeaSlugForum** | 3.147 |
-| **WoRMS** (`marinespecies.org`, imágenes) | 1.320 |
-| **FishBase** (`fishbase.se`) | 1.072 |
+| GBIF (`gbif.org`, multimedia de colecciones y ciencia ciudadana) | 39.570 |
+| Wikimedia Commons | 6.677 |
+| DORIS / FFESSM (`doris.ffessm.fr`) | 5.091 |
+| SeaSlugForum | 3.147 |
+| WoRMS (`marinespecies.org`, imágenes) | 1.320 |
+| FishBase (`fishbase.se`) | 1.072 |
 | Otras (legado, colecciones puntuales) | ~5.600 |
 | **Total** | **≈1.222.170** |
 
 Metadatos de observación enriquecidos (fecha, hora, coordenadas, observador, lugar) vía API de **iNaturalist**,
 **Minka** y **GBIF** (759.207 observaciones; 92 % con hora).
 
-**Agradecimientos:** a las personas observadoras y **curadoras** de iNaturalist y Minka, cuyo trabajo (research
-grade y correcciones) hace posible tanto el identificador como este análisis. Las fotografías conservan su
-licencia y atribución originales en los metadatos de origen; para la publicación del artículo se usarán
-**únicamente imágenes con licencia que permita reutilización** (CC BY / CC BY-SA / CC0) con la atribución del
-autor, o se solicitará permiso explícito.
+**Agradecimientos.** Este proyecto se apoya en el trabajo diario de la comunidad observadora y, muy
+especialmente, de las **personas curadoras** que revisan y corrigen las identificaciones de las especies más
+difíciles (las **crípticas**, donde dos especies se distinguen por detalles anatómicos o por el hábitat):
+
+- **Miquel Pontes** (`mpontes`), referencia en opistobranquios y en la divulgación de la fauna marina catalana.
+- **Xavier Salvador** (`xasalva`), curador incansable de la biodiversidad marina.
+- **`bertinhaco`** — el curador que más correcciones ha hecho a nuestras identificaciones automáticas (14 en
+  una sola semana de seguimiento), y los curadores **`uriborrajo`**, **`martanp`**, **`badosa`** y
+  **`guillermoalvarez`**.
+
+Mención especial a la **FECDAS** (Federació Catalana d'Activitats Subaquàtiques) y a su **Projecte Aneris**,
+por impulsar la ciencia ciudadana marina de la que se nutre **Minka SDG** —la plataforma que aporta el mayor
+volumen de observaciones verificadas de este estudio— y por su labor de formación de buceadores-observadores.
+Su trabajo (identificaciones *research grade*, correcciones y datos de campo) es lo que hace posible tanto el
+identificador BioFauna como este análisis. Sin esa comunidad, ni el catálogo ni las asociaciones aquí
+descritas existirían.
 
 ## 3. Resultados principales (detalle en `RESULTADOS.md`)
 
@@ -67,15 +78,3 @@ autor, o se solicitará permiso explícito.
 3. **Revisión biológica** de las candidatas (curadores/especialistas) → separar simbiosis real de coincidencia.
 4. **Artículo con fotografías** (PDF académico) organizado por grupos taxonómicos (en preparación).
 5. **Integración en BioQuest**: sugerencias «si ves X, busca Y» y redes de asociación por zona.
-
----
-
-## Nota de publicación y licencias
-
-Este proyecto se publica **gracias al identificador BioFauna** y a las **fuentes públicas de imágenes**
-(listadas en la sección 2). Las fotografías pertenecen a sus autores y conservan la licencia con la que fueron
-publicadas en su fuente original (iNaturalist, Minka SDG, GBIF, Wikimedia Commons, DORIS/FFESSM, SeaSlugForum,
-WoRMS, FishBase). **Para el artículo con fotografías se incluirán únicamente imágenes con licencia que permita
-la reutilización (CC BY, CC BY-SA, CC0) junto con la atribución del autor y el enlace a la observación
-original**; en los demás casos se solicitará permiso explícito al autor. Los datos agregados (pares de especies
-con sus métricas) no contienen imágenes y pueden publicarse sin restricción.
