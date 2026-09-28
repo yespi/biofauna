@@ -39,7 +39,7 @@ Summary (details in [`METODOS.md`](METODOS.md) and supplementary material):
   votes per species, hierarchical calibration), with publication guards and leak auditing.
 - **Unit of analysis**: *event* = (observer × ~1.1 km cell × day × 3-h window); the set of species seen
   together.
-- **Filters**: catalogue-only; support ≥8 events; repeatability across **≥3 localities and ≥3 days**.
+- **Filters**: catalogue-only; support ≥8 events; repeatability across **≥3 localities, ≥3 days and ≥5 distinct observers** (the latter added after finding that a single dive trip generates false associations).
 - **Metrics**: observed co-occurrence `n`, expected from marginals and **lift**; Poisson p for screening.
 - **Internal validation**: blind search for documented associations (§3.1).
 
@@ -52,7 +52,7 @@ Summary (details in [`METODOS.md`](METODOS.md) and supplementary material):
 | *Peltodoris atromaculata* — *Petrosia ficiformis* | 79 | 11.1 | 44 | 74 | classic literature |
 | *Felimare picta* — *Ircinia oros* | 29 | 4.1 | 20 | 28 | host sponge |
 | *Cratena peregrina* — *Eudendrium racemosum* | 5 | 10.5 | — | — | prey hydroid |
-| *Doto paulinae* — *Sertularella mediterranea* | 5 | 48.3 | — | — | host hydroid |
+| ~~*Doto paulinae* — *Sertularella mediterranea*~~ | 5 | 48.3 | — | — | ❌ **discarded**: single observer (expert-review correction) |
 
 ### 3.2 Taxonomic groups
 

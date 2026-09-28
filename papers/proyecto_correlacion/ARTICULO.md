@@ -44,7 +44,7 @@ Resumen (detalle en [`METODOS.md`](METODOS.md) y en el material suplementario):
   por especie, calibración jerárquica), con guardas de publicación y auditoría de fugas.
 - **Unidad de análisis**: *evento* = (observador × celda ~1,1 km × día × franja de 3 h); grupo de especies
   vistas juntas.
-- **Filtros**: solo catálogo; soporte ≥8 eventos; repetibilidad en **≥3 localidades y ≥3 días**.
+- **Filtros**: solo catálogo; soporte ≥8 eventos; repetibilidad en **≥3 localidades y ≥3 días** y **≥5 observadores distintos** (este último añadido tras detectar que una sola salida de buceo genera falsas asociaciones).
 - **Métricas**: co-ocurrencia observada `n`, esperada por marginales y **lift**; p de Poisson para cribado.
 - **Validación interna**: búsqueda ciega de asociaciones documentadas (§3.1).
 
@@ -57,7 +57,7 @@ Resumen (detalle en [`METODOS.md`](METODOS.md) y en el material suplementario):
 | *Peltodoris atromaculata* — *Petrosia ficiformis* | 79 | 11,1 | 44 | 74 | bibliografía clásica |
 | *Felimare picta* — *Ircinia oros* | 29 | 4,1 | 20 | 28 | esponja hospedadora |
 | *Cratena peregrina* — *Eudendrium racemosum* | 5 | 10,5 | — | — | hidrozoo presa |
-| *Doto paulinae* — *Sertularella mediterranea* | 5 | 48,3 | — | — | hidrozoo hospedador |
+| ~~*Doto paulinae* — *Sertularella mediterranea*~~ | 5 | 48,3 | — | — | ❌ **descartada**: un único observador (corrección tras revisión experta) |
 
 ### 3.2 Grupos taxonómicos
 

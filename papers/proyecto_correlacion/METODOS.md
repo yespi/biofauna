@@ -4,9 +4,9 @@
 
 | Elemento | Origen | Cobertura |
 |---|---|---|
-| Fotografías | galería BioFauna (las 1.222.170 imágenes de la galería pública de BioFauna) | **1.222.170** imágenes (8 fuentes públicas, ver README) |
-| Observaciones con metadatos | API de iNaturalist, Minka y GBIF; volcado en `volcado de metadatos de observación (iNaturalist/Minka/GBIF)` | **759.207** obs · 100 % con geo y fecha · **92 % con hora** |
-| Catálogo de especies | `catálogo curado de BioFauna (2.985 taxones)` | 2.985 taxones (checklist mediterránea curada) |
+| Fotografías | galería BioFauna (`/mnt/gpu/fotofauna-images` + `archive`) | **1.222.170** imágenes (8 fuentes públicas, ver README) |
+| Observaciones con metadatos | API de iNaturalist, Minka y GBIF; volcado en `dataset/enrich_obs_metadata_progress_20260919.json` | **759.207** obs · 100 % con geo y fecha · **92 % con hora** |
+| Catálogo de especies | `dataset/target_species.json` | 2.985 taxones (checklist mediterránea curada) |
 
 ## 2. Unidad de análisis: el «evento»
 
@@ -40,6 +40,27 @@ Para cada par (A, B):
 - **lift** = `n / esperado` (>1 = más juntas de lo esperado; 10 = diez veces más).
 - **p** aproximado por Poisson (probabilidad de ver ≥n con media = esperado). Es un *screening*: el contraste
   definitivo es el **nulo estratificado** (siguiente apartado).
+
+
+## 4 bis. Filtro de OBSERVADORES distintos (añadido 28-sep-2026, corrección por revisión experta)
+
+La revisión de un especialista (*Doto paulinae* no aparece asociado a *Sertularella mediterranea*) destapó un
+sesgo grave: **una única salida de buceo** de un fotógrafo produce muchas co-ocurrencias que parecen
+ecológicas y no lo son (la "ruta del fotógrafo"). Al medirlo, el par *Doto paulinae* + *Sertularella
+mediterranea* tenía `n=5` pero **un solo observador** → espurio.
+
+**Regla añadida: exigir ≥5 OBSERVADORES distintos** para cada par (además de ≥3 localidades y ≥3 días).
+Con ella, los pares que ya conocíamos ganan crédito y aparecen asociaciones con sentido:
+
+| par | n | observadores distintos | lectura |
+|---|---:|---:|---|
+| *Peltodoris atromaculata* + *Petrosia ficiformis* | 79 | **32** | el nudibranquio vive sobre su esponja ✅ |
+| *Felimare picta* + *Ircinia oros* | 29 | **16** | esponja hospedadora ✅ |
+| *Cratena peregrina* + *Eudendrium racemosum* | 5 | **5** | hidrozoo presa ✅ |
+| ~~*Doto paulinae* + *Sertularella mediterranea*~~ | 5 | **1** | ❌ **descartado**: una sola salida (mi error, no era documentado) |
+
+**Lección metodológica**: la validación de estas asociaciones no puede hacerse con pares que uno *cree*
+documentados; debe pasar por (a) revisión experta y (b) filtros que maten el sesgo de salida/observador.
 
 ## 5. Validación interna (control de calidad del método)
 

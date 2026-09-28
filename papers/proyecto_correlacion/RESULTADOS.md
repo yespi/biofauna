@@ -11,17 +11,19 @@
 | Pares intra-familia | 1.118 (2 %) |
 | Pares inter-familia | 69.853 (98 %) |
 
-## 2. Validación interna (asociaciones ya documentadas que el método recupera)
+## 2. Validación interna (corregida con el filtro de observadores)
 
-| asociación documentada | n | lift | celdas | días | interpretación |
+| asociación | n | obs. distintos | localidades | días | veredicto |
 |---|---:|---:|---:|---:|---|
-| ***Peltodoris atromaculata*** + ***Petrosia ficiformis*** | 79 | 11,1 | 44 | 74 | el nudibranquio vive y se alimenta sobre esta esponja |
-| *Felimare picta* + *Ircinia oros* | 29 | 4,1 | 20 | 28 | depredación sobre la esponja hospedadora |
-| *Cratena peregrina* + *Eudendrium racemosum* | 5 | 10,5 | — | — | hidrozoo del que se alimenta |
-| *Doto paulinae* + *Sertularella mediterranea* | 5 | 48,3 | — | — | hidrozoo hospedador de *Doto* |
+| ***Peltodoris atromaculata*** + ***Petrosia ficiformis*** | 79 | **32** | 44 | 74 | ✅ documentada, robusta |
+| *Felimare picta* + *Ircinia oros* | 29 | **16** | 20 | 28 | ✅ documentada, robusta |
+| *Cratena peregrina* + *Eudendrium racemosum* | 5 | **5** | — | — | ✅ consistente |
+| ~~*Doto paulinae* + *Sertularella mediterranea*~~ | 5 | **1** | — | — | ❌ **descartada** (una sola salida; corrección tras revisión experta) |
 
-Que el método redescubra estas cuatro —con decenas de localidades y días distintos— es la garantía de que
-**las candidatas nuevas no son ruido estadístico** (quedan por pasar el nulo estratificado, ver `METODOS.md §6`).
+> **Nota de honestidad:** en la primera versión incluí el par de *Doto* como "documentado". **No lo era**; era
+> una suposición mía. Un especialista lo detectó al no reconocerlo en su experiencia de campo, y los datos le
+> dieron la razón (un único observador). El método se corrigió (`METODOS.md` §4 bis) y ahora se exige
+> **≥5 observadores distintos** por par.
 
 ## 3. Grupos taxonómicos más implicados (familias con más pares asociados)
 
@@ -57,14 +59,28 @@ La mayoría de pares son **inter-familia** (98 %), coherente con asociaciones tr
 | *Crepidula unguiformis* | *Nucula nucleus* | 8 | 515 | 7 | 8 | fauna de sedimento |
 
 La lista completa (top 40 con familia y métricas) está en
-[`coocurrencia_top40.md`](coocurrencia_top40.md)¹ y los **70.971 pares** en
-`coocurrencia_top40.md` (muestra; el conjunto completo se solicita al autor).
+[`coocurrencia_top40.md`](../../docker/biofauna/artifacts/coocurrencia_top40.md)¹ y los **70.971 pares** en
+`artifacts/coocurrencia_catalogo_20260928.json`.
 
 > ¹ En el repositorio público se incluye una copia en `papers/proyecto_correlacion/`.
 
+## 4 bis. Candidatas con el filtro de **≥5 observadores distintos**
+
+| A | B | n | obs. distintos | lift | lectura plausible |
+|---|---|---:|---:|---:|---|
+| *Latreutes fucorum* (gamba del sargazo) | *Scyllaea pelagica* (nudibranquio del sargazo) | 11 | **10** | 344 | **comunidad del alga flotante *Sargassum*** |
+| *Hippolyte coerulescens* | *Scyllaea pelagica* | 6 | 6 | 688 | idem (fauna asociada al sargazo) |
+| *Doris fontainii* | *Tyrinna delicata* | 14 | 6 | 1.243 | nudibranquios del mismo sustrato |
+| *Lysmata grabhami* (gamba limpiadora) | *Telmatactis cricoides* (anémona) | 9 | 6 | 594 | simbiosis de limpieza |
+| *Macrorhynchia philippina* (hidrozoo) | *Telmatactis cricoides* | 8 | 6 | 774 | fondo duro colonizado |
+| *Callianira bialata* | *Nanomia bijuga* | 13 | 6 | 389 | plancton gelatinoso |
+| *Hippolyte coerulescens* | *Latreutes fucorum* | 5 | 5 | 396 | fauna del sargazo |
+| *Leptogorgia ruberrima* | *Leptogorgia viminalis* | 6 | 5 | 754 | gorgonias simpátricas |
+| *Abudefduf saxatilis* | *Kyphosus vaigiensis* | 8 | 8 | 445 | peces de arrecife |
+
 ## 5. Figura
 
-![Red de asociaciones](coocurrencia_red_top12.svg)
+![Red de asociaciones](../../docker/biofauna/artifacts/coocurrencia_red_top12.svg)
 
 Red de las 12 asociaciones más fuertes (grosor del enlace ∝ lift). Copia navegable en esta carpeta:
 [`coocurrencia_red_top12.svg`](coocurrencia_red_top12.svg).
