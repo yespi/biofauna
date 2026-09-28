@@ -107,6 +107,28 @@ calidad del *dataset*.
 **Corrección taxonómica**: `loripinus_fragilis` (Philippi, 1836, **Lucinidae**) y `limaria_fragilis`
 (Gmelin, 1791, **Limidae**) son especies distintas; no son sinónimos (WoRMS AphiaID 718970 vs. 216644).
 
+## 3.5 Referencias bibliográficas de las asociaciones
+
+Las fuentes que sustentan la clasificación anterior, verificadas durante la revisión (28-sep-2026):
+
+| Asociación / afirmación | Fuente |
+|---|---|
+| *Peltodoris atromaculata* se alimenta de la esponja *Petrosia ficiformis* | bibliografía trófica de doridáceos (revisión de dieta de nudibranquios; petroformynas como defensa química de la esponja) |
+| *Felimare picta* (antes *Hypselodoris*) se alimenta de esponjas del género *Ircinia* | McDonald & Nybakken, 2001 — *A worldwide review of the food of nudibranch mollusks*; observaciones de campo (OPK) |
+| *Cratena peregrina* practica kleptopredación sobre *Eudendrium racemosum* | Di Camillo et al. — *Eudendrium racemosum* como sustrato/presa y robos de presas (CNR, mar Adriático) |
+| *Scyllaea pelagica*, *Latreutes fucorum* y *Hippolyte coerulescens* forman parte de la fauna asociada al *Sargassum* flotante | literatura de la comunidad pelágica del Sargassum (NOAA; BAMZ; Sea Slug Forum) |
+| *Phronima sedentaria* es simbionte obligado de salpas (vive en el «barril») | Laval, 1978 — *The barrel of the pelagic amphipod Phronima sedentaria*; Diebel, 1988 — *Observations on the anatomy and behavior of Phronima sedentaria*; MBARI/Scripps |
+| *Lampea pancerina* depreda o parasita salpas | *The double life of the ctenophore Lampea pancerina* (ResearchGate); literatura de ctenóforos (Carré & Carré) |
+| Los hiperídeos (*Brachyscelus*, *Phronima*) se asocian a zooplancton gelatinoso (medusas, ctenóforos, salpas) | Keil & Osborn — *Associations between hyperiid amphipods and gelatinous zooplankton* (Smithsonian/MBARI, ROV) |
+| *Telmatactis cricoides* hospeda crustáceos simbiontes (*Thor amboinensis* en el 65 % de las anémonas; *Stenorhynchus lanceolatus* en mutualismo facultativo) | *Crustacean symbionts of the sea anemone Telmatactis* (decapoda.nhm.org); Peraza et al., 2024 — *Exploring the association between Stenorhynchus lanceolatus and Telmatactis cricoides in the Canary Islands* (Regional Studies in Marine Science) |
+| *Telmatactis cricoides* es especie termófila en expansión en el Mediterráneo occidental (Almería, Baleares) | Cambridge, J. Mar. Biol. Assoc. UK 104 (2024) — *The thermophilic sea anemone Telmatactis cricoides in the western Mediterranean* |
+| *Macrorhynchia philippina* es hidrozoo invasor («stinging bush hydroid») | Riera et al., 2016 — *Progressing the invasion of the hydrozoan Macrorhynchia philippina in Atlantic archipelagos* (Vieraea 44) |
+| Comunidades de sedimentos blandos con *Abra alba* y bivalvos del mismo género | JNCC Marine Habitat Classification (biotopo SS.SSa.CMuSa.AalbNuc); MarLIN |
+| *Loripinus fragilis* (Lucinidae, quimiosimbiosis) ≠ *Limaria fragilis* (Limidae) | WoRMS AphiaID 718970 vs. 216644; Taylor & Glover, 2021 — *Biology, evolution and generic review of the Lucinidae* |
+| *Abudefduf saxatilis* es estrictamente atlántico (sustituido por *A. vaigiensis* en el Indo-Pacífico) | FishBase — *Abudefduf saxatilis* (Sergeant-major) |
+| *Doris fontainii* (antes *Anisodoris fontainei*) y *Tyrinna delicata* son del Pacífico sur | Sea Slug Forum (Australian Museum); Valdés & Muniain, 2002 |
+| *Eurythoe complanata* es complejo de ≥3 especies crípticas | Barroso et al., 2010 — *Eurythoe complanata, the 'cosmopolitan' fireworm, consists of at least three cryptic species* (Marine Biology) |
+
 ## 4. Discusión
 
 Las candidatas se agrupan en tres clases de interpretación: **comensalismo/foresia** (medusa—anfípodo),
