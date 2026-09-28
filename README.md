@@ -4,6 +4,8 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260928.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260928.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF: [ES](papers/proyecto_correlacion/ARTICULO_v1_ES_20260928.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v1_EN_20260928.pdf))
+
 ## Snapshot (2026-09-28)
 
 | | |

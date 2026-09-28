@@ -279,3 +279,64 @@ Las mismas que la versión inglesa (`01_biofauna.md`).
 ---
 
 *Informe técnico del repositorio abierto. No es un envío a revista. Sedes posibles tras un PDF congelado: Ecological Informatics / Biodiversity Data Journal / PeerJ.*
+
+---
+
+## 7. Cómo identifica BioFauna una especie
+
+![Pipeline: de la fotografía a una respuesta calibrada y con guardas](figure_pipeline.svg)
+
+BioFauna is a **retrieval** classifier, not a trained end-to-end network:
+
+1. **Frozen encoder.** Every gallery photograph is embedded with **BioCLIP-2.5 ViT-H/14** (frozen, no
+   fine-tuning). The query image is embedded the same way, as the global vector **plus a 65 % region-of-interest
+   fusion** (the subject-centred crop), L2-normalised.
+2. **Approximate search.** A **FAISS** index holds all gallery vectors (currently **1.12 M vectors / 4,543
+   species**, row-aligned so that each vector maps to exactly one species).
+3. **k-NN with a tempered aggregator.** The *k*=15 neighbours vote with weights `exp(similarity / T)`, `T=0.05`,
+   **capped at 3 votes per species** so that a single over-represented species cannot swamp the vote.
+4. **Context corrections.** A **geographic prior** (1,386 species, σ≈200 km) and **cryptic-pair** handling
+   (Fisher directions / local subspace) correct the ranking when two species are visually almost identical.
+5. **Hierarchical calibration.** A per-species logistic model converts the k-NN score into a **calibrated
+   probability**, with genus- and family-level fallbacks; below the calibrated threshold the service **abstains**
+   to genus/family instead of guessing.
+6. **Zero-shot rescue (2026).** When the top-1 similarity is low (< 0.85), a **catalogue-wide zero-shot**
+   comparison (2,985 text labels) is consulted; if it agrees with a *different* species at p ≥ 0.90, it wins.
+   Measured effect: **+0.91 pp** on the field evaluation.
+7. **Publication guards (AutoID).** A species is not published when the top-1/top-2 similarity **margin < 0.02**,
+   when the observation falls outside the domain, or when a vocal disagreement exists; a **curator guard**
+   automatically retracts our identifications when a curator corrects at class level or above.
+
+## 8. Cómo ha mejorado el modelo, paso a paso
+
+![Cronología de mejoras](figure_mejoras.svg)
+
+| etapa | cambio | efecto |
+|---|---|---|
+| YOLOFauna (2024–2026) | BioCLIP ViT-L + k-NN | 63.9 % |
+| Aug 2026 | full re-embedding with **BioCLIP-2.5 ViT-H/14** | 70.6 % |
+| Aug 2026 | **k=15** + hierarchical fallback + calibration hygiene | 71.7 % |
+| Aug 2026 | **hierarchical calibration** (species/genus/family) | 74.1 % |
+| Sep 2026 | **3-vote cap** per species, ROI fusion, geographic prior | 77.9 % |
+| Sep 2026 | **evaluation leak fixed** → honest panel (near-100 % of the drop was leakage, not error) | 79.4 % |
+| Sep 2026 | **gallery hygiene**: 135 duplicate synonym slugs merged (Minka authority), ~1,000 mislabelled photos relocated, 57 quarantined | 79.6 % |
+| Sep 2026 | **zero-shot rescue** + publication guards | 79.6 % *(+0.91 pp on the same rows; the headline moves with the evaluation)* |
+
+Two lessons that shaped the project: (a) **the evaluation is part of the model** — an unfixed leak in the
+evaluation made the system look better than it was; (b) **gallery quality beats model complexity** — synonyms,
+contamination and mislabelled observations cost more accuracy than any hyper-parameter we tuned (LoRA/QLoRA/
+triplet/ArcFace/SupCon on this embedding space were all rejected by measurement).
+
+## 9. Datos, evaluación y operación
+
+![Flujo de datos y operación](figure_datos.svg)
+
+- **Sources** (public images): **Minka SDG** 377,476 · **iNaturalist** 779,411 · GBIF 39,570 · Wikimedia Commons
+  6,677 · DORIS/FFESSM 5,091 · SeaSlugForum 3,147 · WoRMS 1,320 · FishBase 1,072 → **≈1.22 M photographs**.
+- **One copy of each photo**, never deleted; every relocation is done with a manifest and a rollback script.
+- **Field evaluation**: field-only photographs (iNaturalist/Minka research grade), 20–30 per species,
+  leak-audited before merging (a gallery copy in the evaluation would inflate the score).
+- **Every production change is measured** (McNemar + per-species guard); the previous index stays as a
+  **24-h rollback**.
+- **Continuous QA**: gallery contamination (prototype-centroid metric, daily), mined-evaluation leak audit
+  (weekly, with automatic purge), index↔catalogue alignment (every 10 min).
