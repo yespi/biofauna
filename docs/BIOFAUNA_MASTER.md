@@ -10,4 +10,4 @@ Frozen **BioCLIP-2.5 ViT-H** + k-NN k=15 + T=0.05 + max 3 votes per species + RO
 | Real-world check | ~80% on recent research-grade observations (operating KPI) |
 | AutoID | p≥0.80 → 97.0% precision / 80.6% coverage (species-disjoint split, closed-set) |
 
-What moved the needle: ViT-H, k=15, complete gallery, ROI fusion, tempered k-NN, per-species vote cap, data quality. What did not: LoRA/QLoRA/triplet/ArcFace/SupCon on this embedding space. Measurement lesson: every evaluation photo must pass a global-embedding leak gate (O18). Ledger: [EXPERIMENTS.md](EXPERIMENTS.md) · [paper](../paper/01_biofauna.md).
+What moved the needle: ViT-H, k=15, complete gallery, ROI fusion, tempered k-NN, per-species vote cap, data quality. What did not: LoRA/QLoRA/triplet/ArcFace/SupCon on this embedding space. Measurement lesson: every evaluation photo must pass a global-embedding leak gate (O18). Ledger: [EXPERIMENTS.md](EXPERIMENTS.md) · [paper](../papers/biofauna/01_biofauna.md).

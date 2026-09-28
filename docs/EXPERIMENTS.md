@@ -12,7 +12,7 @@
 >
 > **August freeze (cohort A):** leak-checked n=12,788; TTA-era 75.97% → inference stack 77.77% → densification jsonl 79.10%. Ablations below that cite 75–78% are cohort A unless noted.
 >
-> Short form: [paper §4](../paper/01_biofauna.md#4-experiments).
+> Short form: [paper §4](../papers/biofauna/01_biofauna.md#4-experiments).
 
 > **Update 2026-09-28 (field evaluation + guards).**
 > | Experiment | Metric | Result |

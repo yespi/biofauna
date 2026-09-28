@@ -2,7 +2,7 @@
 
 Production identifier: **frozen BioCLIP-2.5 ViT-H/14** (1024-d) → **k-NN k=15**, tempered votes **T=0.05** with at most 3 votes per species, prototype boost, 65% centre-crop fused into the query, optional GPS prior, logistic calibration, taxonomic abstention.
 
-Details and the kept/rejected ledger: [paper](../paper/01_biofauna.md) and [EXPERIMENTS.md](EXPERIMENTS.md).
+Details and the kept/rejected ledger: [paper](../papers/biofauna/01_biofauna.md) and [EXPERIMENTS.md](EXPERIMENTS.md).
 
 ## Validation
 

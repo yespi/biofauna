@@ -62,5 +62,5 @@ Legacy env/path names (`YOLOFAUNA_*`, `fotofauna-yolo`) may still appear in depl
 
 - Current status: [`STATUS.md`](STATUS.md)
 - Experiments / negative results: [`EXPERIMENTS.md`](EXPERIMENTS.md)
-- Paper: [`../paper/01_biofauna.md`](../paper/01_biofauna.md)
+- Paper: [`../papers/biofauna/01_biofauna.md`](../papers/biofauna/01_biofauna.md)
 - Short master: [`BIOFAUNA_MASTER.md`](BIOFAUNA_MASTER.md)

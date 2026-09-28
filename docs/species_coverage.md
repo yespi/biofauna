@@ -11,6 +11,6 @@
 | Hardest taxa to evaluate | ~70 rare heterobranchs (e.g. *Runcina*, *Trapania*, *Tenellia*, *Doto*) with almost no photos outside the gallery; searched in Wikimedia, GBIF, iDigBio, EOL, Wikipedia, Zenodo/BLR, Openverse, Observation.org |
 | AutoID | p≥0.80 (see STATUS) |
 
-Tables: [`../paper/appendix_species.md`](../paper/appendix_species.md).
+Tables: [`../papers/biofauna/appendix_species.md`](../papers/biofauna/appendix_species.md).
 
 Sources: Minka + iNaturalist (primary), GBIF/Wikimedia/museum media for rare taxa. Field-guide OCR was tested and **did not** beat retrieval. Fine-tuning did not beat frozen ViT-H on this gallery ([EXPERIMENTS.md](EXPERIMENTS.md)).

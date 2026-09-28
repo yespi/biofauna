@@ -9,4 +9,4 @@ These files were frozen in **August 2026** and were still linked as if current. 
 | `BIOFAUNA_CHECK_OTHER_IAs.md` | External-review dump at **71.7%** species. Superseded by the paper + `EXPERIMENTS.md`. |
 | `BIOFAUNA_pendientes_libros.md` | Field-guide OCR todo from 11 Aug. Expert-crop weighting was later a **negative** result. |
 
-Current entry points: [`../STATUS.md`](../STATUS.md), [`../../paper/01_biofauna.md`](../../paper/01_biofauna.md), [`../EXPERIMENTS.md`](../EXPERIMENTS.md).
+Current entry points: [`../STATUS.md`](../STATUS.md), [`../../papers/biofauna/01_biofauna.md`](../../papers/biofauna/01_biofauna.md), [`../EXPERIMENTS.md`](../EXPERIMENTS.md).

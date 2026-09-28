@@ -1,0 +1,49 @@
+<svg width="1180" height="470" viewBox="0 0 1180 470" xmlns="http://www.w3.org/2000/svg"><style>text{font-family:Helvetica,Arial,sans-serif}.t{fill:#0d1b2a;font-size:12px}.s{font-size:11px;fill:#334}.h{font-size:15px;font-weight:700;fill:#0b3d5c}.b{fill:#eef6fb;stroke:#7fb3d5;stroke-width:1.5;rx:8}.a{fill:#fdf3e7;stroke:#e0a458;stroke-width:1.5;rx:8}.g{fill:#eaf7ee;stroke:#74b98a;stroke-width:1.5;rx:8}.arr{stroke:#4a6b8a;stroke-width:2;marker-end:url(#m)}</style><defs><marker id="m" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a6b8a"/></marker></defs>
+<text class="h" x="20" y="28">2 - Como ha mejorado el modelo, paso a paso</text>
+<text class="s" x="20" y="46">Acierto por especie en la evaluacion oficial de cada etapa. La serie NO es comparable punto a punto: la vara de medir tambien se hizo mas honesta.</text>
+<line x1="90" y1="400" x2="1100" y2="400" stroke="#8aa"/>
+<line x1="90" y1="400" x2="90" y2="80" stroke="#8aa"/>
+<line x1="90" y1="375" x2="1100" y2="375" stroke="#e6edf3"/>
+<text class="s" x="56" y="379">60%</text>
+<line x1="90" y1="312" x2="1100" y2="312" stroke="#e6edf3"/>
+<text class="s" x="56" y="316">65%</text>
+<line x1="90" y1="250" x2="1100" y2="250" stroke="#e6edf3"/>
+<text class="s" x="56" y="254">70%</text>
+<line x1="90" y1="188" x2="1100" y2="188" stroke="#e6edf3"/>
+<text class="s" x="56" y="192">75%</text>
+<line x1="90" y1="125" x2="1100" y2="125" stroke="#e6edf3"/>
+<text class="s" x="56" y="129">80%</text>
+<circle cx="130" cy="326" r="5" fill="#1f6feb"/>
+<text class="s" x="130" y="312" text-anchor="middle" font-weight="700">63.9%</text>
+<text class="s" x="130" y="420" text-anchor="middle" font-size="9.5">2024-2026</text>
+<text class="s" x="130" y="433" text-anchor="middle" font-size="9">YOLOFauna: BioCLIP ViT-L + k-NN</text>
+<circle cx="263" cy="243" r="5" fill="#1f6feb"/>
+<text class="s" x="263" y="229" text-anchor="middle" font-weight="700">70.6%</text>
+<text class="s" x="263" y="450" text-anchor="middle" font-size="9.5">ago-2026</text>
+<text class="s" x="263" y="463" text-anchor="middle" font-size="9">BioCLIP-2.5 ViT-H/14 (re-embedding)</text>
+<circle cx="396" cy="229" r="5" fill="#1f6feb"/>
+<text class="s" x="396" y="215" text-anchor="middle" font-weight="700">71.7%</text>
+<text class="s" x="396" y="420" text-anchor="middle" font-size="9.5">ago-2026</text>
+<text class="s" x="396" y="433" text-anchor="middle" font-size="9">k=15 + fallback jerarquico</text>
+<circle cx="529" cy="199" r="5" fill="#1f6feb"/>
+<text class="s" x="529" y="185" text-anchor="middle" font-weight="700">74.1%</text>
+<text class="s" x="529" y="450" text-anchor="middle" font-size="9.5">ago-2026</text>
+<text class="s" x="529" y="463" text-anchor="middle" font-size="9">Calibracion jerarquica</text>
+<circle cx="661" cy="151" r="5" fill="#1f6feb"/>
+<text class="s" x="661" y="137" text-anchor="middle" font-weight="700">77.9%</text>
+<text class="s" x="661" y="420" text-anchor="middle" font-size="9.5">sep-2026</text>
+<text class="s" x="661" y="433" text-anchor="middle" font-size="9">Cap 3 votos + fusion ROI + geo prior</text>
+<circle cx="794" cy="132" r="5" fill="#1f6feb"/>
+<text class="s" x="794" y="118" text-anchor="middle" font-weight="700">79.4%</text>
+<text class="s" x="794" y="450" text-anchor="middle" font-size="9.5">sep-2026</text>
+<text class="s" x="794" y="463" text-anchor="middle" font-size="9">Fuga del eval corregida (panel honesto)</text>
+<circle cx="927" cy="130" r="5" fill="#1f6feb"/>
+<text class="s" x="927" y="116" text-anchor="middle" font-weight="700">79.6%</text>
+<text class="s" x="927" y="420" text-anchor="middle" font-size="9.5">sep-2026</text>
+<text class="s" x="927" y="433" text-anchor="middle" font-size="9">Higiene: 135 sinonimos fusionados</text>
+<circle cx="1060" cy="130" r="5" fill="#1f6feb"/>
+<text class="s" x="1060" y="116" text-anchor="middle" font-weight="700">79.6%</text>
+<text class="s" x="1060" y="450" text-anchor="middle" font-size="9.5">sep-2026</text>
+<text class="s" x="1060" y="463" text-anchor="middle" font-size="9">Rescate cero-shot; guardas de publicacion</text>
+<polyline fill="none" stroke="#1f6feb" stroke-width="2.5" points="130,326 263,243 396,229 529,199 661,151 794,132 927,130 1060,130"/>
+</svg>

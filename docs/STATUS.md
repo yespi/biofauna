@@ -16,7 +16,7 @@
 | AutoID | Since 2026-09-21: publishes on BioFauna alone (no iNaturalist requirement) with domain guards (Mediterranean bbox; birds only when an independent BioCLIP zero-shot agrees, 98.5% precision at 69% coverage). Throughput 30/h and 1,000/day, managed from the FotoFauna admin; reaching the hourly cap pauses until the next hour (volume alerts are warnings; quality alerts still trip the breaker). Community-ID audit pending |
 | Service | https://fotofauna.yespi.es · GPU RTX 3060 12 GB |
 
-**Two labelled metrics** (do not mix them): August leak-checked harvest n=12,788 peaked around **75.97–79.10%** while the inference stack and gallery grew. The 14 Sep figure is a **larger, harder** evaluation mix after T=0.05 and quality campaigns. Paper: [`../paper/01_biofauna.md`](../paper/01_biofauna.md).
+**Two labelled metrics** (do not mix them): August leak-checked harvest n=12,788 peaked around **75.97–79.10%** while the inference stack and gallery grew. The 14 Sep figure is a **larger, harder** evaluation mix after T=0.05 and quality campaigns. Paper: [`../papers/biofauna/01_biofauna.md`](../papers/biofauna/01_biofauna.md).
 
 ## This repository contains
 
@@ -36,7 +36,7 @@ Admins can export live gallery ZIPs from FotoFauna (**BioFauna Fotos**). See [`f
 
 | Doc | Role |
 |-----|------|
-| [Paper EN](../paper/01_biofauna.md) · [ES](../paper/01_biofauna_es.md) | Methods + experiment catalog |
+| [Paper EN](../papers/biofauna/01_biofauna.md) · [ES](../papers/biofauna/01_biofauna_es.md) | Methods + experiment catalog |
 | [EXPERIMENTS](EXPERIMENTS.md) | Same ledger, more McNemar detail |
 | [dataset](dataset.md) · [self_host](self_host.md) · [api](api.md) | Reconstruct / run |
 | [HISTORY](HISTORY.md) | YOLOFauna → BioFauna |

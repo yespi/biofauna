@@ -1,0 +1,24 @@
+<svg width="1180" height="400" viewBox="0 0 1180 400" xmlns="http://www.w3.org/2000/svg"><style>text{font-family:Helvetica,Arial,sans-serif}.t{fill:#0d1b2a;font-size:12px}.s{font-size:11px;fill:#334}.h{font-size:15px;font-weight:700;fill:#0b3d5c}.b{fill:#eef6fb;stroke:#7fb3d5;stroke-width:1.5;rx:8}.a{fill:#fdf3e7;stroke:#e0a458;stroke-width:1.5;rx:8}.g{fill:#eaf7ee;stroke:#74b98a;stroke-width:1.5;rx:8}.arr{stroke:#4a6b8a;stroke-width:2;marker-end:url(#m)}</style><defs><marker id="m" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4a6b8a"/></marker></defs>
+<text class="h" x="20" y="28">3 - Datos, evaluacion y operacion</text>
+<text class="s" x="20" y="46">Una sola copia de las fotos; todo cambio de produccion se mide y se puede revertir.</text>
+<rect class="a" x="20" y="80" width="220" height="70"/><text class="t" x="130.0" y="119.0" text-anchor="middle">Fuentes publicas: Minka SDG, iNaturalist, GBIF, Wikimedia, DORIS, WoRMS, FishBase</text>
+<rect class="b" x="280" y="80" width="220" height="70"/><text class="t" x="390.0" y="119.0" text-anchor="middle">Descargadores con guardas: tokens, ritmo, dedup sha1, sin fugas al eval</text>
+<rect class="b" x="540" y="80" width="220" height="70"/><text class="t" x="650.0" y="119.0" text-anchor="middle">Galeria unica: 1.222.170 fotos, 4.543 spp (~1.000/spp)</text>
+<rect class="b" x="800" y="80" width="200" height="70"/><text class="t" x="900.0" y="119.0" text-anchor="middle">Indice FAISS reconstruido por lotes</text>
+<rect class="g" x="1010" y="80" width="150" height="70"/><text class="t" x="1085.0" y="119.0" text-anchor="middle">BioFauna servicio :8090</text>
+<line class="arr" x1="240" y1="115" x2="280" y2="115"/>
+<line class="arr" x1="500" y1="115" x2="540" y2="115"/>
+<line class="arr" x1="760" y1="115" x2="800" y2="115"/>
+<line class="arr" x1="1000" y1="115" x2="1010" y2="115"/>
+<rect class="b" x="20" y="210" width="220" height="70"/><text class="t" x="130.0" y="249.0" text-anchor="middle">Evaluacion de campo: solo fotos de campo, 20-30/spp, con auditoria de fuga</text>
+<rect class="b" x="280" y="210" width="220" height="70"/><text class="t" x="390.0" y="249.0" text-anchor="middle">Rescore + calibracion; McNemar y guardia por especie</text>
+<rect class="b" x="540" y="210" width="220" height="70"/><text class="t" x="650.0" y="249.0" text-anchor="middle">Promote reversible: el indice anterior queda 24 h como rollback</text>
+<rect class="b" x="800" y="210" width="200" height="70"/><text class="t" x="900.0" y="249.0" text-anchor="middle">Panel y estadisticas (FotoFauna admin, #bf-fotos)</text>
+<rect class="b" x="1010" y="210" width="150" height="70"/><text class="t" x="1085.0" y="249.0" text-anchor="middle">BioQuest: mapas y sugerencias</text>
+<line class="arr" x1="540" y1="175" x2="540" y2="210"/>
+<line class="arr" x1="760" y1="245" x2="800" y2="245"/>
+<line class="arr" x1="240" y1="245" x2="280" y2="245"/>
+<line class="arr" x1="500" y1="245" x2="540" y2="245"/>
+<text class="s" x="20" y="320">QA continuo: contaminacion de galeria (diario), fuga del eval minado (semanal, con purga), alineacion indice-catalogo (cada 10 min).</text>
+<text class="s" x="20" y="344">Objetivo: acercar el acierto por especie al 100 % con galeria (mas fotos de calidad, menos contaminacion) y evaluacion honesta.</text>
+</svg>

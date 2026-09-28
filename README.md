@@ -2,7 +2,7 @@
 
 **Mediterranean marine identification by retrieval.** Formerly YOLOFauna. Production: **frozen BioCLIP-2.5 ViT-H + k-NN (k=15, T=0.05)**.
 
-Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](paper/01_biofauna.md) · [ES](paper/01_biofauna_es.md)
+Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
 ## Snapshot (2026-09-28)
 
@@ -16,7 +16,7 @@ Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](paper/01_b
 | This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts |
 | Not shipped | Photographs, per-photo `embeddings.npy` |
 
-**2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](paper/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
+**2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](papers/biofauna/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
 
 ## Quick start (nearest-centroid demo)
 
