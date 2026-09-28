@@ -1,6 +1,6 @@
 # BioFauna — short master (public)
 
-> **2026-09-28** · Live **88.11%** species OOS on the leak-free set (n=12,373) · FAISS **1,118,353** / 4543 spp · [fotofauna.yespi.es](https://fotofauna.yespi.es)
+> **2026-09-28** · Live gallery **1,118,353** embeddings / **4,543** species (FAISS aligned) · operating **field evaluation 81.4%** species (n=62,408) · closed-set leak-free 88.11% · [fotofauna.yespi.es](https://fotofauna.yespi.es)
 
 Frozen **BioCLIP-2.5 ViT-H** + k-NN k=15 + T=0.05 + max 3 votes per species + ROI fusion + calibration + hierarchical abstention.
 

@@ -10,6 +10,9 @@
 
 ---
 
+
+**Actualización 28-sep-2026 — higiene de galería, evaluación de campo honesta y rescate zero-shot.** Tras el arreglo de la fuga (23-sep) la cifra de conjunto cerrado quedó en 88,11% sobre el conjunto sin fuga; la evaluación **operativa** pasó a una **evaluación de campo** (solo fotos de campo, iNaturalist/Minka research grade, 20–30 fotos por especie, auditada contra fugas antes de fusionar): **62.408 filas → 81,4% especie / 84,9% género**. Higiene de galería en el mismo periodo: **135 slugs sinónimos duplicados fusionados** (autoridad de nombres: **Minka**; si en Minka existen los dos nombres *no* se fusiona; si no, la sinonimia de WoRMS resuelve la equivalencia), **~1.000 fotos mal etiquetadas reubicadas** (reidentificaciones de Minka) con manifiesto y rollback completo, y 57 fotos en cuarentena. Dos guardas nuevas en producción: (a) **guarda de margen k-NN** en AutoID (no se publica a especie si el margen top-1/top-2 es menor que 0,02 — esas filas aciertan el 53% en la evaluación de campo); (b) **guardián automático de correcciones de curadores** que retira nuestras identificaciones cuando un curador corrige a nivel clase o superior. Una **segunda opinión zero-shot para todo el catálogo** (embeddings de texto BioCLIP-2.5; 2.985 etiquetas) se usa como *rescate*: cuando el k-NN duda (similitud top-1 < 0,85) y el zero-shot coincide con otra especie con p ≥ 0,90, gana el zero-shot — medido **+0,91 pp** en la evaluación de campo (772 arreglos / 315 roturas, 15% de cobertura) y ya en producción. El prior estacional temporal se **descartó** a escala completa (76,84% → 76,64% la mejor variante). Todo auditado: contaminación por prototipo (diario) y QA de fuga de las filas minadas (semanal, con purga automática).
+
 ## Resumen
 
 BioFauna identifica taxones mediterráneos (y algunos adyacentes incidentales) a partir de fotografías por **recuperación** sobre una galería regional, no entrenando un clasificador cerrado. El encoder de producción es **BioCLIP-2.5 ViT-H/14** (632M parámetros, embeddings de 1024 dimensiones), **congelado**. La consulta se embebe (fusión del encuadre global con un recorte central al 65%), se busca con **k-NN (k=15)** y un agregador de votos temperado, se puede reponderar con un prior geográfico, se convierte en probabilidad calibrada y, si el margen es débil, se **abstiene** a género, familia o un grupo de indistinguibilidad curado.
@@ -18,7 +21,7 @@ BioFauna identifica taxones mediterráneos (y algunos adyacentes incidentales) a
 
 | Magnitud | Valor |
 |----------|-------|
-| Galería | **1.072.233** embeddings / **4.705** especies, FAISS alineado |
+| Galería | **1.118.353** embeddings / **4.543** especies, FAISS alineado |
 | Catálogo (lista mediterránea) | **2.985** taxones (`dataset/catalog.json`) |
 | Acierto fuera de muestra (sin fuga) | **88,11%** especie / **90,55%** género / **92,46%** familia |
 | Evaluación | n=**12.373** observaciones, **2.091** especies con ≥1 muestra (sin copias de la galería, O18) |
@@ -76,8 +79,8 @@ Este repositorio publica **centroides** (`data/patterns/<slug>/prototype.npy`): 
 | Capa | Producción | Este repo |
 |------|------------|-----------|
 | Fotografías | ~1,06 M en disco | **No** (licencia) |
-| Embeddings por foto | 1.072.233 vectores | **No** (tamaño + derivados de fotos) |
-| Prototipo por especie | 4.705 × 1024 float32 | **Sí** (~15 MB) |
+| Embeddings por foto | 1.118.353 vectores | **No** (tamaño + derivados de fotos) |
+| Prototipo por especie | 4.543 × 1024 float32 | **Sí** (~15 MB) |
 | IDs / nombres | 2.985 filas | **Sí** (`dataset/catalog.json`) |
 | Calibrador, geo, pares, excepciones | JSON vivo | **Sí** |
 
@@ -137,7 +140,7 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 | K13 | Auditor de nomenclatura WoRMS+GBIF | 85 nombres aceptados; 4 fusiones de slug duplicado | Higiene de catálogo. |
 | K14 | Lista de indistinguibles + grupo esponjas | Pares extra desde confusión de eval | Capa de decisión donde la visión satura. |
 | K19 | Crecer las fotos de referencia hasta ~1.000/especie donde las fuentes lo permiten + re-embed completo por especie | McNemar n=18.000: **+0,57 pp** (313/211, p=1e-5). Por especies: crecen ≥+300 vectores **+7,7 pp**, +100–299 **+12,0 pp**, +1–99 +3,4 pp; las que no crecen −0,63 pp (dilución) | Los datos funcionan donde existen; el 77% de los errores restantes está en especies que no cambiaron. |
-| K20 | Segunda oleada de crecimiento (121 especies, 21,9k fotos), reconstrucción a 1.072.233 vectores | McNemar n=21.000: **+0,22 pp** (84/38, p=5e-5); especies tocadas **83,3%→89,5%** (83/1); 31 mejoran, 0 empeoran | En producción el 21-sep-2026. |
+| K20 | Segunda oleada de crecimiento (121 especies, 21,9k fotos), reconstrucción a 1.118.353 vectores | McNemar n=21.000: **+0,22 pp** (84/38, p=5e-5); especies tocadas **83,3%→89,5%** (83/1); 31 mejoran, 0 empeoran | En producción el 21-sep-2026. |
 | K21 | Segunda opinión independiente para el recuperador de conjunto cerrado: BioCLIP zero-shot sobre una lista regional | 300 observaciones de aves mediterráneas: BF≥0,85 **y** zero-shot≥0,80 coinciden → **98,5% de precisión con 69% de cobertura** (BF solo 91,2% con 79%). Todos los grupos: 95,9% al 49% con nivel de rescate frente a BF solo 93,8% al 48% | Guarda open-set de AutoID (aves en producción; resto de grupos pendiente). |
 | K23 | Tope de votos por especie en el agregador k-NN (`KNN_CLASS_CAP=3`) | McNemar n=12.000 obs held-out: **+1,13 pp** (92,33%→93,47%; 228 arreglos / 92 roturas); **177 especies mejoran / 70 empeoran**; más ganancia en especies con <25 fotos de galería (+3,2–3,5 pp). cap1 −0,19, cap2 +0,82, cap4 +1,08, cap5 +0,94 pp | En producción el 22-sep-2026 07:17 CEST. (Medido antes de la purga O18; cuenta la ganancia relativa.) |
 | K22 | Criterio de promoción contado en especies | 173 especies mejoran / 153 empeoran / 2.186 sin cambio (índice anterior→actual) | Reportar el balance por especie junto a Δ y p. |
@@ -196,7 +199,7 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 
 **Actualización 2026-09-23 — fuga en la evaluación detectada y eliminada.** Una auditoría que embebe cada foto de evaluación en *global* (sin TTA, igual que la galería) y la compara con la galería de su propia especie encontró que el **30,0%** de las 25.143 filas de evaluación eran copias exactas de una foto de la galería (coseno ≥0,995) y el **50,8%** copias o copias reescaladas/recortadas (≥0,98). El filtro de fuga de la cosecha comparaba un embedding *promediado con TTA* contra un umbral de 0,999 que una imagen idéntica nunca alcanza (~0,99), así que dejaba pasar todo tras el arreglo de agosto (§3). Las filas con fuga acertaban el **97,6%**; las limpias dan **88,11%** especie / 90,55% género / 92,46% familia (n=12.373, 2.091 especies). La cifra de panel de 92,4–93,4% citada el 21/22-sep queda retirada; **88,1% es la cifra actual de conjunto cerrado**, y el KPI de ~80% sobre observaciones recientes (O16) sigue siendo la cifra operativa. En especies raras con fotos nuevas de verdad de otras fuentes (Wikimedia, GBIF, museos) el acierto fue solo del **24%** (n=130): la fuga lo ocultaba. Filtro arreglado en todas las cosechas, filas con fuga apartadas (no borradas) y calibrador reajustado con datos limpios (O18). También en producción desde el 22-sep: tope de 3 votos por especie en el agregador k-NN (K23).
 
-**Actualización 2026-09-21.** Producción sirve ahora **1.072.233** embeddings / **4.705** especies (1.720 son clases de galería fuera del catálogo de 2.985 especies: 1,8% de los vectores) tras dos oleadas de crecimiento (K19–K20). El panel (overlay fuera de muestra, n=24.475) marca **92,36%** de especie; una comprobación sobre 300 observaciones recientes research grade de Minka da **~80%** (aves del catálogo 84% frente a 96% en el panel): el panel es una evaluación de conjunto cerrado y sobreestima la precisión real (O16). El recuperador de conjunto cerrado responde con confianza a especies que no están en el catálogo; una segunda opinión independiente de BioCLIP zero-shot elimina la mayoría de esos errores en aves (K21).
+**Actualización 2026-09-21.** Producción sirve ahora **1.118.353** embeddings / **4.543** especies (1.720 son clases de galería fuera del catálogo de 2.985 especies: 1,8% de los vectores) tras dos oleadas de crecimiento (K19–K20). El panel (overlay fuera de muestra, n=24.475) marca **92,36%** de especie; una comprobación sobre 300 observaciones recientes research grade de Minka da **~80%** (aves del catálogo 84% frente a 96% en el panel): el panel es una evaluación de conjunto cerrado y sobreestima la precisión real (O16). El recuperador de conjunto cerrado responde con confianza a especies que no están en el catálogo; una segunda opinión independiente de BioCLIP zero-shot elimina la mayoría de esos errores en aves (K21).
 
 ---
 

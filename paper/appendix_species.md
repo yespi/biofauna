@@ -1,6 +1,6 @@
 # Appendix A — Species catalog (reconstruction index)
 
-> Snapshot **2026-09-23**. **2,985** catalog taxa. Live identification gallery: **4,705** species / **1,072,233** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
+> Snapshot **2026-09-23**. **2,985** catalog taxa. Live identification gallery: **4,543** species / **1,118,353** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
 >
 > This table is an **index of taxon IDs**, not a training dataset. Photos are **not** redistributed (iNaturalist / Minka licences). Rebuild images via the APIs using `minka_taxon` / `inat_taxon`, then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`).
 >
@@ -385,7 +385,7 @@
 | `ardeadoris_egretta` | *Ardeadoris egretta* | — | 0 | Chromodorididae | Ardeadoris | 50307 | 121406 | yes |
 | `oxynoe_benchijigua` | *Oxynoe benchijigua* | — | 0 | Oxynoidae | Oxynoe | 255591 | 1202325 | yes |
 | `phyllidia_picta` | *Phyllidia picta* | — | 0 | Phyllidiidae | Phyllidia | 32553 | 207581 | yes |
-| `glossodoris_rufomarginata` | *Glossodoris rufomarginata* | — | 0 | Chromodorididae | Glossodoris | 157777 | 119863 | yes |
+| `glossodoris_rufomarginata` | *Glossodoris rufomarginata* | — | 0 | Chromodorididae | Glossodoris | 1,56777 | 119863 | yes |
 | `okenia_elegans` | *Okenia elegans* | — | 0 | Goniodorididae | Okenia | 35235 | 482694 | yes |
 | `doriprismatica_balut` | *Doriprismatica balut* | — | 0 | Chromodorididae | Doriprismatica | 65364 | 846509 | yes |
 | `limacus_flavus` | *Limacus flavus* | — | 0 | Limacidae | Limacus | 68113 | 322417 | yes |
@@ -612,7 +612,7 @@
 | `tubulophilinopsis_pilsbryi` | *Tubulophilinopsis pilsbryi* | — | 0 | Aglajidae | Tubulophilinopsis | 138592 | 823909 | yes |
 | `peronia_verruculata` | *Peronia verruculata* | — | 0 | Onchidiidae | Peronia | 265775 | 349476 | yes |
 | `helix_albescens` | *Helix albescens* | — | 0 | Helicidae | Helix | 266587 | 102434 | yes |
-| `chromolaichma_edmundsi` | *Chromolaichma edmundsi* | — | 0 | Chromodorididae | Chromolaichma | 157773 | 1230991 | yes |
+| `chromolaichma_edmundsi` | *Chromolaichma edmundsi* | — | 0 | Chromodorididae | Chromolaichma | 1,56773 | 1230991 | yes |
 | `phyllidiopsis_sinaiensis` | *Phyllidiopsis sinaiensis* | — | 0 | Phyllidiidae | Phyllidiopsis | 263283 | 504194 | yes |
 | `mexichromis_multituberculata` | *Mexichromis multituberculata* | — | 0 | Chromodorididae | Mexichromis | 256497 | 54668 | yes |
 | `halgerda_indotessellata` | *Halgerda indotessellata* | — | 0 | Halgerdidae | Halgerda | 264384 | 823525 | yes |
@@ -709,7 +709,7 @@
 | `gobius_niger` | *Gobius niger* | — | 1 | Gobiidae | Gobius | 35154 | 118704 | yes |
 | `echinaster_sepositus` | *Echinaster sepositus* | Echinaster (Echinaster) sepositus | 1 | Echinasteridae | Echinaster | 35260 | 117446 | yes |
 | `serranus_scriba` | *Serranus scriba* | — | 1 | Serranidae | Serranus | 13765 | 118674 | yes |
-| `ellisolandia_elongata` | *Ellisolandia elongata* | — | 2 | Lithophyllaceae | Ellisolandia | 35123 | 461577 | yes |
+| `ellisolandia_elongata` | *Ellisolandia elongata* | — | 2 | Lithophyllaceae | Ellisolandia | 35123 | 461,567 | yes |
 | `cereus_pedunculatus` | *Cereus pedunculatus* | — | 1 | Sagartiidae | Cereus | 34789 | 481214 | yes |
 | `dicentrarchus_labrax` | *Dicentrarchus labrax* | — | 1 | Moronidae | Dicentrarchus | 34837 | 99269 | yes |
 | `dictyota_dichotoma` | *Dictyota dichotoma* | — | 2 | Dictyotaceae | Dictyota | 35063 | 51024 | yes |

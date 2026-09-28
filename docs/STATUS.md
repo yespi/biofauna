@@ -2,6 +2,9 @@
 
 > **2026-09-23.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary. Older figures kept in `EXPERIMENTS.md`; **every panel figure before 2026-09-23 contained an evaluation leak (O18).**
 
+> **2026-09-28 — operating metric moved to a field evaluation; three new production guards.**
+> Live gallery **1,118,353** embeddings / **4,543** species. After the leak fix, the *closed-set* leak-free figure stands at 88.11%; the *operating* number is now a **field evaluation** (only field photos —iNaturalist/Minka research grade—, 20–30 per species, leak-audited before merging): **62,408 rows → 81.4% species / 84.9% genus**. New: **k-NN margin guard** in AutoID (no species publication when top-1/top-2 margin < 0.02; those rows score 53%), **automatic curator-correction guard** (retracts our IDs when a curator corrects at class level or above), and a **catalogue-wide zero-shot second opinion used as a rescue** (BioCLIP-2.5 text labels, 2,985 species; when top-1 similarity < 0.85 and the zero-shot agrees with another species at p ≥ 0.90 it wins) → **+0.91 pp** measured on the field evaluation. Gallery hygiene: 135 duplicate synonym slugs merged (Minka name authority), ~1,000 mislabelled photos relocated with manifests/rollback, 57 quarantined. Continuous QA: prototype-contamination (daily) and mined-eval leak audit (weekly, auto-purge).
+
 | | |
 |---|---|
 | Encoder | Frozen **BioCLIP-2.5 ViT-H/14** (`imageomics/bioclip-2.5-vith14`) |

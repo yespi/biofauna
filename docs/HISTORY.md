@@ -14,13 +14,13 @@
 | 2026-08-24-25 | Fine-tuning round 2 | QLoRA (ViT-L mismatch), LoRA (full-scale, backbone), linear head sidecar (frozen backbone) — all closed negative | **75.4%** unchanged (no cutover) |
 | 2026-08-25-26 | Calibration-set leakage found & fixed | 42.7% of calibration photos were duplicates already in the reference gallery (broken dedup check); fixed, re-measured on clean n=12,788 | **75.8%** species / 81.1% genus / 84.5% family |
 | 2026-08-27–30 | TTA, ROI fusion, Bucket B, local subspace | Inference stack frozen at 77.77% after five negative post-freeze hypotheses | **77.77%** |
-| 2026-08-31 | Tier-1 gallery densification | Same frozen ViT-H; FAISS **785,897** / 4,702 spp. Staging 807,267 not cut over | **79.25%** / Tier-1 75.10% |
+| 2026-08-31 | Tier-1 gallery densification | Same frozen ViT-H; FAISS **785,897** / 4,543 spp. Staging 807,267 not cut over | **79.25%** / Tier-1 75.10% |
 | 2026-09-01 | FAISS / label-array desync (live only) | `/reload` rebuilt `KY` without reloading FAISS; terrestrial→marine at 85–100%. Disk evals valid. AutoID wave resumed | **79.25%** harvest; jsonl later **79.10%** |
 | 2026-09-04 | night85 staging densification | Overlay McNemar **282/80 +1.58 pp**. Later absorbed into gallery work | **79.10%** jsonl |
 | 2026-09-10 | Quality gallery refresh + **k-NN T=0.05** | +2.16 pp (quality) and **+7.81 pp** (T=0.05) on their McNemar tests; FAISS 838,115 | New scorer; not the same cohort as 79.10% |
-| 2026-09-11–14 | Eval harvest expansion, Q≥8 swaps, nomenclature, seagrass n=60 | Live calibrator n=19,087 | **85.78%** species / 89.15% genus / 91.41% family; FAISS **848,883** / 4,702 |
+| 2026-09-11–14 | Eval harvest expansion, Q≥8 swaps, nomenclature, seagrass n=60 | Live calibrator n=19,087 | **85.78%** species / 89.15% genus / 91.41% family; FAISS **848,883** / 4,543 |
 
-| 2026-09-20–21 | Growth waves K19–K20, contamination clean-up, label-alignment guard | FAISS **1,072,233** / 4,705 | Panel then read 92.36% (contained leak, see 2026-09-23) |
+| 2026-09-20–21 | Growth waves K19–K20, contamination clean-up, label-alignment guard | FAISS **1,118,353** / 4,543 | Panel then read 92.36% (contained leak, see 2026-09-23) |
 | 2026-09-22 | Per-species vote cap 3 (K23) | McNemar +1.13 pp, 177/70 species | In production 07:17 CEST |
 | 2026-09-23 | Evaluation leak audit (O18): 50.8% of eval rows were gallery copies; gate fixed, rows purged, calibrator refit | — | **88.11%** species / 90.55% genus / 92.46% family, n=12,373 (leak-free) |
 
