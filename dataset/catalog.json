@@ -1,9 +1,9 @@
 {
- "as_of": "2026-09-27",
+ "as_of": "2026-09-28",
  "n": 2985,
  "n_in_live_gallery": 2983,
- "live_faiss": 1116885,
- "live_gallery_species": 4553,
+ "live_faiss": 1118353,
+ "live_gallery_species": 4543,
  "note": "Taxon IDs for reconstructing the photo gallery from Minka/iNaturalist/GBIF. No images, no per-photo embeddings.",
  "species": [
   {
