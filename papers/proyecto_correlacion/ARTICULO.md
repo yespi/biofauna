@@ -69,16 +69,43 @@ tróficas.
 ### 3.3 Candidatas nuevas (pendientes de revisión experta)
 
 | grupo funcional | A — B | n | lift | localidades | días |
-|---|---|---:|---:|---:|---:|
+|---|---:|---:|---:|---:|---:|
 | comensalismo en medusas | *Blackfordia virginica* — *Phronima sedentaria* | 19 | 653 | 6 | 15 |
 | simbiosis de limpieza | *Lysmata grabhami* — *Telmatactis cricoides* | 9 | 547 | 7 | 8 |
 | infauna (mismo sedimento) | *Fustiaria rubescens* — *Loripinus fragilis* | 16 | 892 | 7 | 15 |
 | infauna | *Abra alba* — *Abra longicallus* | 9 | 534 | 7 | 9 |
 | microhábitat de sustrato duro | *Macrorhynchia philippina* — *Telmatactis cricoides* | 8 | 765 | 5 | 6 |
 | plancton gelatinoso | *Callianira bialata* — *Vanadis formosa* | 9 | 645 | 7 | 9 |
-| nudibranquios co-habitantes | *Doris fontainii* — *Tyrinna delicata* | 14 | 1.277 | 9 | 12 |
 
 *(Tabla completa: material suplementario; figura principal: red top-12.)*
+
+### 3.4 Verificación bibliográfica de las candidatas
+
+Tras revisar la literatura pública (WoRMS, Sea Slug Forum, FishBase, JNCC/MarLIN, revistas revisadas por
+pares) los pares se clasifican en tres categorías:
+
+**Documentadas** (la interacción ya está descrita en la literatura): *Peltodoris atromaculata*—*Petrosia
+ficiformis* (predación), *Felimare picta*—*Ircinia* spp. (dieta), *Cratena peregrina*—*Eudendrium
+racemosum* (kleptopredación), la **comunidad del *Sargassum*** flotante (*Latreutes fucorum*,
+*Hippolyte coerulescens* y *Scyllaea pelagica*), *Phronima sedentaria* como simbionte de salpas y
+*Lampea pancerina* como depredador/parásito de salpas.
+
+**Plausibles** (coherentes ecológicamente, sin cita directa de la pareja): *Lysmata grabhami*—
+*Telmatactis cricoides* (la anémona hospeda crustáceos simbiontes documentados, *Thor amboinensis* en el
+65 % de las anémonas y *Stenorhynchus lanceolatus* en mutualismo facultativo; ambas especies co-ocurren
+realmente en Canarias/Madeira), los pares de plancton gelatinoso (ctenóforos, hiperídeos y medusas de la
+misma masa de agua) y los pares de infauna de sedimento (*Abra* spp., *Fustiaria*—*Loripinus*, ambos
+habitantes típicos de sedimentos blandos circalitorales).
+
+**Artefacto por viaje de buceo** (especies de otros océanos que un mismo grupo fotografía en la misma
+inmersión): *Doris fontainii*—*Tyrinna delicata* (ambas del **Pacífico sur**, lat −12…−55),
+*Chromodoris quadricolor*—*Hexabranchus sanguineus* (Mar Rojo/Indo-Pacífico), *Abudefduf saxatilis*—
+*Kyphosus vaigiensis* (Atlántico vs. Indo-Pacífico; no coexisten en el Mediterráneo). Estos pares quedan
+**excluidos** del análisis ecológico del área de estudio; su detección es además una señal útil de control de
+calidad del *dataset*.
+
+**Corrección taxonómica**: `loripinus_fragilis` (Philippi, 1836, **Lucinidae**) y `limaria_fragilis`
+(Gmelin, 1791, **Limidae**) son especies distintas; no son sinónimos (WoRMS AphiaID 718970 vs. 216644).
 
 ## 4. Discusión
 
@@ -86,6 +113,15 @@ Las candidatas se agrupan en tres clases de interpretación: **comensalismo/fore
 **simbiosis de limpieza** (gamba—anémona) y **co-habitación de sustrato** (fauna infaunal, fondo duro, algas coralinas). El reto metodológico central es distinguir **interacción** de
 **coincidencia** por hábitat, estación o esfuerzo de observación; de ahí la exigencia de repetibilidad
 espacial y temporal y el nulo estratificado en curso.
+
+La revisión bibliográfica aporta dos resultados de interés general. Primero, **el método recupera
+asociaciones ya documentadas** (predación en doridáceos, comunidad del *Sargassum*, simbiontes de
+gelatinosos), lo que valida la señal ecológica frente al ruido de esfuerzo. Segundo, la clasificación de los
+pares *top* por distribución geográfica de las especies revela un **artefacto sistemático de la ciencia
+ciudadana**: los pares de mayor lift con especies extra-mediterráneas (*Doris fontainii*—*Tyrinna delicata*,
+*Chromodoris quadricolor*—*Hexabranchus sanguineus*) corresponden a **viajes de buceo** de un mismo grupo y no
+a interacciones ecológicas del área de estudio. El cruce con el rango geográfico de cada taxón es, por tanto,
+un filtro de calidad necesario antes de interpretar cualquier candidata como asociación ecológica.
 
 ## 5. Limitaciones
 

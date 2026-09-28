@@ -63,16 +63,42 @@ sabellids, irciniids). **98 % of pairs are inter-family**, as expected for habit
 ### 3.3 New candidates (pending expert review)
 
 | functional group | A — B | n | lift | localities | days |
-|---|---|---:|---:|---:|---:|
+|---|---:|---:|---:|---:|---:|
 | commensalism on jellyfish | *Blackfordia virginica* — *Phronima sedentaria* | 19 | 653 | 6 | 15 |
 | cleaning symbiosis | *Lysmata grabhami* — *Telmatactis cricoides* | 9 | 547 | 7 | 8 |
 | infauna (same sediment) | *Fustiaria rubescens* — *Loripinus fragilis* | 16 | 892 | 7 | 15 |
 | infauna | *Abra alba* — *Abra longicallus* | 9 | 534 | 7 | 9 |
 | hard-substrate microhabitat | *Macrorhynchia philippina* — *Telmatactis cricoides* | 8 | 765 | 5 | 6 |
 | gelatinous plankton | *Callianira bialata* — *Vanadis formosa* | 9 | 645 | 7 | 9 |
-| co-occurring nudibranchs | *Doris fontainii* — *Tyrinna delicata* | 14 | 1,277 | 9 | 12 |
 
 *(Full table: supplementary material; main figure: top-12 network.)*
+
+### 3.4 Literature verification of the candidates
+
+After reviewing public literature (WoRMS, Sea Slug Forum, FishBase, JNCC/MarLIN, peer-reviewed journals),
+pairs are classified into three categories:
+
+**Documented** (the interaction is already described): *Peltodoris atromaculata*—*Petrosia ficiformis*
+(predation), *Felimare picta*—*Ircinia* spp. (diet), *Cratena peregrina*—*Eudendrium racemosum*
+(kleptopredation), the floating **Sargassum community** (*Latreutes fucorum*, *Hippolyte coerulescens* and
+*Scyllaea pelagica*), *Phronima sedentaria* as a salp symbiont and *Lampea pancerina* as a salp
+predator/parasite.
+
+**Plausible** (ecologically coherent, no direct citation of the pair): *Lysmata grabhami*—*Telmatactis
+cricoides* (the anemone hosts documented crustacean symbionts —*Thor amboinensis* in 65 % of anemones and
+*Stenorhynchus lanceolatus* in facultative mutualism— and both species truly co-occur in the Canary
+Islands/Madeira), gelatinous-plankton pairs (ctenophores, hyperiids and medusae of the same water mass) and
+infaunal sediment pairs (*Abra* spp.; *Fustiaria*—*Loripinus*, both typical of circalittoral soft bottoms).
+
+**Dive-trip artefact** (species from other oceans photographed together by the same group in one immersion):
+*Doris fontainii*—*Tyrinna delicata* (both from the **South Pacific**, lat −12…−55),
+*Chromodoris quadricolor*—*Hexabranchus sanguineus* (Red Sea/Indo-Pacific), *Abudefduf saxatilis*—
+*Kyphosus vaigiensis* (Atlantic vs. Indo-Pacific; they do not coexist in the Mediterranean). These pairs are
+**excluded** from the ecological analysis of the study area; detecting them is also a useful dataset-quality
+control signal.
+
+**Taxonomic correction**: `loripinus_fragilis` (Philippi, 1836, **Lucinidae**) and `limaria_fragilis`
+(Gmelin, 1791, **Limidae**) are distinct species; they are not synonyms (WoRMS AphiaID 718970 vs. 216644).
 
 ## 4. Discussion
 
@@ -81,6 +107,15 @@ symbiosis** (shrimp—anemone) and **substrate co-habitation** (infauna; hard bo
 central methodological challenge is separating **interaction** from **coincidence** driven by habitat, season
 or observer effort; hence the spatial/temporal repeatability requirement and the stratified null currently
 under development.
+
+The literature review yields two results of general interest. First, **the method recovers already documented
+associations** (dorid predation, the Sargassum community, gelatinous-zooplankton symbionts), validating the
+ecological signal against effort noise. Second, classifying the top pairs by the geographic range of their
+species reveals a **systematic citizen-science artefact**: the highest-lift pairs with extra-Mediterranean
+species (*Doris fontainii*—*Tyrinna delicata*; *Chromodoris quadricolor*—*Hexabranchus sanguineus*)
+correspond to **dive trips** by the same group rather than to ecological interactions in the study area.
+Cross-checking each taxon's geographic range is therefore a necessary quality filter before interpreting any
+candidate as an ecological association.
 
 ## 5. Limitations
 

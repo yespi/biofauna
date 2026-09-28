@@ -62,6 +62,24 @@ Con ella, los pares que ya conocíamos ganan crédito y aparecen asociaciones co
 **Lección metodológica**: la validación de estas asociaciones no puede hacerse con pares que uno *cree*
 documentados; debe pasar por (a) revisión experta y (b) filtros que maten el sesgo de salida/observador.
 
+## 4 ter. Filtro de CALIDAD por rango geográfico (añadido 28-sep-2026, tras verificación bibliográfica)
+
+La revisión bibliográfica de los pares *top* reveló que varios estaban formados por especies **no
+mediterráneas** co-ocurriendo en eventos de **viajes de buceo** (un mismo grupo fotografía la misma inmersión
+en el Mar Rojo, el Pacífico o el Atlántico). Ejemplos medidos en los datos:
+
+| par | latitud de las observaciones | veredicto |
+|---|---:|---|
+| *Doris fontainii* + *Tyrinna delicata* | −55…−12 (Pacífico sur) | ❌ artefacto de viaje |
+| *Chromodoris quadricolor* + *Hexabranchus sanguineus* | 20…29 (Mar Rojo/Indo-Pacífico) | ❌ artefacto de viaje |
+| *Abudefduf saxatilis* + *Kyphosus vaigiensis* | atlántico vs. indo-pacífico | ❌ no coexisten en el área |
+| *Lysmata grabhami* + *Telmatactis cricoides* | 27…29 (Canarias/Madeira) | ✅ real en territorio español |
+
+**Regla añadida**: antes de interpretar cualquier candidata como asociación ecológica del área de estudio, se
+cruza el **rango geográfico (WoRMS/OBIS/GBIF)** de ambas especies; los pares con especies alópatricas al área
+se marcan como **artefacto por viaje de buceo** y se excluyen del análisis ecológico (aunque se conservan como
+señal de control de calidad del *dataset*).
+
 ## 5. Validación interna (control de calidad del método)
 
 El método se aplica **antes de mirar nada nuevo** a asociaciones **ya documentadas** en la bibliografía.

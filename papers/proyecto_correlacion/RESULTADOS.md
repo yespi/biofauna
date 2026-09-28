@@ -67,7 +67,7 @@ La lista completa (top 40 con familia y métricas) está en
 ## 4 bis. Candidatas con el filtro de **≥5 observadores distintos**
 
 | A | B | n | obs. distintos | lift | lectura plausible |
-|---|---|---:|---:|---:|---|
+|---|---:|---:|---:|---:|---|
 | *Latreutes fucorum* (gamba del sargazo) | *Scyllaea pelagica* (nudibranquio del sargazo) | 11 | **10** | 344 | **comunidad del alga flotante *Sargassum*** |
 | *Hippolyte coerulescens* | *Scyllaea pelagica* | 6 | 6 | 688 | idem (fauna asociada al sargazo) |
 | *Doris fontainii* | *Tyrinna delicata* | 14 | 6 | 1.243 | nudibranquios del mismo sustrato |
@@ -77,6 +77,53 @@ La lista completa (top 40 con familia y métricas) está en
 | *Hippolyte coerulescens* | *Latreutes fucorum* | 5 | 5 | 396 | fauna del sargazo |
 | *Leptogorgia ruberrima* | *Leptogorgia viminalis* | 6 | 5 | 754 | gorgonias simpátricas |
 | *Abudefduf saxatilis* | *Kyphosus vaigiensis* | 8 | 8 | 445 | peces de arrecife |
+
+## 4 ter. Verificación bibliográfica (28-sep-2026)
+
+Cada par se clasifica tras revisar la literatura pública (WoRMS, Sea Slug Forum, FishBase,
+JNCC/MarLIN, revistas revisadas por pares). **Nota metodológica:** la co-ocurrencia en *eventos* de
+ciudadanos incluye observaciones de **todo el mundo** (no solo Mediterráneo); los pares cuyas especies
+son de otros reinos/océanos suelen ser **fotos de viajes de buceo** (mismo grupo, misma inmersión) y se
+marcan como *artefacto*, no como asociación ecológica válida del área de estudio.
+
+### ✅ Documentadas (la literatura describe la interacción)
+
+| A | B | n | obs. | interacción documentada | fuentes |
+|---|---|---:|---:|---|---|
+| *Peltodoris atromaculata* | *Petrosia ficiformis* | 79 | 32 | **predación**: el nudibranquio se alimenta de esa esponja (petroformynas como defensa) | literatura trófica de doridáceos |
+| *Felimare picta* | *Ircinia* spp. | 29 | 16 | **dieta** del nudibranquio sobre esponjas del género *Ircinia* (y *Dysidea*) | McDonald & Nybakken 2001; OPK |
+| *Cratena peregrina* | *Eudendrium racemosum* | 5 | 5 | **kleptopredación**: C. peregrina roba presas al hidrozoo | CNR (Di Camillo et al.) |
+| *Latreutes fucorum* / *Hippolyte coerulescens* | *Scyllaea pelagica* | 11 | 10 | **comunidad del *Sargassum*** flotante (gambas y nudibranquio asociados al alga) | NOAA/Sargassum fauna; BAMZ |
+| *Doto coronata* | *Sertularella gayi* | — | — | hidroides del género *Sertularella* como presa de *Doto* | literatura de Dotidae |
+| *Phronima sedentaria* | salpas/zooplancton gelatinoso | 19 | — | **simbionte obligado** de salpas (barrica) y otros gelatinosos | Laval 1978; Diebel 1988; MBARI |
+| *Lampea pancerina* | salpas | 12 | — | **depredador/parásito de salpas** (doble vida) | literature ctenóforos |
+
+### 🟡 Plausibles (ecológicamente coherentes; no hay cita directa de la pareja)
+
+| A | B | n | obs. | argumento |
+|---|---|---:|---:|---|
+| *Lysmata grabhami* | *Telmatactis cricoides* | 9 | 6 | *T. cricoides* hospeda **crustáceos simbiontes documentados** (*Thor amboinensis*, 65 % de anémonas; *Stenorhynchus lanceolatus*, mutualismo facultativo); las *Lysmata* son gambas limpiadoras. Co-ocurren real en **Canarias/Madeira** (territorio español). |
+| *Callianira bialata* | *Vanadis formosa* / ctenóforos | 9 | 6 | ctenóforos y poliquetos alciópidos pelágicos de la misma masa de agua; gremio depredador planctónico (coexistencia). |
+| *Blackfordia virginica* | *Phronima sedentaria* / *Brachyscelus crusculum* | 19 | — | los **hiperídeos se asocian a gelatinosos** (medusas incluidas); *Phronima* es el simbionte más común de salpas, *Brachyscelus* es hiperídeo comensal típico de medusas. Sin cita *Blackfordia*-específica. |
+| *Abra alba* | *Abra longicallus* | 9 | — | **comunidades de *Abra*** en sedimentos blandos circalitorales (biotopo JNCC «Abra alba & Nucula nitidosa»); coexistencia de bivalvos infaunales del mismo género. |
+| *Fustiaria rubescens* | *Loripinus fragilis* | 16 | — | **infauna del mismo sedimento**; *Loripinus* (Lucinidae) vive en sedimentos reducidos con simbiontes quimiosintéticos. |
+| *Macrorhynchia philippina* | *Telmatactis cricoides* | 8 | 6 | **fondo duro esciáfilo compartido** (hábitat, no interacción); ambas especies termófilas en expansión en el Mediterráneo/Atlántico NE. |
+
+### ❌ Descartadas / artefacto (especies de otros océanos → fotos de viaje)
+
+| A | B | n | obs. | motivo |
+|---|---|---:|---:|---|
+| *Doris fontainii* + *Tyrinna delicata* | — | 14 | 6 | ambas son del **Pacífico sur** (lat −12 a −55; Chile/Perú/Argentina), no del Mediterráneo: co-ocurrencia por viaje de buceo, no por ecología del área de estudio. |
+| *Chromodoris quadricolor* + *Hexabranchus sanguineus* | — | 8 | — | **Mar Rojo / Indo-Pacífico** (lat 20–29, lon 33–166): viajes de buceo. |
+| *Abudefduf saxatilis* + *Kyphosus vaigiensis* | — | 8 | 8 | *A. saxatilis* es estrictamente **Atlántico** y *K. vaigiensis* del **Indo-Pacífico**: no coexisten en el Mediterráneo. |
+| *Leptogorgia ruberrima* + *L. viminalis* | — | 6 | 5 | gorgonias **simpátricas** (sí co-ocurren en Canarias) pero la cita del par concreto no existe; revisar localidades. |
+
+### ⚠️ Corrección taxonómica (28-sep-2026)
+
+- **`loripinus_fragilis` NO es sinónimo de `limaria_fragilis`**: *Loripinus fragilis* (Philippi, 1836) es un
+  bivalvo **Lucinidae** (quimiosimbionte) y *Limaria fragilis* (Gmelin, 1791) es un **Limidae** («file clam»).
+  Son especies distintas de familias distintas; el slug del catálogo es correcto. (WoRMS: AphiaID 718970
+  vs 216644.)
 
 ## 5. Figura
 

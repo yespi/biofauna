@@ -67,11 +67,15 @@ descritas existirían.
 | [`ANALISIS_AMBIENTAL.md`](ANALISIS_AMBIENTAL.md) | Turbidez/visibilidad desde las fotos: lo intentado, lo medido y lo que falta |
 | [`coocurrencia_catalogo_20260928.md`](coocurrencia_catalogo_20260928.md) | Salida cruda del análisis (top de asociaciones) |
 | [`coocurrencia_red_top12.svg`](coocurrencia_red_top12.svg) | Figura: red de las 12 asociaciones más fuertes |
+| [`ARTICULO.md`](ARTICULO.md) / [`ARTICLE.md`](ARTICLE.md) | Borrador del artículo científico (ES / EN), con clasificación bibliográfica de las candidatas |
+| `ARTICULO_v2_ES_20260928.pdf` / `ARTICLE_v2_EN_20260928.pdf` | PDFs del borrador (versión 2, 28-sep-2026, en el repo público) |
 
 ## 5. Siguientes pasos
 
 1. **Nulo estratificado por localidad·fecha** → convierte la lista en resultados citables (fase en curso).
 2. **Cruce con hábitat/sustrato** de la foto (mapas de hábitat desde los embeddings) → explica *por qué* coexisten.
 3. **Revisión biológica** de las candidatas (curadores/especialistas) → separar simbiosis real de coincidencia.
-4. **Artículo con fotografías** (PDF académico) organizado por grupos taxonómicos (en preparación).
+4. **Artículo con fotografías** (PDF académico) organizado por grupos taxonómicos: incluir **láminas fotográficas**
+   por caso (2-4 fotos con licencia reutilizable CC0/CC BY/CC BY-SA y atribución; las de *all rights reserved*
+   se excluyen o se pide permiso). En preparación.
 5. **Integración en BioQuest**: sugerencias «si ves X, busca Y» y redes de asociación por zona.
