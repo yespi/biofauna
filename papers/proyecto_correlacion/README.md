@@ -37,13 +37,10 @@ Metadatos de observación enriquecidos (fecha, hora, coordenadas, observador, lu
 especialmente, de las **personas curadoras** que revisan y corrigen las identificaciones de las especies más
 difíciles (las **crípticas**, donde dos especies se distinguen por detalles anatómicos o por el hábitat):
 
-- **Miquel Pontes** (`mpontes`), referencia en opistobranquios y en la divulgación de la fauna marina catalana.
-- **Xavier Salvador** (`xasalva`), curador incansable de la biodiversidad marina.
-- **`bertinhaco`** — el curador que más correcciones ha hecho a nuestras identificaciones automáticas (14 en
-  una sola semana de seguimiento), y los curadores **`uriborrajo`**, **`martanp`**, **`badosa`** y
-  **`guillermoalvarez`**.
+**Miquel Pontes**, **Xavier Salvador** y **Berta Companys**— y al conjunto de la comunidad de curaduría de
+**Minka SDG** e **iNaturalist**.
 
-Mención especial a la **FECDAS** (Federació Catalana d'Activitats Subaquàtiques) y a su **Projecte Aneris**,
+Menciones especiales también a la **FECDAS** (Federació Catalana d'Activitats Subaquàtiques) y a su **Projecte Aneris**,
 por impulsar la ciencia ciudadana marina de la que se nutre **Minka SDG** —la plataforma que aporta el mayor
 volumen de observaciones verificadas de este estudio— y por su labor de formación de buceadores-observadores.
 Su trabajo (identificaciones *research grade*, correcciones y datos de campo) es lo que hace posible tanto el

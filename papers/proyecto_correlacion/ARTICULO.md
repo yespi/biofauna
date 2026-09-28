@@ -104,14 +104,13 @@ donde los satélites rinden peor.
 
 ## Agradecimientos
 
-A la comunidad observadora y, muy especialmente, a las **personas curadoras**: **Miquel Pontes** (`mpontes`),
-**Xavier Salvador** (`xasalva`) y los curadores **`bertinhaco`**, **`uriborrajo`**, **`martanp`**, **`badosa`**
-y **`guillermoalvarez`**, cuyo trabajo diario hace fiables las identificaciones de las especies **crípticas**.
-Mención especial a la **FECDAS** y a su **Projecte Aneris** por impulsar la ciencia ciudadana marina y la
-formación de observadores; a **Minka SDG** e **iNaturalist** por las plataformas y los datos; y a **GBIF**,
-**Wikimedia Commons**, **DORIS/FFESSM**, **SeaSlugForum**, **WoRMS** y **FishBase** por las imágenes y los
-datos taxonómicos. Este análisis ha sido posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 +
-FAISS) desarrollado en el proyecto.
+A la comunidad observadora y, muy especialmente, a las **personas curadoras** que sostienen la fiabilidad de
+las identificaciones —en especial **Miquel Pontes**, **Xavier Salvador** y **Berta Companys**— y al conjunto de
+la comunidad de curaduría de **Minka SDG** e **iNaturalist**. Mención especial a la **FECDAS** y a su
+**Projecte Aneris** por impulsar la ciencia ciudadana marina y la formación de observadores; a **Minka SDG** e
+**iNaturalist** por las plataformas y los datos; y a **GBIF**, **Wikimedia Commons**, **DORIS/FFESSM**,
+**SeaSlugForum**, **WoRMS** y **FishBase** por las imágenes y los datos taxonómicos. Este análisis ha sido
+posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 + FAISS) desarrollado en el proyecto.
 
 ## Material suplementario
 

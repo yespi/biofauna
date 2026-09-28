@@ -99,18 +99,12 @@ perform worst.
 
 ## Acknowledgements
 
-To the observer community and, most especially, to the **curators**: **Miquel Pontes** (`mpontes`),
-**Xavier Salvador** (`xasalva`) and the curators **`bertinhaco`**, **`uriborrajo`**, **`martanp`**, **`badosa`**
-and **`guillermoalvarez`**, whose daily work makes the identification of **cryptic** species reliable. Special
-mention to **FECDAS** and its **Aneris Project** for driving marine citizen science and observer training; to
-**Minka SDG** and **iNaturalist** for the platforms and the data; and to **GBIF**, **Wikimedia Commons**,
-**DORIS/FFESSM**, **SeaSlugForum**, **WoRMS** and **FishBase** for images and taxonomic data. This analysis has
-been possible thanks to the **BioFauna identifier** (BioCLIP-2.5 ViT-H/14 + FAISS) developed in the project.
+To the observer community and, most especially, to the **curators** who sustain the reliability of the
+identifications —in particular **Miquel Pontes**, **Xavier Salvador** and **Berta Companys**— and to the wider
+curatorial community of **Minka SDG** and **iNaturalist**. Special mention to **FECDAS** and its **Aneris
+Project** for driving marine citizen science and observer training; to **Minka SDG** and **iNaturalist** for
+the platforms and the data; and to **GBIF**, **Wikimedia Commons**, **DORIS/FFESSM**, **SeaSlugForum**,
+**WoRMS** and **FishBase** for images and taxonomic data. This analysis has been possible thanks to the
+**BioFauna identifier** (BioCLIP-2.5 ViT-H/14 + FAISS) developed in the project.
 
-## Supplementary material
 
-- Association tables (top 40 and the full set).
-- Association network figure.
-- **Photographic plates** per case (in preparation): for each association, 2-4 archive photographs with the
-  **attribution and licence** of their original author. **Inclusion criterion: reusable-licence images only
-  (CC BY, CC BY-SA, CC0) or explicit author permission.**
