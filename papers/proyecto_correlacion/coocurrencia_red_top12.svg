@@ -1,0 +1,57 @@
+<svg width="1000" height="620" style="background:#0b1020;font-family:sans-serif">
+<text x="16" y="26" fill="#fff" font-size="16">Asociaciones entre especies (co-ocurrencia ≥8 eventos, ≥3 celdas, ≥3 días) — top 12 por lift</text>
+<line x1="621" y1="523" x2="335" y2="508" stroke="#6cf" stroke-width="3.5" opacity="0.55"><title>chromodoris_quadricolor + hexabranchus_sanguineus n=8 lift=1911.5</title></line>
+<line x1="525" y1="539" x2="773" y2="165" stroke="#6cf" stroke-width="2.7" opacity="0.55"><title>doris_fontainii + tyrinna_delicata n=14 lift=1277.2</title></line>
+<line x1="830" y1="300" x2="815" y2="371" stroke="#6cf" stroke-width="2.5" opacity="0.55"><title>blackfordia_virginica + brachyscelus_crusculum n=9 lift=1129.0</title></line>
+<line x1="427" y1="534" x2="258" y2="137" stroke="#6cf" stroke-width="2.3" opacity="0.55"><title>fustiaria_rubescens + petta_pusilla n=8 lift=1003.5</title></line>
+<line x1="427" y1="534" x2="203" y2="404" stroke="#6cf" stroke-width="2.2" opacity="0.55"><title>fustiaria_rubescens + loripinus_fragilis n=16 lift=892.0</title></line>
+<line x1="773" y1="435" x2="203" y2="196" stroke="#6cf" stroke-width="2.1" opacity="0.55"><title>caecum_trachea + parthenina_interstincta n=9 lift=860.2</title></line>
+<line x1="427" y1="66" x2="706" y2="112" stroke="#6cf" stroke-width="2.1" opacity="0.55"><title>pseudobryopsis_myura + thericium_renovatum n=8 lift=860.2</title></line>
+<line x1="174" y1="336" x2="525" y2="61" stroke="#6cf" stroke-width="2.0" opacity="0.55"><title>macrorhynchia_philippina + telmatactis_cricoides n=8 lift=764.6</title></line>
+<line x1="258" y1="463" x2="621" y2="77" stroke="#6cf" stroke-width="1.9" opacity="0.55"><title>learchis_poica + tenellia_maua n=8 lift=683.2</title></line>
+<line x1="830" y1="300" x2="335" y2="92" stroke="#6cf" stroke-width="1.9" opacity="0.55"><title>blackfordia_virginica + phronima_sedentaria n=19 lift=653.0</title></line>
+<line x1="830" y1="300" x2="174" y2="264" stroke="#6cf" stroke-width="1.8" opacity="0.55"><title>blackfordia_virginica + neotima_lucullana n=8 lift=647.4</title></line>
+<line x1="706" y1="488" x2="815" y2="229" stroke="#6cf" stroke-width="1.8" opacity="0.55"><title>callianira_bialata + vanadis_formosa n=9 lift=645.1</title></line>
+<circle cx="830" cy="300" r="4" fill="#ffd166"/>
+<text x="830" y="292" fill="#dde" font-size="10" text-anchor="middle">blackfordia virginica</text>
+<circle cx="815" cy="371" r="4" fill="#ffd166"/>
+<text x="815" y="363" fill="#dde" font-size="10" text-anchor="middle">brachyscelus crusculum</text>
+<circle cx="773" cy="435" r="4" fill="#ffd166"/>
+<text x="773" y="427" fill="#dde" font-size="10" text-anchor="middle">caecum trachea</text>
+<circle cx="706" cy="488" r="4" fill="#ffd166"/>
+<text x="706" y="480" fill="#dde" font-size="10" text-anchor="middle">callianira bialata</text>
+<circle cx="621" cy="523" r="4" fill="#ffd166"/>
+<text x="621" y="515" fill="#dde" font-size="10" text-anchor="middle">chromodoris quadricolo</text>
+<circle cx="525" cy="539" r="4" fill="#ffd166"/>
+<text x="525" y="531" fill="#dde" font-size="10" text-anchor="middle">doris fontainii</text>
+<circle cx="427" cy="534" r="4" fill="#ffd166"/>
+<text x="427" y="526" fill="#dde" font-size="10" text-anchor="middle">fustiaria rubescens</text>
+<circle cx="335" cy="508" r="4" fill="#ffd166"/>
+<text x="335" y="500" fill="#dde" font-size="10" text-anchor="middle">hexabranchus sanguineu</text>
+<circle cx="258" cy="463" r="4" fill="#ffd166"/>
+<text x="258" y="455" fill="#dde" font-size="10" text-anchor="middle">learchis poica</text>
+<circle cx="203" cy="404" r="4" fill="#ffd166"/>
+<text x="203" y="396" fill="#dde" font-size="10" text-anchor="middle">loripinus fragilis</text>
+<circle cx="174" cy="336" r="4" fill="#ffd166"/>
+<text x="174" y="328" fill="#dde" font-size="10" text-anchor="middle">macrorhynchia philippi</text>
+<circle cx="174" cy="264" r="4" fill="#ffd166"/>
+<text x="174" y="256" fill="#dde" font-size="10" text-anchor="middle">neotima lucullana</text>
+<circle cx="203" cy="196" r="4" fill="#ffd166"/>
+<text x="203" y="188" fill="#dde" font-size="10" text-anchor="middle">parthenina interstinct</text>
+<circle cx="258" cy="137" r="4" fill="#ffd166"/>
+<text x="258" y="129" fill="#dde" font-size="10" text-anchor="middle">petta pusilla</text>
+<circle cx="335" cy="92" r="4" fill="#ffd166"/>
+<text x="335" y="84" fill="#dde" font-size="10" text-anchor="middle">phronima sedentaria</text>
+<circle cx="427" cy="66" r="4" fill="#ffd166"/>
+<text x="427" y="58" fill="#dde" font-size="10" text-anchor="middle">pseudobryopsis myura</text>
+<circle cx="525" cy="61" r="4" fill="#ffd166"/>
+<text x="525" y="53" fill="#dde" font-size="10" text-anchor="middle">telmatactis cricoides</text>
+<circle cx="621" cy="77" r="4" fill="#ffd166"/>
+<text x="621" y="69" fill="#dde" font-size="10" text-anchor="middle">tenellia maua</text>
+<circle cx="706" cy="112" r="4" fill="#ffd166"/>
+<text x="706" y="104" fill="#dde" font-size="10" text-anchor="middle">thericium renovatum</text>
+<circle cx="773" cy="165" r="4" fill="#ffd166"/>
+<text x="773" y="157" fill="#dde" font-size="10" text-anchor="middle">tyrinna delicata</text>
+<circle cx="815" cy="229" r="4" fill="#ffd166"/>
+<text x="815" y="221" fill="#dde" font-size="10" text-anchor="middle">vanadis formosa</text>
+</svg>
