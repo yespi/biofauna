@@ -286,8 +286,7 @@ de calidad del *dataset*.
 
 **Implicación**: cinco hipótesis (d, e, f y sus variantes) requieren **validación in situ** por biólogos —
 inmersiones dirigidas, cámaras fijas o revisión de fotografías de parejas. Esa es la línea de trabajo que
-convierte el resultado en aporte científico citable y la base de la aplicación en BioQuest («si ves X, busca
-Y»).
+convierte el resultado en aporte científico citable.
 
 ## 5. Limitaciones
 
@@ -296,13 +295,37 @@ Y»).
 2. Sesgo de esfuerzo y de observador (eventos tipo *bioblitz*).
 3. Cobertura desigual entre grupos taxonómicos.
 
-## 6. Conclusiones y aplicaciones
+## 6. Conclusiones
 
-Las fotografías de ciencia ciudadana contienen asociaciones ecológicas recuperables a escala de catálogo. Los
-resultados permiten (a) **priorizar** la búsqueda de especies raras allí donde aparece su asociada,
-(b) **enriquecer BioQuest** con sugerencias «si ves X, busca Y» y redes de asociación por zona, y (c) plantear
-**hipótesis testables** para la investigación marina, con el valor añadido de cubrir aguas someras y costeras
-donde los satélites rinden peor.
+Este trabajo demuestra que las fotografías de ciencia ciudadana, identificadas automáticamente a escala de
+catálogo, contienen **asociaciones ecológicas recuperables y verificables**. Las conclusiones principales:
+
+1. **El método valida la señal ecológica**: recupera asociaciones documentadas de la literatura clásica con
+   alta robustez — *Peltodoris atromaculata* sobre *Petrosia ficiformis* (79 eventos, lift 11,1), la
+   kleptopredación de *Cratena peregrina* sobre *Eudendrium racemosum*, las dietas de doridáceos sobre
+   esponjas y la comunidad del *Sargassum* flotante — y lo hace **sin conocimiento previo de las dietas**.
+
+2. **Descubre relaciones nuevas con datos estadísticos**: 1.048 pares tróficos de nudibranquios (≥5
+   observadores) y 11.509 pares específicos mediterráneos en todo el catálogo, entre los que destacan:
+   - **Invasores lessepsianos co-ocurrentes** (*Fistularia commersonii*, *Pterois miles*, *Siganus rivulatus*,
+     *Taeniura lymma*) con lifts de 124-262 — una señal de **monitoreo de bioinvasión** directamente útil
+     para la gestión.
+   - **Gremio depredador planctónico** (ctenóforos y sifonóforos en la misma masa de agua: *Cestum veneris* +
+     *Hippopodius hippopus*, lift 103).
+   - **Relaciones tróficas bentónicas** no descritas (*Codium* — sacoglosos, *Astroides* — ascidias).
+
+3. **La co-ocurrencia no es un artefacto del identificador**: los pares documentados muestran confusión
+   cruzada nula (0-1 casos), frente a los pares de especies crípticas (control) con 13-26 % de confusión que
+   no aparecen como candidatas.
+
+4. **Aplicaciones directas**: (a) priorizar la búsqueda de especies raras donde aparece su asociada;
+   (b) generar hipótesis testables de dieta y hábitat para validación in situ por biólogos; (c) vigilar la
+   expansión de especies invasoras; y (d) alimentar herramientas de divulgación y ciencia ciudadana con
+   sugerencias «si ves X, busca Y» y redes de asociación por zona.
+
+La combinación de identificación automática, co-ocurrencia a escala de catálogo y **contraste con la
+literatura biológica** convierte un archivo fotográfico participativo en una fuente de hipótesis ecológicas
+citables, con el valor añadido de cubrir aguas someras y costeras donde otros métodos rinden peor.
 
 ## Agradecimientos
 

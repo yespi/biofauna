@@ -275,7 +275,7 @@ signal.
 
 **Implication**: five hypotheses (d, e, f and variants) require **in-situ validation** by biologists —
 targeted dives, fixed cameras or review of pairing photographs. That is the line of work that turns the result
-into a citable scientific contribution and the basis of the BioQuest application ("if you see X, look for Y").
+into a citable scientific contribution.
 
 ## 5. Limitations
 
@@ -284,13 +284,36 @@ into a citable scientific contribution and the basis of the BioQuest application
 2. Observer/effort bias (bioblitz-type events).
 3. Uneven taxonomic coverage.
 
-## 6. Conclusions and applications
+## 6. Conclusions
 
-Citizen-science photographs contain ecological associations retrievable at catalogue scale. Results enable
-(a) **prioritising** the search for rare species where their associate occurs, (b) **enriching BioQuest** with
-"if you see X, look for Y" suggestions and per-area association networks, and (c) generating **testable
-hypotheses** for marine research, with the added value of covering shallow coastal waters where satellites
-perform worst.
+This work shows that citizen-science photographs, automatically identified at catalogue scale, contain
+**ecological associations that are recoverable and verifiable**. The main conclusions:
+
+1. **The method validates the ecological signal**: it recovers documented associations from the classic
+   literature with high robustness — *Peltodoris atromaculata* on *Petrosia ficiformis* (79 events, lift
+   11.1), the kleptopredation of *Cratena peregrina* on *Eudendrium racemosum*, dorid diets on sponges and
+   the floating *Sargassum* community — and does so **without prior knowledge of the diets**.
+
+2. **It discovers new relationships with statistical support**: 1,048 trophic nudibranch pairs (≥5
+   observers) and 11,509 specific Mediterranean pairs across the whole catalogue, notably:
+   - **Co-occurring Lessepsian invaders** (*Fistularia commersonii*, *Pterois miles*, *Siganus rivulatus*,
+     *Taeniura lymma*) with lifts of 124-262 — a **bioinvasion monitoring** signal directly useful for
+     management.
+   - **A shared planktonic predatory guild** (ctenophores and siphonophores in the same water mass:
+     *Cestum veneris* + *Hippopodius hippopus*, lift 103).
+   - **Undescribed benthic trophic relationships** (*Codium* — sacoglossans, *Astroides* — ascidians).
+
+3. **Co-occurrence is not an artefact of the identifier**: documented pairs show null cross-confusion (0-1
+   cases), whereas cryptic species pairs (control) show 13-26 % confusion and do not appear as candidates.
+
+4. **Direct applications**: (a) prioritising the search for rare species where their associate occurs;
+   (b) generating testable diet/habitat hypotheses for in-situ validation by biologists; (c) monitoring the
+   spread of invasive species; and (d) feeding outreach and citizen-science tools with "if you see X, look
+   for Y" suggestions and per-area association networks.
+
+Combining automatic identification, catalogue-scale co-occurrence and **contrast with the biological
+literature** turns a participatory photographic archive into a source of citable ecological hypotheses, with
+the added value of covering shallow coastal waters where other methods perform worst.
 
 ## Acknowledgements
 
