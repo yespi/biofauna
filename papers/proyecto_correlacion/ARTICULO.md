@@ -117,7 +117,7 @@ calidad del *dataset*.
 **Corrección taxonómica**: `loripinus_fragilis` (Philippi, 1836, **Lucinidae**) y `limaria_fragilis`
 (Gmelin, 1791, **Limidae**) son especies distintas; no son sinónimos (WoRMS AphiaID 718970 vs. 216644).
 
-## 3.5 Referencias bibliográficas de las asociaciones
+### 3.5 Referencias bibliográficas de las asociaciones
 
 Las fuentes que sustentan la clasificación anterior, verificadas durante la revisión (28-sep-2026):
 
@@ -139,7 +139,7 @@ Las fuentes que sustentan la clasificación anterior, verificadas durante la rev
 | *Doris fontainii* (antes *Anisodoris fontainei*) y *Tyrinna delicata* son del Pacífico sur | Sea Slug Forum (Australian Museum); Valdés & Muniain, 2002 |
 | *Eurythoe complanata* es complejo de ≥3 especies crípticas | Barroso et al., 2010 — *Eurythoe complanata, the 'cosmopolitan' fireworm, consists of at least three cryptic species* (Marine Biology) |
 
-## 3.6 Las asociaciones tróficas de los nudibranquios (29-sep-2026)
+### 3.6 Las asociaciones tróficas de los nudibranquios (29-sep-2026)
 
 Los nudibranquios son un grupo ideal para validar el método: su dieta es **especialista y bien documentada**
 (cada especie come una o pocas presas coloniales —esponjas, hidrozoos, briozoos, ascidias, algas—; Wägele &

@@ -109,7 +109,7 @@ control signal.
 **Taxonomic correction**: `loripinus_fragilis` (Philippi, 1836, **Lucinidae**) and `limaria_fragilis`
 (Gmelin, 1791, **Limidae**) are distinct species; they are not synonyms (WoRMS AphiaID 718970 vs. 216644).
 
-## 3.5 References supporting the associations
+### 3.5 References supporting the associations
 
 Sources verified during the literature review (28-sep-2026):
 
@@ -132,7 +132,7 @@ Sources verified during the literature review (28-sep-2026):
 | *Doris fontainii* (formerly *Anisodoris fontainei*) and *Tyrinna delicata* are South Pacific species | Sea Slug Forum (Australian Museum); Valdés & Muniain, 2002 |
 | *Eurythoe complanata* is a complex of ≥3 cryptic species | Barroso et al., 2010 — *Eurythoe complanata, the 'cosmopolitan' fireworm, consists of at least three cryptic species* (Marine Biology) |
 
-## 3.6 Trophic associations of nudibranchs (29-sep-2026)
+### 3.6 Trophic associations of nudibranchs (29-sep-2026)
 
 Nudibranchs are an ideal group to validate the method: their diet is **specialist and well documented**
 (each species eats one or few colonial prey —sponges, hydroids, bryozoans, ascidians, algae—; Wägele &
