@@ -205,6 +205,27 @@ The pair *Codium coralloides*—*Placida verticilata* is especially notable: **s
 algae of the genus *Codium*** (retaining their chloroplasts; Wägele & Klussmann-Kolb, 2005) — a documented
 trophic relationship the method recovers without prior knowledge.
 
+### 3.8 Evaluation rigour: ablation, long-tail and leakage (29-sep-2026)
+
+Three analyses were added to meet peer-review standards:
+
+**a) Ablation benchmark** (on the same random sample of 300 evaluation photos):
+
+| Model | Top-1 | Top-5 |
+|---|---:|---:|
+| Simple k-NN (pure BioCLIP-2.5 ViT-H, cosine to prototype) | 69.0 % | 91.0 % |
+| **BioFauna production** (tempered aggregator + per-species cap + Cube B + local subspace + zero-shot + abstention) | **77.7 %** | 90.0 % |
+| Gain of the decision mechanisms | **+8.7 pp** | −1.0 pp |
+
+**b) Long-tail metrics** (purged evaluation, 71,902 rows): Micro-accuracy **81.85 %** vs Macro-accuracy
+**75.71 %** (2,946 species); by class frequency, **rare species (<10 rows) score 53.5 %** vs 85.8 % for
+common ones — the expected frequency bias of biodiversity identifiers. Top-5 93.7 % · genus 87.1 % ·
+family 90.5 %.
+
+**c) Leakage isolation**: 2.17 % of evaluation rows shared an observation or observer with the reference
+gallery of their species; excluding them changes the result by only **−0.14 pp** (82.0 % → 81.85 %),
+confirming that the operating figure is not materially inflated.
+
 ## 4. Discussion
 
 ### 4.1 Theoretical background: co-occurrence and citizen-science biases
@@ -276,6 +297,31 @@ signal.
 **Implication**: five hypotheses (d, e, f and variants) require **in-situ validation** by biologists —
 targeted dives, fixed cameras or review of pairing photographs. That is the line of work that turns the result
 into a citable scientific contribution.
+
+### 4.3 Controlling local effort: locality·date stratified null (29-sep-2026)
+
+To address the criticism that lift may reflect **local sampling effort** (a locality or a day with many
+observations) rather than biological co-occurrence, a **stratified permutation null** was implemented: events
+(locality ~0.1°, day, size) are preserved and species are shuffled **within each locality·day block**
+(47,302 blocks, 500 permutations, 58,283 events with ≥2 species).
+
+Honest result: **386 of 3,000 tested pairs (12.9 %) are significant** at p<sub>emp</sub><0.05, but **none
+survives global FDR control** (Benjamini-Hochberg over 3,000 tests, requiring p≈3·10⁻⁵ per pair). Two
+readings:
+
+1. **Lift rewards rare pairs**: the *documented* pairs (*Peltodoris*—*Petrosia*, *Doto*—*Aglaophenia*) have
+   abundant but not "rare" co-occurrence, and do not even enter the top 3,000 by lift. **Lift is not the
+   right metric to validate common associations**; for them the signal is abundance and repeatability (n,
+   cells, days, observers), not lift.
+2. **Pairs with p<sub>emp</sub><0.05 and high n are genuine candidates** with biological meaning:
+   *Branchellion torpedinis* (marine leech) with *Torpedo marmorata* (ray) — real parasitism (p=0.002);
+   *Corallium rubrum* with *Paramuricea clavata* (red corals, p=0.04); *Cestum veneris* with *Hippopodius
+   hippopus* (gelatinous, p=0.026); *Codium* with *Placida verticilata* (trophic, p=0.032).
+
+**Methodological position**: pairs with a priori hypotheses (trophic and documented) are validated with their
+**individual p** (few concrete hypotheses, standard practice); exploratory discoveries are reported as
+candidates with p<sub>emp</sub><0.05 and an **explicit warning** that they do not survive global FDR and
+require independent validation. Detail: `experimentos/NULO_ESTRATIFICADO_20260929.md`.
 
 ## 5. Limitations
 

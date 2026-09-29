@@ -214,6 +214,27 @@ El par *Codium coralloides*—*Placida verticilata* es especialmente notable: lo
 de algas verdes del género *Codium*** (quedándose con sus cloroplastos; Wägele & Klussmann-Kolb, 2005) —
 relación trófica documentada que el método recupera sin conocimiento previo.
 
+### 3.8 Rigor de la evaluación: ablación, long-tail y leakage (29-sep-2026)
+
+Para responder a los estándares de revisión por pares se añadieron tres análisis:
+
+**a) Benchmark de ablación** (sobre la misma muestra aleatoria de 300 fotos del eval):
+
+| Modelo | Top-1 | Top-5 |
+|---|---:|---:|
+| k-NN simple (BioCLIP-2.5 ViT-H puro, coseno al prototipo) | 69,0 % | 91,0 % |
+| **BioFauna producción** (agregador temperado + tope por especie + Cubo B + subespacio local + zero-shot + abstención) | **77,7 %** | 90,0 % |
+| Ganancia de los mecanismos de decisión | **+8,7 pp** | −1,0 pp |
+
+**b) Métricas de long-tail** (eval purgado, 71.902 filas): Micro-accuracy **81,85 %** vs Macro-accuracy
+**75,71 %** (2.946 especies); por frecuencia de clase, las especies **raras (<10 filas) aciertan 53,5 %**
+frente al 85,8 % de las comunes — sesgo de frecuencia esperable en identificadores de biodiversidad. Top-5
+93,7 % · género 87,1 % · familia 90,5 %.
+
+**c) Aislamiento de leakage**: el 2,17 % de las filas del eval compartía observación u observador con la
+galería de su especie; excluirlas cambia el resultado solo **−0,14 pp** (82,0 % → 81,85 %), lo que confirma
+que la cifra operativa no está inflada de forma material.
+
 ## 4. Discusión
 
 ### 4.1 Marco teórico: co-ocurrencia y sesgos de la ciencia ciudadana
@@ -287,6 +308,31 @@ de calidad del *dataset*.
 **Implicación**: cinco hipótesis (d, e, f y sus variantes) requieren **validación in situ** por biólogos —
 inmersiones dirigidas, cámaras fijas o revisión de fotografías de parejas. Esa es la línea de trabajo que
 convierte el resultado en aporte científico citable.
+
+### 4.3 Control del esfuerzo local: nulo estratificado por localidad·fecha (29-sep-2026)
+
+Para responder a la crítica de que el lift puede reflejar **esfuerzo de muestreo local** (una localidad o un
+día con muchas observaciones) en lugar de co-ocurrencia biológica, se implementó un **nulo por permutación
+estratificada**: se conservan los eventos (localidad ~0,1°, día, tamaño) y se barajan las especies dentro de
+cada bloque localidad·día (47.302 bloques, 500 permutaciones, 58.283 eventos con ≥2 especies).
+
+Resultado honesto: **386 de 3.000 pares testeados (12,9 %) son significativos** a p<sub>emp</sub><0,05, pero
+**ninguno sobrevive al control de FDR global** (Benjamini-Hochberg sobre 3.000 tests, que exige
+p≈3·10⁻⁵ por par). Dos lecturas:
+
+1. **El lift premia pares raros**: los pares *documentados* de la literatura (*Peltodoris*—*Petrosia*,
+   *Doto*—*Aglaophenia*) tienen co-ocurrencia abundante pero no "rara", y ni siquiera entran en el top 3.000
+   por lift. **El lift no es la métrica adecuada para validar asociaciones comunes**; para ellas la señal es
+   su abundancia y repetibilidad (n, celdas, días, observadores), no el lift.
+2. **Los pares con p<sub>emp</sub><0,05 y n alto son candidatas genuinas** con sentido biológico:
+   *Branchellion torpedinis* (sanguijuela marina) con *Torpedo marmorata* (raya) — parasitismo real
+   (p=0,002); *Corallium rubrum* con *Paramuricea clavata* (corales rojos, p=0,04); *Cestum veneris* con
+   *Hippopodius hippopus* (gelatinosos, p=0,026); *Codium* con *Placida verticilata* (trófica, p=0,032).
+
+**Posición metodológica**: los pares con hipótesis a priori (tróficos y documentados) se validan con su
+**p individual** (pocas hipótesis concretas, práctica estándar); los descubrimientos exploratorios se
+reportan como candidatas con p<sub>emp</sub><0,05 y **advertencia explícita** de que no sobreviven al FDR
+global y requieren validación independiente. Detalle: `experimentos/NULO_ESTRATIFICADO_20260929.md`.
 
 ## 5. Limitaciones
 
