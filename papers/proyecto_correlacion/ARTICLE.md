@@ -54,6 +54,12 @@ Summary (details in [`METODOS.md`](METODOS.md) and supplementary material):
 | *Cratena peregrina* — *Eudendrium racemosum* | 5 | 10.5 | — | — | prey hydroid |
 | ~~*Doto paulinae* — *Sertularella mediterranea*~~ | 5 | 48.3 | — | — | ❌ **discarded**: single observer (expert-review correction) |
 
+**Co-occurrence is not an artefact of the confusion matrix** (29-sep-2026): documented pairs show **null
+cross-confusion** (0-1 cases of A→B or B→A in 3-19 samples per species), while confusable sister-species
+pairs (control: *Elysia marginata/ornata*, *Spirobranchus lamarcki/triqueter*) show high cross-confusion
+(13-26 %) and do **not** appear as co-occurrence candidates. Observer bias is controlled by requiring ≥5
+distinct observers. Detail: `experimentos/COOCURRENCIA_VS_CONFUSION_20260929.md`.
+
 ### 3.2 Taxonomic groups
 
 Pairs concentrate in the photographically best-represented families (sparids, blenniids, gobiids, labrids,
@@ -109,6 +115,7 @@ Sources verified during the literature review (28-sep-2026):
 | *Peltodoris atromaculata* feeds on the sponge *Petrosia ficiformis* | trophic literature of dorid nudibranchs (diet review; petroformynes as chemical defence of the sponge) |
 | *Felimare picta* (formerly *Hypselodoris*) feeds on sponges of the genus *Ircinia* | McDonald & Nybakken, 2001 — *A worldwide review of the food of nudibranch mollusks*; field observations (OPK) |
 | *Cratena peregrina* practises kleptopredation on *Eudendrium racemosum* | Di Camillo et al. — *Eudendrium racemosum* as substrate/prey and prey theft (CNR, Adriatic Sea) |
+> community.
 | *Scyllaea pelagica*, *Latreutes fucorum* and *Hippolyte coerulescens* belong to the floating *Sargassum* fauna | literature of the pelagic Sargassum community (NOAA; BAMZ; Sea Slug Forum) |
 | *Phronima sedentaria* is an obligate salp symbiont (lives in the "barrel") | Laval, 1978 — *The barrel of the pelagic amphipod Phronima sedentaria*; Diebel, 1988 — *Observations on the anatomy and behavior of Phronima sedentaria*; MBARI/Scripps |
 | *Lampea pancerina* predates or parasitises salps | *The double life of the ctenophore Lampea pancerina*; ctenophore literature (Carré & Carré) |

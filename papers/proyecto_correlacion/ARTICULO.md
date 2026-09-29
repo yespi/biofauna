@@ -59,6 +59,13 @@ Resumen (detalle en [`METODOS.md`](METODOS.md) y en el material suplementario):
 | *Cratena peregrina* — *Eudendrium racemosum* | 5 | 10,5 | — | — | hidrozoo presa |
 | ~~*Doto paulinae* — *Sertularella mediterranea*~~ | 5 | 48,3 | — | — | ❌ **descartada**: un único observador (corrección tras revisión experta) |
 
+**La co-ocurrencia no es artefacto de la matriz de confusión** (29-sep-2026): los pares documentados muestran
+**confusión cruzada nula** (0-1 casos de A→B o B→A en 3-19 muestras por especie), mientras los pares de
+especies hermanas confundibles (control: *Elysia marginata/ornata*, *Spirobranchus lamarcki/triqueter*)
+presentan confusión cruzada alta (13-26 %) y **no** aparecen como candidatas de co-ocurrencia. El sesgo de
+observador se controla exigiendo ≥5 observadores distintos. Detalle:
+`experimentos/COOCURRENCIA_VS_CONFUSION_20260929.md`.
+
 ### 3.2 Grupos taxonómicos
 
 Los pares se concentran en las familias mejor representadas fotográficamente (esparidos, blénidos, góbidos,
