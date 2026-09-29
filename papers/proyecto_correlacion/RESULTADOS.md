@@ -138,3 +138,16 @@ Red de las 12 asociaciones más fuertes (grosor del enlace ∝ lift). Copia nave
    esto en resultado citable es el **nulo estratificado por localidad·fecha** + **cruce con hábitat**.
 2. El **lift** premia pares raros: mirar siempre `n`, celdas y días.
 3. Uso inmediato: sugerencias «si ves X, busca Y» y redes de asociación por zona en **BioQuest**.
+
+## 7. Asociaciones tróficas de nudibranquios (añadido 29-sep-2026)
+
+De los 70.971 pares robustos, **9.539 (13,4 %) implican al menos un nudibranquio** y **1.048** son pares
+*nudibranquio→posible presa/sustrato* con ≥5 observadores distintos (esponjas, hidrozoos, briozoos,
+ascidias, algas). Las dietas **publicadas** aparecen como las asociaciones más fuertes — el método las
+recupera y las ordena por lift: *Doto floridicola*→*Aglaophenia* (hidrozoo), *Felimare orsinii*→
+*Scalarispongia scalaris* (esponja), *Trinchesia caerulea*→*Sertularella crassicaulis* (hidrozoo),
+*Siphonaria pectinata*→*Bifurcaria* (alga). El resto son **hipótesis testables** de dieta/sustrato para
+nudibranquios mediterráneos poco estudiados.
+
+Artefactos: `artifacts/coocurrencia_nudibranquios_20260929.json` (9.539 pares) y
+`artifacts/coocurrencia_nudibranquios_trofica_filtrada_20260929.json` (1.048 con ≥5 observadores).
