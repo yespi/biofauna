@@ -1,226 +1,420 @@
 [
  {
   "caso": "asoc_1",
-  "label": "Peltodoris atromaculata sobre Petrosia ficiformis",
-  "especie": "Peltodoris atromaculata",
+  "especie": "peltodoris_atromaculata",
   "fotos": [
    {
-    "file": "asoc_1__Peltodoris_atromaculata__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "benake",
-    "obs_url": "https://www.inaturalist.org/observations/395577764",
-    "bytes": 176001
+    "file": "asoc_1__peltodoris_atromaculata__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/peltodoris_atromaculata/inat_104649829_0.jpg",
+    "bytes": 179328,
+    "obs_score": 9.05,
+    "laplacian": 183.9,
+    "mode": "ok",
+    "w": 1024,
+    "h": 768,
+    "src": "inat",
+    "obs_id": "104649829"
    },
    {
-    "file": "asoc_1__Peltodoris_atromaculata__2.jpg",
-    "lic": "CC0",
-    "autor": "alinamajcen",
-    "obs_url": "https://www.inaturalist.org/observations/385358645",
-    "bytes": 246525
+    "file": "asoc_1__peltodoris_atromaculata__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/peltodoris_atromaculata/inat_102771960_0.jpg",
+    "bytes": 864632,
+    "obs_score": 9.0,
+    "laplacian": 1056.5,
+    "mode": "ok",
+    "w": 1024,
+    "h": 682,
+    "src": "inat",
+    "obs_id": "102771960"
    }
+  ],
+  "n_evaluadas": 136,
+  "top_scores": [
+   9.05,
+   9.0,
+   9.0,
+   9.0,
+   9.0
   ]
  },
  {
   "caso": "asoc_1",
-  "label": "Peltodoris atromaculata sobre Petrosia ficiformis",
-  "especie": "Petrosia ficiformis",
+  "especie": "petrosia_ficiformis",
   "fotos": [
    {
-    "file": "asoc_1__Petrosia_ficiformis__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "ruseva",
-    "obs_url": "https://www.inaturalist.org/observations/383094721",
-    "bytes": 95288
+    "file": "asoc_1__petrosia_ficiformis__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/petrosia_ficiformis/inat_15869026_0.jpg",
+    "bytes": 865001,
+    "obs_score": 8.05,
+    "laplacian": 401.0,
+    "mode": "ok",
+    "w": 1024,
+    "h": 768,
+    "src": "inat",
+    "obs_id": "15869026"
    },
    {
-    "file": "asoc_1__Petrosia_ficiformis__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "golfopolikayakl",
-    "obs_url": "https://www.inaturalist.org/observations/374827071",
-    "bytes": 93115
+    "file": "asoc_1__petrosia_ficiformis__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/petrosia_ficiformis/inat_72301562_0.jpg",
+    "bytes": 650466,
+    "obs_score": 8.05,
+    "laplacian": 457.7,
+    "mode": "ok",
+    "w": 1024,
+    "h": 766,
+    "src": "inat",
+    "obs_id": "72301562"
    }
+  ],
+  "n_evaluadas": 165,
+  "top_scores": [
+   8.05,
+   8.05,
+   8.05,
+   8.05,
+   8.0
   ]
  },
  {
   "caso": "asoc_2",
-  "label": "Felimare picta e Ircinia",
-  "especie": "Felimare picta",
+  "especie": "felimare_picta",
   "fotos": [
    {
-    "file": "asoc_2__Felimare_picta__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "benjobson",
-    "obs_url": "https://www.inaturalist.org/observations/403883919",
-    "bytes": 193158
+    "file": "asoc_2__felimare_picta__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/felimare_picta/inat_35687108_0.jpg",
+    "bytes": 427285,
+    "obs_score": 8.02,
+    "laplacian": 310.0,
+    "mode": "ok",
+    "w": 683,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "35687108"
    },
    {
-    "file": "asoc_2__Felimare_picta__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "benjobson",
-    "obs_url": "https://www.inaturalist.org/observations/399931553",
-    "bytes": 237980
+    "file": "asoc_2__felimare_picta__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/felimare_picta/syn_hypselodoris_picta_minka_846441_1.jpg",
+    "bytes": 1834203,
+    "obs_score": null,
+    "laplacian": 234.7,
+    "mode": "ok",
+    "w": 1920,
+    "h": 1440,
+    "src": null,
+    "obs_id": null
    }
+  ],
+  "n_evaluadas": 44,
+  "top_scores": [
+   8.02,
+   0.0,
+   0.0,
+   0.0,
+   0.0
   ]
  },
  {
   "caso": "asoc_2",
-  "label": "Felimare picta e Ircinia",
-  "especie": "Ircinia oros",
+  "especie": "ircinia_oros",
   "fotos": [
    {
-    "file": "asoc_2__Ircinia_oros__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "phil_newman",
-    "obs_url": "https://www.inaturalist.org/observations/379337407",
-    "bytes": 98515
+    "file": "asoc_2__ircinia_oros__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/ircinia_oros/minka_140818_0.jpg",
+    "bytes": 652725,
+    "obs_score": null,
+    "laplacian": 712.2,
+    "mode": "ok",
+    "w": 1024,
+    "h": 683,
+    "src": "minka",
+    "obs_id": "140818"
+   },
+   {
+    "file": "asoc_2__ircinia_oros__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/ircinia_oros/minka_177402_0.jpg",
+    "bytes": 180668,
+    "obs_score": null,
+    "laplacian": 412.6,
+    "mode": "ok",
+    "w": 1024,
+    "h": 683,
+    "src": "minka",
+    "obs_id": "177402"
    }
+  ],
+  "n_evaluadas": 137,
+  "top_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
   ]
  },
  {
   "caso": "asoc_3",
-  "label": "Cratena peregrina sobre Eudendrium racemosum",
-  "especie": "Cratena peregrina",
+  "especie": "cratena_peregrina",
   "fotos": [
    {
-    "file": "asoc_3__Cratena_peregrina__1.jpg",
-    "lic": "CC BY-SA 4.0",
-    "autor": "ewoutknoester",
-    "obs_url": "https://www.inaturalist.org/observations/397699770",
-    "bytes": 90789
+    "file": "asoc_3__cratena_peregrina__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/cratena_peregrina/inat_94088596_0.jpg",
+    "bytes": 834334,
+    "obs_score": 10.05,
+    "laplacian": 193.7,
+    "mode": "ok",
+    "w": 768,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "94088596"
    },
    {
-    "file": "asoc_3__Cratena_peregrina__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "jamiekingscott",
-    "obs_url": "https://www.inaturalist.org/observations/397024372",
-    "bytes": 173714
+    "file": "asoc_3__cratena_peregrina__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/cratena_peregrina/inat_94216954_0.jpg",
+    "bytes": 598173,
+    "obs_score": 10.05,
+    "laplacian": 92.8,
+    "mode": "ok",
+    "w": 1024,
+    "h": 683,
+    "src": "inat",
+    "obs_id": "94216954"
    }
+  ],
+  "n_evaluadas": 192,
+  "top_scores": [
+   10.05,
+   10.05,
+   10.05,
+   10.05,
+   10.05
   ]
  },
  {
   "caso": "asoc_3",
-  "label": "Cratena peregrina sobre Eudendrium racemosum",
-  "especie": "Eudendrium racemosum",
+  "especie": "eudendrium_racemosum",
   "fotos": [
    {
-    "file": "asoc_3__Eudendrium_racemosum__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "ctaklis",
-    "obs_url": "https://www.inaturalist.org/observations/289557156",
-    "bytes": 66943
+    "file": "asoc_3__eudendrium_racemosum__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/eudendrium_racemosum/inat_84409279_0.jpg",
+    "bytes": 407928,
+    "obs_score": 6.05,
+    "laplacian": 106.6,
+    "mode": "ok",
+    "w": 768,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "84409279"
    },
    {
-    "file": "asoc_3__Eudendrium_racemosum__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "ctaklis",
-    "obs_url": "https://www.inaturalist.org/observations/84409279",
-    "bytes": 127756
+    "file": "asoc_3__eudendrium_racemosum__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/eudendrium_racemosum/inat_244355655_0.jpg",
+    "bytes": 805719,
+    "obs_score": 6.05,
+    "laplacian": 400.4,
+    "mode": "ok",
+    "w": 768,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "244355655"
    }
+  ],
+  "n_evaluadas": 121,
+  "top_scores": [
+   6.05,
+   6.05,
+   6.0,
+   6.0,
+   0.0
   ]
  },
  {
   "caso": "asoc_4",
-  "label": "Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)",
-  "especie": "Scyllaea pelagica",
+  "especie": "scyllaea_pelagica",
   "fotos": [
    {
-    "file": "asoc_4__Scyllaea_pelagica__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "jackietl",
-    "obs_url": "https://www.inaturalist.org/observations/356271923",
-    "bytes": 178746
+    "file": "asoc_4__scyllaea_pelagica__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/scyllaea_pelagica/inat_177864378_0.jpg",
+    "bytes": 157365,
+    "obs_score": 10.05,
+    "laplacian": 70.8,
+    "mode": "blur_mild",
+    "w": 768,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "177864378"
    },
    {
-    "file": "asoc_4__Scyllaea_pelagica__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "rajanrao",
-    "obs_url": "https://www.inaturalist.org/observations/346197891",
-    "bytes": 247901
+    "file": "asoc_4__scyllaea_pelagica__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/scyllaea_pelagica/inat_48591212_0.jpg",
+    "bytes": 452887,
+    "obs_score": 9.05,
+    "laplacian": 1614.2,
+    "mode": "ok",
+    "w": 768,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "48591212"
    }
+  ],
+  "n_evaluadas": 267,
+  "top_scores": [
+   10.05,
+   9.05,
+   9.05,
+   9.05,
+   8.05
   ]
  },
  {
   "caso": "asoc_4",
-  "label": "Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)",
-  "especie": "Latreutes fucorum",
+  "especie": "latreutes_fucorum",
   "fotos": [
    {
-    "file": "asoc_4__Latreutes_fucorum__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "er-birds",
-    "obs_url": "https://www.inaturalist.org/observations/397094852",
-    "bytes": 53781
+    "file": "asoc_4__latreutes_fucorum__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/latreutes_fucorum/inat_348003719_0.jpg",
+    "bytes": 627034,
+    "obs_score": 8.05,
+    "laplacian": 81.4,
+    "mode": "ok",
+    "w": 819,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "348003719"
    },
    {
-    "file": "asoc_4__Latreutes_fucorum__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "er-birds",
-    "obs_url": "https://www.inaturalist.org/observations/397092491",
-    "bytes": 28353
+    "file": "asoc_4__latreutes_fucorum__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/latreutes_fucorum/inat_111496630_0.jpg",
+    "bytes": 450941,
+    "obs_score": 7.72,
+    "laplacian": 266.2,
+    "mode": "ok",
+    "w": 1024,
+    "h": 692,
+    "src": "inat",
+    "obs_id": "111496630"
    }
+  ],
+  "n_evaluadas": 137,
+  "top_scores": [
+   8.05,
+   7.72,
+   7.05,
+   7.05,
+   7.05
   ]
  },
  {
   "caso": "asoc_4",
-  "label": "Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)",
-  "especie": "Hippolyte coerulescens",
+  "especie": "hippolyte_coerulescens",
   "fotos": [
    {
-    "file": "asoc_4__Hippolyte_coerulescens__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "benjobson",
-    "obs_url": "https://www.inaturalist.org/observations/258851148",
-    "bytes": 129836
+    "file": "asoc_4__hippolyte_coerulescens__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/hippolyte_coerulescens/inat_global_116414377_0.jpg",
+    "bytes": 162808,
+    "obs_score": 8.05,
+    "laplacian": 146.0,
+    "mode": "ok",
+    "w": 768,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "116414377"
    },
    {
-    "file": "asoc_4__Hippolyte_coerulescens__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "benjobson",
-    "obs_url": "https://www.inaturalist.org/observations/240393116",
-    "bytes": 129622
+    "file": "asoc_4__hippolyte_coerulescens__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/hippolyte_coerulescens/inat_global_116428739_1.jpg",
+    "bytes": 192958,
+    "obs_score": 8.05,
+    "laplacian": 147.9,
+    "mode": "ok",
+    "w": 576,
+    "h": 1024,
+    "src": "inat",
+    "obs_id": "116428739"
    }
+  ],
+  "n_evaluadas": 81,
+  "top_scores": [
+   8.05,
+   8.05,
+   8.05,
+   7.05,
+   7.05
   ]
  },
  {
   "caso": "asoc_5",
-  "label": "Lysmata grabhami y Telmatactis cricoides",
-  "especie": "Lysmata grabhami",
+  "especie": "lysmata_grabhami",
   "fotos": [
    {
-    "file": "asoc_5__Lysmata_grabhami__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "rorywilson",
-    "obs_url": "https://www.inaturalist.org/observations/352058022",
-    "bytes": 126151
+    "file": "asoc_5__lysmata_grabhami__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/lysmata_grabhami/inat_7824455_0.jpg",
+    "bytes": 421951,
+    "obs_score": 9.05,
+    "laplacian": 404.9,
+    "mode": "ok",
+    "w": 1024,
+    "h": 683,
+    "src": "inat",
+    "obs_id": "7824455"
    },
    {
-    "file": "asoc_5__Lysmata_grabhami__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "nicola35",
-    "obs_url": "https://www.inaturalist.org/observations/334886150",
-    "bytes": 164728
+    "file": "asoc_5__lysmata_grabhami__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/lysmata_grabhami/inat_global_41113782_0.jpg",
+    "bytes": 928478,
+    "obs_score": 9.05,
+    "laplacian": 280.6,
+    "mode": "ok",
+    "w": 1024,
+    "h": 768,
+    "src": "inat",
+    "obs_id": "41113782"
    }
+  ],
+  "n_evaluadas": 292,
+  "top_scores": [
+   9.05,
+   9.05,
+   9.05,
+   9.05,
+   9.05
   ]
  },
  {
   "caso": "asoc_5",
-  "label": "Lysmata grabhami y Telmatactis cricoides",
-  "especie": "Telmatactis cricoides",
+  "especie": "telmatactis_cricoides",
   "fotos": [
    {
-    "file": "asoc_5__Telmatactis_cricoides__1.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "benjobson",
-    "obs_url": "https://www.inaturalist.org/observations/394955405",
-    "bytes": 182754
+    "file": "asoc_5__telmatactis_cricoides__1.jpg",
+    "source": "/mnt/gpu/fotofauna-images/telmatactis_cricoides/inat_global_96667289_0.jpg",
+    "bytes": 243323,
+    "obs_score": 8.05,
+    "laplacian": 404.3,
+    "mode": "ok",
+    "w": 1024,
+    "h": 758,
+    "src": "inat",
+    "obs_id": "96667289"
    },
    {
-    "file": "asoc_5__Telmatactis_cricoides__2.jpg",
-    "lic": "CC BY 4.0",
-    "autor": "rorywilson",
-    "obs_url": "https://www.inaturalist.org/observations/352057814",
-    "bytes": 126151
+    "file": "asoc_5__telmatactis_cricoides__2.jpg",
+    "source": "/mnt/gpu/fotofauna-images/telmatactis_cricoides/inat_global_60105996_0.jpg",
+    "bytes": 259813,
+    "obs_score": 8.05,
+    "laplacian": 860.9,
+    "mode": "ok",
+    "w": 1024,
+    "h": 683,
+    "src": "inat",
+    "obs_id": "60105996"
    }
+  ],
+  "n_evaluadas": 75,
+  "top_scores": [
+   8.05,
+   8.05,
+   7.3,
+   7.05,
+   7.05
   ]
  }
 ]

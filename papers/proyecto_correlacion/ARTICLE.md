@@ -58,7 +58,7 @@ Summary (details in [`METODOS.md`](METODOS.md) and supplementary material):
 cross-confusion** (0-1 cases of A→B or B→A in 3-19 samples per species), while confusable sister-species
 pairs (control: *Elysia marginata/ornata*, *Spirobranchus lamarcki/triqueter*) show high cross-confusion
 (13-26 %) and do **not** appear as co-occurrence candidates. Observer bias is controlled by requiring ≥5
-distinct observers. Detail: `experimentos/COOCURRENCIA_VS_CONFUSION_20260929.md`.
+distinct observers. Detail: (detail in the supplementary material of the public repository, `papers/proyecto_correlacion/`).
 
 ### 3.2 Taxonomic groups
 
@@ -156,6 +156,51 @@ the cases with known diet (*Doto*→*Aglaophenia*, *Felimare orsinii*→*Scalari
 (1,039 candidates) constitutes testable diet/substrate hypotheses for understudied Mediterranean nudibranchs.
 Artefact: `artifacts/coocurrencia_nudibranquios_trofica_filtrada_20260929.json` (1,048 pairs with ≥5
 observers).
+
+### 3.7 Additional relationships beyond nudibranchs (29-sep-2026)
+
+The same analysis applied to the **whole catalogue** (not only nudibranchs) with an anti-"hub" filter (the 39
+species co-occurring with >400 taxa are excluded as background noise) yields **11,509 specific Mediterranean
+pairs** with ≥5 observers. Three groups of relationships stand out with ecological and conservation value:
+
+**a) Co-occurrence of Lessepsian invaders** (Red Sea species that entered via the Suez Canal):
+
+| A | B | n | obs. | lift | context |
+|---|---:|---:|---:|---:|---|
+| *Fistularia commersonii* (cornetfish) | *Pterois miles* (lionfish) | 25 | 16 | 261.7 | both documented invaders; *Fistularia* is one of the few natural predators of *Pterois* |
+| *Fistularia commersonii* | *Siganus rivulatus* (rabbitfish) | 15 | 13 | 123.9 | coexisting invaders in the Levant |
+| *Pterois miles* | *Taeniura lymma* (bluespotted ray) | 11 | 7 | 233.2 | Red Sea invaders |
+
+The co-occurrence of Lessepsian invaders is **consistent with the literature** (Kondylatos et al., 2023:
+*Fistularia, Pterois miles* and *Siganus* caught together in Rhodes; CIESM Atlas of Exotic Fishes).
+Conservation implication: citizen-science photographs allow **monitoring the joint spread** of these invasive
+species.
+
+**b) Gelatinous plankton** (ctenophores, siphonophores and their predators/commensals):
+
+| A | B | n | obs. | lift |
+|---|---:|---:|---:|---:|
+| *Forskalia edwardsii* (siphonophore) | *Lampea pancerina* (ctenophore) | 8 | 5 | 209.9 |
+| *Cestum veneris* (Venus' girdle) | *Hippopodius hippopus* (siphonophore) | 18 | 7 | 102.6 |
+| *Callianira bialata* (ctenophore) | *Cestum veneris* | 16 | 5 | 97.7 |
+| *Callianira bialata* | *Forskalia edwardsii* | 14 | 5 | 177.1 |
+
+Ctenophores prey on salps and gelatinous zooplankton (Carré & Carré); their co-occurrence with siphonophores
+in the same water mass is coherent with a **shared planktonic predatory guild** (Current Biology, 2025).
+
+**c) Benthic invertebrates** (habitat associations with biological meaning):
+
+| A | B | n | obs. | lift |
+|---|---:|---:|---:|---:|
+| *Astroides calycularis* (orange coral) | *Clavelina dellavallei* (ascidian) | 16 | 8 | 135.6 |
+| *Aeolidiella alderi* (nudibranch) | *Berthella perforata* (pleurobranch) | 41 | 8 | 129.8 |
+| *Petalifera petalifera* (sea hare) | *Placida tardyi* (sacoglossan) | 22 | 5 | 110.7 |
+| *Codium coralloides* (green alga) | *Placida verticilata* (sacoglossan) | 18 | 5 | 101.0 |
+| *Oestergrenia digitata* (sea cucumber) | *Virgularia mirabilis* (sea pen) | 8 | 5 | 212.9 |
+
+The pair *Codium coralloides*—*Placida verticilata* is especially notable: **sacoglossans feed on green
+algae of the genus *Codium*** (retaining their chloroplasts; Wägele & Klussmann-Kolb, 2005) — a documented
+trophic relationship the method recovers without prior knowledge.
 
 ## 4. Discussion
 
@@ -296,9 +341,10 @@ the platforms and the data; and to **GBIF**, **Wikimedia Commons**, **DORIS/FFES
 
 ## Supplementary material
 
-- Association tables (top 40 and full set).
-- Association network figure.
-- **Photo plates** per case (29-sep-2026, `LAMINAS.md`): **21 photographs** from iNaturalist with
-  **reusable licences** (CC0 / CC BY 4.0 / CC BY-SA 4.0) and **full attribution** (author + licence +
-  observation link) for the 5 documented/plausible associations. Inclusion criterion: only reusable-licence
-  images; the rest are excluded or require the author's explicit permission.
+- Association tables (top 40 and full set; available in the project's public repository).
+- Association network figure (navigable SVG in the repository).
+- **Photo plates** (`LAMINAS_v4_20260929.pdf`, 22 pages): **22 photographs** selected from the **BioFauna
+  gallery** (1.2 M images) with the **system quality classifier** (`obs_score`: research grade, number of
+  curators, trusted curator and resolution; 0-13) and a sharpness filter (Laplacian variance). Each photo
+  includes its **attribution** (author + licence + observation link). Only reusable-licence images (CC0 /
+  CC BY / CC BY-SA); the rest are excluded or require the author's explicit permission.

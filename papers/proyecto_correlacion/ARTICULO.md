@@ -64,7 +64,7 @@ Resumen (detalle en [`METODOS.md`](METODOS.md) y en el material suplementario):
 especies hermanas confundibles (control: *Elysia marginata/ornata*, *Spirobranchus lamarcki/triqueter*)
 presentan confusión cruzada alta (13-26 %) y **no** aparecen como candidatas de co-ocurrencia. El sesgo de
 observador se controla exigiendo ≥5 observadores distintos. Detalle:
-`experimentos/COOCURRENCIA_VS_CONFUSION_20260929.md`.
+(detalle en el material suplementario del repositorio público, `papers/proyecto_correlacion/`).
 
 ### 3.2 Grupos taxonómicos
 
@@ -161,8 +161,55 @@ La concordancia entre la co-ocurrencia medida y las dietas publicadas es **la va
 del método**: no solo recupera pares documentados de la literatura clásica, sino que **ordena por lift**
 primero los casos con dieta conocida (*Doto*→*Aglaophenia*, *Felimare orsinii*→*Scalarispongia*). El resto de
 la lista (1.039 candidatas) constituye hipótesis testables de dieta/sustrato para nudibranquios mediterráneos
-poco estudiados. Artefacto: `artifacts/coocurrencia_nudibranquios_trofica_filtrada_20260929.json` (1.048
-pares con ≥5 observadores).
+poco estudiados. El listado completo de las 1.048 candidatas (con soporte, celdas y observadores) se
+incluye en el material suplementario.
+
+### 3.7 Relaciones adicionales fuera de los nudibranquios (29-sep-2026)
+
+El mismo análisis aplicado a **todo el catálogo** (no solo nudibranquios) con filtro anti-«hub» (se excluyen
+las 39 especies que co-ocurren con >400 taxones, que solo aportan ruido de fondo) produce **11.509 pares
+específicos mediterráneos** con ≥5 observadores. Destacan tres grupos de relaciones con valor ecológico y de
+conservación:
+
+**a) Co-ocurrencia de invasores lessepsianos** (especies del mar Rojo que entraron por el canal de Suez):
+
+| A | B | n | obs. | lift | contexto |
+|---|---:|---:|---:|---:|---|
+| *Fistularia commersonii* (pez flauta) | *Pterois miles* (pez león) | 25 | 16 | 261,7 | ambos invasores documentados; *Fistularia* es uno de los pocos depredadores naturales de *Pterois* |
+| *Fistularia commersonii* | *Siganus rivulatus* (pez conejo) | 15 | 13 | 123,9 | invasores coexistentes en el Levante |
+| *Pterois miles* | *Taeniura lymma* (raya de manchas azules) | 11 | 7 | 233,2 | invasores del mar Rojo |
+
+La co-ocurrencia de invasores lessepsianos es **consistente con la literatura** (Kondylatos et al., 2023:
+*Fistularia, Pterois miles y Siganus* capturados juntos en Rodas; CIESM Atlas of Exotic Fishes). Implicación
+de conservación: las fotos de ciencia ciudadana permiten **monitorear la expansión conjunta** de estas
+especies invasoras.
+
+**b) Plancton gelatinoso** (ctenóforos, sifonóforos y sus depredadores/comensales):
+
+| A | B | n | obs. | lift |
+|---|---:|---:|---:|---:|
+| *Forskalia edwardsii* (sifonóforo) | *Lampea pancerina* (ctenóforo) | 8 | 5 | 209,9 |
+| *Cestum veneris* (ctenóforo cinturón de Venus) | *Hippopodius hippopus* (sifonóforo) | 18 | 7 | 102,6 |
+| *Callianira bialata* (ctenóforo) | *Cestum veneris* | 16 | 5 | 97,7 |
+| *Callianira bialata* | *Forskalia edwardsii* | 14 | 5 | 177,1 |
+
+Los ctenóforos depredan salpas y zooplancton gelatinoso (Carré & Carré); su co-ocurrencia con sifonóforos
+en la misma masa de agua es coherente con un **gremio depredador planctónico compartido** (Current Biology,
+2025).
+
+**c) Invertebrados bentónicos** (asociaciones de hábitat con sentido biológico):
+
+| A | B | n | obs. | lift |
+|---|---:|---:|---:|---:|
+| *Astroides calycularis* (coral naranja) | *Clavelina dellavallei* (ascidia) | 16 | 8 | 135,6 |
+| *Aeolidiella alderi* (nudibranquio) | *Berthella perforata* (pleurobranco) | 41 | 8 | 129,8 |
+| *Petalifera petalifera* (liebre de mar) | *Placida tardyi* (sacogloso) | 22 | 5 | 110,7 |
+| *Codium coralloides* (alga verde) | *Placida verticilata* (sacogloso) | 18 | 5 | 101,0 |
+| *Oestergrenia digitata* (pepino de mar) | *Virgularia mirabilis* (pluma de mar) | 8 | 5 | 212,9 |
+
+El par *Codium coralloides*—*Placida verticilata* es especialmente notable: los **sacoglosos se alimentan
+de algas verdes del género *Codium*** (quedándose con sus cloroplastos; Wägele & Klussmann-Kolb, 2005) —
+relación trófica documentada que el método recupera sin conocimiento previo.
 
 ## 4. Discusión
 
@@ -304,9 +351,11 @@ posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 + FAISS) des
 
 ## Material suplementario
 
-- Tablas de asociaciones (top 40 y conjunto completo).
-- Figura de red de asociaciones.
-- **Láminas fotográficas** por caso (29-sep-2026, `LAMINAS.md`): **21 fotografías** de iNaturalist con
-  **licencia reutilizable** (CC0 / CC BY 4.0 / CC BY-SA 4.0) y **atribución completa** (autor + licencia +
-  enlace a la observación) para las 5 asociaciones documentadas/plausibles. Criterio de inclusión: solo
-  imágenes con licencia reutilizable; el resto se excluye o requiere permiso explícito del autor.
+- Tablas de asociaciones (top 40 y conjunto completo; accesibles en el repositorio público del proyecto).
+- Figura de red de asociaciones (SVG navegable en el repositorio).
+- **Láminas fotográficas** (`LAMINAS_v4_20260929.pdf`, 22 páginas): **22 fotografías** seleccionadas de la
+  **galería BioFauna** (1,2 M imágenes) con el **clasificador de calidad del sistema** (`obs_score`:
+  grado de investigación, nº de curadores, curador de confianza y resolución; 0-13) y filtro de nitidez
+  (varianza Laplaciano). Cada foto incluye su **atribución** (autor + licencia + enlace a la observación).
+  Solo imágenes con licencia reutilizable (CC0 / CC BY / CC BY-SA); el resto se excluye o requiere permiso
+  explícito del autor.
