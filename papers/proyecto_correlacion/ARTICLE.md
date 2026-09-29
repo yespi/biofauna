@@ -417,7 +417,18 @@ author's supervision and direction.
 - Valdés, Á., & Muniain, C. (2002). Revision and taxonomic reassessment of Magellanic species assigned to
   *Anisodoris* Bergh, 1898 (Nudibranchia: Doridoidea). *Journal of Molluscan Studies*, 68, 345–351.
 
+## Data availability
 
+Data and code are published in the project's public repository (https://github.com/yespi/biofauna):
+
+- **BioFauna identifier**: complete code (service, prototypes, calibrators, geographic prior, cryptic
+  pairs, evaluation and leak-audit scripts) and taxon IDs — `papers/biofauna/`.
+- **Anonymised association table** (no photographs, no observer data): `data/
+  asociaciones_mediterraneas_20260929.csv` (11,509 pairs with species, families, event counts, cells, days,
+  observers and lift) and `data/asociaciones_top40_20260929.csv`.
+- **Manuscripts and plates**: `papers/proyecto_correlacion/` (ES/EN article and PDFs).
+- **Not redistributable**: the photographs (subject to Minka SDG, iNaturalist and other source licences) and
+  per-photo `embeddings.npy`; they can be rebuilt from Minka/iNaturalist/GBIF using the catalog.
 
 ## Supplementary material
 

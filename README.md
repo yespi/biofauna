@@ -4,18 +4,18 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
-**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260928.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260928.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF: [ES](papers/proyecto_correlacion/ARTICULO_v1_ES_20260928.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v1_EN_20260928.pdf))
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260929.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260929.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v13_ES_20260929.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v13_EN_20260929.pdf) · previa: [ES v11](papers/proyecto_correlacion/ARTICULO_v11_ES_20260929.pdf) · [EN v11](papers/proyecto_correlacion/ARTICLE_v11_EN_20260929.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
 
-## Snapshot (2026-09-28)
+## Snapshot (2026-09-29)
 
 | | |
 |---|---|
-| Gallery | **1,118,353** embeddings / **4543** species (FAISS aligned) |
+| Gallery | **1,118,298** embeddings / **4,543** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
-| Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention |
-| OOS accuracy (leak-free) | **88.11%** species / **90.55%** genus / **92.46%** family (n=12,373, 2,091 species) |
-| Real-world check | ~80% on recent research-grade Minka observations (operating KPI) |
-| This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts |
+| Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
+| Field eval (out-of-sample, leak-purged) | **81.85%** species / 87.1% genus / 90.5% family (n=71,902, 2,946 species) |
+| AutoID | 45/hour, 1,500/day, calibrated p≥0.80, margin + curator guards |
+| This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts, papers |
 | Not shipped | Photographs, per-photo `embeddings.npy` |
 
 **2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](papers/biofauna/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
