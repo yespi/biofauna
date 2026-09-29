@@ -213,6 +213,10 @@ en la misma masa de agua es coherente con un **gremio depredador planctónico co
 El par *Codium coralloides*—*Placida verticilata* es especialmente notable: los **sacoglosos se alimentan
 de algas verdes del género *Codium*** (quedándose con sus cloroplastos; Wägele & Klussmann-Kolb, 2005) —
 relación trófica documentada que el método recupera sin conocimiento previo.
+**Salvedad (análisis de sensibilidad al observador, 29-sep-2026):** un único observador aparece en el 72 % de los 18 eventos de
+este par y solo 5 sobreviven al retirarlo; el resultado es coherente con la biología, pero debe leerse como *hipótesis pendiente de
+replicación* y no como validación independiente del método. Lo mismo vale para *Forskalia edwardsii*—*Lampea pancerina* (71 %; 2 eventos
+restantes). Los pares lessepsianos (*Fistularia*, *Pterois*, *Siganus*, *Taeniura*) no dependen de un observador (≥8 observadores, dominante ≤33 %).
 
 ### 3.8 Rigor de la evaluación: ablación, long-tail y leakage (29-sep-2026)
 
@@ -224,7 +228,10 @@ Para responder a los estándares de revisión por pares se añadieron tres anál
 |---|---:|---:|
 | k-NN simple (BioCLIP-2.5 ViT-H puro, coseno al prototipo) | 69,0 % | 91,0 % |
 | **BioFauna producción** (agregador temperado + tope por especie + Cubo B + subespacio local + zero-shot + abstención) | **77,7 %** | 90,0 % |
+| iNaturalist Computer Vision (API pública, solo imagen, sin ubicación; 285 de las 300 fotos disponibles) | 53,7 % | 70,2 % |
 | Ganancia de los mecanismos de decisión | **+8,7 pp** | −1,0 pp |
+
+*Nota:* iNaturalist CV no cubre todas las especies del catálogo (su vocabulario es más limitado en invertebrados marinos poco fotografiados), por lo que la cifra mide también esa cobertura; BioFauna se evaluó con su configuración de producción (incluye prior geográfico cuando hay coordenadas), iNaturalist solo con la imagen. Muestra pequeña (n≈300): las diferencias entre kNN puro y producción deben leerse con IC amplios.
 
 **b) Métricas de long-tail** (eval purgado, 76.585 filas): Micro-accuracy **82,34 %** vs Macro-accuracy
 **75,71 %** (2.946 especies); por frecuencia de clase, las especies **raras (<10 filas) aciertan 53,5 %**
@@ -234,6 +241,12 @@ frente al 85,8 % de las comunes — sesgo de frecuencia esperable en identificad
 **c) Aislamiento de leakage**: el 2,17 % de las filas del eval compartía observación u observador con la
 galería de su especie; excluirlas cambia el resultado solo **−0,14 pp** (82,5 % → 82,34 %), lo que confirma
 que la cifra operativa no está inflada de forma material.
+
+**d) Composición del conjunto de evaluación**: la cifra de 82,34 % agrupa tres bloques: el eval original (60.743 filas, **81,18 %**, comparable con
+versiones anteriores) y dos ampliaciones por minado dirigido hasta 30 fotos por especie (11.154 filas, 85,5 %; 4.688 filas, 89,9 %). A igualdad de especie
+(1.785 especies con filas de ambos tipos) la precisión es equivalente (86,8 % en filas minadas frente a 86,1 % en las originales), de modo que el aumento global
+procede de la composición por especies (solo las especies con reserva de fotos ampliaron) y **no de una mejora del modelo**, que no cambió. Todas las filas
+minadas pasaron el mismo filtro de fuga (observación, observador y similitud de embedding ≥ 0,98 con la galería).
 
 ## 4. Discusión
 

@@ -204,6 +204,10 @@ in the same water mass is coherent with a **shared planktonic predatory guild** 
 The pair *Codium coralloides*—*Placida verticilata* is especially notable: **sacoglossans feed on green
 algae of the genus *Codium*** (retaining their chloroplasts; Wägele & Klussmann-Kolb, 2005) — a documented
 trophic relationship the method recovers without prior knowledge.
+**Caveat (observer-sensitivity analysis, 29-Sep-2026):** a single observer appears in 72 % of this pair's 18 events and only 5 survive
+removing them; the result is biologically coherent but must be read as a *hypothesis pending replication*, not as independent validation
+of the method. The same applies to *Forskalia edwardsii*—*Lampea pancerina* (71 %; 2 events left). The Lessepsian pairs (*Fistularia*,
+*Pterois*, *Siganus*, *Taeniura*) do not depend on one observer (≥8 observers, dominant ≤33 %).
 
 ### 3.8 Evaluation rigour: ablation, long-tail and leakage (29-sep-2026)
 
@@ -215,7 +219,10 @@ Three analyses were added to meet peer-review standards:
 |---|---:|---:|
 | Simple k-NN (pure BioCLIP-2.5 ViT-H, cosine to prototype) | 69.0 % | 91.0 % |
 | **BioFauna production** (tempered aggregator + per-species cap + Cube B + local subspace + zero-shot + abstention) | **77.7 %** | 90.0 % |
+| iNaturalist Computer Vision (public API, image only, no location; 285 of the 300 photos available) | 53.7 % | 70.2 % |
 | Gain of the decision mechanisms | **+8.7 pp** | −1.0 pp |
+
+*Note:* iNaturalist CV does not cover every catalog species (its vocabulary is narrower for rarely photographed marine invertebrates), so the figure also measures that coverage; BioFauna was run with its production configuration (including the geographic prior when coordinates exist), iNaturalist with the image only. Small sample (n≈300): differences between pure k-NN and production should be read with wide confidence intervals.
 
 **b) Long-tail metrics** (purged evaluation, 76,585 rows): Micro-accuracy **82.34 %** vs Macro-accuracy
 **75.71 %** (2,946 species); by class frequency, **rare species (<10 rows) score 53.5 %** vs 85.8 % for
@@ -225,6 +232,12 @@ family 90.5 %.
 **c) Leakage isolation**: 2.17 % of evaluation rows shared an observation or observer with the reference
 gallery of their species; excluding them changes the result by only **−0.14 pp** (82.5 % → 82.34 %),
 confirming that the operating figure is not materially inflated.
+
+**d) Evaluation-set composition**: the 82.34 % figure pools three blocks: the original evaluation set (60,743 rows, **81.18 %**, comparable with earlier
+versions) and two extensions obtained by targeted mining up to 30 photos per species (11,154 rows, 85.5 %; 4,688 rows, 89.9 %). Holding species fixed
+(1,785 species with both kinds of rows) accuracy is equivalent (86.8 % on mined rows vs 86.1 % on original rows), so the overall increase comes from the
+species mix (only species with a photo pool were extended) and **not from a model improvement**, since the model did not change. All mined rows went through
+the same leakage filter (observation, observer and embedding similarity ≥ 0.98 to the gallery).
 
 ## 4. Discussion
 

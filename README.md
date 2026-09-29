@@ -4,7 +4,7 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
-**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260929.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260929.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v13_ES_20260929.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v13_EN_20260929.pdf) · previa: [ES v11](papers/proyecto_correlacion/ARTICULO_v11_ES_20260929.pdf) · [EN v11](papers/proyecto_correlacion/ARTICLE_v11_EN_20260929.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260930.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260930.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v15_ES_20260930.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v15_EN_20260930.pdf) · previa: [ES v14](papers/proyecto_correlacion/ARTICULO_v14_ES_20260929.pdf) · [EN v14](papers/proyecto_correlacion/ARTICLE_v14_EN_20260929.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
 
 ## Snapshot (2026-09-29)
 
@@ -14,6 +14,8 @@ Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/bio
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
 | Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
 | Field eval (out-of-sample, leak-purged) | **82.34%** species / 87.1% genus / 90.5% family (n=76,585, 2,946 species) |
+| — of which original eval / mined extension | **81.18%** (n=60,743, comparable with earlier versions) / 85.5–89.9% (n=15,842; same-species accuracy equivalent: 86.8% vs 86.1%) |
+| Real precision of AutoID publications | **96.6%** (n=493 verifiable; 85% in the 0.83–0.85 band, 99% at ≥0.95) |
 | AutoID | 45/hour, 1,500/day, calibrated p≥0.80, margin + curator guards |
 | This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts, papers |
 | Not shipped | Photographs, per-photo `embeddings.npy` |
