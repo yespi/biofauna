@@ -1,100 +1,105 @@
 # Láminas fotográficas — Proyecto Correlación
 
-**29-sep-2026 v2** · Fotografías de **iNaturalist** con licencia reutilizable (CC0 / CC BY 4.0 / CC BY-SA 4.0).
-Selección por **clasificador de calidad** (research-grade + acuerdos de identificación + curador de confianza + resolución; `obs_score` de BioFauna, 0-13).
-Cada lámina incluye la atribución de su autor y el enlace a la observación.
+**29-sep-2026 v3** · Fotografías **de la galería BioFauna** (1,2M imágenes de Minka SDG, iNaturalist, GBIF…).
+Selección por el **clasificador de calidad del sistema** (`obs_score`: grado de investigación +3, nº de
+curadores/acuerdos máx +5, curador de confianza +2, tamaño de imagen máx +3; 0-13) + filtro de nitidez
+(varianza Laplaciano; se descartan las borrosas severas).
+Cada foto conserva su atribución (autor + licencia + enlace a la observación) cuando está disponible.
 
 ## Peltodoris atromaculata sobre Petrosia ficiformis (predación)
 
-### Peltodoris atromaculata — calidad 8.1/13
+### peltodoris_atromaculata — calidad 10.1/10.1 /13
 
-![asoc_1__Peltodoris_atromaculata__1.jpg](lamina_fotos/asoc_1__Peltodoris_atromaculata__1.jpg)
-*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094709) · calidad 8.1/13*
+![asoc_1__peltodoris_atromaculata__1.jpg](lamina_fotos/asoc_1__peltodoris_atromaculata__1.jpg)
+*calidad 10.1/13 · nitidez ok · 1024x768px · fuente: inat obs 10657077*
 
-![asoc_1__Peltodoris_atromaculata__2.jpg](lamina_fotos/asoc_1__Peltodoris_atromaculata__2.jpg)
-*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094684) · calidad 8.1/13*
+![asoc_1__peltodoris_atromaculata__2.jpg](lamina_fotos/asoc_1__peltodoris_atromaculata__2.jpg)
+*calidad 10.1/13 · nitidez ok · 1024x768px · fuente: inat obs 34002569*
 
-### Petrosia ficiformis — calidad 6.0/13
+### petrosia_ficiformis — calidad 9.1/9.1 /13
 
-![asoc_1__Petrosia_ficiformis__1.jpg](lamina_fotos/asoc_1__Petrosia_ficiformis__1.jpg)
-*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094721) · calidad 6.0/13*
+![asoc_1__petrosia_ficiformis__1.jpg](lamina_fotos/asoc_1__petrosia_ficiformis__1.jpg)
+*calidad 9.1/13 · nitidez ok · 1024x683px · fuente: inat obs 58084618*
 
-![asoc_1__Petrosia_ficiformis__2.jpg](lamina_fotos/asoc_1__Petrosia_ficiformis__2.jpg)
-*CC BY 4.0 · © borjitaaa (iNaturalist) · [observación](https://www.inaturalist.org/observations/351531856) · calidad 6.0/13*
+![asoc_1__petrosia_ficiformis__2.jpg](lamina_fotos/asoc_1__petrosia_ficiformis__2.jpg)
+*calidad 9.1/13 · nitidez ok · 1024x576px · fuente: inat obs 86539214*
 
 ## Felimare picta e Ircinia (dieta)
 
-### Felimare picta — calidad 7.0/13
+### felimare_picta — calidad 8.0/8.0 /13
 
-![asoc_2__Felimare_picta__1.jpg](lamina_fotos/asoc_2__Felimare_picta__1.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/399931553) · calidad 7.0/13*
+![asoc_2__felimare_picta__1.jpg](lamina_fotos/asoc_2__felimare_picta__1.jpg)
+*calidad 8.0/13 · nitidez ok · 2040x1530px · fuente: inat obs 101781624*
 
-![asoc_2__Felimare_picta__2.jpg](lamina_fotos/asoc_2__Felimare_picta__2.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/399931405) · calidad 7.0/13*
+![asoc_2__felimare_picta__2.jpg](lamina_fotos/asoc_2__felimare_picta__2.jpg)
+*calidad 8.0/13 · nitidez ok · 683x1024px · fuente: inat obs 35687108*
 
-### Ircinia oros — calidad 6.0/13
+### ircinia_oros — calidad local (n/d) /13
 
-![asoc_2__Ircinia_oros__1.jpg](lamina_fotos/asoc_2__Ircinia_oros__1.jpg)
-*CC BY 4.0 · © phil_newman (iNaturalist) · [observación](https://www.inaturalist.org/observations/379337407) · calidad 6.0/13*
+![asoc_2__ircinia_oros__1.jpg](lamina_fotos/asoc_2__ircinia_oros__1.jpg)
+*calidad local (sin ficha API) · nitidez ok · 1024x683px · fuente: minka obs 177402*
+
+![asoc_2__ircinia_oros__2.jpg](lamina_fotos/asoc_2__ircinia_oros__2.jpg)
+*calidad local (sin ficha API) · nitidez ok · 1024x768px · fuente: minka obs 568521*
 
 ## Cratena peregrina sobre Eudendrium racemosum (kleptopredación)
 
-### Cratena peregrina — calidad 6.0/13
+### cratena_peregrina — calidad 10.1/10.1 /13
 
-![asoc_3__Cratena_peregrina__1.jpg](lamina_fotos/asoc_3__Cratena_peregrina__1.jpg)
-*CC BY 4.0 · © jamiekingscott (iNaturalist) · [observación](https://www.inaturalist.org/observations/397024372) · calidad 6.0/13*
+![asoc_3__cratena_peregrina__1.jpg](lamina_fotos/asoc_3__cratena_peregrina__1.jpg)
+*calidad 10.1/13 · nitidez ok · 768x1024px · fuente: inat obs 92653376*
 
-![asoc_3__Cratena_peregrina__2.jpg](lamina_fotos/asoc_3__Cratena_peregrina__2.jpg)
-*CC BY 4.0 · © benake (iNaturalist) · [observación](https://www.inaturalist.org/observations/395273288) · calidad 6.0/13*
+![asoc_3__cratena_peregrina__2.jpg](lamina_fotos/asoc_3__cratena_peregrina__2.jpg)
+*calidad 10.1/13 · nitidez ok · 1024x770px · fuente: inat obs 86817828*
 
-### Eudendrium racemosum — calidad 6.0/13
+### eudendrium_racemosum — calidad 6.0/6.0 /13
 
-![asoc_3__Eudendrium_racemosum__1.jpg](lamina_fotos/asoc_3__Eudendrium_racemosum__1.jpg)
-*CC BY 4.0 · © ctaklis (iNaturalist) · [observación](https://www.inaturalist.org/observations/289557156) · calidad 6.0/13*
+![asoc_3__eudendrium_racemosum__1.jpg](lamina_fotos/asoc_3__eudendrium_racemosum__1.jpg)
+*calidad 6.0/13 · nitidez ok · 768x1024px · fuente: inat obs 84409279*
 
-![asoc_3__Eudendrium_racemosum__2.jpg](lamina_fotos/asoc_3__Eudendrium_racemosum__2.jpg)
-*CC BY 4.0 · © ctaklis (iNaturalist) · [observación](https://www.inaturalist.org/observations/84409279) · calidad 6.0/13*
+![asoc_3__eudendrium_racemosum__2.jpg](lamina_fotos/asoc_3__eudendrium_racemosum__2.jpg)
+*calidad 6.0/13 · nitidez ok · 1024x768px · fuente: inat obs 132578324*
 
 ## Comunidad del Sargassum flotante
 
-### Scyllaea pelagica — calidad 6.5/13
+### scyllaea_pelagica — calidad 9.1/8.1 /13
 
-![asoc_4__Scyllaea_pelagica__1.jpg](lamina_fotos/asoc_4__Scyllaea_pelagica__1.jpg)
-*CC BY 4.0 · © usernamefound928 (iNaturalist) · [observación](https://www.inaturalist.org/observations/331476010) · calidad 6.5/13*
+![asoc_4__scyllaea_pelagica__1.jpg](lamina_fotos/asoc_4__scyllaea_pelagica__1.jpg)
+*calidad 9.1/13 · nitidez ok · 1024x813px · fuente: inat obs 102304206*
 
-![asoc_4__Scyllaea_pelagica__2.jpg](lamina_fotos/asoc_4__Scyllaea_pelagica__2.jpg)
-*CC BY 4.0 · © rajanrao (iNaturalist) · [observación](https://www.inaturalist.org/observations/346197891) · calidad 6.0/13*
+![asoc_4__scyllaea_pelagica__2.jpg](lamina_fotos/asoc_4__scyllaea_pelagica__2.jpg)
+*calidad 8.1/13 · nitidez ok · 768x1024px · fuente: inat obs 2163770*
 
-### Latreutes fucorum — calidad 6.5/13
+### latreutes_fucorum — calidad 7.0/7.0 /13
 
-![asoc_4__Latreutes_fucorum__1.jpg](lamina_fotos/asoc_4__Latreutes_fucorum__1.jpg)
-*CC BY 4.0 · © thomasirvine (iNaturalist) · [observación](https://www.inaturalist.org/observations/141194251) · calidad 6.5/13*
+![asoc_4__latreutes_fucorum__1.jpg](lamina_fotos/asoc_4__latreutes_fucorum__1.jpg)
+*calidad 7.0/13 · nitidez ok · 1024x684px · fuente: inat obs 205202356*
 
-![asoc_4__Latreutes_fucorum__2.jpg](lamina_fotos/asoc_4__Latreutes_fucorum__2.jpg)
-*CC BY 4.0 · © er-birds (iNaturalist) · [observación](https://www.inaturalist.org/observations/397094852) · calidad 6.0/13*
+![asoc_4__latreutes_fucorum__2.jpg](lamina_fotos/asoc_4__latreutes_fucorum__2.jpg)
+*calidad 7.0/13 · nitidez ok · 768x1024px · fuente: inat obs 53949513*
 
-### Hippolyte coerulescens — calidad 8.1/13
+### hippolyte_coerulescens — calidad 8.1/8.1 /13
 
-![asoc_4__Hippolyte_coerulescens__1.jpg](lamina_fotos/asoc_4__Hippolyte_coerulescens__1.jpg)
-*CC BY 4.0 · © nicola35 (iNaturalist) · [observación](https://www.inaturalist.org/observations/222013216) · calidad 8.1/13*
+![asoc_4__hippolyte_coerulescens__1.jpg](lamina_fotos/asoc_4__hippolyte_coerulescens__1.jpg)
+*calidad 8.1/13 · nitidez ok · 768x1024px · fuente: inat obs 116414377*
 
-![asoc_4__Hippolyte_coerulescens__2.jpg](lamina_fotos/asoc_4__Hippolyte_coerulescens__2.jpg)
-*CC BY 4.0 · © thomasirvine (iNaturalist) · [observación](https://www.inaturalist.org/observations/143721204) · calidad 7.0/13*
+![asoc_4__hippolyte_coerulescens__2.jpg](lamina_fotos/asoc_4__hippolyte_coerulescens__2.jpg)
+*calidad 8.1/13 · nitidez ok · 2048x1536px · fuente: inat obs 222013216*
 
 ## Lysmata grabhami y Telmatactis cricoides (limpieza)
 
-### Lysmata grabhami — calidad 8.1/13
+### lysmata_grabhami — calidad 9.1/8.1 /13
 
-![asoc_5__Lysmata_grabhami__1.jpg](lamina_fotos/asoc_5__Lysmata_grabhami__1.jpg)
-*CC0 · © benjamin_turman (iNaturalist) · [observación](https://www.inaturalist.org/observations/315660448) · calidad 8.1/13*
+![asoc_5__lysmata_grabhami__1.jpg](lamina_fotos/asoc_5__lysmata_grabhami__1.jpg)
+*calidad 9.1/13 · nitidez ok · 1024x768px · fuente: inat obs 13559060*
 
-![asoc_5__Lysmata_grabhami__2.jpg](lamina_fotos/asoc_5__Lysmata_grabhami__2.jpg)
-*CC BY 4.0 · © phil_newman (iNaturalist) · [observación](https://www.inaturalist.org/observations/311053212) · calidad 8.1/13*
+![asoc_5__lysmata_grabhami__2.jpg](lamina_fotos/asoc_5__lysmata_grabhami__2.jpg)
+*calidad 8.1/13 · nitidez ok · 1024x768px · fuente: inat obs 93636370*
 
-### Telmatactis cricoides — calidad 7.0/13
+### telmatactis_cricoides — calidad 7.0/7.0 /13
 
-![asoc_5__Telmatactis_cricoides__1.jpg](lamina_fotos/asoc_5__Telmatactis_cricoides__1.jpg)
-*CC BY 4.0 · © rorywilson (iNaturalist) · [observación](https://www.inaturalist.org/observations/352057814) · calidad 7.0/13*
+![asoc_5__telmatactis_cricoides__1.jpg](lamina_fotos/asoc_5__telmatactis_cricoides__1.jpg)
+*calidad 7.0/13 · nitidez ok · 1024x768px · fuente: inat obs 72354482*
 
-![asoc_5__Telmatactis_cricoides__2.jpg](lamina_fotos/asoc_5__Telmatactis_cricoides__2.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/394955405) · calidad 6.0/13*
+![asoc_5__telmatactis_cricoides__2.jpg](lamina_fotos/asoc_5__telmatactis_cricoides__2.jpg)
+*calidad 7.0/13 · nitidez ok · 1024x683px · fuente: inat obs 60105995*
