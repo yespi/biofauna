@@ -1,6 +1,9 @@
 # Species associations revealed by an automatic fauna identifier and 1.2 million citizen-science photographs
 
-**Draft v1 — 28-sep-2026** · Correlation Project (BioFauna)
+**Author: Gustavo Zafra** · Creator and developer of BioFauna (BioCLIP-2.5 ViT-H/14 + FAISS identifier) and
+of the FotoFauna and BioQuest applications; contributor to the Minka SDG citizen-science platform.
+
+**Draft v10 — 29-sep-2026** · Correlation Project (BioFauna)
 
 ---
 
@@ -297,7 +300,15 @@ curatorial community of **Minka SDG** and **iNaturalist**. Special mention to **
 Project** for driving marine citizen science and observer training; to **Minka SDG** and **iNaturalist** for
 the platforms and the data; and to **GBIF**, **Wikimedia Commons**, **DORIS/FFESSM**, **SeaSlugForum**,
 **WoRMS** and **FishBase** for images and taxonomic data. This analysis has been possible thanks to the
-**BioFauna identifier** (BioCLIP-2.5 ViT-H/14 + FAISS) developed in the project.
+**BioFauna identifier** (BioCLIP-2.5 ViT-H/14 + FAISS), created and developed by **Gustavo Zafra** (author of
+this manuscript), with the author's contribution to the Minka SDG platform.
+
+**Acknowledgement to artificial-intelligence models (2026).** This work benefited from the assistance of the
+main AI assistants available in 2026, which participated in the development of the identifier, the
+experimental design, the co-occurrence analysis, the review of the biological literature and the drafting of
+the manuscript: **Claude (Anthropic)**, **Grok (xAI)**, **Gemini (Google)**, **DeepSeek** and other
+language/vision models of the time. Their contribution was that of research-assistance tools under the
+author's supervision and direction.
 
 ## References
 

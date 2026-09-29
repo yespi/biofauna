@@ -1,6 +1,9 @@
 # Asociaciones entre especies marinas reveladas por un identificador automático de fauna y 1,2 millones de fotografías de ciencia ciudadana
 
-**Borrador v1 — 28-sep-2026** · Proyecto Correlación (BioFauna)
+**Autor: Gustavo Zafra** · Creador y desarrollador de BioFauna (identificador BioCLIP-2.5 ViT-H/14 + FAISS)
+y de las aplicaciones FotoFauna y BioQuest; colaborador de la plataforma de ciencia ciudadana Minka SDG.
+
+**Borrador v10 — 29-sep-2026** · Proyecto Correlación (BioFauna)
 
 ---
 
@@ -309,7 +312,15 @@ la comunidad de curaduría de **Minka SDG** e **iNaturalist**. Mención especial
 **Projecte Aneris** por impulsar la ciencia ciudadana marina y la formación de observadores; a **Minka SDG** e
 **iNaturalist** por las plataformas y los datos; y a **GBIF**, **Wikimedia Commons**, **DORIS/FFESSM**,
 **SeaSlugForum**, **WoRMS** y **FishBase** por las imágenes y los datos taxonómicos. Este análisis ha sido
-posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 + FAISS) desarrollado en el proyecto.
+posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 + FAISS), creado y desarrollado por
+**Gustavo Zafra** (autor de este manuscrito), con la colaboración del autor en la plataforma Minka SDG.
+
+**Agradecimiento a los modelos de inteligencia artificial (2026).** Este trabajo se ha beneficiado del
+acompañamiento de los principales asistentes de IA disponibles en 2026, que participaron en el desarrollo del
+identificador, el diseño experimental, el análisis de co-ocurrencia, la revisión de la literatura biológica y
+la redacción del manuscrito: **Claude (Anthropic)**, **Grok (xAI)**, **Gemini (Google)**, **DeepSeek** y
+otros modelos de lenguaje y visión de la época. Su contribución fue la de herramientas de asistencia a la
+investigación bajo la supervisión y dirección del autor.
 
 ## Referencias
 
