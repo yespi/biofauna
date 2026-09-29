@@ -217,13 +217,13 @@ Three analyses were added to meet peer-review standards:
 | **BioFauna production** (tempered aggregator + per-species cap + Cube B + local subspace + zero-shot + abstention) | **77.7 %** | 90.0 % |
 | Gain of the decision mechanisms | **+8.7 pp** | −1.0 pp |
 
-**b) Long-tail metrics** (purged evaluation, 71,902 rows): Micro-accuracy **81.85 %** vs Macro-accuracy
+**b) Long-tail metrics** (purged evaluation, 76,585 rows): Micro-accuracy **82.34 %** vs Macro-accuracy
 **75.71 %** (2,946 species); by class frequency, **rare species (<10 rows) score 53.5 %** vs 85.8 % for
 common ones — the expected frequency bias of biodiversity identifiers. Top-5 93.7 % · genus 87.1 % ·
 family 90.5 %.
 
 **c) Leakage isolation**: 2.17 % of evaluation rows shared an observation or observer with the reference
-gallery of their species; excluding them changes the result by only **−0.14 pp** (82.0 % → 81.85 %),
+gallery of their species; excluding them changes the result by only **−0.14 pp** (82.5 % → 82.34 %),
 confirming that the operating figure is not materially inflated.
 
 ## 4. Discussion

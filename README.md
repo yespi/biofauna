@@ -13,7 +13,7 @@ Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/bio
 | Gallery | **1,118,298** embeddings / **4,543** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
 | Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
-| Field eval (out-of-sample, leak-purged) | **81.85%** species / 87.1% genus / 90.5% family (n=71,902, 2,946 species) |
+| Field eval (out-of-sample, leak-purged) | **82.34%** species / 87.1% genus / 90.5% family (n=76,585, 2,946 species) |
 | AutoID | 45/hour, 1,500/day, calibrated p≥0.80, margin + curator guards |
 | This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts, papers |
 | Not shipped | Photographs, per-photo `embeddings.npy` |

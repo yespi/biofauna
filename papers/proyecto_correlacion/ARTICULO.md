@@ -226,13 +226,13 @@ Para responder a los estándares de revisión por pares se añadieron tres anál
 | **BioFauna producción** (agregador temperado + tope por especie + Cubo B + subespacio local + zero-shot + abstención) | **77,7 %** | 90,0 % |
 | Ganancia de los mecanismos de decisión | **+8,7 pp** | −1,0 pp |
 
-**b) Métricas de long-tail** (eval purgado, 71.902 filas): Micro-accuracy **81,85 %** vs Macro-accuracy
+**b) Métricas de long-tail** (eval purgado, 76.585 filas): Micro-accuracy **82,34 %** vs Macro-accuracy
 **75,71 %** (2.946 especies); por frecuencia de clase, las especies **raras (<10 filas) aciertan 53,5 %**
 frente al 85,8 % de las comunes — sesgo de frecuencia esperable en identificadores de biodiversidad. Top-5
 93,7 % · género 87,1 % · familia 90,5 %.
 
 **c) Aislamiento de leakage**: el 2,17 % de las filas del eval compartía observación u observador con la
-galería de su especie; excluirlas cambia el resultado solo **−0,14 pp** (82,0 % → 81,85 %), lo que confirma
+galería de su especie; excluirlas cambia el resultado solo **−0,14 pp** (82,5 % → 82,34 %), lo que confirma
 que la cifra operativa no está inflada de forma material.
 
 ## 4. Discusión
