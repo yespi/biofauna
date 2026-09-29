@@ -1,100 +1,100 @@
 # Láminas fotográficas — Proyecto Correlación
 
-**29-sep-2026** · Fotografías de **iNaturalist** con licencia reutilizable (CC0 / CC BY 4.0 / CC BY-SA 4.0).
-Cada lámina incluye la atribución de su autor original y el enlace a la observación.
-**Criterio de inclusión**: solo imágenes CC0, CC BY o CC BY-SA; el resto se excluye o requiere permiso explícito del autor.
+**29-sep-2026 v2** · Fotografías de **iNaturalist** con licencia reutilizable (CC0 / CC BY 4.0 / CC BY-SA 4.0).
+Selección por **clasificador de calidad** (research-grade + acuerdos de identificación + curador de confianza + resolución; `obs_score` de BioFauna, 0-13).
+Cada lámina incluye la atribución de su autor y el enlace a la observación.
 
-## Peltodoris atromaculata sobre Petrosia ficiformis
+## Peltodoris atromaculata sobre Petrosia ficiformis (predación)
 
-### Peltodoris atromaculata
+### Peltodoris atromaculata — calidad 8.1/13
 
 ![asoc_1__Peltodoris_atromaculata__1.jpg](lamina_fotos/asoc_1__Peltodoris_atromaculata__1.jpg)
-*CC BY 4.0 · © benake (iNaturalist) · [observación](https://www.inaturalist.org/observations/395577764)*
+*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094709) · calidad 8.1/13*
 
 ![asoc_1__Peltodoris_atromaculata__2.jpg](lamina_fotos/asoc_1__Peltodoris_atromaculata__2.jpg)
-*CC0 · © alinamajcen (iNaturalist) · [observación](https://www.inaturalist.org/observations/385358645)*
+*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094684) · calidad 8.1/13*
 
-### Petrosia ficiformis
+### Petrosia ficiformis — calidad 6.0/13
 
 ![asoc_1__Petrosia_ficiformis__1.jpg](lamina_fotos/asoc_1__Petrosia_ficiformis__1.jpg)
-*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094721)*
+*CC BY 4.0 · © ruseva (iNaturalist) · [observación](https://www.inaturalist.org/observations/383094721) · calidad 6.0/13*
 
 ![asoc_1__Petrosia_ficiformis__2.jpg](lamina_fotos/asoc_1__Petrosia_ficiformis__2.jpg)
-*CC BY 4.0 · © golfopolikayakl (iNaturalist) · [observación](https://www.inaturalist.org/observations/374827071)*
+*CC BY 4.0 · © borjitaaa (iNaturalist) · [observación](https://www.inaturalist.org/observations/351531856) · calidad 6.0/13*
 
-## Felimare picta e Ircinia
+## Felimare picta e Ircinia (dieta)
 
-### Felimare picta
+### Felimare picta — calidad 7.0/13
 
 ![asoc_2__Felimare_picta__1.jpg](lamina_fotos/asoc_2__Felimare_picta__1.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/403883919)*
+*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/399931553) · calidad 7.0/13*
 
 ![asoc_2__Felimare_picta__2.jpg](lamina_fotos/asoc_2__Felimare_picta__2.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/399931553)*
+*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/399931405) · calidad 7.0/13*
 
-### Ircinia oros
+### Ircinia oros — calidad 6.0/13
 
 ![asoc_2__Ircinia_oros__1.jpg](lamina_fotos/asoc_2__Ircinia_oros__1.jpg)
-*CC BY 4.0 · © phil_newman (iNaturalist) · [observación](https://www.inaturalist.org/observations/379337407)*
+*CC BY 4.0 · © phil_newman (iNaturalist) · [observación](https://www.inaturalist.org/observations/379337407) · calidad 6.0/13*
 
-## Cratena peregrina sobre Eudendrium racemosum
+## Cratena peregrina sobre Eudendrium racemosum (kleptopredación)
 
-### Cratena peregrina
+### Cratena peregrina — calidad 6.0/13
 
 ![asoc_3__Cratena_peregrina__1.jpg](lamina_fotos/asoc_3__Cratena_peregrina__1.jpg)
-*CC BY-SA 4.0 · © ewoutknoester (iNaturalist) · [observación](https://www.inaturalist.org/observations/397699770)*
+*CC BY 4.0 · © jamiekingscott (iNaturalist) · [observación](https://www.inaturalist.org/observations/397024372) · calidad 6.0/13*
 
 ![asoc_3__Cratena_peregrina__2.jpg](lamina_fotos/asoc_3__Cratena_peregrina__2.jpg)
-*CC BY 4.0 · © jamiekingscott (iNaturalist) · [observación](https://www.inaturalist.org/observations/397024372)*
+*CC BY 4.0 · © benake (iNaturalist) · [observación](https://www.inaturalist.org/observations/395273288) · calidad 6.0/13*
 
-### Eudendrium racemosum
+### Eudendrium racemosum — calidad 6.0/13
 
 ![asoc_3__Eudendrium_racemosum__1.jpg](lamina_fotos/asoc_3__Eudendrium_racemosum__1.jpg)
-*CC BY 4.0 · © ctaklis (iNaturalist) · [observación](https://www.inaturalist.org/observations/289557156)*
+*CC BY 4.0 · © ctaklis (iNaturalist) · [observación](https://www.inaturalist.org/observations/289557156) · calidad 6.0/13*
 
 ![asoc_3__Eudendrium_racemosum__2.jpg](lamina_fotos/asoc_3__Eudendrium_racemosum__2.jpg)
-*CC BY 4.0 · © ctaklis (iNaturalist) · [observación](https://www.inaturalist.org/observations/84409279)*
+*CC BY 4.0 · © ctaklis (iNaturalist) · [observación](https://www.inaturalist.org/observations/84409279) · calidad 6.0/13*
 
-## Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)
+## Comunidad del Sargassum flotante
 
-### Scyllaea pelagica
+### Scyllaea pelagica — calidad 6.5/13
 
 ![asoc_4__Scyllaea_pelagica__1.jpg](lamina_fotos/asoc_4__Scyllaea_pelagica__1.jpg)
-*CC BY 4.0 · © jackietl (iNaturalist) · [observación](https://www.inaturalist.org/observations/356271923)*
+*CC BY 4.0 · © usernamefound928 (iNaturalist) · [observación](https://www.inaturalist.org/observations/331476010) · calidad 6.5/13*
 
 ![asoc_4__Scyllaea_pelagica__2.jpg](lamina_fotos/asoc_4__Scyllaea_pelagica__2.jpg)
-*CC BY 4.0 · © rajanrao (iNaturalist) · [observación](https://www.inaturalist.org/observations/346197891)*
+*CC BY 4.0 · © rajanrao (iNaturalist) · [observación](https://www.inaturalist.org/observations/346197891) · calidad 6.0/13*
 
-### Latreutes fucorum
+### Latreutes fucorum — calidad 6.5/13
 
 ![asoc_4__Latreutes_fucorum__1.jpg](lamina_fotos/asoc_4__Latreutes_fucorum__1.jpg)
-*CC BY 4.0 · © er-birds (iNaturalist) · [observación](https://www.inaturalist.org/observations/397094852)*
+*CC BY 4.0 · © thomasirvine (iNaturalist) · [observación](https://www.inaturalist.org/observations/141194251) · calidad 6.5/13*
 
 ![asoc_4__Latreutes_fucorum__2.jpg](lamina_fotos/asoc_4__Latreutes_fucorum__2.jpg)
-*CC BY 4.0 · © er-birds (iNaturalist) · [observación](https://www.inaturalist.org/observations/397092491)*
+*CC BY 4.0 · © er-birds (iNaturalist) · [observación](https://www.inaturalist.org/observations/397094852) · calidad 6.0/13*
 
-### Hippolyte coerulescens
+### Hippolyte coerulescens — calidad 8.1/13
 
 ![asoc_4__Hippolyte_coerulescens__1.jpg](lamina_fotos/asoc_4__Hippolyte_coerulescens__1.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/258851148)*
+*CC BY 4.0 · © nicola35 (iNaturalist) · [observación](https://www.inaturalist.org/observations/222013216) · calidad 8.1/13*
 
 ![asoc_4__Hippolyte_coerulescens__2.jpg](lamina_fotos/asoc_4__Hippolyte_coerulescens__2.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/240393116)*
+*CC BY 4.0 · © thomasirvine (iNaturalist) · [observación](https://www.inaturalist.org/observations/143721204) · calidad 7.0/13*
 
-## Lysmata grabhami y Telmatactis cricoides
+## Lysmata grabhami y Telmatactis cricoides (limpieza)
 
-### Lysmata grabhami
+### Lysmata grabhami — calidad 8.1/13
 
 ![asoc_5__Lysmata_grabhami__1.jpg](lamina_fotos/asoc_5__Lysmata_grabhami__1.jpg)
-*CC BY 4.0 · © rorywilson (iNaturalist) · [observación](https://www.inaturalist.org/observations/352058022)*
+*CC0 · © benjamin_turman (iNaturalist) · [observación](https://www.inaturalist.org/observations/315660448) · calidad 8.1/13*
 
 ![asoc_5__Lysmata_grabhami__2.jpg](lamina_fotos/asoc_5__Lysmata_grabhami__2.jpg)
-*CC BY 4.0 · © nicola35 (iNaturalist) · [observación](https://www.inaturalist.org/observations/334886150)*
+*CC BY 4.0 · © phil_newman (iNaturalist) · [observación](https://www.inaturalist.org/observations/311053212) · calidad 8.1/13*
 
-### Telmatactis cricoides
+### Telmatactis cricoides — calidad 7.0/13
 
 ![asoc_5__Telmatactis_cricoides__1.jpg](lamina_fotos/asoc_5__Telmatactis_cricoides__1.jpg)
-*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/394955405)*
+*CC BY 4.0 · © rorywilson (iNaturalist) · [observación](https://www.inaturalist.org/observations/352057814) · calidad 7.0/13*
 
 ![asoc_5__Telmatactis_cricoides__2.jpg](lamina_fotos/asoc_5__Telmatactis_cricoides__2.jpg)
-*CC BY 4.0 · © rorywilson (iNaturalist) · [observación](https://www.inaturalist.org/observations/352057814)*
+*CC BY 4.0 · © benjobson (iNaturalist) · [observación](https://www.inaturalist.org/observations/394955405) · calidad 6.0/13*
