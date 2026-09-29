@@ -1,0 +1,226 @@
+[
+ {
+  "caso": "asoc_1",
+  "label": "Peltodoris atromaculata sobre Petrosia ficiformis",
+  "especie": "Peltodoris atromaculata",
+  "fotos": [
+   {
+    "file": "asoc_1__Peltodoris_atromaculata__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "benake",
+    "obs_url": "https://www.inaturalist.org/observations/395577764",
+    "bytes": 176001
+   },
+   {
+    "file": "asoc_1__Peltodoris_atromaculata__2.jpg",
+    "lic": "CC0",
+    "autor": "alinamajcen",
+    "obs_url": "https://www.inaturalist.org/observations/385358645",
+    "bytes": 246525
+   }
+  ]
+ },
+ {
+  "caso": "asoc_1",
+  "label": "Peltodoris atromaculata sobre Petrosia ficiformis",
+  "especie": "Petrosia ficiformis",
+  "fotos": [
+   {
+    "file": "asoc_1__Petrosia_ficiformis__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "ruseva",
+    "obs_url": "https://www.inaturalist.org/observations/383094721",
+    "bytes": 95288
+   },
+   {
+    "file": "asoc_1__Petrosia_ficiformis__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "golfopolikayakl",
+    "obs_url": "https://www.inaturalist.org/observations/374827071",
+    "bytes": 93115
+   }
+  ]
+ },
+ {
+  "caso": "asoc_2",
+  "label": "Felimare picta e Ircinia",
+  "especie": "Felimare picta",
+  "fotos": [
+   {
+    "file": "asoc_2__Felimare_picta__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "benjobson",
+    "obs_url": "https://www.inaturalist.org/observations/403883919",
+    "bytes": 193158
+   },
+   {
+    "file": "asoc_2__Felimare_picta__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "benjobson",
+    "obs_url": "https://www.inaturalist.org/observations/399931553",
+    "bytes": 237980
+   }
+  ]
+ },
+ {
+  "caso": "asoc_2",
+  "label": "Felimare picta e Ircinia",
+  "especie": "Ircinia oros",
+  "fotos": [
+   {
+    "file": "asoc_2__Ircinia_oros__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "phil_newman",
+    "obs_url": "https://www.inaturalist.org/observations/379337407",
+    "bytes": 98515
+   }
+  ]
+ },
+ {
+  "caso": "asoc_3",
+  "label": "Cratena peregrina sobre Eudendrium racemosum",
+  "especie": "Cratena peregrina",
+  "fotos": [
+   {
+    "file": "asoc_3__Cratena_peregrina__1.jpg",
+    "lic": "CC BY-SA 4.0",
+    "autor": "ewoutknoester",
+    "obs_url": "https://www.inaturalist.org/observations/397699770",
+    "bytes": 90789
+   },
+   {
+    "file": "asoc_3__Cratena_peregrina__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "jamiekingscott",
+    "obs_url": "https://www.inaturalist.org/observations/397024372",
+    "bytes": 173714
+   }
+  ]
+ },
+ {
+  "caso": "asoc_3",
+  "label": "Cratena peregrina sobre Eudendrium racemosum",
+  "especie": "Eudendrium racemosum",
+  "fotos": [
+   {
+    "file": "asoc_3__Eudendrium_racemosum__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "ctaklis",
+    "obs_url": "https://www.inaturalist.org/observations/289557156",
+    "bytes": 66943
+   },
+   {
+    "file": "asoc_3__Eudendrium_racemosum__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "ctaklis",
+    "obs_url": "https://www.inaturalist.org/observations/84409279",
+    "bytes": 127756
+   }
+  ]
+ },
+ {
+  "caso": "asoc_4",
+  "label": "Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)",
+  "especie": "Scyllaea pelagica",
+  "fotos": [
+   {
+    "file": "asoc_4__Scyllaea_pelagica__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "jackietl",
+    "obs_url": "https://www.inaturalist.org/observations/356271923",
+    "bytes": 178746
+   },
+   {
+    "file": "asoc_4__Scyllaea_pelagica__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "rajanrao",
+    "obs_url": "https://www.inaturalist.org/observations/346197891",
+    "bytes": 247901
+   }
+  ]
+ },
+ {
+  "caso": "asoc_4",
+  "label": "Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)",
+  "especie": "Latreutes fucorum",
+  "fotos": [
+   {
+    "file": "asoc_4__Latreutes_fucorum__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "er-birds",
+    "obs_url": "https://www.inaturalist.org/observations/397094852",
+    "bytes": 53781
+   },
+   {
+    "file": "asoc_4__Latreutes_fucorum__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "er-birds",
+    "obs_url": "https://www.inaturalist.org/observations/397092491",
+    "bytes": 28353
+   }
+  ]
+ },
+ {
+  "caso": "asoc_4",
+  "label": "Comunidad del Sargassum (Scyllaea, Latreutes, Hippolyte)",
+  "especie": "Hippolyte coerulescens",
+  "fotos": [
+   {
+    "file": "asoc_4__Hippolyte_coerulescens__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "benjobson",
+    "obs_url": "https://www.inaturalist.org/observations/258851148",
+    "bytes": 129836
+   },
+   {
+    "file": "asoc_4__Hippolyte_coerulescens__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "benjobson",
+    "obs_url": "https://www.inaturalist.org/observations/240393116",
+    "bytes": 129622
+   }
+  ]
+ },
+ {
+  "caso": "asoc_5",
+  "label": "Lysmata grabhami y Telmatactis cricoides",
+  "especie": "Lysmata grabhami",
+  "fotos": [
+   {
+    "file": "asoc_5__Lysmata_grabhami__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "rorywilson",
+    "obs_url": "https://www.inaturalist.org/observations/352058022",
+    "bytes": 126151
+   },
+   {
+    "file": "asoc_5__Lysmata_grabhami__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "nicola35",
+    "obs_url": "https://www.inaturalist.org/observations/334886150",
+    "bytes": 164728
+   }
+  ]
+ },
+ {
+  "caso": "asoc_5",
+  "label": "Lysmata grabhami y Telmatactis cricoides",
+  "especie": "Telmatactis cricoides",
+  "fotos": [
+   {
+    "file": "asoc_5__Telmatactis_cricoides__1.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "benjobson",
+    "obs_url": "https://www.inaturalist.org/observations/394955405",
+    "bytes": 182754
+   },
+   {
+    "file": "asoc_5__Telmatactis_cricoides__2.jpg",
+    "lic": "CC BY 4.0",
+    "autor": "rorywilson",
+    "obs_url": "https://www.inaturalist.org/observations/352057814",
+    "bytes": 126151
+   }
+  ]
+ }
+]

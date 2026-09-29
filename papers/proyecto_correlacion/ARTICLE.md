@@ -217,3 +217,12 @@ the platforms and the data; and to **GBIF**, **Wikimedia Commons**, **DORIS/FFES
   *Anisodoris* Bergh, 1898 (Nudibranchia: Doridoidea). *Journal of Molluscan Studies*, 68, 345–351.
 
 
+
+## Supplementary material
+
+- Association tables (top 40 and full set).
+- Association network figure.
+- **Photo plates** per case (29-sep-2026, `LAMINAS.md`): **21 photographs** from iNaturalist with
+  **reusable licences** (CC0 / CC BY 4.0 / CC BY-SA 4.0) and **full attribution** (author + licence +
+  observation link) for the 5 documented/plausible associations. Inclusion criterion: only reusable-licence
+  images; the rest are excluded or require the author's explicit permission.

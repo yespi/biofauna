@@ -227,6 +227,7 @@ posible gracias al **identificador BioFauna** (BioCLIP-2.5 ViT-H/14 + FAISS) des
 
 - Tablas de asociaciones (top 40 y conjunto completo).
 - Figura de red de asociaciones.
-- **Láminas fotográficas** por caso (en preparación): para cada asociación, 2-4 fotografías de archivo con la
-  **atribución y licencia** de su autor original. **Criterio de inclusión: solo imágenes con licencia
-  reutilizable (CC BY, CC BY-SA, CC0) o permiso explícito del autor.**
+- **Láminas fotográficas** por caso (29-sep-2026, `LAMINAS.md`): **21 fotografías** de iNaturalist con
+  **licencia reutilizable** (CC0 / CC BY 4.0 / CC BY-SA 4.0) y **atribución completa** (autor + licencia +
+  enlace a la observación) para las 5 asociaciones documentadas/plausibles. Criterio de inclusión: solo
+  imágenes con licencia reutilizable; el resto se excluye o requiere permiso explícito del autor.
