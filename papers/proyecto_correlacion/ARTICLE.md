@@ -181,6 +181,47 @@ correspond to **dive trips** by the same group rather than to ecological interac
 Cross-checking each taxon's geographic range is therefore a necessary quality filter before interpreting any
 candidate as an ecological association.
 
+### 4.2 Contrasted biological hypotheses (the main scientific contribution)
+
+The robust candidates are here confronted with the marine biological literature. Each case is classified as
+**documented** (the interaction is already described), **plausible** (ecologically coherent, no direct
+citation of the pair) or **artefact** (sampling bias, discarded).
+
+**(a) *Peltodoris atromaculata* — *Petrosia ficiformis* (predation).** Documented. The dorid feeds exclusively
+on that sponge, accumulates its petroformynes and lives on it; the method recovers it with 79 events, 44
+localities and 74 days (lift 11.1). *Doto floridicola*—*Aglaophenia* and *Felimare orsinii*—*Scalarispongia
+scalaris* confirm the general pattern: **dorids and dotids co-occur with their prey sponge/hydroid** (Sea Slug
+Forum; McDonald & Nybakken, 2001).
+
+**(b) *Cratena peregrina* — *Eudendrium racemosum* (kleptopredation).** Documented (CNR, Adriatic Sea): the
+aeolid steals prey from the hydroid. Our pair (n=5, 5 observers) is consistent with the literature.
+
+**(c) Floating *Sargassum* community (*Scyllaea pelagica*, *Latreutes fucorum*, *Hippolyte coerulescens*).**
+Documented: the three species are fauna associated with the floating alga *Sargassum* (NOAA; BAMZ). The method
+groups them with 10-11 distinct observers and lift >300, without knowing the relationship a priori.
+
+**(d) *Lysmata grabhami* — *Telmatactis cricoides* (cleaning/symbiosis).** Plausible. The anemone *T.
+cricoides* hosts documented crustacean symbionts (*Thor amboinensis* in 65 % of anemones; *Stenorhynchus
+lanceolatus* in facultative mutualism — Peraza et al., 2024); *Lysmata* are cleaner shrimps. They truly
+co-occur in the Canary Islands/Madeira (lat 27-29). Requires in-situ validation.
+
+**(e) *Blackfordia virginica* — *Phronima sedentaria* / *Brachyscelus crusculum* (commensalism on
+gelatinous zooplankton).** Plausible. Hyperiids associate with medusae and salps (Keil & Osborn; *Phronima*
+is an obligate salp symbiont — Laval, 1978). No specific *Blackfordia*-hyperiid citation; testable hypothesis.
+
+**(f) Infaunal pairs (*Fustiaria rubescens*—*Loripinus fragilis*; *Abra alba*—*Abra longicallus*).**
+Plausible. Co-habitation of circalittoral soft bottoms (JNCC biotope "Abra alba & Nucula nitidosa";
+*Loripinus* lives in reduced sediments with chemosynthetic symbionts).
+
+**Discarded as artefacts**: the highest-lift pairs with extra-Mediterranean species (*Doris fontainii*—
+*Tyrinna delicata*, South Pacific; *Chromodoris quadricolor*—*Hexabranchus sanguineus*, Red Sea) are dive-trip
+photos of the same group, not associations of the study area; detecting them is also a dataset-quality control
+signal.
+
+**Implication**: five hypotheses (d, e, f and variants) require **in-situ validation** by biologists —
+targeted dives, fixed cameras or review of pairing photographs. That is the line of work that turns the result
+into a citable scientific contribution and the basis of the BioQuest application ("if you see X, look for Y").
+
 ## 5. Limitations
 
 1. Co-occurrence ≠ interaction; mitigated by filters and the null model, but directed observation remains the

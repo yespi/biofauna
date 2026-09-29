@@ -188,6 +188,50 @@ ciudadana**: los pares de mayor lift con especies extra-mediterráneas (*Doris f
 a interacciones ecológicas del área de estudio. El cruce con el rango geográfico de cada taxón es, por tanto,
 un filtro de calidad necesario antes de interpretar cualquier candidata como asociación ecológica.
 
+### 4.2 Hipótesis biológicas contrastadas (el mayor aporte científico)
+
+Las candidatas robustas se confrontan aquí con la literatura biológica marina previa. Cada caso se clasifica
+como **documentado** (la interacción ya está descrita), **plausible** (coherente ecológicamente, sin cita
+directa de la pareja) o **artefacto** (sesgo de muestreo, descartado).
+
+**(a) *Peltodoris atromaculata* — *Petrosia ficiformis* (predación).** Documentado. El doridáceo se alimenta
+exclusivamente de esa esponja, acumula sus petroformynas y vive sobre ella; el método lo recupera con 79
+eventos, 44 localidades y 74 días (lift 11,1). *Doto floridicola*—*Aglaophenia* y *Felimare orsinii*—
+*Scalarispongia scalaris* confirman el patrón general: **los doridáceos y dotidos se co-ocurren con su
+esponja/hidrozoo presa** (Sea Slug Forum; McDonald & Nybakken, 2001).
+
+**(b) *Cratena peregrina* — *Eudendrium racemosum* (kleptopredación).** Documentado (CNR, mar Adriático): el
+aeólido roba presas al hidrozoo. Nuestro par (n=5, 5 observadores) es consistente con la literatura.
+
+**(c) Comunidad del *Sargassum* flotante (*Scyllaea pelagica*, *Latreutes fucorum*, *Hippolyte
+coerulescens*).** Documentado: las tres especies son fauna asociada al alga flotante *Sargassum* (NOAA;
+BAMZ). El método las agrupa con 10-11 observadores distintos y lift >300, sin necesidad de conocer la
+relación a priori.
+
+**(d) *Lysmata grabhami* — *Telmatactis cricoides* (limpieza/simbiosis).** Plausible. La anémona *T.
+cricoides* hospeda crustáceos simbiontes documentados (*Thor amboinensis* en el 65 % de las anémonas;
+*Stenorhynchus lanceolatus* en mutualismo facultativo — Peraza et al., 2024); las *Lysmata* son gambas
+limpiadoras. Co-ocurren real en Canarias/Madeira (lat 27-29). Requiere validación in situ.
+
+**(e) *Blackfordia virginica* — *Phronima sedentaria* / *Brachyscelus crusculum* (comensalismo en
+gelatinosos).** Plausible. Los hiperídeos se asocian a medusas y salpas (Keil & Osborn; *Phronima* es
+simbionte obligado de salpas — Laval, 1978). No hay cita específica *Blackfordia*-hiperídeo; hipótesis
+testable.
+
+**(f) Pares de infauna (*Fustiaria rubescens*—*Loripinus fragilis*; *Abra alba*—*Abra longicallus*).**
+Plausible. Co-habitación de sedimentos blandos circalitorales (biotopo JNCC «Abra alba & Nucula nitidosa»;
+*Loripinus* vive en sedimentos reducidos con simbiontes quimiosintéticos).
+
+**Descartadas por artefacto**: los pares de mayor lift con especies extra-mediterráneas (*Doris fontainii*—
+*Tyrinna delicata*, Pacífico sur; *Chromodoris quadricolor*—*Hexabranchus sanguineus*, Mar Rojo) son fotos de
+viajes de buceo del mismo grupo, no asociaciones del área de estudio; su detección es además señal de control
+de calidad del *dataset*.
+
+**Implicación**: cinco hipótesis (d, e, f y sus variantes) requieren **validación in situ** por biólogos —
+inmersiones dirigidas, cámaras fijas o revisión de fotografías de parejas. Esa es la línea de trabajo que
+convierte el resultado en aporte científico citable y la base de la aplicación en BioQuest («si ves X, busca
+Y»).
+
 ## 5. Limitaciones
 
 1. Co-ocurrencia ≠ interacción; se mitiga con filtros y nulo, pero la confirmación última es la observación

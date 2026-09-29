@@ -41,6 +41,52 @@ Para cada par (A, B):
 - **p** aproximado por Poisson (probabilidad de ver ≥n con media = esperado). Es un *screening*: el contraste
   definitivo es el **nulo estratificado** (siguiente apartado).
 
+## 4 ter. Formalización matemática (añadido 29-sep-2026, requisito de revista)
+
+### Métrica de similitud del identificador (k-NN sobre FAISS)
+
+Dada una foto consulta con embedding normalizado $\mathbf{q} \in \mathbb{R}^{1024}$ (BioCLIP-2.5 ViT-H/14,
+normalización $L_2$), y la galería de referencia $\mathcal{G} = \{\mathbf{g}_i\}_{i=1}^{M}$ con etiquetas
+$\{y_i\}$, el k-NN devuelve los $k=15$ vecinos más próximos por **similitud coseno** (equivalente al producto
+escalar en vectores normalizados):
+
+$$
+s_i = \mathbf{q} \cdot \mathbf{g}_i = \frac{\mathbf{q}^\top \mathbf{g}_i}{\lVert \mathbf{q} \rVert \lVert \mathbf{g}_i \rVert}
+$$
+
+La **similitud de la especie** $c$ es la máxima sobre sus vecinos en la foto: $s_c = \max_{i: y_i = c} s_i$.
+La confianza publicable es la probabilidad calibrada $p_c = f_\theta(s_c, s_{c'}, m, \mathbf{v})$ donde $c'$ es
+la segunda especie, $m = s_c - s_{c'}$ el margen, y $\mathbf{v}$ incluye votos, cobertura y $n_{ref}$ (regresión
+logística isotónica, ECE 0,0091 en validación). La abstención jerárquica degrada a género/familia cuando
+$m < \tau_{fam}$ (margen fijo) o por regla de mínimo riesgo bayesiano.
+
+### Co-ocurrencia y lift
+
+Sea $\mathcal{E}$ el conjunto de *eventos* (observador × celda ~1,1 km × día × franja de 3 h). Para un par
+(A, B):
+
+$$
+n_{AB} = \lvert \{e \in \mathcal{E} : A \in e \land B \in e\} \rvert
+$$
+
+$$
+\mathbb{E}[n_{AB}] = \frac{n_A \, n_B}{N}, \qquad N = \lvert \mathcal{E} \rvert
+$$
+
+$$
+\text{lift}_{AB} = \frac{n_{AB}}{\mathbb{E}[n_{AB}]}
+$$
+
+El p-valor aproximado por Poisson (cola superior):
+
+$$
+p_{AB} = P(X \ge n_{AB}), \quad X \sim \text{Poisson}(\mathbb{E}[n_{AB}])
+$$
+
+Filtros de robustez: $n_{AB} \ge 8$ (soporte), $\ge 3$ celdas, $\ge 3$ días y **$\ge 5$ observadores
+distintos** (control de la «ruta del fotógrafo»). El lift premia pares raros; el contraste definitivo es el
+**nulo estratificado por localidad·fecha** (permutación intra-bloque con FDR de Benjamini-Hochberg), en curso.
+
 
 ## 4 bis. Filtro de OBSERVADORES distintos (añadido 28-sep-2026, corrección por revisión experta)
 
