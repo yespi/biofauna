@@ -5,8 +5,8 @@
 | Elemento | Origen | Cobertura |
 |---|---|---|
 | Fotografías | galería BioFauna (`/mnt/gpu/fotofauna-images` + `archive`) | **1.222.170** imágenes (8 fuentes públicas, ver README) |
-| Observaciones con metadatos | API de iNaturalist, Minka y GBIF; volcado en `dataset/enrich_obs_metadata_progress_20260919.json` | **759.207** obs · 100 % con geo y fecha · **92 % con hora** |
-| Catálogo de especies | `dataset/target_species.json` | 2.985 taxones (checklist mediterránea curada) |
+| Observaciones con metadatos | API de iNaturalist, Minka y GBIF; enriquecidas vía API (volcado disponible en el repositorio público) | **759.207** obs · 100 % con geo y fecha · **92 % con hora** |
+| Catálogo de especies | el catálogo del proyecto (repositorio público) | 2.985 taxones (checklist mediterránea curada) |
 
 ## 2. Unidad de análisis: el «evento»
 
@@ -137,6 +137,8 @@ Si las recupera con fuerza, las candidatas nuevas merecen crédito:
 | *Felimare picta* + *Ircinia oros* | 29 | 4,1 | 20 | 28 | depredación/esponja hospedadora |
 | *Cratena peregrina* + *Eudendrium racemosum* | 5 | 10,5 | — | — | hidrozoo del que se alimenta |
 | *Doto paulinae* + *Sertularella mediterranea* | 5 | 48,3 | — | — | hidrozoo hospedador |
+
+> **Nota de implementación (30-sep-2026, revisión):** el script del nulo (`nulo_estratificado_20260929.py`) define el evento como *celda de 0,1° (~10 km) · día · franja de 3 h* **sin observador** y estratifica por *celda·día* (47.302 bloques); el análisis principal usa *observador × ~1 km × día × 3 h*. Las dos definiciones no son idénticas: el nulo es más conservador en el espacio (bloques más grandes) y no controla al observador. La sensibilidad al observador se evalúa aparte (`experimentos/SESGO_OBSERVADOR_PARES_20260929.md`). **Pendiente:** repetir el nulo con la definición del análisis principal como prueba de robustez.
 
 ## 6. Nulo estadístico (fase en curso)
 

@@ -59,8 +59,8 @@ La mayoría de pares son **inter-familia** (98 %), coherente con asociaciones tr
 | *Crepidula unguiformis* | *Nucula nucleus* | 8 | 515 | 7 | 8 | fauna de sedimento |
 
 La lista completa (top 40 con familia y métricas) está en
-[`coocurrencia_top40.md`](../../docker/biofauna/artifacts/coocurrencia_top40.md)¹ y los **70.971 pares** en
-`artifacts/coocurrencia_catalogo_20260928.json`.
+[`coocurrencia_top40.md`](coocurrencia_top40.md)¹ y los **70.971 pares** en
+el conjunto completo (repositorio público, `data/`).
 
 > ¹ En el repositorio público se incluye una copia en `papers/proyecto_correlacion/`.
 
@@ -127,7 +127,7 @@ marcan como *artefacto*, no como asociación ecológica válida del área de est
 
 ## 5. Figura
 
-![Red de asociaciones](../../docker/biofauna/artifacts/coocurrencia_red_top12.svg)
+![Red de asociaciones](coocurrencia_red_top12.svg)
 
 Red de las 12 asociaciones más fuertes (grosor del enlace ∝ lift). Copia navegable en esta carpeta:
 [`coocurrencia_red_top12.svg`](coocurrencia_red_top12.svg).
@@ -149,5 +149,13 @@ recupera y las ordena por lift: *Doto floridicola*→*Aglaophenia* (hidrozoo), *
 *Siphonaria pectinata*→*Bifurcaria* (alga). El resto son **hipótesis testables** de dieta/sustrato para
 nudibranquios mediterráneos poco estudiados.
 
-Artefactos: `artifacts/coocurrencia_nudibranquios_20260929.json` (9.539 pares) y
-`artifacts/coocurrencia_nudibranquios_trofica_filtrada_20260929.json` (1.048 con ≥5 observadores).
+El conjunto completo de pares está en el repositorio público (`data/`).
+
+## 8. Sensibilidad al sesgo de observador (añadido 29-sep-2026, revisión)
+
+Para cada par clave se contó cuántos eventos sobreviven al retirar al observador dominante (`experimentos/SESGO_OBSERVADOR_PARES_20260929.md`).
+Robustos (dominante ≤33 %, ≥8 observadores): *Peltodoris–Petrosia*, *Fistularia–Pterois*, *Fistularia–Siganus*, *Pterois–Taeniura*.
+**Frágiles o dependientes de un observador (≥55 % de los eventos)**: *Codium coralloides–Placida verticilata* (72 %; 5 eventos restantes),
+*Forskalia edwardsii–Lampea pancerina* (71 %; 2), *Cestum–Hippopodius* (62 %; 6), *Felimare orsinii–Scalarispongia* (55 %; 5),
+*Branchellion–Torpedo* (61 %; 28 restantes). Estos pares deben leerse como **hipótesis pendientes de replicación**, no como hallazgos.
+**Pendiente:** unificar la definición de evento entre este documento (observador × 1 km) y el nulo estratificado (celda 0,1° sin observador).
