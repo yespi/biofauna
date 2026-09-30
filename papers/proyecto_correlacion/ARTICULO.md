@@ -341,6 +341,13 @@ la definición principal son de especies indo-pacíficas fotografiadas en viajes
 squamipinnis*), es decir, co-ocurrencia de **expedición**, no mediterránea; el filtro de especies mediterráneas (§3.7) debe aplicarse antes de
 interpretarlos.
 
+**Familia restringida a pares mediterráneos.** De los 3.000 pares testeados, 152 (definición principal) y 146 (gruesa) pertenecen al conjunto de pares
+específicos mediterráneos (§3.7), que es una familia de hipótesis definida por el catálogo (no por el p). Recalculando Benjamini-Hochberg solo sobre
+ella: **39 pares superan el FDR con la definición principal y 2 con la gruesa** (*Aeolidiella alderi*—*Berthella perforata* y *A. alderi*—*Dendrodoris
+limbata*, q=0,036). Entre los primeros hay parejas de heterobranquios (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris
+limbata*, *Petalifera petalifera*—*Placida tardyi*) y el par planctónico *Cestum*—*Hippopodius*. Una co-ocurrencia estadísticamente excepcional
+respecto al esfuerzo local **no implica interacción** (puede reflejar microhábitat o sustrato compartido); son candidatas para validación in situ.
+
 **Consecuencias para los pares de las secciones anteriores.** *Branchellion torpedinis*—*Torpedo marmorata* (parasitismo documentado) es el más
 sólido: p<sub>emp</sub>=0,0005 con ambas definiciones (q=0,021 con la principal, 0,115 con la gruesa). *Cestum veneris*—*Hippopodius hippopus*:
 p=0,0215 (gruesa) y 0,0005 con q=0,021 (principal). *Codium coralloides*—*Placida verticilata*: p=0,029 (gruesa) y 0,014 (principal; q=0,089, no

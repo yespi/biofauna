@@ -328,6 +328,13 @@ under that definition is not conclusive in the tail** (an earlier 200-permutatio
 result); (b) several pairs passing FDR under the main definition are Indo-Pacific species photographed on dive trips (e.g. *Cephalopholis miniata*—
 *Pseudanthias squamipinnis*), i.e. **expedition** co-occurrence, not Mediterranean; the Mediterranean-species filter (§3.7) must be applied before interpreting them.
 
+**Family restricted to Mediterranean pairs.** Of the 3,000 tested pairs, 152 (main definition) and 146 (coarse) belong to the Mediterranean-specific pair
+set (§3.7), a hypothesis family defined by the catalogue (not by p). Recomputing Benjamini-Hochberg on it alone: **39 pairs pass FDR under the main
+definition and 2 under the coarse one** (*Aeolidiella alderi*—*Berthella perforata* and *A. alderi*—*Dendrodoris limbata*, q=0.036). The former include
+heterobranch pairs (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris limbata*, *Petalifera petalifera*—*Placida tardyi*) and the
+planktonic pair *Cestum*—*Hippopodius*. Statistically exceptional co-occurrence relative to local effort **does not imply interaction** (it may reflect shared
+microhabitat or substrate); they are candidates for in situ validation.
+
 **Consequences for the pairs in earlier sections.** *Branchellion torpedinis*—*Torpedo marmorata* (documented parasitism) is the most solid:
 p<sub>emp</sub>=0.0005 under both definitions (q=0.021 main, 0.115 coarse). *Cestum veneris*—*Hippopodius hippopus*: p=0.0215 (coarse) and 0.0005 with q=0.021
 (main). *Codium coralloides*—*Placida verticilata*: p=0.029 (coarse) and 0.014 (main; q=0.089, does not pass FDR). **The Lessepsian pairs (*Fistularia
