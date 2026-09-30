@@ -4,7 +4,7 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
-**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260930.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260930.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v15_ES_20260930.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v15_EN_20260930.pdf) · previa: [ES v14](papers/proyecto_correlacion/ARTICULO_v14_ES_20260929.pdf) · [EN v14](papers/proyecto_correlacion/ARTICLE_v14_EN_20260929.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20260930.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20260930.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v16_ES_20260930.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v16_EN_20260930.pdf) · previa: [ES v15](papers/proyecto_correlacion/ARTICULO_v15_ES_20260930.pdf) · [EN v15](papers/proyecto_correlacion/ARTICLE_v15_EN_20260930.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
 
 ## Snapshot (2026-09-29)
 

@@ -159,3 +159,5 @@ Robustos (dominante ≤33 %, ≥8 observadores): *Peltodoris–Petrosia*, *Fistu
 *Forskalia edwardsii–Lampea pancerina* (71 %; 2), *Cestum–Hippopodius* (62 %; 6), *Felimare orsinii–Scalarispongia* (55 %; 5),
 *Branchellion–Torpedo* (61 %; 28 restantes). Estos pares deben leerse como **hipótesis pendientes de replicación**, no como hallazgos.
 **Pendiente:** unificar la definición de evento entre este documento (observador × 1 km) y el nulo estratificado (celda 0,1° sin observador).
+
+**Actualización 30-sep (nulo con 2.000 permutaciones, dos definiciones de evento):** definición gruesa 387/3.000 con p<0,05 y 0 con FDR (no concluyente en la cola: solo 13 pares en el suelo p=0,0005); definición principal 1.017/3.000 con p<0,05 y **214 con FDR** (varios son expediciones indo-pacíficas). *Branchellion–Torpedo* y *Cestum–Hippopodius* son sólidos; **los pares lessepsianos no superan el nulo de esfuerzo local (p=0,52–0,76)**; *Codium–Placida* p=0,014-0,029 sin FDR. Detalle: artículo §4.3 y `experimentos/EXPERIMENTOS_HACIA_100_20260930.md` §E8.

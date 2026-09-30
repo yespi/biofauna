@@ -177,7 +177,8 @@ pairs** with ≥5 observers. Three groups of relationships stand out with ecolog
 The co-occurrence of Lessepsian invaders is **consistent with the literature** (Kondylatos et al., 2023:
 *Fistularia, Pterois miles* and *Siganus* caught together in Rhodes; CIESM Atlas of Exotic Fishes).
 Conservation implication: citizen-science photographs allow **monitoring the joint spread** of these invasive
-species.
+species. **Caveat (stratified null, §4.3):** these three pairs do not exceed the local-effort null (p<sub>emp</sub>=0.52–0.76); their high lift is due to both species
+being rare and co-occurring at few invasion sites and days.
 
 **b) Gelatinous plankton** (ctenophores, siphonophores and their predators/commensals):
 
@@ -311,30 +312,41 @@ signal.
 targeted dives, fixed cameras or review of pairing photographs. That is the line of work that turns the result
 into a citable scientific contribution.
 
-### 4.3 Controlling local effort: locality·date stratified null (29-sep-2026)
+### 4.3 Controlling local effort: locality·date stratified null (29–30 Sep 2026)
 
 To address the criticism that lift may reflect **local sampling effort** (a locality or a day with many
 observations) rather than biological co-occurrence, a **stratified permutation null** was implemented: events
 (locality ~0.1°, day, size) are preserved and species are shuffled **within each locality·day block**
-(47,302 blocks, 500 permutations, 58,283 events with ≥2 species).
+within each locality·day block. It was run with **two event definitions**, 2,000 permutations and the 3,000 highest-lift pairs:
+(i) *coarse* (0.1° cell · day · 3 h slot, no observer; 58,283 events, 47,302 blocks) and (ii) *the main-analysis definition*
+(observer × ~1 km × day × 3 h; 60,650 events, 40,982 blocks).
 
-Honest result: **386 of 3,000 tested pairs (12.9 %) are significant** at p<sub>emp</sub><0.05, but **none
-survives global FDR control** (Benjamini-Hochberg over 3,000 tests, requiring p≈3·10⁻⁵ per pair). Two
-readings:
+Result: with the coarse definition **387 of 3,000 pairs (12.9 %) have p<sub>emp</sub><0.05 and none passes Benjamini-Hochberg FDR** (q≤0.05); with
+the main-analysis definition **1,017 (33.9 %) have p<sub>emp</sub><0.05 and 214 pass FDR**. Two reading caveats: (a) with 2,000 permutations the minimum p is
+0.0005; under the coarse definition only 13 pairs reach that floor, so the best attainable q (0.115) stays above 0.05 and **the absence of FDR-surviving pairs
+under that definition is not conclusive in the tail** (an earlier 200-permutation run had an even higher floor and could not have produced any significant
+result); (b) several pairs passing FDR under the main definition are Indo-Pacific species photographed on dive trips (e.g. *Cephalopholis miniata*—
+*Pseudanthias squamipinnis*), i.e. **expedition** co-occurrence, not Mediterranean; the Mediterranean-species filter (§3.7) must be applied before interpreting them.
+
+**Consequences for the pairs in earlier sections.** *Branchellion torpedinis*—*Torpedo marmorata* (documented parasitism) is the most solid:
+p<sub>emp</sub>=0.0005 under both definitions (q=0.021 main, 0.115 coarse). *Cestum veneris*—*Hippopodius hippopus*: p=0.0215 (coarse) and 0.0005 with q=0.021
+(main). *Codium coralloides*—*Placida verticilata*: p=0.029 (coarse) and 0.014 (main; q=0.089, does not pass FDR). **The Lessepsian pairs (*Fistularia
+commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois miles*—*Taeniura lymma*) are NOT more frequent than local effort predicts**
+(p<sub>emp</sub>=0.52–0.76 under both definitions): their high lift reflects that both species are rare and coincide in the same few invasion sites and days, not a
+specific association. They remain useful as a sign that the invaders appear in the same places (monitoring), but **not** as evidence of interaction or of
+statistically exceptional co-occurrence.
 
 1. **Lift rewards rare pairs**: the *documented* pairs (*Peltodoris*—*Petrosia*, *Doto*—*Aglaophenia*) have
    abundant but not "rare" co-occurrence, and do not even enter the top 3,000 by lift. **Lift is not the
    right metric to validate common associations**; for them the signal is abundance and repeatability (n,
    cells, days, observers), not lift.
-2. **Pairs with p<sub>emp</sub><0.05 and high n are genuine candidates** with biological meaning:
-   *Branchellion torpedinis* (marine leech) with *Torpedo marmorata* (ray) — real parasitism (p=0.002);
-   *Corallium rubrum* with *Paramuricea clavata* (red corals, p=0.04); *Cestum veneris* with *Hippopodius
-   hippopus* (gelatinous, p=0.026); *Codium* with *Placida verticilata* (trophic, p=0.032).
+2. **Pairs with p<sub>emp</sub><0.05 and high n are candidates** with biological meaning (*Corallium rubrum*—*Paramuricea clavata*, p=0.04 in the initial
+   500-permutation run, not repeated with 2,000).
 
 **Methodological position**: pairs with a priori hypotheses (trophic and documented) are validated with their
 **individual p** (few concrete hypotheses, standard practice); exploratory discoveries are reported as
-candidates with p<sub>emp</sub><0.05 and an **explicit warning** that they do not survive global FDR and
-require independent validation. Detail: `experimentos/NULO_ESTRATIFICADO_20260929.md`.
+candidates with p<sub>emp</sub><0.05 and an **explicit warning** that their significance depends on the event definition and (under the coarse one) does not
+pass global FDR; they require independent validation. Detail: `experimentos/NULO_ESTRATIFICADO_20260929.md`.
 
 ## 5. Limitations
 
@@ -356,8 +368,8 @@ This work shows that citizen-science photographs, automatically identified at ca
 2. **It discovers new relationships with statistical support**: 1,048 trophic nudibranch pairs (≥5
    observers) and 11,509 specific Mediterranean pairs across the whole catalogue, notably:
    - **Co-occurring Lessepsian invaders** (*Fistularia commersonii*, *Pterois miles*, *Siganus rivulatus*,
-     *Taeniura lymma*) with lifts of 124-262 — a **bioinvasion monitoring** signal directly useful for
-     management.
+     *Taeniura lymma*) with lifts of 124-262 — their co-occurrence matches what local effort predicts
+     (§4.3), so it is a **spatial co-location of the invasion** signal useful for monitoring, not a statistically exceptional association.
    - **A shared planktonic predatory guild** (ctenophores and siphonophores in the same water mass:
      *Cestum veneris* + *Hippopodius hippopus*, lift 103).
    - **Undescribed benthic trophic relationships** (*Codium* — sacoglossans, *Astroides* — ascidians).
