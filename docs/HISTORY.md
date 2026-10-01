@@ -64,3 +64,6 @@ Legacy env/path names (`YOLOFAUNA_*`, `fotofauna-yolo`) may still appear in depl
 - Experiments / negative results: [`EXPERIMENTS.md`](EXPERIMENTS.md)
 - Paper: [`../papers/biofauna/01_biofauna.md`](../papers/biofauna/01_biofauna.md)
 - Short master: [`BIOFAUNA_MASTER.md`](BIOFAUNA_MASTER.md)
+
+## 2026-09-29 → 2026-10-01
+Field eval extended to 76,585 rows (honest KPI 82.34%; comparable baseline 81.18%); AutoID publishing restored after the Minka web change; shadow confidence model evaluated (no gain); exact k-NN moved to the GPU; crop fallback in production; weekly guarded recalibration.

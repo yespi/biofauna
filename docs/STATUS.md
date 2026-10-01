@@ -43,3 +43,6 @@ Admins can export live gallery ZIPs from FotoFauna (**BioFauna Fotos**). See [`f
 | [archive/](archive/README.md) | August 2026 notes, including the **closed** archive-gap |
 
 Private ops diary stays in `hansolo-docs` (`BIOFAUNA_SESION_STATUS.md`). This file is the public snapshot.
+
+## 2026-10-01
+k-NN on GPU (≈3.5× faster per call), crop fallback for AutoID in production (35 → 48 publishable in 500 queue photos; 85.7% of the added ones correct, n=49), calibrated refit weekly with a guard, confidence model in shadow (no gain). See the paper update of 2026-10-01.
