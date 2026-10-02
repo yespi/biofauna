@@ -288,7 +288,7 @@ Closing these three rows needs the same evaluation rows and the same leak filter
 7. **Evaluation optimism:** the leak-free panel metric (88.1%) is still closed-set and observer-correlated; a recent-observation sample (~80%) is the operating KPI (O16). Until 2026-09-23 the panel also contained gallery copies (O18).
 8. **AutoID without iNaturalist verification** has run for one day only (guards: Mediterranean bounding box, bird consensus, hourly cap, now 30/h and 1,000/day; reaching the hourly cap pauses that hour instead of tripping the circuit breaker); the audit against community identifications is pending.
 9. **Crop rescues are validated only on a back-test** (454 photos, thresholds chosen on the same photos); real precision of published rescues is unmeasured until third parties react.
-10. **Per-species accuracy is not broken down by gallery size**, and the confusion tables mix congeneric look-alikes with possible naming issues.
+10. **Per-species accuracy is not broken down by gallery size**, and the confusion tables mix congeneric look-alikes with possible naming issues. A 2026-10-02 audit of 34 gallery folders involved in the 17 most confusable marine pairs (4,407 observations re-checked against Minka's current taxonomy) found 96% already correctly filed (37 to move, 134 to quarantine), so these confusions are mostly visual (cryptic congeners), not labelling errors. Separately, 405 candidate evaluation photos for 74 Tier-1 species with 1–4 evaluation rows scored only 36.8% top-1 (46.4% top-5), versus ~82.5% on the panel: thin-evaluation species are much harder than the panel average, so enlarging their evaluation sets would lower the Tier-1 macro figure (a more honest estimate, not a regression).
 
 ---
 
