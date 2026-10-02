@@ -14,7 +14,7 @@ distributions. We analyse **1,222,170 photographs** and **759,207 geolocated, da
 iNaturalist and other public sources), automatically identified by **BioFauna** —a k-NN retriever over
 BioCLIP-2.5 ViT-H/14 embeddings with hierarchical calibration— to uncover **species associations**. We define a
 sampling *event* (observer × ~1 km cell × day × 3-h window) and evaluate pair co-occurrence with support,
-spatial and temporal repeatability, finding **70,971 significant pairs**. The method **recovers known,
+spatial and temporal repeatability, finding **70,971 pairs that meet support and repeatability criteria**; a locality·date stratified permutation null that controls for local sampling effort leaves **39 Mediterranean-specific pairs passing Benjamini-Hochberg FDR** (main event definition; 2 under a coarser one). The method **recovers known,
 documented associations** with high robustness —e.g. *Peltodoris atromaculata* on the sponge *Petrosia
 ficiformis* (79 events, lift 11.1, 44 localities, 74 days)— and reveals **undescribed candidates** with
 plausible biological interpretation, such as jellyfish with commensal hyperiid amphipods, cleaner shrimps with
@@ -50,6 +50,8 @@ Summary (details in [`METODOS.md`](METODOS.md) and supplementary material):
 
 ### 3.1 Method validation (documented associations recovered)
 
+**Table 1.** Documented associations recovered by the method (§3.1).
+
 | association | n | lift | localities | days | source |
 |---|---:|---:|---:|---:|---|
 | *Peltodoris atromaculata* — *Petrosia ficiformis* | 79 | 11.1 | 44 | 74 | classic literature |
@@ -70,6 +72,8 @@ coralline algae, didemnids, holothurians, actiniids, trochids, dictyotaceans, fa
 sabellids, irciniids). **98 % of pairs are inter-family**, as expected for habitat or trophic associations.
 
 ### 3.3 New candidates (pending expert review)
+
+**Table 2.** Strongest associations by functional group (§3.2).
 
 | functional group | A — B | n | lift | localities | days |
 |---|---:|---:|---:|---:|---:|
@@ -113,6 +117,8 @@ control signal.
 
 Sources verified during the literature review (28-sep-2026):
 
+**Table 3.** Literature sources checked for the associations (§3.5; continued after the quoted note).
+
 | Association / claim | Source |
 |---|---|
 | *Peltodoris atromaculata* feeds on the sponge *Petrosia ficiformis* | trophic literature of dorid nudibranchs (diet review; petroformynes as chemical defence of the sponge) |
@@ -141,6 +147,8 @@ Klussmann-Kolb, 2005; McDonald & Nybakken, 2001; Sea Slug Forum). Of the **70,97
 **≥5 distinct observers** (sponges, hydroids, bryozoans, ascidians and algae of the catalogue). The method
 **recovers published diets** as the strongest associations:
 
+**Table 4.** Trophic associations of nudibranchs with their prey or substrate (§3.6).
+
 | Nudibranch (family) | Co-occurring prey/substrate | n | obs. | lift | cells | bibliographic source |
 |---|---:|---:|---:|---:|---:|---|
 | *Doto floridicola* (Dotidae) | *Aglaophenia elongata* (hydroid) | 9 | 5 | 59.1 | 7 | ✅ documented: *Doto* spp. feed on *Aglaophenia* hydroids (Picton, Sea Slug Forum) |
@@ -168,6 +176,8 @@ pairs** with ≥5 observers. Three groups of relationships stand out with ecolog
 
 **a) Co-occurrence of Lessepsian invaders** (Red Sea species that entered via the Suez Canal):
 
+**Table 5.** Co-occurrence of Lessepsian invaders (§3.7a).
+
 | A | B | n | obs. | lift | context |
 |---|---:|---:|---:|---:|---|
 | *Fistularia commersonii* (cornetfish) | *Pterois miles* (lionfish) | 25 | 16 | 261.7 | both documented invaders; *Fistularia* is one of the few natural predators of *Pterois* |
@@ -177,10 +187,12 @@ pairs** with ≥5 observers. Three groups of relationships stand out with ecolog
 The co-occurrence of Lessepsian invaders is **consistent with the literature** (Kondylatos et al., 2023:
 *Fistularia, Pterois miles* and *Siganus* caught together in Rhodes; CIESM Atlas of Exotic Fishes).
 Conservation implication: citizen-science photographs allow **monitoring the joint spread** of these invasive
-species. **Caveat (stratified null, §4.3):** these three pairs do not exceed the local-effort null (p<sub>emp</sub>=0.52–0.76); their high lift is due to both species
+species. **Caveat (stratified null, §3.9):** these three pairs do not exceed the local-effort null (p<sub>emp</sub>=0.52–0.76); their high lift is due to both species
 being rare and co-occurring at few invasion sites and days.
 
 **b) Gelatinous plankton** (ctenophores, siphonophores and their predators/commensals):
+
+**Table 6.** Gelatinous plankton associations (§3.7b).
 
 | A | B | n | obs. | lift |
 |---|---:|---:|---:|---:|
@@ -193,6 +205,8 @@ Ctenophores prey on salps and gelatinous zooplankton (Carré & Carré); their co
 in the same water mass is coherent with a **shared planktonic predatory guild** (Current Biology, 2025).
 
 **c) Benthic invertebrates** (habitat associations with biological meaning):
+
+**Table 7.** Benthic invertebrate habitat associations (§3.7c).
 
 | A | B | n | obs. | lift |
 |---|---:|---:|---:|---:|
@@ -215,6 +229,8 @@ of the method. The same applies to *Forskalia edwardsii*—*Lampea pancerina* (7
 Three analyses were added to meet peer-review standards:
 
 **a) Ablation benchmark** (on the same random sample of 300 evaluation photos):
+
+**Table 8.** Ablation benchmark on 300 evaluation photos (§3.8a).
 
 | Model | Top-1 | Top-5 |
 |---|---:|---:|
@@ -239,6 +255,47 @@ versions) and two extensions obtained by targeted mining up to 30 photos per spe
 (1,785 species with both kinds of rows) accuracy is equivalent (86.8 % on mined rows vs 86.1 % on original rows), so the overall increase comes from the
 species mix (only species with a photo pool were extended) and **not from a model improvement**, since the model did not change. All mined rows went through
 the same leakage filter (observation, observer and embedding similarity ≥ 0.98 to the gallery).
+
+### 3.9 Controlling local effort: locality·date stratified null (main result, 29–30 Sep 2026)
+**Headline result of the project.** The 70,971 supported pairs are *not* evidence of association by themselves, because lift also rewards local sampling effort. The stratified null below is the test that decides which pairs are reported as statistically exceptional.
+
+| Table 9. Stratified null, 3,000 highest-lift pairs, 2,000 permutations | Coarse definition (0.1° · day · 3 h, no observer) | Main definition (observer · ~1 km · day · 3 h) |
+|---|---|---|
+| Events / blocks | 58,283 / 47,302 | 60,650 / 40,982 |
+| Pairs with p<sub>emp</sub> < 0.05 | 387 (12.9%) | 1,017 (33.9%) |
+| Pairs passing global FDR (q ≤ 0.05) | 0 | 214 |
+| Mediterranean-specific family (hypothesis family fixed by the catalogue) | 146 pairs | 152 pairs |
+| **Pairs passing FDR within that family** | **2** | **39** |
+
+
+To address the criticism that lift may reflect **local sampling effort** (a locality or a day with many
+observations) rather than biological co-occurrence, a **stratified permutation null** was implemented: events
+(locality ~0.1°, day, size) are preserved and species are shuffled **within each locality·day block**
+within each locality·day block. It was run with **two event definitions**, 2,000 permutations and the 3,000 highest-lift pairs:
+(i) *coarse* (0.1° cell · day · 3 h slot, no observer; 58,283 events, 47,302 blocks) and (ii) *the main-analysis definition*
+(observer × ~1 km × day × 3 h; 60,650 events, 40,982 blocks).
+
+Result: with the coarse definition **387 of 3,000 pairs (12.9 %) have p<sub>emp</sub><0.05 and none passes Benjamini-Hochberg FDR** (q≤0.05); with
+the main-analysis definition **1,017 (33.9 %) have p<sub>emp</sub><0.05 and 214 pass FDR**. Two reading caveats: (a) with 2,000 permutations the minimum p is
+0.0005; under the coarse definition only 13 pairs reach that floor, so the best attainable q (0.115) stays above 0.05 and **the absence of FDR-surviving pairs
+under that definition is not conclusive in the tail** (an earlier 200-permutation run had an even higher floor and could not have produced any significant
+result); (b) several pairs passing FDR under the main definition are Indo-Pacific species photographed on dive trips (e.g. *Cephalopholis miniata*—
+*Pseudanthias squamipinnis*), i.e. **expedition** co-occurrence, not Mediterranean; the Mediterranean-species filter (§3.7) must be applied before interpreting them.
+
+**Family restricted to Mediterranean pairs.** Of the 3,000 tested pairs, 152 (main definition) and 146 (coarse) belong to the Mediterranean-specific pair
+set (§3.7), a hypothesis family defined by the catalogue (not by p). Recomputing Benjamini-Hochberg on it alone: **39 pairs pass FDR under the main
+definition and 2 under the coarse one** (*Aeolidiella alderi*—*Berthella perforata* and *A. alderi*—*Dendrodoris limbata*, q=0.036). The former include
+heterobranch pairs (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris limbata*, *Petalifera petalifera*—*Placida tardyi*) and the
+planktonic pair *Cestum*—*Hippopodius*. Statistically exceptional co-occurrence relative to local effort **does not imply interaction** (it may reflect shared
+microhabitat or substrate); they are candidates for in situ validation.
+
+**Consequences for the pairs in earlier sections.** *Branchellion torpedinis*—*Torpedo marmorata* (documented parasitism) is the most solid:
+p<sub>emp</sub>=0.0005 under both definitions (q=0.021 main, 0.115 coarse). *Cestum veneris*—*Hippopodius hippopus*: p=0.0215 (coarse) and 0.0005 with q=0.021
+(main). *Codium coralloides*—*Placida verticilata*: p=0.029 (coarse) and 0.014 (main; q=0.089, does not pass FDR). **The Lessepsian pairs (*Fistularia
+commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois miles*—*Taeniura lymma*) are NOT more frequent than local effort predicts**
+(p<sub>emp</sub>=0.52–0.76 under both definitions): their high lift reflects that both species are rare and coincide in the same few invasion sites and days, not a
+specific association. They remain useful as a sign that the invaders appear in the same places (monitoring), but **not** as evidence of interaction or of
+statistically exceptional co-occurrence.
 
 ## 4. Discussion
 
@@ -312,36 +369,8 @@ signal.
 targeted dives, fixed cameras or review of pairing photographs. That is the line of work that turns the result
 into a citable scientific contribution.
 
-### 4.3 Controlling local effort: locality·date stratified null (29–30 Sep 2026)
-
-To address the criticism that lift may reflect **local sampling effort** (a locality or a day with many
-observations) rather than biological co-occurrence, a **stratified permutation null** was implemented: events
-(locality ~0.1°, day, size) are preserved and species are shuffled **within each locality·day block**
-within each locality·day block. It was run with **two event definitions**, 2,000 permutations and the 3,000 highest-lift pairs:
-(i) *coarse* (0.1° cell · day · 3 h slot, no observer; 58,283 events, 47,302 blocks) and (ii) *the main-analysis definition*
-(observer × ~1 km × day × 3 h; 60,650 events, 40,982 blocks).
-
-Result: with the coarse definition **387 of 3,000 pairs (12.9 %) have p<sub>emp</sub><0.05 and none passes Benjamini-Hochberg FDR** (q≤0.05); with
-the main-analysis definition **1,017 (33.9 %) have p<sub>emp</sub><0.05 and 214 pass FDR**. Two reading caveats: (a) with 2,000 permutations the minimum p is
-0.0005; under the coarse definition only 13 pairs reach that floor, so the best attainable q (0.115) stays above 0.05 and **the absence of FDR-surviving pairs
-under that definition is not conclusive in the tail** (an earlier 200-permutation run had an even higher floor and could not have produced any significant
-result); (b) several pairs passing FDR under the main definition are Indo-Pacific species photographed on dive trips (e.g. *Cephalopholis miniata*—
-*Pseudanthias squamipinnis*), i.e. **expedition** co-occurrence, not Mediterranean; the Mediterranean-species filter (§3.7) must be applied before interpreting them.
-
-**Family restricted to Mediterranean pairs.** Of the 3,000 tested pairs, 152 (main definition) and 146 (coarse) belong to the Mediterranean-specific pair
-set (§3.7), a hypothesis family defined by the catalogue (not by p). Recomputing Benjamini-Hochberg on it alone: **39 pairs pass FDR under the main
-definition and 2 under the coarse one** (*Aeolidiella alderi*—*Berthella perforata* and *A. alderi*—*Dendrodoris limbata*, q=0.036). The former include
-heterobranch pairs (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris limbata*, *Petalifera petalifera*—*Placida tardyi*) and the
-planktonic pair *Cestum*—*Hippopodius*. Statistically exceptional co-occurrence relative to local effort **does not imply interaction** (it may reflect shared
-microhabitat or substrate); they are candidates for in situ validation.
-
-**Consequences for the pairs in earlier sections.** *Branchellion torpedinis*—*Torpedo marmorata* (documented parasitism) is the most solid:
-p<sub>emp</sub>=0.0005 under both definitions (q=0.021 main, 0.115 coarse). *Cestum veneris*—*Hippopodius hippopus*: p=0.0215 (coarse) and 0.0005 with q=0.021
-(main). *Codium coralloides*—*Placida verticilata*: p=0.029 (coarse) and 0.014 (main; q=0.089, does not pass FDR). **The Lessepsian pairs (*Fistularia
-commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois miles*—*Taeniura lymma*) are NOT more frequent than local effort predicts**
-(p<sub>emp</sub>=0.52–0.76 under both definitions): their high lift reflects that both species are rare and coincide in the same few invasion sites and days, not a
-specific association. They remain useful as a sign that the invaders appear in the same places (monitoring), but **not** as evidence of interaction or of
-statistically exceptional co-occurrence.
+### 4.3 Interpreting the stratified null: lift, hypotheses and methodological position
+Results are reported in §3.9 (Table 9): the stratified null, not the lift, decides which pairs are called exceptional. This section keeps only the interpretation.
 
 1. **Lift rewards rare pairs**: the *documented* pairs (*Peltodoris*—*Petrosia*, *Doto*—*Aglaophenia*) have
    abundant but not "rare" co-occurrence, and do not even enter the top 3,000 by lift. **Lift is not the
@@ -376,7 +405,7 @@ This work shows that citizen-science photographs, automatically identified at ca
    observers) and 11,509 specific Mediterranean pairs across the whole catalogue, notably:
    - **Co-occurring Lessepsian invaders** (*Fistularia commersonii*, *Pterois miles*, *Siganus rivulatus*,
      *Taeniura lymma*) with lifts of 124-262 — their co-occurrence matches what local effort predicts
-     (§4.3), so it is a **spatial co-location of the invasion** signal useful for monitoring, not a statistically exceptional association.
+     (§3.9), so it is a **spatial co-location of the invasion** signal useful for monitoring, not a statistically exceptional association.
    - **A shared planktonic predatory guild** (ctenophores and siphonophores in the same water mass:
      *Cestum veneris* + *Hippopodius hippopus*, lift 103).
    - **Undescribed benthic trophic relationships** (*Codium* — sacoglossans, *Astroides* — ascidians).

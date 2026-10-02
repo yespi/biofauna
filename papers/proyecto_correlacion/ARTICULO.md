@@ -15,7 +15,7 @@ observaciones geolocalizadas y fechadas** (Minka SDG, iNaturalist y otras fuente
 forma automática por **BioFauna** —un recuperador k-NN sobre *embeddings* de BioCLIP-2.5 ViT-H/14 con
 calibración jerárquica— para descubrir **asociaciones entre especies**. Definimos un *evento* de muestreo
 (observador × celda ~1 km × día × franja de 3 h) y evaluamos la co-ocurrencia de pares con soporte,
-repetibilidad espacial y temporal, hallando **70.971 pares significativos**. El método **recupera asociaciones
+repetibilidad espacial y temporal, hallando **70.971 pares que cumplen los criterios de soporte y repetibilidad**; un nulo de permutación estratificado por localidad·fecha que controla el esfuerzo local de muestreo deja **39 pares específicos del Mediterráneo que superan el FDR de Benjamini-Hochberg** (definición principal de evento; 2 con una definición más gruesa). El método **recupera asociaciones
 ya documentadas** con alta robustez —por ejemplo *Peltodoris atromaculata* sobre la esponja *Petrosia
 ficiformis* (79 eventos, lift 11,1, 44 localidades, 74 días)— y revela **candidatas no descritas** con lectura
 biológica plausible, como medusas con anfípodos hiperídeos comensales, gambas limpiadoras con anémonas y
@@ -55,6 +55,8 @@ Resumen (detalle en [`METODOS.md`](METODOS.md) y en el material suplementario):
 
 ### 3.1 Validación del método (asociaciones documentadas recuperadas)
 
+**Tabla 1.** Asociaciones documentadas recuperadas por el método (§3.1).
+
 | asociación | n | lift | localidades | días | fuente |
 |---|---:|---:|---:|---:|---|
 | *Peltodoris atromaculata* — *Petrosia ficiformis* | 79 | 11,1 | 44 | 74 | bibliografía clásica |
@@ -77,6 +79,8 @@ sabelidos e ircínidos). El **98 % de los pares son inter-familia**, esperable e
 tróficas.
 
 ### 3.3 Candidatas nuevas (pendientes de revisión experta)
+
+**Tabla 2.** Asociaciones más fuertes por grupo funcional (§3.2).
 
 | grupo funcional | A — B | n | lift | localidades | días |
 |---|---:|---:|---:|---:|---:|
@@ -121,6 +125,8 @@ calidad del *dataset*.
 
 Las fuentes que sustentan la clasificación anterior, verificadas durante la revisión (28-sep-2026):
 
+**Tabla 3.** Fuentes de la literatura comprobadas para las asociaciones (§3.5).
+
 | Asociación / afirmación | Fuente |
 |---|---|
 | *Peltodoris atromaculata* se alimenta de la esponja *Petrosia ficiformis* | bibliografía trófica de doridáceos (revisión de dieta de nudibranquios; petroformynas como defensa química de la esponja) |
@@ -147,6 +153,8 @@ Klussmann-Kolb, 2005; McDonald & Nybakken, 2001; Sea Slug Forum). De los **70.97
 (13,4 %) implican al menos un nudibranquio**, y **1.048** son pares *nudibranquio→posible presa/sustrato* con
 **≥5 observadores distintos** (esponjas, hidrozoos, briozoos, ascidias y algas del catálogo). El método
 **recupera las dietas publicadas** como las asociaciones más fuertes:
+
+**Tabla 4.** Asociaciones tróficas de nudibranquios con su presa o sustrato (§3.6).
 
 | Nudibranquio (familia) | Presa/sustrato co-ocurrente | n | obs. | lift | celdas | fuente bibliográfica |
 |---|---|---|---:|---:|---:|---:|---|
@@ -176,6 +184,8 @@ conservación:
 
 **a) Co-ocurrencia de invasores lessepsianos** (especies del mar Rojo que entraron por el canal de Suez):
 
+**Tabla 5.** Co-ocurrencia de invasoras lessepsianas (§3.7a).
+
 | A | B | n | obs. | lift | contexto |
 |---|---:|---:|---:|---:|---|
 | *Fistularia commersonii* (pez flauta) | *Pterois miles* (pez león) | 25 | 16 | 261,7 | ambos invasores documentados; *Fistularia* es uno de los pocos depredadores naturales de *Pterois* |
@@ -185,10 +195,12 @@ conservación:
 La co-ocurrencia de invasores lessepsianos es **consistente con la literatura** (Kondylatos et al., 2023:
 *Fistularia, Pterois miles y Siganus* capturados juntos en Rodas; CIESM Atlas of Exotic Fishes). Implicación
 de conservación: las fotos de ciencia ciudadana permiten **monitorear la expansión conjunta** de estas
-especies invasoras. **Salvedad (nulo estratificado, §4.3):** estos tres pares no superan el nulo de esfuerzo local (p<sub>emp</sub>=0,52–0,76); su lift alto
+especies invasoras. **Salvedad (nulo estratificado, §3.9):** estos tres pares no superan el nulo de esfuerzo local (p<sub>emp</sub>=0,52–0,76); su lift alto
 se debe a que las especies son raras y coinciden en pocos enclaves y días de la invasión.
 
 **b) Plancton gelatinoso** (ctenóforos, sifonóforos y sus depredadores/comensales):
+
+**Tabla 6.** Asociaciones del plancton gelatinoso (§3.7b).
 
 | A | B | n | obs. | lift |
 |---|---:|---:|---:|---:|
@@ -202,6 +214,8 @@ en la misma masa de agua es coherente con un **gremio depredador planctónico co
 2025).
 
 **c) Invertebrados bentónicos** (asociaciones de hábitat con sentido biológico):
+
+**Tabla 7.** Asociaciones de hábitat de invertebrados bentónicos (§3.7c).
 
 | A | B | n | obs. | lift |
 |---|---:|---:|---:|---:|
@@ -224,6 +238,8 @@ restantes). Los pares lessepsianos (*Fistularia*, *Pterois*, *Siganus*, *Taeniur
 Para responder a los estándares de revisión por pares se añadieron tres análisis:
 
 **a) Benchmark de ablación** (sobre la misma muestra aleatoria de 300 fotos del eval):
+
+**Tabla 8.** Prueba de ablación sobre 300 fotos de evaluación (§3.8a).
 
 | Modelo | Top-1 | Top-5 |
 |---|---:|---:|
@@ -248,6 +264,50 @@ versiones anteriores) y dos ampliaciones por minado dirigido hasta 30 fotos por 
 (1.785 especies con filas de ambos tipos) la precisión es equivalente (86,8 % en filas minadas frente a 86,1 % en las originales), de modo que el aumento global
 procede de la composición por especies (solo las especies con reserva de fotos ampliaron) y **no de una mejora del modelo**, que no cambió. Todas las filas
 minadas pasaron el mismo filtro de fuga (observación, observador y similitud de embedding ≥ 0,98 con la galería).
+
+### 3.9 Control del esfuerzo local: nulo estratificado por localidad·fecha (resultado principal, 29-30-sep-2026)
+**Resultado principal del proyecto.** Los 70.971 pares con soporte *no* son por sí solos evidencia de asociación, porque el lift también premia el esfuerzo local de muestreo. El nulo estratificado que sigue es la prueba que decide qué pares se presentan como estadísticamente excepcionales.
+
+| Tabla 9. Nulo estratificado, 3.000 pares de mayor lift, 2.000 permutaciones | Definición gruesa (0,1° · día · 3 h, sin observador) | Definición principal (observador · ~1 km · día · 3 h) |
+|---|---|---|
+| Eventos / bloques | 58.283 / 47.302 | 60.650 / 40.982 |
+| Pares con p<sub>emp</sub> < 0,05 | 387 (12,9 %) | 1.017 (33,9 %) |
+| Pares que superan el FDR global (q ≤ 0,05) | 0 | 214 |
+| Familia específica mediterránea (familia de hipótesis fijada por el catálogo) | 146 pares | 152 pares |
+| **Pares que superan el FDR dentro de esa familia** | **2** | **39** |
+
+
+Para responder a la crítica de que el lift puede reflejar **esfuerzo de muestreo local** (una localidad o un
+día con muchas observaciones) en lugar de co-ocurrencia biológica, se implementó un **nulo por permutación
+estratificada**: se conservan los eventos (localidad ~0,1°, día, tamaño) y se barajan las especies dentro de
+cada bloque localidad·día. Se ejecutó con **dos definiciones de evento**, 2.000 permutaciones y los 3.000 pares de mayor lift:
+(i) *gruesa* (celda 0,1° · día · franja 3 h, sin observador; 58.283 eventos, 47.302 bloques) y (ii) *del análisis principal*
+(observador × ~1 km × día × 3 h; 60.650 eventos, 40.982 bloques).
+
+Resultado: con la definición gruesa **387 de 3.000 pares (12,9 %) tienen p<sub>emp</sub><0,05 y ninguno supera el FDR** de Benjamini-Hochberg
+(q≤0,05); con la definición del análisis principal **1.017 (33,9 %) tienen p<sub>emp</sub><0,05 y 214 superan el FDR**. Dos salvedades de lectura:
+(a) con 2.000 permutaciones el p mínimo es 0,0005; en la definición gruesa solo 13 pares llegan a ese suelo, de modo que el mejor q alcanzable
+(0,115) queda por encima de 0,05 y **la ausencia de pares con FDR en esa definición no es concluyente en la cola** (una primera ejecución con
+200 permutaciones tenía un suelo aún mayor y no podía haber dado ningún resultado significativo); (b) varios de los pares que superan el FDR con
+la definición principal son de especies indo-pacíficas fotografiadas en viajes de buceo (p. ej. *Cephalopholis miniata*—*Pseudanthias
+squamipinnis*), es decir, co-ocurrencia de **expedición**, no mediterránea; el filtro de especies mediterráneas (§3.7) debe aplicarse antes de
+interpretarlos.
+
+**Familia restringida a pares mediterráneos.** De los 3.000 pares testeados, 152 (definición principal) y 146 (gruesa) pertenecen al conjunto de pares
+específicos mediterráneos (§3.7), que es una familia de hipótesis definida por el catálogo (no por el p). Recalculando Benjamini-Hochberg solo sobre
+ella: **39 pares superan el FDR con la definición principal y 2 con la gruesa** (*Aeolidiella alderi*—*Berthella perforata* y *A. alderi*—*Dendrodoris
+limbata*, q=0,036). Entre los primeros hay parejas de heterobranquios (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris
+limbata*, *Petalifera petalifera*—*Placida tardyi*) y el par planctónico *Cestum*—*Hippopodius*. Una co-ocurrencia estadísticamente excepcional
+respecto al esfuerzo local **no implica interacción** (puede reflejar microhábitat o sustrato compartido); son candidatas para validación in situ.
+
+**Consecuencias para los pares de las secciones anteriores.** *Branchellion torpedinis*—*Torpedo marmorata* (parasitismo documentado) es el más
+sólido: p<sub>emp</sub>=0,0005 con ambas definiciones (q=0,021 con la principal, 0,115 con la gruesa). *Cestum veneris*—*Hippopodius hippopus*:
+p=0,0215 (gruesa) y 0,0005 con q=0,021 (principal). *Codium coralloides*—*Placida verticilata*: p=0,029 (gruesa) y 0,014 (principal; q=0,089, no
+supera el FDR). **Los pares lessepsianos (*Fistularia commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois miles*—*Taeniura
+lymma*) NO son más frecuentes de lo que predice el esfuerzo local** (p<sub>emp</sub>=0,52–0,76 con ambas definiciones): su lift alto refleja que
+ambas especies son raras y coinciden en los mismos pocos enclaves y días de la invasión, no una asociación específica. Siguen siendo útiles como
+señal de que las invasoras aparecen en los mismos lugares (monitoreo), pero **no** como evidencia de interacción o de co-ocurrencia
+estadísticamente excepcional.
 
 ## 4. Discusión
 
@@ -323,39 +383,8 @@ de calidad del *dataset*.
 inmersiones dirigidas, cámaras fijas o revisión de fotografías de parejas. Esa es la línea de trabajo que
 convierte el resultado en aporte científico citable.
 
-### 4.3 Control del esfuerzo local: nulo estratificado por localidad·fecha (29-30-sep-2026)
-
-Para responder a la crítica de que el lift puede reflejar **esfuerzo de muestreo local** (una localidad o un
-día con muchas observaciones) en lugar de co-ocurrencia biológica, se implementó un **nulo por permutación
-estratificada**: se conservan los eventos (localidad ~0,1°, día, tamaño) y se barajan las especies dentro de
-cada bloque localidad·día. Se ejecutó con **dos definiciones de evento**, 2.000 permutaciones y los 3.000 pares de mayor lift:
-(i) *gruesa* (celda 0,1° · día · franja 3 h, sin observador; 58.283 eventos, 47.302 bloques) y (ii) *del análisis principal*
-(observador × ~1 km × día × 3 h; 60.650 eventos, 40.982 bloques).
-
-Resultado: con la definición gruesa **387 de 3.000 pares (12,9 %) tienen p<sub>emp</sub><0,05 y ninguno supera el FDR** de Benjamini-Hochberg
-(q≤0,05); con la definición del análisis principal **1.017 (33,9 %) tienen p<sub>emp</sub><0,05 y 214 superan el FDR**. Dos salvedades de lectura:
-(a) con 2.000 permutaciones el p mínimo es 0,0005; en la definición gruesa solo 13 pares llegan a ese suelo, de modo que el mejor q alcanzable
-(0,115) queda por encima de 0,05 y **la ausencia de pares con FDR en esa definición no es concluyente en la cola** (una primera ejecución con
-200 permutaciones tenía un suelo aún mayor y no podía haber dado ningún resultado significativo); (b) varios de los pares que superan el FDR con
-la definición principal son de especies indo-pacíficas fotografiadas en viajes de buceo (p. ej. *Cephalopholis miniata*—*Pseudanthias
-squamipinnis*), es decir, co-ocurrencia de **expedición**, no mediterránea; el filtro de especies mediterráneas (§3.7) debe aplicarse antes de
-interpretarlos.
-
-**Familia restringida a pares mediterráneos.** De los 3.000 pares testeados, 152 (definición principal) y 146 (gruesa) pertenecen al conjunto de pares
-específicos mediterráneos (§3.7), que es una familia de hipótesis definida por el catálogo (no por el p). Recalculando Benjamini-Hochberg solo sobre
-ella: **39 pares superan el FDR con la definición principal y 2 con la gruesa** (*Aeolidiella alderi*—*Berthella perforata* y *A. alderi*—*Dendrodoris
-limbata*, q=0,036). Entre los primeros hay parejas de heterobranquios (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris
-limbata*, *Petalifera petalifera*—*Placida tardyi*) y el par planctónico *Cestum*—*Hippopodius*. Una co-ocurrencia estadísticamente excepcional
-respecto al esfuerzo local **no implica interacción** (puede reflejar microhábitat o sustrato compartido); son candidatas para validación in situ.
-
-**Consecuencias para los pares de las secciones anteriores.** *Branchellion torpedinis*—*Torpedo marmorata* (parasitismo documentado) es el más
-sólido: p<sub>emp</sub>=0,0005 con ambas definiciones (q=0,021 con la principal, 0,115 con la gruesa). *Cestum veneris*—*Hippopodius hippopus*:
-p=0,0215 (gruesa) y 0,0005 con q=0,021 (principal). *Codium coralloides*—*Placida verticilata*: p=0,029 (gruesa) y 0,014 (principal; q=0,089, no
-supera el FDR). **Los pares lessepsianos (*Fistularia commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois miles*—*Taeniura
-lymma*) NO son más frecuentes de lo que predice el esfuerzo local** (p<sub>emp</sub>=0,52–0,76 con ambas definiciones): su lift alto refleja que
-ambas especies son raras y coinciden en los mismos pocos enclaves y días de la invasión, no una asociación específica. Siguen siendo útiles como
-señal de que las invasoras aparecen en los mismos lugares (monitoreo), pero **no** como evidencia de interacción o de co-ocurrencia
-estadísticamente excepcional.
+### 4.3 Interpretación del nulo estratificado: lift, hipótesis y posición metodológica
+Los resultados se presentan en el §3.9 (Tabla 9): el nulo estratificado, y no el lift, decide qué pares se consideran excepcionales. Esta sección conserva solo la interpretación.
 
 1. **El lift premia pares raros**: los pares *documentados* de la literatura (*Peltodoris*—*Petrosia*,
    *Doto*—*Aglaophenia*) tienen co-ocurrencia abundante pero no "rara", y ni siquiera entran en el top 3.000
@@ -390,7 +419,7 @@ catálogo, contienen **asociaciones ecológicas recuperables y verificables**. L
    observadores) y 11.509 pares específicos mediterráneos en todo el catálogo, entre los que destacan:
    - **Invasores lessepsianos co-ocurrentes** (*Fistularia commersonii*, *Pterois miles*, *Siganus rivulatus*,
      *Taeniura lymma*) con lifts de 124-262 — su co-ocurrencia coincide con lo que predice el esfuerzo
-     local (§4.3), por lo que es una señal de **coincidencia espacial de la invasión** útil para el monitoreo, no una asociación estadísticamente
+     local (§3.9), por lo que es una señal de **coincidencia espacial de la invasión** útil para el monitoreo, no una asociación estadísticamente
      excepcional.
    - **Gremio depredador planctónico** (ctenóforos y sifonóforos en la misma masa de agua: *Cestum veneris* +
      *Hippopodius hippopus*, lift 103).
