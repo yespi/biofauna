@@ -264,6 +264,21 @@ Sobre las 76.585 filas purgadas, por reino: marino 80,37 %, terrestre 93,37 %, a
 
 **Lo que estas cifras no dicen.** Son de conjunto cerrado y correladas por observador; el KPI operativo es la reacción posterior de terceros a lo publicado, que para los rescates por recorte aún no existe. En este informe no se desglosó el acierto por especie según el tamaño de su galería.
 
+## 5.2 Trabajos relacionados y líneas base (esbozo — sin cifras nuevas)
+
+**Posición.** BioFauna se sitúa entre dos líneas de trabajo. Los modelos visión-lenguaje preentrenados sobre el árbol de la vida (BioCLIP [1], construido sobre CLIP [4]) dan embeddings que separan especies sin entrenamiento específico; los grandes corpus de ciencia ciudadana (iNaturalist [5]) aportan las fotografías etiquetadas. Muchos sistemas desplegados ajustan un clasificador con esos datos; BioFauna, en cambio, mantiene el codificador congelado y hace **recuperación k-NN sobre una galería regional** con abstención calibrada, de modo que añadir o corregir una especie es editar la galería, no reentrenar. Las pérdidas de aprendizaje métrico (triplet [13], FaceNet [12], contrastiva supervisada [6]) y el ajuste fino eficiente (LoRA [3], QLoRA [2]) eran las alternativas obvias; el §4.2 recoge que ninguna superó a la recuperación congelada sobre esta galería.
+
+**Líneas base de este informe.** (a) *Centroide más cercano* sobre los prototipos publicados (demo pública): aquí no se puntúa sobre la evaluación de campo. (b) *k-NN simple con voto mayoritario*, sin el agregador con temperatura, el tope por clase, el prior geográfico ni la calibración: aquí no se puntúa sobre la evaluación de campo. (c) *Cabezas ajustadas o de aprendizaje métrico*: puntuadas en el §4.2 sobre conjuntos de evaluación anteriores, descartadas. (d) *La sugerencia de visión por computador de iNaturalist*, como línea base de AutoID: **no medida**; es la que pedirán los revisores y la auditoría de AutoID (§5.1) es el sitio para añadirla.
+
+| Línea base | Evaluación de campo (76.585 filas) | Estado |
+|---|---|---|
+| BioFauna en producción | 82,34 % especie (81,18 % bloque comparable) | medida |
+| Centroide más cercano | — | no medida |
+| k-NN simple, voto mayoritario | — | no medida |
+| Sugerencia de visión de iNaturalist | — | no medida |
+
+Cerrar esas tres filas requiere las mismas filas de evaluación y el mismo filtro de fugas; ninguna exige entrenar nada nuevo.
+
 ---
 
 ## 6. Limitaciones

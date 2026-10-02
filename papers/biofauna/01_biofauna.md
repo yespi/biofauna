@@ -260,6 +260,21 @@ On the purged 76,585 rows the realm figures are marine 80.37%, terrestrial 93.37
 
 **What these numbers do not say.** They are closed-set and observer-correlated; the operating KPI is the later third-party reaction to published identifications, which for crop rescues does not exist yet. Per-species accuracy was not broken down by gallery size in this report.
 
+## 5.2 Related work and baselines (stub — no new figures)
+
+**Position.** BioFauna sits between two lines of work. Vision-language models pre-trained on the tree of life (BioCLIP [1], built on CLIP [4]) give embeddings that separate species without task-specific training; large citizen-science corpora (iNaturalist [5]) provide the labelled photographs. Many deployed systems fine-tune a classifier on such data; BioFauna instead keeps the encoder frozen and does **k-NN retrieval over a regional gallery** with calibrated abstention, so that adding or fixing a species is a gallery edit, not a retraining run. Metric-learning losses (triplet [13], FaceNet [12], supervised contrastive [6]) and parameter-efficient fine-tuning (LoRA [3], QLoRA [2]) were the obvious alternatives; §4.2 reports that none of them beat frozen retrieval on this gallery.
+
+**Baselines in this report.** (a) *Nearest centroid* over the published prototypes (public demo): not scored on the field evaluation here. (b) *Plain k-NN with majority vote*, without the tempered aggregator, class cap, geographic prior or calibration: not scored on the field evaluation here. (c) *Fine-tuned or metric-learning heads*: scored in §4.2 on earlier evaluation sets, rejected. (d) *The iNaturalist computer-vision suggestion*, as a baseline for AutoID: **not measured**; it is the baseline reviewers will ask for, and the AutoID audit (§5.1) is the right place to add it.
+
+| Baseline | Field evaluation (76,585 rows) | Status |
+|---|---|---|
+| BioFauna production | 82.34% species (81.18% comparable block) | measured |
+| Nearest centroid | — | not measured |
+| Plain k-NN, majority vote | — | not measured |
+| iNaturalist computer-vision suggestion | — | not measured |
+
+Closing these three rows needs the same evaluation rows and the same leak filter; none of it requires new training.
+
 ---
 
 ## 6. Limitations
