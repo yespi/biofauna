@@ -4,7 +4,7 @@
 **Aportación taxonómica**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros
 **Repositorio**: https://github.com/yespi/biofauna
 **Sistema en vivo**: https://fotofauna.yespi.es
-**Esta versión**: 2026-09-14 (corte de producción)
+**Esta versión**: 2026-10-02 (cuadros de actualización y §5.1 añadidos al corte del 2026-09-14)
 
 > **Nombre.** El proyecto se llamó YOLOFauna (2024–mediados de 2026); pasó a BioFauna cuando producción se quedó en recuperación BioCLIP, no en detectores YOLO. Origen: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -12,6 +12,8 @@
 
 
 **Actualización 29-sep-2026 — evaluación de campo ampliada a 76.585 filas, fuga a nivel de observador purgada, segmentación por realm.** Dos rondas de minería ampliaron la evaluación de campo de 62.408 a **76.585 filas** (ronda 1: +11.156 filas al 84,8% de acierto; ronda 2: +4.691 filas al 87,8%). Una auditoría a nivel de revisor midió la **fuga por observación/observador**: el 2,17% de las filas (1.595) compartían el id de observación o el observador con la galería de referencia de su propia especie; excluirlas cambia el acierto solo **−0,14 pp**, por lo que la cifra operativa no está inflada de forma material. Acierto final segmentado: **82,34% global** (76.585 filas), marino 80,37%, terrestre 93,37%, aves 92,22%, foránea 82,08%. El campo `realm` (marine / terrestrial / aves / foranea) se añadió al catálogo como **metadato para estadísticas segmentadas** — **no filtra** la identificación ni la publicación, porque Minka incluye aves y organismos terrestres. **Composición de la cifra (revisión del 29-sep):** el eval original (60.743 filas) da **81,18%**, comparable con versiones anteriores; las 15.842 filas minadas dan 85,5% y 89,9% en las dos rondas, pero en las 1.785 especies con filas de ambos tipos el acierto es equivalente (86,8% minadas frente a 86,1% originales). El aumento global refleja, por tanto, la composición por especies y no un cambio del modelo (que no cambió). Todas las filas minadas pasaron el mismo filtro de fuga (observación, observador, similitud de embedding ≥ 0,98). **Precisión real de las publicaciones de AutoID** (500 publicaciones históricas, 493 verificables frente a identificaciones posteriores de terceros en Minka): **96,6%** (IC95% 94,5–97,8); por banda de confianza calibrada 85% (0,83–0,85, n=27), 93% (0,85–0,90), 95,5% (0,90–0,95), 99% (≥0,95, n=252). **Composición del 82,34%.** Agrupa tres bloques: el conjunto de evaluación original (60.743 filas, **81,18%**, la cifra comparable con todas las versiones anteriores), la ronda 1 de minería (11.154 filas tras la purga, 85,49%) y la ronda 2 (4.688 filas, 89,87%). Dentro de las 1.785 especies con filas en el bloque original y en los minados, el acierto es 86,1% frente a 86,8% (+0,7 pp): a igualdad de especie las filas minadas no son más fáciles, y la subida viene sobre todo de la composición (especies con más pool). **Para comparar con versiones anteriores, usar 81,18%.**
+
+**Actualización 2026-10-02 — rescate por recorte con dos jueces, informe de campo por bloques y lo que las cifras no dicen.** (1) El rescate por recortes del 2026-10-01 se rehízo tras un fallo real: un recorte por cuadrante que solo contenía fondo se identificó como un alga con p = 0,96 y se publicó en una foto cuyo sujeto (una nacra) estaba en el centro. Ahora actúa por niveles: primero la imagen completa; después dos recortes centrados (relleno del 17 % y del 25 %) como jueces, **basta una identificación que apruebe (p ≥ 0,83, rango especie)**, y si dos especies distintas aprueban no hay veredicto; los cuadrantes quedan como último recurso y se descartan si la imagen completa o un recorte centrado apunta a otra especie con p ≥ 0,5. Prueba retrospectiva con 454 fotos con verdad de terceros cuya imagen completa no era publicable: el esquema anterior añadía 48 identificaciones (41 correctas, 7 erróneas); solo los jueces centrados añaden 64 (55 correctas, 9 erróneas); jueces más cuadrantes con guarda añaden **72 (63 correctas, 9 erróneas, 87,5 %)**; exigir que los dos jueces coincidan es peor (21 añadidas, 16 correctas). Subir el umbral del recorte a 0,93 no mejora la precisión (36 añadidas, 30 correctas): la puntuación de un recorte no está calibrada como la de la imagen completa. Los umbrales se eligieron sobre las mismas fotos que los miden, así que el 87,5 % es optimista. Los 19 rescates publicados hasta ahora no tienen aún reacción de terceros, por lo que **su precisión real se desconoce**. (2) Se habilita la publicación de AutoID a nivel de género; la de familia queda en pausa tras fallar dos de las tres primeras revisadas (ambas publicadas como la misma familia) porque una foto mostraba dos animales sin relación y la otra no parecía de esa familia. (3) Las fotos planas y desenfocadas, o oscuras, turbias y desenfocadas, se descartan antes de identificar; en 747 fotos con verdad, la precisión no depende de la nitidez (92–96 % en los cuatro cuartiles), así que esta puerta retira fotos ilegibles, no errores. (4) El modelo corre en fp16 con k-NN en int8 en la GPU (3,3–3,9 GB de VRAM en vez de 6,4–6,6 GB) con decisiones idénticas en 1.000 fotos. (5) Se promovió a producción una ampliación de 23 vectores de *Prunus dulcis* (fusionados desde su sinónimo): solo cambia esa especie, el índice está alineado (1.118.321 vectores) y aún no hay medición independiente de precisión.
 
 **Actualización 1-oct-2026 — kNN en GPU y fallback por recortes para fotos de baja confianza.** (1) El perfilado mostró que el 50% del tiempo de `/identify` era la búsqueda FAISS exacta en una CPU de 4 hilos (0,5 s por consulta); los vectores del índice viven ahora en la GPU en fp16 y los vecinos devueltos se re-puntúan en fp32 contra el índice de CPU, así que las similitudes son las exactas (prueba golden: sin diferencias en 40 fotos). Seis identificaciones de una foto pasaron de 4,4 s a 0,97 s. (2) Un fallback por recortes actúa solo cuando la imagen completa no da una identificación publicable (p calibrada por debajo del umbral, o rango superior a especie): se identifican cuatro cuadrantes, un centro con 17% de padding, un recorte por saliencia y un centro al 40%, y se rescata una especie cuando al menos dos pasos coinciden con p ≥ 0,93 (tres si su género difiere del top-1 de la imagen completa); los empates (<0,05) se abstienen. Solo puede añadir publicaciones. En 500 fotos reales aún sin identificar de la cola de AutoID, las identificaciones publicables pasaron de 35 a 48; en 747 fotos con verdad de terceros, lo añadido acertó en el 85,7% (42/49; cota inferior de Wilson al 95%: 73%). Bajar simplemente el umbral de la imagen completa para añadir el mismo número de fotos da un 83,7% de aciertos, pero solo coinciden 11 de las 49 fotos, así que el fallback recupera fotos distintas. En esos bancos (más difíciles que producción) la precisión global de publicación bajó del 93,9% al 92,7%; la precisión real de los rescates publicados se está midiendo con identificaciones posteriores de terceros. (3) Un modelo de confianza mayor (gradient boosting con 13 señales), ejecutado en modo sombra sobre 726 publicaciones reales, no mejoró al calibrador logístico (AUC 0,820 frente a 0,820; cobertura al 97% de precisión 94,1% frente a 92,8%), por lo que se queda en sombra.
 
@@ -237,6 +239,33 @@ Fanerógamas (n=60, 14-sep): *Posidonia oceanica* 73,3%; *Cymodocea nodosa* 70,0
 
 ---
 
+## 5.1 Informe de campo por bloques (2026-10-02, todas las cifras medidas)
+
+**Galería.** 1.118.321 vectores / 4.543 especies de iNaturalist 733.789 fotos, Minka 372.347, GBIF 39.570, DORIS/FFESSM 5.091, Wikimedia 4.197, WoRMS 1.319, SeaSlugForum 817, FishBase 646. Vectores por especie: 775 especies tienen menos de 10, 1.058 tienen 10–29, 450 tienen 30–99, 1.123 tienen 100–299, 935 tienen 300–999 y 202 tienen 1.000 o más (mediana 97, máximo 3.223); la galería es de cola larga muy marcada.
+
+**Acierto de campo (especie).**
+
+| Bloque | Filas | Acierto | Salvedad |
+|---|---|---|---|
+| Conjunto de evaluación original (comparable con todas las versiones anteriores) | 60.743 | **81,18 %** | correlado por observador, conjunto cerrado |
+| Ronda 1 de minería (tras purga) | 11.154 | 85,49 % | especies con más pool |
+| Ronda 2 de minería (tras purga) | 4.688 | 89,87 % | ídem |
+| **Todo purgado** | **76.585** | **82,34 %** | la subida sobre 81,18 % es sobre todo composición |
+| Panel por reino (78.180 filas, sin purga por observador): marino | 65.813 | 80,54 % | el reino es metadato, no filtra la publicación |
+| terrestre | 9.853 | 93,30 % | |
+| aves | 2.027 | 92,25 % | |
+| foráneas (lessepsianas, etc.) | 487 | 82,34 % | n pequeño |
+
+Sobre las 76.585 filas purgadas, por reino: marino 80,37 %, terrestre 93,37 %, aves 92,22 %, foráneas 82,08 %.
+
+**AutoID en la práctica.** En 493 publicaciones históricas auditadas el 2026-09-29 la precisión fue **96,6 %**, por banda de confianza calibrada: 0,83–0,85 → 85,2 % (n=27), 0,85–0,90 → 93,2 % (n=59), 0,90–0,95 → 95,5 % (n=155), ≥ 0,95 → 99,2 % (n=252). Una repetición sobre 726 publicaciones dio 94,6 % de acierto top-1 y 97,96 % de precisión con p ≥ 0,83 (n=589). Las fotos que AutoID no publica no son errores: en la última hora medida, de 1.429 observaciones candidatas 1.373 quedaron por debajo del umbral, 50 se omitieron porque el mismo observador ya tenía ese taxón en un álbum ese día y 81 no pasaron la puerta de calidad de foto.
+
+**Dónde están los errores.** Peores especies del panel (todas con ≥ 11 fotos de evaluación): *Treptacantha nodicaulis* 0/20 (confundida con *Gongolaria barbata*), *Turbonilla pusilla* 0/18 (con *T. lactea*), *Pegusa nasuta* 0/18 (con *Solea solea*), *Forskalia tholoides* 0/13 (con *F. edwardsii*), *Arion rufus* 0/29 (con *A. ater*), *Phyllidiella granulata* 0/16 (con *Phyllidiopsis krempfi*), *Carduelis carduelis* 35 % de 40 (con *Spinus spinus*). Confusiones más frecuentes (errores): *Petalifera petalifera* → *P. ramosa* 31, *Patella aspera* → *P. ulyssiponensis* 27, *Tamarix africana* → *T. gallica* 26, *Elysia marginata* → *E. ornata* 24, *Pyracantha coccinea* → *P. crenulata* 24, *Dictyota implexa* → *D. dichotoma* 23, *Ulva rigida* → *U. lactuca* 22, *Diplodus sargus* → *D. cadenati* 21. La mayoría son pares congenéricos de morfología muy parecida; este informe no analiza por qué falla cada par.
+
+**Lo que estas cifras no dicen.** Son de conjunto cerrado y correladas por observador; el KPI operativo es la reacción posterior de terceros a lo publicado, que para los rescates por recorte aún no existe. En este informe no se desglosó el acierto por especie según el tamaño de su galería.
+
+---
+
 ## 6. Limitaciones
 
 1. El top-1 de especie no es nivel experto en invertebrados crípticos.
@@ -247,6 +276,8 @@ Fanerógamas (n=60, 14-sep): *Posidonia oceanica* 73,3%; *Cymodocea nodosa* 70,0
 6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; el calibrador solo vio especies del catálogo. Mitigado en aves con una guarda de consenso zero-shot (K21); todavía no en otros grupos.
 7. **Optimismo de la evaluación:** la métrica del panel sin fuga (88,1%) sigue siendo de conjunto cerrado y correlada por observador; una muestra de observaciones recientes (~80%) es el KPI operativo (O16). Hasta el 23-sep el panel contenía además copias de la galería (O18).
 8. **AutoID sin verificación de iNaturalist** solo lleva un día en marcha (guardas: caja mediterránea, consenso en aves, tope horario, ahora 30/h y 1.000/día; al llegar al tope de la hora se pausa esa hora en vez de disparar el cortocircuito); la auditoría contra identificaciones de la comunidad está pendiente.
+9. **Los rescates por recorte solo están validados con una prueba retrospectiva** (454 fotos, umbrales elegidos sobre las mismas fotos); la precisión real de los rescates publicados no se conoce hasta que terceros reaccionen.
+10. **El acierto por especie no se desglosa por tamaño de galería**, y las tablas de confusiones mezclan especies congenéricas muy parecidas con posibles problemas de nomenclatura.
 
 ---
 
