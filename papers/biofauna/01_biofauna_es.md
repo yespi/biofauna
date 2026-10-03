@@ -264,6 +264,18 @@ Sobre las 76.585 filas purgadas, por reino: marino 80,37 %, terrestre 93,37 %, a
 
 **Lo que estas cifras no dicen.** Son de conjunto cerrado y correladas por observador; el KPI operativo es la reacción posterior de terceros a lo publicado, que para los rescates por recorte aún no existe. En este informe no se desglosó el acierto por especie según el tamaño de su galería.
 
+**Acierto útil con abstención jerárquica (2026-10-03, offline, probabilidades calibradas).** Sobre las mismas 78.180 filas de campo, con las probabilidades calibradas de los tres niveles (especie, género, familia; calibración ajustada sobre estas filas, por tanto algo optimista), una cascada «publicar especie si p ≥ 0,83; si no, género si p_género ≥ τ; si no, familia si p_familia ≥ τ» da:
+
+| Política | Fotos con ID publicable | Precisión de ese conjunto |
+|---|---|---|
+| Solo especie, p ≥ 0,83 | 65,1 % | 95,9 % |
+| + género, τ = 0,83 | 77,2 % (+12,1 pp) | 95,6 % (añadidas: 93,7 %) |
+| + género, τ = 0,90 | 74,1 % (+9,0 pp) | 95,9 % |
+| + género 0,83 + familia 0,83 | 83,8 % (+18,7 pp) | 95,3 % (familia añadida: 91,7 %) |
+| + género 0,90 + familia 0,90 | 79,9 % (+14,8 pp) | 95,9 % |
+
+Publicar a nivel de familia solo compensa con τ ≥ 0,90; con 0,83 su precisión baja al 91,7 %. El acierto top-1 de especie (82,46 % del panel, 77,5 % en Tier 1) no cambia por construcción: la ganancia está en fotos que reciben una identificación correcta en el rango más grueso que el modelo puede defender. Las publicaciones reales de AutoID por recorte y por género son aún pocas y casi sin revisión de terceros para validar estas cifras.
+
 ## 5.2 Trabajos relacionados y líneas base (esbozo — sin cifras nuevas)
 
 **Posición.** BioFauna se sitúa entre dos líneas de trabajo. Los modelos visión-lenguaje preentrenados sobre el árbol de la vida (BioCLIP [1], construido sobre CLIP [4]) dan embeddings que separan especies sin entrenamiento específico; los grandes corpus de ciencia ciudadana (iNaturalist [5]) aportan las fotografías etiquetadas. Muchos sistemas desplegados ajustan un clasificador con esos datos; BioFauna, en cambio, mantiene el codificador congelado y hace **recuperación k-NN sobre una galería regional** con abstención calibrada, de modo que añadir o corregir una especie es editar la galería, no reentrenar. Las pérdidas de aprendizaje métrico (triplet [13], FaceNet [12], contrastiva supervisada [6]) y el ajuste fino eficiente (LoRA [3], QLoRA [2]) eran las alternativas obvias; el §4.2 recoge que ninguna superó a la recuperación congelada sobre esta galería.

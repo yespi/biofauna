@@ -260,6 +260,18 @@ On the purged 76,585 rows the realm figures are marine 80.37%, terrestrial 93.37
 
 **What these numbers do not say.** They are closed-set and observer-correlated; the operating KPI is the later third-party reaction to published identifications, which for crop rescues does not exist yet. Per-species accuracy was not broken down by gallery size in this report.
 
+**Useful accuracy under hierarchical abstention (2026-10-03, offline, calibrated probabilities).** On the same 78,180 field rows, using the calibrated probabilities of the three levels (species, genus, family; calibration fitted on these rows, hence mildly optimistic), a cascade "publish species if p ≥ 0.83, otherwise genus if p_genus ≥ τ, otherwise family if p_family ≥ τ" gives:
+
+| Policy | Photos with a publishable ID | Precision of that set |
+|---|---|---|
+| Species only, p ≥ 0.83 | 65.1% | 95.9% |
+| + genus, τ = 0.83 | 77.2% (+12.1 pp) | 95.6% (added rows: 93.7%) |
+| + genus, τ = 0.90 | 74.1% (+9.0 pp) | 95.9% |
+| + genus 0.83 + family 0.83 | 83.8% (+18.7 pp) | 95.3% (added family rows: 91.7%) |
+| + genus 0.90 + family 0.90 | 79.9% (+14.8 pp) | 95.9% |
+
+Family-level publication only pays off at τ ≥ 0.90; at 0.83 its precision drops to 91.7%. Species-level top-1 accuracy (82.46% panel, 77.5% Tier 1) is unchanged by construction: the gain is in photos that receive a correct identification at the coarsest rank the model can defend. Live crop-rescue and genus-level AutoID publications are still too few and too rarely reviewed by third parties to validate these figures.
+
 ## 5.2 Related work and baselines (stub — no new figures)
 
 **Position.** BioFauna sits between two lines of work. Vision-language models pre-trained on the tree of life (BioCLIP [1], built on CLIP [4]) give embeddings that separate species without task-specific training; large citizen-science corpora (iNaturalist [5]) provide the labelled photographs. Many deployed systems fine-tune a classifier on such data; BioFauna instead keeps the encoder frozen and does **k-NN retrieval over a regional gallery** with calibrated abstention, so that adding or fixing a species is a gallery edit, not a retraining run. Metric-learning losses (triplet [13], FaceNet [12], supervised contrastive [6]) and parameter-efficient fine-tuning (LoRA [3], QLoRA [2]) were the obvious alternatives; §4.2 reports that none of them beat frozen retrieval on this gallery.
