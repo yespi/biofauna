@@ -105,6 +105,7 @@ print(pred["name"], pred.get("p_species"))
 |-------|---------|
 | `prediction.confidence` | Raw k-NN cosine similarity — not calibrated |
 | `prediction.p_species` | Calibrated probability — **use for thresholds** (e.g. auto-publish ≥ 0.80) |
+| `prediction.p_genus`, `prediction.p_family` | (added 2026-10-03, shadow) Calibrated probability that the top-1's genus / family is correct; extra fields, they do not change the decision. AutoID publishes the genus only when `p_genus` ≥ 0.95 |
 | `prediction.rank` | `species`, `genus`, `family`, or `group` (cryptic clusters) |
 | `method` | `faiss`, `knn`, `proto`, or `arcface` (internal only) |
 
