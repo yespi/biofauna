@@ -67,3 +67,6 @@ Legacy env/path names (`YOLOFAUNA_*`, `fotofauna-yolo`) may still appear in depl
 
 ## 2026-09-29 → 2026-10-01
 Field eval extended to 76,585 rows (honest KPI 82.34%; comparable baseline 81.18%); AutoID publishing restored after the Minka web change; shadow confidence model evaluated (no gain); exact k-NN moved to the GPU; crop fallback in production; weekly guarded recalibration.
+
+## 2026-10-02 → 2026-10-03
+Tier-1 experiments (+0.03 pp at most; no promotion); `prunus_dulcis` +23 vectors promoted (1,118,321); baselines measured (74.73% / 79.86%); shadow genus/family probabilities and out-of-sample validation (n=1,267); AutoID publishes genus at p ≥ 0.95 (50/day cap, family off); automatic attention crops found to lower identification accuracy by ~11 pp (80.7% → 69.7%), so the FotoFauna client now identifies the full photo unless the user cropped it manually.

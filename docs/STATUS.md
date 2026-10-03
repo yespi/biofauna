@@ -1,5 +1,7 @@
 # BioFauna — public status
 
+> **2026-10-03.** Live gallery **1,118,321** embeddings / **4,543** species. Tier-1 data experiments (more photos, gallery purges, hard-species batch) moved the field panel by ≤ +0.03 pp: the remaining error is diffuse and comes from congeneric look-alikes (96% of the gallery folders of the 17 most confusable marine pairs were already correctly filed). Baselines on the same 78,180 rows: nearest centroid 74.73%, plain k-NN 79.86%, full system 82.46%. Hierarchical abstention: in-sample cascade +12 pp of publishable photos, but out-of-sample (n=1,267) only +2.4 pp at ~90% precision with genus probability ≥ 0.95, which is what AutoID now publishes (family stays off). Details: [`EXPERIMENTS.md`](EXPERIMENTS.md).
+
 > **2026-09-23.** Live production numbers from HanSolo `/health` + `calibration.json`. Not a session diary. Older figures kept in `EXPERIMENTS.md`; **every panel figure before 2026-09-23 contained an evaluation leak (O18).**
 
 > **2026-09-28 — operating metric moved to a field evaluation; three new production guards.**
