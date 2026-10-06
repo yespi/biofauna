@@ -297,6 +297,35 @@ commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois mil
 specific association. They remain useful as a sign that the invaders appear in the same places (monitoring), but **not** as evidence of interaction or of
 statistically exceptional co-occurrence.
 
+### 3.10 Effort-conditioned test over all pairs and evidence levels (5 Oct 2026)
+
+The null of §3.9 was applied only to the 3,000 highest-lift pairs, a subset biased towards rare pairs. To remove this limitation the test was repeated over **all pairs with n ≥ 5 events** (115,204), using the main event definition (observer × ~1 km × day × 3 h; 60,567 events with ≥2 catalogue species, 40,915 cell-0.1°·day blocks). Within each block the probability that a species occurs in an event is proportional to event size (conditional on its frequency in the block); the expected number of events with both species is the sum over blocks and its variance that of a sum of independent Bernoulli variables. The one-sided p (normal approximation with continuity correction) is adjusted with Benjamini–Hochberg over the **whole** family of 115,204 pairs, not just a top-lift subset. Code: `scripts/nulo_exacto_todos_pares_20261005.py`.
+
+**Result.** With local effort controlled, 51,401 of 115,204 pairs (44.6 %) have q ≤ 0.05, and 27,382 of them also meet ≥3 cells, ≥3 days and ≥5 distinct observers. **Significance alone does not discriminate**: species that share habitat aggregate within the same block even when effort is controlled, so half of the supported pairs are "significant". What is informative is the **effect size** (observed/expected events) and **replication** (cells, days, observers). We propose evidence levels: candidate (ratio ≥ 3, replication criteria met), strong (≥ 5) and very strong (≥ 10):
+
+| Table 10. Pairs by evidence level (q ≤ 0.05 and ≥3 cells, ≥3 days, ≥5 observers) | Pairs |
+|---|---:|
+| Observed/expected ratio ≥ 2 | 10,586 |
+| ≥ 3 (candidates) | 3,108 |
+| ≥ 5 (strong) | 803 |
+| ≥ 10 (very strong) | 198 |
+
+Adding the requirements that ≥ 80 % of the pair's events are Mediterranean (box lat 30–46°, lon −6…37°), different genera and different taxonomic groups leaves **919 cross-group candidates** (Figure 1). The full list (51,401 pairs), the robust list with ratio ≥ 3 (3,108), the Mediterranean different-genus list (2,312) and the two "top 30" lists are in `data/`.
+
+**What is at the top.** Without restricting by group, most of the best-scoring pairs are **shared-habitat** pairs (beach bivalves, wetland birds, land snails, dune plants): useful as a control but not as new relationships. Among cross-group pairs there are ecologically plausible candidates (Figure 4): *Condylactis aurantiaca*—*Periclimenes scriptus* (n=29, ratio 4.8, 11 observers; consistent with the known commensalism of *Periclimenes* with anemones), *Muraena helena*—*Ophidiaster ophidianus* (n=17, ratio 12.6), *Sarcotragus spinosulus*—*Sparisoma cretense* (n=17, ratio 7.4) and *Condylactis aurantiaca*—*Gobius geniporus*. **None has yet been checked against the literature or by curators**, so their novelty is not claimed.
+
+**Control with documented associations.** *Peltodoris atromaculata*—*Petrosia ficiformis* is recovered (n=78, effort-expected 38.9, ratio 2.0, z=8.3, q=8e-15, 31 observers), but with a modest ratio because both are abundant. *Felimare picta*—*Ircinia oros* and *Cratena peregrina*—*Eudendrium racemosum* do **not** pass this filter (the latter has n=5 and few observers). Moreover, *Fistularia commersonii*—*Pterois miles* is significant under this null (n=25, expected 3.4, ratio 7.3), unlike under the null of §3.9, which assigns species uniformly within the block without conditioning on their frequency: **the result depends on the null model**, and the reading of §3.9 about Lessepsian invaders should be taken as dependent on that choice.
+
+**Identifier performance (Figure 5).** The identifier's out-of-sample panel (62,248 photos, 5 Oct 2026 index) shows species accuracy increasing with reference-gallery size: 68.6 % (0–25 photos), 76.0 % (25–50), 65.7 % (50–100), 82.0 % (100–200), 82.2 % (200–500), 86.1 % (500–1,000) and 89.2 % (≥1,000). Species with few photos are therefore the least reliable and the ones that most affect rare associations.
+
+![Figure 1. Filter funnel](figuras/fig1_embudo_filtros.png)
+![Figure 2. Effect-size distribution](figuras/fig2_distribucion_efecto.png)
+![Figure 3. Support versus effect in robust pairs](figuras/fig3_soporte_vs_efecto.png)
+![Figure 4. Cross-group candidates](figuras/fig4_candidatas_intergrupo.png)
+![Figure 5. Identifier accuracy versus gallery size](figuras/fig5_acierto_vs_galeria.png)
+
+*Figures 1–5: built from the files in `data/` and the identifier's out-of-sample panel. Still pending in this analysis: comparison with baselines, propagation of identification error to the associations, and systematic external validation.*
+
 ## 4. Discussion
 
 ### 4.1 Theoretical background: co-occurrence and citizen-science biases
@@ -487,6 +516,7 @@ Data and code are published in the project's public repository (https://github.c
 - **Anonymised association table** (no photographs, no observer data): `data/
   asociaciones_mediterraneas_20260929.csv` (11,509 pairs with species, families, event counts, cells, days,
   observers and lift) and `data/asociaciones_top40_20260929.csv`.
+- **Full test and figures (v18, 6 Oct 2026)**: `data/nulo_exacto_pares_significativos_q05_20261005.csv` (51,401 pairs), `data/nulo_exacto_pares_robustos_razon3_20261005.csv` (3,108), `data/pares_robustos_mediterraneos_distinto_genero_20261005.csv` (2,312), `data/pares_candidatos_nuevos_top30_20261005.csv` and `..._intergrupo_top30_20261005.csv`; figures in `papers/proyecto_correlacion/figuras/`.
 - **Manuscripts and plates**: `papers/proyecto_correlacion/` (ES/EN article and PDFs).
 - **Not redistributable**: the photographs (subject to Minka SDG, iNaturalist and other source licences) and
   per-photo `embeddings.npy`; they can be rebuilt from Minka/iNaturalist/GBIF using the catalog.

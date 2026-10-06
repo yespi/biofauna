@@ -309,6 +309,35 @@ ambas especies son raras y coinciden en los mismos pocos enclaves y días de la 
 señal de que las invasoras aparecen en los mismos lugares (monitoreo), pero **no** como evidencia de interacción o de co-ocurrencia
 estadísticamente excepcional.
 
+### 3.10 Contraste condicionado al esfuerzo sobre todos los pares y niveles de evidencia (5-oct-2026)
+
+El nulo de §3.9 solo se aplicó a los 3.000 pares de mayor lift, un subconjunto sesgado hacia pares raros. Para eliminar esa limitación se repitió el contraste sobre **todos los pares con n ≥ 5 eventos** (115.204), con la definición principal de evento (observador × ~1 km × día × 3 h; 60.567 eventos con ≥2 especies del catálogo, 40.915 bloques celda 0,1°·día). Dentro de cada bloque, la probabilidad de que una especie esté en un evento es proporcional al tamaño del evento (condicionando a su frecuencia en el bloque); el número esperado de eventos con ambas especies es la suma sobre bloques y su varianza la de una suma de variables de Bernoulli independientes. El p unilateral (aproximación normal con corrección de continuidad) se ajusta con Benjamini-Hochberg sobre **toda** la familia de 115.204 pares, no solo sobre un top por lift. Código: `scripts/nulo_exacto_todos_pares_20261005.py`.
+
+**Resultado.** Con el esfuerzo local controlado, 51.401 de 115.204 pares (44,6 %) tienen q ≤ 0,05 y 27.382 de ellos cumplen además ≥3 celdas, ≥3 días y ≥5 observadores distintos. **La significación por sí sola no discrimina**: las especies que comparten hábitat se agregan dentro del mismo bloque aunque se controle el esfuerzo, de modo que la mitad de los pares con soporte son «significativos». Lo informativo es el **tamaño de efecto** (razón entre eventos observados y esperados) y la **replicación** (celdas, días, observadores). Se proponen niveles de evidencia: candidata (razón ≥ 3, criterios de replicación cumplidos), fuerte (≥ 5) y muy fuerte (≥ 10):
+
+| Tabla 10. Pares por nivel de evidencia (q ≤ 0,05 y ≥3 celdas, ≥3 días, ≥5 observadores) | Pares |
+|---|---:|
+| Razón observado/esperado ≥ 2 | 10.586 |
+| ≥ 3 (candidatas) | 3.108 |
+| ≥ 5 (fuertes) | 803 |
+| ≥ 10 (muy fuertes) | 198 |
+
+Con la restricción adicional de que ≥ 80 % de los eventos del par sean mediterráneos (recuadro lat 30–46°, lon −6…37°), géneros distintos y grupos taxonómicos distintos, quedan **919 candidatas intergrupo** (Figura 1). La lista completa (51.401 pares), la de robustos con razón ≥ 3 (3.108), la de mediterráneos de distinto género (2.312) y los dos listados «top 30» están en `data/`.
+
+**Qué hay en lo alto.** Sin restringir por grupo, la mayoría de los pares mejor puntuados son de **hábitat compartido** (bivalvos de playa, aves de humedal, caracoles terrestres, plantas de duna), útiles como control pero no como relaciones nuevas. Entre las intergrupo hay candidatas con sentido ecológico plausible (Figura 4): *Condylactis aurantiaca*—*Periclimenes scriptus* (n=29, razón 4,8, 11 observadores; coherente con el comensalismo conocido de los *Periclimenes* con anémonas), *Muraena helena*—*Ophidiaster ophidianus* (n=17, razón 12,6), *Sarcotragus spinosulus*—*Sparisoma cretense* (n=17, razón 7,4) y *Condylactis aurantiaca*—*Gobius geniporus*. **Ninguna ha sido contrastada todavía con la bibliografía ni con curadores**, de modo que su novedad no se afirma.
+
+**Control con asociaciones documentadas.** *Peltodoris atromaculata*—*Petrosia ficiformis* se recupera (n=78, esperado por esfuerzo 38,9, razón 2,0, z=8,3, q=8e-15, 31 observadores), pero con una razón modesta porque ambas son abundantes. *Felimare picta*—*Ircinia oros* y *Cratena peregrina*—*Eudendrium racemosum* **no** superan este filtro (la segunda tiene n=5 y pocos observadores). Además, *Fistularia commersonii*—*Pterois miles* sí es significativo con este nulo (n=25, esperado 3,4, razón 7,3), al contrario que con el nulo de §3.9, que reparte las especies de forma uniforme dentro del bloque sin condicionar a su frecuencia: **el resultado depende del modelo nulo**, y la lectura de §3.9 sobre las invasoras lessepsianas debe tomarse como dependiente de esa elección.
+
+**Rendimiento del identificador (Figura 5).** El panel fuera de muestra del identificador (62.248 fotos, índice del 5-oct-2026) muestra que el acierto de especie crece con el tamaño de la galería de referencia: 68,6 % (0–25 fotos), 76,0 % (25–50), 65,7 % (50–100), 82,0 % (100–200), 82,2 % (200–500), 86,1 % (500–1.000) y 89,2 % (≥1.000). Las especies con pocas fotos son, por tanto, las menos fiables y las que más condicionan las asociaciones raras.
+
+![Figura 1. Embudo de filtros](figuras/fig1_embudo_filtros.png)
+![Figura 2. Distribución del tamaño de efecto](figuras/fig2_distribucion_efecto.png)
+![Figura 3. Soporte frente a efecto en pares robustos](figuras/fig3_soporte_vs_efecto.png)
+![Figura 4. Candidatas intergrupo](figuras/fig4_candidatas_intergrupo.png)
+![Figura 5. Acierto del identificador frente al tamaño de la galería](figuras/fig5_acierto_vs_galeria.png)
+
+*Figuras 1–5: elaboradas a partir de los ficheros de `data/` y del panel fuera de muestra del identificador. Pendientes en este análisis: comparación con modelos de referencia (baselines), propagación del error de identificación a las asociaciones y validación externa sistemática.*
+
 ## 4. Discusión
 
 ### 4.1 Marco teórico: co-ocurrencia y sesgos de la ciencia ciudadana
@@ -504,6 +533,7 @@ Los datos y el código se publican en el repositorio público del proyecto
 - **Tabla de asociaciones anonimizada** (sin fotografías ni datos de observadores): `data/
   asociaciones_mediterraneas_20260929.csv` (11.509 pares con especies, familias, nº de eventos, celdas,
   días, observadores y lift) y `data/asociaciones_top40_20260929.csv`.
+- **Contraste completo y figuras (v18, 6-oct-2026)**: `data/nulo_exacto_pares_significativos_q05_20261005.csv` (51.401 pares), `data/nulo_exacto_pares_robustos_razon3_20261005.csv` (3.108), `data/pares_robustos_mediterraneos_distinto_genero_20261005.csv` (2.312), `data/pares_candidatos_nuevos_top30_20261005.csv` y `..._intergrupo_top30_20261005.csv`; figuras en `papers/proyecto_correlacion/figuras/`.
 - **Manuscritos y láminas**: `papers/proyecto_correlacion/` (artículo ES/EN y PDFs).
 - **No redistribuibles**: las fotografías (sujetas a licencias de Minka SDG, iNaturalist y demás fuentes) y
   los `embeddings.npy` por foto; pueden reconstruirse desde Minka/iNaturalist/GBIF usando el catálogo.
