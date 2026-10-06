@@ -4,16 +4,16 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
-**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20261001.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20261001.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v16_ES_20260930.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v16_EN_20260930.pdf) · previa: [ES v15](papers/proyecto_correlacion/ARTICULO_v15_ES_20260930.pdf) · [EN v15](papers/proyecto_correlacion/ARTICLE_v15_EN_20260930.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20261006.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20261006.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v16_ES_20260930.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v16_EN_20260930.pdf) · previa: [ES v15](papers/proyecto_correlacion/ARTICULO_v15_ES_20260930.pdf) · [EN v15](papers/proyecto_correlacion/ARTICLE_v15_EN_20260930.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
 
-## Snapshot (2026-10-03)
+## Snapshot (2026-10-06)
 
 | | |
 |---|---|
-| Gallery | **1,118,321** embeddings / **4,543** species (FAISS aligned) |
+| Gallery | **1,132,767** embeddings / **4,543** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
 | Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
-| Field eval (out-of-sample, leak-purged) | **82.34%** species / 87.1% genus / 90.5% family (n=76,585, 2,946 species) |
+| Field eval (out-of-sample, leak-purged) | **82.85%** species on the 78,145-row panel (2,970 species; 82.46% on 2026-10-05, before two promotions); **80.63%** on the 54,878 leak-free rows before them (+0.42 to +0.50 pp after) |
 | — of which original eval / mined extension | **81.18%** (n=60,743, comparable with earlier versions) / 85.5–89.9% (n=15,842; same-species accuracy equivalent: 86.8% vs 86.1%) |
 | Real precision of AutoID publications | **96.6%** (n=493 verifiable; 85% in the 0.83–0.85 band, 99% at ≥0.95) |
 | AutoID | 45/hour, 1,500/day, per-species calibrated threshold (≈0.83), margin + curator guards; **crop fallback** (since 2026-10-01) rescues photos the full image cannot identify: 35 → 48 publishable in 500 real queue photos, 85.7% of the added ones correct (n=49, ground truth) |
@@ -24,6 +24,8 @@ Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/bio
 | Not shipped | Photographs, per-photo `embeddings.npy` |
 
 **2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](papers/biofauna/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
+
+**2026-10-06 — update:** two index promotions (clean combo, harvest batches 01+02) with backup and per-species guard; 96,392 never-embedded photos found and being re-embedded; AutoID sibling rule removed; several ideas measured and rejected (details in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) and paper §5.3). Correlation paper v18 with the all-pairs test, evidence levels, figures and full lists in [`data/`](data/) (see [`data/README_correlacion.md`](data/README_correlacion.md)).
 
 ## Quick start (nearest-centroid demo)
 

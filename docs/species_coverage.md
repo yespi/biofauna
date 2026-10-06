@@ -1,5 +1,7 @@
 # Species coverage
 
+> **2026-10-06.** Live FAISS gallery **4,543** species / **1,132,767** embeddings (2,982 in the Mediterranean checklist, 1,561 outside it). Field panel 78,145 rows over **2,970** species: **82.85 %** species accuracy; 521 species at 100 %, 1,151 below 80 %. Photos on disk exceed vectors by 96,392 (867 species), being re-embedded. The table below is the 2026-09-23 snapshot.
+
 > **2026-09-23**
 
 | Metric | Value |

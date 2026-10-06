@@ -1,6 +1,6 @@
 # Appendix A — Species catalog (reconstruction index)
 
-> Snapshot **2026-09-23**. **2,985** catalog taxa. Live identification gallery: **4,543** species / **1,118,353** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
+> Snapshot **2026-10-06**. **2,985** catalog taxa. Live identification gallery: **4,543** species / **1,132,767** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
 >
 > This table is an **index of taxon IDs**, not a training dataset. Photos are **not** redistributed (iNaturalist / Minka licences). Rebuild images via the APIs using `minka_taxon` / `inat_taxon`, then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`).
 >
@@ -772,7 +772,7 @@
 | `conger_conger` | *Conger conger* | — | 1 | Congridae | Conger | 31017 | 118589 | yes |
 | `mesophyllum_expansum` | *Mesophyllum expansum* | — | 2 | Lithophyllaceae | Mesophyllum | 246781 | 326165 | yes |
 | `holothuria_tubulosa` | *Holothuria tubulosa* | Holothuria (Holothuria) tubulosa | 1 | Holothuriidae | Holothuria | 251875 | 324819 | yes |
-| `peyssonnelia_rosa_marina` | *Peyssonnelia rosa-marina* | — | 2 | Peyssonneliaceae | Peyssonnelia | 253035 | 1281935 | yes |
+| `peyssonnelia_rosa_marina` | *Peyssonnelia rosa-marina* | — | 2 | Peyssonneliaceae | Peyssonnelia | 253035 | 1281935 | no |
 | `thysanozoon_brocchii` | *Thysanozoon brocchii* | — | 1 | Pseudoceritidae | Thysanozoon | 35049 | 363912 | yes |
 | `sarcotragus_fasciculatus` | *Sarcotragus fasciculatus* | — | 1 | Irciniidae | Sarcotragus | 34987 | 791761 | yes |
 | `phallusia_fumigata` | *Phallusia fumigata* | — | 1 | Ascidiidae | Phallusia | 35219 | 493326 | yes |
@@ -1821,7 +1821,7 @@
 | `galium_aparine` | *Galium aparine* | — | 2 | Rubiaceae | Galium | 27352 | 53059 | yes |
 | `felis_catus` | *Felis catus* | — | 2 | Felidae | Felis | 248696 | 118552 | yes |
 | `parietaria_judaica` | *Parietaria judaica* | — | 2 | Urticaceae | Parietaria | 252806 | 57281 | yes |
-| `phoenicopterus_ruber` | *Phoenicopterus ruber* | — | 2 | Phoenicopteridae | Phoenicopterus | 256663 |  |  |
+| `phoenicopterus_ruber` | *Phoenicopterus ruber* | — | 2 | Phoenicopteridae | Phoenicopterus | 256663 |  | no |
 | `locusta_migratoria` | *Locusta migratoria* | — | 2 | Acrididae | Locusta | 244738 | 201627 | yes |
 | `apis_mellifera` | *Apis mellifera* | — | 2 | Apidae | Apis | 245563 | 47219 | yes |
 | `erodium_malacoides` | *Erodium malacoides* | — | 2 | Geraniaceae | Erodium | 246965 | 77056 | yes |
@@ -2309,7 +2309,7 @@
 | `erigeron_sumatrensis` | *Erigeron sumatrensis* | — | 2 | Asteraceae | Erigeron | 246664 | 76943 | yes |
 | `brithys_crini` | *Brithys crini* | — | 2 | Noctuidae | Brithys | 247244 | 132092 | yes |
 | `salvia_verbenaca` | *Salvia verbenaca* | — | 2 | Lamiaceae | Salvia | 247470 | 82925 | yes |
-| `bubulcus_ibis` | *Bubulcus ibis* | — | 2 | Ardeidae | Ardea | 247515 |  |  |
+| `bubulcus_ibis` | *Bubulcus ibis* | — | 2 | Ardeidae | Ardea | 247515 |  | yes |
 | `fumaria_capreolata` | *Fumaria capreolata* | — | 2 | Fumariaceae | Fumaria | 249419 | 57852 | yes |
 | `gyps_fulvus` | *Gyps fulvus* | — | 2 | Accipitridae | Gyps | 249644 | 5366 | yes |
 | `garrulus_glandarius` | *Garrulus glandarius* | — | 2 | Corvidae | Garrulus | 249912 | 8088 | yes |
@@ -2561,7 +2561,7 @@
 | `botryocladia_botryoides` | *Botryocladia botryoides* | — | 2 | Rhodymeniaceae | Botryocladia | 254620 | 925120 | yes |
 | `spongites_fruticulosus` | *Spongites fruticulosus* | — | 2 | Lithophyllaceae | Spongites | 255443 | 1576651 | yes |
 | `erica_scoparia` | *Erica scoparia* | — | 2 | Ericaceae | Erica | 256047 | 771657 | yes |
-| `prunus_amygdalus` | *Prunus amygdalus* | — | 2 | Rosaceae | Prunus | 262696 | 69936 | yes |
+| `prunus_amygdalus` | *Prunus amygdalus* | — | 2 | Rosaceae | Prunus | 262696 | 69936 | no |
 | `anguis_fragilis` | *Anguis fragilis* | — | 2 | Anguidae | Anguis | 245028 | 343021 | yes |
 | `spinus_spinus` | *Spinus spinus* | — | 2 | Fringillidae | Spinus | 21266 | 145303 | yes |
 | `spilopelia_senegalensis` | *Spilopelia senegalensis* | — | 2 | Columbidae | Spilopelia | 106877 | 1455922 | yes |

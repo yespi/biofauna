@@ -1,6 +1,6 @@
 # Láminas fotográficas — Proyecto Correlación
 
-**29-sep-2026 v5** · Fotografías de la **galería BioFauna** (1,2M imágenes: Minka SDG, iNaturalist, GBIF…).
+**6-oct-2026 v6** (v5: 29-sep-2026; v6 añade las figuras de datos 1-5 del artículo v18) · Fotografías de la **galería BioFauna** (1,2M imágenes: Minka SDG, iNaturalist, GBIF…).
 Selección por el clasificador de calidad del sistema (`obs_score`: grado de investigación +3, nº de
 curadores máx +5, curador de confianza +2, tamaño de imagen máx +3; 0-13) + filtro de nitidez (varianza
 Laplaciano; se descartan las borrosas severas). Cada foto incluye su atribución.
@@ -56,3 +56,12 @@ Laplaciano; se descartan las borrosas severas). Cada foto incluye su atribución
 ![telmatactis_cricoides — Lysmata grabhami y Telmatactis cricoides (limpieza). calidad 8.1/13 · nitidez ok · 1024x758px · fuente inat obs 96667289](lamina_fotos/asoc_5__telmatactis_cricoides__1.jpg)
 
 ![telmatactis_cricoides — Lysmata grabhami y Telmatactis cricoides (limpieza). calidad 8.1/13 · nitidez ok · 1024x683px · fuente inat obs 60105996](lamina_fotos/asoc_5__telmatactis_cricoides__2.jpg)
+
+
+## Figuras de datos (v6, 6-oct-2026)
+
+![Figura 1. Embudo de filtros: de 115.204 pares a 919 candidatas intergrupo](figuras/fig1_embudo_filtros.png)
+![Figura 2. Distribución del tamaño de efecto](figuras/fig2_distribucion_efecto.png)
+![Figura 3. Soporte frente a efecto en pares robustos](figuras/fig3_soporte_vs_efecto.png)
+![Figura 4. Candidatas intergrupo robustas (sin revisión bibliográfica)](figuras/fig4_candidatas_intergrupo.png)
+![Figura 5. Acierto del identificador frente al tamaño de la galería](figuras/fig5_acierto_vs_galeria.png)

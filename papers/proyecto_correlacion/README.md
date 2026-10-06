@@ -1,6 +1,6 @@
 # Proyecto Correlación (BioFauna) — asociaciones entre especies y con el medio
 
-**Estado:** 28-sep-2026 · **fase:** prueba de concepto completada y validada, con lista de candidatas para revisión biológica.
+**Estado:** 6-oct-2026 · **fase:** artículo v18 (contraste sobre todos los pares, niveles de evidencia, figuras y listados completos); pendiente revisión bibliográfica de las candidatas, baselines y propagación del error del identificador.
 
 ---
 
@@ -52,6 +52,7 @@ descritas existirían.
 - **Validación del método**: recupera asociaciones **ya documentadas** con alta repetibilidad
   (*Peltodoris atromaculata* + *Petrosia ficiformis*: 79 eventos, lift 11,1, **44 localidades y 74 días**).
 - **70.971 pares** de especies con soporte y repetibilidad (soporte ≥8 eventos, ≥3 localidades, ≥3 días).
+- **Resultado principal (nulo estratificado por localidad·fecha, 2.000 permutaciones):** de los 3.000 pares de mayor lift, **39 pares específicos del Mediterráneo superan el FDR** de Benjamini-Hochberg con la definición principal de evento (2 con la gruesa); los pares lessepsianos **no** superan el nulo. Ver artículo §3.9 (Tabla 9) y `experimentos/NULO_ESTRATIFICADO_20260929.md`.
 - **Candidatas nuevas** con lectura biológica plausible: medusa + anfípodo hiperídeo, gamba limpiadora +
   anémona, parejas de infauna, ctenóforos de la misma masa de agua, etc.
 - **Línea ambiental** (turbidez/visibilidad): pipeline montado y evaluado; el índice de color **no** valida

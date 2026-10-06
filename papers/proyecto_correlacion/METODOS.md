@@ -161,3 +161,7 @@ genera co-ocurrencias). Para el artículo se implementará:
 - **Sesgo de observador y de evento** (bioblitz con cientos de fotos/día): se controla con el diseño por evento
   y con la repetibilidad en días distintos.
 - **Cobertura desigual**: peces, nudibranquios y algas están mucho mejor cubiertos que otros grupos.
+
+## 4 quater. Contraste condicionado al esfuerzo sobre todos los pares (añadido 5-oct-2026)
+
+El nulo de §6 solo cubría los 3.000 pares de mayor lift. Desde el 5-oct se contrasta **toda** la familia de pares con n ≥ 5 eventos (115.204): dentro de cada bloque celda 0,1°·día, la probabilidad de que una especie esté en un evento es proporcional al tamaño del evento (condicionada a su frecuencia en el bloque); el esperado de eventos con ambas especies es la suma sobre bloques y su varianza la de una suma de Bernoulli independientes; p unilateral (normal con corrección de continuidad) y Benjamini-Hochberg sobre toda la familia. Niveles de evidencia por tamaño de efecto (razón observado/esperado ≥ 3, ≥ 5, ≥ 10) con replicación (≥3 celdas, ≥3 días, ≥5 observadores), y filtros de ámbito (≥80 % de eventos en el Mediterráneo, géneros y grupos distintos). Código `scripts/nulo_exacto_todos_pares_20261005.py`; resultados en `NULO_EXACTO_TODOS_PARES_20261005.md` y artículo §3.10. Limitación declarada: el resultado depende del modelo nulo (p. ej. *Fistularia commersonii*–*Pterois miles* es significativo aquí y no con el nulo de §6).

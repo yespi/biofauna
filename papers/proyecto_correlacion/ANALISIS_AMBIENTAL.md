@@ -77,7 +77,7 @@ Distancias de 1–5 m: **físicamente plausibles** para fotografía de buceo →
 
 | script | qué hace |
 |---|---|
-| `(script del proyecto; disponible bajo petición)` | agrega índices por **día × celda**, filtro nocturno, gráficas y CSV |
-| `(script del proyecto; disponible bajo petición)` | co-ocurrencia por evento (todas las fuentes) |
-| `(script del proyecto; disponible bajo petición)` | co-ocurrencia con catálogo + soporte + repetibilidad |
-| `volcado de metadatos de observación (iNaturalist/Minka/GBIF)` | 759.207 observaciones con geo, fecha, hora, observador |
+| `scripts/poc_turbidez_dia_celda_20260928.py` | agrega índices por **día × celda**, filtro nocturno, gráficas y CSV |
+| `scripts/poc_coocurrencia_20260928.py` | co-ocurrencia por evento (todas las fuentes) |
+| `scripts/poc_coocurrencia_filtrada_20260928.py` | co-ocurrencia con catálogo + soporte + repetibilidad |
+| `dataset/enrich_obs_metadata_progress_20260919.json` | 759.207 observaciones con geo, fecha, hora, observador |

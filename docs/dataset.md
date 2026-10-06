@@ -1,3 +1,5 @@
+> **2026-10-06:** live gallery 1,132,767 embeddings / 4,543 species (see [STATUS.md](STATUS.md)); `data/patterns/` prototypes, `data/calibration*.json` and `dataset/` synced with production on this date.
+
 ## Dataset — what to download vs what we ship
 
 ### Live scale (2026-09-28)

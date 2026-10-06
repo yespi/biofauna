@@ -1,8 +1,8 @@
 {
- "as_of": "2026-09-28",
+ "as_of": "2026-10-06",
  "n": 2985,
- "n_in_live_gallery": 2983,
- "live_faiss": 1118353,
+ "n_in_live_gallery": 2982,
+ "live_faiss": 1132767,
  "live_gallery_species": 4543,
  "note": "Taxon IDs for reconstructing the photo gallery from Minka/iNaturalist/GBIF. No images, no per-photo embeddings.",
  "species": [
@@ -12244,7 +12244,7 @@
    "family_minka": 4287,
    "genus_minka": 12569,
    "is_hetero": false,
-   "in_live_gallery": true
+   "in_live_gallery": false
   },
   {
    "slug": "thysanozoon_brocchii",
@@ -36836,7 +36836,7 @@
    "family_minka": 2788,
    "genus_minka": 23442,
    "is_hetero": false,
-   "in_live_gallery": false
+   "in_live_gallery": true
   },
   {
    "slug": "fumaria_capreolata",
@@ -40868,7 +40868,7 @@
    "family_minka": 1044,
    "genus_minka": 38112,
    "is_hetero": false,
-   "in_live_gallery": true
+   "in_live_gallery": false
   },
   {
    "slug": "anguis_fragilis",

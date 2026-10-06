@@ -157,3 +157,15 @@ Ideas evaluated and set aside before running anything, with the specific reason 
 - **Hierarchical abstention (calibrated probabilities, in-sample):** species-only p ≥ 0.83 → 65.1% of photos at 95.9%; + genus (τ=0.83) 77.2% at 95.6%; + genus & family (τ=0.90) 79.9% at 95.9%. **Out-of-sample** (n=1,267 recent research-grade Minka observations, leaks excluded): species 71.1% at 91.2%; genus added +7.4 pp at 88.3% (τ=0.83), +4.4 pp at 87.5% (0.90), **+2.4 pp at 90.3% (0.95)**; genus precision by band 85.3 / 90.6 / 95.3%.
 - **Baselines** (78,180 field rows): nearest centroid 74.73%, plain k-NN (k=15, vote) 79.86% (1-NN 79.10%), full system 82.46%.
 - **Attention crop vs full photo** (119 evaluation photos): 80.7% vs 69.7% (16 hits lost, 3 gained; mean crop = 19% of the frame); *Corallium rubrum* (n=31) 87.1% vs 93.5%.
+
+## 2026-10-04/06 — clean evaluation, promotions, and what did not work
+
+All figures are paired McNemar on the field panel (78,145 rows; leak-free rows 54,878) unless stated.
+
+**Kept (promoted to production).** *Clean combo* (58-species re-embed batch + block E + small harvest, minus 4 guard species and the vectors of 3 "thief" species): +0.163 pp panel (240 fixes / 113 breaks, p=2e-11), +0.261 / +0.212 pp leak-free (≥0.95 / ≥0.995). *Harvest batches 01+02* (71 species; thieves removed iteratively): +0.223 pp (217/43, p=7e-27), +0.503 / +0.424 pp leak-free. Later batches give diminishing returns (batch 03 +0.088 pp, batch 04 +0.024 pp): each species adds only 8–44 new accepted photos. Adding photos to a species lowers its close relatives (*Pyracantha coccinea* → *P. crenulata* 32→19 of 40), hence the iterative removal of thief species.
+
+**Rejected.** Removing 1,188 discordant prototype vectors: −0.023 pp (25/43, p=0.039 against). DINOv3 as tie-break on 16 pairs: 58.9 % vs 59.6 %, null at every δ. Vision-language comparator (MiniCPM-V): 51.9 % vs 58.3 %. Grounding DINO / YOLO26n for the attention crop: worse than the fusion (74.0 vs 80.85 %; YOLO + best identical, 14/14). Under-exposure enhancement on photos the whole image does not publish: 17 of 392 publish, 15 correct (88.2 %), nearly all already covered by the attention rescue. Colour (Lab histograms, k-means palette) as tie-break: net negative at every δ. Zone prior as tie-break: plain argmax loses; with a ≥10× condition +3/−0 on a small third-party sample. Seagrass re-embed +0.005 pp; local small-gallery harvest +0.008 pp.
+
+**AutoID.** Sibling-avoidance removed (4 Oct). A 14-day replay of the current cascade (500 publications): same species → 77/79 correct; 7 judged changes → cascade right in 4, previous publication right in 2.
+
+**Open.** Full per-species re-embed of 715 species with 72,298 unembedded photos (3,845 panel errors); remaining external harvest batches; per-species accuracy grows with gallery size (68.6 % at 0–25 photos, 82.0 % at 100–200, 89.2 % at ≥1,000).
