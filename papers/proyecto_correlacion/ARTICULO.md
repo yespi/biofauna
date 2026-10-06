@@ -338,6 +338,119 @@ Con la restricción adicional de que ≥ 80 % de los eventos del par sean medite
 
 *Figuras 1–5: elaboradas a partir de los ficheros de `data/` y del panel fuera de muestra del identificador. Pendientes en este análisis: comparación con modelos de referencia (baselines), propagación del error de identificación a las asociaciones y validación externa sistemática.*
 
+### 3.11 Evidencia fotográfica: parejas vistas en la misma imagen (6-oct-2026)
+
+Siguiendo el criterio de que la co-ocurrencia por evento solo es una pista, se buscaron **fotografías de la galería en las que aparecen las dos especies de la pareja en la misma imagen**. Cada foto se identificó entera y en regiones (cuadrantes, mitades y centro) con el identificador; se conservaron las que contienen una región reconocida como cada especie y la selección final se revisó a ojo. En el cribado automático de las 138 parejas mejor puntuadas (60 fotos por especie), 41 parejas tenían al menos una foto candidata y 12 tenían tres o más observaciones distintas, pero la revisión visual mostró **numerosos falsos positivos entre especies parecidas** (p. ej. *Polititapes*/*Ruditapes*, *Caloria*/*Luisella*), de modo que la detección automática solo propone y cada caso se confirma a ojo. La segunda especie de cada foto la identifica BioFauna y **no está confirmada por curadores**. Niveles: 0 co-ocurrencia por evento; 1 ambas en la misma foto en ≥3 observaciones independientes; 2 además contacto visible (sobre, dentro, alimentándose).
+
+| Tabla 11. Parejas con fotos de ambas especies en la misma imagen | Nivel | Fotos (obs. distintas) | Observación |
+|---|---|---:|---|
+| *Peltodoris atromaculata* sobre *Petrosia ficiformis* (predación) | 2 (contacto visible; pendiente de curadores) | 4 (4) | Esponja identificada por BioFauna como *Petrosia ficiformis* (variantes púrpura, rojiza y crema); sin confirmación de curadores. |
+| *Cratena peregrina* sobre colonias de hidrozoos (*Eudendrium racemosum*; kleptopredación) | 2 (contacto visible; pendiente de curadores) | 4 (4) | Hidrozoo identificado por BioFauna como *Eudendrium racemosum*; sin confirmación de curadores. |
+| *Condylactis aurantiaca* con el camarón *Periclimenes scriptus* (comensalismo) | 2 (contacto visible; pendiente de curadores) | 4 (4) | Camarón identificado por BioFauna como *Periclimenes scriptus*; sin confirmación de curadores. |
+| *Lysmata grabhami* y *Telmatactis cricoides* (limpieza) | 1 (en la misma foto; contacto limitado) | 4 (4) | Camarón limpiador y anémona identificados por BioFauna; en dos fotos el camarón es pequeño. |
+| *Scyllaea pelagica* sobre *Sargassum* flotante | 0–1 (una sola observación clara) | 1 (1) | Solo se ve con claridad el nudibranquio camuflado; *Latreutes* e *Hippolyte* no se distinguen a ojo. |
+| *Electra posidoniae* y *Tridentata perpusilla* sobre hojas de *Posidonia* (microhábitat compartido) | 1 (microhábitat compartido, no interacción) | 4 (4) | Briozoo incrustante y hidrozoo sobre la misma hoja; microhábitat compartido, no interacción demostrada. |
+
+No se encontró ninguna foto con ambas especies para *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* ni *Fistularia commersonii*–*Pterois miles*; esto no prueba que no convivan (la galería son sobre todo retratos centrados de una especie). *Peltodoris*–*Petrosia*, *Cratena*–*Eudendrium*, *Condylactis*–*Periclimenes* y *Lysmata*–*Telmatactis* se eligieron entre las parejas de las láminas previas y las candidatas intergrupo, no por su posición en la lista de mayor razón.
+
+**Lámina 1. *Peltodoris atromaculata* sobre *Petrosia ficiformis* (predación).** *Esponja identificada por BioFauna como *Petrosia ficiformis* (variantes púrpura, rojiza y crema); sin confirmación de curadores.*
+
+![Lámina 1.1](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg)
+
+*Lámina 1.1: Pau Pagès Jaén · CC BY · 2024-08-06 12:08 (Europe/Madrid) · Spain · Minka obs 324790.*
+
+![Lámina 1.2](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg)
+
+*Lámina 1.2: Dean Zagorac · CC BY-NC † · 2023-08-07 16:40 (Europe/Zagreb) · Kostrena, Primorsko-Goranska, Croatia · iNaturalist obs 184319097.*
+
+![Lámina 1.3](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg)
+
+*Lámina 1.3: jmturon · CC BY-NC † · 2022-07-23 10:16 (Europe/Madrid) · Spain · Minka obs 205860.*
+
+![Lámina 1.4](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg)
+
+*Lámina 1.4: Óscar Comellas Garcia · CC BY-NC † · 2023-11-11 11:43 (Europe/Madrid) · Girona, España · Minka obs 203388.*
+
+**Lámina 2. *Cratena peregrina* sobre colonias de hidrozoos (*Eudendrium racemosum*; kleptopredación).** *Hidrozoo identificado por BioFauna como *Eudendrium racemosum*; sin confirmación de curadores.*
+
+![Lámina 2.1](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__1.jpg)
+
+*Lámina 2.1: xavi salvador costa · CC BY-NC † · 2024-11-02 22:52 (Europe/Paris) · Le Ponton · Minka obs 392849.*
+
+![Lámina 2.2](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__2.jpg)
+
+*Lámina 2.2: xatrac · CC BY-NC † · 2022-08-27 10:08 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88838.*
+
+![Lámina 2.3](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__3.jpg)
+
+*Lámina 2.3: xatrac · CC BY-NC † · 2022-08-10 09:42 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88546.*
+
+![Lámina 2.4](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__4.jpg)
+
+*Lámina 2.4: xatrac · CC BY-NC † · 2022-08-07 09:16 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88528.*
+
+**Lámina 3. *Condylactis aurantiaca* con el camarón *Periclimenes scriptus* (comensalismo).** *Camarón identificado por BioFauna como *Periclimenes scriptus*; sin confirmación de curadores.*
+
+![Lámina 3.1](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__1.jpg)
+
+*Lámina 3.1: xavi salvador costa · CC BY-NC † · 2016-09-10 22:07 (Europe/Paris) · Spain · Minka obs 28492.*
+
+![Lámina 3.2](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__2.jpg)
+
+*Lámina 3.2: Sylvain Le Bris · CC BY-NC † · 2026-04-08 22:17 (Europe/Paris) · Montredon, Marseille, France · iNaturalist obs 348576200.*
+
+![Lámina 3.3](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__3.jpg)
+
+*Lámina 3.3: xavi salvador costa · CC BY-NC † · 2016-07-09 22:18 (Europe/Paris) · Spain · Minka obs 28862.*
+
+![Lámina 3.4](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__4.jpg)
+
+*Lámina 3.4: xavi salvador costa · CC BY-NC † · 2018-09-01 16:03 (Europe/Paris) · Spain · Minka obs 35885.*
+
+**Lámina 4. *Lysmata grabhami* y *Telmatactis cricoides* (limpieza).** *Camarón limpiador y anémona identificados por BioFauna; en dos fotos el camarón es pequeño.*
+
+![Lámina 4.1](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__1.jpg)
+
+*Lámina 4.1: jmturon · CC BY-NC † · 2023-12-05 10:57 (Atlantic/Canary) · Las Coloradas · Minka obs 210346.*
+
+![Lámina 4.2](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__2.jpg)
+
+*Lámina 4.2: jmturon · CC BY-NC † · 2023-12-06 20:06 (Atlantic/Canary) · Playa Flamingo · Minka obs 210532.*
+
+![Lámina 4.3](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__3.jpg)
+
+*Lámina 4.3: phil_newman · CC BY-NC † · 2025-11-22 11:50 (Atlantic/Canary) · Playa Flamingo Playa Blanca Lanzarote · iNaturalist obs 329826704.*
+
+![Lámina 4.4](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__4.jpg)
+
+*Lámina 4.4: whodden · CC BY-NC † · 2007-04-04 00:00 (Europe/Madrid) · la caleta punta prieta tenerife · iNaturalist obs 2354980.*
+
+**Lámina 5. *Scyllaea pelagica* sobre *Sargassum* flotante.** *Solo se ve con claridad el nudibranquio camuflado; *Latreutes* e *Hippolyte* no se distinguen a ojo.*
+
+![Lámina 5.1](lamina_fotos/par5__scyllaea_pelagica__latreutes_fucorum__1.jpg)
+
+*Lámina 5.1: Ben Eddy · CC BY-NC † · 2023-06-27 13:52 (Atlantic/Bermuda) · Southampton, BM · iNaturalist obs 170761288.*
+
+**Lámina 6. *Electra posidoniae* y *Tridentata perpusilla* sobre hojas de *Posidonia* (microhábitat compartido).** *Briozoo incrustante y hidrozoo sobre la misma hoja; microhábitat compartido, no interacción demostrada.*
+
+![Lámina 6.1](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__1.jpg)
+
+*Lámina 6.1: xavi salvador costa · CC BY-NC † · 2023-08-09 11:01 (Europe/Madrid) · Spain · Minka obs 153028.*
+
+![Lámina 6.2](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg)
+
+*Lámina 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · 17300 Blanes, Girona, España · Minka obs 511234.*
+
+![Lámina 6.3](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__3.jpg)
+
+*Lámina 6.3: ester serrao · CC BY · 2024-06-30 07:17 (America/Costa_Rica) · Parrita, Puntarenas, CR · Minka obs 629063.*
+
+![Lámina 6.4](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg)
+
+*Lámina 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Cap Ras · Minka obs 544263.*
+
+† Fotografías con licencia no comercial (CC BY-NC / CC BY-NC-SA): **deben sustituirse por fotos CC0, CC BY o CC BY-SA, o contar con permiso del autor, si el artículo se publica en una revista comercial.** Hora local de la observación; el enlace a cada observación está en `lamina_fotos/lamina_manifest_20261006.json`.
+
 ## 4. Discusión
 
 ### 4.1 Marco teórico: co-ocurrencia y sesgos de la ciencia ciudadana
@@ -542,9 +655,4 @@ Los datos y el código se publican en el repositorio público del proyecto
 
 - Tablas de asociaciones (top 40 y conjunto completo; accesibles en el repositorio público del proyecto).
 - Figura de red de asociaciones (SVG navegable en el repositorio).
-- **Láminas fotográficas** (`LAMINAS_v4_20260929.pdf`, 22 páginas): **22 fotografías** seleccionadas de la
-  **galería BioFauna** (1,2 M imágenes) con el **clasificador de calidad del sistema** (`obs_score`:
-  grado de investigación, nº de curadores, curador de confianza y resolución; 0-13) y filtro de nitidez
-  (varianza Laplaciano). Cada foto incluye su **atribución** (autor + licencia + enlace a la observación).
-  Solo imágenes con licencia reutilizable (CC0 / CC BY / CC BY-SA); el resto se excluye o requiere permiso
-  explícito del autor.
+- **Láminas fotográficas** (`LAMINAS_v7_20261006.pdf`): **21 fotografías** de la galería BioFauna en las que se ven **las dos especies de la pareja en la misma imagen** (sección 3.11), con autor, licencia, fecha y hora, lugar y enlace a la observación. Licencias admitidas: CC0, CC BY, CC BY-SA y CC BY-NC / CC BY-NC-SA; las marcadas con † (no comerciales) **deben sustituirse por fotos CC0, CC BY o CC BY-SA, o contar con permiso del autor, si se publica en una revista comercial**. Se excluyen las fotos sin licencia y las CC BY-NC-ND.

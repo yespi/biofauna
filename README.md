@@ -25,7 +25,7 @@ Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/bio
 
 **2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](papers/biofauna/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
 
-**2026-10-06 — update:** two index promotions (clean combo, harvest batches 01+02) with backup and per-species guard; 96,392 never-embedded photos found and being re-embedded; AutoID sibling rule removed; several ideas measured and rejected (details in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) and paper §5.3). Correlation paper v18 with the all-pairs test, evidence levels, figures and full lists in [`data/`](data/) (see [`data/README_correlacion.md`](data/README_correlacion.md)).
+**2026-10-06 — update:** two index promotions (clean combo, harvest batches 01+02) with backup and per-species guard; 96,392 never-embedded photos found and being re-embedded; AutoID sibling rule removed; several ideas measured and rejected (details in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) and paper §5.3). Correlation paper v19 (plates and tables embedded) with the all-pairs test, evidence levels, figures and full lists in [`data/`](data/) (see [`data/README_correlacion.md`](data/README_correlacion.md)).
 
 ## Quick start (nearest-centroid demo)
 

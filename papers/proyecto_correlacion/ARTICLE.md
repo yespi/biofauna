@@ -326,6 +326,119 @@ Adding the requirements that ≥ 80 % of the pair's events are Mediterranean (bo
 
 *Figures 1–5: built from the files in `data/` and the identifier's out-of-sample panel. Still pending in this analysis: comparison with baselines, propagation of identification error to the associations, and systematic external validation.*
 
+### 3.11 Photographic evidence: pairs seen in the same image (6 Oct 2026)
+
+Following the criterion that event-level co-occurrence is only a lead, we searched the gallery for **photographs in which both species of a pair appear in the same image**. Each photo was identified whole and by regions (quadrants, halves and centre) with the identifier; photos with a region recognised as each species were kept and the final selection was checked by eye. In the automatic screening of the 138 best-scoring pairs (60 photos per species), 41 pairs had at least one candidate photo and 12 had three or more distinct observations, but visual review showed **many false positives between look-alike species** (e.g. *Polititapes*/*Ruditapes*, *Caloria*/*Luisella*), so automatic detection only proposes and every case is confirmed by eye. The second species in each photo is identified by BioFauna and is **not confirmed by curators**. Levels: 0 event-level co-occurrence; 1 both in the same photo in ≥3 independent observations; 2 plus visible contact (on, inside, feeding).
+
+| Table 11. Pairs with photos of both species in the same image | Level | Photos (distinct obs.) | Note |
+|---|---|---:|---|
+| *Peltodoris atromaculata* on *Petrosia ficiformis* (predation) | 2 (visible contact; pending curators) | 4 (4) | Sponge identified by BioFauna as *Petrosia ficiformis* (purple, reddish and cream variants); not confirmed by curators. |
+| *Cratena peregrina* on hydroid colonies (*Eudendrium racemosum*; kleptoparasitism) | 2 (visible contact; pending curators) | 4 (4) | Hydroid identified by BioFauna as *Eudendrium racemosum*; not confirmed by curators. |
+| *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus* (commensalism) | 2 (visible contact; pending curators) | 4 (4) | Shrimp identified by BioFauna as *Periclimenes scriptus*; not confirmed by curators. |
+| *Lysmata grabhami* and *Telmatactis cricoides* (cleaning) | 1 (same photo; limited contact) | 4 (4) | Cleaner shrimp and anemone identified by BioFauna; the shrimp is small in two photos. |
+| *Scyllaea pelagica* on floating *Sargassum* | 0–1 (a single clear observation) | 1 (1) | Only the camouflaged nudibranch is clearly visible; *Latreutes* and *Hippolyte* cannot be told apart by eye. |
+| *Electra posidoniae* and *Tridentata perpusilla* on leaves of *Posidonia* (shared microhabitat) | 1 (shared microhabitat, not interaction) | 4 (4) | Encrusting bryozoan and hydroid on the same leaf; shared microhabitat, interaction not demonstrated. |
+
+No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* or *Fistularia commersonii*–*Pterois miles*; this does not show they do not coexist (the gallery is mostly centred portraits of one species). *Peltodoris*–*Petrosia*, *Cratena*–*Eudendrium*, *Condylactis*–*Periclimenes* and *Lysmata*–*Telmatactis* were chosen from the earlier plates and the cross-group candidates, not by rank in the highest-ratio list.
+
+**Plate 1. *Peltodoris atromaculata* on *Petrosia ficiformis* (predation).** *Sponge identified by BioFauna as *Petrosia ficiformis* (purple, reddish and cream variants); not confirmed by curators.*
+
+![Plate 1.1](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg)
+
+*Plate 1.1: Pau Pagès Jaén · CC BY · 2024-08-06 12:08 (Europe/Madrid) · Spain · Minka obs 324790.*
+
+![Plate 1.2](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg)
+
+*Plate 1.2: Dean Zagorac · CC BY-NC † · 2023-08-07 16:40 (Europe/Zagreb) · Kostrena, Primorsko-Goranska, Croatia · iNaturalist obs 184319097.*
+
+![Plate 1.3](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg)
+
+*Plate 1.3: jmturon · CC BY-NC † · 2022-07-23 10:16 (Europe/Madrid) · Spain · Minka obs 205860.*
+
+![Plate 1.4](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg)
+
+*Plate 1.4: Óscar Comellas Garcia · CC BY-NC † · 2023-11-11 11:43 (Europe/Madrid) · Girona, España · Minka obs 203388.*
+
+**Plate 2. *Cratena peregrina* on hydroid colonies (*Eudendrium racemosum*; kleptoparasitism).** *Hydroid identified by BioFauna as *Eudendrium racemosum*; not confirmed by curators.*
+
+![Plate 2.1](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__1.jpg)
+
+*Plate 2.1: xavi salvador costa · CC BY-NC † · 2024-11-02 22:52 (Europe/Paris) · Le Ponton · Minka obs 392849.*
+
+![Plate 2.2](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__2.jpg)
+
+*Plate 2.2: xatrac · CC BY-NC † · 2022-08-27 10:08 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88838.*
+
+![Plate 2.3](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__3.jpg)
+
+*Plate 2.3: xatrac · CC BY-NC † · 2022-08-10 09:42 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88546.*
+
+![Plate 2.4](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__4.jpg)
+
+*Plate 2.4: xatrac · CC BY-NC † · 2022-08-07 09:16 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88528.*
+
+**Plate 3. *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus* (commensalism).** *Shrimp identified by BioFauna as *Periclimenes scriptus*; not confirmed by curators.*
+
+![Plate 3.1](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__1.jpg)
+
+*Plate 3.1: xavi salvador costa · CC BY-NC † · 2016-09-10 22:07 (Europe/Paris) · Spain · Minka obs 28492.*
+
+![Plate 3.2](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__2.jpg)
+
+*Plate 3.2: Sylvain Le Bris · CC BY-NC † · 2026-04-08 22:17 (Europe/Paris) · Montredon, Marseille, France · iNaturalist obs 348576200.*
+
+![Plate 3.3](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__3.jpg)
+
+*Plate 3.3: xavi salvador costa · CC BY-NC † · 2016-07-09 22:18 (Europe/Paris) · Spain · Minka obs 28862.*
+
+![Plate 3.4](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__4.jpg)
+
+*Plate 3.4: xavi salvador costa · CC BY-NC † · 2018-09-01 16:03 (Europe/Paris) · Spain · Minka obs 35885.*
+
+**Plate 4. *Lysmata grabhami* and *Telmatactis cricoides* (cleaning).** *Cleaner shrimp and anemone identified by BioFauna; the shrimp is small in two photos.*
+
+![Plate 4.1](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__1.jpg)
+
+*Plate 4.1: jmturon · CC BY-NC † · 2023-12-05 10:57 (Atlantic/Canary) · Las Coloradas · Minka obs 210346.*
+
+![Plate 4.2](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__2.jpg)
+
+*Plate 4.2: jmturon · CC BY-NC † · 2023-12-06 20:06 (Atlantic/Canary) · Playa Flamingo · Minka obs 210532.*
+
+![Plate 4.3](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__3.jpg)
+
+*Plate 4.3: phil_newman · CC BY-NC † · 2025-11-22 11:50 (Atlantic/Canary) · Playa Flamingo Playa Blanca Lanzarote · iNaturalist obs 329826704.*
+
+![Plate 4.4](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__4.jpg)
+
+*Plate 4.4: whodden · CC BY-NC † · 2007-04-04 00:00 (Europe/Madrid) · la caleta punta prieta tenerife · iNaturalist obs 2354980.*
+
+**Plate 5. *Scyllaea pelagica* on floating *Sargassum*.** *Only the camouflaged nudibranch is clearly visible; *Latreutes* and *Hippolyte* cannot be told apart by eye.*
+
+![Plate 5.1](lamina_fotos/par5__scyllaea_pelagica__latreutes_fucorum__1.jpg)
+
+*Plate 5.1: Ben Eddy · CC BY-NC † · 2023-06-27 13:52 (Atlantic/Bermuda) · Southampton, BM · iNaturalist obs 170761288.*
+
+**Plate 6. *Electra posidoniae* and *Tridentata perpusilla* on leaves of *Posidonia* (shared microhabitat).** *Encrusting bryozoan and hydroid on the same leaf; shared microhabitat, interaction not demonstrated.*
+
+![Plate 6.1](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__1.jpg)
+
+*Plate 6.1: xavi salvador costa · CC BY-NC † · 2023-08-09 11:01 (Europe/Madrid) · Spain · Minka obs 153028.*
+
+![Plate 6.2](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg)
+
+*Plate 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · 17300 Blanes, Girona, España · Minka obs 511234.*
+
+![Plate 6.3](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__3.jpg)
+
+*Plate 6.3: ester serrao · CC BY · 2024-06-30 07:17 (America/Costa_Rica) · Parrita, Puntarenas, CR · Minka obs 629063.*
+
+![Plate 6.4](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg)
+
+*Plate 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Cap Ras · Minka obs 544263.*
+
+† Photographs under a non-commercial licence (CC BY-NC / CC BY-NC-SA): **they must be replaced with CC0, CC BY or CC BY-SA photos, or used with the author's permission, if the article is published in a commercial journal.** Local time of the observation; the link to each observation is in `lamina_fotos/lamina_manifest_20261006.json`.
+
 ## 4. Discussion
 
 ### 4.1 Theoretical background: co-occurrence and citizen-science biases
@@ -525,8 +638,4 @@ Data and code are published in the project's public repository (https://github.c
 
 - Association tables (top 40 and full set; available in the project's public repository).
 - Association network figure (navigable SVG in the repository).
-- **Photo plates** (`LAMINAS_v4_20260929.pdf`, 22 pages): **22 photographs** selected from the **BioFauna
-  gallery** (1.2 M images) with the **system quality classifier** (`obs_score`: research grade, number of
-  curators, trusted curator and resolution; 0-13) and a sharpness filter (Laplacian variance). Each photo
-  includes its **attribution** (author + licence + observation link). Only reusable-licence images (CC0 /
-  CC BY / CC BY-SA); the rest are excluded or require the author's explicit permission.
+- **Photo plates** (`LAMINAS_v7_20261006.pdf`): **21 photographs** from the BioFauna gallery showing **both species of a pair in the same image** (section 3.11), with author, licence, date and time, place and link to the observation. Accepted licences: CC0, CC BY, CC BY-SA and CC BY-NC / CC BY-NC-SA; those marked † (non-commercial) **must be replaced with CC0, CC BY or CC BY-SA photos, or used with the author's permission, if published in a commercial journal**. Photos without a licence and CC BY-NC-ND are excluded.

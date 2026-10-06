@@ -1,6 +1,6 @@
 # Proyecto Correlación (BioFauna) — asociaciones entre especies y con el medio
 
-**Estado:** 6-oct-2026 · **fase:** artículo v18 (contraste sobre todos los pares, niveles de evidencia, figuras y listados completos); pendiente revisión bibliográfica de las candidatas, baselines y propagación del error del identificador.
+**Estado:** 6-oct-2026 · **fase:** artículo v19 (contraste sobre todos los pares, niveles de evidencia, figuras y listados completos); pendiente revisión bibliográfica de las candidatas, baselines y propagación del error del identificador.
 
 ---
 
