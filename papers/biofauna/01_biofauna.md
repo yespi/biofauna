@@ -4,7 +4,7 @@
 **Taxonomic contributors**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros
 **Repository**: https://github.com/yespi/biofauna
 **Live system**: https://fotofauna.yespi.es
-**This version**: 2026-10-02 (update boxes and §5.1 added to the 2026-09-14 snapshot)
+**This version**: 2026-10-06 (update box and §5.3 added; previous: 2026-10-02)
 
 > **Naming.** Developed as YOLOFauna (2024–mid-2026); renamed BioFauna when production settled on BioCLIP retrieval rather than YOLO detection. Provenance: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -12,6 +12,8 @@
 
 
 **Update 2026-09-29 — field evaluation expanded to 76,585 rows, observer-level leakage purged, realm segmentation.** Two mining rounds extended the field evaluation from 62,408 to **76,585 rows** (round 1: +11,156 rows at 84.8% accuracy; round 2: +4,691 rows at 87.8%). A reviewer-grade audit measured **observation/observer leakage**: 2.17% of rows (1,595) shared an observation id or an observer with the reference gallery of their own species; excluding them changes accuracy by only **−0.14 pp**, so the operating figure is not materially inflated. Final segmented accuracy: **82.34% overall** (76,585 rows), marine 80.37%, terrestrial 93.37%, aves 92.22%, foranea 82.08%. The `realm` field (marine / terrestrial / aves / foranea) was added to the catalog as **metadata for segmented statistics** — it does **not** filter identification or publication, since Minka includes birds and terrestrial organisms. **Composition of the figure (review of 29-Sep):** the original evaluation set (60,743 rows) scores **81.18%**, comparable with earlier versions; the 15,842 mined rows score 85.5% and 89.9% in the two rounds, but on the 1,785 species that have both kinds of rows the accuracy is equivalent (86.8% mined vs 86.1% original). The overall increase therefore reflects the species mix, not a model change (the model did not change). All mined rows passed the same leakage filter (observation, observer, embedding similarity ≥ 0.98). **Real precision of AutoID publications** (500 historical publications, 493 verifiable against later third-party identifications on Minka): **96.6%** (95% CI 94.5–97.8); by calibrated confidence band 85% (0.83–0.85, n=27), 93% (0.85–0.90), 95.5% (0.90–0.95), 99% (≥0.95, n=252). **Composition of the 82.34%.** It pools three blocks: the original evaluation set (60,743 rows, **81.18%**, the figure comparable with every earlier version), mining round 1 (11,154 rows after the purge, 85.49%) and round 2 (4,688 rows, 89.87%). Within the 1,785 species that have rows in both the original and the mined blocks, accuracy is 86.1% vs 86.8% (+0.7 pp): at equal species the mined rows are not easier, and the rise comes mostly from composition (species with larger pools). **When comparing with earlier versions, use 81.18%.**
+
+**Update 2026-10-06 — clean evaluation, two promotions and a coverage finding.** The field panel was cleaned (leak-free rows: 54,878; live 80.63 %); two index promotions raised the panel from 82.463 % to 82.85 % (clean combo +0.163 pp; harvest batches 01+02 +0.223 pp, +0.42 to +0.50 pp leak-free), with a per-species guard and rollback each time; 96,392 gallery photos on disk were found never embedded and are being re-embedded; and a series of ideas were measured and **not** adopted (prototype cleaning, DINOv3 tie-break, vision-language comparator, Grounding DINO / YOLO26n crops, under-exposure enhancement, colour and zone tie-breaks). The AutoID sibling-avoidance rule was removed after it proved wrong in 8 of 11 judged substitutions. Details in §5.3.
 
 **Update 2026-10-02 — a two-judge crop rescue, a field report by block, and what the numbers do not say.** (1) The crop fallback of 2026-10-01 was rebuilt after a real failure: a quadrant crop that contained only background was identified as an alga with p = 0.96 and published for a photo whose subject (a fan mussel) sat in the centre. The rescue now runs in tiers: the full image first; then two centred crops (17% and 25% padding) acting as judges, **one passing identification (p ≥ 0.83, species rank) is enough**, two different passing species give no verdict; quadrants are a last resort and are discarded when the full image or a centred crop points at another species with p ≥ 0.5. Back-test on 454 photos with third-party ground truth whose full image was not publishable: the previous scheme added 48 identifications (41 correct, 7 wrong); centred judges alone add 64 (55 correct, 9 wrong); judges plus guarded quadrants add **72 (63 correct, 9 wrong, 87.5%)**; requiring both judges to agree is worse (21 added, 16 correct). Raising the crop threshold to 0.93 does not raise precision (36 added, 30 correct): a crop's score is not calibrated like the full-image score. The thresholds were chosen on the same photos that measure them, so 87.5% is optimistic. The 19 rescues published so far have no third-party reaction yet, so **their real precision is unknown**. (2) Genus-level AutoID publications are enabled; family-level ones are paused after two of the first three reviewed (both published as the same family) were wrong because one photo showed two unrelated animals and the other did not look like the family. (3) Photos that are flat and blurred, or dark, turbid and blurred, are skipped before identification; on 747 photos with ground truth, precision does not depend on sharpness (92–96% in all four quartiles), so this gate removes unreadable photos rather than errors. (4) The model now runs in fp16 with an int8 k-NN on the GPU (3.3–3.9 GB of VRAM instead of 6.4–6.6 GB) with identical decisions on 1,000 photos. (5) A 23-vector extension of *Prunus dulcis* (merged from its synonym) was promoted to production: only that species changed, the index is aligned (1,118,321 vectors), and no independent accuracy measurement exists yet.
 
@@ -288,6 +290,40 @@ Family-level publication only pays off at τ ≥ 0.90; at 0.83 its precision dro
 Closing these three rows needs the same evaluation rows and the same leak filter; none of it requires new training.
 
 ---
+
+## 5.3 Update 2026-10-06: clean evaluation, two promotions, and what did not work (all figures measured)
+
+**Evaluation set.** The field panel (78,145 rows, species accuracy 82.463 % on 2026-10-05) contained duplicated photos (12,416 rows), multi-subject photos (2,933) and rows whose own photo was in the gallery. The *clean v2* evaluation (62,796 rows) gives 82.841 % (Tier 1 77.93 %). A full leak audit leaves **54,878 leak-free rows (live index 80.63 %, Tier 1 76.42 %)**; every candidate below is also reported on the leak-free rows (thresholds 0.95 and 0.995).
+
+**Promotions to production** (each with backup and rollback script; McNemar on paired rows, per-species guard: no species with n≥10 loses ≥3 photos or >30 points).
+
+| Date | Change | Panel (78,145) | Leak-free | Fixes / breaks | Guard |
+|---|---|---|---|---|---|
+| 2026-10-05 18:45 | *Clean combo*: 58-species re-embed batch + block E + small harvest, minus 4 guard species and the vectors responsible for 3 "thief" species | 82.463 → 82.626 % (+0.163 pp, p=2e-11) | +0.261 pp (≥0.95) / +0.212 pp (≥0.995) | 240 / 113 (panel); 212 / 69 and 213 / 81 (leak-free) | clean |
+| 2026-10-06 02:50 | *Harvest batches 01+02* (71 species, added iNat photos, thieves removed iteratively) | 82.626 → 82.85 % (+0.223 pp, p=7e-27) | +0.503 pp (≥0.95) / +0.424 pp (≥0.995) | 217 / 43 | clean |
+
+Index after both: 4,543 species, 1,132,767 vectors, aligned. Harvest batches measured against the new base give diminishing returns (batch 03: +0.088 pp; batch 04: +0.024 pp): each species contributes only 8–44 new accepted photos because the limit is the number of unseen research-grade observations, not the filters. **Sibling effect**: adding photos to a species lowers accuracy of its close relatives (e.g. *Pyracantha coccinea* → *P. crenulata* 32→19 of 40), so batches are merged and the "thief" species removed iteratively until the guard is clean.
+
+**Finding on gallery coverage.** At 2026-10-06 the disks hold 1,223,506 photos (SSD + archive) but the index has 1,132,767 vectors: **96,392 photos in 867 species were never embedded** (photos harvested after each species' last embedding; e.g. *Papaver rhoeas* 33 vectors vs 1,000 photos). Full per-species re-embedding of the 715 species still below 100 % (72,298 photos, 3,845 panel errors) is in progress, with the same leak filters (embedding similarity ≥0.98 to gallery, ≥0.95 to any evaluation photo and the whole observation, centroid and own-prototype checks).
+
+**Accuracy by gallery size** (clean panel, 62,248 rows): 0–25 photos 68.6 %; 25–50 76.0 %; 50–100 65.7 %; 100–200 82.0 %; 200–500 82.2 %; 500–1,000 86.1 %; ≥1,000 89.2 %.
+
+**Negative or null results (not adopted).**
+
+| Idea | Result |
+|---|---|
+| Removing discordant prototype vectors (1,188) | −0.023 pp (25 fixes / 43 breaks, p=0.039 against; 32 species worse) |
+| DINOv3 as tie-break on 16 confusable pairs | 58.9 % vs 59.6 % for BioFauna; tie-break null at every δ |
+| Vision-language comparator (MiniCPM-V) | 51.9 % vs 58.3 % for BioFauna (108/579 valid answers) |
+| Grounding DINO and fine-tuned YOLO26n for the attention crop | Worse than the current fusion (GDINO 74.0 vs 80.85 % on 4,000 photos; YOLO + best = identical, 14/14) |
+| Under-exposure enhancement on photos the whole-image pass does not publish | 17 of 392 would publish; 15 correct, 2 wrong (88.2 %); mostly already covered by the attention rescue |
+| Colour (Lab histograms, k-means palette) as tie-break | Net negative at every δ; on published photos it fixes 0 and breaks 4–13 |
+| Zone prior (local species counts) as tie-break | Plain argmax loses; with a ≥10× condition +3/−0 on the third-party sample (too small to conclude) |
+| Posidonia/seagrass re-embed; local small-gallery harvest | +0.005 pp (3/0); +0.008 pp |
+
+**Automatic identification (AutoID) changes.** The "avoid sibling observations of the same user and day" rule was removed on 2026-10-04: on 349 published observations, the 42 (12 %) substituted by an alternative were correct in 3 of 11 judged cases (27 %) versus 102 of 105 (97 %) for the non-substituted ones; an alternative's raw similarity had also been compared with the minimum as if it were a calibrated probability (the cause of a real misidentification). A 14-day replay (500 publications) of the current cascade (whole photo; else blue-cast correction; else attention crop with a strict guard) shows 97 % accuracy (77/79 judged) where it publishes the same species, and corrects 4 of 7 judged changes while breaking 2. The species-level threshold remains 0.83; genus-level publication p≥0.95 is on; the crop-mix publication is paused.
+
+**Limits of these numbers.** Judged observations are those with an identification from another user; replays use today's model, not the one at publication time; the harvest gains are on a panel built from the same sources as the gallery, so the leak-free rows are the more reliable estimate.
 
 ## 6. Limitations
 
