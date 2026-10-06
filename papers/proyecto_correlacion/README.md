@@ -1,15 +1,12 @@
-# Proyecto Correlación (BioFauna) — asociaciones entre especies y con el medio
+# Proyecto Correlación (BioFauna) — asociaciones entre especies verificadas por proximidad real
 
-**Estado:** 6-oct-2026 · **fase:** artículo v19 (contraste sobre todos los pares, niveles de evidencia, figuras y listados completos); pendiente revisión bibliográfica de las candidatas, baselines y propagación del error del identificador.
+**Estado:** 6-oct-2026 · **artículo v20** (reescrito: las conclusiones se basan solo en fotografías donde aparecen **las dos especies a la vez**, a escala de centímetros). Todo el material público está en **https://github.com/yespi/biofauna** (carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) y [`data/`](https://github.com/yespi/biofauna/blob/master/data/)).
 
 ---
 
 ## 1. Qué es
 
-Explotar **1.222.170 fotografías** de fauna y flora (mediterránea y de otras regiones) y **755.861 observaciones
-con geolocalización y fecha** para descubrir **asociaciones entre especies** —documentadas y nuevas— y relaciones
-con parámetros del medio. Los resultados son la base de un **artículo científico con fotografías** (en preparación,
-ver `papers/proyecto_correlacion/` en el repositorio público).
+Un cribado de asociaciones entre especies sobre **1.222.170 fotografías** y **759.207 observaciones geolocalizadas** (Minka SDG, iNaturalist y otras fuentes), identificadas por BioFauna. Que dos especies se vean en la misma inmersión no prueba relación; por eso **solo cuenta como asociación la aparición de ambas en la misma fotografía**. La co-ocurrencia por eventos (observador × ~1 km × día × 3 h) se usa únicamente para **proponer** qué parejas verificar.
 
 ## 2. Crédito — de dónde salen los datos
 
@@ -47,36 +44,32 @@ Su trabajo (identificaciones *research grade*, correcciones y datos de campo) es
 identificador BioFauna como este análisis. Sin esa comunidad, ni el catálogo ni las asociaciones aquí
 descritas existirían.
 
-## 3. Resultados principales (detalle en `RESULTADOS.md`)
+## 3. Resultados (detalle en [`RESULTADOS.md`](RESULTADOS.md))
 
-- **Validación del método**: recupera asociaciones **ya documentadas** con alta repetibilidad
-  (*Peltodoris atromaculata* + *Petrosia ficiformis*: 79 eventos, lift 11,1, **44 localidades y 74 días**).
-- **70.971 pares** de especies con soporte y repetibilidad (soporte ≥8 eventos, ≥3 localidades, ≥3 días).
-- **Resultado principal (nulo estratificado por localidad·fecha, 2.000 permutaciones):** de los 3.000 pares de mayor lift, **39 pares específicos del Mediterráneo superan el FDR** de Benjamini-Hochberg con la definición principal de evento (2 con la gruesa); los pares lessepsianos **no** superan el nulo. Ver artículo §3.9 (Tabla 9) y `experimentos/NULO_ESTRATIFICADO_20260929.md`.
-- **Candidatas nuevas** con lectura biológica plausible: medusa + anfípodo hiperídeo, gamba limpiadora +
-  anémona, parejas de infauna, ctenóforos de la misma masa de agua, etc.
-- **Línea ambiental** (turbidez/visibilidad): pipeline montado y evaluado; el índice de color **no** valida
-  (r≈0,10 con lluvia/viento), el índice **físico** (tamaño aparente + talla conocida → distancia) **sí funciona**
-  mecánicamente (1-5 m plausibles) y queda como línea a validar con satélite/sonda.
+- **Cribado por eventos (hipótesis):** 115.204 parejas con ≥5 eventos en común; 51.401 significativas con el esfuerzo controlado → la significación no discrimina; 3.108 con replicación y razón ≥3.
+- **Lista corta de 138 parejas** (mayor efecto y soporte): 41 con al menos una foto candidata con ambas especies y 12 con ≥3 observaciones distintas; la revisión a ojo mostró **muchos falsos positivos entre especies parecidas**.
+- **Confirmadas a ojo (ambas visibles):** *Peltodoris atromaculata* sobre *Petrosia ficiformis* y *Cratena peregrina* sobre hidrozoos (controles positivos, relaciones documentadas), *Condylactis aurantiaca* con *Periclimenes scriptus*, *Lysmata grabhami* con *Telmatactis cricoides* y *Electra posidoniae* con *Tridentata perpusilla* (misma hoja de *Posidonia*; microhábitat compartido, no interacción demostrada).
+- **Sin foto conjunta:** *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus*, *Fistularia commersonii*–*Pterois miles* (no refuta nada: la galería son retratos centrados).
+- La segunda especie de cada foto la propone el identificador y **no está confirmada por curadores**.
 
 ## 4. Documentos de esta carpeta
 
 | Documento | Contenido |
 |---|---|
-| [`METODOS.md`](METODOS.md) | Definición de evento, filtros, métricas, nulo estadístico y límites |
-| [`RESULTADOS.md`](RESULTADOS.md) | Asociaciones validadas + candidatas por grupo taxonómico (tablas por familia) |
-| [`ANALISIS_AMBIENTAL.md`](ANALISIS_AMBIENTAL.md) | Turbidez/visibilidad desde las fotos: lo intentado, lo medido y lo que falta |
-| [`coocurrencia_catalogo_20260928.md`](coocurrencia_catalogo_20260928.md) | Salida cruda del análisis (top de asociaciones) |
-| [`coocurrencia_red_top12.svg`](coocurrencia_red_top12.svg) | Figura: red de las 12 asociaciones más fuertes |
-| [`ARTICULO.md`](ARTICULO.md) / [`ARTICLE.md`](ARTICLE.md) | Borrador del artículo científico (ES / EN), con clasificación bibliográfica de las candidatas |
-| `ARTICULO_v2_ES_20260928.pdf` / `ARTICLE_v2_EN_20260928.pdf` | PDFs del borrador (versión 2, 28-sep-2026, en el repo público) |
+| [`ARTICULO.md`](ARTICULO.md) / [`ARTICLE.md`](ARTICLE.md) | Artículo v20 (ES / EN), con tablas y láminas incrustadas |
+| [`LAMINAS.md`](LAMINAS.md) | Láminas fotográficas con autor, licencia, fecha y hora, lugar y enlace |
+| [`METODOS.md`](METODOS.md) / [`RESULTADOS.md`](RESULTADOS.md) | Métodos y resultados ampliados |
+| [`NULO_EXACTO_TODOS_PARES_20261005.md`](NULO_EXACTO_TODOS_PARES_20261005.md) | Suplemento S1: cribado por eventos (solo hipótesis) |
+| [`figuras/`](figuras/), [`lamina_fotos/`](lamina_fotos/) | Figuras (300 dpi) y fotografías de las láminas con su manifiesto |
+| [`archivo_2026-09/`](archivo_2026-09/) | Material anterior (conclusiones por co-ocurrencia de eventos, retiradas en v20) y línea ambiental |
+| `PLAN_PAPER_20261005.md`, `PAPER_DATOS_Y_FIGURAS_20261005.md` | Plan de trabajo y notas internas (solo en la documentación privada) |
+
+PDF (en el repositorio público): versiones sin número que se actualizan siempre — `ARTICULO_ES_latest.pdf`, `ARTICLE_EN_latest.pdf`, `LAMINAS_latest.pdf` — y las dos últimas versiones numeradas.
 
 ## 5. Siguientes pasos
 
-1. **Nulo estratificado por localidad·fecha** → convierte la lista en resultados citables (fase en curso).
-2. **Cruce con hábitat/sustrato** de la foto (mapas de hábitat desde los embeddings) → explica *por qué* coexisten.
-3. **Revisión biológica** de las candidatas (curadores/especialistas) → separar simbiosis real de coincidencia.
-4. **Artículo con fotografías** (PDF académico) organizado por grupos taxonómicos: incluir **láminas fotográficas**
-   por caso (2-4 fotos con licencia reutilizable CC0/CC BY/CC BY-SA y atribución; las de *all rights reserved*
-   se excluyen o se pide permiso). En preparación.
-5. **Integración en BioQuest**: sugerencias «si ves X, busca Y» y redes de asociación por zona.
+1. Revisión a ojo de más parejas de la lista corta y de nuevas listas (por grupo taxonómico).
+2. Revisión bibliográfica y de curadores de cada pareja confirmada; sustituir las fotos † (no comerciales) si se publica en revista comercial.
+3. Excluir automáticamente parejas visualmente confundibles (similitud de prototipos) antes de la revisión.
+4. Comparación con modelos de referencia y propagación del error del identificador.
+5. Integración en BioQuest («si ves X, busca Y») solo con parejas de nivel 1–2.

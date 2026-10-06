@@ -1,568 +1,140 @@
-# Species associations revealed by an automatic fauna identifier and 1.2 million citizen-science photographs
+# Species associations in marine life verified by joint appearance in the same photograph: a screening with an automatic identifier over 1.2 million citizen-science photographs
 
-**Author: Gustavo Zafra** · Creator and developer of BioFauna (BioCLIP-2.5 ViT-H/14 + FAISS identifier) and
-of the FotoFauna and BioQuest applications; contributor to the Minka SDG citizen-science platform.
+**Author: Gustavo Zafra** · Creator and developer of BioFauna (BioCLIP-2.5 ViT-H/14 + FAISS identifier) and of the FotoFauna and BioQuest applications; collaborator of the citizen-science platform Minka SDG.
 
-**Draft v10 — 29-sep-2026** · Correlation Project (BioFauna)
+**Version v20 — 6 Oct 2026** · Correlation project (BioFauna). Rewrite: conclusions rest only on **real proximity (centimetres)**, i.e. photographs in which both species appear at once.
 
 ---
 
 ## Abstract
 
-Marine citizen science has produced photographic observation datasets that are rarely exploited beyond species
-distributions. We analyse **1,222,170 photographs** and **759,207 geolocated, dated observations** (Minka SDG,
-iNaturalist and other public sources), automatically identified by **BioFauna** —a k-NN retriever over
-BioCLIP-2.5 ViT-H/14 embeddings with hierarchical calibration— to uncover **species associations**. We define a
-sampling *event* (observer × ~1 km cell × day × 3-h window) and evaluate pair co-occurrence with support,
-spatial and temporal repeatability, finding **70,971 pairs that meet support and repeatability criteria**; a locality·date stratified permutation null that controls for local sampling effort leaves **39 Mediterranean-specific pairs passing Benjamini-Hochberg FDR** (main event definition; 2 under a coarser one). The method **recovers known,
-documented associations** with high robustness —e.g. *Peltodoris atromaculata* on the sponge *Petrosia
-ficiformis* (79 events, lift 11.1, 44 localities, 74 days)— and reveals **undescribed candidates** with
-plausible biological interpretation, such as jellyfish with commensal hyperiid amphipods, cleaner shrimps with
-anemones and infaunal species pairs. The work highlights the role of human curators in verifying cryptic
-species and outlines applications for conservation and outreach.
+Seeing two species on the same dive does not show they are related: a diver sees many different species in one outing. We therefore require **real proximity: both species in the same photograph**. We start from **1,222,170 photographs** and **759,207 geolocated observations** (Minka SDG, iNaturalist and other sources), identified by **BioFauna**. A screening by *events* (observer × ~1 km cell × day × 3 h slot), with local effort controlled, serves only to **generate hypotheses**: 115,204 supported pairs, of which 51,401 are significant, so significance alone does not discriminate. For a shortlist of 138 pairs (highest effect and support) we searched the gallery, applying the identifier to the whole photo and to regions, for images where both species appear: 41 pairs had at least one candidate photo and 12 had three or more distinct observations, but visual review showed **many false positives between look-alike species**. Pairs with both species visible were confirmed by eye (*Peltodoris atromaculata* on *Petrosia ficiformis*, *Cratena peregrina* on hydroids, *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus*, *Lysmata grabhami* with *Telmatactis cricoides*, and *Electra posidoniae* with *Tridentata perpusilla* on the same *Posidonia* leaf), and for others no joint photograph was found. Proximity in a photo shows coexistence at centimetre scale, **not interaction**, and the second species is proposed by the identifier without curator confirmation.
 
-**Keywords:** citizen science, interspecific associations, habitat use, deep learning, Mediterranean,
-underwater photography.
+**Keywords:** citizen science, interspecific associations, proximity, deep learning, Mediterranean, underwater photography.
 
 ## 1. Introduction
 
-Amateur underwater photography has become a massive source of biodiversity data. Citizen-science platforms
-(**Minka SDG**, driven by the **FECDAS** ecosystem; **iNaturalist**; **GBIF**) accumulate millions of verified
-observations, and automatic identifiers can consolidate that archive at catalogue scale. Yet most analyses
-stop at inventories and distribution maps. Photographs also carry **ecological context**: which species occur
-together, on what substrate and under which conditions. This work explores that latent information.
+Amateur underwater photography is a massive source of biodiversity data. Citizen-science platforms (**Minka SDG**, driven from the **FECDAS** ecosystem; **iNaturalist**; **GBIF**) accumulate millions of observations, but most analyses are limited to inventories and distribution maps. Inferring species associations from co-occurrence in participatory data has known effort and observer biases (Isaac et al., 2014; Johnston et al., 2018; Milanesi et al., 2020; Boyd et al., 2021): two species appear in the same outing because they share habitat or because the same observer photographs them on the same day, not because they are related. We propose a stricter criterion: **only the appearance of both species in the same photograph counts as an association**, that is, at centimetre scale.
 
-## 2. Material and methods
+## 2. Materials and methods
 
-Summary (details in [`METODOS.md`](METODOS.md) and supplementary material):
+### 2.1 Data
+1,222,170 photographs from the BioFauna gallery (Minka SDG 377,476; iNaturalist 779,411; GBIF, Wikimedia Commons, DORIS/FFESSM, SeaSlugForum, WoRMS, FishBase and others) and 759,207 observations with coordinates, date and (92 %) time. Catalogue of 2,985 Mediterranean taxa.
 
-- **Data**: 1,222,170 photographs; 759,207 observations with coordinates, date and (92 %) time; a curated
-  catalogue of 2,985 Mediterranean taxa.
-- **Identification**: BioFauna (BioCLIP-2.5 ViT-H/14 + FAISS k-NN, k=15, T=0.05 aggregator with a cap of 3
-  votes per species, hierarchical calibration), with publication guards and leak auditing.
-- **Unit of analysis**: *event* = (observer × ~1.1 km cell × day × 3-h window); the set of species seen
-  together.
-- **Filters**: catalogue-only; support ≥8 events; repeatability across **≥3 localities, ≥3 days and ≥5 distinct observers** (the latter added after finding that a single dive trip generates false associations).
-- **Metrics**: observed co-occurrence `n`, expected from marginals and **lift**; Poisson p for screening.
-- **Internal validation**: blind search for documented associations (§3.1).
+### 2.2 Identifier
+BioFauna retrieves the most likely species of an image with k-NN over BioCLIP-2.5 ViT-H/14 embeddings in a FAISS index (k = 15, T = 0.05, at most 3 votes per species) and hierarchical calibration. On the out-of-sample field panel (78,145 rows, 2,970 species) it identifies **82.85 %** of species; accuracy increases with the species' reference photos (Figure 3). This conditions the study: species with few photos and small or camouflaged ones are recognised less well.
+
+### 2.3 Event screening (hypothesis generation only)
+An *event* is what the same observer recorded in the same ~1 km cell, on the same day and 3 h slot. For each pair with ≥5 shared events we test, with local effort controlled (null conditioned on the number and size of events per 0.1° cell·day block, Benjamini–Hochberg over the whole family), whether they co-occur more than expected. **This result is not interpreted as association**; it only ranks pairs by effect size and replication (≥3 cells, ≥3 days, ≥5 observers) to choose which to verify. Details in the Supplement.
+
+### 2.4 Verification by real proximity (main criterion)
+For each pair (A, B) of the shortlist we analysed up to 60 gallery photos of A and of B. Each photo is split into five views (whole and four quadrants) and embedded; the live index is searched (300 neighbours) and a pair has a **candidate photo** if the other species appears in some view with similarity ≥ 0.82 (or as first choice with ≥ 0.86). The detector only proposes: **every candidate is checked by eye** and accepted only if both species are visible in the image. Look-alike pairs (same genus or family) produce false positives and are discarded in review.
+
+### 2.5 Evidence levels
+**Level 0:** event co-occurrence (a lead only). **Level 1:** both species in the same photo in ≥3 independent observations. **Level 2:** plus visible contact (on, inside, feeding). The absence of joint photos leaves the pair *unconfirmed*, not refuted: the gallery is mostly centred portraits of a single species.
+
+### 2.6 Licences and attribution
+We use CC0, CC BY, CC BY-SA and CC BY-NC / CC BY-NC-SA photographs; unlicensed and CC BY-NC-ND photos are excluded. Each photo states author, licence, local date and time, place and link to the observation. Those marked † (non-commercial) **must be replaced with CC0, CC BY or CC BY-SA photos, or used with the author's permission, if the article is published in a commercial journal**.
 
 ## 3. Results
 
-### 3.1 Method validation (documented associations recovered)
+### 3.1 From event screening to the shortlist
+Of 115,204 pairs with ≥5 events, 51,401 are significant with effort controlled and 3,108 combine replication and an observed/expected ratio ≥3 (Figure 1). Since almost half of the supported pairs are "significant", significance does not discriminate and is not used as a conclusion.
 
-**Table 1.** Documented associations recovered by the method (§3.1).
+<figure class="fig"><img src="figuras/fig1_cribado_hasta_misma_foto.png" alt="Figure 1. From event screening to pairs with a joint photogr"><figcaption><b>Figure 1. From event screening to pairs with a joint photograph.</b> Number of pairs passing each filter (logarithmic scale). Grey: event screening (hypotheses); blue: shortlist of 138 pairs (the 70 highest-scoring and the 70 highest-scoring among different taxonomic groups, with n ≥ 15 events and ≥ 8 observers), pairs with at least one candidate photo and pairs with three or more distinct observations. Data: <code>data/</code> and <a href="https://github.com/yespi/biofauna/blob/master/data/copresencia_pares_20261006.csv">data/copresencia_pares_20261006.csv</a>.</figcaption></figure>
 
-| association | n | lift | localities | days | source |
-|---|---:|---:|---:|---:|---|
-| *Peltodoris atromaculata* — *Petrosia ficiformis* | 79 | 11.1 | 44 | 74 | classic literature |
-| *Felimare picta* — *Ircinia oros* | 29 | 4.1 | 20 | 28 | host sponge |
-| *Cratena peregrina* — *Eudendrium racemosum* | 5 | 10.5 | — | — | prey hydroid |
-| ~~*Doto paulinae* — *Sertularella mediterranea*~~ | 5 | 48.3 | — | — | ❌ **discarded**: single observer (expert-review correction) |
+### 3.2 Detecting both species in the same photo
+Of the 138 pairs, 41 had at least one candidate photo and 12 three or more distinct observations (Figure 2). Visual review of the first ones showed **false positives between look-alike species** (e.g. two clams, *Polititapes aureus* and *Ruditapes decussatus*, or two nudibranchs, *Caloria quatrefagesi* and *Luisella babai*): the identifier recognises the look-alike species in another region of the image. This confirms that automatic detection only proposes and that many "significant" coincidences do not survive review.
 
-**Co-occurrence is not an artefact of the confusion matrix** (29-sep-2026): documented pairs show **null
-cross-confusion** (0-1 cases of A→B or B→A in 3-19 samples per species), while confusable sister-species
-pairs (control: *Elysia marginata/ornata*, *Spirobranchus lamarcki/triqueter*) show high cross-confusion
-(13-26 %) and do **not** appear as co-occurrence candidates. Observer bias is controlled by requiring ≥5
-distinct observers. Detail: (detail in the supplementary material of the public repository, `papers/proyecto_correlacion/`).
+<figure class="fig"><img src="figuras/fig2_candidatas_por_pareja.png" alt="Figure 2. Candidate photos per pair and visual review outcom"><figcaption><b>Figure 2. Candidate photos per pair and visual review outcome.</b> Distinct observations with a candidate photo of both species for the 14 pairs with most candidates. Green: confirmed by eye with both species visible; red: false positive due to look-alike species; grey: not reviewed or to be confirmed (<i>Echinolittorina</i>–<i>Melarhaphe</i>, <i>Cliona</i>/<i>Clavularia</i>–<i>Rocellaria</i>, <i>Anas</i>–<i>Gallinula</i>).</figcaption></figure>
 
-### 3.2 Taxonomic groups
+### 3.3 Pairs with both species visible
+Table 2 lists the pairs confirmed by eye and Plates 1–6 show the photographs. *Peltodoris atromaculata* on *Petrosia ficiformis* (Avila, 1996) and *Cratena peregrina* on hydroids serve as **positive controls**: they are documented relations and the method finds photos with both visible. *Condylactis aurantiaca* with *Periclimenes scriptus* (the shrimp among the anemone's tentacles) came from the shortlist; it is consistent with the known commensalism of *Periclimenes* with anemones, although pair-specific literature has not been checked. *Lysmata grabhami* with *Telmatactis cricoides* (cleaner shrimp and anemone) and *Electra posidoniae* with *Tridentata perpusilla* (bryozoan and hydroid on the same *Posidonia* leaf) show real proximity, but the latter is **shared microhabitat, not demonstrated interaction**. The second species in each photo is identified by BioFauna and is **not confirmed by curators**.
 
-Pairs concentrate in the photographically best-represented families (sparids, blenniids, gobiids, labrids,
-coralline algae, didemnids, holothurians, actiniids, trochids, dictyotaceans, facelinids, serpulids,
-sabellids, irciniids). **98 % of pairs are inter-family**, as expected for habitat or trophic associations.
-
-### 3.3 New candidates (pending expert review)
-
-**Table 2.** Strongest associations by functional group (§3.2).
-
-| functional group | A — B | n | lift | localities | days |
-|---|---:|---:|---:|---:|---:|
-| commensalism on jellyfish | *Blackfordia virginica* — *Phronima sedentaria* | 19 | 653 | 6 | 15 |
-| cleaning symbiosis | *Lysmata grabhami* — *Telmatactis cricoides* | 9 | 547 | 7 | 8 |
-| infauna (same sediment) | *Fustiaria rubescens* — *Loripinus fragilis* | 16 | 892 | 7 | 15 |
-| infauna | *Abra alba* — *Abra longicallus* | 9 | 534 | 7 | 9 |
-| hard-substrate microhabitat | *Macrorhynchia philippina* — *Telmatactis cricoides* | 8 | 765 | 5 | 6 |
-| gelatinous plankton | *Callianira bialata* — *Vanadis formosa* | 9 | 645 | 7 | 9 |
-
-*(Full table: supplementary material; main figure: top-12 network.)*
-
-### 3.4 Literature verification of the candidates
-
-After reviewing public literature (WoRMS, Sea Slug Forum, FishBase, JNCC/MarLIN, peer-reviewed journals),
-pairs are classified into three categories:
-
-**Documented** (the interaction is already described): *Peltodoris atromaculata*—*Petrosia ficiformis*
-(predation), *Felimare picta*—*Ircinia* spp. (diet), *Cratena peregrina*—*Eudendrium racemosum*
-(kleptopredation), the floating **Sargassum community** (*Latreutes fucorum*, *Hippolyte coerulescens* and
-*Scyllaea pelagica*), *Phronima sedentaria* as a salp symbiont and *Lampea pancerina* as a salp
-predator/parasite.
-
-**Plausible** (ecologically coherent, no direct citation of the pair): *Lysmata grabhami*—*Telmatactis
-cricoides* (the anemone hosts documented crustacean symbionts —*Thor amboinensis* in 65 % of anemones and
-*Stenorhynchus lanceolatus* in facultative mutualism— and both species truly co-occur in the Canary
-Islands/Madeira), gelatinous-plankton pairs (ctenophores, hyperiids and medusae of the same water mass) and
-infaunal sediment pairs (*Abra* spp.; *Fustiaria*—*Loripinus*, both typical of circalittoral soft bottoms).
-
-**Dive-trip artefact** (species from other oceans photographed together by the same group in one immersion):
-*Doris fontainii*—*Tyrinna delicata* (both from the **South Pacific**, lat −12…−55),
-*Chromodoris quadricolor*—*Hexabranchus sanguineus* (Red Sea/Indo-Pacific), *Abudefduf saxatilis*—
-*Kyphosus vaigiensis* (Atlantic vs. Indo-Pacific; they do not coexist in the Mediterranean). These pairs are
-**excluded** from the ecological analysis of the study area; detecting them is also a useful dataset-quality
-control signal.
-
-**Taxonomic correction**: `loripinus_fragilis` (Philippi, 1836, **Lucinidae**) and `limaria_fragilis`
-(Gmelin, 1791, **Limidae**) are distinct species; they are not synonyms (WoRMS AphiaID 718970 vs. 216644).
-
-### 3.5 References supporting the associations
-
-Sources verified during the literature review (28-sep-2026):
-
-**Table 3.** Literature sources checked for the associations (§3.5; continued after the quoted note).
-
-| Association / claim | Source |
-|---|---|
-| *Peltodoris atromaculata* feeds on the sponge *Petrosia ficiformis* | trophic literature of dorid nudibranchs (diet review; petroformynes as chemical defence of the sponge) |
-| *Felimare picta* (formerly *Hypselodoris*) feeds on sponges of the genus *Ircinia* | McDonald & Nybakken, 2001 — *A worldwide review of the food of nudibranch mollusks*; field observations (OPK) |
-| *Cratena peregrina* practises kleptopredation on *Eudendrium racemosum* | Di Camillo et al. — *Eudendrium racemosum* as substrate/prey and prey theft (CNR, Adriatic Sea) |
-> community.
-| *Scyllaea pelagica*, *Latreutes fucorum* and *Hippolyte coerulescens* belong to the floating *Sargassum* fauna | literature of the pelagic Sargassum community (NOAA; BAMZ; Sea Slug Forum) |
-| *Phronima sedentaria* is an obligate salp symbiont (lives in the "barrel") | Laval, 1978 — *The barrel of the pelagic amphipod Phronima sedentaria*; Diebel, 1988 — *Observations on the anatomy and behavior of Phronima sedentaria*; MBARI/Scripps |
-| *Lampea pancerina* predates or parasitises salps | *The double life of the ctenophore Lampea pancerina*; ctenophore literature (Carré & Carré) |
-| Hyperiids (*Brachyscelus*, *Phronima*) associate with gelatinous zooplankton (medusae, ctenophores, salps) | Keil & Osborn — *Associations between hyperiid amphipods and gelatinous zooplankton* (Smithsonian/MBARI, ROV) |
-| *Telmatactis cricoides* hosts crustacean symbionts (*Thor amboinensis* in 65 % of anemones; *Stenorhynchus lanceolatus* in facultative mutualism) | *Crustacean symbionts of the sea anemone Telmatactis* (decapoda.nhm.org); Peraza et al., 2024 — *Exploring the association between Stenorhynchus lanceolatus and Telmatactis cricoides in the Canary Islands* (Regional Studies in Marine Science) |
-| *Telmatactis cricoides* is a thermophilic species expanding in the western Mediterranean (Almería, Balearic Is.) | Cambridge, J. Mar. Biol. Assoc. UK 104 (2024) — *The thermophilic sea anemone Telmatactis cricoides in the western Mediterranean* |
-| *Macrorhynchia philippina* is an invasive hydrozoan ("stinging bush hydroid") | Riera et al., 2016 — *Progressing the invasion of the hydrozoan Macrorhynchia philippina in Atlantic archipelagos* (Vieraea 44) |
-| Soft-sediment communities with *Abra alba* and same-genus bivalves | JNCC Marine Habitat Classification (biotope SS.SSa.CMuSa.AalbNuc); MarLIN |
-| *Loripinus fragilis* (Lucinidae, chemosymbiosis) ≠ *Limaria fragilis* (Limidae) | WoRMS AphiaID 718970 vs. 216644; Taylor & Glover, 2021 — *Biology, evolution and generic review of the Lucinidae* |
-| *Abudefduf saxatilis* is strictly Atlantic (replaced by *A. vaigiensis* in the Indo-Pacific) | FishBase — *Abudefduf saxatilis* (Sergeant-major) |
-| *Doris fontainii* (formerly *Anisodoris fontainei*) and *Tyrinna delicata* are South Pacific species | Sea Slug Forum (Australian Museum); Valdés & Muniain, 2002 |
-| *Eurythoe complanata* is a complex of ≥3 cryptic species | Barroso et al., 2010 — *Eurythoe complanata, the 'cosmopolitan' fireworm, consists of at least three cryptic species* (Marine Biology) |
-
-### 3.6 Trophic associations of nudibranchs (29-sep-2026)
-
-Nudibranchs are an ideal group to validate the method: their diet is **specialist and well documented**
-(each species eats one or few colonial prey —sponges, hydroids, bryozoans, ascidians, algae—; Wägele &
-Klussmann-Kolb, 2005; McDonald & Nybakken, 2001; Sea Slug Forum). Of the **70,971** robust pairs, **9,539
-(13.4 %) involve at least one nudibranch**, and **1,048** are *nudibranch→possible prey/substrate* pairs with
-**≥5 distinct observers** (sponges, hydroids, bryozoans, ascidians and algae of the catalogue). The method
-**recovers published diets** as the strongest associations:
-
-**Table 4.** Trophic associations of nudibranchs with their prey or substrate (§3.6).
-
-| Nudibranch (family) | Co-occurring prey/substrate | n | obs. | lift | cells | bibliographic source |
-|---|---:|---:|---:|---:|---:|---|
-| *Doto floridicola* (Dotidae) | *Aglaophenia elongata* (hydroid) | 9 | 5 | 59.1 | 7 | ✅ documented: *Doto* spp. feed on *Aglaophenia* hydroids (Picton, Sea Slug Forum) |
-| *Felimare orsinii* (Chromodorididae) | *Scalarispongia scalaris* (sponge) | 12 | 5 | 65.3 | 10 | ✅ documented: "feeds primarily on the sponge *Scalarispongia scalaris*" (Sea Slug Forum; SEASLUG.WORLD) |
-| *Trinchesia caerulea* (Trinchesiidae) | *Sertularella crassicaulis* (hydroid) | 19 | 6 | 83.4 | 15 | ✅ coherent: aeolids eat sertulariid hydroids |
-| *Trinchesia caerulea* | *Turbicellepora avicularis* (bryozoan) | 17 | 5 | 44.6 | 14 | coherent (bryozoans as secondary prey/substrate) |
-| *Aeolidiella alderi* (Aeolidiidae) | *Tedania anhelans* (sponge) | 14 | 6 | 74.2 | 6 | coherent (aeolids on sponges/hydroids) |
-| *Dendrodoris limbata* (Dendrodorididae) | *Aplidium turbinatum* (ascidian) | 23 | 9 | 62.6 | 8 | coherent (dorids on colonial ascidians) |
-| *Siphonaria pectinata* (Siphonariidae) | *Bifurcaria bifurcata* (brown alga) | 26 | 14 | 61.1 | 16 | ✅ coherent: *Siphonaria* are herbivorous pulmonate limpets |
-| *Taringa armata* (Discodorididae) | *Aplysilla sulfurea* (sponge) | 12 | 4 | 89.4 | 4 | coherent (sponge-eating dorids) |
-| *Haminoea navicula* (Haminoeidae) | *Aplidium turbinatum* (ascidian) | 14 | 6 | 186.2 | 3 | coherent (cephalaspideans on hard substrate) |
-
-The agreement between measured co-occurrence and published diets is **the strongest external validation of
-the method**: it not only recovers documented pairs from the classic literature, but **ranks first by lift**
-the cases with known diet (*Doto*→*Aglaophenia*, *Felimare orsinii*→*Scalarispongia*). The rest of the list
-(1,039 candidates) constitutes testable diet/substrate hypotheses for understudied Mediterranean nudibranchs.
-Artefact: `artifacts/coocurrencia_nudibranquios_trofica_filtrada_20260929.json` (1,048 pairs with ≥5
-observers).
-
-### 3.7 Additional relationships beyond nudibranchs (29-sep-2026)
-
-The same analysis applied to the **whole catalogue** (not only nudibranchs) with an anti-"hub" filter (the 39
-species co-occurring with >400 taxa are excluded as background noise) yields **11,509 specific Mediterranean
-pairs** with ≥5 observers. Three groups of relationships stand out with ecological and conservation value:
-
-**a) Co-occurrence of Lessepsian invaders** (Red Sea species that entered via the Suez Canal):
-
-**Table 5.** Co-occurrence of Lessepsian invaders (§3.7a).
-
-| A | B | n | obs. | lift | context |
-|---|---:|---:|---:|---:|---|
-| *Fistularia commersonii* (cornetfish) | *Pterois miles* (lionfish) | 25 | 16 | 261.7 | both documented invaders; *Fistularia* is one of the few natural predators of *Pterois* |
-| *Fistularia commersonii* | *Siganus rivulatus* (rabbitfish) | 15 | 13 | 123.9 | coexisting invaders in the Levant |
-| *Pterois miles* | *Taeniura lymma* (bluespotted ray) | 11 | 7 | 233.2 | Red Sea invaders |
-
-The co-occurrence of Lessepsian invaders is **consistent with the literature** (Kondylatos et al., 2023:
-*Fistularia, Pterois miles* and *Siganus* caught together in Rhodes; CIESM Atlas of Exotic Fishes).
-Conservation implication: citizen-science photographs allow **monitoring the joint spread** of these invasive
-species. **Caveat (stratified null, §3.9):** these three pairs do not exceed the local-effort null (p<sub>emp</sub>=0.52–0.76); their high lift is due to both species
-being rare and co-occurring at few invasion sites and days.
-
-**b) Gelatinous plankton** (ctenophores, siphonophores and their predators/commensals):
-
-**Table 6.** Gelatinous plankton associations (§3.7b).
-
-| A | B | n | obs. | lift |
-|---|---:|---:|---:|---:|
-| *Forskalia edwardsii* (siphonophore) | *Lampea pancerina* (ctenophore) | 8 | 5 | 209.9 |
-| *Cestum veneris* (Venus' girdle) | *Hippopodius hippopus* (siphonophore) | 18 | 7 | 102.6 |
-| *Callianira bialata* (ctenophore) | *Cestum veneris* | 16 | 5 | 97.7 |
-| *Callianira bialata* | *Forskalia edwardsii* | 14 | 5 | 177.1 |
-
-Ctenophores prey on salps and gelatinous zooplankton (Carré & Carré); their co-occurrence with siphonophores
-in the same water mass is coherent with a **shared planktonic predatory guild** (Current Biology, 2025).
-
-**c) Benthic invertebrates** (habitat associations with biological meaning):
-
-**Table 7.** Benthic invertebrate habitat associations (§3.7c).
-
-| A | B | n | obs. | lift |
-|---|---:|---:|---:|---:|
-| *Astroides calycularis* (orange coral) | *Clavelina dellavallei* (ascidian) | 16 | 8 | 135.6 |
-| *Aeolidiella alderi* (nudibranch) | *Berthella perforata* (pleurobranch) | 41 | 8 | 129.8 |
-| *Petalifera petalifera* (sea hare) | *Placida tardyi* (sacoglossan) | 22 | 5 | 110.7 |
-| *Codium coralloides* (green alga) | *Placida verticilata* (sacoglossan) | 18 | 5 | 101.0 |
-| *Oestergrenia digitata* (sea cucumber) | *Virgularia mirabilis* (sea pen) | 8 | 5 | 212.9 |
-
-The pair *Codium coralloides*—*Placida verticilata* is especially notable: **sacoglossans feed on green
-algae of the genus *Codium*** (retaining their chloroplasts; Wägele & Klussmann-Kolb, 2005) — a documented
-trophic relationship the method recovers without prior knowledge.
-**Caveat (observer-sensitivity analysis, 29-Sep-2026):** a single observer appears in 72 % of this pair's 18 events and only 5 survive
-removing them; the result is biologically coherent but must be read as a *hypothesis pending replication*, not as independent validation
-of the method. The same applies to *Forskalia edwardsii*—*Lampea pancerina* (71 %; 2 events left). The Lessepsian pairs (*Fistularia*,
-*Pterois*, *Siganus*, *Taeniura*) do not depend on one observer (≥8 observers, dominant ≤33 %).
-
-### 3.8 Evaluation rigour: ablation, long-tail and leakage (29-sep-2026)
-
-Three analyses were added to meet peer-review standards:
-
-**a) Ablation benchmark** (on the same random sample of 300 evaluation photos):
-
-**Table 8.** Ablation benchmark on 300 evaluation photos (§3.8a).
-
-| Model | Top-1 | Top-5 |
-|---|---:|---:|
-| Simple k-NN (pure BioCLIP-2.5 ViT-H, cosine to prototype) | 69.0 % | 91.0 % |
-| **BioFauna production** (tempered aggregator + per-species cap + Cube B + local subspace + zero-shot + abstention) | **77.7 %** | 90.0 % |
-| iNaturalist Computer Vision (public API, image only, no location; 285 of the 300 photos available) | 53.7 % | 70.2 % |
-| Gain of the decision mechanisms | **+8.7 pp** | −1.0 pp |
-
-*Note:* iNaturalist CV does not cover every catalog species (its vocabulary is narrower for rarely photographed marine invertebrates), so the figure also measures that coverage; BioFauna was run with its production configuration (including the geographic prior when coordinates exist), iNaturalist with the image only. Small sample (n≈300): differences between pure k-NN and production should be read with wide confidence intervals.
-
-**b) Long-tail metrics** (purged evaluation, 76,585 rows): Micro-accuracy **82.34 %** vs Macro-accuracy
-**75.71 %** (2,946 species); by class frequency, **rare species (<10 rows) score 53.5 %** vs 85.8 % for
-common ones — the expected frequency bias of biodiversity identifiers. Top-5 93.7 % · genus 87.1 % ·
-family 90.5 %.
-
-**c) Leakage isolation**: 2.17 % of evaluation rows shared an observation or observer with the reference
-gallery of their species; excluding them changes the result by only **−0.14 pp** (82.5 % → 82.34 %),
-confirming that the operating figure is not materially inflated.
-
-**d) Evaluation-set composition**: the 82.34 % figure pools three blocks: the original evaluation set (60,743 rows, **81.18 %**, comparable with earlier
-versions) and two extensions obtained by targeted mining up to 30 photos per species (11,154 rows, 85.5 %; 4,688 rows, 89.9 %). Holding species fixed
-(1,785 species with both kinds of rows) accuracy is equivalent (86.8 % on mined rows vs 86.1 % on original rows), so the overall increase comes from the
-species mix (only species with a photo pool were extended) and **not from a model improvement**, since the model did not change. All mined rows went through
-the same leakage filter (observation, observer and embedding similarity ≥ 0.98 to the gallery).
-
-### 3.9 Controlling local effort: locality·date stratified null (main result, 29–30 Sep 2026)
-**Headline result of the project.** The 70,971 supported pairs are *not* evidence of association by themselves, because lift also rewards local sampling effort. The stratified null below is the test that decides which pairs are reported as statistically exceptional.
-
-| Table 9. Stratified null, 3,000 highest-lift pairs, 2,000 permutations | Coarse definition (0.1° · day · 3 h, no observer) | Main definition (observer · ~1 km · day · 3 h) |
-|---|---|---|
-| Events / blocks | 58,283 / 47,302 | 60,650 / 40,982 |
-| Pairs with p<sub>emp</sub> < 0.05 | 387 (12.9%) | 1,017 (33.9%) |
-| Pairs passing global FDR (q ≤ 0.05) | 0 | 214 |
-| Mediterranean-specific family (hypothesis family fixed by the catalogue) | 146 pairs | 152 pairs |
-| **Pairs passing FDR within that family** | **2** | **39** |
-
-
-To address the criticism that lift may reflect **local sampling effort** (a locality or a day with many
-observations) rather than biological co-occurrence, a **stratified permutation null** was implemented: events
-(locality ~0.1°, day, size) are preserved and species are shuffled **within each locality·day block**
-within each locality·day block. It was run with **two event definitions**, 2,000 permutations and the 3,000 highest-lift pairs:
-(i) *coarse* (0.1° cell · day · 3 h slot, no observer; 58,283 events, 47,302 blocks) and (ii) *the main-analysis definition*
-(observer × ~1 km × day × 3 h; 60,650 events, 40,982 blocks).
-
-Result: with the coarse definition **387 of 3,000 pairs (12.9 %) have p<sub>emp</sub><0.05 and none passes Benjamini-Hochberg FDR** (q≤0.05); with
-the main-analysis definition **1,017 (33.9 %) have p<sub>emp</sub><0.05 and 214 pass FDR**. Two reading caveats: (a) with 2,000 permutations the minimum p is
-0.0005; under the coarse definition only 13 pairs reach that floor, so the best attainable q (0.115) stays above 0.05 and **the absence of FDR-surviving pairs
-under that definition is not conclusive in the tail** (an earlier 200-permutation run had an even higher floor and could not have produced any significant
-result); (b) several pairs passing FDR under the main definition are Indo-Pacific species photographed on dive trips (e.g. *Cephalopholis miniata*—
-*Pseudanthias squamipinnis*), i.e. **expedition** co-occurrence, not Mediterranean; the Mediterranean-species filter (§3.7) must be applied before interpreting them.
-
-**Family restricted to Mediterranean pairs.** Of the 3,000 tested pairs, 152 (main definition) and 146 (coarse) belong to the Mediterranean-specific pair
-set (§3.7), a hypothesis family defined by the catalogue (not by p). Recomputing Benjamini-Hochberg on it alone: **39 pairs pass FDR under the main
-definition and 2 under the coarse one** (*Aeolidiella alderi*—*Berthella perforata* and *A. alderi*—*Dendrodoris limbata*, q=0.036). The former include
-heterobranch pairs (*Aeolidiella alderi*—*Janolus hyalinus*, *Berthella perforata*—*Dendrodoris limbata*, *Petalifera petalifera*—*Placida tardyi*) and the
-planktonic pair *Cestum*—*Hippopodius*. Statistically exceptional co-occurrence relative to local effort **does not imply interaction** (it may reflect shared
-microhabitat or substrate); they are candidates for in situ validation.
-
-**Consequences for the pairs in earlier sections.** *Branchellion torpedinis*—*Torpedo marmorata* (documented parasitism) is the most solid:
-p<sub>emp</sub>=0.0005 under both definitions (q=0.021 main, 0.115 coarse). *Cestum veneris*—*Hippopodius hippopus*: p=0.0215 (coarse) and 0.0005 with q=0.021
-(main). *Codium coralloides*—*Placida verticilata*: p=0.029 (coarse) and 0.014 (main; q=0.089, does not pass FDR). **The Lessepsian pairs (*Fistularia
-commersonii*—*Pterois miles*, *Fistularia*—*Siganus rivulatus*, *Pterois miles*—*Taeniura lymma*) are NOT more frequent than local effort predicts**
-(p<sub>emp</sub>=0.52–0.76 under both definitions): their high lift reflects that both species are rare and coincide in the same few invasion sites and days, not a
-specific association. They remain useful as a sign that the invaders appear in the same places (monitoring), but **not** as evidence of interaction or of
-statistically exceptional co-occurrence.
-
-### 3.10 Effort-conditioned test over all pairs and evidence levels (5 Oct 2026)
-
-The null of §3.9 was applied only to the 3,000 highest-lift pairs, a subset biased towards rare pairs. To remove this limitation the test was repeated over **all pairs with n ≥ 5 events** (115,204), using the main event definition (observer × ~1 km × day × 3 h; 60,567 events with ≥2 catalogue species, 40,915 cell-0.1°·day blocks). Within each block the probability that a species occurs in an event is proportional to event size (conditional on its frequency in the block); the expected number of events with both species is the sum over blocks and its variance that of a sum of independent Bernoulli variables. The one-sided p (normal approximation with continuity correction) is adjusted with Benjamini–Hochberg over the **whole** family of 115,204 pairs, not just a top-lift subset. Code: `scripts/nulo_exacto_todos_pares_20261005.py`.
-
-**Result.** With local effort controlled, 51,401 of 115,204 pairs (44.6 %) have q ≤ 0.05, and 27,382 of them also meet ≥3 cells, ≥3 days and ≥5 distinct observers. **Significance alone does not discriminate**: species that share habitat aggregate within the same block even when effort is controlled, so half of the supported pairs are "significant". What is informative is the **effect size** (observed/expected events) and **replication** (cells, days, observers). We propose evidence levels: candidate (ratio ≥ 3, replication criteria met), strong (≥ 5) and very strong (≥ 10):
-
-| Table 10. Pairs by evidence level (q ≤ 0.05 and ≥3 cells, ≥3 days, ≥5 observers) | Pairs |
-|---|---:|
-| Observed/expected ratio ≥ 2 | 10,586 |
-| ≥ 3 (candidates) | 3,108 |
-| ≥ 5 (strong) | 803 |
-| ≥ 10 (very strong) | 198 |
-
-Adding the requirements that ≥ 80 % of the pair's events are Mediterranean (box lat 30–46°, lon −6…37°), different genera and different taxonomic groups leaves **919 cross-group candidates** (Figure 1). The full list (51,401 pairs), the robust list with ratio ≥ 3 (3,108), the Mediterranean different-genus list (2,312) and the two "top 30" lists are in `data/`.
-
-**What is at the top.** Without restricting by group, most of the best-scoring pairs are **shared-habitat** pairs (beach bivalves, wetland birds, land snails, dune plants): useful as a control but not as new relationships. Among cross-group pairs there are ecologically plausible candidates (Figure 4): *Condylactis aurantiaca*—*Periclimenes scriptus* (n=29, ratio 4.8, 11 observers; consistent with the known commensalism of *Periclimenes* with anemones), *Muraena helena*—*Ophidiaster ophidianus* (n=17, ratio 12.6), *Sarcotragus spinosulus*—*Sparisoma cretense* (n=17, ratio 7.4) and *Condylactis aurantiaca*—*Gobius geniporus*. **None has yet been checked against the literature or by curators**, so their novelty is not claimed.
-
-**Control with documented associations.** *Peltodoris atromaculata*—*Petrosia ficiformis* is recovered (n=78, effort-expected 38.9, ratio 2.0, z=8.3, q=8e-15, 31 observers), but with a modest ratio because both are abundant. *Felimare picta*—*Ircinia oros* and *Cratena peregrina*—*Eudendrium racemosum* do **not** pass this filter (the latter has n=5 and few observers). Moreover, *Fistularia commersonii*—*Pterois miles* is significant under this null (n=25, expected 3.4, ratio 7.3), unlike under the null of §3.9, which assigns species uniformly within the block without conditioning on their frequency: **the result depends on the null model**, and the reading of §3.9 about Lessepsian invaders should be taken as dependent on that choice.
-
-**Identifier performance (Figure 5).** The identifier's out-of-sample panel (62,248 photos, 5 Oct 2026 index) shows species accuracy increasing with reference-gallery size: 68.6 % (0–25 photos), 76.0 % (25–50), 65.7 % (50–100), 82.0 % (100–200), 82.2 % (200–500), 86.1 % (500–1,000) and 89.2 % (≥1,000). Species with few photos are therefore the least reliable and the ones that most affect rare associations.
-
-![Figure 1. Filter funnel](figuras/fig1_embudo_filtros.png)
-![Figure 2. Effect-size distribution](figuras/fig2_distribucion_efecto.png)
-![Figure 3. Support versus effect in robust pairs](figuras/fig3_soporte_vs_efecto.png)
-![Figure 4. Cross-group candidates](figuras/fig4_candidatas_intergrupo.png)
-![Figure 5. Identifier accuracy versus gallery size](figuras/fig5_acierto_vs_galeria.png)
-
-*Figures 1–5: built from the files in `data/` and the identifier's out-of-sample panel. Still pending in this analysis: comparison with baselines, propagation of identification error to the associations, and systematic external validation.*
-
-### 3.11 Photographic evidence: pairs seen in the same image (6 Oct 2026)
-
-Following the criterion that event-level co-occurrence is only a lead, we searched the gallery for **photographs in which both species of a pair appear in the same image**. Each photo was identified whole and by regions (quadrants, halves and centre) with the identifier; photos with a region recognised as each species were kept and the final selection was checked by eye. In the automatic screening of the 138 best-scoring pairs (60 photos per species), 41 pairs had at least one candidate photo and 12 had three or more distinct observations, but visual review showed **many false positives between look-alike species** (e.g. *Polititapes*/*Ruditapes*, *Caloria*/*Luisella*), so automatic detection only proposes and every case is confirmed by eye. The second species in each photo is identified by BioFauna and is **not confirmed by curators**. Levels: 0 event-level co-occurrence; 1 both in the same photo in ≥3 independent observations; 2 plus visible contact (on, inside, feeding).
-
-| Table 11. Pairs with photos of both species in the same image | Level | Photos (distinct obs.) | Note |
+| Table 2. Pairs with photographs of both species in the same image | Level | Photos (distinct obs.) | Origin |
 |---|---|---:|---|
-| *Peltodoris atromaculata* on *Petrosia ficiformis* (predation) | 2 (visible contact; pending curators) | 4 (4) | Sponge identified by BioFauna as *Petrosia ficiformis* (purple, reddish and cream variants); not confirmed by curators. |
-| *Cratena peregrina* on hydroid colonies (*Eudendrium racemosum*; kleptoparasitism) | 2 (visible contact; pending curators) | 4 (4) | Hydroid identified by BioFauna as *Eudendrium racemosum*; not confirmed by curators. |
-| *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus* (commensalism) | 2 (visible contact; pending curators) | 4 (4) | Shrimp identified by BioFauna as *Periclimenes scriptus*; not confirmed by curators. |
-| *Lysmata grabhami* and *Telmatactis cricoides* (cleaning) | 1 (same photo; limited contact) | 4 (4) | Cleaner shrimp and anemone identified by BioFauna; the shrimp is small in two photos. |
-| *Scyllaea pelagica* on floating *Sargassum* | 0–1 (a single clear observation) | 1 (1) | Only the camouflaged nudibranch is clearly visible; *Latreutes* and *Hippolyte* cannot be told apart by eye. |
-| *Electra posidoniae* and *Tridentata perpusilla* on leaves of *Posidonia* (shared microhabitat) | 1 (shared microhabitat, not interaction) | 4 (4) | Encrusting bryozoan and hydroid on the same leaf; shared microhabitat, interaction not demonstrated. |
+| *Peltodoris atromaculata* on *Petrosia ficiformis* (predation) | 2 | 4 (4) | positive control (documented relation) |
+| *Cratena peregrina* on hydroid colonies (*Eudendrium racemosum*; kleptoparasitism) | 2 | 4 (4) | positive control (documented relation) |
+| *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus* (commensalism) | 2 | 4 (4) | screening shortlist |
+| *Lysmata grabhami* and *Telmatactis cricoides* (cleaning) | 1 | 4 (4) | earlier selection (cleaner) |
+| *Scyllaea pelagica* on floating *Sargassum* | 0–1 | 1 (1) | earlier selection |
+| *Electra posidoniae* and *Tridentata perpusilla* on *Posidonia* leaves (shared microhabitat) | 1 | 4 (4) | screening shortlist |
 
-No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* or *Fistularia commersonii*–*Pterois miles*; this does not show they do not coexist (the gallery is mostly centred portraits of one species). *Peltodoris*–*Petrosia*, *Cratena*–*Eudendrium*, *Condylactis*–*Periclimenes* and *Lysmata*–*Telmatactis* were chosen from the earlier plates and the cross-group candidates, not by rank in the highest-ratio list.
+### 3.4 Pairs without a joint photo
+No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* or *Fistularia commersonii*–*Pterois miles*. This does not show they do not coexist and does not allow any relation to be claimed: they remain *unconfirmed*.
 
-**Plate 1. *Peltodoris atromaculata* on *Petrosia ficiformis* (predation).** *Sponge identified by BioFauna as *Petrosia ficiformis* (purple, reddish and cream variants); not confirmed by curators.*
+<div class="lamina">
+<p class="lt"><b>Plate 1. <i>Peltodoris atromaculata</i> on <i>Petrosia ficiformis</i> (predation).</b> <i>Sponge identified by BioFauna as <i>Petrosia ficiformis</i> (purple, reddish and cream variants); not confirmed by curators.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg" alt="Plate 1.1"><figcaption>Plate 1.1: Pau Pagès Jaén · CC BY · 2024-08-06 12:08 (Europe/Madrid) · Spain · Minka obs 324790.</figcaption></figure>
+<figure><img src="lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg" alt="Plate 1.2"><figcaption>Plate 1.2: Dean Zagorac · CC BY-NC † · 2023-08-07 16:40 (Europe/Zagreb) · Kostrena, Primorsko-Goranska, Croatia · iNaturalist obs 184319097.</figcaption></figure>
+<figure><img src="lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg" alt="Plate 1.3"><figcaption>Plate 1.3: jmturon · CC BY-NC † · 2022-07-23 10:16 (Europe/Madrid) · Spain · Minka obs 205860.</figcaption></figure>
+<figure><img src="lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg" alt="Plate 1.4"><figcaption>Plate 1.4: Óscar Comellas Garcia · CC BY-NC † · 2023-11-11 11:43 (Europe/Madrid) · Girona, España · Minka obs 203388.</figcaption></figure>
+</div>
+</div>
 
-![Plate 1.1](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg)
+<div class="lamina">
+<p class="lt"><b>Plate 2. <i>Cratena peregrina</i> on hydroid colonies (<i>Eudendrium racemosum</i>; kleptoparasitism).</b> <i>Hydroid identified by BioFauna as <i>Eudendrium racemosum</i>; not confirmed by curators.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__1.jpg" alt="Plate 2.1"><figcaption>Plate 2.1: xavi salvador costa · CC BY-NC † · 2024-11-02 22:52 (Europe/Paris) · Le Ponton · Minka obs 392849.</figcaption></figure>
+<figure><img src="lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__2.jpg" alt="Plate 2.2"><figcaption>Plate 2.2: xatrac · CC BY-NC † · 2022-08-27 10:08 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88838.</figcaption></figure>
+<figure><img src="lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__3.jpg" alt="Plate 2.3"><figcaption>Plate 2.3: xatrac · CC BY-NC † · 2022-08-10 09:42 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88546.</figcaption></figure>
+<figure><img src="lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__4.jpg" alt="Plate 2.4"><figcaption>Plate 2.4: xatrac · CC BY-NC † · 2022-08-07 09:16 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88528.</figcaption></figure>
+</div>
+</div>
 
-*Plate 1.1: Pau Pagès Jaén · CC BY · 2024-08-06 12:08 (Europe/Madrid) · Spain · Minka obs 324790.*
+<div class="lamina">
+<p class="lt"><b>Plate 3. <i>Condylactis aurantiaca</i> with the shrimp <i>Periclimenes scriptus</i> (commensalism).</b> <i>Shrimp identified by BioFauna as <i>Periclimenes scriptus</i>; not confirmed by curators.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__1.jpg" alt="Plate 3.1"><figcaption>Plate 3.1: xavi salvador costa · CC BY-NC † · 2016-09-10 22:07 (Europe/Paris) · Spain · Minka obs 28492.</figcaption></figure>
+<figure><img src="lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__2.jpg" alt="Plate 3.2"><figcaption>Plate 3.2: Sylvain Le Bris · CC BY-NC † · 2026-04-08 22:17 (Europe/Paris) · Montredon, Marseille, France · iNaturalist obs 348576200.</figcaption></figure>
+<figure><img src="lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__3.jpg" alt="Plate 3.3"><figcaption>Plate 3.3: xavi salvador costa · CC BY-NC † · 2016-07-09 22:18 (Europe/Paris) · Spain · Minka obs 28862.</figcaption></figure>
+<figure><img src="lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__4.jpg" alt="Plate 3.4"><figcaption>Plate 3.4: xavi salvador costa · CC BY-NC † · 2018-09-01 16:03 (Europe/Paris) · Spain · Minka obs 35885.</figcaption></figure>
+</div>
+</div>
 
-![Plate 1.2](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg)
+<div class="lamina">
+<p class="lt"><b>Plate 4. <i>Lysmata grabhami</i> and <i>Telmatactis cricoides</i> (cleaning).</b> <i>Cleaner shrimp and anemone identified by BioFauna; the shrimp is small in two photos.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__1.jpg" alt="Plate 4.1"><figcaption>Plate 4.1: jmturon · CC BY-NC † · 2023-12-05 10:57 (Atlantic/Canary) · Las Coloradas · Minka obs 210346.</figcaption></figure>
+<figure><img src="lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__2.jpg" alt="Plate 4.2"><figcaption>Plate 4.2: jmturon · CC BY-NC † · 2023-12-06 20:06 (Atlantic/Canary) · Playa Flamingo · Minka obs 210532.</figcaption></figure>
+<figure><img src="lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__3.jpg" alt="Plate 4.3"><figcaption>Plate 4.3: phil_newman · CC BY-NC † · 2025-11-22 11:50 (Atlantic/Canary) · Playa Flamingo Playa Blanca Lanzarote · iNaturalist obs 329826704.</figcaption></figure>
+<figure><img src="lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__4.jpg" alt="Plate 4.4"><figcaption>Plate 4.4: whodden · CC BY-NC † · 2007-04-04 00:00 (Europe/Madrid) · la caleta punta prieta tenerife · iNaturalist obs 2354980.</figcaption></figure>
+</div>
+</div>
 
-*Plate 1.2: Dean Zagorac · CC BY-NC † · 2023-08-07 16:40 (Europe/Zagreb) · Kostrena, Primorsko-Goranska, Croatia · iNaturalist obs 184319097.*
+<div class="lamina">
+<p class="lt"><b>Plate 5. <i>Scyllaea pelagica</i> on floating <i>Sargassum</i>.</b> <i>Only the camouflaged nudibranch is clearly visible; <i>Latreutes</i> and <i>Hippolyte</i> cannot be told apart by eye.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par5__scyllaea_pelagica__latreutes_fucorum__1.jpg" alt="Plate 5.1"><figcaption>Plate 5.1: Ben Eddy · CC BY-NC † · 2023-06-27 13:52 (Atlantic/Bermuda) · Southampton, BM · iNaturalist obs 170761288.</figcaption></figure>
+</div>
+</div>
 
-![Plate 1.3](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg)
-
-*Plate 1.3: jmturon · CC BY-NC † · 2022-07-23 10:16 (Europe/Madrid) · Spain · Minka obs 205860.*
-
-![Plate 1.4](lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg)
-
-*Plate 1.4: Óscar Comellas Garcia · CC BY-NC † · 2023-11-11 11:43 (Europe/Madrid) · Girona, España · Minka obs 203388.*
-
-**Plate 2. *Cratena peregrina* on hydroid colonies (*Eudendrium racemosum*; kleptoparasitism).** *Hydroid identified by BioFauna as *Eudendrium racemosum*; not confirmed by curators.*
-
-![Plate 2.1](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__1.jpg)
-
-*Plate 2.1: xavi salvador costa · CC BY-NC † · 2024-11-02 22:52 (Europe/Paris) · Le Ponton · Minka obs 392849.*
-
-![Plate 2.2](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__2.jpg)
-
-*Plate 2.2: xatrac · CC BY-NC † · 2022-08-27 10:08 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88838.*
-
-![Plate 2.3](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__3.jpg)
-
-*Plate 2.3: xatrac · CC BY-NC † · 2022-08-10 09:42 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88546.*
-
-![Plate 2.4](lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__4.jpg)
-
-*Plate 2.4: xatrac · CC BY-NC † · 2022-08-07 09:16 (Europe/Paris) · 17310 Lloret de Mar, Girona, España · Minka obs 88528.*
-
-**Plate 3. *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus* (commensalism).** *Shrimp identified by BioFauna as *Periclimenes scriptus*; not confirmed by curators.*
-
-![Plate 3.1](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__1.jpg)
-
-*Plate 3.1: xavi salvador costa · CC BY-NC † · 2016-09-10 22:07 (Europe/Paris) · Spain · Minka obs 28492.*
-
-![Plate 3.2](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__2.jpg)
-
-*Plate 3.2: Sylvain Le Bris · CC BY-NC † · 2026-04-08 22:17 (Europe/Paris) · Montredon, Marseille, France · iNaturalist obs 348576200.*
-
-![Plate 3.3](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__3.jpg)
-
-*Plate 3.3: xavi salvador costa · CC BY-NC † · 2016-07-09 22:18 (Europe/Paris) · Spain · Minka obs 28862.*
-
-![Plate 3.4](lamina_fotos/par3__condylactis_aurantiaca__periclimenes_scriptus__4.jpg)
-
-*Plate 3.4: xavi salvador costa · CC BY-NC † · 2018-09-01 16:03 (Europe/Paris) · Spain · Minka obs 35885.*
-
-**Plate 4. *Lysmata grabhami* and *Telmatactis cricoides* (cleaning).** *Cleaner shrimp and anemone identified by BioFauna; the shrimp is small in two photos.*
-
-![Plate 4.1](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__1.jpg)
-
-*Plate 4.1: jmturon · CC BY-NC † · 2023-12-05 10:57 (Atlantic/Canary) · Las Coloradas · Minka obs 210346.*
-
-![Plate 4.2](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__2.jpg)
-
-*Plate 4.2: jmturon · CC BY-NC † · 2023-12-06 20:06 (Atlantic/Canary) · Playa Flamingo · Minka obs 210532.*
-
-![Plate 4.3](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__3.jpg)
-
-*Plate 4.3: phil_newman · CC BY-NC † · 2025-11-22 11:50 (Atlantic/Canary) · Playa Flamingo Playa Blanca Lanzarote · iNaturalist obs 329826704.*
-
-![Plate 4.4](lamina_fotos/par4__lysmata_grabhami__telmatactis_cricoides__4.jpg)
-
-*Plate 4.4: whodden · CC BY-NC † · 2007-04-04 00:00 (Europe/Madrid) · la caleta punta prieta tenerife · iNaturalist obs 2354980.*
-
-**Plate 5. *Scyllaea pelagica* on floating *Sargassum*.** *Only the camouflaged nudibranch is clearly visible; *Latreutes* and *Hippolyte* cannot be told apart by eye.*
-
-![Plate 5.1](lamina_fotos/par5__scyllaea_pelagica__latreutes_fucorum__1.jpg)
-
-*Plate 5.1: Ben Eddy · CC BY-NC † · 2023-06-27 13:52 (Atlantic/Bermuda) · Southampton, BM · iNaturalist obs 170761288.*
-
-**Plate 6. *Electra posidoniae* and *Tridentata perpusilla* on leaves of *Posidonia* (shared microhabitat).** *Encrusting bryozoan and hydroid on the same leaf; shared microhabitat, interaction not demonstrated.*
-
-![Plate 6.1](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__1.jpg)
-
-*Plate 6.1: xavi salvador costa · CC BY-NC † · 2023-08-09 11:01 (Europe/Madrid) · Spain · Minka obs 153028.*
-
-![Plate 6.2](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg)
-
-*Plate 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · 17300 Blanes, Girona, España · Minka obs 511234.*
-
-![Plate 6.3](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__3.jpg)
-
-*Plate 6.3: ester serrao · CC BY · 2024-06-30 07:17 (America/Costa_Rica) · Parrita, Puntarenas, CR · Minka obs 629063.*
-
-![Plate 6.4](lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg)
-
-*Plate 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Cap Ras · Minka obs 544263.*
-
-† Photographs under a non-commercial licence (CC BY-NC / CC BY-NC-SA): **they must be replaced with CC0, CC BY or CC BY-SA photos, or used with the author's permission, if the article is published in a commercial journal.** Local time of the observation; the link to each observation is in `lamina_fotos/lamina_manifest_20261006.json`.
+<div class="lamina">
+<p class="lt"><b>Plate 6. <i>Electra posidoniae</i> and <i>Tridentata perpusilla</i> on <i>Posidonia</i> leaves (shared microhabitat).</b> <i>Encrusting bryozoan and hydroid on the same leaf; shared microhabitat, interaction not demonstrated.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__1.jpg" alt="Plate 6.1"><figcaption>Plate 6.1: xavi salvador costa · CC BY-NC † · 2023-08-09 11:01 (Europe/Madrid) · Spain · Minka obs 153028.</figcaption></figure>
+<figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg" alt="Plate 6.2"><figcaption>Plate 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · 17300 Blanes, Girona, España · Minka obs 511234.</figcaption></figure>
+<figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__3.jpg" alt="Plate 6.3"><figcaption>Plate 6.3: ester serrao · CC BY · 2024-06-30 07:17 (America/Costa_Rica) · Parrita, Puntarenas, CR · Minka obs 629063.</figcaption></figure>
+<figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg" alt="Plate 6.4"><figcaption>Plate 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Cap Ras · Minka obs 544263.</figcaption></figure>
+</div>
+</div>
 
 ## 4. Discussion
 
-### 4.1 Theoretical background: co-occurrence and citizen-science biases
+**What this shows and what it does not.** A photo with both species shows proximity at centimetre scale at one instant; it does not show that they seek, avoid or interact with each other. Three or more independent observations with both visible give replication, and visible contact (on, inside, feeding) points to a relation that must be confirmed with curators and literature. Event co-occurrence, by contrast, only flags species that share place and date and is **not used as a result**: requiring the same photo removes most coincidences.
 
-Species co-occurrence is a classic ecological signal (shared habitat, predation, symbiosis, commensalism),
-but reading it from citizen-science data requires controlling well-documented biases: **geographic bias**
-(accessible areas are sampled more), **effort bias** (bioblitz-type events inflate certain localities),
-**observer bias** (variable ability to detect and identify species) and **reporting bias** (preference for
-charismatic species). Opportunistic data lack a sampling plan and explicit absences, so any inference must
-explicitly mitigate these biases (Isaac et al., 2014; Johnston et al., 2018; Aceves-Bueno et al., 2017;
-Boyd et al., 2021; Milanesi et al., 2020). Our design responds with: (1) *event* = effort unit per observer
-and 3-h window (controls effort bias), (2) required repeatability across ≥3 localities, ≥3 days and **≥5
-distinct observers** (controls observer and dive-trip bias), and (3) the **geographic-range filter** on
-species (removes the dive-trip artefact found in this review). Geographic bias is addressed with the
-locality·date stratified null currently under development (§6 of Methods).
-
-Candidates fall into three interpretative classes: **commensalism/phoresy** (jellyfish—amphipod), **cleaning
-symbiosis** (shrimp—anemone) and **substrate co-habitation** (infauna; hard bottoms; coralline algae). The
-central methodological challenge is separating **interaction** from **coincidence** driven by habitat, season
-or observer effort; hence the spatial/temporal repeatability requirement and the stratified null currently
-under development.
-
-The literature review yields two results of general interest. First, **the method recovers already documented
-associations** (dorid predation, the Sargassum community, gelatinous-zooplankton symbionts), validating the
-ecological signal against effort noise. Second, classifying the top pairs by the geographic range of their
-species reveals a **systematic citizen-science artefact**: the highest-lift pairs with extra-Mediterranean
-species (*Doris fontainii*—*Tyrinna delicata*; *Chromodoris quadricolor*—*Hexabranchus sanguineus*)
-correspond to **dive trips** by the same group rather than to ecological interactions in the study area.
-Cross-checking each taxon's geographic range is therefore a necessary quality filter before interpreting any
-candidate as an ecological association.
-
-### 4.2 Contrasted biological hypotheses (the main scientific contribution)
-
-The robust candidates are here confronted with the marine biological literature. Each case is classified as
-**documented** (the interaction is already described), **plausible** (ecologically coherent, no direct
-citation of the pair) or **artefact** (sampling bias, discarded).
-
-**(a) *Peltodoris atromaculata* — *Petrosia ficiformis* (predation).** Documented. The dorid feeds exclusively
-on that sponge, accumulates its petroformynes and lives on it; the method recovers it with 79 events, 44
-localities and 74 days (lift 11.1). *Doto floridicola*—*Aglaophenia* and *Felimare orsinii*—*Scalarispongia
-scalaris* confirm the general pattern: **dorids and dotids co-occur with their prey sponge/hydroid** (Sea Slug
-Forum; McDonald & Nybakken, 2001).
-
-**(b) *Cratena peregrina* — *Eudendrium racemosum* (kleptopredation).** Documented (CNR, Adriatic Sea): the
-aeolid steals prey from the hydroid. Our pair (n=5, 5 observers) is consistent with the literature.
-
-**(c) Floating *Sargassum* community (*Scyllaea pelagica*, *Latreutes fucorum*, *Hippolyte coerulescens*).**
-Documented: the three species are fauna associated with the floating alga *Sargassum* (NOAA; BAMZ). The method
-groups them with 10-11 distinct observers and lift >300, without knowing the relationship a priori.
-
-**(d) *Lysmata grabhami* — *Telmatactis cricoides* (cleaning/symbiosis).** Plausible. The anemone *T.
-cricoides* hosts documented crustacean symbionts (*Thor amboinensis* in 65 % of anemones; *Stenorhynchus
-lanceolatus* in facultative mutualism — Peraza et al., 2024); *Lysmata* are cleaner shrimps. They truly
-co-occur in the Canary Islands/Madeira (lat 27-29). Requires in-situ validation.
-
-**(e) *Blackfordia virginica* — *Phronima sedentaria* / *Brachyscelus crusculum* (commensalism on
-gelatinous zooplankton).** Plausible. Hyperiids associate with medusae and salps (Keil & Osborn; *Phronima*
-is an obligate salp symbiont — Laval, 1978). No specific *Blackfordia*-hyperiid citation; testable hypothesis.
-
-**(f) Infaunal pairs (*Fustiaria rubescens*—*Loripinus fragilis*; *Abra alba*—*Abra longicallus*).**
-Plausible. Co-habitation of circalittoral soft bottoms (JNCC biotope "Abra alba & Nucula nitidosa";
-*Loripinus* lives in reduced sediments with chemosynthetic symbionts).
-
-**Discarded as artefacts**: the highest-lift pairs with extra-Mediterranean species (*Doris fontainii*—
-*Tyrinna delicata*, South Pacific; *Chromodoris quadricolor*—*Hexabranchus sanguineus*, Red Sea) are dive-trip
-photos of the same group, not associations of the study area; detecting them is also a dataset-quality control
-signal.
-
-**Implication**: five hypotheses (d, e, f and variants) require **in-situ validation** by biologists —
-targeted dives, fixed cameras or review of pairing photographs. That is the line of work that turns the result
-into a citable scientific contribution.
-
-### 4.3 Interpreting the stratified null: lift, hypotheses and methodological position
-Results are reported in §3.9 (Table 9): the stratified null, not the lift, decides which pairs are called exceptional. This section keeps only the interpretation.
-
-1. **Lift rewards rare pairs**: the *documented* pairs (*Peltodoris*—*Petrosia*, *Doto*—*Aglaophenia*) have
-   abundant but not "rare" co-occurrence, and do not even enter the top 3,000 by lift. **Lift is not the
-   right metric to validate common associations**; for them the signal is abundance and repeatability (n,
-   cells, days, observers), not lift.
-2. **Pairs with p<sub>emp</sub><0.05 and high n are candidates** with biological meaning (*Corallium rubrum*—*Paramuricea clavata*, p=0.04 in the initial
-   500-permutation run, not repeated with 2,000).
-
-**Methodological position**: pairs with a priori hypotheses (trophic and documented) are validated with their
-**individual p** (few concrete hypotheses, standard practice); exploratory discoveries are reported as
-candidates with p<sub>emp</sub><0.05 and an **explicit warning** that their significance depends on the event definition and (under the coarse one) does not
-pass global FDR; they require independent validation. Detail: `experimentos/NULO_ESTRATIFICADO_20260929.md`.
+**Biases.** The gallery consists mostly of centred portraits of one species, which underestimates the share of photos with a second species; the identifier recognises small or camouflaged species less well and confuses look-alike species (false positives); only the first candidates have been reviewed by eye; and the photographs come with very diverse licences, which limits the plates.
 
 ## 5. Limitations
 
-1. Co-occurrence ≠ interaction; mitigated by filters and the null model, but directed observation remains the
-   final confirmation.
-2. Observer/effort bias (bioblitz-type events).
-3. Uneven taxonomic coverage.
+Proximity in a photo is not interaction. The identity of the second species is a proposal by the identifier. The shortlist was chosen by effect size and support, not at random, and the positive-control pairs and earlier plate candidates were chosen by the author's judgement. The novelty of no pair has yet been checked against the literature or by curators. CC BY-NC photos must be replaced in a commercial journal.
 
 ## 6. Conclusions
 
-This work shows that citizen-science photographs, automatically identified at catalogue scale, contain
-**ecological associations that are recoverable and verifiable**. The main conclusions:
-
-1. **The method validates the ecological signal**: it recovers documented associations from the classic
-   literature with high robustness — *Peltodoris atromaculata* on *Petrosia ficiformis* (79 events, lift
-   11.1), the kleptopredation of *Cratena peregrina* on *Eudendrium racemosum*, dorid diets on sponges and
-   the floating *Sargassum* community — and does so **without prior knowledge of the diets**.
-
-2. **It discovers new relationships with statistical support**: 1,048 trophic nudibranch pairs (≥5
-   observers) and 11,509 specific Mediterranean pairs across the whole catalogue, notably:
-   - **Co-occurring Lessepsian invaders** (*Fistularia commersonii*, *Pterois miles*, *Siganus rivulatus*,
-     *Taeniura lymma*) with lifts of 124-262 — their co-occurrence matches what local effort predicts
-     (§3.9), so it is a **spatial co-location of the invasion** signal useful for monitoring, not a statistically exceptional association.
-   - **A shared planktonic predatory guild** (ctenophores and siphonophores in the same water mass:
-     *Cestum veneris* + *Hippopodius hippopus*, lift 103).
-   - **Undescribed benthic trophic relationships** (*Codium* — sacoglossans, *Astroides* — ascidians).
-
-3. **Co-occurrence is not an artefact of the identifier**: documented pairs show null cross-confusion (0-1
-   cases), whereas cryptic species pairs (control) show 13-26 % confusion and do not appear as candidates.
-
-4. **Direct applications**: (a) prioritising the search for rare species where their associate occurs;
-   (b) generating testable diet/habitat hypotheses for in-situ validation by biologists; (c) monitoring the
-   spread of invasive species; and (d) feeding outreach and citizen-science tools with "if you see X, look
-   for Y" suggestions and per-area association networks.
-
-Combining automatic identification, catalogue-scale co-occurrence and **contrast with the biological
-literature** turns a participatory photographic archive into a source of citable ecological hypotheses, with
-the added value of covering shallow coastal waters where other methods perform worst.
+1. Event co-occurrence screening, even with effort controlled, is not evidence of association: it generates thousands of coincidences of which only a small part survives review by real proximity.
+2. Real proximity (both species in the same photograph) is a criterion any reader can verify; with it, five pairs have been confirmed by eye, two of them with visible contact between organisms of different groups in addition to the positive controls.
+3. The method serves to propose pairs and photographs that curators can verify; it does not replace their judgement.
 
 ## Acknowledgements
 
@@ -584,58 +156,31 @@ author's supervision and direction.
 
 ## References
 
-- Aceves-Bueno, E., Adeleye, A. S., Feraud, M., Huang, Y., Tao, M., Yang, Y., & Anderson, S. E. (2017). The
-  accuracy of citizen science data: a quantitative review. *The Bulletin of the Ecological Society of
-  America*, 98(4), 278–290.
-- Avila, C. (1996). The growth of *Peltodoris atromaculata* Bergh, 1880 (Gastropoda, Nudibranchia) in the
-  laboratory. *Journal of Molluscan Studies*, 62, 151–157. — exclusive diet on *Petrosia ficiformis*;
-  petroformyne accumulation.
-- Barroso, R., Klautau, M., Solé-Cava, A. M., & Paiva, P. C. (2010). *Eurythoe complanata* (Polychaeta:
-  Amphinomidae), the 'cosmopolitan' fireworm, consists of at least three cryptic species. *Marine Biology*,
-  157(1), 69–80.
-- Boyd, R. J., Powers, M., & Pescott, O. L. (2021). occAssess: an R package for assessing potential biases in
-  species occurrence data. *Ecology and Evolution*, 11(22).
-- Diebel, C. E. (1988). Observations on the anatomy and behavior of *Phronima sedentaria* (Forskål)
-  (Amphipoda: Hyperiidea). *Journal of Crustacean Biology*, 8(1), 79–90.
-- Isaac, N. J. B., van Strien, A. J., August, T. A., de Zeeuw, M. P., & Roy, D. B. (2014). Statistics for
-  citizen science: extracting signals of change from noisy ecological data. *Methods in Ecology and
-  Evolution*, 5(10), 1052–1060.
-- Johnston, A., Fink, D., Hochachka, W. M., & Kelling, S. (2018). Estimates of observer expertise improve
-  species distributions from citizen science data. *Methods in Ecology and Evolution*, 9(4), 880–890.
-- Keil, K. E., & Osborn, K. J. Associations between hyperiid amphipods and gelatinous zooplankton
-  (Smithsonian Institution, NMNH; MBARI ROV footage).
-- Laval, P. (1978). The barrel of the pelagic amphipod *Phronima sedentaria* (Forsk.). *Journal of
-  Experimental Marine Biology and Ecology*, 33(3), 187–211.
-- McDonald, G. R., & Nybakken, J. W. (2001). A worldwide review of the food of nudibranch mollusks. II. The
-  suborder Doridacea. *The Veliger*.
-- Milanesi, P., Mori, E., & Menchetti, M. (2020). Observer-oriented approach improves species distribution
-  models from citizen science data. *Ecology and Evolution*, 10(21), 12104–12114.
-- Peraza, E., Pérez, J. A., Abdul-Jalbar, B., Chinea, J., & Clemente, S. (2024). Exploring the association
-  between the arrow crab *Stenorhynchus lanceolatus* and the sea anemone *Telmatactis cricoides* in the
-  Canary Islands. *Regional Studies in Marine Science*.
-- Riera, R., Espina, F., & Moro, L. (2016). Progressing the invasion of the hydrozoan *Macrorhynchia
-  philippina* (Kirchenpauer, 1872) in Atlantic archipelagos. *Vieraea*, 44, 117–120.
-- Taylor, J., & Glover, E. (2021). *Biology, evolution and generic review of the chemosymbiotic bivalve
-  family Lucinidae*. The Ray Society, London.
-- Valdés, Á., & Muniain, C. (2002). Revision and taxonomic reassessment of Magellanic species assigned to
-  *Anisodoris* Bergh, 1898 (Nudibranchia: Doridoidea). *Journal of Molluscan Studies*, 68, 345–351.
+- Aceves-Bueno, E., Adeleye, A. S., Feraud, M., Huang, Y., Tao, M., Yang, Y., & Anderson, S. E. (2017). The accuracy of citizen science data: a quantitative review. *The Bulletin of the Ecological Society of America*, 98(4), 278–290.
+- Avila, C. (1996). The growth of *Peltodoris atromaculata* Bergh, 1880 (Gastropoda, Nudibranchia) in the laboratory. *Journal of Molluscan Studies*, 62, 151–157. — diet exclusively on *Petrosia ficiformis*.
+- Boyd, R. J., Powers, M., & Pescott, O. L. (2021). occAssess: an R package for assessing potential biases in species occurrence data. *Ecology and Evolution*, 11(22).
+- Isaac, N. J. B., van Strien, A. J., August, T. A., de Zeeuw, M. P., & Roy, D. B. (2014). Statistics for citizen science: extracting signals of change from noisy ecological data. *Methods in Ecology and Evolution*, 5(10), 1052–1060.
+- Johnston, A., Fink, D., Hochachka, W. M., & Kelling, S. (2018). Estimates of observer expertise improve species distributions from citizen science data. *Methods in Ecology and Evolution*, 9(4), 880–890.
+- McDonald, G. R., & Nybakken, J. W. (2001). A worldwide review of the food of nudibranch mollusks. II. The suborder Doridacea. *The Veliger*.
+- Milanesi, P., Mori, E., & Menchetti, M. (2020). Observer-oriented approach improves species distribution models from citizen science data. *Ecology and Evolution*, 10(21), 12104–12114.
+- Peraza, E., Pérez, J. A., Abdul-Jalbar, B., Chinea, J., & Clemente, S. (2024). Exploring the association between the arrow crab *Stenorhynchus lanceolatus* and the sea anemone *Telmatactis cricoides* in the Canary Islands. *Regional Studies in Marine Science*.
 
 ## Data availability
 
-Data and code are published in the project's public repository (https://github.com/yespi/biofauna):
+**All material is in the public GitHub repository: https://github.com/yespi/biofauna** (branch `master`). Full paths:
+- Shortlist pairs and their candidate photos: [`data/copresencia_pares_20261006.csv`](https://github.com/yespi/biofauna/blob/master/data/copresencia_pares_20261006.csv) and [`data/copresencia_hits_20261006.jsonl`](https://github.com/yespi/biofauna/blob/master/data/copresencia_hits_20261006.jsonl).
+- Plate manifest with author, licence, date and time, place and link for each photo: [`papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261006.json`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261006.json).
+- Event-screening lists (hypotheses only) and their description: [`data/README_correlacion.md`](https://github.com/yespi/biofauna/blob/master/data/README_correlacion.md) and the files `data/nulo_exacto_pares_*.csv` and `data/pares_*_20261005.csv`.
+- Extended methods and results, figures and plates: folder [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) (article in Spanish and English, `LAMINAS`, `METODOS.md`, `RESULTADOS.md`, `figuras/`, `lamina_fotos/`). The unnumbered versions (`ARTICULO_ES_latest.pdf`, `ARTICLE_EN_latest.pdf`, `LAMINAS_latest.pdf`) are always updated; the two latest numbered versions are kept.
+- BioFauna identifier (code, prototypes, calibrators, evaluation scripts): folders [`src/`](https://github.com/yespi/biofauna/blob/master/src/), [`scripts/`](https://github.com/yespi/biofauna/blob/master/scripts/), [`data/`](https://github.com/yespi/biofauna/blob/master/data/) and [`papers/biofauna/`](https://github.com/yespi/biofauna/blob/master/papers/biofauna/).
+- **Not redistributable**: gallery photographs (Minka SDG, iNaturalist and other licences; those in the plates are included with attribution) and per-photo embeddings.
 
-- **BioFauna identifier**: complete code (service, prototypes, calibrators, geographic prior, cryptic
-  pairs, evaluation and leak-audit scripts) and taxon IDs — `papers/biofauna/`.
-- **Anonymised association table** (no photographs, no observer data): `data/
-  asociaciones_mediterraneas_20260929.csv` (11,509 pairs with species, families, event counts, cells, days,
-  observers and lift) and `data/asociaciones_top40_20260929.csv`.
-- **Full test and figures (v18, 6 Oct 2026)**: `data/nulo_exacto_pares_significativos_q05_20261005.csv` (51,401 pairs), `data/nulo_exacto_pares_robustos_razon3_20261005.csv` (3,108), `data/pares_robustos_mediterraneos_distinto_genero_20261005.csv` (2,312), `data/pares_candidatos_nuevos_top30_20261005.csv` and `..._intergrupo_top30_20261005.csv`; figures in `papers/proyecto_correlacion/figuras/`.
-- **Manuscripts and plates**: `papers/proyecto_correlacion/` (ES/EN article and PDFs).
-- **Not redistributable**: the photographs (subject to Minka SDG, iNaturalist and other source licences) and
-  per-photo `embeddings.npy`; they can be rebuilt from Minka/iNaturalist/GBIF using the catalog.
 
 ## Supplementary material
 
-- Association tables (top 40 and full set; available in the project's public repository).
-- Association network figure (navigable SVG in the repository).
-- **Photo plates** (`LAMINAS_v7_20261006.pdf`): **21 photographs** from the BioFauna gallery showing **both species of a pair in the same image** (section 3.11), with author, licence, date and time, place and link to the observation. Accepted licences: CC0, CC BY, CC BY-SA and CC BY-NC / CC BY-NC-SA; those marked † (non-commercial) **must be replaced with CC0, CC BY or CC BY-SA photos, or used with the author's permission, if published in a commercial journal**. Photos without a licence and CC BY-NC-ND are excluded.
+**Supplement S1. Event screening (hypotheses).** Description of the effort-controlled test and full lists in [`NULO_EXACTO_TODOS_PARES_20261005.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/NULO_EXACTO_TODOS_PARES_20261005.md). Figures S1 and S2 in [`papers/proyecto_correlacion/figuras/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/figuras/).
+
+<figure class="fig"><img src="figuras/supl_S1_distribucion_efecto.png" alt="Figure S1. Effect-size distribution. Ratio of observed to ef"><figcaption><b>Figure S1. Effect-size distribution.</b> Ratio of observed to effort-expected events for pairs with q ≤ 0.05 (grey) and replicated pairs (blue); logarithmic axes and lines at 2, 3, 5 and 10. A large part of the significant pairs have low ratios.</figcaption></figure>
+<figure class="fig"><img src="figuras/supl_S2_soporte_vs_efecto.png" alt="Figure S2. Support versus effect in replicated pairs. Each p"><figcaption><b>Figure S2. Support versus effect in replicated pairs.</b> Each point is a pair: events with both species (n) against observed/expected ratio, coloured by distinct observers; the red line marks ratio 3.</figcaption></figure>
+
+**Photo plates** (`LAMINAS_latest.pdf`): the same plates as section 3.3, with full attribution.
