@@ -1,4 +1,4 @@
-# Proyecto Correlación — Métodos (v20, 6-oct-2026)
+# Proyecto Correlación — Métodos (v21, 7-oct-2026)
 
 ## 1. Datos
 1.222.170 fotografías de la galería BioFauna (Minka SDG, iNaturalist, GBIF, Wikimedia Commons, DORIS/FFESSM, SeaSlugForum, WoRMS, FishBase y otras) y 759.207 observaciones con coordenadas, fecha y (92 %) hora; catálogo de 2.985 taxones mediterráneos.
@@ -15,7 +15,7 @@ Solo cuenta como asociación la aparición de las dos especies en la misma fotog
 Evento = observador × celda ~1 km × día × franja de 3 h. Para cada pareja con ≥5 eventos en común: esperado condicionado al esfuerzo local (en cada bloque celda 0,1°·día la probabilidad de que una especie esté en un evento es proporcional a su tamaño; el esperado es la suma sobre bloques y la varianza la de una suma de Bernoulli), p unilateral (normal con corrección de continuidad) y Benjamini-Hochberg sobre toda la familia (115.204 parejas). Replicación: ≥3 celdas, ≥3 días, ≥5 observadores. Lista corta: n ≥15, ≥8 observadores; 70 mejores por puntuación (ln razón · ln n · min(observadores,20)/20) y 70 mejores entre grupos distintos. Código: `scripts/nulo_exacto_todos_pares_20261005.py`. **No es una conclusión**: la significación no discrimina (44,6 % de las parejas con soporte salen significativas).
 
 ## 5. Licencias y atribución de las fotografías
-CC0, CC BY, CC BY-SA y CC BY-NC / CC BY-NC-SA; se excluyen las sin licencia y las CC BY-NC-ND. Cada foto indica autor, licencia, fecha y hora local, lugar y enlace (script `scripts/meta_foto_20261006.py`). Las marcadas † (no comerciales) deben sustituirse por fotos CC0/CC BY/CC BY-SA, o contar con permiso del autor, si se publica en una revista comercial.
+CC0, CC BY, CC BY-SA y CC BY-NC / CC BY-NC-SA; se excluyen las sin licencia y las CC BY-NC-ND. Cada foto indica autor, licencia, fecha y hora local, lugar (localidad, zona y coordenadas con su precisión; `scripts/laminas_lugares_20261007.py`) y enlace (script `scripts/meta_foto_20261006.py`). Las marcadas † (no comerciales) deben sustituirse por fotos CC0/CC BY/CC BY-SA, o contar con permiso del autor, si se publica en una revista comercial.
 
 ## 6. Límites
 La proximidad en una foto no es interacción; la segunda especie la propone el identificador sin confirmación de curadores; la galería son sobre todo retratos centrados (subestima la presencia de segundas especies) y el identificador reconoce peor las especies pequeñas o camufladas; la lista corta se eligió por efecto y soporte, no al azar.

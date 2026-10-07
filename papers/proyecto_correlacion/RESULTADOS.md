@@ -1,4 +1,4 @@
-# Proyecto Correlación — Resultados (v20, 6-oct-2026)
+# Proyecto Correlación — Resultados (v21, 7-oct-2026)
 
 Solo se presentan como conclusiones las parejas con **ambas especies visibles en la misma fotografía**. El cribado por eventos es material de hipótesis.
 

@@ -25,7 +25,13 @@
     "file": "par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg",
     "w": 1024,
     "h": 768,
-    "nc": false
+    "nc": false,
+    "coord_oculta": false,
+    "precision_m": 36,
+    "place_guess": "Spain",
+    "lugar_detalle": "España",
+    "lugar_final": "Empordà Marítim, Girona, Cataluña; España",
+    "coords_txt": "42.0999° N, 3.1866° E (±36 m)"
    },
    {
     "ok": true,
@@ -46,7 +52,13 @@
     "file": "par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg",
     "w": 1024,
     "h": 1024,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": null,
+    "place_guess": "Kostrena, Primorsko-Goranska, Croatia",
+    "lugar_detalle": "Rožići, Kostrena, Općina Kostrena, Primorsko-goranska županija, Croacia",
+    "lugar_final": "Rožići, Kostrena, Općina Kostrena, Primorsko-goranska županija, Croacia; Dolina Ričine, Bakar, Primorsko-Goranska",
+    "coords_txt": "45.3024° N, 14.4878° E"
    },
    {
     "ok": true,
@@ -67,7 +79,13 @@
     "file": "par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg",
     "w": 1024,
     "h": 651,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 287,
+    "place_guess": "Spain",
+    "lugar_detalle": "España",
+    "lugar_final": "Empordà Marítim, Girona, Cataluña; España",
+    "coords_txt": "42.0860° N, 3.1988° E (±287 m)"
    },
    {
     "ok": true,
@@ -88,7 +106,13 @@
     "file": "par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 55,
+    "place_guess": "Girona, España",
+    "lugar_detalle": "España",
+    "lugar_final": "Girona, España; Empordà Marítim, Girona, Cataluña",
+    "coords_txt": "42.0736° N, 3.2055° E (±55 m)"
    }
   ]
  },
@@ -118,7 +142,13 @@
     "file": "par2__cratena_peregrina__eudendrium_racemosum__1.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 88,
+    "place_guess": "Le Ponton",
+    "lugar_detalle": "La Peyrade, Frontignan, Montpellier, Hérault, Francia",
+    "lugar_final": "La Peyrade, Frontignan, Montpellier, Hérault, Francia; ABC de la Lagune, Hérault, Languedoc-Roussillon",
+    "coords_txt": "43.4247° N, 3.7000° E (±88 m)"
    },
    {
     "ok": true,
@@ -139,7 +169,13 @@
     "file": "par2__cratena_peregrina__eudendrium_racemosum__2.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 183,
+    "place_guess": "17310 Lloret de Mar, Girona, España",
+    "lugar_detalle": "Venta de Goya, Lloret de Mar, la Selva, Cataluña, España",
+    "lugar_final": "Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña",
+    "coords_txt": "41.6913° N, 2.8299° E (±183 m)"
    },
    {
     "ok": true,
@@ -160,7 +196,13 @@
     "file": "par2__cratena_peregrina__eudendrium_racemosum__3.jpg",
     "w": 684,
     "h": 1024,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 183,
+    "place_guess": "17310 Lloret de Mar, Girona, España",
+    "lugar_detalle": "Venta de Goya, Lloret de Mar, la Selva, Cataluña, España",
+    "lugar_final": "Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña",
+    "coords_txt": "41.6913° N, 2.8299° E (±183 m)"
    },
    {
     "ok": true,
@@ -181,7 +223,13 @@
     "file": "par2__cratena_peregrina__eudendrium_racemosum__4.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 183,
+    "place_guess": "17310 Lloret de Mar, Girona, España",
+    "lugar_detalle": "Venta de Goya, Lloret de Mar, la Selva, Cataluña, España",
+    "lugar_final": "Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña",
+    "coords_txt": "41.6913° N, 2.8299° E (±183 m)"
    }
   ]
  },
@@ -211,7 +259,13 @@
     "file": "par3__condylactis_aurantiaca__periclimenes_scriptus__1.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 185,
+    "place_guess": "Spain",
+    "lugar_detalle": "Begur, Bajo Ampurdán, Cataluña, España",
+    "lugar_final": "Begur, Bajo Ampurdán, Cataluña, España; Empordà Marítim, Girona, Cataluña",
+    "coords_txt": "41.9355° N, 3.2176° E (±185 m)"
    },
    {
     "ok": true,
@@ -232,7 +286,13 @@
     "file": "par3__condylactis_aurantiaca__periclimenes_scriptus__2.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 101,
+    "place_guess": "Montredon, Marseille, France",
+    "lugar_detalle": "Francia",
+    "lugar_final": "Montredon, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur; Francia",
+    "coords_txt": "43.2325° N, 5.3502° E (±101 m)"
    },
    {
     "ok": true,
@@ -253,7 +313,13 @@
     "file": "par3__condylactis_aurantiaca__periclimenes_scriptus__3.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 185,
+    "place_guess": "Spain",
+    "lugar_detalle": "Begur, Bajo Ampurdán, Cataluña, España",
+    "lugar_final": "Begur, Bajo Ampurdán, Cataluña, España; Empordà Marítim, Girona, Cataluña",
+    "coords_txt": "41.9366° N, 3.2201° E (±185 m)"
    },
    {
     "ok": true,
@@ -274,7 +340,13 @@
     "file": "par3__condylactis_aurantiaca__periclimenes_scriptus__4.jpg",
     "w": 1024,
     "h": 680,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 142,
+    "place_guess": "Spain",
+    "lugar_detalle": "Begur, Bajo Ampurdán, Cataluña, España",
+    "lugar_final": "Begur, Bajo Ampurdán, Cataluña, España; Empordà Marítim, Girona, Cataluña",
+    "coords_txt": "41.9357° N, 3.2176° E (±142 m)"
    }
   ]
  },
@@ -304,7 +376,13 @@
     "file": "par4__lysmata_grabhami__telmatactis_cricoides__1.jpg",
     "w": 1024,
     "h": 673,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 662,
+    "place_guess": "Las Coloradas",
+    "lugar_detalle": "España",
+    "lugar_final": "Las Coloradas; LANZAROTE with iselets and seashore, Las Palmas, Islas Canarias; España",
+    "coords_txt": "28.8506° N, 13.7995° W (±662 m)"
    },
    {
     "ok": true,
@@ -325,7 +403,13 @@
     "file": "par4__lysmata_grabhami__telmatactis_cricoides__2.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 361,
+    "place_guess": "Playa Flamingo",
+    "lugar_detalle": "España",
+    "lugar_final": "Playa Flamingo; LANZAROTE with iselets and seashore, Las Palmas, Islas Canarias; España",
+    "coords_txt": "28.8552° N, 13.8439° W (±361 m)"
    },
    {
     "ok": true,
@@ -346,7 +430,13 @@
     "file": "par4__lysmata_grabhami__telmatactis_cricoides__3.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 100,
+    "place_guess": "Playa Flamingo Playa Blanca Lanzarote",
+    "lugar_detalle": "España",
+    "lugar_final": "Playa Flamingo Playa Blanca Lanzarote; LANZAROTE with iselets and seashore, Las Palmas, Islas Canarias; España",
+    "coords_txt": "28.8568° N, 13.8428° W (±100 m)"
    },
    {
     "ok": true,
@@ -367,7 +457,13 @@
     "file": "par4__lysmata_grabhami__telmatactis_cricoides__4.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 14,
+    "place_guess": "la caleta punta prieta tenerife",
+    "lugar_detalle": "Punta Prieta, Güímar, Canarias, España",
+    "lugar_final": "Punta Prieta, Güímar, Canarias, España; TENERIFE with seashore, Santa Cruz de Tenerife, Islas Canarias",
+    "coords_txt": "28.2660° N, 16.3869° W (±14 m)"
    }
   ]
  },
@@ -397,7 +493,13 @@
     "file": "par5__scyllaea_pelagica__latreutes_fucorum__1.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 105,
+    "place_guess": "Southampton, BM",
+    "lugar_detalle": "Bermudas",
+    "lugar_final": "Southampton, BM; Bermuda Marine, Sandys; Bermudas",
+    "coords_txt": "32.2556° N, 64.8742° W (±105 m)"
    }
   ]
  },
@@ -427,7 +529,13 @@
     "file": "par6__electra_posidoniae__tridentata_perpusilla__1.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 115,
+    "place_guess": "Spain",
+    "lugar_detalle": "España",
+    "lugar_final": "Vegueria de Barcelona, Barcelona, Cataluña; España",
+    "coords_txt": "41.3957° N, 2.2114° E (±115 m)"
    },
    {
     "ok": true,
@@ -448,7 +556,13 @@
     "file": "par6__electra_posidoniae__tridentata_perpusilla__2.jpg",
     "w": 1024,
     "h": 768,
-    "nc": true
+    "nc": true,
+    "coord_oculta": false,
+    "precision_m": 178,
+    "place_guess": "17300 Blanes, Girona, España",
+    "lugar_detalle": "Valldolig, Blanes, la Selva, Cataluña, España",
+    "lugar_final": "Valldolig, Blanes, la Selva, Cataluña, España; Vegueria de Barcelona, Barcelona, Cataluña",
+    "coords_txt": "41.6732° N, 2.8022° E (±178 m)"
    },
    {
     "ok": true,
@@ -469,7 +583,13 @@
     "file": "par6__electra_posidoniae__tridentata_perpusilla__3.jpg",
     "w": 1024,
     "h": 768,
-    "nc": false
+    "nc": false,
+    "coord_oculta": false,
+    "precision_m": null,
+    "place_guess": "Parrita, Puntarenas, CR",
+    "lugar_detalle": "Esterillos Oeste, Parrita, Puntarenas, Costa Rica",
+    "lugar_final": "Esterillos Oeste, Parrita, Puntarenas, Costa Rica",
+    "coords_txt": "9.5237° N, 84.5099° W"
    },
    {
     "ok": true,
@@ -490,7 +610,13 @@
     "file": "par6__electra_posidoniae__tridentata_perpusilla__4.jpg",
     "w": 1024,
     "h": 768,
-    "nc": false
+    "nc": false,
+    "coord_oculta": false,
+    "precision_m": 622,
+    "place_guess": "Cap Ras",
+    "lugar_detalle": "Llançà, Alto Ampurdán, Cataluña, España",
+    "lugar_final": "Llançà, Alto Ampurdán, Cataluña, España; Orientales, Girona, Cataluña",
+    "coords_txt": "42.3875° N, 3.1612° E (±622 m)"
    }
   ]
  }
