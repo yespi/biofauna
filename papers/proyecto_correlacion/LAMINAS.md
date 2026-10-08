@@ -1,6 +1,6 @@
 # Láminas fotográficas — Proyecto Correlación
 
-**Versión v9 — 7-oct-2026** · Cada lámina muestra **fotografías en las que se ven las dos especies de la asociación en la misma imagen** (proximidad real, centímetros). Selección: de la galería BioFauna se analizaron hasta 300 fotos por pareja; cada foto se identificó entera y por regiones y se conservaron las que contienen una región reconocida como cada especie; la selección final se revisó **a ojo**. La identidad de la segunda especie la propone BioFauna y no está confirmada por curadores. Material completo en https://github.com/yespi/biofauna (carpeta `papers/proyecto_correlacion/`).
+**Versión v10 — 8-oct-2026** · Cada lámina muestra **fotografías en las que se ven las dos especies de la asociación en la misma imagen** (proximidad real, centímetros). Selección: de la galería BioFauna se analizaron hasta 300 fotos por pareja; cada foto se identificó entera y por regiones y se conservaron las que contienen una región reconocida como cada especie; la selección final se revisó **a ojo**. La identidad de la segunda especie la propone BioFauna y no está confirmada por curadores. Material completo en https://github.com/yespi/biofauna (carpeta `papers/proyecto_correlacion/`).
 
 † Fotografías con licencia no comercial (CC BY-NC / CC BY-NC-SA): <b>deben sustituirse por fotos CC0, CC BY o CC BY-SA, o contar con permiso del autor, si el artículo se publica en una revista comercial.</b> Atribución: autor, licencia, fecha y hora (hora local de la observación), lugar (localidad, zona y coordenadas) y enlace a la observación original.
 
@@ -60,6 +60,33 @@ No hay lámina de <i>Felimare picta</i>–<i>Ircinia oros</i>, <i>Muraena helena
 <figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg" alt="Lámina 6.2"><figcaption>Lámina 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · Valldolig, Blanes, la Selva, Cataluña, España; Vegueria de Barcelona, Barcelona, Cataluña · 41.6732° N, 2.8022° E (±178 m) · Minka obs 511234.</figcaption></figure>
 <figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__3.jpg" alt="Lámina 6.3"><figcaption>Lámina 6.3: ester serrao · CC BY · 2024-06-30 07:17 (America/Costa_Rica) · Esterillos Oeste, Parrita, Puntarenas, Costa Rica · 9.5237° N, 84.5099° W · Minka obs 629063.</figcaption></figure>
 <figure><img src="lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg" alt="Lámina 6.4"><figcaption>Lámina 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Llançà, Alto Ampurdán, Cataluña, España; Orientales, Girona, Cataluña · 42.3875° N, 3.1612° E (±622 m) · Minka obs 544263.</figcaption></figure>
+</div>
+</div>
+
+<div class="lamina">
+<p class="lt"><b>Lámina 7. <i>Felimare orsinii</i> sobre una esponja oscura (<i>Scalarispongia scalaris</i>).</b> <i>Esponja identificada solo por BioFauna a partir de la foto (sin confirmación de curadores): se presenta como nivel 1 (aparece sobre), sin afirmar depredación.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__1.jpg" alt="Lámina 7.1"><figcaption>Lámina 7.1: motalec · CC BY-NC † · 2026-08-02 14:01 (Europe/Paris) · 8e Arrondissement, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1907° N, 5.3827° E · iNaturalist obs 389401988.</figcaption></figure>
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__2.jpg" alt="Lámina 7.2"><figcaption>Lámina 7.2: xavi salvador costa · CC BY-NC † · 2016-07-25 23:04 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña · 41.7658° N, 3.0026° E · Minka obs 418034.</figcaption></figure>
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__3.jpg" alt="Lámina 7.3"><figcaption>Lámina 7.3: motalec · CC BY-NC † · 2025-04-26 09:37 (Europe/Paris) · Impérial du Milieu; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1716° N, 5.3938° E · iNaturalist obs 275056747.</figcaption></figure>
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__4.jpg" alt="Lámina 7.4"><figcaption>Lámina 7.4: Alessandro Diotallevi · CC BY-NC † · 2024-04-28 10:06 (Etc/GMT-1) · lugar no indicado · 41.2450° N, 12.3467° E · iNaturalist obs 212560581.</figcaption></figure>
+</div>
+</div>
+
+<div class="lamina">
+<p class="lt"><b>Lámina 8. <i>Parazoanthus axinellae</i> junto a <i>Spongia lamella</i>.</b> <i>Esponja laminar gris junto a colonias de <i>Parazoanthus</i>: coexistencia en el mismo plano, sin interacción demostrada.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par8__parazoanthus_axinellae__spongia_lamella__1.jpg" alt="Lámina 8.1"><figcaption>Lámina 8.1: Sylvain Le Bris · CC BY-NC † · 2025-08-15 10:55 (Europe/Paris) · Pierre à Joseph, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1851° N, 5.3894° E · iNaturalist obs 307095607.</figcaption></figure>
+<figure><img src="lamina_fotos/par8__parazoanthus_axinellae__spongia_lamella__2.jpg" alt="Lámina 8.2"><figcaption>Lámina 8.2: Sylvain Le Bris · CC BY-NC † · 2026-05-17 09:42 (Europe/Paris) · Pharillons, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.2074° N, 5.3380° E · iNaturalist obs 362838925.</figcaption></figure>
+</div>
+</div>
+
+<div class="lamina">
+<p class="lt"><b>Lámina 9. <i>Echinolittorina punctata</i> y <i>Melarhaphe neritoides</i> (zona de salpicadura).</b> <i>Caracoles de la zona de salpicadura sobre la misma roca. Son especies muy parecidas: la separación depende de BioFauna y requiere confirmación de un experto (nivel 0–1).</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par9__echinolittorina_punctata__melarhaphe_neritoides__1.jpg" alt="Lámina 9.1"><figcaption>Lámina 9.1: Golfopolikayak · CC BY · 2020-06-19 16:58 (Europe/Paris) · 87029 Scalea CS, Italia; Pollino, Cosenza, Calabria · 39.8191° N, 15.7775° E · iNaturalist obs 56350676.</figcaption></figure>
+<figure><img src="lamina_fotos/par9__echinolittorina_punctata__melarhaphe_neritoides__2.jpg" alt="Lámina 9.2"><figcaption>Lámina 9.2: Mar Humet Caballero · CC BY-NC † · 2026-08-03 17:51 (Europe/Madrid) · Camping Cases, Carrer a l'Ombra del Montsià, les Cases d'Alcanar, Alcanar, Montsià, Tarragona, Catalunya, 43530, Espanya; RB ESP 44. Reserva de la Biosfera.Terras de L’Ebre. Cataluña. España., Castellón, Cataluña · 40.5557° N, 0.5335° E · Minka obs 834586.</figcaption></figure>
+<figure><img src="lamina_fotos/par9__echinolittorina_punctata__melarhaphe_neritoides__3.jpg" alt="Lámina 9.3"><figcaption>Lámina 9.3: Calum McLennan · CC BY-NC † · 2021-08-25 11:24 (Europe/London) · Alicante, Spain; Javea - Xabia, Alicante, Comunidad Valenciana · 38.8169° N, 0.1688° E · iNaturalist obs 92485321.</figcaption></figure>
 </div>
 </div>
 

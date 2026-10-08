@@ -2,7 +2,7 @@
 
 **Autor: Gustavo Zafra** · Creador y desarrollador de BioFauna (identificador BioCLIP-2.5 ViT-H/14 + FAISS) y de las aplicaciones FotoFauna y BioQuest; colaborador de la plataforma de ciencia ciudadana Minka SDG.
 
-**Versión v21 — 7-oct-2026** · Proyecto Correlación (BioFauna). Reescritura: las conclusiones se basan solo en la **proximidad real (centímetros)**, es decir, en fotografías donde aparecen las dos especies a la vez.
+**Versión v22 — 8-oct-2026** · Proyecto Correlación (BioFauna). Reescritura: las conclusiones se basan solo en la **proximidad real (centímetros)**, es decir, en fotografías donde aparecen las dos especies a la vez.
 
 ---
 
@@ -49,7 +49,7 @@ De las 138 parejas, 41 tuvieron al menos una foto candidata y 12 tres o más obs
 <figure class="fig"><img src="figuras/fig2_candidatas_por_pareja.png" alt="Figura 2. Fotos candidatas por pareja y resultado de la revi"><figcaption><b>Figura 2. Fotos candidatas por pareja y resultado de la revisión visual.</b> Observaciones distintas con foto candidata de ambas especies para las 14 parejas con más candidatas. Verde: confirmada a ojo con ambas especies visibles; rojo: falso positivo por especies parecidas; gris: sin revisar o por confirmar (<i>Echinolittorina</i>–<i>Melarhaphe</i>, <i>Cliona</i>/<i>Clavularia</i>–<i>Rocellaria</i>, <i>Anas</i>–<i>Gallinula</i>).</figcaption></figure>
 
 ### 3.3 Parejas con ambas especies visibles
-La Tabla 2 recoge las parejas confirmadas a ojo y las Láminas 1–6 las fotografías. *Peltodoris atromaculata* sobre *Petrosia ficiformis* (Avila, 1996) y *Cratena peregrina* sobre hidrozoos sirven de **control positivo**: son relaciones documentadas y el método encuentra fotos con ambas visibles. *Condylactis aurantiaca* con *Periclimenes scriptus* (el camarón entre los tentáculos de la anémona) salió de la lista corta; es coherente con el comensalismo conocido de los *Periclimenes* con anémonas, sin que se haya comprobado bibliografía específica para esta pareja. *Lysmata grabhami* con *Telmatactis cricoides* (camarón limpiador y anémona) y *Electra posidoniae* con *Tridentata perpusilla* (briozoo y hidrozoo sobre una misma hoja de *Posidonia*) muestran proximidad real, pero en el segundo caso es **microhábitat compartido, no interacción demostrada**. La segunda especie de cada foto la identifica BioFauna y **no está confirmada por curadores**.
+La Tabla 2 recoge las parejas confirmadas a ojo y las Láminas 1–9 las fotografías. *Peltodoris atromaculata* sobre *Petrosia ficiformis* (Avila, 1996) y *Cratena peregrina* sobre hidrozoos sirven de **control positivo**: son relaciones documentadas y el método encuentra fotos con ambas visibles. *Condylactis aurantiaca* con *Periclimenes scriptus* (el camarón entre los tentáculos de la anémona) salió de la lista corta; es coherente con el comensalismo conocido de los *Periclimenes* con anémonas, sin que se haya comprobado bibliografía específica para esta pareja. *Lysmata grabhami* con *Telmatactis cricoides* (camarón limpiador y anémona) y *Electra posidoniae* con *Tridentata perpusilla* (briozoo y hidrozoo sobre una misma hoja de *Posidonia*) muestran proximidad real, pero en el segundo caso es **microhábitat compartido, no interacción demostrada**. La segunda especie de cada foto la identifica BioFauna y **no está confirmada por curadores**.
 
 | Tabla 2. Parejas con fotografías de ambas especies en la misma imagen | Nivel | Fotos (obs. distintas) | Origen |
 |---|---|---:|---|
@@ -59,6 +59,54 @@ La Tabla 2 recoge las parejas confirmadas a ojo y las Láminas 1–6 las fotogra
 | *Lysmata grabhami* y *Telmatactis cricoides* (limpieza) | 1 | 4 (4) | selección previa (limpiador) |
 | *Scyllaea pelagica* sobre *Sargassum* flotante | 0–1 | 1 (1) | selección previa |
 | *Electra posidoniae* y *Tridentata perpusilla* sobre hojas de *Posidonia* (microhábitat compartido) | 1 | 4 (4) | lista corta del cribado |
+| *Felimare orsinii* sobre una esponja oscura (*Scalarispongia scalaris*) | 1 | 4 (4) | pares de misma foto (revisión a ojo 8-oct) |
+| *Parazoanthus axinellae* junto a *Spongia lamella* | 1 | 2 (2) | pares de misma foto (revisión a ojo 8-oct) |
+| *Echinolittorina punctata* y *Melarhaphe neritoides* (zona de salpicadura) | 0–1 | 3 (3) | pares de misma foto (con cautela) |
+
+### 3.5 Otras relaciones detectadas (candidatas del cribado)
+El cribado dejó 37 parejas no aviares con al menos una foto candidata (la lista corta de 138 incluía además 8 parejas con aves, fuera del alcance de este trabajo, que se excluyen). La Tabla 3 las lista con su estado de revisión; las que figuran «sin revisar a ojo» son hipótesis pendientes de comprobación visual, no resultados. Las parejas de las láminas 7–9 se añaden en esta versión (v22).
+
+Tabla 3. Parejas candidatas con foto de ambas especies según el detector
+
+| Pareja | Obs. distintas con foto candidata | Estado |
+|---|---:|---|
+| *Electra posidoniae* – *Tridentata perpusilla* | 43 | lámina 6 |
+| *Polititapes aureus* – *Ruditapes decussatus* | 31 | falso positivo (especies parecidas) |
+| *Condylactis aurantiaca* – *Periclimenes scriptus* | 31 | lámina 3 |
+| *Caloria quatrefagesi* – *Luisella babai* | 24 | falso positivo (especies parecidas) |
+| *Echinolittorina punctata* – *Melarhaphe neritoides* | 15 | lámina 9, con cautela |
+| *Cliona rhodensis* – *Rocellaria dubia* | 14 | descartada (no se ve el bivalvo) |
+| *Clavularia crassa* – *Rocellaria dubia* | 13 | sin revisar a ojo |
+| *Clavelina lepadiformis* – *Echinaster sepositus* | 6 | débil (ascidia no confirmable) |
+| *Eryngium maritimum* – *Pancratium maritimum* | 4 | no confirmada (no se distingue *Eryngium*) |
+| *Calystegia soldanella* – *Medicago marina* | 3 | 1 obs.; sin decidir |
+| *Mactra corallina* – *Peronaea planata* | 3 | sin revisar a ojo |
+| *Chamelea gallina* – *Glycymeris glycymeris* | 2 | sin revisar a ojo |
+| *Chamelea gallina* – *Spisula subtruncata* | 2 | sin revisar a ojo |
+| *Donax trunculus* – *Spisula subtruncata* | 2 | sin revisar a ojo |
+| *Sicyonia carinata* – *Synodus saurus* | 2 | sin revisar a ojo |
+| *Ophidiaster ophidianus* – *Tripterygion delaisi* | 2 | sin revisar a ojo |
+| *Holothuria forskali* – *Reptadeonella violacea* | 2 | sin revisar a ojo |
+| *Columbella rustica* – *Conus ventricosus* | 1 | sin revisar a ojo |
+| *Diaphorodoris alba* – *Luisella babai* | 1 | sin revisar a ojo |
+| *Mactra corallina* – *Turritellinella tricarinata* | 1 | sin revisar a ojo |
+| *Donax semistriatus* – *Spisula subtruncata* | 1 | sin revisar a ojo |
+| *Barbatia barbata* – *Limaria tuberculata* | 1 | sin revisar a ojo |
+| *Chamelea gallina* – *Mactra corallina* | 1 | sin revisar a ojo |
+| *Chamelea gallina* – *Ensis minor* | 1 | sin revisar a ojo |
+| *Fistularia commersonii* – *Siganus rivulatus* | 1 | sin revisar a ojo |
+| *Cotylorhiza tuberculata* – *Diplodus vulgaris* | 1 | sin revisar a ojo |
+| *Acanthocardia tuberculata* – *Cymodocea nodosa* | 1 | sin revisar a ojo |
+| *Chthamalus stellatus* – *Echinolittorina punctata* | 1 | sin revisar a ojo |
+| *Semicassis undulata* – *Synodus saurus* | 1 | sin revisar a ojo |
+| *Ophisurus serpens* – *Sicyonia carinata* | 1 | sin revisar a ojo |
+| *Condylactis aurantiaca* – *Gobius geniporus* | 1 | sin revisar a ojo |
+| *Holothuria forskali* – *Pleraplysilla spinifera* | 1 | sin revisar a ojo |
+| *Epinephelus costae* – *Pinna rudis* | 1 | sin revisar a ojo |
+| *Muraena helena* – *Octopus vulgaris* | 1 | sin revisar a ojo |
+| *Chthamalus stellatus* – *Cystoseira compressa* | 1 | sin revisar a ojo |
+| *Conger conger* – *Galathea strigosa* | 1 | sin revisar a ojo |
+| *Bispira volutacornis* – *Phycis phycis* | 1 | sin revisar a ojo |
 
 ### 3.4 Parejas sin foto conjunta
 No apareció ninguna foto con ambas especies para *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* ni *Fistularia commersonii*–*Pterois miles*. Eso no prueba que no convivan, y no permite afirmar ninguna relación: quedan *sin confirmar*.
@@ -120,6 +168,33 @@ No apareció ninguna foto con ambas especies para *Felimare picta*–*Ircinia or
 </div>
 </div>
 
+<div class="lamina">
+<p class="lt"><b>Lámina 7. <i>Felimare orsinii</i> sobre una esponja oscura (<i>Scalarispongia scalaris</i>).</b> <i>Esponja identificada solo por BioFauna a partir de la foto (sin confirmación de curadores): se presenta como nivel 1 (aparece sobre), sin afirmar depredación.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__1.jpg" alt="Lámina 7.1"><figcaption>Lámina 7.1: motalec · CC BY-NC † · 2026-08-02 14:01 (Europe/Paris) · 8e Arrondissement, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1907° N, 5.3827° E · iNaturalist obs 389401988.</figcaption></figure>
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__2.jpg" alt="Lámina 7.2"><figcaption>Lámina 7.2: xavi salvador costa · CC BY-NC † · 2016-07-25 23:04 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña · 41.7658° N, 3.0026° E · Minka obs 418034.</figcaption></figure>
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__3.jpg" alt="Lámina 7.3"><figcaption>Lámina 7.3: motalec · CC BY-NC † · 2025-04-26 09:37 (Europe/Paris) · Impérial du Milieu; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1716° N, 5.3938° E · iNaturalist obs 275056747.</figcaption></figure>
+<figure><img src="lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__4.jpg" alt="Lámina 7.4"><figcaption>Lámina 7.4: Alessandro Diotallevi · CC BY-NC † · 2024-04-28 10:06 (Etc/GMT-1) · lugar no indicado · 41.2450° N, 12.3467° E · iNaturalist obs 212560581.</figcaption></figure>
+</div>
+</div>
+
+<div class="lamina">
+<p class="lt"><b>Lámina 8. <i>Parazoanthus axinellae</i> junto a <i>Spongia lamella</i>.</b> <i>Esponja laminar gris junto a colonias de <i>Parazoanthus</i>: coexistencia en el mismo plano, sin interacción demostrada.</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par8__parazoanthus_axinellae__spongia_lamella__1.jpg" alt="Lámina 8.1"><figcaption>Lámina 8.1: Sylvain Le Bris · CC BY-NC † · 2025-08-15 10:55 (Europe/Paris) · Pierre à Joseph, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1851° N, 5.3894° E · iNaturalist obs 307095607.</figcaption></figure>
+<figure><img src="lamina_fotos/par8__parazoanthus_axinellae__spongia_lamella__2.jpg" alt="Lámina 8.2"><figcaption>Lámina 8.2: Sylvain Le Bris · CC BY-NC † · 2026-05-17 09:42 (Europe/Paris) · Pharillons, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.2074° N, 5.3380° E · iNaturalist obs 362838925.</figcaption></figure>
+</div>
+</div>
+
+<div class="lamina">
+<p class="lt"><b>Lámina 9. <i>Echinolittorina punctata</i> y <i>Melarhaphe neritoides</i> (zona de salpicadura).</b> <i>Caracoles de la zona de salpicadura sobre la misma roca. Son especies muy parecidas: la separación depende de BioFauna y requiere confirmación de un experto (nivel 0–1).</i></p>
+<div class="grid">
+<figure><img src="lamina_fotos/par9__echinolittorina_punctata__melarhaphe_neritoides__1.jpg" alt="Lámina 9.1"><figcaption>Lámina 9.1: Golfopolikayak · CC BY · 2020-06-19 16:58 (Europe/Paris) · 87029 Scalea CS, Italia; Pollino, Cosenza, Calabria · 39.8191° N, 15.7775° E · iNaturalist obs 56350676.</figcaption></figure>
+<figure><img src="lamina_fotos/par9__echinolittorina_punctata__melarhaphe_neritoides__2.jpg" alt="Lámina 9.2"><figcaption>Lámina 9.2: Mar Humet Caballero · CC BY-NC † · 2026-08-03 17:51 (Europe/Madrid) · Camping Cases, Carrer a l'Ombra del Montsià, les Cases d'Alcanar, Alcanar, Montsià, Tarragona, Catalunya, 43530, Espanya; RB ESP 44. Reserva de la Biosfera.Terras de L’Ebre. Cataluña. España., Castellón, Cataluña · 40.5557° N, 0.5335° E · Minka obs 834586.</figcaption></figure>
+<figure><img src="lamina_fotos/par9__echinolittorina_punctata__melarhaphe_neritoides__3.jpg" alt="Lámina 9.3"><figcaption>Lámina 9.3: Calum McLennan · CC BY-NC † · 2021-08-25 11:24 (Europe/London) · Alicante, Spain; Javea - Xabia, Alicante, Comunidad Valenciana · 38.8169° N, 0.1688° E · iNaturalist obs 92485321.</figcaption></figure>
+</div>
+</div>
+
 ## 4. Discusión
 
 **Qué demuestra y qué no.** Una foto con las dos especies demuestra proximidad a escala de centímetros en un instante; no demuestra que se busquen, se eviten o interactúen. Tres o más observaciones independientes con ambas visibles dan replicación, y el contacto visible (sobre, dentro, comiendo) apunta a una relación, que debe confirmarse con curadores y bibliografía. La co-ocurrencia por evento, en cambio, solo señala especies que comparten sitio y fecha y **no se usa como resultado**: al exigir la misma foto desaparecen la mayoría de las coincidencias.
@@ -128,12 +203,12 @@ No apareció ninguna foto con ambas especies para *Felimare picta*–*Ircinia or
 
 ## 5. Limitaciones
 
-La proximidad en una foto no es interacción. La identidad de la segunda especie es una propuesta del identificador. La lista corta se eligió por tamaño de efecto y soporte, no por azar, y las parejas de control positivo y las candidatas de láminas previas se eligieron por criterio del autor. La novedad de ninguna pareja se ha contrastado todavía con la bibliografía ni con curadores. Las fotos CC BY-NC deben sustituirse en una revista comercial.
+**Cifra del identificador.** El 82,85 % procede del panel de evaluación y una parte de sus filas (≈12,6 % con similitud ≥ 0,95 con la galería) puede coincidir con fotos ya indexadas, por lo que puede estar sobreestimado; se recalculará sin fuga contra el índice vivo. **Validación externa.** Se probó el cruce con la base de interacciones GloBI y no mostró señal en los grupos de este trabajo (la coincidencia procedía de parejas de aves, fuera de alcance; la API no permite separar los registros de iNaturalist), por lo que no se usa como validación. La proximidad en una foto no es interacción. La identidad de la segunda especie es una propuesta del identificador. La lista corta se eligió por tamaño de efecto y soporte, no por azar, y las parejas de control positivo y las candidatas de láminas previas se eligieron por criterio del autor. La novedad de ninguna pareja se ha contrastado todavía con la bibliografía ni con curadores. Las fotos CC BY-NC deben sustituirse en una revista comercial.
 
 ## 6. Conclusiones
 
 1. El cribado por co-ocurrencia de eventos, aun con el esfuerzo controlado, no es evidencia de asociación: genera miles de coincidencias, de las que solo una pequeña parte resiste la revisión por proximidad real.
-2. La proximidad real (ambas especies en la misma fotografía) es un criterio verificable por cualquier lector; con él se han confirmado a ojo cinco parejas, dos de ellas con contacto visible entre organismos de grupos distintos además de los controles positivos.
+2. La proximidad real (ambas especies en la misma fotografía) es un criterio verificable por cualquier lector; con él se han confirmado a ojo siete parejas (dos de ellas nuevas en la v22, de nivel 1), dos de ellas con contacto visible entre organismos de grupos distintos además de los controles positivos.
 3. El método sirve para proponer parejas y fotografías que los curadores pueden verificar; no sustituye su criterio.
 
 ## Agradecimientos
@@ -171,7 +246,7 @@ investigación bajo la supervisión y dirección del autor.
 
 **Todo el material está en el repositorio público de GitHub: https://github.com/yespi/biofauna** (rama `master`). Rutas completas:
 - Parejas de la lista corta y sus fotos candidatas: [`data/copresencia_pares_20261006.csv`](https://github.com/yespi/biofauna/blob/master/data/copresencia_pares_20261006.csv) y [`data/copresencia_hits_20261006.jsonl`](https://github.com/yespi/biofauna/blob/master/data/copresencia_hits_20261006.jsonl).
-- Manifiesto de las láminas con autor, licencia, fecha y hora, lugar y enlace de cada foto: [`papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261007.json`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261007.json).
+- Manifiesto de las láminas con autor, licencia, fecha y hora, lugar y enlace de cada foto: [`papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261008.json`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261008.json).
 - Listados del cribado por eventos (solo hipótesis), con su descripción: [`data/README_correlacion.md`](https://github.com/yespi/biofauna/blob/master/data/README_correlacion.md) y los ficheros `data/nulo_exacto_pares_*.csv` y `data/pares_*_20261005.csv`.
 - Métodos y resultados ampliados, figuras y láminas: carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) (artículo en español e inglés, `LAMINAS`, `METODOS.md`, `RESULTADOS.md`, `figuras/`, `lamina_fotos/`). Las versiones sin número (`ARTICULO_ES_latest.pdf`, `ARTICLE_EN_latest.pdf`, `LAMINAS_latest.pdf`) se actualizan siempre; las versionadas se conservan las dos últimas.
 - Identificador BioFauna (código, prototipos, calibradores, scripts de evaluación): carpetas [`src/`](https://github.com/yespi/biofauna/blob/master/src/), [`scripts/`](https://github.com/yespi/biofauna/blob/master/scripts/), [`data/`](https://github.com/yespi/biofauna/blob/master/data/) y [`papers/biofauna/`](https://github.com/yespi/biofauna/blob/master/papers/biofauna/).
