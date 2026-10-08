@@ -64,7 +64,7 @@ La Tabla 2 recoge las parejas confirmadas a ojo y las Láminas 1–9 las fotogra
 | *Echinolittorina punctata* y *Melarhaphe neritoides* (zona de salpicadura) | 0–1 | 3 (3) | pares de misma foto (con cautela) |
 
 ### 3.5 Otras relaciones detectadas (candidatas del cribado)
-El cribado dejó 37 parejas no aviares con al menos una foto candidata (la lista corta de 138 incluía además 8 parejas con aves, fuera del alcance de este trabajo, que se excluyen). La Tabla 3 las lista con su estado de revisión; las que figuran «sin revisar a ojo» son hipótesis pendientes de comprobación visual, no resultados. Las parejas de las láminas 7–9 se añaden en esta versión (v22).
+El cribado dejó 41 parejas con al menos una foto candidata (incluidas 8 parejas de aves acuáticas de la lista corta de 138: el título habla de especies marinas, pero el criterio de la misma foto no depende del grupo, y las aves figuran sin revisar a ojo). La Tabla 3 las lista con su estado de revisión; las que figuran «sin revisar a ojo» son hipótesis pendientes de comprobación visual, no resultados. Las parejas de las láminas 7–9 se añaden en esta versión (v22).
 
 Tabla 3. Parejas candidatas con foto de ambas especies según el detector
 
@@ -75,6 +75,7 @@ Tabla 3. Parejas candidatas con foto de ambas especies según el detector
 | *Condylactis aurantiaca* – *Periclimenes scriptus* | 31 | lámina 3 |
 | *Caloria quatrefagesi* – *Luisella babai* | 24 | falso positivo (especies parecidas) |
 | *Echinolittorina punctata* – *Melarhaphe neritoides* | 15 | lámina 9, con cautela |
+| *Anas platyrhynchos* – *Gallinula chloropus* | 14 | aves acuáticas; sin revisar a ojo |
 | *Cliona rhodensis* – *Rocellaria dubia* | 14 | descartada (no se ve el bivalvo) |
 | *Clavularia crassa* – *Rocellaria dubia* | 13 | sin revisar a ojo |
 | *Clavelina lepadiformis* – *Echinaster sepositus* | 6 | débil (ascidia no confirmable) |
@@ -88,11 +89,14 @@ Tabla 3. Parejas candidatas con foto de ambas especies según el detector
 | *Ophidiaster ophidianus* – *Tripterygion delaisi* | 2 | sin revisar a ojo |
 | *Holothuria forskali* – *Reptadeonella violacea* | 2 | sin revisar a ojo |
 | *Columbella rustica* – *Conus ventricosus* | 1 | sin revisar a ojo |
+| *Chroicocephalus ridibundus* – *Gallinula chloropus* | 1 | aves acuáticas; sin revisar a ojo |
+| *Ardea cinerea* – *Gallinula chloropus* | 1 | aves acuáticas; sin revisar a ojo |
 | *Diaphorodoris alba* – *Luisella babai* | 1 | sin revisar a ojo |
 | *Mactra corallina* – *Turritellinella tricarinata* | 1 | sin revisar a ojo |
 | *Donax semistriatus* – *Spisula subtruncata* | 1 | sin revisar a ojo |
 | *Barbatia barbata* – *Limaria tuberculata* | 1 | sin revisar a ojo |
 | *Chamelea gallina* – *Mactra corallina* | 1 | sin revisar a ojo |
+| *Anas platyrhynchos* – *Phalacrocorax carbo* | 1 | aves acuáticas; sin revisar a ojo |
 | *Chamelea gallina* – *Ensis minor* | 1 | sin revisar a ojo |
 | *Fistularia commersonii* – *Siganus rivulatus* | 1 | sin revisar a ojo |
 | *Cotylorhiza tuberculata* – *Diplodus vulgaris* | 1 | sin revisar a ojo |
@@ -203,7 +207,7 @@ No apareció ninguna foto con ambas especies para *Felimare picta*–*Ircinia or
 
 ## 5. Limitaciones
 
-**Cifra del identificador.** El 82,85 % procede del panel de evaluación y una parte de sus filas (≈12,6 % con similitud ≥ 0,95 con la galería) puede coincidir con fotos ya indexadas, por lo que puede estar sobreestimado; se recalculará sin fuga contra el índice vivo. **Validación externa.** Se probó el cruce con la base de interacciones GloBI y no mostró señal en los grupos de este trabajo (la coincidencia procedía de parejas de aves, fuera de alcance; la API no permite separar los registros de iNaturalist), por lo que no se usa como validación. La proximidad en una foto no es interacción. La identidad de la segunda especie es una propuesta del identificador. La lista corta se eligió por tamaño de efecto y soporte, no por azar, y las parejas de control positivo y las candidatas de láminas previas se eligieron por criterio del autor. La novedad de ninguna pareja se ha contrastado todavía con la bibliografía ni con curadores. Las fotos CC BY-NC deben sustituirse en una revista comercial.
+**Cifra del identificador.** El 82,85 % procede del panel de evaluación y una parte de sus filas (≈12,6 % con similitud ≥ 0,95 con la galería) puede coincidir con fotos ya indexadas, por lo que puede estar sobreestimado; se recalculará sin fuga contra el índice vivo. **Validación externa.** Se probó el cruce con la base de interacciones GloBI y no mostró señal en los grupos de este trabajo (la coincidencia procedía de 7 parejas de solo 5 especies de aves acuáticas, no independientes y con el tipo genérico «interactúa con»; sin ellas no hay enriquecimiento, p = 0,68; la API no permite separar los registros de iNaturalist), por lo que no se usa como validación. La proximidad en una foto no es interacción. La identidad de la segunda especie es una propuesta del identificador. La lista corta se eligió por tamaño de efecto y soporte, no por azar, y las parejas de control positivo y las candidatas de láminas previas se eligieron por criterio del autor. La novedad de ninguna pareja se ha contrastado todavía con la bibliografía ni con curadores. Las fotos CC BY-NC deben sustituirse en una revista comercial.
 
 ## 6. Conclusiones
 

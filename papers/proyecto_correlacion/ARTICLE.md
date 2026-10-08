@@ -64,7 +64,7 @@ Table 2 lists the pairs confirmed by eye and Plates 1–9 show the photographs. 
 | *Echinolittorina punctata* and *Melarhaphe neritoides* (splash zone) | 0–1 | 3 (3) | same-photo pairs (with caution) |
 
 ### 3.5 Other detected relations (screening candidates)
-The screening left 37 non-bird pairs with at least one candidate photo (the 138-pair shortlist also contained 8 bird pairs, outside the scope of this work, which are excluded). Table 3 lists them with their review status; those marked 'not reviewed by eye' are hypotheses awaiting visual checking, not results. The pairs in plates 7–9 are added in this version (v22).
+The screening left 41 pairs with at least one candidate photo (including 8 waterbird pairs from the 138-pair shortlist: the title refers to marine species, but the same-photo criterion does not depend on the group, and birds are listed as not reviewed by eye). Table 3 lists them with their review status; those marked 'not reviewed by eye' are hypotheses awaiting visual checking, not results. The pairs in plates 7–9 are added in this version (v22).
 
 Table 3. Candidate pairs with a photo of both species according to the detector
 
@@ -75,6 +75,7 @@ Table 3. Candidate pairs with a photo of both species according to the detector
 | *Condylactis aurantiaca* – *Periclimenes scriptus* | 31 | plate 3 |
 | *Caloria quatrefagesi* – *Luisella babai* | 24 | false positive (look-alikes) |
 | *Echinolittorina punctata* – *Melarhaphe neritoides* | 15 | plate 9, with caution |
+| *Anas platyrhynchos* – *Gallinula chloropus* | 14 | waterbirds; not reviewed by eye |
 | *Cliona rhodensis* – *Rocellaria dubia* | 14 | discarded (bivalve not visible) |
 | *Clavularia crassa* – *Rocellaria dubia* | 13 | not reviewed by eye |
 | *Clavelina lepadiformis* – *Echinaster sepositus* | 6 | weak (ascidian unconfirmed) |
@@ -88,11 +89,14 @@ Table 3. Candidate pairs with a photo of both species according to the detector
 | *Ophidiaster ophidianus* – *Tripterygion delaisi* | 2 | not reviewed by eye |
 | *Holothuria forskali* – *Reptadeonella violacea* | 2 | not reviewed by eye |
 | *Columbella rustica* – *Conus ventricosus* | 1 | not reviewed by eye |
+| *Chroicocephalus ridibundus* – *Gallinula chloropus* | 1 | waterbirds; not reviewed by eye |
+| *Ardea cinerea* – *Gallinula chloropus* | 1 | waterbirds; not reviewed by eye |
 | *Diaphorodoris alba* – *Luisella babai* | 1 | not reviewed by eye |
 | *Mactra corallina* – *Turritellinella tricarinata* | 1 | not reviewed by eye |
 | *Donax semistriatus* – *Spisula subtruncata* | 1 | not reviewed by eye |
 | *Barbatia barbata* – *Limaria tuberculata* | 1 | not reviewed by eye |
 | *Chamelea gallina* – *Mactra corallina* | 1 | not reviewed by eye |
+| *Anas platyrhynchos* – *Phalacrocorax carbo* | 1 | waterbirds; not reviewed by eye |
 | *Chamelea gallina* – *Ensis minor* | 1 | not reviewed by eye |
 | *Fistularia commersonii* – *Siganus rivulatus* | 1 | not reviewed by eye |
 | *Cotylorhiza tuberculata* – *Diplodus vulgaris* | 1 | not reviewed by eye |
@@ -203,7 +207,7 @@ No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Mur
 
 ## 5. Limitations
 
-**Identifier accuracy.** The 82.85 % comes from the evaluation panel, and part of its rows (≈12.6 % with similarity ≥ 0.95 to the gallery) may coincide with already indexed photos, so it may be overestimated; it will be recomputed without leakage against the live index. **External validation.** Cross-checking against the GloBI interaction database showed no signal for the groups in this work (the matches came from bird pairs, out of scope; the API does not allow iNaturalist-derived records to be separated), so it is not used as validation. Proximity in a photo is not interaction. The identity of the second species is a proposal by the identifier. The shortlist was chosen by effect size and support, not at random, and the positive-control pairs and earlier plate candidates were chosen by the author's judgement. The novelty of no pair has yet been checked against the literature or by curators. CC BY-NC photos must be replaced in a commercial journal.
+**Identifier accuracy.** The 82.85 % comes from the evaluation panel, and part of its rows (≈12.6 % with similarity ≥ 0.95 to the gallery) may coincide with already indexed photos, so it may be overestimated; it will be recomputed without leakage against the live index. **External validation.** Cross-checking against the GloBI interaction database showed no signal for the groups in this work (the matches came from 7 pairs of only 5 waterbird species, not independent and with the generic type “interacts with”; without them there is no enrichment, p = 0.68; the API does not allow iNaturalist-derived records to be separated), so it is not used as validation. Proximity in a photo is not interaction. The identity of the second species is a proposal by the identifier. The shortlist was chosen by effect size and support, not at random, and the positive-control pairs and earlier plate candidates were chosen by the author's judgement. The novelty of no pair has yet been checked against the literature or by curators. CC BY-NC photos must be replaced in a commercial journal.
 
 ## 6. Conclusions
 
