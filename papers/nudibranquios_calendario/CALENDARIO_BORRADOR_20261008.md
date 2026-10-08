@@ -4,60 +4,60 @@
 
 | Especie | Obs. | Periodo observable | Dónde más se ve (top 3) |
 |---|---:|---|---|
-| *Edmundsella pedata* | 732 | Todo el año | Marseille, Languedoc-Roussillon, Portbou / Colera |
-| *Calmella cavolini* | 697 | Todo el año | Marseille, Sant Feliu de Guíxols, L'Escala |
-| *Paraflabellina ischitana* | 646 | Todo el año | Marseille, Provence-Alpes-Côte d'Azur, L'Escala |
-| *Antiopella cristata* | 606 | Todo el año | Marseille, Sant Feliu de Guíxols, Begur / Aiguablava |
-| *Caloria quatrefagesi* | 524 | Todo el año | L'Ametlla de Mar, Mataró, Roses |
-| *Trinchesia morrowae* | 524 | Todo el año | Marseille, Sant Feliu de Guíxols, Languedoc-Roussillon |
-| *Nemesignis banyulensis* | 461 | Todo el año | Tarragona, Marseille, Languedoc-Roussillon |
-| *Luisella babai* | 460 | Todo el año | Marseille, Mataró, Cap de Creus / Cadaqués |
-| *Facelina auriculata* | 398 | Todo el año | Roses, Sant Feliu de Guíxols, Languedoc-Roussillon |
-| *Facelina rubrovittata* | 384 | Todo el año | Marseille, Sant Feliu de Guíxols, L'Escala |
-| *Facelinopsis marioni* | 368 | Todo el año | Sant Feliu de Guíxols, Begur / Aiguablava, Marseille |
-| *Candiella odhneri* | 354 | Todo el año | Cap de Creus / Cadaqués, Languedoc-Roussillon, Marseille |
-| *Berghia coerulescens* | 295 | Todo el año | Illes Medes / L'Estartit, Barcelona, Languedoc-Roussillon |
-| *Spurilla neapolitana* | 294 | Todo el año | Sant Feliu de Guíxols, Francia, Barcelona |
-| *Marionia blainvillea* | 274 | Todo el año | Sant Feliu de Guíxols, Begur / Aiguablava, Tossa de Mar |
-| *Favorinus branchialis* | 244 | Todo el año | Sant Feliu de Guíxols, Francia, Languedoc-Roussillon |
-| *Caloria elegans* | 231 | Todo el año | Marseille, Begur / Aiguablava, Almuñécar |
-| *Candiella striata* | 226 | Todo el año | Languedoc-Roussillon, Begur / Aiguablava, Cap de Creus / Cadaqués |
-| *Facelina annulicornis* | 217 | Todo el año | Sant Feliu de Guíxols, Begur / Aiguablava, Languedoc-Roussillon |
-| *Candiella manicata* | 211 | Todo el año | Sant Feliu de Guíxols, Begur / Aiguablava, L'Escala |
-| *Aeolidiella alderi* | 198 | Todo el año | Francia, Begur / Aiguablava, Languedoc-Roussillon |
-| *Trinchesia caerulea* | 198 | Todo el año | Marseille, Illes Medes / L'Estartit, Bouches-du-Rhône |
-| *Cratena peregrina* | 196 | Todo el año | Tarragona, Illes Medes / L'Estartit, Reserva del Toro |
-| *Paraflabellina gabinierei* | 182 | Todo el año | Marseille, Almuñécar, Anse du Petit Nid |
-| *Tenellia ocellata* | 181 | Todo el año | Marseille, Sant Feliu de Guíxols, Begur / Aiguablava |
-| *Facelina vicina* | 172 | Todo el año | Languedoc-Roussillon, Francia, Palamós |
-| *Amphorina farrani* | 124 | Todo el año | Marseille, Begur / Aiguablava, Roses |
-| *Tenellia genovae* | 121 | Todo el año | Sant Feliu de Guíxols, Begur / Aiguablava, Languedoc-Roussillon |
-| *Doto rosea* | 107 | Todo el año | Sant Feliu de Guíxols, Begur / Aiguablava, L'Escala |
-| *Janolus hyalinus* | 106 | 8 Diciembre-2 Junio | Francia, Sant Feliu de Guíxols, Languedoc-Roussillon |
-| *Doto floridicola* | 97 | Todo el año | L'Escala, Begur / Aiguablava, Marseille |
-| *Doto cervicenigra* | 94 | Todo el año | Sant Feliu de Guíxols, Francia, Roses |
-| *Berghia verrucicornis* | 85 | Todo el año | Francia, Sant Feliu de Guíxols, Barcelona |
-| *Doto koenneckeri* | 84 | Todo el año | Languedoc-Roussillon, Cap de Creus / Cadaqués, Sant Feliu de Guíxols |
-| *Phetia soussi* | 83 | 10 Agosto-24 Agosto; 9 Diciembre-13 Mayo | Sant Feliu de Guíxols, Begur / Aiguablava, Illes Medes / L'Estartit |
-| *Doto millbayana* | 80 | 21 Diciembre-13 Junio | Sant Feliu de Guíxols, Tossa de Mar, L'Escala |
-| *Hancockia uncinata* | 72 | 15 Junio-27 Agosto; 30 Diciembre-29 Abril | Sant Feliu de Guíxols, Marseille, Palamós |
-| *Nudibranchus exiguus* | 64 | 8 Diciembre-28 Junio | Sant Feliu de Guíxols, Francia, Roses |
-| *Dicata odhneri* | 62 | 12 Abril-14 Agosto | Languedoc-Roussillon, Marseille, Cap de Creus / Cadaqués |
-| *Doto pygmaea* | 59 | Todo el año | Palamós, Sant Feliu de Guíxols, Begur / Aiguablava |
-| *Tethys fimbria* | 59 | 18 Agosto-28 Agosto; 17 Noviembre-24 Junio | Languedoc-Roussillon, Provence-Alpes-Côte d'Azur, Bouches-du-Rhône |
-| *Tenellia miniostriata* | 54 | Todo el año | Sant Feliu de Guíxols, Cap de Creus / Cadaqués, Martigues |
-| *Flabellina affinis* | 51 | 28 Julio-12 Septiembre | Tarragona, Cap de Creus / Cadaqués, Maresme |
-| *Facelina dubia* | 48 | 17 Julio-21 Agosto; 8 Diciembre-10 Abril | Languedoc-Roussillon, Francia, Roses |
-| *Doto paulinae* | 46 | 24 Diciembre-19 Junio | Barcelona, L'Escala, Tossa de Mar |
-| *Fjordia lineata* | 42 | 15 Enero-9 Junio | Begur / Aiguablava, L'Escala, Roses |
-| *Armina tigrina* | 39 | Todo el año | Languedoc-Roussillon, Provence-Alpes-Côte d'Azur, Bouches-du-Rhône |
-| *Amphorina andra* | 38 | 29 Diciembre-15 Mayo | Sant Feliu de Guíxols, Begur / Aiguablava, Francia |
-| *Trinchesia cuanensis* | 37 | 11 Noviembre-22 Noviembre; 15 Diciembre-15 Mayo | Sant Feliu de Guíxols, Roses, Languedoc-Roussillon |
-| *Capellinia doriae* | 32 | 17 Enero-24 Mayo; 20 Octubre-31 Octubre | Sant Feliu de Guíxols, Francia, Tossa de Mar |
-| *Limenandra nodosa* | 29 | 1 Mayo-15 Mayo; 29 Junio-10 Noviembre | Marseille, Golfo di Taranto, Languedoc-Roussillon |
-| *Eubranchus prietoi* | 22 | 1 Mayo-23 Mayo; 27 Junio-11 Julio; 24 Diciembre-6 Abril | Sant Feliu de Guíxols, Llafranc / Calella de Palafrugell, Palamós |
-| *Cerberilla bernadettae* | 20 | 11 Febrero-19 Abril; 28 Mayo-25 Junio; 8 Agosto-22 Agosto; 18 Diciembre-11 Enero | Languedoc-Roussillon, Francia, Provence-Alpes-Côte d'Azur |
-| *Tergipes tergipes* | 20 | 19 Enero-23 Febrero; 2 Abril-16 Abril; 27 Octubre-9 Noviembre | Francia, Sant Feliu de Guíxols, Roses |
+| *Edmundsella pedata* | 732 | Todo el año (pico: Abril–Mayo) | Marseille, Languedoc-Roussillon, Provence-Alpes-Côte d'Azur |
+| *Calmella cavolini* | 697 | Todo el año (pico: Agosto) | Marseille, Sant Feliu de Guíxols, L'Escala |
+| *Paraflabellina ischitana* | 646 | Todo el año (pico: Abril–Mayo) | Marseille, Provence-Alpes-Côte d'Azur, L'Escala |
+| *Antiopella cristata* | 606 | Todo el año (pico: Abril–Mayo) | Marseille, Sant Feliu de Guíxols, Begur / Aiguablava |
+| *Caloria quatrefagesi* | 524 | Todo el año (pico: Agosto) | L'Ametlla de Mar, Mataró, Roses |
+| *Trinchesia morrowae* | 524 | Todo el año (pico: Abril–Mayo) | Marseille, Sant Feliu de Guíxols, Languedoc-Roussillon |
+| *Nemesignis banyulensis* | 461 | Todo el año (pico: Julio) | Tarragona, Marseille, Languedoc-Roussillon |
+| *Luisella babai* | 460 | Todo el año (pico: Abril–Mayo) | Marseille, Mataró, Cap de Creus / Cadaqués |
+| *Facelina auriculata* | 398 | Todo el año (pico: Enero–Febrero) | Roses, Sant Feliu de Guíxols, Languedoc-Roussillon |
+| *Facelina rubrovittata* | 384 | Todo el año (pico: Febrero y Mayo) | Marseille, Sant Feliu de Guíxols, L'Escala |
+| *Facelinopsis marioni* | 368 | Todo el año (pico: Febrero y Mayo) | Sant Feliu de Guíxols, Begur / Aiguablava, Marseille |
+| *Candiella odhneri* | 354 | Todo el año (pico: Junio–Julio) | Cap de Creus / Cadaqués, Languedoc-Roussillon, Marseille |
+| *Berghia coerulescens* | 295 | Todo el año (pico: Mayo) | Illes Medes / L'Estartit, Barcelona, Languedoc-Roussillon |
+| *Spurilla neapolitana* | 294 | Todo el año (pico: Mayo) | Sant Feliu de Guíxols, Francia, Barcelona |
+| *Marionia blainvillea* | 274 | Todo el año (pico: Abril) | Sant Feliu de Guíxols, Begur / Aiguablava, Tossa de Mar |
+| *Favorinus branchialis* | 244 | Todo el año (pico: Mayo) | Sant Feliu de Guíxols, Francia, Languedoc-Roussillon |
+| *Caloria elegans* | 231 | Todo el año (pico: Abril–Mayo) | Marseille, Begur / Aiguablava, Almuñécar |
+| *Candiella striata* | 226 | Todo el año (pico: Mayo–Junio) | Languedoc-Roussillon, Begur / Aiguablava, Cap de Creus / Cadaqués |
+| *Facelina annulicornis* | 217 | Todo el año (pico: Enero–Febrero) | Sant Feliu de Guíxols, Begur / Aiguablava, Languedoc-Roussillon |
+| *Candiella manicata* | 211 | Todo el año (pico: Mayo) | Sant Feliu de Guíxols, Begur / Aiguablava, L'Escala |
+| *Aeolidiella alderi* | 198 | Todo el año (pico: Marzo) | Francia, Begur / Aiguablava, Languedoc-Roussillon |
+| *Trinchesia caerulea* | 198 | Todo el año (pico: Abril–Mayo) | Marseille, Illes Medes / L'Estartit, Provence-Alpes-Côte d'Azur |
+| *Cratena peregrina* | 196 | Todo el año (pico: Julio–Agosto) | Tarragona, Illes Medes / L'Estartit, Reserva del Toro |
+| *Paraflabellina gabinierei* | 182 | Todo el año (pico: Mayo) | Marseille, Provence-Alpes-Côte d'Azur, Almuñécar |
+| *Tenellia ocellata* | 181 | Todo el año (pico: Abril–Mayo) | Marseille, Sant Feliu de Guíxols, Begur / Aiguablava |
+| *Facelina vicina* | 172 | Todo el año (pico: Enero y Diciembre) | Languedoc-Roussillon, Francia, Palamós |
+| *Amphorina farrani* | 124 | Todo el año (pico: Febrero y Abril) | Marseille, Begur / Aiguablava, Roses |
+| *Tenellia genovae* | 121 | Todo el año (pico: Abril–Mayo) | Sant Feliu de Guíxols, Begur / Aiguablava, Languedoc-Roussillon |
+| *Doto rosea* | 107 | Todo el año (pico: Febrero) | Sant Feliu de Guíxols, Begur / Aiguablava, L'Escala |
+| *Janolus hyalinus* | 106 | 8 Diciembre-2 Junio (pico: Enero y Marzo) | Francia, Sant Feliu de Guíxols, Languedoc-Roussillon |
+| *Doto floridicola* | 97 | Todo el año (pico: Abril–Mayo) | L'Escala, Begur / Aiguablava, Marseille |
+| *Doto cervicenigra* | 94 | Todo el año (pico: Enero–Febrero) | Sant Feliu de Guíxols, Francia, Roses |
+| *Berghia verrucicornis* | 85 | Todo el año (pico: Agosto) | Francia, Sant Feliu de Guíxols, Barcelona |
+| *Doto koenneckeri* | 84 | Todo el año (pico: Abril–Mayo) | Languedoc-Roussillon, Cap de Creus / Cadaqués, Sant Feliu de Guíxols |
+| *Phetia soussi* | 83 | 10 Agosto-24 Agosto; 9 Diciembre-13 Mayo (pico: Febrero y Abril) | Sant Feliu de Guíxols, Begur / Aiguablava, Illes Medes / L'Estartit |
+| *Doto millbayana* | 80 | 21 Diciembre-13 Junio (pico: Febrero–Marzo) | Sant Feliu de Guíxols, Tossa de Mar, L'Escala |
+| *Hancockia uncinata* | 72 | 15 Junio-27 Agosto; 30 Diciembre-29 Abril (pico: Marzo y Agosto) | Sant Feliu de Guíxols, Marseille, Palamós |
+| *Nudibranchus exiguus* | 64 | 8 Diciembre-28 Junio (pico: Marzo–Abril) | Sant Feliu de Guíxols, Francia, Roses |
+| *Dicata odhneri* | 62 | 12 Abril-14 Agosto (pico: Junio) | Languedoc-Roussillon, Marseille, Cap de Creus / Cadaqués |
+| *Doto pygmaea* | 59 | Todo el año (pico: Julio–Agosto) | Palamós, Sant Feliu de Guíxols, Begur / Aiguablava |
+| *Tethys fimbria* | 59 | 18 Agosto-28 Agosto; 17 Noviembre-24 Junio (pico: Enero) | Languedoc-Roussillon, Provence-Alpes-Côte d'Azur, zona 43.5°N 4.4°E |
+| *Tenellia miniostriata* | 54 | Todo el año (pico: Mayo) | Sant Feliu de Guíxols, Cap de Creus / Cadaqués, Martigues |
+| *Flabellina affinis* | 51 | 28 Julio-12 Septiembre (pico: Agosto) | Tarragona, Cap de Creus / Cadaqués, Maresme |
+| *Facelina dubia* | 48 | 17 Julio-21 Agosto; 8 Diciembre-10 Abril (pico: Enero) | Languedoc-Roussillon, Francia, Roses |
+| *Doto paulinae* | 46 | 24 Diciembre-19 Junio (pico: Abril–Mayo) | Barcelona, L'Escala, Tossa de Mar |
+| *Fjordia lineata* | 42 | 15 Enero-9 Junio (pico: Febrero y Abril) | Begur / Aiguablava, L'Escala, Roses |
+| *Armina tigrina* | 39 | Todo el año (pico: Julio) | Languedoc-Roussillon, Provence-Alpes-Côte d'Azur, Marana |
+| *Amphorina andra* | 38 | 29 Diciembre-15 Mayo (pico: Enero y Abril) | Sant Feliu de Guíxols, Begur / Aiguablava, Francia |
+| *Trinchesia cuanensis* | 37 | 11 Noviembre-22 Noviembre; 15 Diciembre-15 Mayo (pico: Febrero) | Sant Feliu de Guíxols, Roses, Languedoc-Roussillon |
+| *Capellinia doriae* | 32 | 17 Enero-24 Mayo; 20 Octubre-31 Octubre (pico: Mayo) | Sant Feliu de Guíxols, Francia, Tossa de Mar |
+| *Limenandra nodosa* | 29 | 1 Mayo-15 Mayo; 29 Junio-10 Noviembre (pico: Agosto) | Marseille, Puglia, Languedoc-Roussillon |
+| *Eubranchus prietoi* | 22 | 1 Mayo-23 Mayo; 27 Junio-11 Julio; 24 Diciembre-6 Abril (pico: Febrero–Marzo) | Sant Feliu de Guíxols, Llafranc / Calella de Palafrugell, Palamós |
+| *Cerberilla bernadettae* | 20 | 11 Febrero-19 Abril; 28 Mayo-25 Junio; 8 Agosto-22 Agosto; 18 Diciembre-11 Enero (pico: Marzo y Junio) | Languedoc-Roussillon, Francia, Provence-Alpes-Côte d'Azur |
+| *Tergipes tergipes* | 20 | 19 Enero-23 Febrero; 2 Abril-16 Abril; 27 Octubre-9 Noviembre (pico: Febrero) | Francia, Sant Feliu de Guíxols, Roses |
 | *Calma gobioophaga* | 18 | sin dato suficiente | Sant Feliu de Guíxols, Begur / Aiguablava, la ballenera algeciras |
 | *Doto fragaria* | 18 | sin dato suficiente | Sant Feliu de Guíxols, Balearic Sea, Martigues |
 | *Godiva quadricolor* | 18 | sin dato suficiente | Francia, Sant Feliu de Guíxols, zona 36.5°N 4.7°W |
@@ -68,9 +68,9 @@
 | *Fiona pinnata* | 12 | sin dato suficiente | Sant Feliu de Guíxols, Hyères, Begur / Aiguablava |
 | *Dondice trainitoi* | 11 | sin dato suficiente | Kalami, Cap de Creus / Cadaqués, Provence-Alpes-Côte d'Azur |
 | *Embletonia pulchra* | 11 | sin dato suficiente | Sant Feliu de Guíxols, Rovinj, La Barreta de l'Arbre |
-| *Anteaeolidiella lurana* | 10 | sin dato suficiente | zona 40.6°N 0.6°E, Mers El Hadjadj, zona 36.1°N 28.0°E |
+| *Anteaeolidiella lurana* | 10 | sin dato suficiente | zona 40.6°N 0.6°E, Algérie, zona 36.1°N 28.0°E |
 | *Phylliroe bucephala* | 10 | sin dato suficiente | Begur / Aiguablava, Marseille, Llafranc / Calella de Palafrugell |
-| *Scyllaea pelagica* | 10 | sin dato suficiente | Gerona, Provence-Alpes-Côte d'Azur, Macedonia and Thrace |
+| *Scyllaea pelagica* | 10 | sin dato suficiente | Gerona, Provence-Alpes-Côte d'Azur, Central Macedonia |
 | *Tenellia foliata* | 10 | sin dato suficiente | Cala d'Or ( Raco d'en Reis ), Cala Salada, Żebbuġ |
 | *Aeolidiella sanguinea* | 7 | sin dato suficiente | Francia, zona 46.5°N 1.7°W, Cantabria |
 | *Coryphellina rubrolineata* | 7 | sin dato suficiente | zona 36.2°N 29.6°E, zona 35.4°N 24.7°E, zona 36.1°N 33.4°E |

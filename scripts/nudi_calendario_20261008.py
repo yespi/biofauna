@@ -78,12 +78,16 @@ def texto(rs):
         if ms == me and (st - CUM[ms]) <= 3 and (e - CUM[me]) >= DIM[me] - 4: ps.append(MES[ms])
         else: ps.append(f"{fmt(st)}-{fmt(e)}")
     return "; ".join(ps)
+def pico(mc):
+    top = mc.most_common(); mx = top[0][1]; ms = sorted(m for m, c in top if c >= 0.85 * mx)[:2]
+    if len(ms) == 2 and ms[1] - ms[0] == 1: return f"{MES[ms[0]]}–{MES[ms[1]]}"
+    return " y ".join(MES[m] for m in ms)
 rows = []
 for n, x in sorted(nu.items()):
     dd = by.get(n, [])
     if len(dd) < 20: rows.append({"especie": n, "n_obs": len(dd), "periodo": "sin dato suficiente", "cobertura_dias": "", "meses_top": "", "ubicaciones_top": top_ubic(n) if len(dd) else ""}); continue
     rs, cov = rangos(np.array(dd)); mc = collections.Counter(int(np.searchsorted(CUM, q, side="right") - 1) for q in dd)
-    rows.append({"especie": n, "n_obs": len(dd), "periodo": ("Todo el año" if len(mc) >= 11 else texto(rs)), "meses_con_datos": len(mc), "cobertura_dias": cov, "meses_top": ", ".join(MES[m][:3] for m, _ in mc.most_common(3)), "ubicaciones_top": top_ubic(n)})
+    rows.append({"especie": n, "n_obs": len(dd), "periodo": ("Todo el año" if len(mc) >= 11 else texto(rs)) + f" (pico: {pico(mc)})", "meses_con_datos": len(mc), "cobertura_dias": cov, "meses_top": ", ".join(MES[m][:3] for m, _ in mc.most_common(3)), "ubicaciones_top": top_ubic(n)})
 os.makedirs("/mnt/docs/biofauna/proyecto_nudibranquios", exist_ok=True)
 with open(R + "artifacts/nudi_calendario_20261008.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=["especie","n_obs","periodo","meses_con_datos","cobertura_dias","meses_top","ubicaciones_top"], restval=""); w.writeheader(); w.writerows(rows)
