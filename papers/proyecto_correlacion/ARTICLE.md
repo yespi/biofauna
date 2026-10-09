@@ -1,20 +1,20 @@
-# Species associations in marine life verified by joint appearance in the same photograph: a screening with an automatic identifier over 1.2 million citizen-science photographs
+# Centimetre-scale proximity in the same photograph: screening for coexistence with an automatic identifier over 1.2 million marine citizen-science photographs
 
 **Author: Gustavo Zafra** · Creator and developer of BioFauna (BioCLIP-2.5 ViT-H/14 + FAISS identifier) and of the FotoFauna and BioQuest applications; collaborator of the citizen-science platform Minka SDG.
 
-**Version v22 — 8 Oct 2026** · Correlation project (BioFauna). Rewrite: conclusions rest only on **real proximity (centimetres)**, i.e. photographs in which both species appear at once.
+**Version v23 — 9 Oct 2026** · Correlation project (BioFauna). What is demonstrated is a **screening method** and a **set of pairs with visual evidence** (both species in the same photo), with partial validation; we do not claim ecological interaction or that “the method works” in general (P8).
 
 ---
 
 ## Abstract
 
-Seeing two species on the same dive does not show they are related: a diver sees many different species in one outing. We therefore require **real proximity: both species in the same photograph**. We start from **1,222,170 photographs** and **759,207 geolocated observations** (Minka SDG, iNaturalist and other sources), identified by **BioFauna**. A screening by *events* (observer × ~1 km cell × day × 3 h slot), with local effort controlled, serves only to **generate hypotheses**: 115,204 supported pairs, of which 51,401 are significant, so significance alone does not discriminate. For a shortlist of 138 pairs (highest effect and support) we searched the gallery, applying the identifier to the whole photo and to regions, for images where both species appear: 41 pairs had at least one candidate photo and 12 had three or more distinct observations, but visual review showed **many false positives between look-alike species**. Pairs with both species visible were confirmed by eye (*Peltodoris atromaculata* on *Petrosia ficiformis*, *Cratena peregrina* on hydroids, *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus*, *Lysmata grabhami* with *Telmatactis cricoides*, and *Electra posidoniae* with *Tridentata perpusilla* on the same *Posidonia* leaf), and for others no joint photograph was found. Proximity in a photo shows coexistence at centimetre scale, **not interaction**, and the second species is proposed by the identifier without curator confirmation.
+Seeing two species on the same dive does not show they are related: a diver sees many different species in one outing, and spatial co-occurrence is not evidence of ecological interaction (Blanchet et al., 2020; Freilich et al., 2018). We therefore require a stricter, checkable criterion: **both species in the same photograph** (centimetre-scale proximity). We start from **1,222,170 photographs** and **759,207 geolocated observations** (Minka SDG, iNaturalist and other sources), identified by **BioFauna** (out-of-sample species accuracy **83.14 %** on the 78,145-row panel; source: `dataset/stats.json`, *all08it2* promote). A screening by *events* (observer × ~1 km cell × day × 3 h slot), with local effort controlled, serves only to **generate hypotheses**: 115,204 supported pairs, of which 51,401 are significant, so significance alone does not discriminate. For a shortlist of 138 pairs we searched the gallery for images where both species appear: 41 pairs had at least one candidate photo and 12 had three or more distinct observations; visual review showed **many false positives between look-alike species**. Pairs with both species visible were confirmed by eye (documented positive controls and level 1–2 candidates; Plates 1–9). Crossing the shortlist with GloBI does not validate the screening: without waterbirds there is no enrichment (Fisher p = 0.68; P1). Veech/Poisson/JSDM-lite proxies show weak or null GloBI enrichment (P3; no R/`cooccur` on this host). With accuracy 83.14 %, the probability that both IDs in a co-event are correct is ≈0.69 (P4). Proximity in a photo shows coexistence at centimetre scale, **not interaction**, and the second species is proposed by the identifier without curator confirmation.
 
-**Keywords:** citizen science, interspecific associations, proximity, deep learning, Mediterranean, underwater photography.
+**Keywords:** citizen science, coexistence, proximity, deep learning, Mediterranean, underwater photography, co-occurrence.
 
 ## 1. Introduction
 
-Amateur underwater photography is a massive source of biodiversity data. Citizen-science platforms (**Minka SDG**, driven from the **FECDAS** ecosystem; **iNaturalist**; **GBIF**) accumulate millions of observations, but most analyses are limited to inventories and distribution maps. Inferring species associations from co-occurrence in participatory data has known effort and observer biases (Isaac et al., 2014; Johnston et al., 2018; Milanesi et al., 2020; Boyd et al., 2021): two species appear in the same outing because they share habitat or because the same observer photographs them on the same day, not because they are related. We propose a stricter criterion: **only the appearance of both species in the same photograph counts as an association**, that is, at centimetre scale.
+Amateur underwater photography is a massive source of biodiversity data. Citizen-science platforms (**Minka SDG**, driven from the **FECDAS** ecosystem; **iNaturalist**; **GBIF**) accumulate millions of observations, but most analyses are limited to inventories and distribution maps. Inferring interactions from co-occurrence in participatory data has known effort and observer biases (Isaac et al., 2014; Johnston et al., 2018; Milanesi et al., 2020; Boyd et al., 2021) and, more fundamentally, spatial co-occurrence **is not evidence of ecological interaction** (Blanchet et al., 2020). In a marine intertidal system, networks built from co-occurrence alone poorly recover known interactions (sensitivity 0.469; specificity 0.527; Freilich et al., 2018). Probabilistic co-occurrence models (Veech, 2013; Griffith et al., 2016) and hierarchical community frameworks (Ovaskainen et al., 2017) formalise event screening but do not replace organism-scale verification. We propose a stricter criterion, and the only thing we count as **visual evidence of coexistence**: the appearance of both species in the same photograph, at centimetre scale.
 
 ## 2. Materials and methods
 
@@ -22,7 +22,7 @@ Amateur underwater photography is a massive source of biodiversity data. Citizen
 1,222,170 photographs from the BioFauna gallery (Minka SDG 377,476; iNaturalist 779,411; GBIF, Wikimedia Commons, DORIS/FFESSM, SeaSlugForum, WoRMS, FishBase and others) and 759,207 observations with coordinates, date and (92 %) time. Catalogue of 2,985 Mediterranean taxa.
 
 ### 2.2 Identifier
-BioFauna retrieves the most likely species of an image with k-NN over BioCLIP-2.5 ViT-H/14 embeddings in a FAISS index (k = 15, T = 0.05, at most 3 votes per species) and hierarchical calibration. On the out-of-sample field panel (78,145 rows, 2,970 species) it identifies **82.85 %** of species; accuracy increases with the species' reference photos (Figure 3). This conditions the study: species with few photos and small or camouflaged ones are recognised less well.
+BioFauna retrieves the most likely species of an image with k-NN over BioCLIP-2.5 ViT-H/14 embeddings in a FAISS index (k = 15, T = 0.05, at most 3 votes per species) and hierarchical calibration. On the out-of-sample field panel (78,145 rows; `dataset/stats.json`) it identifies **83.14 %** of species (0.8314; *all08it2* promote, 8 Oct 2026); accuracy increases with the species' reference photos (Figure 3). This conditions the study: species with few photos and small or camouflaged ones are recognised less well.
 
 ### 2.3 Event screening (hypothesis generation only)
 An *event* is what the same observer recorded in the same ~1 km cell, on the same day and 3 h slot. For each pair with ≥5 shared events we test, with local effort controlled (null conditioned on the number and size of events per 0.1° cell·day block, Benjamini–Hochberg over the whole family), whether they co-occur more than expected. **This result is not interpreted as association**; it only ranks pairs by effect size and replication (≥3 cells, ≥3 days, ≥5 observers) to choose which to verify. Details in the Supplement.
@@ -35,6 +35,15 @@ For each pair (A, B) of the shortlist we analysed up to 60 gallery photos of A a
 
 ### 2.6 Licences and attribution
 We use CC0, CC BY, CC BY-SA and CC BY-NC / CC BY-NC-SA photographs; unlicensed and CC BY-NC-ND photos are excluded. Each photo states author, licence, local date and time, place and link to the observation. Those marked † (non-commercial) **must be replaced with CC0, CC BY or CC BY-SA photos, or used with the author's permission, if the article is published in a commercial journal**.
+
+### 2.7 Co-occurrence baselines (P3) and software limitation
+The required comparison with Veech's (2013) probabilistic model and the R package `cooccur` (Griffith et al., 2016), a Deutsch-style spatial Poisson null, and a JSDM/HMSC with environmental covariates (Ovaskainen et al., 2017) **was not run with R here**: this host has neither R nor the `cooccur` package. As a CPU proxy on the 3,108 already measured robust pairs (q ≤ 0.05 and observed/expected ratio ≥ 3): (i) all meet the Veech/cooccur-style filter used in screening; (ii) Poisson z = (n−λ)/√λ has median 6.36 and p90 11.12; (iii) JSDM-lite residual = log(n/expected) **without environmental covariates** (stated limitation). GloBI enrichment of the top-k by z versus random (200 resamples) is weak (e.g. k = 100: precision 9.00 % vs 2.03 % random; enrichment 4.43) and **JSDM-lite does not beat z**. Artefact: `experimentos/AVANCE_P3_P4_P1_P9_20261009.md`. A full P3 with `cooccur` and covariate JSDM remains pending.
+
+### 2.8 Identifier error propagation (P4)
+With species accuracy p = 0.8314, the probability that both species in a co-event are correctly identified is p² ≈ 0.691 under independence. On the 138-pair shortlist, using per-species accuracies when available: mean P(both OK) = **71.51 %**; 138/138 have E[clean events] ≥ 3 and 134/138 ≥ 8; none of the 138 appear as a direct A↔B confusion in the top-50 of the 25-Sep eval. Before visual review, about **~31 %** of co-events are lost to ID error.
+
+### 2.9 GloBI cross-check (P1)
+Each pair was queried against the GloBI API (Poelen et al., 2014). The shortlist has 9/138 documented (6.52 %), but 7 of them are waterbirds with generic type “interactsWith”. **Without birds:** shortlist 2/130 (1.54 %) versus events-only sample 5/395 (1.27 %); odds ratio 1.219, p = 0.6849 (Fisher) → **no enrichment**. Genus-level hits (≥3 pairs) concentrate in *Anas*, *Gallinula* and *Ardea*; outside birds there is no cluster signal.
 
 ## 3. Results
 
@@ -63,8 +72,10 @@ Table 2 lists the pairs confirmed by eye and Plates 1–9 show the photographs. 
 | *Parazoanthus axinellae* next to *Spongia lamella* | 1 | 2 (2) | same-photo pairs (visual review 8 Oct) |
 | *Echinolittorina punctata* and *Melarhaphe neritoides* (splash zone) | 0–1 | 3 (3) | same-photo pairs (with caution) |
 
+### 3.4 Pairs without a joint photo
+No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* or *Fistularia commersonii*–*Pterois miles*. This does not show they do not coexist and does not allow any relation to be claimed: they remain *unconfirmed*.
 ### 3.5 Other detected relations (screening candidates)
-The screening left 41 pairs with at least one candidate photo (including 8 waterbird pairs from the 138-pair shortlist: the title refers to marine species, but the same-photo criterion does not depend on the group, and birds are listed as not reviewed by eye). Table 3 lists them with their review status; those marked 'not reviewed by eye' are hypotheses awaiting visual checking, not results. The pairs in plates 7–9 are added in this version (v22).
+The screening left 41 pairs with at least one candidate photo (including 8 waterbird pairs from the 138-pair shortlist: the same-photo criterion does not depend on the taxonomic group; waterbirds from the shortlist are listed as not reviewed by eye). Table 3 lists them with their review status; those marked 'not reviewed by eye' are hypotheses awaiting visual checking, not results. The pairs in plates 7–9 were added in v22.
 
 Table 3. Candidate pairs with a photo of both species according to the detector
 
@@ -112,8 +123,6 @@ Table 3. Candidate pairs with a photo of both species according to the detector
 | *Conger conger* – *Galathea strigosa* | 1 | not reviewed by eye |
 | *Bispira volutacornis* – *Phycis phycis* | 1 | not reviewed by eye |
 
-### 3.4 Pairs without a joint photo
-No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* or *Fistularia commersonii*–*Pterois miles*. This does not show they do not coexist and does not allow any relation to be claimed: they remain *unconfirmed*.
 
 <div class="lamina">
 <p class="lt"><b>Plate 1. <i>Peltodoris atromaculata</i> on <i>Petrosia ficiformis</i> (predation).</b> <i>Sponge identified by BioFauna as <i>Petrosia ficiformis</i> (purple, reddish and cream variants); not confirmed by curators.</i></p>
@@ -199,20 +208,48 @@ No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Mur
 </div>
 </div>
 
+
+### 3.6 Baselines and GloBI enrichment (P3, proxy)
+On the 3,108 robust pairs, GloBI enrichment of the ranking by z (versus 200 random resamples) is:
+
+| k | top-z precision | random precision | enrichment |
+|---:|---:|---:|---:|
+| 50 | 6.00 % | 1.75 % | 3.43 |
+| 100 | 9.00 % | 2.03 % | 4.43 |
+| 200 | 7.50 % | 1.96 % | 3.84 |
+| 500 | 3.60 % | 1.90 % | 1.90 |
+
+On the shortlist: GloBI precision 25 % (top-20), 14 % (top-50), 6.52 % (138). The JSDM-lite residual does not beat z. **Reading:** the value of the work is not in event screening but in the same-photo criterion. Limitation: `cooccur` (R) and a covariate JSDM (Ovaskainen et al., 2017) were not run.
+
+### 3.7 Error propagation (P4)
+With OOS = 83.14 %, P(both OK) ≈ 0.69–0.72 on the shortlist. That bounds how many event coincidences can be doubly correct IDs **before** visual review; it does not replace that review.
+
+### 3.8 Literature review of confirmed pairs (P9)
+|*Peltodoris atromaculata*–*Petrosia ficiformis*|documented predation (Avila, 1996); positive control|
+|*Cratena peregrina*–hydroids|classic Mediterranean relation; primary DOI missing in this version|
+|*Condylactis aurantiaca*–*Periclimenes scriptus*|genus-level commensalism; pair-specific citation pending|
+|*Lysmata grabhami*–*Telmatactis cricoides*|cleaning documented in *Lysmata*; E Atlantic / Canary literature pending|
+|*Electra posidoniae*–*Tridentata perpusilla*|shared *Posidonia* microhabitat, not demonstrated interaction|
+|*Felimare orsinii*–*Scalarispongia scalaris*|level 1 (appears on); **do not** claim predation|
+|*Parazoanthus axinellae*–*Spongia lamella*|coexistence in the same frame; interaction not demonstrated|
+|*Calystegia soldanella*–*Medicago marina*|shared dune habitat (terrestrial)|
+
+Curators (Pontes, Salvador, Companys): formal sending of v10 plates for review is pending.
+
 ## 4. Discussion
 
-**What this shows and what it does not.** A photo with both species shows proximity at centimetre scale at one instant; it does not show that they seek, avoid or interact with each other. Three or more independent observations with both visible give replication, and visible contact (on, inside, feeding) points to a relation that must be confirmed with curators and literature. Event co-occurrence, by contrast, only flags species that share place and date and is **not used as a result**: requiring the same photo removes most coincidences.
+**What this shows and what it does not.** A photo with both species shows proximity at centimetre scale at one instant; it does not show that they seek, avoid or interact with each other (Blanchet et al., 2020). Freilich et al. (2018) show that even with exhaustive field sampling, co-occurrence poorly recovers interactions; our event screening fits that caution. Three or more independent observations with both visible give replication, and visible contact (on, inside, feeding) points to a relation that must be confirmed with curators and literature. Event co-occurrence, by contrast, only flags species that share place and date and is **not used as a result**: requiring the same photo removes most coincidences.
 
 **Biases.** The gallery consists mostly of centred portraits of one species, which underestimates the share of photos with a second species; the identifier recognises small or camouflaged species less well and confuses look-alike species (false positives); only the first candidates have been reviewed by eye; and the photographs come with very diverse licences, which limits the plates.
 
 ## 5. Limitations
 
-**Identifier accuracy.** The 82.85 % comes from the evaluation panel, and part of its rows (≈12.6 % with similarity ≥ 0.95 to the gallery) may coincide with already indexed photos, so it may be overestimated; it will be recomputed without leakage against the live index. **External validation.** Cross-checking against the GloBI interaction database showed no signal for the groups in this work (the matches came from 7 pairs of only 5 waterbird species, not independent and with the generic type “interacts with”; without them there is no enrichment, p = 0.68; the API does not allow iNaturalist-derived records to be separated), so it is not used as validation. Proximity in a photo is not interaction. The identity of the second species is a proposal by the identifier. The shortlist was chosen by effect size and support, not at random, and the positive-control pairs and earlier plate candidates were chosen by the author's judgement. The novelty of no pair has yet been checked against the literature or by curators. CC BY-NC photos must be replaced in a commercial journal.
+**Identifier accuracy.** The **83.14 %** (0.8314; `dataset/stats.json`, 78,145-row panel after *all08it2*) is the current out-of-sample species accuracy; the panel may still contain rows with high gallery similarity, so it may be somewhat optimistic. **Incomplete P3.** There is no R/`cooccur` on this host: Veech (2013) / Griffith et al. (2016) baselines and a covariate JSDM (Ovaskainen et al., 2017) remain a limitation; only CPU proxies exist (P3). **External validation (P1).** GloBI does not validate the shortlist: without birds, Fisher p = 0.68; the API cannot separate iNaturalist-derived records (possible circularity). **P4.** With p = 0.8314, about ~31 % of co-events are lost to ID error before visual review. Proximity in a photo is not interaction. The identity of the second species is a proposal by the identifier. The shortlist was chosen by effect size and support, not at random. Pair literature (P9) and curator review remain pending. CC BY-NC photos must be replaced in a commercial journal. P2 (detector precision on ~200 photos) and P5 (≥5 new pairs with photo) are still open.
 
 ## 6. Conclusions
 
 1. Event co-occurrence screening, even with effort controlled, is not evidence of association: it generates thousands of coincidences of which only a small part survives review by real proximity.
-2. Real proximity (both species in the same photograph) is a criterion any reader can verify; with it, seven pairs have been confirmed by eye (two of them new in v22, level 1), two of them with visible contact between organisms of different groups in addition to the positive controls.
+2. Real proximity (both species in the same photograph) is a criterion any reader can verify; with it, a few pairs have been confirmed by eye (documented positive controls and level 1–2 candidates in Plates 1–9); that is a base of visual evidence, not proof that screening “works” in general.
 3. The method serves to propose pairs and photographs that curators can verify; it does not replace their judgement.
 
 ## Acknowledgements
@@ -237,11 +274,17 @@ author's supervision and direction.
 
 - Aceves-Bueno, E., Adeleye, A. S., Feraud, M., Huang, Y., Tao, M., Yang, Y., & Anderson, S. E. (2017). The accuracy of citizen science data: a quantitative review. *The Bulletin of the Ecological Society of America*, 98(4), 278–290.
 - Avila, C. (1996). The growth of *Peltodoris atromaculata* Bergh, 1880 (Gastropoda, Nudibranchia) in the laboratory. *Journal of Molluscan Studies*, 62, 151–157. — diet exclusively on *Petrosia ficiformis*.
+- Blanchet, F. G., Cazelles, K., & Gravel, D. (2020). Co-occurrence is not evidence of ecological interactions. *Ecology Letters*, 23(7), 1050–1063. https://doi.org/10.1111/ele.13525
+- Freilich, M. A., Wieters, E., Broitman, B. R., Marquet, P. A., & Navarrete, S. A. (2018). Species co-occurrence networks: Can they reveal trophic and non-trophic interactions in ecological communities? *Ecology*, 99(3), 690–699. https://doi.org/10.1002/ecy.2142
+- Griffith, D. M., Veech, J. A., & Marsh, C. J. (2016). cooccur: Probabilistic species co-occurrence analysis in R. *Journal of Statistical Software*, 69(Code Snippet 2). https://doi.org/10.18637/jss.v069.c02
 - Boyd, R. J., Powers, M., & Pescott, O. L. (2021). occAssess: an R package for assessing potential biases in species occurrence data. *Ecology and Evolution*, 11(22).
 - Isaac, N. J. B., van Strien, A. J., August, T. A., de Zeeuw, M. P., & Roy, D. B. (2014). Statistics for citizen science: extracting signals of change from noisy ecological data. *Methods in Ecology and Evolution*, 5(10), 1052–1060.
 - Johnston, A., Fink, D., Hochachka, W. M., & Kelling, S. (2018). Estimates of observer expertise improve species distributions from citizen science data. *Methods in Ecology and Evolution*, 9(4), 880–890.
 - McDonald, G. R., & Nybakken, J. W. (2001). A worldwide review of the food of nudibranch mollusks. II. The suborder Doridacea. *The Veliger*.
 - Milanesi, P., Mori, E., & Menchetti, M. (2020). Observer-oriented approach improves species distribution models from citizen science data. *Ecology and Evolution*, 10(21), 12104–12114.
+- Ovaskainen, O., Tikhonov, G., Norberg, A., Guillaume Blanchet, F., Duan, L., Dunson, D., Roslin, T., & Abrego, N. (2017). How to make more out of community data? A conceptual framework and its implementation as models and software. *Ecology Letters*, 20(5), 561–576. https://doi.org/10.1111/ele.12757
+- Poelen, J. H., Simons, J. D., & Mungall, C. J. (2014). Global biotic interactions: An open infrastructure to share and analyze species-interaction datasets. *Ecological Informatics*, 24, 148–159.
+- Veech, J. A. (2013). A probabilistic model for analysing species co-occurrence. *Global Ecology and Biogeography*, 22(2), 252–260. https://doi.org/10.1111/j.1466-8238.2012.00789.x
 - Peraza, E., Pérez, J. A., Abdul-Jalbar, B., Chinea, J., & Clemente, S. (2024). Exploring the association between the arrow crab *Stenorhynchus lanceolatus* and the sea anemone *Telmatactis cricoides* in the Canary Islands. *Regional Studies in Marine Science*.
 
 ## Data availability
@@ -250,7 +293,7 @@ author's supervision and direction.
 - Shortlist pairs and their candidate photos: [`data/copresencia_pares_20261006.csv`](https://github.com/yespi/biofauna/blob/master/data/copresencia_pares_20261006.csv) and [`data/copresencia_hits_20261006.jsonl`](https://github.com/yespi/biofauna/blob/master/data/copresencia_hits_20261006.jsonl).
 - Plate manifest with author, licence, date and time, place and link for each photo: [`papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261008.json`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261008.json).
 - Event-screening lists (hypotheses only) and their description: [`data/README_correlacion.md`](https://github.com/yespi/biofauna/blob/master/data/README_correlacion.md) and the files `data/nulo_exacto_pares_*.csv` and `data/pares_*_20261005.csv`.
-- Extended methods and results, figures and plates: folder [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) (article in Spanish and English, `LAMINAS`, `METODOS.md`, `RESULTADOS.md`, `figuras/`, `lamina_fotos/`). The unnumbered versions (`ARTICULO_ES_latest.pdf`, `ARTICLE_EN_latest.pdf`, `LAMINAS_latest.pdf`) are always updated; the two latest numbered versions are kept.
+- Extended methods and results, figures and plates: folder [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) (article in Spanish and English, `LAMINAS`, `METODOS.md`, `RESULTADOS.md`, `figuras/`, `lamina_fotos/`). The unnumbered versions (`ARTICULO_ES_latest.pdf`, `ARTICLE_EN_latest.pdf`, `LAMINAS_latest.pdf`) are always updated; numbered versions are kept (v22 and v23). P1/P3/P4/P9 detail: [`experimentos/AVANCE_P3_P4_P1_P9_20261009.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/experimentos/AVANCE_P3_P4_P1_P9_20261009.md).
 - BioFauna identifier (code, prototypes, calibrators, evaluation scripts): folders [`src/`](https://github.com/yespi/biofauna/blob/master/src/), [`scripts/`](https://github.com/yespi/biofauna/blob/master/scripts/), [`data/`](https://github.com/yespi/biofauna/blob/master/data/) and [`papers/biofauna/`](https://github.com/yespi/biofauna/blob/master/papers/biofauna/).
 - **Not redistributable**: gallery photographs (Minka SDG, iNaturalist and other licences; those in the plates are included with attribution) and per-photo embeddings.
 

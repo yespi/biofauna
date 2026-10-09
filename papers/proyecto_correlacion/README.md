@@ -1,6 +1,6 @@
 # Proyecto Correlación (BioFauna) — asociaciones entre especies verificadas por proximidad real
 
-**Estado:** 7-oct-2026 · **artículo v21** (v21: cada foto de las láminas indica localidad, zona y coordenadas) (reescrito: las conclusiones se basan solo en fotografías donde aparecen **las dos especies a la vez**, a escala de centímetros). Todo el material público está en **https://github.com/yespi/biofauna** (carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) y [`data/`](https://github.com/yespi/biofauna/blob/master/data/)).
+**Estado:** 9-oct-2026 · **artículo v23** (método de cribado + parejas con evidencia visual; OOS identificador **83,14 %**; P1/P3/P4/P9 integrados; P3 real con R/`cooccur` pendiente — sin R en este host). Todo el material público está en **https://github.com/yespi/biofauna** (carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) y [`data/`](https://github.com/yespi/biofauna/blob/master/data/)).
 
 ---
 
@@ -56,7 +56,7 @@ descritas existirían.
 
 | Documento | Contenido |
 |---|---|
-| [`ARTICULO.md`](ARTICULO.md) / [`ARTICLE.md`](ARTICLE.md) | Artículo v21 (ES / EN), con tablas y láminas incrustadas |
+| [`ARTICULO.md`](ARTICULO.md) / [`ARTICLE.md`](ARTICLE.md) | Artículo v23 (ES / EN), con tablas y láminas incrustadas |
 | [`LAMINAS.md`](LAMINAS.md) | Láminas fotográficas con autor, licencia, fecha y hora, lugar y enlace |
 | [`METODOS.md`](METODOS.md) / [`RESULTADOS.md`](RESULTADOS.md) | Métodos y resultados ampliados |
 | [`NULO_EXACTO_TODOS_PARES_20261005.md`](NULO_EXACTO_TODOS_PARES_20261005.md) | Suplemento S1: cribado por eventos (solo hipótesis) |
