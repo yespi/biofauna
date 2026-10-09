@@ -13,7 +13,7 @@ Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/bio
 | Gallery | **1,132,767** embeddings / **4,543** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
 | Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
-| Field eval (out-of-sample, leak-purged) | **82.85%** species on the 78,145-row panel (2,970 species; 82.46% on 2026-10-05, before two promotions); **80.63%** on the 54,878 leak-free rows before them (+0.42 to +0.50 pp after) |
+| Field eval (out-of-sample) | **83.14%** species on the 78,145-row panel after *all08it2* (series 82.463→82.626→82.85→83.14); genus 87.9%, family 91.0%; **80.63%** on the 54,878 leak-free rows before the Oct-5/6 promotions |
 | — of which original eval / mined extension | **81.18%** (n=60,743, comparable with earlier versions) / 85.5–89.9% (n=15,842; same-species accuracy equivalent: 86.8% vs 86.1%) |
 | Real precision of AutoID publications | **96.6%** (n=493 verifiable; 85% in the 0.83–0.85 band, 99% at ≥0.95) |
 | AutoID | 45/hour, 1,500/day, per-species calibrated threshold (≈0.83), margin + curator guards; **crop fallback** (since 2026-10-01) rescues photos the full image cannot identify: 35 → 48 publishable in 500 real queue photos, 85.7% of the added ones correct (n=49, ground truth) |

@@ -4,7 +4,7 @@
 **Taxonomic contributors**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros
 **Repository**: https://github.com/yespi/biofauna
 **Live system**: https://fotofauna.yespi.es
-**This version**: 2026-10-06 (update box and §5.3 added; previous: 2026-10-02)
+**This version**: 2026-10-09 (all08it2 update / §5.4 and figures; previous: 2026-10-06)
 
 > **Naming.** Developed as YOLOFauna (2024–mid-2026); renamed BioFauna when production settled on BioCLIP retrieval rather than YOLO detection. Provenance: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -12,6 +12,8 @@
 
 
 **Update 2026-09-29 — field evaluation expanded to 76,585 rows, observer-level leakage purged, realm segmentation.** Two mining rounds extended the field evaluation from 62,408 to **76,585 rows** (round 1: +11,156 rows at 84.8% accuracy; round 2: +4,691 rows at 87.8%). A reviewer-grade audit measured **observation/observer leakage**: 2.17% of rows (1,595) shared an observation id or an observer with the reference gallery of their own species; excluding them changes accuracy by only **−0.14 pp**, so the operating figure is not materially inflated. Final segmented accuracy: **82.34% overall** (76,585 rows), marine 80.37%, terrestrial 93.37%, aves 92.22%, foranea 82.08%. The `realm` field (marine / terrestrial / aves / foranea) was added to the catalog as **metadata for segmented statistics** — it does **not** filter identification or publication, since Minka includes birds and terrestrial organisms. **Composition of the figure (review of 29-Sep):** the original evaluation set (60,743 rows) scores **81.18%**, comparable with earlier versions; the 15,842 mined rows score 85.5% and 89.9% in the two rounds, but on the 1,785 species that have both kinds of rows the accuracy is equivalent (86.8% mined vs 86.1% original). The overall increase therefore reflects the species mix, not a model change (the model did not change). All mined rows passed the same leakage filter (observation, observer, embedding similarity ≥ 0.98). **Real precision of AutoID publications** (500 historical publications, 493 verifiable against later third-party identifications on Minka): **96.6%** (95% CI 94.5–97.8); by calibrated confidence band 85% (0.83–0.85, n=27), 93% (0.85–0.90), 95.5% (0.90–0.95), 99% (≥0.95, n=252). **Composition of the 82.34%.** It pools three blocks: the original evaluation set (60,743 rows, **81.18%**, the figure comparable with every earlier version), mining round 1 (11,154 rows after the purge, 85.49%) and round 2 (4,688 rows, 89.87%). Within the 1,785 species that have rows in both the original and the mined blocks, accuracy is 86.1% vs 86.8% (+0.7 pp): at equal species the mined rows are not easier, and the rise comes mostly from composition (species with larger pools). **When comparing with earlier versions, use 81.18%.**
+
+**Update 2026-10-08/09 — all08it2 promote: OOS 83.14 %.** After the audited *all08it2* promote (8 Oct 23:42 CEST; backup `dataset/bak_promote_all08it2_20261008_223714`), the field panel of **78,145** rows stands at **83.14 %** out-of-sample species accuracy (`dataset/stats.json` `overall_accuracy=0.8314`; `calibration.field_acc.species`; `calib_raw_t05_meta.json` acc≈0.831416). Promotion series on the panel: **82.463 → 82.626 → 82.85 → 83.14** (§5.3 + all08it2; staging delta +0.294 pp in `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). Hierarchical accuracy on the same eval: **genus 87.9 %** (0.8793) and **family 91.0 %** (0.9102). AutoID keeps the species threshold at **0.83**; on the full eval with the live calibrator (`calibration.json` + `calib_raw_t05.jsonl`): **precision 95.97 % ≈ 96 %** and **coverage 66.42 % ≈ 66.5 %** (51,906 / 78,145 publishable). Figures: [`figures/`](figures/). Details in §5.4.
 
 **Update 2026-10-06 — clean evaluation, two promotions and a coverage finding.** The field panel was cleaned (leak-free rows: 54,878; live 80.63 %); two index promotions raised the panel from 82.463 % to 82.85 % (clean combo +0.163 pp; harvest batches 01+02 +0.223 pp, +0.42 to +0.50 pp leak-free), with a per-species guard and rollback each time; 96,392 gallery photos on disk were found never embedded and are being re-embedded; and a series of ideas were measured and **not** adopted (prototype cleaning, DINOv3 tie-break, vision-language comparator, Grounding DINO / YOLO26n crops, under-exposure enhancement, colour and zone tie-breaks). The AutoID sibling-avoidance rule was removed after it proved wrong in 8 of 11 judged substitutions. Details in §5.3.
 
@@ -324,6 +326,55 @@ Index after both: 4,543 species, 1,132,767 vectors, aligned. Harvest batches mea
 **Automatic identification (AutoID) changes.** The "avoid sibling observations of the same user and day" rule was removed on 2026-10-04: on 349 published observations, the 42 (12 %) substituted by an alternative were correct in 3 of 11 judged cases (27 %) versus 102 of 105 (97 %) for the non-substituted ones; an alternative's raw similarity had also been compared with the minimum as if it were a calibrated probability (the cause of a real misidentification). A 14-day replay (500 publications) of the current cascade (whole photo; else blue-cast correction; else attention crop with a strict guard) shows 97 % accuracy (77/79 judged) where it publishes the same species, and corrects 4 of 7 judged changes while breaking 2. The species-level threshold remains 0.83; genus-level publication p≥0.95 is on; the crop-mix publication is paused.
 
 **Limits of these numbers.** Judged observations are those with an identification from another user; replays use today's model, not the one at publication time; the harvest gains are on a panel built from the same sources as the gallery, so the leak-free rows are the more reliable estimate.
+
+## 5.4 Update 2026-10-08/09: all08it2 promote (OOS 83.14 %) and current figures
+
+**Current panel** (`dataset/stats.json`, refreshed after the promote; `calibration.created=2026-10-08T23:38:07`):
+
+| Quantity | Value | Source |
+|---|---|---|
+| Eval rows | **78,145** | `stats.json` → `calibration.n_samples`; `calib_raw_t05_meta.json` |
+| Species OOS accuracy | **83.14 %** (0.8314) | `stats.json` `overall_accuracy` / `calibration.field_acc.species` |
+| Genus | **87.9 %** (0.8793) | `stats.json` `calibration.field_acc.genus` |
+| Family | **91.0 %** (0.9102) | `stats.json` `calibration.field_acc.family` |
+| Live index (health) | 1,198,265 vectors / 4,543 spp | `stats.json` `live_health` (after all08it2; Robotin note 8 Oct 23:42) |
+
+**Panel series (78,145 rows):**
+
+| Milestone | Species OOS | Source |
+|---|---|---|
+| Pre–clean combo (5 Oct) | 82.463 % | §5.3 |
+| After *clean combo* | 82.626 % (+0.163 pp) | §5.3 |
+| After harvest batches 01+02 | 82.85 % (+0.223 pp) | §5.3 |
+| After *all08it2* (8 Oct 23:42) | **83.14 %** | `stats.json`; confirmation `agent-bus/inbox/claude/20261008-234238-robotin.md` (was 0.8285) |
+
+Staging measured **+0.294 pp** (fix 353 / break 123, p=0; species criterion *b* 163/91 failed the 2× rule; Robotin promoted anyway: `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`).
+
+**AutoID (species threshold 0.83).** On the full eval, with the live logistic calibrator (`calibration.json` coef/mu/sd on k-NN features in `calib_raw_t05.jsonl`):
+
+| Threshold | Coverage | Precision | n |
+|---|---|---|---|
+| p ≥ 0.83 (full eval) | **66.42 %** (≈ 66.5 %) | **95.97 %** (≈ 96 %) | 51,906 / 78,145 |
+| p ≥ 0.80 (operating_points, test split) | 69.9 % | 95.4 % | 16,409 |
+| p ≥ 0.85 (operating_points, test split) | 65.3 % | 96.2 % | 15,326 |
+
+The calibrator's `operating_points` table does **not** include exactly 0.83 (it jumps from 0.80 to 0.85); the full-eval 0.83 point is what production uses. Audited historical AutoID publications: **96.6 %** precision (n=493; `stats.json` `kpi_referencia.autoid_real`).
+
+**Discarded methods (measured; not adopted).** Complements §4.2 and §5.3:
+
+| Method | Result | Source |
+|---|---|---|
+| SigLIP (2nd backbone, top-5 tie-break) | 27 fixes / 36 breaks, n=12,298, p=0.31 (net negative) | `artifacts/exp_altbackbone_siglip_20260930.json` |
+| DINOv2 fusion (scripts misnamed DINOv3) | **−6.75 pp** vs production | §4.2 R22 |
+| DINOv3 as tie-break (16 pairs) | 58.9 % vs BioFauna 59.6 %; null tie-break at every δ | `artifacts/exp_dinov3_pares_20261005.json`; §5.3 |
+| VLM (MiniCPM-V) | 51.9 % vs BF 58.3 % (108/579 valid answers) | `artifacts/exp_vlm_compara_pares_20261005_minicpm-v_latest.json`; §5.3 |
+| BioCLIP-2 ViT-L (2nd backbone) | +0.40 pp on touched rows (+0.064 pp on the eval), p=0.06 | `artifacts/exp_altbackbone_bioclip2_20260930.json`; `experimentos/EXPERIMENTOS_HACIA_100_20260930.md` E9 |
+| YOLO crop (YOLO26n vs current fusion) | 74.97 % vs 80.85 % (n=4,000) | `artifacts/exp_det_ab_20261005_yolo.json`; §5.3 |
+| ArcFace / LoRA | R4 ties k-NN; R5 +0.0 pp OOS (100 spp); R6 **−31.2 pp** (1,358 spp) | §4.2 R4–R6 |
+| Embedding-outlier pruning | −0.21 to −1.45 pp | §4.2 R10 |
+| Discordant-prototype cleaning | −0.023 pp | §5.3 |
+
+Generated figures (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`, `fig_acc_especie_genero_familia.png`, `fig_autoid_precision_cobertura.png`, `fig_metodos_descartados.png` (sources in `figures/fuentes_cifras_20261009.json`).
 
 ## 6. Limitations
 

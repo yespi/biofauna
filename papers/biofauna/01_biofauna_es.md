@@ -4,7 +4,7 @@
 **Aportación taxonómica**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros
 **Repositorio**: https://github.com/yespi/biofauna
 **Sistema en vivo**: https://fotofauna.yespi.es
-**Esta versión**: 2026-10-06 (cuadro de actualización y §5.3 añadidos; anterior: 2026-10-02)
+**Esta versión**: 2026-10-09 (cuadro all08it2 / §5.4 y figuras; anterior: 2026-10-06)
 
 > **Nombre.** El proyecto se llamó YOLOFauna (2024–mediados de 2026); pasó a BioFauna cuando producción se quedó en recuperación BioCLIP, no en detectores YOLO. Origen: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -12,6 +12,8 @@
 
 
 **Actualización 29-sep-2026 — evaluación de campo ampliada a 76.585 filas, fuga a nivel de observador purgada, segmentación por realm.** Dos rondas de minería ampliaron la evaluación de campo de 62.408 a **76.585 filas** (ronda 1: +11.156 filas al 84,8% de acierto; ronda 2: +4.691 filas al 87,8%). Una auditoría a nivel de revisor midió la **fuga por observación/observador**: el 2,17% de las filas (1.595) compartían el id de observación o el observador con la galería de referencia de su propia especie; excluirlas cambia el acierto solo **−0,14 pp**, por lo que la cifra operativa no está inflada de forma material. Acierto final segmentado: **82,34% global** (76.585 filas), marino 80,37%, terrestre 93,37%, aves 92,22%, foránea 82,08%. El campo `realm` (marine / terrestrial / aves / foranea) se añadió al catálogo como **metadato para estadísticas segmentadas** — **no filtra** la identificación ni la publicación, porque Minka incluye aves y organismos terrestres. **Composición de la cifra (revisión del 29-sep):** el eval original (60.743 filas) da **81,18%**, comparable con versiones anteriores; las 15.842 filas minadas dan 85,5% y 89,9% en las dos rondas, pero en las 1.785 especies con filas de ambos tipos el acierto es equivalente (86,8% minadas frente a 86,1% originales). El aumento global refleja, por tanto, la composición por especies y no un cambio del modelo (que no cambió). Todas las filas minadas pasaron el mismo filtro de fuga (observación, observador, similitud de embedding ≥ 0,98). **Precisión real de las publicaciones de AutoID** (500 publicaciones históricas, 493 verificables frente a identificaciones posteriores de terceros en Minka): **96,6%** (IC95% 94,5–97,8); por banda de confianza calibrada 85% (0,83–0,85, n=27), 93% (0,85–0,90), 95,5% (0,90–0,95), 99% (≥0,95, n=252). **Composición del 82,34%.** Agrupa tres bloques: el conjunto de evaluación original (60.743 filas, **81,18%**, la cifra comparable con todas las versiones anteriores), la ronda 1 de minería (11.154 filas tras la purga, 85,49%) y la ronda 2 (4.688 filas, 89,87%). Dentro de las 1.785 especies con filas en el bloque original y en los minados, el acierto es 86,1% frente a 86,8% (+0,7 pp): a igualdad de especie las filas minadas no son más fáciles, y la subida viene sobre todo de la composición (especies con más pool). **Para comparar con versiones anteriores, usar 81,18%.**
+
+**Actualización 2026-10-08/09 — promote all08it2: OOS 83,14 %.** Tras el promote auditado *all08it2* (8-oct 23:42 CEST; backup `dataset/bak_promote_all08it2_20261008_223714`), el panel de campo de **78.145** filas queda en **83,14 %** de acierto de especie fuera de muestra (`dataset/stats.json` `overall_accuracy=0.8314`; `calibration.field_acc.species`; `calib_raw_t05_meta.json` acc≈0,831416). Serie de promociones del panel: **82,463 → 82,626 → 82,85 → 83,14** (§5.3 + promote all08it2; delta del staging +0,294 pp en `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). Acierto jerárquico en el mismo eval: **género 87,9 %** (0,8793) y **familia 91,0 %** (0,9102). AutoID sigue con umbral de especie **0,83**; sobre el eval completo, aplicando el calibrador vigente (`calibration.json` + `calib_raw_t05.jsonl`): **precisión 95,97 % ≈ 96 %** y **cobertura 66,42 % ≈ 66,5 %** (n publicables 51.906 / 78.145). Figuras: [`figures/`](figures/). Detalle en §5.4.
 
 **Actualización 2026-10-06 — evaluación limpia, dos promociones y un hallazgo de cobertura.** Se depuró el panel de campo (filas sin fuga: 54.878; vivo 80,63 %); dos promociones del índice subieron el panel de 82,463 % a 82,85 % (combo limpio +0,163 pp; lotes de cosecha 01+02 +0,223 pp, +0,42 a +0,50 pp sin fuga), cada una con guardia por especie y marcha atrás; se descubrieron 96.392 fotos de la galería en disco nunca embebidas, que se están reembebiendo; y se midieron y **no** se adoptaron varias ideas (limpieza de prototipos, desempate con DINOv3, comparador visión-lenguaje, recortes con Grounding DINO / YOLO26n, realce de subexposición, desempates por color y por zona). La regla de AutoID para evitar observaciones hermanas se retiró tras fallar en 8 de 11 sustituciones juzgadas. Detalle en §5.3.
 
@@ -328,6 +330,55 @@ Cerrar esas tres filas requiere las mismas filas de evaluación y el mismo filtr
 **Cambios en la identificación automática (AutoID).** La regla de «evitar observaciones hermanas del mismo usuario y día» se retiró el 2026-10-04: sobre 349 observaciones publicadas, las 42 (12 %) sustituidas por una alternativa acertaron 3 de 11 juzgadas (27 %) frente a 102 de 105 (97 %) de las no sustituidas; además, la similitud cruda de la alternativa se comparaba con el mínimo como si fuera una probabilidad calibrada (causa de una identificación errónea real). Un replay de 14 días (500 publicaciones) de la cascada actual (foto entera; si no, corrección de dominante azul; si no, recorte de atención con guardia estricta) da 97 % de acierto (77/79 juzgadas) donde publica la misma especie, y corrige 4 de 7 cambios juzgados rompiendo 2. El umbral de especie sigue en 0,83; la publicación a nivel de género con p≥0,95 está activa; la publicación por mezcla de recortes está en pausa.
 
 **Límites de estas cifras.** Las observaciones juzgadas son las que tienen identificación de otro usuario; los replays usan el modelo de hoy, no el de la fecha de publicación; las ganancias de la cosecha se miden sobre un panel construido con las mismas fuentes que la galería, así que las filas sin fuga son la estimación más fiable.
+
+## 5.4 Actualización 2026-10-08/09: promote all08it2 (OOS 83,14 %) y cifras vigentes
+
+**Panel vigente** (`dataset/stats.json`, regenerado tras el promote; `calibration.created=2026-10-08T23:38:07`):
+
+| Magnitud | Valor | Fuente |
+|---|---|---|
+| Filas del eval | **78.145** | `stats.json` → `calibration.n_samples`; `calib_raw_t05_meta.json` |
+| Acierto especie OOS | **83,14 %** (0,8314) | `stats.json` `overall_accuracy` / `calibration.field_acc.species` |
+| Género | **87,9 %** (0,8793) | `stats.json` `calibration.field_acc.genus` |
+| Familia | **91,0 %** (0,9102) | `stats.json` `calibration.field_acc.family` |
+| Índice live (health) | 1.198.265 vectores / 4.543 spp | `stats.json` `live_health` (tras all08it2; mensaje Robotin 8-oct 23:42) |
+
+**Serie del panel (78.145 filas):**
+
+| Hito | OOS especie | Fuente |
+|---|---|---|
+| Pre–combo limpio (5-oct) | 82,463 % | §5.3 |
+| Tras *combo limpio* | 82,626 % (+0,163 pp) | §5.3 |
+| Tras lotes de cosecha 01+02 | 82,85 % (+0,223 pp) | §5.3 |
+| Tras *all08it2* (8-oct 23:42) | **83,14 %** | `stats.json`; confirmación `agent-bus/inbox/claude/20261008-234238-robotin.md` (antes 0,8285) |
+
+El staging midió delta **+0,294 pp** (fix 353 / break 123, p=0; criterio *b* de especies 163/91 no cumplía 2×; Robotin promocionó igualmente: `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`).
+
+**AutoID (umbral de especie 0,83).** En el eval completo, con el calibrador logístico vigente (`calibration.json` coef/mu/sd sobre features del k-NN en `calib_raw_t05.jsonl`):
+
+| Umbral | Cobertura | Precisión | n |
+|---|---|---|---|
+| p ≥ 0,83 (eval completo) | **66,42 %** (≈ 66,5 %) | **95,97 %** (≈ 96 %) | 51.906 / 78.145 |
+| p ≥ 0,80 (operating_points, split test) | 69,9 % | 95,4 % | 16.409 |
+| p ≥ 0,85 (operating_points, split test) | 65,3 % | 96,2 % | 15.326 |
+
+La tabla `operating_points` del calibrador **no** incluye exactamente 0,83 (salta de 0,80 a 0,85); el punto 0,83 del eval completo es el que usa producción. Precisión real de publicaciones históricas auditadas: **96,6 %** (n=493; `stats.json` `kpi_referencia.autoid_real`).
+
+**Métodos descartados (cifras medidas; no adoptados).** Complementa §4.2 y §5.3:
+
+| Método | Resultado | Fuente |
+|---|---|---|
+| SigLIP (2.º backbone, desempate top-5) | 27 arreglos / 36 roturas, n=12.298, p=0,31 (neto negativo) | `artifacts/exp_altbackbone_siglip_20260930.json` |
+| DINOv2 (fusión; scripts mal llamados DINOv3) | **−6,75 pp** vs producción | §4.2 R22 |
+| DINOv3 como desempate (16 pares) | 58,9 % frente a 59,6 % de BioFauna; desempate nulo en todos los δ | `artifacts/exp_dinov3_pares_20261005.json`; §5.3 |
+| VLM (MiniCPM-V) | 51,9 % frente a 58,3 % BF (108/579 respuestas válidas) | `artifacts/exp_vlm_compara_pares_20261005_minicpm-v_latest.json`; §5.3 |
+| BioCLIP-2 ViT-L (2.º backbone) | +0,40 pp en las filas tocadas (+0,064 pp sobre el eval), p=0,06 | `artifacts/exp_altbackbone_bioclip2_20260930.json`; `experimentos/EXPERIMENTOS_HACIA_100_20260930.md` E9 |
+| YOLO crop (YOLO26n vs fusión actual) | 74,97 % frente a 80,85 % (n=4.000) | `artifacts/exp_det_ab_20261005_yolo.json`; §5.3 |
+| ArcFace / LoRA | R4 empate con k-NN; R5 +0,0 pp OOS (100 spp); R6 **−31,2 pp** (1.358 spp) | §4.2 R4–R6 |
+| Poda de outliers de embedding | −0,21 a −1,45 pp | §4.2 R10 |
+| Limpieza de prototipos discordantes | −0,023 pp | §5.3 |
+
+Figuras generadas (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`, `fig_acc_especie_genero_familia.png`, `fig_autoid_precision_cobertura.png`, `fig_metodos_descartados.png` (fuentes en `figures/fuentes_cifras_20261009.json`).
 
 ## 6. Limitaciones
 
