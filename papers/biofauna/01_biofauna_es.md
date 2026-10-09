@@ -1,49 +1,22 @@
-# BioFauna: identificación marina mediterránea por recuperación sobre BioCLIP-2.5 ViT-H congelado
+# BioFauna: identificación de taxones mediterráneos por recuperación sobre BioCLIP-2.5 ViT-H congelado
 
-**Autor**: Gustavo Zafra (Yespi)
-**Aportación taxonómica**: Xavier Salvador, Miquel Pontes, Manuel Ballesteros
-**Repositorio**: https://github.com/yespi/biofauna
-**Sistema en vivo**: https://fotofauna.yespi.es
-**Esta versión**: 2026-10-09 (cuadro all08it2 / §5.4 y figuras; anterior: 2026-10-06)
+**Autor:** Gustavo Zafra (Yespi)  
+**Aportación taxonómica:** Xavier Salvador, Miquel Pontes, Manuel Ballesteros  
+**Repositorio:** https://github.com/yespi/biofauna  
+**Sistema en vivo:** https://fotofauna.yespi.es  
+**Versión del manuscrito:** 2026-10-09 (artículo para Biodiversity Data Journal / PeerJ)
 
 > **Nombre.** El proyecto se llamó YOLOFauna (2024–mediados de 2026); pasó a BioFauna cuando producción se quedó en recuperación BioCLIP, no en detectores YOLO. Origen: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
 ---
 
-
-**Actualización 29-sep-2026 — evaluación de campo ampliada a 76.585 filas, fuga a nivel de observador purgada, segmentación por realm.** Dos rondas de minería ampliaron la evaluación de campo de 62.408 a **76.585 filas** (ronda 1: +11.156 filas al 84,8% de acierto; ronda 2: +4.691 filas al 87,8%). Una auditoría a nivel de revisor midió la **fuga por observación/observador**: el 2,17% de las filas (1.595) compartían el id de observación o el observador con la galería de referencia de su propia especie; excluirlas cambia el acierto solo **−0,14 pp**, por lo que la cifra operativa no está inflada de forma material. Acierto final segmentado: **82,34% global** (76.585 filas), marino 80,37%, terrestre 93,37%, aves 92,22%, foránea 82,08%. El campo `realm` (marine / terrestrial / aves / foranea) se añadió al catálogo como **metadato para estadísticas segmentadas** — **no filtra** la identificación ni la publicación, porque Minka incluye aves y organismos terrestres. **Composición de la cifra (revisión del 29-sep):** el eval original (60.743 filas) da **81,18%**, comparable con versiones anteriores; las 15.842 filas minadas dan 85,5% y 89,9% en las dos rondas, pero en las 1.785 especies con filas de ambos tipos el acierto es equivalente (86,8% minadas frente a 86,1% originales). El aumento global refleja, por tanto, la composición por especies y no un cambio del modelo (que no cambió). Todas las filas minadas pasaron el mismo filtro de fuga (observación, observador, similitud de embedding ≥ 0,98). **Precisión real de las publicaciones de AutoID** (500 publicaciones históricas, 493 verificables frente a identificaciones posteriores de terceros en Minka): **96,6%** (IC95% 94,5–97,8); por banda de confianza calibrada 85% (0,83–0,85, n=27), 93% (0,85–0,90), 95,5% (0,90–0,95), 99% (≥0,95, n=252). **Composición del 82,34%.** Agrupa tres bloques: el conjunto de evaluación original (60.743 filas, **81,18%**, la cifra comparable con todas las versiones anteriores), la ronda 1 de minería (11.154 filas tras la purga, 85,49%) y la ronda 2 (4.688 filas, 89,87%). Dentro de las 1.785 especies con filas en el bloque original y en los minados, el acierto es 86,1% frente a 86,8% (+0,7 pp): a igualdad de especie las filas minadas no son más fáciles, y la subida viene sobre todo de la composición (especies con más pool). **Para comparar con versiones anteriores, usar 81,18%.**
-
-**Actualización 2026-10-08/09 — promote all08it2: OOS 83,14 %.** Tras el promote auditado *all08it2* (8-oct 23:42 CEST; backup `dataset/bak_promote_all08it2_20261008_223714`), el panel de campo de **78.145** filas queda en **83,14 %** de acierto de especie fuera de muestra (`dataset/stats.json` `overall_accuracy=0.8314`; `calibration.field_acc.species`; `calib_raw_t05_meta.json` acc≈0,831416). Serie de promociones del panel: **82,463 → 82,626 → 82,85 → 83,14** (§5.3 + promote all08it2; delta del staging +0,294 pp en `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). Acierto jerárquico en el mismo eval: **género 87,9 %** (0,8793) y **familia 91,0 %** (0,9102). AutoID sigue con umbral de especie **0,83**; sobre el eval completo, aplicando el calibrador vigente (`calibration.json` + `calib_raw_t05.jsonl`): **precisión 95,97 % ≈ 96 %** y **cobertura 66,42 % ≈ 66,5 %** (n publicables 51.906 / 78.145). Figuras: [`figures/`](figures/). Detalle en §5.4.
-
-**Actualización 2026-10-06 — evaluación limpia, dos promociones y un hallazgo de cobertura.** Se depuró el panel de campo (filas sin fuga: 54.878; vivo 80,63 %); dos promociones del índice subieron el panel de 82,463 % a 82,85 % (combo limpio +0,163 pp; lotes de cosecha 01+02 +0,223 pp, +0,42 a +0,50 pp sin fuga), cada una con guardia por especie y marcha atrás; se descubrieron 96.392 fotos de la galería en disco nunca embebidas, que se están reembebiendo; y se midieron y **no** se adoptaron varias ideas (limpieza de prototipos, desempate con DINOv3, comparador visión-lenguaje, recortes con Grounding DINO / YOLO26n, realce de subexposición, desempates por color y por zona). La regla de AutoID para evitar observaciones hermanas se retiró tras fallar en 8 de 11 sustituciones juzgadas. Detalle en §5.3.
-
-**Actualización 2026-10-02 — rescate por recorte con dos jueces, informe de campo por bloques y lo que las cifras no dicen.** (1) El rescate por recortes del 2026-10-01 se rehízo tras un fallo real: un recorte por cuadrante que solo contenía fondo se identificó como un alga con p = 0,96 y se publicó en una foto cuyo sujeto (una nacra) estaba en el centro. Ahora actúa por niveles: primero la imagen completa; después dos recortes centrados (relleno del 17 % y del 25 %) como jueces, **basta una identificación que apruebe (p ≥ 0,83, rango especie)**, y si dos especies distintas aprueban no hay veredicto; los cuadrantes quedan como último recurso y se descartan si la imagen completa o un recorte centrado apunta a otra especie con p ≥ 0,5. Prueba retrospectiva con 454 fotos con verdad de terceros cuya imagen completa no era publicable: el esquema anterior añadía 48 identificaciones (41 correctas, 7 erróneas); solo los jueces centrados añaden 64 (55 correctas, 9 erróneas); jueces más cuadrantes con guarda añaden **72 (63 correctas, 9 erróneas, 87,5 %)**; exigir que los dos jueces coincidan es peor (21 añadidas, 16 correctas). Subir el umbral del recorte a 0,93 no mejora la precisión (36 añadidas, 30 correctas): la puntuación de un recorte no está calibrada como la de la imagen completa. Los umbrales se eligieron sobre las mismas fotos que los miden, así que el 87,5 % es optimista. Los 19 rescates publicados hasta ahora no tienen aún reacción de terceros, por lo que **su precisión real se desconoce**. (2) Se habilita la publicación de AutoID a nivel de género; la de familia queda en pausa tras fallar dos de las tres primeras revisadas (ambas publicadas como la misma familia) porque una foto mostraba dos animales sin relación y la otra no parecía de esa familia. (3) Las fotos planas y desenfocadas, o oscuras, turbias y desenfocadas, se descartan antes de identificar; en 747 fotos con verdad, la precisión no depende de la nitidez (92–96 % en los cuatro cuartiles), así que esta puerta retira fotos ilegibles, no errores. (4) El modelo corre en fp16 con k-NN en int8 en la GPU (3,3–3,9 GB de VRAM en vez de 6,4–6,6 GB) con decisiones idénticas en 1.000 fotos. (5) Se promovió a producción una ampliación de 23 vectores de *Prunus dulcis* (fusionados desde su sinónimo): solo cambia esa especie, el índice está alineado (1.118.321 vectores) y aún no hay medición independiente de precisión.
-
-**Actualización 1-oct-2026 — kNN en GPU y fallback por recortes para fotos de baja confianza.** (1) El perfilado mostró que el 50% del tiempo de `/identify` era la búsqueda FAISS exacta en una CPU de 4 hilos (0,5 s por consulta); los vectores del índice viven ahora en la GPU en fp16 y los vecinos devueltos se re-puntúan en fp32 contra el índice de CPU, así que las similitudes son las exactas (prueba golden: sin diferencias en 40 fotos). Seis identificaciones de una foto pasaron de 4,4 s a 0,97 s. (2) Un fallback por recortes actúa solo cuando la imagen completa no da una identificación publicable (p calibrada por debajo del umbral, o rango superior a especie): se identifican cuatro cuadrantes, un centro con 17% de padding, un recorte por saliencia y un centro al 40%, y se rescata una especie cuando al menos dos pasos coinciden con p ≥ 0,93 (tres si su género difiere del top-1 de la imagen completa); los empates (<0,05) se abstienen. Solo puede añadir publicaciones. En 500 fotos reales aún sin identificar de la cola de AutoID, las identificaciones publicables pasaron de 35 a 48; en 747 fotos con verdad de terceros, lo añadido acertó en el 85,7% (42/49; cota inferior de Wilson al 95%: 73%). Bajar simplemente el umbral de la imagen completa para añadir el mismo número de fotos da un 83,7% de aciertos, pero solo coinciden 11 de las 49 fotos, así que el fallback recupera fotos distintas. En esos bancos (más difíciles que producción) la precisión global de publicación bajó del 93,9% al 92,7%; la precisión real de los rescates publicados se está midiendo con identificaciones posteriores de terceros. (3) Un modelo de confianza mayor (gradient boosting con 13 señales), ejecutado en modo sombra sobre 726 publicaciones reales, no mejoró al calibrador logístico (AUC 0,820 frente a 0,820; cobertura al 97% de precisión 94,1% frente a 92,8%), por lo que se queda en sombra.
-
-**Actualización 28-sep-2026 — higiene de galería, evaluación de campo honesta y rescate zero-shot.** Tras el arreglo de la fuga (23-sep) la cifra de conjunto cerrado quedó en 88,11% sobre el conjunto sin fuga; la evaluación **operativa** pasó a una **evaluación de campo** (solo fotos de campo, iNaturalist/Minka research grade, 20–30 fotos por especie, auditada contra fugas antes de fusionar): **62.408 filas → 81,4% especie / 84,9% género**. Higiene de galería en el mismo periodo: **135 slugs sinónimos duplicados fusionados** (autoridad de nombres: **Minka**; si en Minka existen los dos nombres *no* se fusiona; si no, la sinonimia de WoRMS resuelve la equivalencia), **~1.000 fotos mal etiquetadas reubicadas** (reidentificaciones de Minka) con manifiesto y rollback completo, y 57 fotos en cuarentena. Dos guardas nuevas en producción: (a) **guarda de margen k-NN** en AutoID (no se publica a especie si el margen top-1/top-2 es menor que 0,02 — esas filas aciertan el 53% en la evaluación de campo); (b) **guardián automático de correcciones de curadores** que retira nuestras identificaciones cuando un curador corrige a nivel clase o superior. Una **segunda opinión zero-shot para todo el catálogo** (embeddings de texto BioCLIP-2.5; 2.985 etiquetas) se usa como *rescate*: cuando el k-NN duda (similitud top-1 < 0,85) y el zero-shot coincide con otra especie con p ≥ 0,90, gana el zero-shot — medido **+0,91 pp** en la evaluación de campo (772 arreglos / 315 roturas, 15% de cobertura) y ya en producción. El prior estacional temporal se **descartó** a escala completa (76,84% → 76,64% la mejor variante). Todo auditado: contaminación por prototipo (diario) y QA de fuga de las filas minadas (semanal, con purga automática).
-
 ## Resumen
 
-BioFauna identifica taxones mediterráneos (y algunos adyacentes incidentales) a partir de fotografías por **recuperación** sobre una galería regional, no entrenando un clasificador cerrado. El encoder de producción es **BioCLIP-2.5 ViT-H/14** (632M parámetros, embeddings de 1024 dimensiones), **congelado**. La consulta se embebe (fusión del encuadre global con un recorte central al 65%), se busca con **k-NN (k=15)** y un agregador de votos temperado, se puede reponderar con un prior geográfico, se convierte en probabilidad calibrada y, si el margen es débil, se **abstiene** a género, familia o un grupo de indistinguibilidad curado.
+BioFauna identifica taxones mediterráneos (y algunos adyacentes) a partir de fotografías por **recuperación** sobre una galería regional, sin entrenar un clasificador cerrado. El encoder de producción es **BioCLIP-2.5 ViT-H/14** (congelado; embeddings de 1024 dimensiones). La consulta se embebe (fusión del encuadre global con un recorte central al 65 %), se busca con **k-NN (k = 15)** y un agregador de votos temperado, se puede reponderar con un prior geográfico, se convierte en probabilidad calibrada y, si el margen es débil, se **abstiene** a género, familia o un grupo de indistinguibilidad curado.
 
-**Corte de producción (2026-09-23, `/health` en vivo + `calibration.json`):**
+**Cifras vigentes** (`dataset/stats.json` tras promote *all08it2*, 8-oct-2026): galería en vivo **1.198.265** embeddings / **4.543** especies; panel de campo **78.145** filas con acierto de especie fuera de muestra **83,14 %** (género 87,9 %, familia 91,0 %). AutoID publica con umbral de especie **0,83** (precisión ≈96 %, cobertura ≈66,5 % en el eval completo). Líneas base sobre 78.180 filas (2026-10-03): centroide más cercano **74,73 %**; k-NN simple **79,86 %**. Una búsqueda sistemática de mejoras entrenando sobre este espacio (LoRA, QLoRA, ArcFace, etc.) **no superó** la recuperación congelada. Publicamos el libro de experimentos, IDs de taxón, centroides y un identificador autoalojable; **no** se redistribuyen fotos ni embeddings por foto.
 
-| Magnitud | Valor |
-|----------|-------|
-| Galería | **1.118.353** embeddings / **4.543** especies, FAISS alineado |
-| Catálogo (lista mediterránea) | **2.985** taxones (`dataset/catalog.json`) |
-| Acierto fuera de muestra (sin fuga) | **88,11%** especie / **90,55%** género / **92,46%** familia |
-| Evaluación | n=**12.373** observaciones, **2.091** especies con ≥1 muestra (sin copias de la galería, O18) |
-| Hardware | NVIDIA RTX 3060 12 GB (~4,4 GB VRAM en inferencia) |
-
-Esas cifras son **estratificadas por observación** y con control de fugas por embedding global (el 85,78% anterior sobre n=19.087 y el panel de 92–93% contenían copias de la galería: ver la actualización y O18). **No** se pueden comparar a ciegas con el 75,97% de agosto de 2026 (n=12.788, otra cosecha). Mezclar cohortes es el error que este proyecto ya documentó. Ambos números aparecen abajo, etiquetados por protocolo.
-
-Una búsqueda sistemática de más top-1 de especie **entrenando sobre este espacio** (QLoRA, LoRA, triplet, ArcFace, cabeza lineal, SupCon acotado) **no superó** la recuperación congelada. Lo que sí se quedó en producción: escala del backbone, completitud/calidad de galería, fusión en inferencia, agregador k-NN temperado y abstención taxonómica. Publicamos el libro de experimentos, los IDs de taxón, los centroides y un identificador autoalojable. **No se redistribuyen fotos ni `embeddings.npy` por foto**; se pueden reconstruir desde Minka / iNaturalist / GBIF.
-
-**Palabras clave**: BioCLIP-2.5, ViT-H, k-NN, clasificación visual fina, biodiversidad marina, ciencia ciudadana, abstención taxonómica, calibración, mar Mediterráneo
-
----
+**Palabras clave:** BioCLIP-2.5, ViT-H, k-NN, clasificación visual fina, biodiversidad marina, ciencia ciudadana, abstención taxonómica, calibración, mar Mediterráneo
 
 ## 1. Introducción
 
@@ -207,11 +180,6 @@ Cada fila: **hipótesis → resultado → qué aportó.** Detalle y McNemar: [`d
 
 ---
 
-**Actualización 2026-09-23 — fuga en la evaluación detectada y eliminada.** Una auditoría que embebe cada foto de evaluación en *global* (sin TTA, igual que la galería) y la compara con la galería de su propia especie encontró que el **30,0%** de las 25.143 filas de evaluación eran copias exactas de una foto de la galería (coseno ≥0,995) y el **50,8%** copias o copias reescaladas/recortadas (≥0,98). El filtro de fuga de la cosecha comparaba un embedding *promediado con TTA* contra un umbral de 0,999 que una imagen idéntica nunca alcanza (~0,99), así que dejaba pasar todo tras el arreglo de agosto (§3). Las filas con fuga acertaban el **97,6%**; las limpias dan **88,11%** especie / 90,55% género / 92,46% familia (n=12.373, 2.091 especies). La cifra de panel de 92,4–93,4% citada el 21/22-sep queda retirada; **88,1% es la cifra actual de conjunto cerrado**, y el KPI de ~80% sobre observaciones recientes (O16) sigue siendo la cifra operativa. En especies raras con fotos nuevas de verdad de otras fuentes (Wikimedia, GBIF, museos) el acierto fue solo del **24%** (n=130): la fuga lo ocultaba. Filtro arreglado en todas las cosechas, filas con fuga apartadas (no borradas) y calibrador reajustado con datos limpios (O18). También en producción desde el 22-sep: tope de 3 votos por especie en el agregador k-NN (K23).
-
-**Actualización 2026-09-21.** Producción sirve ahora **1.118.353** embeddings / **4.543** especies (1.720 son clases de galería fuera del catálogo de 2.985 especies: 1,8% de los vectores) tras dos oleadas de crecimiento (K19–K20). El panel (overlay fuera de muestra, n=24.475) marca **92,36%** de especie; una comprobación sobre 300 observaciones recientes research grade de Minka da **~80%** (aves del catálogo 84% frente a 96% en el panel): el panel es una evaluación de conjunto cerrado y sobreestima la precisión real (O16). El recuperador de conjunto cerrado responde con confianza a especies que no están en el catálogo; una segunda opinión independiente de BioCLIP zero-shot elimina la mayoría de esos errores en aves (K21).
-
----
 
 ## 5. Informe de producción actual (cohorte C, sin fuga, 2026-09-23)
 
@@ -280,24 +248,25 @@ Sobre las 76.585 filas purgadas, por reino: marino 80,37 %, terrestre 93,37 %, a
 
 Publicar a nivel de familia solo compensa con τ ≥ 0,90; con 0,83 su precisión baja al 91,7 %. El acierto top-1 de especie (82,46 % del panel, 77,5 % en Tier 1) no cambia por construcción: la ganancia está en fotos que reciben una identificación correcta en el rango más grueso que el modelo puede defender. Las publicaciones reales de AutoID por recorte y por género son aún pocas y casi sin revisión de terceros para validar estas cifras. **Comprobación fuera de muestra (2026-10-03):** sobre 575 observaciones recientes de Minka de grado investigación no usadas en la calibración (excluidas las fugas con similitud top-1 ≥ 0,98), p de especie ≥ 0,83 cubrió el 73,2 % de las fotos con una precisión del 91,7 % (4 pp por debajo del 95,9 % en muestra), y el paso a género añadió +7,3 pp de fotos con 85,7 % de precisión (p_género ≥ 0,83), +4,3 pp con 88,0 % (≥ 0,90) y +2,4 pp con 92,9 % (≥ 0,95). La tabla en muestra es por tanto optimista; solo la regla p_género ≥ 0,95 alcanza la precisión de especie fuera de muestra. Una segunda muestra independiente (692 observaciones más) dio la misma imagen; conjuntamente (n = 1.267): p de especie ≥ 0,83 cubre el 71,1 % con 91,2 % de precisión, y el paso a género añade +7,4 pp con 88,3 % (≥ 0,83), +4,4 pp con 87,5 % (≥ 0,90) y +2,4 pp con 90,3 % (≥ 0,95; n = 31 fotos añadidas), de modo que la ganancia de la abstención jerárquica es real pero pequeña (≈ +2 a +7 pp de fotos) y algo menos precisa que publicar a nivel de especie.
 
-## 5.2 Trabajos relacionados y líneas base (esbozo — sin cifras nuevas)
+## 5.2 Trabajos relacionados y líneas base
 
 **Posición.** BioFauna se sitúa entre dos líneas de trabajo. Los modelos visión-lenguaje preentrenados sobre el árbol de la vida (BioCLIP [1], construido sobre CLIP [4]) dan embeddings que separan especies sin entrenamiento específico; los grandes corpus de ciencia ciudadana (iNaturalist [5]) aportan las fotografías etiquetadas. Muchos sistemas desplegados ajustan un clasificador con esos datos; BioFauna, en cambio, mantiene el codificador congelado y hace **recuperación k-NN sobre una galería regional** con abstención calibrada, de modo que añadir o corregir una especie es editar la galería, no reentrenar. Las pérdidas de aprendizaje métrico (triplet [13], FaceNet [12], contrastiva supervisada [6]) y el ajuste fino eficiente (LoRA [3], QLoRA [2]) eran las alternativas obvias; el §4.2 recoge que ninguna superó a la recuperación congelada sobre esta galería.
 
 **Líneas base de este informe.** (a) *Centroide más cercano* sobre los prototipos publicados (demo pública): **74,73 %** top-1 sobre las 78.180 filas de campo (2026-10-03). (b) *k-NN simple con voto mayoritario* (k = 15, búsqueda exacta sobre el índice de producción), sin el agregador con temperatura, el tope por clase, el prior geográfico ni la calibración: **79,86 %** (1-NN simple: 79,10 %), frente a 82,46 % del sistema completo de producción sobre las mismas filas; es decir, la capa de decisión suma unos 2,6 pp sobre el voto simple y la recuperación en sí unos 5,1 pp sobre un clasificador solo de prototipos. (c) *Cabezas ajustadas o de aprendizaje métrico*: puntuadas en el §4.2 sobre conjuntos de evaluación anteriores, descartadas. (d) *La sugerencia de visión por computador de iNaturalist*, como línea base de AutoID: medida **parcialmente** el 2026-10-03 (n = 98 fotos de campo; la ejecución se detuvo por un límite HTTP 429 antes de las 300 previstas y no se reintentó): iNaturalist CV da **55,1 %** de acierto top-1 en especie y **67,3 %** en género, frente a **84,7 %** de BioFauna sobre las mismas fotos (BioFauna acierta y iNaturalist no: 31; al revés: 2). Con n = 98 el intervalo es amplio (unos ±8 pp), por lo que es orientativo, no una cifra principal; falta completar a n = 300.
 
-| Línea base | Evaluación de campo (76.585 filas) | Estado |
-|---|---|---|
-| BioFauna en producción | 82,34 % especie (81,18 % bloque comparable) | medida |
-| Centroide más cercano | — | no medida |
-| k-NN simple, voto mayoritario | — | no medida |
-| Sugerencia de visión de iNaturalist | 55,1 % especie / 67,3 % género (subconjunto n = 98; BioFauna 84,7 % en las mismas fotos) | parcial |
+| Línea base | Evaluación (filas) | Acierto especie | Estado |
+|---|---|---|---|
+| BioFauna completo (producción, panel 5-oct) | 78.180 | 82,46 % | medida |
+| Centroide más cercano (prototipos publicados) | 78.180 (2026-10-03) | **74,73 %** | medida |
+| k-NN simple, voto mayoritario (k = 15) | mismas filas | **79,86 %** (1-NN: 79,10 %) | medida |
+| BioFauna vigente (panel tras all08it2) | 78.145 | **83,14 %** | medida (`stats.json` 0,8314) |
+| Sugerencia CV de iNaturalist | 98 (parcial; objetivo 300) | 55,1 % (BF 84,7 % en las mismas) | parcial |
 
-Cerrar esas tres filas requiere las mismas filas de evaluación y el mismo filtro de fugas; ninguna exige entrenar nada nuevo.
+La capa de decisión suma ≈2,6 pp sobre el voto k-NN simple y la recuperación ≈5,1 pp sobre solo prototipos (medido el 2026-10-03 sobre 78.180 filas). La línea base iNat sigue incompleta (n = 98 por HTTP 429).
 
 ---
 
-## 5.3 Actualización 2026-10-06: evaluación limpia, dos promociones y lo que no funcionó (todas las cifras medidas)
+## 5.3 Evaluación limpia, promociones del índice y métodos no adoptados
 
 **Conjunto de evaluación.** El panel de campo (78.145 filas, acierto de especie 82,463 % el 2026-10-05) contenía fotos duplicadas (12.416 filas), fotos con varios sujetos (2.933) y filas cuya propia foto estaba en la galería. La evaluación *limpia v2* (62.796 filas) da 82,841 % (Tier 1 77,93 %). Una auditoría de fuga completa deja **54.878 filas sin fuga (índice vivo 80,63 %, Tier 1 76,42 %)**; todo candidato se informa también sobre las filas sin fuga (umbrales 0,95 y 0,995).
 
@@ -331,7 +300,7 @@ Cerrar esas tres filas requiere las mismas filas de evaluación y el mismo filtr
 
 **Límites de estas cifras.** Las observaciones juzgadas son las que tienen identificación de otro usuario; los replays usan el modelo de hoy, no el de la fecha de publicación; las ganancias de la cosecha se miden sobre un panel construido con las mismas fuentes que la galería, así que las filas sin fuga son la estimación más fiable.
 
-## 5.4 Actualización 2026-10-08/09: promote all08it2 (OOS 83,14 %) y cifras vigentes
+## 5.4 Cifras vigentes tras el promote all08it2 (OOS 83,14 %)
 
 **Panel vigente** (`dataset/stats.json`, regenerado tras el promote; `calibration.created=2026-10-08T23:38:07`):
 
@@ -382,18 +351,15 @@ Figuras generadas (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`
 
 ## 6. Limitaciones
 
-1. El top-1 de especie no es nivel experto en invertebrados crípticos.
+1. El top-1 de especie no es nivel experto en invertebrados crípticos; las especies con poca galería o evaluación fina son mucho más difíciles que la media del panel.
 2. No hay estudio de generalización fuera del Mediterráneo.
-3. El código público es un **identificador de reconstrucción**, no el volcado del servicio de 1.300 líneas de HanSolo.
-4. La tabla precisión/cobertura de AutoID es anterior al calibrador del 14-sep.
-5. Las correcciones de curadores aún no cierran un bucle de entrenamiento.
-6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; el calibrador solo vio especies del catálogo. Mitigado en aves con una guarda de consenso zero-shot (K21); todavía no en otros grupos.
-7. **Optimismo de la evaluación:** la métrica del panel sin fuga (88,1%) sigue siendo de conjunto cerrado y correlada por observador; una muestra de observaciones recientes (~80%) es el KPI operativo (O16). Hasta el 23-sep el panel contenía además copias de la galería (O18).
-8. **AutoID sin verificación de iNaturalist** solo lleva un día en marcha (guardas: caja mediterránea, consenso en aves, tope horario, ahora 30/h y 1.000/día; al llegar al tope de la hora se pausa esa hora en vez de disparar el cortocircuito); la auditoría contra identificaciones de la comunidad está pendiente.
-9. **Los rescates por recorte solo están validados con una prueba retrospectiva** (454 fotos, umbrales elegidos sobre las mismas fotos); la precisión real de los rescates publicados no se conoce hasta que terceros reaccionen.
-10. **El acierto por especie no se desglosa por tamaño de galería**, y las tablas de confusiones mezclan especies congenéricas muy parecidas con posibles problemas de nomenclatura. Una auditoría del 2-oct-2026 de 34 carpetas de galería implicadas en los 17 pares marinos más confundibles (4.407 observaciones recomprobadas con la taxonomía actual de Minka) halló un 96 % ya bien archivado (37 por mover, 134 a cuarentena): estas confusiones son sobre todo visuales (congéneres crípticos), no errores de etiquetado. Aparte, 405 fotos candidatas a evaluación de 74 especies Tier-1 con 1–4 filas de evaluación obtuvieron solo un 36,8 % top-1 (46,4 % top-5), frente a ~82,5 % del panel: las especies con evaluación escasa son mucho más difíciles que la media, de modo que ampliar su evaluación bajaría la cifra macro de Tier-1 (una estimación más honesta, no una regresión).
-
----
+3. El código público es un **identificador de reconstrucción** (prototipos + k-NN local opcional), no el volcado del servicio de producción en HanSolo.
+4. El panel de campo vigente da **83,14 %** de acierto de especie (78.145 filas; `dataset/stats.json`); una fracción de filas puede seguir correlacionada con la galería, y el KPI operativo sobre observaciones recientes suele ser más bajo que el panel cerrado.
+5. Las correcciones de curadores aún no cierran un bucle de entrenamiento automático.
+6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; mitigado en aves con guarda zero-shot, no aún en todos los grupos.
+7. La precisión/cobertura de AutoID al umbral 0,83 (≈96 % / ≈66,5 % en el eval completo) es del calibrador vigente; la precisión real de los rescates por recorte publicados sigue pendiente de reacciones de terceros.
+8. La línea base de iNaturalist CV está medida solo en n = 98 (HTTP 429); falta completar a n = 300.
+9. Varias ideas de mejora (SigLIP, DINOv2/v3, VLM, YOLO crop, ArcFace/LoRA, poda de outliers) se midieron y **no** se adoptaron (§5.3–5.4); el margen sobre k-NN simple (79,86 %) y centroides (74,73 %) es real pero modesto.
 
 ## 7. Reproducibilidad
 
@@ -408,6 +374,51 @@ Descarga BioCLIP-2.5 de Hugging Face al primer arranque. Usa prototipos en `data
 Licencia MIT para código y JSON/prototipos publicados. El copyright de las fotos sigue en observadores y plataformas.
 
 ---
+
+## 8. Cómo identifica BioFauna una especie
+
+![Pipeline: de la fotografía a una respuesta calibrada y con guardas](figure_pipeline.svg)
+
+BioFauna es un clasificador por **recuperación**, no una red entrenada de extremo a extremo:
+
+1. **Encoder congelado.** Cada foto de la galería se embebe con **BioCLIP-2.5 ViT-H/14** (congelado). La consulta se embebe igual: vector global **más fusión ROI al 65 %** (recorte centrado en el sujeto), normalizado L2.
+2. **Búsqueda aproximada.** Un índice **FAISS** guarda los vectores de galería (hoy **≈1,20 M vectores / 4.543 especies**, alineados fila a especie).
+3. **k-NN con agregador temperado.** Los *k*=15 vecinos votan con pesos `exp(similitud / T)`, `T=0,05`, **tope de 3 votos por especie**.
+4. **Correcciones de contexto.** Prior **geográfico** y manejo de **pares crípticos** corrigen el ranking cuando dos especies son casi idénticas a la vista.
+5. **Calibración jerárquica.** Un modelo logístico por especie convierte la puntuación k-NN en **probabilidad calibrada**, con respaldo a género/familia; bajo el umbral el servicio **se abstiene**.
+6. **Rescate zero-shot (2026).** Si la similitud top-1 es baja (< 0,85), se consulta un zero-shot a todo el catálogo (2.985 etiquetas); si coincide con *otra* especie a p ≥ 0,90, gana. Efecto medido: **+0,91 pp** en la evaluación de campo.
+7. **Guardas de publicación (AutoID).** No se publica a especie si el **margen** top-1/top-2 es < 0,02, si la observación queda fuera de dominio o hay desacuerdo vocal; una **guarda de curadores** retira identificaciones cuando un curador corrige a nivel de clase o superior.
+
+## 9. Cómo ha mejorado el modelo, paso a paso
+
+![Cronología de mejoras](figure_mejoras.svg)
+
+| etapa | cambio | efecto |
+|---|---|---|
+| YOLOFauna (2024–2026) | BioCLIP ViT-L + k-NN | 63.9 % |
+| Aug 2026 | full re-embedding with **BioCLIP-2.5 ViT-H/14** | 70.6 % |
+| Aug 2026 | **k=15** + hierarchical fallback + calibration hygiene | 71.7 % |
+| Aug 2026 | **hierarchical calibration** (species/genus/family) | 74.1 % |
+| Sep 2026 | **3-vote cap** per species, ROI fusion, geographic prior | 77.9 % |
+| Sep 2026 | **evaluation leak fixed** → honest panel (near-100 % of the drop was leakage, not error) | 79.4 % |
+| Sep 2026 | **gallery hygiene**: 135 duplicate synonym slugs merged (Minka authority), ~1,000 mislabelled photos relocated, 57 quarantined | 79.6 % |
+| Sep 2026 | **zero-shot rescue** + publication guards | 79.6 % *(+0.91 pp on the same rows; the headline moves with the evaluation)* |
+
+Dos lecciones que marcaron el proyecto: (a) **la evaluación forma parte del modelo** — an unfixed leak in the
+evaluation made the system look better than it was; (b) **la calidad de la galería gana a la complejidad del modelo** — synonyms,
+contamination and mislabelled observations cost more accuracy than any hyper-parameter we tuned (LoRA/QLoRA/
+triplet/ArcFace/SupCon on this embedding space were all rejected by measurement).
+
+## 10. Datos, evaluación y operación
+
+![Flujo de datos y operación](figure_datos.svg)
+
+- **Fuentes** (imágenes públicas): **Minka SDG** 377,476 · **iNaturalist** 779,411 · GBIF 39,570 · Wikimedia Commons
+  6,677 · DORIS/FFESSM 5,091 · SeaSlugForum 3,147 · WoRMS 1,320 · FishBase 1,072 → **≈1.22 M photographs**.
+- **Una copia de cada foto**, nunca se borra; cada reubicación lleva manifiesto y script de marcha atrás.
+- **Evaluación de campo**: solo fotos de campo (iNaturalist/Minka research grade), 20–30 por especie, auditadas contra fugas antes de fusionar.
+- **Todo cambio de producción se mide** (McNemar + guardia por especie); el índice anterior queda como **marcha atrás 24 h**.
+- **QA continua**: contaminación de galería (diaria), auditoría de fuga del eval minado (semanal, con purga) y alineación índice↔catálogo (cada 10 min).
 
 ## Agradecimientos
 
@@ -427,65 +438,7 @@ Las mismas que la versión inglesa (`01_biofauna.md`).
 
 ---
 
-*Informe técnico del repositorio abierto. No es un envío a revista. Sedes posibles tras un PDF congelado: Ecological Informatics / Biodiversity Data Journal / PeerJ.*
+*Manuscrito orientado a Biodiversity Data Journal / PeerJ. Artefactos y cifras en este repositorio.*
 
 ---
 
-## 7. Cómo identifica BioFauna una especie
-
-![Pipeline: de la fotografía a una respuesta calibrada y con guardas](figure_pipeline.svg)
-
-BioFauna is a **retrieval** classifier, not a trained end-to-end network:
-
-1. **Frozen encoder.** Every gallery photograph is embedded with **BioCLIP-2.5 ViT-H/14** (frozen, no
-   fine-tuning). The query image is embedded the same way, as the global vector **plus a 65 % region-of-interest
-   fusion** (the subject-centred crop), L2-normalised.
-2. **Approximate search.** A **FAISS** index holds all gallery vectors (currently **1.12 M vectors / 4,543
-   species**, row-aligned so that each vector maps to exactly one species).
-3. **k-NN with a tempered aggregator.** The *k*=15 neighbours vote with weights `exp(similarity / T)`, `T=0.05`,
-   **capped at 3 votes per species** so that a single over-represented species cannot swamp the vote.
-4. **Context corrections.** A **geographic prior** (1,386 species, σ≈200 km) and **cryptic-pair** handling
-   (Fisher directions / local subspace) correct the ranking when two species are visually almost identical.
-5. **Hierarchical calibration.** A per-species logistic model converts the k-NN score into a **calibrated
-   probability**, with genus- and family-level fallbacks; below the calibrated threshold the service **abstains**
-   to genus/family instead of guessing.
-6. **Zero-shot rescue (2026).** When the top-1 similarity is low (< 0.85), a **catalogue-wide zero-shot**
-   comparison (2,985 text labels) is consulted; if it agrees with a *different* species at p ≥ 0.90, it wins.
-   Measured effect: **+0.91 pp** on the field evaluation.
-7. **Publication guards (AutoID).** A species is not published when the top-1/top-2 similarity **margin < 0.02**,
-   when the observation falls outside the domain, or when a vocal disagreement exists; a **curator guard**
-   automatically retracts our identifications when a curator corrects at class level or above.
-
-## 8. Cómo ha mejorado el modelo, paso a paso
-
-![Cronología de mejoras](figure_mejoras.svg)
-
-| etapa | cambio | efecto |
-|---|---|---|
-| YOLOFauna (2024–2026) | BioCLIP ViT-L + k-NN | 63.9 % |
-| Aug 2026 | full re-embedding with **BioCLIP-2.5 ViT-H/14** | 70.6 % |
-| Aug 2026 | **k=15** + hierarchical fallback + calibration hygiene | 71.7 % |
-| Aug 2026 | **hierarchical calibration** (species/genus/family) | 74.1 % |
-| Sep 2026 | **3-vote cap** per species, ROI fusion, geographic prior | 77.9 % |
-| Sep 2026 | **evaluation leak fixed** → honest panel (near-100 % of the drop was leakage, not error) | 79.4 % |
-| Sep 2026 | **gallery hygiene**: 135 duplicate synonym slugs merged (Minka authority), ~1,000 mislabelled photos relocated, 57 quarantined | 79.6 % |
-| Sep 2026 | **zero-shot rescue** + publication guards | 79.6 % *(+0.91 pp on the same rows; the headline moves with the evaluation)* |
-
-Two lessons that shaped the project: (a) **the evaluation is part of the model** — an unfixed leak in the
-evaluation made the system look better than it was; (b) **gallery quality beats model complexity** — synonyms,
-contamination and mislabelled observations cost more accuracy than any hyper-parameter we tuned (LoRA/QLoRA/
-triplet/ArcFace/SupCon on this embedding space were all rejected by measurement).
-
-## 9. Datos, evaluación y operación
-
-![Flujo de datos y operación](figure_datos.svg)
-
-- **Sources** (public images): **Minka SDG** 377,476 · **iNaturalist** 779,411 · GBIF 39,570 · Wikimedia Commons
-  6,677 · DORIS/FFESSM 5,091 · SeaSlugForum 3,147 · WoRMS 1,320 · FishBase 1,072 → **≈1.22 M photographs**.
-- **One copy of each photo**, never deleted; every relocation is done with a manifest and a rollback script.
-- **Field evaluation**: field-only photographs (iNaturalist/Minka research grade), 20–30 per species,
-  leak-audited before merging (a gallery copy in the evaluation would inflate the score).
-- **Every production change is measured** (McNemar + per-species guard); the previous index stays as a
-  **24-h rollback**.
-- **Continuous QA**: gallery contamination (prototype-centroid metric, daily), mined-evaluation leak audit
-  (weekly, with automatic purge), index↔catalogue alignment (every 10 min).
