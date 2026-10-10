@@ -53,6 +53,7 @@ Scatter lat/lng (matplotlib) sobre caja CAT; puntos de especies UE presentes en 
 - Agrupación en periodos de **5 años** (2000–2004 … 2025–2026); cajas Med / ES / CAT como en §2.
 - Bibliografía: DOI comprobados uno a uno en Crossref; sin DOI válido → texto marcado **hipótesis**.
 - Salidas: `ORIGEN_Y_VIAS_EXPANSION.md`, `tabla_origen_vias_resumen.csv`, `figuras/expansion/`, script `artifacts/invasoras/origen_expansion/gen_maps_origen.py`.
+- Láminas históricas (A3/A4): `laminas_expansion/` · script `laminas_expansion/gen_laminas_historicas.py` (CPU; Natural Earth 110m; flechas discontinuas = hipótesis; reutiliza tabla origen/vías y `pobs_key_taxa.csv`).
 
 ## 9. Exóticas marinas (Weitzmann)
 
