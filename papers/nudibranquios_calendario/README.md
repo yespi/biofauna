@@ -11,6 +11,8 @@
 | [`LAMINA1_calendario_fenologico_20261010.pdf`](LAMINA1_calendario_fenologico_20261010.pdf) · [`.png`](LAMINA1_calendario_fenologico_20261010.png) | Calendario A3: familia / miniatura / nombre + mapa de calor suavizado |
 | [`LAMINA2_rosas_estaciones_20261010.pdf`](LAMINA2_rosas_estaciones_20261010.pdf) · [`.png`](LAMINA2_rosas_estaciones_20261010.png) | Rosas radiales (12 spp.) + panel estacional |
 | [`LAMINA3_distribucion_espacial_20261010.pdf`](LAMINA3_distribucion_espacial_20261010.pdf) · [`.png`](LAMINA3_distribucion_espacial_20261010.png) | Distribución espacial A3: mapas CAT/Med-ES, tramos, tendencia, zonas calientes |
+| [`LAMINA4_poster_guia_20261010.pdf`](LAMINA4_poster_guia_20261010.pdf) · [`.png`](LAMINA4_poster_guia_20261010.png) | Póster A3 guía (16 spp.) con recortes sin fondo |
+| [`recortes/`](recortes/) | Recortes rembg estilo guía (CPU) + créditos |
 | [`LAMINA4_poster_guia_20261010.pdf`](LAMINA4_poster_guia_20261010.pdf) · [`.png`](LAMINA4_poster_guia_20261010.png) | Póster A3 guía (16 spp.): foto grande CC, nombres CA/ES, calendario pic, mapa zonas |
 | [`LICENCIAS_FOTOS.md`](LICENCIAS_FOTOS.md) · [`LICENCIAS_POSTER_LAMINA4.md`](LICENCIAS_POSTER_LAMINA4.md) | Atribución CC0 / CC BY / CC BY-SA |
 | [`datos/`](datos/) | CSV mensual (conteos + índice suavizado) y esfuerzo |
@@ -27,4 +29,8 @@ papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_articulo_
 papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_lamina3_espacial_20261010.py
 papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_poster_a3_20261010.py
 papers/nudibranquios_calendario/.venv/bin/python scripts/build_pdf_papers_completos_20261010.py
+```
+```bash
+papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_recortes_rembg_20261010.py
+papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_poster_a3_20261010.py
 ```

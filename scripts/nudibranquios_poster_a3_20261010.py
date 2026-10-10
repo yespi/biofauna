@@ -290,6 +290,24 @@ def _minka_search(mid: int | None, name: str) -> list[dict]:
     return out
 
 
+def credits_from_recortes(sp: str) -> dict:
+    """Créditos actualizados tras re-elección de foto para rembg."""
+    meta_p = RECORTES / "meta_recortes_20261010.json"
+    if not meta_p.exists():
+        return {}
+    try:
+        for it in json.loads(meta_p.read_text(encoding="utf-8")).get("items") or []:
+            if it.get("species") == sp and it.get("author"):
+                return {
+                    "author": it.get("author") or "?",
+                    "license": it.get("license") or "",
+                    "uri": it.get("uri") or "",
+                }
+    except Exception:
+        pass
+    return {}
+
+
 def ensure_large_photo(sp: str, prev: dict, taxa: dict) -> dict:
     FOTOS_LG.mkdir(parents=True, exist_ok=True)
     slug = sp.replace(" ", "_").lower()
@@ -309,7 +327,8 @@ def ensure_large_photo(sp: str, prev: dict, taxa: dict) -> dict:
         }
 
     if dest.exists() and dest.stat().st_size > 20000:
-        return entry(dest, prev, "cache_large")
+        meta = {**prev, **credits_from_recortes(sp)}
+        return entry(dest, meta, "cache_large")
 
     # Reutilizar thumb si es razonable (≥400 px) como fallback inmediato
     # pero intentar large primero
@@ -341,10 +360,16 @@ def ensure_large_photo(sp: str, prev: dict, taxa: dict) -> dict:
     raise FileNotFoundError(f"Sin foto CC para {sp}")
 
 
+# Especies donde rembg falla (camuflaje extremo): usar foto completa.
+CUTOUT_SKIP = {"Paradoris indecora"}
+
+
 def cutout_path(sp: str) -> Path | None:
     """PNG rembg con sombra/contorno (preferido para el póster)."""
+    if sp in CUTOUT_SKIP:
+        return None
     p = RECORTES / f"{sp.replace(' ', '_').lower()}_cutout.png"
-    return p if p.exists() and p.stat().st_size > 5000 else None
+    return p if p.exists() and p.stat().st_size > 8000 else None
 
 
 def load_rgb(path: Path, size: tuple[int, int]) -> np.ndarray:

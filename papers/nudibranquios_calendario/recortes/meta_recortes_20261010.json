@@ -1,0 +1,347 @@
+{
+  "generated": "2026-10-10 18:22 CEST",
+  "engine": "rembg u2net/isnet CPU",
+  "n": 16,
+  "items": [
+    {
+      "species": "Cratena peregrina",
+      "ok": true,
+      "source_file": "cratena_peregrina_large.jpg",
+      "cutout": "cratena_peregrina_cutout.png",
+      "cutout_raw": "cratena_peregrina_cutout_raw.png",
+      "author": "Juraj Ahel",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/177865515",
+      "qa": {
+        "size": [
+          723,
+          525
+        ],
+        "fg_frac": 0.1826
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "note": "mejor candidato iNat por score rembg",
+      "qa_note": "OK — recorte limpio; especie correcta; crédito Juraj Ahel",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Flabellina affinis",
+      "ok": true,
+      "source_file": "flabellina_affinis_large.jpg",
+      "cutout": "flabellina_affinis_cutout.png",
+      "cutout_raw": "flabellina_affinis_cutout_raw.png",
+      "author": "Justin Philbois",
+      "license": "cc0",
+      "uri": "https://www.inaturalist.org/observations/317511917",
+      "qa": {
+        "size": [
+          190,
+          224
+        ],
+        "fg_frac": 0.3256
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — cerata/rinóforos; algo de arena en pie",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Peltodoris atromaculata",
+      "ok": true,
+      "source_file": "peltodoris_atromaculata_thumb.jpg",
+      "cutout": "peltodoris_atromaculata_cutout.png",
+      "cutout_raw": "peltodoris_atromaculata_cutout_raw.png",
+      "author": "Pau Pagès Jaén",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/371691219",
+      "qa": {
+        "size": [
+          296,
+          330
+        ],
+        "fg_frac": 0.5281
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — desde thumb (esponja roja); vaquita suiza correcta",
+      "poster_use": "cutout",
+      "note": "recorte desde thumb (mejor contraste esponja roja); crédito original lámina"
+    },
+    {
+      "species": "Felimare picta",
+      "ok": true,
+      "source_file": "felimare_picta_large.jpg",
+      "cutout": "felimare_picta_cutout.png",
+      "cutout_raw": "felimare_picta_cutout_raw.png",
+      "author": "Susanne Vogel",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/175828742",
+      "qa": {
+        "size": [
+          934,
+          488
+        ],
+        "fg_frac": 0.2952
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — azul/amarillo, branquias y rinóforos",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Edmundsella pedata",
+      "ok": true,
+      "source_file": "edmundsella_pedata_large.jpg",
+      "cutout": "edmundsella_pedata_cutout.png",
+      "cutout_raw": "edmundsella_pedata_cutout_raw.png",
+      "author": "ruseva",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/271964065",
+      "qa": {
+        "size": [
+          322,
+          420
+        ],
+        "fg_frac": 0.386
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — rosa/violeta con puntas blancas",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Felimare tricolor",
+      "ok": true,
+      "source_file": "felimare_tricolor_large.jpg",
+      "cutout": "felimare_tricolor_cutout.png",
+      "cutout_raw": "felimare_tricolor_cutout_raw.png",
+      "author": "Donald Davesne",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/290999643",
+      "qa": {
+        "size": [
+          433,
+          376
+        ],
+        "fg_frac": 0.1881
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — huevas blanquecinas retiradas en post",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Calmella cavolini",
+      "ok": true,
+      "source_file": "calmella_cavolini_large.jpg",
+      "cutout": "calmella_cavolini_cutout.png",
+      "cutout_raw": "calmella_cavolini_cutout_raw.png",
+      "author": "Daniel Benák",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/131773793",
+      "qa": {
+        "size": [
+          618,
+          535
+        ],
+        "fg_frac": 0.2183
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "note": "mejor candidato iNat por score rembg",
+      "qa_note": "OK — iNat 131773793 confirmada Calmella; rembg parcial en cerata finas",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Diaphorodoris papillata",
+      "ok": true,
+      "source_file": "diaphorodoris_papillata_large.jpg",
+      "cutout": "diaphorodoris_papillata_cutout.png",
+      "cutout_raw": "diaphorodoris_papillata_cutout_raw.png",
+      "author": "Julien Renoult",
+      "license": "cc0",
+      "uri": "https://www.inaturalist.org/observations/78025489",
+      "qa": {
+        "size": [
+          301,
+          362
+        ],
+        "fg_frac": 0.2922
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — papilas rojas + margen amarillo",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Paradoris indecora",
+      "ok": true,
+      "source_file": "paradoris_indecora_large.jpg",
+      "cutout": "paradoris_indecora_cutout.png",
+      "cutout_raw": "paradoris_indecora_cutout_raw.png",
+      "author": "Golfopolikayak",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/35812574",
+      "qa": {
+        "size": [
+          239,
+          239
+        ],
+        "fg_frac": 0.3646
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "note": "inat 35812574 sin CCA (camuflaje)",
+      "qa_note": "SKIP póster — camuflaje; rembg insuficiente; usar foto completa",
+      "poster_use": "full_photo"
+    },
+    {
+      "species": "Antiopella cristata",
+      "ok": true,
+      "source_file": "antiopella_cristata_large.jpg",
+      "cutout": "antiopella_cristata_cutout.png",
+      "cutout_raw": "antiopella_cristata_cutout_raw.png",
+      "author": "Bernard Picton",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/99821612",
+      "qa": {
+        "size": [
+          342,
+          237
+        ],
+        "fg_frac": 0.3905
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — (=Janolus) puntas azules; hidrario fino solapado",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Polycera quadrilineata",
+      "ok": true,
+      "source_file": "polycera_quadrilineata_large.jpg",
+      "cutout": "polycera_quadrilineata_cutout.png",
+      "cutout_raw": "polycera_quadrilineata_cutout_raw.png",
+      "author": "Julien Renoult",
+      "license": "cc0",
+      "uri": "https://www.inaturalist.org/observations/72728637",
+      "qa": {
+        "size": [
+          610,
+          364
+        ],
+        "fg_frac": 0.2715
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — morfología moteada naranja (válida)",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Rudmania krohni",
+      "ok": true,
+      "source_file": "rudmania_krohni_large.jpg",
+      "cutout": "rudmania_krohni_cutout.png",
+      "cutout_raw": "rudmania_krohni_cutout_raw.png",
+      "author": "BJ Smit",
+      "license": "cc-by",
+      "uri": "http://www.inaturalist.org/observations/2394098",
+      "qa": {
+        "size": [
+          278,
+          137
+        ],
+        "fg_frac": 0.259
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — líneas amarillas discontinuas",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Nemesignis banyulensis",
+      "ok": true,
+      "source_file": "nemesignis_banyulensis_large.jpg",
+      "cutout": "nemesignis_banyulensis_cutout.png",
+      "cutout_raw": "nemesignis_banyulensis_cutout_raw.png",
+      "author": "Jessica",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/69632797",
+      "qa": {
+        "size": [
+          271,
+          270
+        ],
+        "fg_frac": 0.2956
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — translúcida con cerata naranja",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Diaphorodoris alba",
+      "ok": true,
+      "source_file": "diaphorodoris_alba_large.jpg",
+      "cutout": "diaphorodoris_alba_cutout.png",
+      "cutout_raw": "diaphorodoris_alba_cutout_raw.png",
+      "author": "phil_newman",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/310182288",
+      "qa": {
+        "size": [
+          411,
+          455
+        ],
+        "fg_frac": 0.3213
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — blanca margen amarillo",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Facelina annulicornis",
+      "ok": true,
+      "source_file": "facelina_annulicornis_large.jpg",
+      "cutout": "facelina_annulicornis_cutout.png",
+      "cutout_raw": "facelina_annulicornis_cutout_raw.png",
+      "author": "Julien Renoult",
+      "license": "cc0",
+      "uri": "https://www.inaturalist.org/observations/106884337",
+      "qa": {
+        "size": [
+          365,
+          438
+        ],
+        "fg_frac": 0.499
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — cerata moteadas, rinóforos",
+      "poster_use": "cutout"
+    },
+    {
+      "species": "Felimare fontandraui",
+      "ok": true,
+      "source_file": "felimare_fontandraui_large.jpg",
+      "cutout": "felimare_fontandraui_cutout.png",
+      "cutout_raw": "felimare_fontandraui_cutout_raw.png",
+      "author": "Donald Davesne",
+      "license": "cc-by",
+      "uri": "https://www.inaturalist.org/observations/290999635",
+      "qa": {
+        "size": [
+          431,
+          310
+        ],
+        "fg_frac": 0.2466
+      },
+      "engine": "rembg/u2net CPU",
+      "source_meta": "poster_lamina4",
+      "qa_note": "OK — azul con líneas amarillas",
+      "poster_use": "cutout"
+    }
+  ]
+}

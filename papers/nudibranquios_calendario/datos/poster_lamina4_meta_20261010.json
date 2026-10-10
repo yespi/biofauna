@@ -2,13 +2,13 @@
   {
     "n": 1,
     "species": "Cratena peregrina",
-    "ca": "Cratena",
-    "es": "Cratena",
+    "ca": "Nudibranqui pelegrí",
+    "es": "Babosa peregrina",
     "zone": "Tarragona–Salou",
-    "author": "Vsevolod Rudyi",
+    "author": "Juraj Ahel",
     "license": "cc-by",
-    "uri": "https://www.inaturalist.org/observations/383094683",
-    "source": "inat_large",
+    "uri": "https://www.inaturalist.org/observations/177865515",
+    "source": "cache_large",
     "file": "cratena_peregrina_large.jpg"
   },
   {
@@ -20,7 +20,7 @@
     "author": "Justin Philbois",
     "license": "cc0",
     "uri": "https://www.inaturalist.org/observations/317511917",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "flabellina_affinis_large.jpg"
   },
   {
@@ -29,10 +29,10 @@
     "ca": "Vaqueta suïssa",
     "es": "Vaquita suiza",
     "zone": "Illes Medes / Estartit",
-    "author": "Guille Marín",
+    "author": "Pau Pagès Jaén",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/371691219",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "peltodoris_atromaculata_large.jpg"
   },
   {
@@ -44,7 +44,7 @@
     "author": "Susanne Vogel",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/175828742",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "felimare_picta_large.jpg"
   },
   {
@@ -56,7 +56,7 @@
     "author": "ruseva",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/271964065",
-    "source": "inat_large_fixed",
+    "source": "cache_large",
     "file": "edmundsella_pedata_large.jpg"
   },
   {
@@ -68,7 +68,7 @@
     "author": "Donald Davesne",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/290999643",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "felimare_tricolor_large.jpg"
   },
   {
@@ -77,10 +77,10 @@
     "ca": "Calmella de Cavolini",
     "es": "Calmella de Cavolini",
     "zone": "Delta de l'Ebre",
-    "author": "sarahfaulwetter",
+    "author": "Daniel Benák",
     "license": "cc-by",
-    "uri": "https://www.inaturalist.org/observations/283655328",
-    "source": "inat_large_fixed",
+    "uri": "https://www.inaturalist.org/observations/131773793",
+    "source": "cache_large",
     "file": "calmella_cavolini_large.jpg"
   },
   {
@@ -92,7 +92,7 @@
     "author": "Julien Renoult",
     "license": "cc0",
     "uri": "https://www.inaturalist.org/observations/78025489",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "diaphorodoris_papillata_large.jpg"
   },
   {
@@ -104,7 +104,7 @@
     "author": "Golfopolikayak",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/35812574",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "paradoris_indecora_large.jpg"
   },
   {
@@ -116,7 +116,7 @@
     "author": "Bernard Picton",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/99821612",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "antiopella_cristata_large.jpg"
   },
   {
@@ -128,7 +128,7 @@
     "author": "Julien Renoult",
     "license": "cc0",
     "uri": "https://www.inaturalist.org/observations/72728637",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "polycera_quadrilineata_large.jpg"
   },
   {
@@ -140,9 +140,8 @@
     "author": "BJ Smit",
     "license": "cc-by",
     "uri": "http://www.inaturalist.org/observations/2394098",
-    "source": "inat_large_fixed",
-    "file": "rudmania_krohni_large.jpg",
-    "id": 2394098
+    "source": "cache_large",
+    "file": "rudmania_krohni_large.jpg"
   },
   {
     "n": 13,
@@ -153,7 +152,7 @@
     "author": "Jessica",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/69632797",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "nemesignis_banyulensis_large.jpg"
   },
   {
@@ -165,7 +164,7 @@
     "author": "phil_newman",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/310182288",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "diaphorodoris_alba_large.jpg"
   },
   {
@@ -177,7 +176,7 @@
     "author": "Julien Renoult",
     "license": "cc0",
     "uri": "https://www.inaturalist.org/observations/106884337",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "facelina_annulicornis_large.jpg"
   },
   {
@@ -189,7 +188,7 @@
     "author": "Donald Davesne",
     "license": "cc-by",
     "uri": "https://www.inaturalist.org/observations/290999635",
-    "source": "inat_large",
+    "source": "cache_large",
     "file": "felimare_fontandraui_large.jpg"
   }
 ]
