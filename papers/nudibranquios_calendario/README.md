@@ -1,6 +1,6 @@
 # Calendario de observación de los nudibranquios y su sustrato
 
-**Estado: BORRADOR AUTOMÁTICO (8-oct-2026).** Primera versión del calendario por especie; **aún sin sustrato, sin datos de BioQuest y sin revisión a ojo**.
+**Estado: BORRADOR 8-oct + revisión 10-oct.** [`REVISION_ALCANCE_20261010.md`](REVISION_ALCANCE_20261010.md): faltan dóridoideos del catálogo vivo, sesgo estival, sustrato pendiente. Sin revisión a ojo.
 
 ## Qué hay
 - [`CALENDARIO_BORRADOR_20261008.md`](CALENDARIO_BORRADOR_20261008.md): tabla por especie con el periodo del año en que se observa («17 diciembre – 9 julio», «Todo el año», …) **y el pico de observaciones entre paréntesis** («Todo el año (pico: Julio–Agosto)») y **las 3 ubicaciones donde más se ve** (p. ej. *Cratena peregrina*: Todo el año · Tarragona, Illes Medes / L'Estartit, Reserva del Toro).

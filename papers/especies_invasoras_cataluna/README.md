@@ -1,9 +1,11 @@
 # Evolución de las especies invasoras en Cataluña (lista UE)
 
-**Estado: RESULTADOS_v1 (2026-10-09).** Borrador de resultados con cifras citando fuente.
+**Estado: borrador v1.1 (2026-10-10).** Resultados + intro/métodos/discusión; bloque exóticas marinas Weitzmann.
 
 ## Documentos
-- [`RESULTADOS_v1.md`](RESULTADOS_v1.md) — presencia CAT/ES, categorías, series normalizadas por esfuerzo, origen/vía (cuando hay dato), sesgo de esfuerzo.
+- [`INTRODUCCION.md`](INTRODUCCION.md) · [`METODOS.md`](METODOS.md) · [`DISCUSION.md`](DISCUSION.md)
+- [`RESULTADOS_v1.md`](RESULTADOS_v1.md) — presencia CAT/ES, categorías, series normalizadas, mapas, **§11 exóticas marinas**, esfuerzo BioQuest.
+- [`marinas_weitzmann_comparativa_20261010.csv`](marinas_weitzmann_comparativa_20261010.csv)
 - CSV en este directorio: `presencia_cat_es.csv`, `serie_anual_normalizada.csv`, `estacionalidad_mensual_cat.csv`, resúmenes y `esfuerzo_bioquest_anual.csv`.
 - Figuras: [`figuras/`](figuras/).
 - Lista de trabajo: `target_species.json` (114 spp internas BioFauna; ver nota en RESULTADOS sobre el recuento oficial UE ~103).

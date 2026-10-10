@@ -1,6 +1,6 @@
 # Nudibranquios del Mediterráneo: asociaciones con el sustrato y acierto del identificador
 
-**Estado: en preparación (7-oct-2026).** Aún no hay texto ni resultados en esta carpeta.
+**Estado: esqueleto 10-oct-2026.** [`METODOS_ESQUELETO_20261010.md`](METODOS_ESQUELETO_20261010.md). Calendario relacionado: [`../nudibranquios_calendario/`](../nudibranquios_calendario/).
 
 Paper separado del de correlaciones.
 

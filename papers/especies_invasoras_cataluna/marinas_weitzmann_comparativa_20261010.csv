@@ -1,0 +1,7 @@
+especie,slug,primera_bf_galeria_cat,obs_bf_enrich_cat,primera_inat_cat,obs_inat_cat,notas
+Bursatella leachii,bursatella_leachii,2013-10-06,68,2007-10-26,7,BF enrich = min(obs_date) caja CAT en enrich_obs_metadata
+Oculina patagonica,oculina_patagonica,2017-08-15,793,2011-08-15,126,
+Caulerpa taxifolia,caulerpa_taxifolia,,0,,0,sin obs iNat place Catalunya a 10-oct-2026
+Caulerpa cylindracea,caulerpa_cylindracea,2014-08-05,397,2014-11-11,57,BioQuest Minka 2014-08 vs iNat 2014-11
+Zebrasoma flavescens,zebrasoma_flavescens,,0,2008-10-01,10,exótica acuario; sin fotos BF en CAT
+Balistoides conspicillum,balistoides_conspicillum,,0,2018-04-04,6,exótica acuario; sin fotos BF en CAT

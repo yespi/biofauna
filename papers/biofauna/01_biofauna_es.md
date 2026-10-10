@@ -349,10 +349,22 @@ La tabla `operating_points` del calibrador **no** incluye exactamente 0,83 (salt
 
 Figuras generadas (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`, `fig_acc_especie_genero_familia.png`, `fig_autoid_precision_cobertura.png`, `fig_metodos_descartados.png` (fuentes en `figures/fuentes_cifras_20261009.json`).
 
+### 5.5 Cola de confirmación iNaturalist (`inat_review_decisions`)
+
+Para cerrar el bucle AutoID → comunidad, FotoFauna registra decisiones de revisión sobre observaciones de iNaturalist en la tabla **`inat_review_decisions`** (BD compartida `fauna`, contenedor `postgres-global`). A **10-oct-2026** hay **72** filas (solo lectura; sin escribir en producción desde este informe).
+
+| Métrica | Valor | Fuente |
+|---|---|---|
+| Filas totales | **72** | `SELECT COUNT(*) FROM inat_review_decisions` |
+| `action=confirm` | **27** | idem |
+| `action=discard` | **45** | idem |
+
+**Apartado reservado para el manuscrito:** cuando la cola supere ~200 decisiones con taxón final verificado, publicaremos una tabla resumen (precisión de la propuesta BF vs taxón acordado, latencia, observadores) en PeerJ/BDJ. Hasta entonces, citar solo el conteo anterior y no inferir precisión de la cola.
+
 ## 6. Limitaciones
 
 1. El top-1 de especie no es nivel experto en invertebrados crípticos; las especies con poca galería o evaluación fina son mucho más difíciles que la media del panel.
-2. No hay estudio de generalización fuera del Mediterráneo.
+2. El catálogo y la evaluación están **centrados en el mar Mediterráneo** (y costas adyacentes en la galería); no hay estudio sistemático fuera de esa región.
 3. El código público es un **identificador de reconstrucción** (prototipos + k-NN local opcional), no el volcado del servicio de producción en HanSolo.
 4. El panel de campo vigente da **83,14 %** de acierto de especie (78.145 filas; `dataset/stats.json`); una fracción de filas puede seguir correlacionada con la galería, y el KPI operativo sobre observaciones recientes suele ser más bajo que el panel cerrado.
 5. Las correcciones de curadores aún no cierran un bucle de entrenamiento automático.

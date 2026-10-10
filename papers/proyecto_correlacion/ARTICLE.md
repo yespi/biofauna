@@ -2,7 +2,7 @@
 
 **Author: Gustavo Zafra** · Creator and developer of BioFauna (BioCLIP-2.5 ViT-H/14 + FAISS identifier) and of the FotoFauna and BioQuest applications; collaborator of the citizen-science platform Minka SDG.
 
-**Version v23 — 9 Oct 2026** · Correlation project (BioFauna). What is demonstrated is a **screening method** and a **set of pairs with visual evidence** (both species in the same photo), with partial validation; we do not claim ecological interaction or that “the method works” in general (P8).
+**Version v24 — 10 Oct 2026** (v23: 9 Oct). P3/P4/P7/P9 advance: [`experimentos/AVANCE_v24_20261010.md`](experimentos/AVANCE_v24_20261010.md). · Correlation project (BioFauna). What is demonstrated is a **screening method** and a **set of pairs with visual evidence** (both species in the same photo), with partial validation; we do not claim ecological interaction or that “the method works” in general (P8).
 
 ---
 

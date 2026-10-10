@@ -175,7 +175,52 @@ Scatter lat/lng (matplotlib) sobre caja Cataluña, solo puntos de especies UE pr
 5. **Caja Minka ≠ Cataluña administrativa** (incluye franjas de Aragón/Andorra/Rosellón).
 6. **Localidades** son una aproximación por rejilla 0,001° sobre muestra.
 
-## 10. Archivos generados
+## 10. Gráfica BioQuest (esfuerzo anual en caja Cataluña)
+
+Consulta (solo lectura):
+
+```sql
+SELECT obs_year, COUNT(*) AS n_obs
+FROM public_observations
+WHERE lat BETWEEN 40.45 AND 42.95 AND lng BETWEEN 0.1 AND 3.4
+GROUP BY obs_year ORDER BY obs_year;
+```
+
+| Año | n obs (caja CAT) |
+|---:|---:|
+| 2013 | 1.220 |
+| 2018 | 5.303 |
+| 2022 | 25.543 |
+| 2024 | 102.301 |
+| 2025 | 105.404 |
+| 2026 | 37.731 (parcial) |
+
+Serie completa en `esfuerzo_bioquest_anual.csv`. Figura: `figuras/esfuerzo_bioquest_catalunya.png`.
+
+## 11. Otras exóticas marinas (Weitzmann y colaboradores)
+
+Además de la lista UE, revisamos un subconjunto de **exóticas marinas** del inventario ampliado de Boris Weitzmann (`marinas_weitzmann_20261010.json`), contrastando **primera observación en Cataluña** según iNaturalist (place 61614) y según fotos enlazadas a la galería BioFauna (mínimo `obs_date` en caja CAT en `enrich_obs_metadata_progress_20260919.json`).
+
+| Especie | 1ª BF galería (CAT) | n enrich CAT | 1ª iNat (CAT) | n iNat CAT | Lectura breve |
+|---|---|---:|---|---:|---|
+| *Bursatella leachii* | 2013-10-06 | 68 | 2007-10-26 | 7 | BF entra años después del primer iNat |
+| *Oculina patagonica* | 2017-08-15 | 793 | 2011-08-15 | 126 | Amplia galería BF; primer iNat ~6 años antes |
+| *Caulerpa taxifolia* | — | 0 | — | 0 | Sin obs iNat place Catalunya a 10-oct-2026 |
+| *Caulerpa cylindracea* | 2014-08-05 | 397 | 2014-11-11 | 57 | Alineado ~2014; BQ Minka desde 2014-08 (384 obs caja) |
+| *Zebrasoma flavescens* | — | 0 | 2008-10-01 | 10 | Acuariofilia; sin fotos BF en CAT |
+| *Balistoides conspicillum* | — | 0 | 2018-04-04 | 6 | Idem |
+
+CSV: [`marinas_weitzmann_comparativa_20261010.csv`](marinas_weitzmann_comparativa_20261010.csv). JSON fuente: `/mnt/docker/biofauna/artifacts/invasoras/marinas_weitzmann_comparativa_20261010.json`.
+
+**Referencias (DOI verificados 10-oct-2026):**
+
+- García, M., Weitzmann, B., et al. (2015). Exotic species in the Mediterranean. En *The Mediterranean Sea* (Springer). https://doi.org/10.1007/698_2015_411
+- Serrano, O., et al. (2013). Marine invasive species in the Mediterranean (PLoS ONE) — revisar cita página concreta antes de publicar; DOI no fijado en este borrador.
+- ClimateFish (2022). *Front. Mar. Sci.* **9**:910887. https://doi.org/10.3389/fmars.2022.910887
+
+No extrapolamos primer registro **oficial** de cada especie: comparamos solo fuentes ciudadanas y galería BF.
+
+## 12. Archivos generados
 
 En `/mnt/docker/biofauna/artifacts/invasoras/`:
 - `bq_scan_20261010.jsonl`

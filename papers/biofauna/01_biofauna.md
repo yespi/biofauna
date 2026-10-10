@@ -346,10 +346,22 @@ The calibrator's `operating_points` table does **not** include exactly 0.83 (it 
 
 Generated figures (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`, `fig_acc_especie_genero_familia.png`, `fig_autoid_precision_cobertura.png`, `fig_metodos_descartados.png` (sources in `figures/fuentes_cifras_20261009.json`).
 
+### 5.5 iNaturalist confirmation queue (`inat_review_decisions`)
+
+To close the AutoID → community loop, FotoFauna logs review decisions on iNaturalist observations in **`inat_review_decisions`** (shared DB `fauna`, container `postgres-global`). As of **10 Oct 2026** there are **72** rows (read-only; this report does not write to production).
+
+| Metric | Value | Source |
+|---|---|---|
+| Total rows | **72** | `SELECT COUNT(*) FROM inat_review_decisions` |
+| `action=confirm` | **27** | same table |
+| `action=discard` | **45** | same table |
+
+**Manuscript placeholder:** when the queue exceeds ~200 verified final taxa, we will publish a summary table (BF proposal vs agreed taxon, latency, observers) for PeerJ/BDJ. Until then, cite only the counts above; do not infer queue precision.
+
 ## 6. Limitations
 
 1. Species top-1 is not expert-level on cryptic invertebrates; species with thin galleries or thin evaluation sets are much harder than the panel average.
-2. No geographic generalization study outside the Mediterranean.
+2. The catalogue and evaluation are **Mediterranean-focused** (plus adjacent coasts in the gallery); there is no systematic study outside that region.
 3. Public code is a **reconstruction identifier** (prototypes + optional local k-NN), not a dump of the HanSolo production service.
 4. The current field panel scores **83.14 %** species accuracy (78,145 rows; `dataset/stats.json`); some rows may still correlate with the gallery, and the recent-observation operating KPI is usually lower than the closed panel.
 5. Curator corrections are not yet a closed automatic training loop.

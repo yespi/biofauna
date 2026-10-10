@@ -2,7 +2,7 @@
 
 **Autor: Gustavo Zafra** · Creador y desarrollador de BioFauna (identificador BioCLIP-2.5 ViT-H/14 + FAISS) y de las aplicaciones FotoFauna y BioQuest; colaborador de la plataforma de ciencia ciudadana Minka SDG.
 
-**Versión v23 — 9-oct-2026** · Proyecto Correlación (BioFauna). Lo demostrado es un **método de cribado** y una **base de parejas con evidencia visual** (ambas especies en la misma foto), con validación parcial; no se afirma interacción ecológica ni que «el método funciona» en general (P8).
+**Versión v24 — 10-oct-2026** (v23: 9-oct). Avance P3/P4/P7/P9: [`experimentos/AVANCE_v24_20261010.md`](experimentos/AVANCE_v24_20261010.md). · Proyecto Correlación (BioFauna). Lo demostrado es un **método de cribado** y una **base de parejas con evidencia visual** (ambas especies en la misma foto), con validación parcial; no se afirma interacción ecológica ni que «el método funciona» en general (P8).
 
 ---
 

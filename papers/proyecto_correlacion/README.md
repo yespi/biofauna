@@ -1,6 +1,6 @@
 # Proyecto Correlación (BioFauna) — asociaciones entre especies verificadas por proximidad real
 
-**Estado:** 9-oct-2026 · **artículo v23** (método de cribado + parejas con evidencia visual; OOS identificador **83,14 %**; P1/P3/P4/P9 integrados; P3 real con R/`cooccur` pendiente — sin R en este host). Todo el material público está en **https://github.com/yespi/biofauna** (carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) y [`data/`](https://github.com/yespi/biofauna/blob/master/data/)).
+**Estado:** 10-oct-2026 · **artículo v24** (método + parejas misma-foto; OOS **83,14 %**; P3 proxy Python, P4 acierto por especie, P7 lista CC BY-NC, P9 DOIs — ver [`experimentos/AVANCE_v24_20261010.md`](experimentos/AVANCE_v24_20261010.md)). R/`cooccur` completo sigue pendiente. Todo el material público está en **https://github.com/yespi/biofauna** (carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) y [`data/`](https://github.com/yespi/biofauna/blob/master/data/)).
 
 ---
 
