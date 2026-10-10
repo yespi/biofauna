@@ -1,2 +1,6 @@
 .venv/
 _articulo_print.html
+fotos_poster/_candidates_*/
+_tmp_*.html
+_tmp_*.md
+_tmp_*.pdf

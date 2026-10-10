@@ -4,8 +4,9 @@
 
 ## Documentos
 - [`ARTICULO.md`](ARTICULO.md) / [`ARTICLE.md`](ARTICLE.md) — v24
-- [`LAMINAS.md`](LAMINAS.md) — láminas v10
-- PDF: `ARTICULO_v24_ES_20261010.pdf`, `ARTICLE_v24_EN_20261010.pdf`, `*_latest.pdf`
+- [`LAMINAS.md`](LAMINAS.md) — láminas v11 (cuadrícula 2×2)
+- **PDF completo (artículo + figuras + láminas):** [`ARTICULO_COMPLETO_20261010.pdf`](ARTICULO_COMPLETO_20261010.pdf) · [`ARTICULO_COMPLETO_latest.pdf`](ARTICULO_COMPLETO_latest.pdf) · EN [`ARTICLE_COMPLETO_latest.pdf`](ARTICLE_COMPLETO_latest.pdf)
+- PDF: `ARTICULO_v24_ES_20261010.pdf`, `ARTICLE_v24_EN_20261010.pdf`, `LAMINAS_latest.pdf`, `*_latest.pdf` (miniaturas en cuadrícula + keep-together; regenerado 10-oct tarde)
 
 ## Qué falta para publicar
 P2 curadores · P5 ≥5 parejas nuevas · P6 listado otras relaciones · P7 sustituir 26 CC BY-NC · P3 R/`cooccur` real · P8 título/resumen finales tras P2–P7.

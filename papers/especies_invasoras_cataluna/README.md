@@ -3,6 +3,7 @@
 **Estado: borrador v1.3 (2026-10-10, origen/vías + láminas históricas).** Resultados + intro/métodos/discusión; bloque Weitzmann; **análisis origen y vías especie por especie** (DOI Crossref); mapas expansión 5 años; contraste *Pterois miles*; **láminas de expansión estilo mapa histórico** (A3/A4).
 
 ## Documentos
+- [`ARTICULO_COMPLETO_20261010.pdf`](ARTICULO_COMPLETO_20261010.pdf) · [`ARTICULO_COMPLETO_latest.pdf`](ARTICULO_COMPLETO_latest.pdf) — **PDF único** (texto + figuras + láminas A3)
 - [`INTRODUCCION.md`](INTRODUCCION.md) · [`METODOS.md`](METODOS.md) · [`DISCUSION.md`](DISCUSION.md)
 - [`RESULTADOS_v1.md`](RESULTADOS_v1.md) — presencia CAT/ES, categorías, series, mapas, **§7 origen/vías**, §11 marinas, §12 expansión 5 años.
 - [`ORIGEN_Y_VIAS_EXPANSION.md`](ORIGEN_Y_VIAS_EXPANSION.md) — origen, vía, primeras citas Med/ES/CAT, frentes, causas; caso pez león.
@@ -23,7 +24,7 @@
 1. Verificar lista UE 114 vs EUR-Lex/EASIN.
 2. Cerrar hipótesis de origen/vía restantes con EASIN/AquaNIS primarios.
 3. Láminas con fotos de Cataluña (autor, licencia, lugar, coordenadas).
-4. Redacción final + PDF unificado.
+4. Redacción final (PDF unificado ya generado: `ARTICULO_COMPLETO_*.pdf`).
 
 ## Fuentes / script
 BioQuest = BD `fauna` / `public_observations` (solo SELECT). Script: `/mnt/docker/biofauna/scripts/invasoras_paper_resultados_v1_20261009.py`.

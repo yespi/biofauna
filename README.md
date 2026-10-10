@@ -4,7 +4,7 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
-**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN latest](papers/biofauna/BIOFAUNA_paper_EN_latest.pdf) · [ES latest](papers/biofauna/BIOFAUNA_paper_ES_latest.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF: [ES latest](papers/proyecto_correlacion/ARTICULO_ES_latest.pdf) · [EN latest](papers/proyecto_correlacion/ARTICLE_EN_latest.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_latest.pdf)) · [Invasoras CAT](papers/especies_invasoras_cataluna/) · [Fanerógamas](papers/fanerogamas/)
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF completo: [ES](papers/biofauna/ARTICULO_COMPLETO_latest.pdf) · [EN](papers/biofauna/ARTICLE_COMPLETO_latest.pdf) · latest: [EN](papers/biofauna/BIOFAUNA_paper_EN_latest.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_latest.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF completo: [ES](papers/proyecto_correlacion/ARTICULO_COMPLETO_latest.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_COMPLETO_latest.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_latest.pdf)) · [Invasoras CAT](papers/especies_invasoras_cataluna/) ([PDF completo](papers/especies_invasoras_cataluna/ARTICULO_COMPLETO_latest.pdf)) · [Nudibranquios calendario](papers/nudibranquios_calendario/) ([PDF completo](papers/nudibranquios_calendario/ARTICULO_COMPLETO_latest.pdf) · [póster A3](papers/nudibranquios_calendario/LAMINA4_poster_guia_20261010.png)) · [Fanerógamas](papers/fanerogamas/)
 
 ## Snapshot (2026-10-10)
 
