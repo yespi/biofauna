@@ -190,11 +190,11 @@
         ],
         "fg_frac": 0.3646
       },
-      "engine": "rembg/u2net CPU",
+      "engine": "manual soft ellipse + outline/shadow",
       "source_meta": "poster_lamina4",
       "note": "inat 35812574 sin CCA (camuflaje)",
-      "qa_note": "SKIP póster — camuflaje; rembg insuficiente; usar foto completa",
-      "poster_use": "full_photo"
+      "qa_note": "recorte elíptico suave (rembg insuficiente por camuflaje; única foto CC-BY usable iNat 35812574)",
+      "poster_use": "soft_ellipse_cutout"
     },
     {
       "species": "Antiopella cristata",

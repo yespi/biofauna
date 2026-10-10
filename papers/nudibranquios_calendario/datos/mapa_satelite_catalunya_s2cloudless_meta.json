@@ -1,0 +1,19 @@
+{
+  "source": "Sentinel-2 cloudless \u2013 https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data)",
+  "license": "CC BY 4.0",
+  "layer": "s2cloudless-2020_3857",
+  "zoom": 10,
+  "bbox_lat": [
+    40.52,
+    42.55
+  ],
+  "bbox_lon": [
+    0.55,
+    3.45
+  ],
+  "pixels": [
+    2112,
+    1975
+  ],
+  "tiles_ok": 72
+}

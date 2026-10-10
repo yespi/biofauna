@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Póster A3 imprimible — nudibranquios comunes de Cataluña.
+"""Póster A3 estilo museo/película — nudibranquios comunes de Cataluña.
 
-Fotos reales CC0/CC BY/CC BY-SA (reutiliza cache o descarga iNat/Minka large).
-Sin GPU. Solo SELECT en postgres-global para zonas calientes (opcional; usa CSV).
+Fondo negro abisal · recortes sobre negro con halo · mapa Sentinel-2 cloudless
+(EOX, CC BY 4.0) como pieza central · zonas calientes luminosas · tipografía serif.
+300 ppp. Sin GPU.
 """
 from __future__ import annotations
 
 import csv
 import json
+import math
 import os
 import re
 import time
@@ -26,27 +28,34 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib import patheffects as pe
-from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.font_manager import FontProperties
+from matplotlib.patches import ConnectionPatch
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageEnhance, ImageFilter
 
 ROOT = Path("/mnt/docker/biofauna-public")
 PAPER = ROOT / "papers/nudibranquios_calendario"
 FOTOS = PAPER / "fotos"
 FOTOS_LG = PAPER / "fotos_poster"
-RECORTES = PAPER / "recortes"  # cutouts rembg (estilo guía; cursor-recortes)
+RECORTES = PAPER / "recortes"
 COAST = PAPER / "datos/coast-western-med.geojson"
 META_JSON = PAPER / "datos/fotos_meta_20261010.json"
 MONTHLY = PAPER / "datos/especies_mensual_normalizado_20261010.csv"
 ZONES_CSV = PAPER / "datos/zonas_calientes_normalizado_20261010.csv"
+SAT_MAP = PAPER / "datos/mapa_satelite_catalunya_s2cloudless.jpg"
+SAT_META = PAPER / "datos/mapa_satelite_catalunya_s2cloudless_meta.json"
 
+# Encuadre satélite (debe coincidir con el mosaico descargado)
+MAP_LAT = (40.52, 42.55)
+MAP_LON = (0.55, 3.45)
 CAT_LAT = (40.45, 42.95)
 CAT_LON = (0.10, 3.40)
 MED_LAT = (35.0, 45.5)
 MED_LON = (-6.0, 16.0)
+
 LICENSE_OK = re.compile(r"^(cc0|cc-by|cc-by-sa)(-[0-9.]+)?$", re.I)
 USER_AGENT = "BioFaunaNudibranchPoster/2026-10 (yespi.es; educational; contact gustavo.zafra@gmail.com)"
-MES = ["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+MES = ["G", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
 MES_KEYS = [
     "suav_Enero",
     "suav_Febrero",
@@ -62,27 +71,12 @@ MES_KEYS = [
     "suav_Diciembre",
 ]
 
-# Nombres comunes (CA / ES) — uso divulgativo (GROC / guías Med)
-VERNACULAR = {
-    "Cratena peregrina": ("Nudibranqui pelegrí", "Babosa peregrina"),
-    "Flabellina affinis": ("Flabel·lina violeta", "Flabelina violeta"),
+# Solo nombres comunes asentados en guías/divulgación local — no inventar.
+VERNACULAR: dict[str, tuple[str, str] | None] = {
     "Peltodoris atromaculata": ("Vaqueta suïssa", "Vaquita suiza"),
-    "Felimare picta": ("Felimare pintada", "Felimare pintada"),
-    "Edmundsella pedata": ("Edmundsel·la rosa", "Edmundsella rosa"),
-    "Felimare tricolor": ("Felimare tricolor", "Felimare tricolor"),
-    "Calmella cavolini": ("Calmella de Cavolini", "Calmella de Cavolini"),
-    "Diaphorodoris papillata": ("Diaforodoris papil·lada", "Diaforodoris papilada"),
-    "Paradoris indecora": ("Paradoris", "Paradoris"),
-    "Antiopella cristata": ("Antiopel·la crestada", "Antiopela crestada"),
-    "Polycera quadrilineata": ("Polícera de quatre línies", "Policera de cuatro líneas"),
-    "Rudmania krohni": ("Rudmania de Krohn", "Rudmania de Krohn"),
-    "Nemesignis banyulensis": ("Nemesignis de Banyuls", "Nemesignis de Banyuls"),
-    "Diaphorodoris alba": ("Diaforodoris blanca", "Diaforodoris blanca"),
-    "Facelina annulicornis": ("Facelina d'antenes anellades", "Facelina de antenas anilladas"),
-    "Felimare fontandraui": ("Felimare de Fontandrau", "Felimare de Fontandrau"),
+    "Flabellina affinis": ("Flabel·lina violeta", "Flabelina violeta"),
 }
 
-# Centro aproximado de cada tramo costero (lon, lat) para anclar fotos
 ZONE_XY = {
     "Cap de Creus": (3.28, 42.32),
     "Illes Medes / Estartit": (3.225, 42.045),
@@ -96,24 +90,20 @@ ZONE_XY = {
     "Delta de l'Ebre": (0.75, 40.70),
 }
 
-PALETTE = [
-    "#c0392b",
-    "#2980b9",
-    "#27ae60",
-    "#8e44ad",
-    "#d35400",
-    "#16a085",
-    "#c03971",
-    "#2c3e50",
-    "#e67e22",
-    "#1abc9c",
-    "#9b59b6",
-    "#e74c3c",
-    "#3498db",
-    "#f39c12",
-    "#1e8449",
-    "#7d3c98",
-]
+FALLBACK_ZONES = ["Maresme", "Garraf", "Costa Daurada N", "Tossa–Blanes"]
+
+BG = "#020508"
+ABYSS = "#050c14"
+GOLD = "#d4b87a"
+CREAM = "#e8e0d0"
+MUTED = "#8a9aaa"
+GLOW = "#7ec8e3"
+
+FONT_SERIF = FontProperties(fname="/usr/share/fonts/truetype/freefont/FreeSerif.ttf")
+FONT_SERIF_B = FontProperties(fname="/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf")
+FONT_SERIF_I = FontProperties(fname="/usr/share/fonts/truetype/freefont/FreeSerifItalic.ttf")
+FONT_SERIF_BI = FontProperties(fname="/usr/share/fonts/truetype/freefont/FreeSerifBoldItalic.ttf")
+FONT_SANS = FontProperties(fname="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
 
 
 def http_json(url: str, timeout: int = 30):
@@ -136,7 +126,6 @@ def http_bytes(url: str, timeout: int = 40) -> bytes | None:
 
 def ok_license(lic: str) -> bool:
     s = (lic or "").strip().lower().replace("_", "-")
-    s = s.replace("cc-by-sa", "cc-by-sa").replace("cc0", "cc0")
     if "nc" in s or "nd" in s:
         return False
     return bool(LICENSE_OK.match(s)) or s in {"cc0", "cc-by", "cc-by-sa"}
@@ -172,37 +161,6 @@ def load_hot_zone(species: list[str]) -> dict[str, str]:
             if sp not in best or tasa > best[sp][0]:
                 best[sp] = (tasa, row["tramo"])
     return {sp: z for sp, (_, z) in best.items()}
-
-
-def load_coast_lines(lon_b, lat_b) -> list[np.ndarray]:
-    g = json.loads(COAST.read_text(encoding="utf-8"))
-    segs = []
-    for feat in g["features"]:
-        geom = feat["geometry"]
-        coords = geom["coordinates"]
-        if geom["type"] == "LineString":
-            coords = [coords]
-        for line in coords:
-            arr = np.array(line, dtype=float)
-            if arr.size < 4:
-                continue
-            m = (
-                (arr[:, 0] >= lon_b[0] - 0.2)
-                & (arr[:, 0] <= lon_b[1] + 0.2)
-                & (arr[:, 1] >= lat_b[0] - 0.2)
-                & (arr[:, 1] <= lat_b[1] + 0.2)
-            )
-            if m.sum() < 2:
-                continue
-            idx = np.where(m)[0]
-            breaks = np.where(np.diff(idx) > 1)[0]
-            starts = np.r_[0, breaks + 1]
-            ends = np.r_[breaks + 1, len(idx)]
-            for s, e in zip(starts, ends):
-                chunk = arr[idx[s:e]]
-                if len(chunk) >= 2:
-                    segs.append(chunk)
-    return segs
 
 
 def catalog_taxon_ids() -> dict[str, dict]:
@@ -262,7 +220,6 @@ def _minka_search(mid: int | None, name: str) -> list[dict]:
     data = http_json(f"https://minka-sdg.org/observations.json?{q}")
     if not data:
         return []
-    # API lista o dict
     results = data if isinstance(data, list) else (data.get("results") or [])
     out = []
     for obs in results:
@@ -291,7 +248,6 @@ def _minka_search(mid: int | None, name: str) -> list[dict]:
 
 
 def credits_from_recortes(sp: str) -> dict:
-    """Créditos actualizados tras re-elección de foto para rembg."""
     meta_p = RECORTES / "meta_recortes_20261010.json"
     if not meta_p.exists():
         return {}
@@ -330,8 +286,6 @@ def ensure_large_photo(sp: str, prev: dict, taxa: dict) -> dict:
         meta = {**prev, **credits_from_recortes(sp)}
         return entry(dest, meta, "cache_large")
 
-    # Reutilizar thumb si es razonable (≥400 px) como fallback inmediato
-    # pero intentar large primero
     tid = (taxa.get(sp) or {}).get("inat")
     mid = (taxa.get(sp) or {}).get("minka")
     for bbox in [(CAT_LAT, CAT_LON), (MED_LAT, MED_LON), None]:
@@ -353,300 +307,406 @@ def ensure_large_photo(sp: str, prev: dict, taxa: dict) -> dict:
                 return entry(dest, c, "minka_large")
 
     if thumb.exists() and thumb.stat().st_size > 8000:
-        # copiar thumb (ya validada CC)
         dest.write_bytes(thumb.read_bytes())
         return entry(dest, prev, "thumb_fallback")
 
     raise FileNotFoundError(f"Sin foto CC para {sp}")
 
 
-# Especies donde rembg falla (camuflaje extremo): usar foto completa.
-CUTOUT_SKIP = {"Paradoris indecora"}
-
-
 def cutout_path(sp: str) -> Path | None:
-    """PNG rembg con sombra/contorno (preferido para el póster)."""
-    if sp in CUTOUT_SKIP:
-        return None
     p = RECORTES / f"{sp.replace(' ', '_').lower()}_cutout.png"
     return p if p.exists() and p.stat().st_size > 8000 else None
 
 
-def load_rgb(path: Path, size: tuple[int, int]) -> np.ndarray:
+def museum_rgba(path: Path, size: tuple[int, int]) -> np.ndarray:
+    """Recorte centrado + contraste/saturación + halo suave (estudio museo)."""
+    tw, th = size
+    im = Image.open(path).convert("RGBA")
+    rgb = im.convert("RGB")
+    alpha = im.split()[-1]
+    rgb = ImageEnhance.Color(rgb).enhance(1.28)
+    rgb = ImageEnhance.Contrast(rgb).enhance(1.18)
+    rgb = ImageEnhance.Brightness(rgb).enhance(1.06)
+    rgb = ImageEnhance.Sharpness(rgb).enhance(1.15)
+    im = Image.merge("RGBA", (*rgb.split(), alpha))
+
+    w, h = im.size
+    scale = min(tw / w, th / h) * 0.94
+    nw, nh = max(1, int(w * scale)), max(1, int(h * scale))
+    im = im.resize((nw, nh), Image.Resampling.LANCZOS)
+
+    # Halo: blur de alpha tintado (brillo de estudio)
+    glow_a = im.split()[-1].filter(ImageFilter.GaussianBlur(radius=max(10, min(nw, nh) // 14)))
+    glow_rgb = Image.new("RGB", (nw, nh), (110, 190, 220))
+    glow = Image.merge("RGBA", (*glow_rgb.split(), glow_a.point(lambda a: int(a * 0.55))))
+
+    canvas = Image.new("RGBA", (tw, th), (0, 0, 0, 0))
+    ox, oy = (tw - nw) // 2, (th - nh) // 2
+    gw, gh = int(nw * 1.14), int(nh * 1.14)
+    glow_big = glow.resize((gw, gh), Image.Resampling.LANCZOS)
+    canvas.paste(glow_big, (ox - (gw - nw) // 2, oy - (gh - nh) // 2), glow_big)
+    canvas.paste(im, (ox, oy), im)
+    return np.asarray(canvas)
+
+
+def load_species_image(sp: str, path: Path, size: tuple[int, int]) -> np.ndarray:
+    cp = cutout_path(sp)
+    if cp is not None:
+        return museum_rgba(cp, size)
+    # fallback rectangular con viñeta negra
     im = Image.open(path).convert("RGB")
-    # cover crop
     tw, th = size
     w, h = im.size
     scale = max(tw / w, th / h)
     nw, nh = int(w * scale), int(h * scale)
     im = im.resize((nw, nh), Image.Resampling.LANCZOS)
-    left = (nw - tw) // 2
-    top = (nh - th) // 2
+    left, top = (nw - tw) // 2, (nh - th) // 2
     im = im.crop((left, top, left + tw, top + th))
-    return np.asarray(im)
+    im = ImageEnhance.Color(im).enhance(1.2)
+    im = ImageEnhance.Contrast(im).enhance(1.15)
+    arr = np.asarray(im.convert("RGBA"))
+    yy, xx = np.mgrid[0:th, 0:tw]
+    cx, cy = tw / 2, th / 2
+    r = np.sqrt(((xx - cx) / (tw * 0.48)) ** 2 + ((yy - cy) / (th * 0.48)) ** 2)
+    arr[..., 3] = (np.clip(1.0 - r, 0, 1) * 255).astype(np.uint8)
+    return arr
 
 
-def load_guide_rgba(path: Path, size: tuple[int, int], bg=(233, 242, 244, 0)) -> np.ndarray:
-    """Recorte guía (RGBA) centrado con letterbox; conserva transparencia."""
-    im = Image.open(path).convert("RGBA")
-    tw, th = size
-    w, h = im.size
-    scale = min(tw / w, th / h) * 0.92
-    nw, nh = max(1, int(w * scale)), max(1, int(h * scale))
-    im = im.resize((nw, nh), Image.Resampling.LANCZOS)
-    canvas = Image.new("RGBA", (tw, th), bg)
-    canvas.paste(im, ((tw - nw) // 2, (th - nh) // 2), im)
-    return np.asarray(canvas)
-
-
-def load_species_image(sp: str, path: Path, size: tuple[int, int], prefer_cutout: bool = True) -> np.ndarray:
-    cp = cutout_path(sp) if prefer_cutout else None
-    if cp is not None:
-        return load_guide_rgba(cp, size)
-    return load_rgb(path, size)
-
-
-def draw_mini_calendar(ax, months: np.ndarray):
+def draw_month_dots(ax, months: np.ndarray):
+    """12 puntos brillantes discretos: intensidad = pico fenológico suavizado."""
     ax.set_xlim(0, 12)
     ax.set_ylim(0, 1)
+    ax.set_facecolor("none")
     ax.axis("off")
-    cmap = LinearSegmentedColormap.from_list("cal", ["#e8f1f5", "#7eb8c9", "#1a5276", "#0b2e44"])
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+    peak = float(months.max()) if months.max() > 0 else 1.0
     for i, v in enumerate(months):
+        t = float(np.clip(v / peak, 0, 1))
+        r = 0.14 + 0.12 * t
+        col = (0.25 + 0.55 * t, 0.65 + 0.3 * t, 0.9 + 0.1 * t, 0.18 + 0.82 * t)
         ax.add_patch(
-            mpatches.FancyBboxPatch(
-                (i + 0.08, 0.22),
-                0.84,
-                0.55,
-                boxstyle="round,pad=0.02,rounding_size=0.08",
-                facecolor=cmap(float(v)),
-                edgecolor="#ffffff",
-                linewidth=0.4,
-                mutation_aspect=0.5,
+            mpatches.Circle(
+                (i + 0.5, 0.5),
+                r,
+                facecolor=col,
+                edgecolor="none",
+                zorder=2,
             )
         )
-        ax.text(i + 0.5, 0.05, MES[i], ha="center", va="bottom", fontsize=5.2, color="#334455", fontfamily="DejaVu Sans")
+        if t > 0.75:
+            ax.add_patch(
+                mpatches.Circle(
+                    (i + 0.5, 0.5),
+                    r * 2.2,
+                    facecolor=(0.55, 0.9, 1.0, 0.14 * t),
+                    edgecolor="none",
+                    zorder=1,
+                )
+            )
+
+
+def _place_for_species(sp: str, hot: dict[str, str], fb_i: list[int]) -> str:
+    z = hot.get(sp)
+    if z:
+        return z
+    place = FALLBACK_ZONES[fb_i[0] % len(FALLBACK_ZONES)]
+    fb_i[0] += 1
+    return place
 
 
 def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
-    # A3 landscape mm → inches
+    # A3 apaisado mm → inches (costa N–S como franja central)
     fig_w, fig_h = 16.54, 11.69
-    fig = plt.figure(figsize=(fig_w, fig_h), dpi=300, facecolor="#e9f2f4")
+    fig = plt.figure(figsize=(fig_w, fig_h), dpi=300, facecolor=BG)
 
-    # soft marine wash
     ax_bg = fig.add_axes([0, 0, 1, 1], zorder=0)
     ax_bg.set_xlim(0, 1)
     ax_bg.set_ylim(0, 1)
     ax_bg.axis("off")
-    for i, a in enumerate(np.linspace(0.0, 1.0, 40)):
-        ax_bg.add_patch(
-            mpatches.Rectangle(
-                (0, a),
-                1,
-                1 / 40,
-                facecolor=(0.82 + 0.08 * a, 0.90 + 0.05 * a, 0.93, 1),
-                edgecolor="none",
-            )
-        )
-    # subtle wave bands
-    xs = np.linspace(0, 1, 200)
-    for k, y0 in enumerate((0.12, 0.28, 0.78, 0.90)):
-        ys = y0 + 0.012 * np.sin(xs * 18 + k)
-        ax_bg.fill_between(xs, ys - 0.01, ys + 0.01, color="#9fc4d0", alpha=0.18, linewidth=0)
+    # Gradiente abisal vertical (más profundo en bordes)
+    for a in np.linspace(0, 1, 60):
+        t = abs(a - 0.48)
+        c = (0.012 + 0.018 * (1 - t), 0.028 + 0.05 * (1 - t), 0.05 + 0.07 * (1 - t), 1)
+        ax_bg.add_patch(mpatches.Rectangle((0, a), 1, 1 / 60 + 0.002, facecolor=c, edgecolor="none"))
 
-    # title band
-    ax_bg.add_patch(
-        mpatches.FancyBboxPatch(
-            (0.035, 0.915),
-            0.93,
-            0.062,
-            boxstyle="round,pad=0.008,rounding_size=0.01",
-            facecolor="#0d3b4c",
-            edgecolor="none",
-            zorder=2,
-        )
-    )
+    # Título museo
     ax_bg.text(
-        0.05,
-        0.955,
-        "Nudibranquis de Catalunya · Nudibranquios de Cataluña",
-        fontsize=16,
-        color="white",
-        fontweight="bold",
-        fontfamily="DejaVu Serif",
+        0.5,
+        0.965,
+        "Nudibranquis de Catalunya",
+        fontsize=26,
+        color=CREAM,
+        fontproperties=FONT_SERIF_B,
+        ha="center",
         va="center",
         zorder=3,
     )
     ax_bg.text(
-        0.05,
-        0.928,
-        "Les 16 espècies més freqüents (iNaturalist + Minka) · Guia visual amb calendari de mesos pic · BioFauna 2026",
-        fontsize=7.5,
-        color="#c5e0e8",
-        fontfamily="DejaVu Sans",
+        0.5,
+        0.932,
+        "Nudibranquios de Cataluña",
+        fontsize=14,
+        color=GOLD,
+        fontproperties=FONT_SERIF_I,
+        ha="center",
         va="center",
         zorder=3,
     )
+    ax_bg.text(
+        0.5,
+        0.905,
+        "Les 16 espècies més freqüents · Guia visual · BioFauna 2026",
+        fontsize=7.2,
+        color=MUTED,
+        fontproperties=FONT_SANS,
+        ha="center",
+        va="center",
+        zorder=3,
+    )
+    # línea dorada fina
+    ax_bg.plot([0.22, 0.78], [0.888, 0.888], color=GOLD, lw=0.6, alpha=0.55, solid_capstyle="round")
 
-    # MAP panel (central-left)
-    ax_map = fig.add_axes([0.04, 0.10, 0.34, 0.78])
-    ax_map.set_facecolor("#d7e8ee")
-    lon_b, lat_b = CAT_LON, CAT_LAT
-    for seg in load_coast_lines(lon_b, lat_b):
-        ax_map.plot(seg[:, 0], seg[:, 1], color="#1a3a4a", lw=1.35, zorder=3, solid_capstyle="round")
-    ax_map.fill_between([lon_b[0], lon_b[1]], lat_b[0], lat_b[1], color="#b9d6e3", zorder=0, alpha=0.55)
-    # land tint approx west of coast: soft cream band
-    ax_map.set_xlim(lon_b[0] - 0.05, lon_b[1] + 0.08)
-    ax_map.set_ylim(lat_b[0] - 0.05, lat_b[1] + 0.05)
-    ax_map.set_aspect("equal", adjustable="box")
+    # ——— Mapa satélite central ———
+    map_l, map_b, map_w, map_h = 0.348, 0.100, 0.304, 0.76
+    ax_map = fig.add_axes([map_l, map_b, map_w, map_h], zorder=2)
+    sat = np.asarray(Image.open(SAT_MAP).convert("RGB"))
+    # Viñeta suave hacia negro en bordes del mapa
+    sat_f = sat.astype(np.float32)
+    hh, ww = sat_f.shape[:2]
+    yy = np.linspace(0, 1, hh)[:, None]
+    xx = np.linspace(0, 1, ww)[None, :]
+    edge = np.minimum(np.minimum(xx, 1 - xx) / 0.08, np.minimum(yy, 1 - yy) / 0.06)
+    edge = np.clip(edge, 0, 1)[..., None]
+    sat_f = sat_f * (0.55 + 0.45 * edge)
+    ax_map.imshow(
+        sat_f.astype(np.uint8),
+        extent=[MAP_LON[0], MAP_LON[1], MAP_LAT[0], MAP_LAT[1]],
+        origin="upper",
+        aspect="auto",
+        zorder=1,
+        interpolation="bilinear",
+    )
+    ax_map.set_xlim(MAP_LON[0], MAP_LON[1])
+    ax_map.set_ylim(MAP_LAT[0], MAP_LAT[1])
     ax_map.set_xticks([])
     ax_map.set_yticks([])
-    for sp in ax_map.spines.values():
-        sp.set_color("#0d3b4c")
-        sp.set_linewidth(1.2)
-    ax_map.set_title("Costa catalana · zones calentes", fontsize=9, color="#0d3b4c", pad=6, fontfamily="DejaVu Serif")
+    for spn in ax_map.spines.values():
+        spn.set_color(GOLD)
+        spn.set_linewidth(0.9)
+        spn.set_alpha(0.5)
 
-    # zone labels faint
-    for zname, (lo, la) in ZONE_XY.items():
-        t = ax_map.text(lo, la, zname.split("/")[0].strip(), fontsize=5.2, color="#3a5a68", alpha=0.75, ha="center", va="center", zorder=2)
-        t.set_path_effects([pe.withStroke(linewidth=2.0, foreground="white")])
-
-    # species markers on map (offset to reduce overlap)
-    colors = {s["species"]: PALETTE[i % len(PALETTE)] for i, s in enumerate(spp)}
-    # jitter offsets by index around zone
-    zone_counts: dict[str, int] = defaultdict(int)
-    for i, s in enumerate(spp):
-        sp = s["species"]
-        zone = hot.get(sp, "Illes Medes / Estartit")
-        base = ZONE_XY.get(zone, (3.1, 41.9))
-        k = zone_counts[zone]
-        zone_counts[zone] += 1
-        ang = (k * 2.2) + i * 0.15
-        r = 0.05 + 0.018 * k
-        lo = base[0] + r * np.cos(ang)
-        la = base[1] + r * np.sin(ang) * 0.7
-        # mini photo / cutout guía
-        ph = photos[sp]["path"]
-        img = load_species_image(sp, ph, (96, 96))
-        # marker circle + number
-        ax_map.plot(lo, la, "o", markersize=16, color="white", zorder=5, markeredgecolor=colors[sp], markeredgewidth=1.6)
-        ax_map.imshow(
-            img,
-            extent=(lo - 0.055, lo + 0.055, la - 0.038, la + 0.038),
-            zorder=6,
-            aspect="auto",
-            clip_on=True,
-        )
-        ax_map.plot(lo, la, "o", markersize=17.5, fillstyle="none", color=colors[sp], zorder=7, markeredgewidth=1.8)
-        ax_map.text(
+    # etiquetas de costa discretas
+    labels = {
+        "Cap de Creus": (3.05, 42.38),
+        "Medes": (2.85, 42.08),
+        "Barcelona": (1.75, 41.42),
+        "Tarragona": (0.95, 41.12),
+        "Delta de l'Ebre": (0.72, 40.68),
+    }
+    for name, (lo, la) in labels.items():
+        t = ax_map.text(
             lo,
-            la - 0.055,
-            str(i + 1),
+            la,
+            name,
+            fontsize=5.2,
+            color=CREAM,
             ha="center",
-            va="top",
-            fontsize=6.5,
-            fontweight="bold",
-            color=colors[sp],
-            zorder=8,
-            fontfamily="DejaVu Sans",
+            va="center",
+            fontproperties=FONT_SANS,
+            zorder=5,
+            alpha=0.9,
         )
+        t.set_path_effects([pe.withStroke(linewidth=2.0, foreground=(0, 0, 0, 0.75))])
 
     ax_map.text(
-        0.02,
-        0.02,
-        "Miniatures al mapa = zona amb taxa més alta (obs. / esforç nudi).",
+        0.5,
+        0.015,
+        "Sentinel-2 cloudless · EOX",
         transform=ax_map.transAxes,
-        fontsize=5.5,
-        color="#334455",
+        fontsize=4.8,
+        color=(1, 1, 1, 0.55),
+        ha="center",
         va="bottom",
+        fontproperties=FONT_SANS,
+        zorder=6,
     )
 
-    # SPECIES CARDS grid 4×4 on the right
-    # margins: left of cards 0.40
-    left0, bottom0 = 0.395, 0.075
-    cell_w, cell_h = 0.145, 0.195
-    gap_x, gap_y = 0.008, 0.012
-    ncols = 4
+    # anclas por zona + marcadores luminosos
+    zone_counts: dict[str, int] = defaultdict(int)
+    marker_pos: dict[int, tuple[float, float]] = {}
+    fb_i = [0]
+    for i, s in enumerate(spp):
+        place = _place_for_species(s["species"], hot, fb_i)
+        k = zone_counts[place]
+        zone_counts[place] += 1
+        base = ZONE_XY.get(place, (2.2, 41.4))
+        ang = k * 2.1 + i * 0.08
+        r = 0.028 + 0.012 * k
+        lo = base[0] + r * math.cos(ang)
+        la = base[1] + r * math.sin(ang) * 0.7
+        marker_pos[i] = (lo, la)
+        # halo + punto
+        ax_map.plot(lo, la, "o", markersize=14, color=(0.4, 0.85, 1.0, 0.18), markeredgewidth=0, zorder=6)
+        ax_map.plot(
+            lo,
+            la,
+            "o",
+            markersize=7.5,
+            color=(0.85, 0.95, 1.0, 0.95),
+            markeredgecolor=GOLD,
+            markeredgewidth=0.7,
+            zorder=7,
+        )
+        ax_map.text(
+            lo,
+            la,
+            str(i + 1),
+            ha="center",
+            va="center",
+            fontsize=4.8,
+            color="#0a1520",
+            fontweight="bold",
+            zorder=8,
+            fontproperties=FONT_SANS,
+        )
+
+    # ——— Fichas especie (sin tarjeta blanca): 8 izq + 8 der ———
+    # Márgenes impresión ≈ 12 mm (A3)
+    left_col_x = 0.032
+    right_col_x = 0.668
+    col_w = 0.300
+    row0_y = 0.085
+    row_h = 0.093
+    gap = 0.0055
+
+    slot_xy: dict[int, tuple[float, float, float, float]] = {}
 
     for i, s in enumerate(spp):
-        r, c = divmod(i, ncols)
-        # fill row-major top→bottom: invert row
-        row = r
-        x = left0 + c * (cell_w + gap_x)
-        y = bottom0 + (3 - row) * (cell_h + gap_y)
-        # card background
-        ax_card = fig.add_axes([x, y, cell_w, cell_h])
-        ax_card.set_xlim(0, 1)
-        ax_card.set_ylim(0, 1)
-        ax_card.axis("off")
-        ax_card.add_patch(
-            mpatches.FancyBboxPatch(
-                (0.02, 0.02),
-                0.96,
-                0.96,
-                boxstyle="round,pad=0.01,rounding_size=0.03",
-                facecolor="#f7fbfc",
-                edgecolor=colors[s["species"]],
-                linewidth=1.3,
-            )
-        )
-        # number badge
-        ax_card.add_patch(mpatches.Circle((0.10, 0.90), 0.07, facecolor=colors[s["species"]], edgecolor="none", zorder=3))
-        ax_card.text(0.10, 0.90, str(i + 1), ha="center", va="center", fontsize=7, color="white", fontweight="bold", zorder=4)
+        side = 0 if i < 8 else 1
+        row = i if i < 8 else i - 8
+        x = left_col_x if side == 0 else right_col_x
+        y = row0_y + (7 - row) * (row_h + gap)
+        slot_xy[i] = (x, y, col_w, row_h)
 
-        # foto / recorte guía (sin fondo si existe en recortes/)
-        ax_img = fig.add_axes([x + 0.012, y + 0.078, cell_w * 0.58, cell_h * 0.62])
-        ax_img.set_facecolor("#e9f2f4")
-        ax_img.imshow(load_species_image(s["species"], photos[s["species"]]["path"], (420, 320)))
+        ax_c = fig.add_axes([x, y, col_w, row_h], zorder=3)
+        ax_c.set_xlim(0, 1)
+        ax_c.set_ylim(0, 1)
+        ax_c.axis("off")
+        ax_c.set_facecolor("none")
+
+        ax_c.text(
+            0.02 if side == 0 else 0.98,
+            0.90,
+            str(i + 1),
+            fontsize=7.2,
+            color=GOLD,
+            ha="left" if side == 0 else "right",
+            va="center",
+            fontproperties=FONT_SERIF_B,
+            alpha=0.85,
+        )
+
+        # Imagen grande hacia el mapa; texto compacto al borde exterior
+        if side == 0:
+            img_box = [x + col_w * 0.30, y + row_h * 0.04, col_w * 0.68, row_h * 0.92]
+            text_x = 0.03
+            text_ha = "left"
+            cal_box = [x + 0.008, y + 0.01, col_w * 0.27, row_h * 0.18]
+        else:
+            img_box = [x + col_w * 0.02, y + row_h * 0.04, col_w * 0.68, row_h * 0.92]
+            text_x = 0.97
+            text_ha = "right"
+            cal_box = [x + col_w * 0.71, y + 0.01, col_w * 0.27, row_h * 0.18]
+
+        ax_img = fig.add_axes(img_box, zorder=4)
+        ax_img.set_facecolor("none")
+        ax_img.imshow(load_species_image(s["species"], photos[s["species"]]["path"], (720, 540)))
         ax_img.set_xticks([])
         ax_img.set_yticks([])
         for spn in ax_img.spines.values():
             spn.set_visible(False)
 
-        # mini calendar beside photo
-        ax_cal = fig.add_axes([x + cell_w * 0.60, y + 0.10, cell_w * 0.37, cell_h * 0.55])
-        draw_mini_calendar(ax_cal, s["months"])
-        ax_cal.set_title("mesos pic", fontsize=5.5, color="#334455", pad=1)
-
-        # names
-        ca, es = VERNACULAR.get(s["species"], (s["species"].split()[0], s["species"].split()[0]))
-        ax_card.text(
-            0.06,
-            0.20,
+        vern = VERNACULAR.get(s["species"])
+        name_y = 0.58 if vern else 0.52
+        ax_c.text(
+            text_x,
+            name_y,
             s["species"],
             fontsize=6.6,
-            fontstyle="italic",
-            fontfamily="DejaVu Serif",
-            color="#0d3b4c",
-            fontweight="bold",
-            va="bottom",
+            color=CREAM,
+            fontproperties=FONT_SERIF_BI,
+            ha=text_ha,
+            va="center",
         )
-        ax_card.text(0.06, 0.11, f"CA: {ca}", fontsize=5.4, color="#2c3e50", fontfamily="DejaVu Sans", va="bottom")
-        ax_card.text(0.06, 0.045, f"ES: {es}", fontsize=5.4, color="#2c3e50", fontfamily="DejaVu Sans", va="bottom")
+        if vern:
+            ca, es = vern
+            ax_c.text(
+                text_x,
+                0.38,
+                f"{ca}  ·  {es}",
+                fontsize=4.3,
+                color=MUTED,
+                fontproperties=FONT_SANS,
+                ha=text_ha,
+                va="center",
+            )
 
-        # credit tiny under photo area (inside card right of badge)
-        ph = photos[s["species"]]
-        credit = f"{ph['author']} · {ph['license']}"
-        ax_card.text(0.20, 0.90, credit[:42], fontsize=4.2, color="#667788", va="center", ha="left")
+        ax_cal = fig.add_axes(cal_box, zorder=4)
+        draw_month_dots(ax_cal, s["months"])
 
-    # footer
+    # Líneas finas luminosas mapa → especie
+    for i, s in enumerate(spp):
+        lo, la = marker_pos[i]
+        # punto en figura vía transformación mapa
+        disp = ax_map.transData.transform((lo, la))
+        fig_pt = fig.transFigure.inverted().transform(disp)
+        sx, sy, sw, sh = slot_xy[i]
+        side = 0 if i < 8 else 1
+        if side == 0:
+            end = (sx + sw * 0.92, sy + sh * 0.5)
+        else:
+            end = (sx + sw * 0.08, sy + sh * 0.5)
+        # curva suave con ConnectionPatch
+        con = ConnectionPatch(
+            xyA=fig_pt,
+            xyB=end,
+            coordsA="figure fraction",
+            coordsB="figure fraction",
+            axesA=ax_bg,
+            axesB=ax_bg,
+            color=(0.55, 0.85, 0.95, 0.28),
+            linewidth=0.55,
+            linestyle="-",
+            zorder=1.5,
+            connectionstyle="arc3,rad=0.08" if side == 0 else "arc3,rad=-0.08",
+        )
+        fig.add_artist(con)
+
+    # Créditos
+    sat_cite = (
+        "Mapa: Sentinel-2 cloudless – https://s2maps.eu by EOX IT Services GmbH "
+        "(Contains modified Copernicus Sentinel data) · CC BY 4.0"
+    )
     ax_bg.text(
-        0.04,
-        0.035,
-        "Fotos amb llicència lliure (CC0 / CC BY / CC BY-SA). Crèdit sota cada espècie. "
-        "Calendari: intensitat mensual suavitzada (correcció d’esforç γ=0,35). "
-        "Font: public_observations (iNaturalist + Minka) · BioFauna / FotoFauna · 2026-10-10",
-        fontsize=5.8,
-        color="#334455",
-        fontfamily="DejaVu Sans",
+        0.5,
+        0.052,
+        "Fotos CC0 / CC BY / CC BY-SA (crèdit a LICENCIAS_POSTER_LAMINA4.md). "
+        "Dades: iNaturalist + Minka · BioFauna / FotoFauna · 2026-10-10",
+        fontsize=5.0,
+        color=MUTED,
+        fontproperties=FONT_SANS,
+        ha="center",
         va="center",
     )
     ax_bg.text(
-        0.96,
-        0.035,
-        "A3 · 300 ppp · imprimible",
-        fontsize=5.8,
-        color="#334455",
-        ha="right",
+        0.5,
+        0.032,
+        sat_cite + "  ·  A3 · 300 ppp  ·  Punts = mesos pic",
+        fontsize=4.4,
+        color=(0.45, 0.55, 0.62, 1),
+        fontproperties=FONT_SANS,
+        ha="center",
         va="center",
     )
 
@@ -659,42 +719,68 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
 
 
 def write_meta(photos: dict[str, dict], spp: list[dict], hot: dict[str, str]):
+    sat = {}
+    if SAT_META.exists():
+        sat = json.loads(SAT_META.read_text(encoding="utf-8"))
     lines = [
-        "# Póster A3 — nudibranquios Cataluña",
-        f"Generado: {datetime.now().strftime('%Y-%m-%d %H:%M %Z')} CEST",
+        "# Póster A3 — nudibranquios Cataluña (estilo museo / película)",
+        f"Generado: {datetime.now().strftime('%Y-%m-%d %H:%M')} CEST",
         "",
         "Solo CC0 / CC BY / CC BY-SA. Fotos reales (no generadas).",
+        "Fondo negro abisal · recortes con halo · sin tarjetas blancas.",
+        "",
+        "## Mapa",
+        "",
+        sat.get(
+            "source",
+            "Sentinel-2 cloudless – https://s2maps.eu by EOX IT Services GmbH "
+            "(Contains modified Copernicus Sentinel data)",
+        ),
+        f"Licencia mapa: {sat.get('license', 'CC BY 4.0')}",
+        f"Archivo: `{SAT_MAP.name}` · zoom {sat.get('zoom', '?')}",
         "",
         "## Especies y créditos",
         "",
     ]
     for i, s in enumerate(spp):
         ph = photos[s["species"]]
-        ca, es = VERNACULAR[s["species"]]
+        vern = VERNACULAR.get(s["species"])
+        vern_s = f"CA: {vern[0]} · ES: {vern[1]}" if vern else "sense nom comú establert (només científic)"
         lines.append(
-            f"{i+1}. *{s['species']}* — CA: {ca} · ES: {es} · zona: {hot.get(s['species'],'?')} · "
+            f"{i+1}. *{s['species']}* — {vern_s} · zona: {hot.get(s['species'],'?')} · "
             f"{ph['author']} · {ph['license']} · {ph['source']}"
             + (f" · {ph['uri']}" if ph.get("uri") else "")
         )
     (PAPER / "LICENCIAS_POSTER_LAMINA4.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    slim = [
-        {
-            "n": i + 1,
-            "species": s["species"],
-            "ca": VERNACULAR[s["species"]][0],
-            "es": VERNACULAR[s["species"]][1],
-            "zone": hot.get(s["species"]),
-            **{k: photos[s["species"]].get(k) for k in ("author", "license", "uri", "source")},
-            "file": str(photos[s["species"]]["path"].name),
-        }
-        for i, s in enumerate(spp)
-    ]
+    slim = []
+    for i, s in enumerate(spp):
+        vern = VERNACULAR.get(s["species"])
+        slim.append(
+            {
+                "n": i + 1,
+                "species": s["species"],
+                "ca": vern[0] if vern else None,
+                "es": vern[1] if vern else None,
+                "zone": hot.get(s["species"]),
+                **{k: photos[s["species"]].get(k) for k in ("author", "license", "uri", "source")},
+                "file": str(photos[s["species"]]["path"].name),
+            }
+        )
+    meta_out = {
+        "style": "museum_movie_poster",
+        "orientation": "A3_landscape",
+        "dpi": 300,
+        "map": sat,
+        "species": slim,
+    }
     (PAPER / "datos/poster_lamina4_meta_20261010.json").write_text(
-        json.dumps(slim, indent=2, ensure_ascii=False), encoding="utf-8"
+        json.dumps(meta_out, indent=2, ensure_ascii=False), encoding="utf-8"
     )
 
 
 def main():
+    if not SAT_MAP.exists():
+        raise SystemExit(f"Falta mapa satélite: {SAT_MAP}")
     spp = load_top(16)
     names = [s["species"] for s in spp]
     hot = load_hot_zone(names)
@@ -711,7 +797,6 @@ def main():
     png, pdf = build_poster(spp, photos, hot)
     print("PNG", png, png.stat().st_size)
     print("PDF", pdf, pdf.stat().st_size)
-    # sanity size at 300 dpi A3 landscape
     im = Image.open(png)
     print("pixels", im.size, "expected ~4962×3508")
 
