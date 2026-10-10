@@ -47,7 +47,14 @@ Por especie y año: `obs_especie_año / obs_totales_BioQuest_caja_año × 1000`.
 
 Scatter lat/lng (matplotlib) sobre caja CAT; puntos de especies UE presentes en BioQuest (cobertura incompleta). PNG en `figuras/mapa_cat_*.png`.
 
-## 8. Exóticas marinas (Weitzmann)
+## 8. Origen, vías y mapas de expansión (10-oct-2026)
+
+- `SELECT` de `lat`,`lng`,`obs_year` en `public_observations` para taxones Academy/Weitzmann con cobertura (p. ej. *Pterois miles* 123459, *Caulerpa cylindracea* 734863, *Oculina patagonica* 107341, …).
+- Agrupación en periodos de **5 años** (2000–2004 … 2025–2026); cajas Med / ES / CAT como en §2.
+- Bibliografía: DOI comprobados uno a uno en Crossref; sin DOI válido → texto marcado **hipótesis**.
+- Salidas: `ORIGEN_Y_VIAS_EXPANSION.md`, `tabla_origen_vias_resumen.csv`, `figuras/expansion/`, script `artifacts/invasoras/origen_expansion/gen_maps_origen.py`.
+
+## 9. Exóticas marinas (Weitzmann)
 
 Lista provisional ampliada: `artifacts/invasoras/marinas_weitzmann_20261010.json`.
 
@@ -63,6 +70,7 @@ Referencias (DOI verificados en Crossref/OpenAlex, 10-oct-2026):
 - Serrano, E., Coma, R., Ribes, M., Weitzmann, B., García, M. & Ballesteros, E. (2013). *PLoS ONE* **8**(1): e52739. https://doi.org/10.1371/journal.pone.0052739 (*Oculina patagonica*; DOI Crossref 10-oct-2026).
 - ClimateFish (2022). *Frontiers in Marine Science* **9**:910887. https://doi.org/10.3389/fmars.2022.910887
 
-## 9. Reproducibilidad
+## 10. Reproducibilidad
 
-Script de generación de tablas/figuras (cuando esté versionado): `scripts/invasoras_paper_resultados_v1_20261009.py` → escribe también `/mnt/docker/biofauna/artifacts/invasoras/`.
+Script de generación de tablas/figuras (cuando esté versionado): `scripts/invasoras_paper_resultados_v1_20261009.py` → escribe también `/mnt/docker/biofauna/artifacts/invasoras/`.  
+Mapas origen/expansión: `artifacts/invasoras/origen_expansion/gen_maps_origen.py` (ejecutado en contenedor `fauna_api`).

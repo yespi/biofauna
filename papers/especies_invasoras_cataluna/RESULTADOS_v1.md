@@ -151,16 +151,26 @@ Estacionalidad mensual: histograma iNat `interval=month` en Cataluña → `estac
 
 ## 7. Origen nativo y vía de entrada
 
-Solo se rellenan cuando existen en `academy_invasive` (Wikidata SPARQL + medición local vía `bq_invasive_update.py`). **No se inventan.** El resto queda vacío a la espera de EASIN/literatura.
+**Actualizado 10-oct-2026 (~16:45):** análisis especie por especie, mapas de expansión por periodos de 5 años, contraste *Pterois miles* y tabla resumen en [`ORIGEN_Y_VIAS_EXPANSION.md`](ORIGEN_Y_VIAS_EXPANSION.md) · CSV [`tabla_origen_vias_resumen.csv`](tabla_origen_vias_resumen.csv) · primeras fechas BQ [`primera_obs_regiones_bq.csv`](primera_obs_regiones_bq.csv) · figuras [`figuras/expansion/`](figuras/expansion/).
 
-Especies con origen documentado en BD: **4**.
+Metadatos previos en BD (`academy_invasive`, Wikidata + `bq_invasive_update.py`) — **no se inventan** filas ahí; el paper ahora completa con literatura (DOI Crossref) e **hipótesis** marcadas:
 
-| Especie | Origen | Vía |
+| Especie (Academy) | Origen | Vía |
 |---|---|---|
 | *Oxyura jamaicensis* | Desconocido | Vector desconocido |
 | *Neogale vison* | Norteamérica | Escapes de granjas peleteras |
 | *Procyon lotor* | Norteamérica | Liberación / escape de mascotas exóticas |
-| *Trachemys scripta elegans* | Norteamérica | Liberación de mascotas (acuariofilia/terrariofilia) |
+| *Trachemys scripta* | Norteamérica | Liberación de mascotas |
+| *Pterois miles* | Mar Rojo / Indo-Pacífico | Migración lessepsiana (Suez) |
+| *Lagocephalus sceleratus* | Mar Rojo / Indo-Pacífico | Migración lessepsiana (Suez) |
+| *Caulerpa cylindracea* | Indo-Pacífico | Agua de lastre / cascos |
+| *Magallana gigas* | Desconocido (Academy) | Vector desconocido (lit.: acuicultura) |
+
+### 7.1 *Pterois miles* — contraste mapas vs bibliografía
+
+- **Literatura:** 1ª cita Med **Israel 1991** ([Golani & Sonin 1992](https://doi.org/10.1007/bf02906001)); expansión fuerte desde ~2012 Chipre/Líbano ([Bariche et al. 2013](https://doi.org/10.12681/mms.470); [Kletou et al. 2016](https://doi.org/10.1186/s41200-016-0065-y)); genética Mar Rojo ([Bariche et al. 2017](https://doi.org/10.1038/s41598-017-07326-1)). Vía mayoritaria = **Suez**; acuariofilia = hipótesis secundaria; **lastre no** es la vía principal.
+- **BioQuest (`public_observations`, taxon_id 123459):** n=1.663; primera fila **2000** en Mar Rojo; primera en caja Med **2015-08** (Israel); **0** obs España/Cataluña; frente E→centro Med 2016–2025.
+- **Por qué los mapas pueden sugerir «~2008 + lastre»:** ausencia de ciencia ciudadana antes de ~2000–2008; la nube 2005–2010 es Mar Rojo nativo, no la invasión de 1991. Detalle en `ORIGEN_Y_VIAS_EXPANSION.md` §2.
 
 ## 8. Mapas por década
 
@@ -220,7 +230,24 @@ CSV: [`marinas_weitzmann_comparativa_20261010.csv`](marinas_weitzmann_comparativ
 
 No extrapolamos primer registro **oficial** de cada especie: comparamos solo fuentes ciudadanas y galería BF.
 
-## 12. Archivos generados
+## 12. Expansión espacial por periodos (5 años)
+
+Misma lógica que los mapas animados de BioQuest: puntos `lat`/`lng` × `obs_year` en `public_observations` (solo SELECT), agrupados en ventanas 2000–2004 … 2025–2026 para especies principales con cobertura Academy.
+
+| Figura | Especie / contenido |
+|---|---|
+| `figuras/expansion/expansion_5y_Pterois_miles.png` | Pez león (incluye Mar Rojo N) |
+| `figuras/expansion/expansion_5y_Caulerpa_cylindracea.png` | *C. cylindracea* |
+| `figuras/expansion/expansion_5y_Oculina_patagonica.png` | *O. patagonica* |
+| `figuras/expansion/expansion_5y_Lagocephalus_sceleratus.png` | *L. sceleratus* |
+| `figuras/expansion/expansion_5y_Callinectes_sapidus.png` | *C. sapidus* |
+| `figuras/expansion/expansion_5y_Asparagopsis_armata.png` | *A. armata* |
+| `figuras/expansion/expansion_multiespecie_*.png` | Multiespecie 2010–2014 / 2015–2019 / 2020–2024 |
+| `figuras/expansion/pterois_miles_longitud_vs_ano.png` | Longitud vs año + hitos lit. 1991 / ~2012 |
+
+Script: `/mnt/docker/biofauna/artifacts/invasoras/origen_expansion/gen_maps_origen.py`.
+
+## 13. Archivos generados
 
 En `/mnt/docker/biofauna/artifacts/invasoras/`:
 - `bq_scan_20261010.jsonl`
@@ -242,5 +269,6 @@ En `/mnt/docker/biofauna/artifacts/invasoras/`:
 - `serie_anual_normalizada.csv`
 - `target_species.json`
 - `top25_obs_catalunya.png`
+- `origen_expansion/` (CSV coords, frentes anuales, PNG expansión)
 
-Figuras en `figuras/` de este directorio del paper.
+Figuras en `figuras/` y `figuras/expansion/` de este directorio del paper.

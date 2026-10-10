@@ -1,0 +1,34 @@
+especie,origen,via,primera_mediterraneo,primera_espana,primera_catalunya,tendencia,causa,fuente_o_hipotesis
+Pterois miles,Mar Rojo / Indo-Pacífico,Migración lessepsiana (canal de Suez); acuariofilia=hipótesis secundaria; lastre=NO principal,1991 Israel (lit. Golani & Sonin 1992); BQ Med 2015-08; BQ global Mar Rojo 2000,sin obs BQ/ES,sin obs BQ/CAT; iNat no listado UE,expansion E Med (sin ES),Calentamiento + Suez; nicho depredador (hipótesis),doi:10.1007/bf02906001; doi:10.12681/mms.470; doi:10.1186/s41200-016-0065-y; doi:10.1038/s41598-017-07326-1; BQ SELECT taxon_id=123459
+Caulerpa cylindracea,Indo-Pacífico,Lastre / incrustación cascos,BQ Med 2005-07 (lit. 1990s Zenetos),BQ/iNat 2014-08 / ~2014,BQ 2014-08; iNat 2014-11,en densificación CAT,Fragmentación + sustratos perturbados; calentamiento (hipótesis),doi:10.1016/j.ocecoaman.2013.02.024; doi:10.1515/bot.2005.006; academy_invasive lastre; BQ 734863
+Caulerpa taxifolia,Tropical (cepa acuario),Acuariofilia,Med 1980s (lit. Meinesz/Jousson),histórica (lit.; no re-fechada aquí),0 obs iNat/BQ CAT a 2026-10-10,ausente en fuentes ciudadanas CAT,Escape de acuario,doi:10.3354/meps172275
+Oculina patagonica,Atlántico SW (criptogénica debatida),Shipping / estructuras; expansión por calentamiento,lit. Zibrowius 1974; BQ Med 2010-09,BQ 2010-09,BQ 2011-08; iNat 2011-08,establecida/norteada,Calentamiento + puertos/diques,doi:10.1007/bf01611381; doi:10.1371/journal.pone.0052739; BQ 107341
+Lagocephalus sceleratus,Mar Rojo / Indo-Pacífico,Lessepsiana (Suez),lit. E Med 2000s; BQ Med 2005-06,sin obs BQ,sin obs BQ,expansion E/centro Med,Suez + calentamiento (hipótesis),doi:10.3391/ai.2007.2.1.9; academy_invasive suez; BQ 132368
+Asparagopsis armata,Hemisferio sur,Fouling / shipping,BQ Med 2008-04,BQ 2008-04,BQ 2008-04,presente densificada,Transporte marítimo,doi:10.1080/0967026042000236436; doi:10.1016/j.ocecoaman.2013.02.024; BQ 57779
+Callinectes sapidus,Atlántico oeste,Agua de lastre,Med histórico; BQ 2017-11 (foco ES),BQ/lit. Segura 2016; BQ 2017-11,BQ 2017-11,en_expansion local,Puertos/estuarios; calentamiento (hipótesis),doi:10.3906/zoo-1511-23; BQ 49504
+Rugulopteryx okamurae,Pacífico NW,Shipping / fouling (Gibraltar),lit. Estrecho ~2015–2019,iNat 2019-08-16,iNat 2024-05-31,en_expansion,Fouling + competencia agresiva,doi:10.1016/j.scitotenv.2019.135408; doi:10.12681/mms.36947; presencia_cat_es.csv
+Bursatella leachii,Circuntropical / Indo-Pacífico,Lessepsiana,lit. E Med,no tabulada aquí,iNat 2007-10-26; BF 2013-10-06,establecida costera,Suez + calentamiento (hipótesis),doi:10.3153/jfscom.201435; marinas_weitzmann_comparativa
+Codium fragile,Pacífico NW,Fouling / acuicultura,BQ 2010-08,BQ 2010-08,BQ 2010-08,ocasional CAT (n bajo),Shipping,hipótesis vía fouling; BQ 67555
+Magallana gigas,Pacífico NW,Acuicultura,BQ Med 1999-11,BQ 1999-11,BQ 2018-04,establecida (acuicultura),Ostricultura,hipótesis acuicultura (Academy vector desconocido); BQ 605992
+Fistularia commersonii,Mar Rojo,Lessepsiana,lit. E Med (sprinter),sin filas BQ extracto,sin filas BQ,expansion E→W (lit.),Suez,doi:10.1080/15659801.2013.898402
+Siganus luridus,Mar Rojo,Lessepsiana,lit. E Med,sin filas BQ,sin filas BQ,establecida E Med (lit.),Suez + herbivoría,doi:10.1111/j.1095-8649.1988.tb05497.x; doi:10.1017/s1755267205001223
+Zebrasoma flavescens,Indo-Pacífico,Acuariofilia,—,iNat CAT 2008-10-01 (paper),iNat 2008-10-01,ocasional/alerta,Liberación acuario,hipótesis acuariofilia; marinas_weitzmann_comparativa
+Ailanthus altissima,Asia E,Ornamental / bordes,n/a terrestre,iNat 2002-05-29,iNat 2008-06-08,en_expansion,Perturbación urbana,hipótesis ornamental; presencia_cat_es.csv
+Procambarus clarkii,Norteamérica,Acuicultura / arrozales,n/a,iNat 1990-09-01,iNat 2001-09-23,establecida,Acuicultura + eutrofización (hipótesis),doi:10.1127/archiv-hydrobiol/150/2000/153; doi:10.1023/b:hydr.0000008626.07042.87
+Myocastor coypus,Sudamérica,Peletería / escapes,n/a,iNat 2012-06-25,iNat 2012-06-25,establecida,Escapes,hipótesis peletería; presencia_cat_es.csv
+Trachemys scripta elegans,Norteamérica,Mascotas (liberación),n/a,iNat 2004-03-20; BQ T.scripta 1994-05,iNat 2006-05-06; BQ 1994-05,establecida,Liberación mascotas,academy_invasive; doi vía mascotismo
+Vespa velutina nigrithorax,Asia SE,Comercio hortícola accidental,n/a (entrada Europa vía Francia),iNat 2015-11-20,iNat 2017-11-22,en_expansion,Propagación desde SW Francia,doi:10.1007/s10340-013-0537-3
+Gambusia holbrooki,Norteamérica,Control biológico mosquitos,n/a,iNat 2007-07-13,iNat 2007-07-13,en_expansion,Introducciones históricas,hipótesis control biológico; presencia_cat_es.csv
+Neogale vison,Norteamérica,Escapes granjas peleteras,n/a,BQ/iNat 2010-08 / 2007-08 caja,BQ/iNat 2010-08,establecida,Peletería,academy_invasive; BQ 1264432
+Pennisetum setaceum,África,Ornamental,n/a,iNat 2000-09-06,iNat 2016-01-20,en_expansion,Jardinería,hipótesis
+Delairea odorata,Sudáfrica,Ornamental,n/a,iNat 2009-05-15,iNat 2009-12-29,en_expansion,Jardinería,hipótesis
+Acacia saligna,Australia,Forestación / ornamental,n/a,iNat 2006-02-13,iNat 2019-07-08,en_expansion,Plantaciones,hipótesis
+Ludwigia peploides,América,Ornamental acuática,n/a,iNat 2009-08-02,iNat 2009-08-02,en_expansion,Estanques/acuarios,hipótesis
+Lepomis gibbosus,Norteamérica,Acuicultura / pesca,n/a,iNat 2003-07-21,iNat 2003-07-21,establecida,Introducciones deportivas,hipótesis
+Pacifastacus leniusculus,Norteamérica,Acuicultura,n/a,iNat 2006-02-26,iNat 2018-08-27,establecida,Cangrejería,hipótesis
+Obama nungara,Argentina,Comercio de plantas,n/a,iNat 2016-02-29,iNat 2016-02-29,establecida,Plantas en maceta,doi:10.7717/peerj.8385
+Broussonetia papyrifera,Asia E,Ornamental,n/a,iNat 2016-04-15,iNat 2017-06-09,establecida,Jardinería,hipótesis
+Alopochen aegyptiaca,África,Ornamental / escapes,n/a,iNat 2002-11-30,iNat 2010-04-16,establecida,Escapes,hipótesis
+Threskiornis aethiopicus,África,Zoos / escapes,n/a,iNat 2004-04-15,iNat 2005-03-25,establecida,Escapes,hipótesis
+Reynoutria japonica,Asia E,Ornamental,n/a,iNat 2008-09-24,iNat 2018-07-20,establecida,Jardinería histórica,hipótesis
+Impatiens glandulifera,Himalaya,Ornamental / ríos,n/a,iNat 2019-08-15,iNat 2022-08-21,en_expansion,Dispersión fluvial,hipótesis

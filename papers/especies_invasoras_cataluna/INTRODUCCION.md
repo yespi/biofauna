@@ -8,6 +8,6 @@ Este informe combina tres capas:
 2. **Observaciones públicas** (iNaturalist places Catalunya=61614, Spain=6774; Minka en caja 8-oct; tabla `public_observations` de BioQuest con **1.071.684** observaciones a 10-oct-2026).
 3. **Galería BioFauna** (metadatos de observación enlazados a fotos, para primeras fechas y mapas cuando la especie está en el identificador).
 
-El objetivo no es sustituir los informes oficiales (EASIN, Generalitat), sino ofrecer un **informe reproducible** con series normalizadas por esfuerzo, categorías operativas (ausente / ocasional / establecida / en expansión) y un bloque aparte sobre **otras exóticas marinas** citadas por Weitzmann y colaboradores, contrastadas con nuestras primeras fotos enlazadas.
+El objetivo no es sustituir los informes oficiales (EASIN, Generalitat), sino ofrecer un **informe reproducible** con series normalizadas por esfuerzo, categorías operativas (ausente / ocasional / establecida / en expansión), un bloque sobre **otras exóticas marinas** (Weitzmann y colaboradores) y un análisis de **origen nativo y vías de expansión** especie por especie (literatura con DOI + secuencia espacio-temporal de BioQuest/`public_observations`, como en los mapas animados).
 
 **Sesgo principal:** el crecimiento de apps y proyectos (p. ej. de **1.220** observaciones en la caja CAT en 2013 a **102.301** en 2024 en `public_observations`; SQL §10 de `RESULTADOS_v1.md`) infla las series crudas; por eso reportamos tasas normalizadas (§5).
