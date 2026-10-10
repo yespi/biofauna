@@ -4,3 +4,7 @@ fotos_poster/_candidates_*/
 _tmp_*.html
 _tmp_*.md
 _tmp_*.pdf
+
+# estilo solo — no versionar
+ref_carta_marina_gustavo.jpg
+figuras/qa5*.png
