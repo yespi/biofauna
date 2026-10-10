@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-10T08:22:06.736835",
+  "generated": "2026-10-10T12:20:24.688509",
   "n_species_catalog": 351,
   "n_species_with_data": 33,
   "total_obs": 15741,
@@ -35,6 +35,23 @@
     "Dendrodoris limbata",
     "Felimida luteorosea"
   ],
+  "top12_peaks_smoothed": {
+    "Cratena peregrina": "Agosto",
+    "Flabellina affinis": "Julio",
+    "Peltodoris atromaculata": "Agosto",
+    "Felimare picta": "Agosto",
+    "Edmundsella pedata": "Abril",
+    "Felimare tricolor": "Junio",
+    "Calmella cavolini": "Agosto",
+    "Diaphorodoris papillata": "Abril",
+    "Paradoris indecora": "Enero",
+    "Antiopella cristata": "Mayo",
+    "Polycera quadrilineata": "Febrero",
+    "Rudmania krohni": "Junio"
+  },
+  "photos_cc": 30,
+  "photos_silhouette": 0,
+  "effort_gamma": 0.35,
   "files": [
     "/mnt/docker/biofauna-public/papers/nudibranquios_calendario/LAMINA1_calendario_fenologico_20261010.pdf",
     "/mnt/docker/biofauna-public/papers/nudibranquios_calendario/LAMINA2_rosas_estaciones_20261010.pdf",
