@@ -6,182 +6,168 @@
     420,
     297
   ],
-  "print_margin_mm": 10,
+  "print_margin_mm": 11.4,
   "bbox_lon": [
-    0.35,
-    3.55
+    0.2,
+    3.7
   ],
   "bbox_lat": [
-    40.42,
-    42.6
+    40.35,
+    42.8
   ],
+  "coast_source": "Natural Earth 10m coastline + admin_1 Catalonia provinces",
+  "creatures": "woodcut engraving from real cutouts (posterize + hatch + edges); CPU only; no diffusion model",
+  "gpu": "not used (busy at generation time)",
   "species_n": 16,
   "species": [
     {
       "species": "Cratena peregrina",
-      "zone": "Tarragona–Salou",
-      "peak": "Agosto",
-      "offset": [
-        0.22,
-        -0.1
+      "placement": [
+        1.95,
+        40.78
       ],
-      "scale": 1.25
+      "peak": "Agosto",
+      "scale": 1.2
     },
     {
       "species": "Flabellina affinis",
-      "zone": "Tarragona–Salou",
+      "placement": [
+        2.55,
+        40.72
+      ],
       "peak": "Julio",
-      "offset": [
-        0.42,
-        0.14
-      ],
-      "scale": 1.2
-    },
-    {
-      "species": "Peltodoris atromaculata",
-      "zone": "Illes Medes / Estartit",
-      "peak": "Agosto",
-      "offset": [
-        0.28,
-        0.06
-      ],
-      "scale": 1.35
-    },
-    {
-      "species": "Felimare picta",
-      "zone": "Barcelonès",
-      "peak": "Agosto",
-      "offset": [
-        0.32,
-        -0.12
-      ],
-      "scale": 1.3
-    },
-    {
-      "species": "Edmundsella pedata",
-      "zone": "Delta de l'Ebre",
-      "peak": "Abril",
-      "offset": [
-        0.3,
-        0.1
-      ],
       "scale": 1.15
     },
     {
-      "species": "Felimare tricolor",
-      "zone": "Costa Daurada N",
-      "peak": "Junio",
-      "offset": [
-        0.35,
-        0.06
+      "species": "Peltodoris atromaculata",
+      "placement": [
+        3.35,
+        41.85
       ],
-      "scale": 1.2
+      "peak": "Agosto",
+      "scale": 1.3
     },
     {
-      "species": "Calmella cavolini",
-      "zone": "Delta de l'Ebre",
-      "peak": "Agosto",
-      "offset": [
-        0.5,
-        -0.06
+      "species": "Felimare picta",
+      "placement": [
+        2.7,
+        41.15
       ],
+      "peak": "Agosto",
+      "scale": 1.25
+    },
+    {
+      "species": "Edmundsella pedata",
+      "placement": [
+        1.35,
+        40.58
+      ],
+      "peak": "Abril",
       "scale": 1.1
     },
     {
-      "species": "Diaphorodoris papillata",
-      "zone": "Illes Medes / Estartit",
-      "peak": "Abril",
-      "offset": [
-        0.45,
-        -0.14
+      "species": "Felimare tricolor",
+      "placement": [
+        2.15,
+        40.98
       ],
+      "peak": "Junio",
+      "scale": 1.15
+    },
+    {
+      "species": "Calmella cavolini",
+      "placement": [
+        0.95,
+        40.52
+      ],
+      "peak": "Agosto",
+      "scale": 1.05
+    },
+    {
+      "species": "Diaphorodoris papillata",
+      "placement": [
+        3.42,
+        41.55
+      ],
+      "peak": "Abril",
       "scale": 1.05
     },
     {
       "species": "Paradoris indecora",
-      "zone": "Tossa–Blanes",
-      "peak": "Enero",
-      "offset": [
-        0.3,
-        -0.1
+      "placement": [
+        3.2,
+        41.35
       ],
-      "scale": 1.15
+      "peak": "Enero",
+      "scale": 1.1
     },
     {
       "species": "Antiopella cristata",
-      "zone": "Barcelonès",
-      "peak": "Mayo",
-      "offset": [
-        0.52,
-        0.1
+      "placement": [
+        2.85,
+        41.55
       ],
-      "scale": 1.25
+      "peak": "Mayo",
+      "scale": 1.2
     },
     {
       "species": "Polycera quadrilineata",
-      "zone": "Tossa–Blanes",
-      "peak": "Febrero",
-      "offset": [
-        0.48,
-        0.12
+      "placement": [
+        3.05,
+        41.05
       ],
-      "scale": 1.1
+      "peak": "Febrero",
+      "scale": 1.05
     },
     {
       "species": "Rudmania krohni",
-      "zone": "Illes Medes / Estartit",
-      "peak": "Junio",
-      "offset": [
-        0.15,
-        -0.26
+      "placement": [
+        2.55,
+        41.75
       ],
-      "scale": 1.05
+      "peak": "Junio",
+      "scale": 1.0
     },
     {
       "species": "Nemesignis banyulensis",
-      "zone": "Tarragona–Salou",
+      "placement": [
+        1.7,
+        41.0
+      ],
       "peak": "Marzo",
-      "offset": [
-        0.05,
-        0.26
-      ],
-      "scale": 1.1
-    },
-    {
-      "species": "Diaphorodoris alba",
-      "zone": "Begur–Palamós",
-      "peak": "Mayo",
-      "offset": [
-        0.32,
-        0.04
-      ],
       "scale": 1.05
     },
     {
-      "species": "Facelina annulicornis",
-      "zone": "Cap de Creus",
-      "peak": "Enero",
-      "offset": [
-        0.12,
-        -0.18
+      "species": "Diaphorodoris alba",
+      "placement": [
+        2.35,
+        41.45
       ],
-      "scale": 1.15
+      "peak": "Mayo",
+      "scale": 1.0
+    },
+    {
+      "species": "Facelina annulicornis",
+      "placement": [
+        3.48,
+        41.95
+      ],
+      "peak": "Enero",
+      "scale": 1.1
     },
     {
       "species": "Felimare fontandraui",
-      "zone": "Cap de Creus",
-      "peak": "Mayo",
-      "offset": [
-        0.26,
-        0.1
+      "placement": [
+        2.7,
+        42.1
       ],
-      "scale": 1.1
+      "peak": "Mayo",
+      "scale": 1.05
     }
   ],
   "credit": "Inspirado en la Carta Marina de Olaus Magnus, 1539 (dominio público)",
-  "tools": "matplotlib + Pillow (CPU); sin modelo de imagen; sin GPU",
   "reference_style_only": "ref_carta_marina_gustavo.jpg (no incluida en el póster)",
-  "generated": "2026-10-10 20:42:42 CEST",
+  "generated": "2026-10-10 21:55:48 CEST",
   "png": "LAMINA5_carta_marina_20261010.png",
   "pdf": "LAMINA5_carta_marina_20261010.pdf",
   "pixels": [

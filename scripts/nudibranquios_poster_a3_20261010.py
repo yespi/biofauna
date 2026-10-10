@@ -71,10 +71,24 @@ MES_KEYS = [
     "suav_Diciembre",
 ]
 
-# Solo nombres comunes asentados en guías/divulgación local — no inventar.
-VERNACULAR: dict[str, tuple[str, str] | None] = {
-    "Peltodoris atromaculata": ("Vaqueta suïssa", "Vaquita suiza"),
+# Nombres comunes usados en guías/divulgación mediterránea (CA, ES).
+VERNACULAR: dict[str, tuple[str, str]] = {
+    "Cratena peregrina": ("Cratena", "Cratena"),
     "Flabellina affinis": ("Flabel·lina violeta", "Flabelina violeta"),
+    "Peltodoris atromaculata": ("Vaqueta suïssa", "Vaquita suiza"),
+    "Felimare picta": ("Felimare pintada", "Felimare pintada"),
+    "Edmundsella pedata": ("Flabel·lina rosa", "Flabelina rosa"),
+    "Felimare tricolor": ("Felimare tricolor", "Felimare tricolor"),
+    "Calmella cavolini": ("Calmella", "Calmella"),
+    "Diaphorodoris papillata": ("Diaphorodoris", "Diaphorodoris"),
+    "Paradoris indecora": ("Paradoris", "Paradoris"),
+    "Antiopella cristata": ("Antiopella crestada", "Antiopella crestada"),
+    "Polycera quadrilineata": ("Polícera de quatre ratlles", "Polícera de cuatro líneas"),
+    "Rudmania krohni": ("Rudmania", "Rudmania"),
+    "Nemesignis banyulensis": ("Nemesignis de Banyuls", "Nemesignis de Banyuls"),
+    "Diaphorodoris alba": ("Diaphorodoris blanca", "Diaphorodoris blanca"),
+    "Facelina annulicornis": ("Facelina", "Facelina"),
+    "Felimare fontandraui": ("Felimare de Fontandrau", "Felimare de Fontandrau"),
 }
 
 ZONE_XY = {
@@ -89,6 +103,47 @@ ZONE_XY = {
     "Tarragona–Salou": (1.22, 41.08),
     "Delta de l'Ebre": (0.75, 40.70),
 }
+
+# Poblaciones / zonas de buceo (punto + etiqueta; dx/dy en grados, ha relativo al punto)
+PLACE_LABELS = [
+    # name, lon, lat, dx, dy, ha
+    ("Portbou", 3.16, 42.425, -0.18, 0.04, "right"),
+    ("Cadaqués", 3.275, 42.288, -0.22, 0.02, "right"),
+    ("Roses", 3.175, 42.262, -0.20, -0.02, "right"),
+    ("l'Escala", 3.135, 42.125, -0.22, 0.00, "right"),
+    ("l'Estartit", 3.20, 42.052, -0.24, 0.00, "right"),
+    ("Begur", 3.21, 41.954, -0.18, 0.02, "right"),
+    ("Palamós", 3.13, 41.848, -0.20, -0.02, "right"),
+    ("Tossa", 2.93, 41.720, -0.18, 0.02, "right"),
+    ("Blanes", 2.79, 41.675, -0.18, -0.02, "right"),
+    ("Arenys", 2.56, 41.580, -0.18, 0.00, "right"),
+    ("Barcelona", 2.175, 41.385, -0.22, 0.00, "right"),
+    ("Sitges", 1.825, 41.235, -0.18, 0.00, "right"),
+    ("Tarragona", 1.25, 41.115, -0.18, 0.02, "right"),
+    ("l'Ametlla", 0.805, 40.885, 0.10, 0.02, "left"),
+    ("l'Ampolla", 0.710, 40.812, 0.12, -0.02, "left"),
+    ("Delta de l'Ebre", 0.78, 40.70, 0.14, -0.04, "left"),
+]
+
+# 16 colores distinguibles (guía + punto de especie); tono saturado sobre satélite oscuro
+SPECIES_COLORS = [
+    "#ff6b4a",  # 1 Cratena — coral
+    "#c44dff",  # 2 Flabellina — violeta
+    "#f0f0f0",  # 3 Peltodoris — blanco
+    "#3d9bff",  # 4 Felimare picta — azul
+    "#ff5aa8",  # 5 Edmundsella — rosa
+    "#2ee6c2",  # 6 Felimare tricolor — turquesa
+    "#ffb347",  # 7 Calmella — naranja
+    "#e8d44d",  # 8 Diaphorodoris papillata — oro
+    "#d8b4ff",  # 9 Paradoris — lavanda
+    "#7dff7a",  # 10 Antiopella — verde
+    "#ff8c42",  # 11 Polycera — naranja vivo
+    "#5ec8ff",  # 12 Rudmania — cielo
+    "#ff66cc",  # 13 Nemesignis — magenta
+    "#b8fff0",  # 14 Diaphorodoris alba — menta
+    "#ffd166",  # 15 Facelina — ámbar
+    "#4de1ff",  # 16 Felimare fontandraui — cian
+]
 
 FALLBACK_ZONES = ["Maresme", "Garraf", "Costa Daurada N", "Tossa–Blanes"]
 
@@ -161,6 +216,200 @@ def load_hot_zone(species: list[str]) -> dict[str, str]:
             if sp not in best or tasa > best[sp][0]:
                 best[sp] = (tasa, row["tramo"])
     return {sp: z for sp, (_, z) in best.items()}
+
+
+def load_zone_intensity() -> dict[str, float]:
+    """Máxima tasa (obs corregida por esfuerzo) por tramo costero."""
+    best: dict[str, float] = {}
+    with ZONES_CSV.open(encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            z = row["tramo"]
+            tasa = float(row["tasa"])
+            if z not in best or tasa > best[z]:
+                best[z] = tasa
+    return best
+
+
+def _hex_rgba(hx: str, a: float = 1.0) -> tuple[float, float, float, float]:
+    h = hx.lstrip("#")
+    r, g, b = int(h[0:2], 16) / 255, int(h[2:4], 16) / 255, int(h[4:6], 16) / 255
+    return (r, g, b, a)
+
+
+def draw_north_rose(ax, lon: float, lat: float, size_deg: float = 0.14):
+    """Rosa de los vientos elegante (N destacado)."""
+    s = size_deg
+    # anillo exterior
+    ax.add_patch(
+        mpatches.Circle(
+            (lon, lat),
+            s * 0.92,
+            facecolor=(0.02, 0.05, 0.08, 0.55),
+            edgecolor=GOLD,
+            linewidth=0.7,
+            zorder=9,
+        )
+    )
+    # cruz cardinal fina
+    for ang in (0, 90, 180, 270):
+        rad = math.radians(ang)
+        ax.plot(
+            [lon, lon + s * 0.78 * math.sin(rad)],
+            [lat, lat + s * 0.78 * math.cos(rad) * 0.72],
+            color=(0.85, 0.78, 0.55, 0.55),
+            lw=0.45,
+            zorder=9.2,
+        )
+    # flecha norte (triángulo dorado)
+    north = np.array(
+        [
+            [lon, lat + s * 0.78 * 0.72],
+            [lon - s * 0.16, lat - s * 0.08],
+            [lon + s * 0.16, lat - s * 0.08],
+        ]
+    )
+    ax.add_patch(
+        mpatches.Polygon(north, closed=True, facecolor=GOLD, edgecolor="none", zorder=10, alpha=0.95)
+    )
+    # punta sur más oscura (contraste)
+    south = np.array(
+        [
+            [lon, lat - s * 0.55 * 0.72],
+            [lon - s * 0.10, lat + s * 0.02],
+            [lon + s * 0.10, lat + s * 0.02],
+        ]
+    )
+    ax.add_patch(
+        mpatches.Polygon(south, closed=True, facecolor=(0.55, 0.48, 0.32, 0.85), edgecolor="none", zorder=9.5)
+    )
+    t = ax.text(
+        lon,
+        lat + s * 1.05 * 0.72,
+        "N",
+        fontsize=8.5,
+        color=CREAM,
+        ha="center",
+        va="bottom",
+        fontproperties=FONT_SERIF_B,
+        zorder=11,
+    )
+    t.set_path_effects([pe.withStroke(linewidth=2.8, foreground=(0.02, 0.05, 0.08, 0.92))])
+
+
+def draw_scale_bar(ax, lon0: float, lat0: float, km: float = 50.0):
+    """Escala en km (aprox. a latitud media del mapa)."""
+    mid_lat = (MAP_LAT[0] + MAP_LAT[1]) / 2
+    deg_per_km = 1.0 / (111.32 * math.cos(math.radians(mid_lat)))
+    w = km * deg_per_km
+    h = 0.018
+    # fondo semitransparente
+    ax.add_patch(
+        mpatches.FancyBboxPatch(
+            (lon0 - 0.04, lat0 - 0.055),
+            w + 0.08,
+            0.11,
+            boxstyle="round,pad=0.01",
+            facecolor=(0.02, 0.05, 0.08, 0.62),
+            edgecolor=(0.83, 0.72, 0.48, 0.45),
+            linewidth=0.5,
+            zorder=9,
+            mutation_aspect=0.6,
+        )
+    )
+    # barra segmentada 0–25–50
+    half = w / 2
+    ax.add_patch(
+        mpatches.Rectangle((lon0, lat0), half, h, facecolor=CREAM, edgecolor="none", zorder=10)
+    )
+    ax.add_patch(
+        mpatches.Rectangle((lon0 + half, lat0), half, h, facecolor=GOLD, edgecolor="none", zorder=10)
+    )
+    ax.plot([lon0, lon0 + w], [lat0, lat0], color=CREAM, lw=0.8, zorder=10.5)
+    for x, lab in ((lon0, "0"), (lon0 + half, "25"), (lon0 + w, "50")):
+        ax.plot([x, x], [lat0, lat0 + h * 1.6], color=CREAM, lw=0.7, zorder=10.5)
+        t = ax.text(
+            x,
+            lat0 + h * 2.4,
+            lab,
+            fontsize=5.2,
+            color=CREAM,
+            ha="center",
+            va="bottom",
+            fontproperties=FONT_SANS,
+            zorder=11,
+        )
+        t.set_path_effects([pe.withStroke(linewidth=1.8, foreground=(0, 0, 0, 0.8))])
+    t = ax.text(
+        lon0 + w / 2,
+        lat0 - 0.028,
+        "km",
+        fontsize=5.5,
+        color=GOLD,
+        ha="center",
+        va="top",
+        fontproperties=FONT_SANS,
+        zorder=11,
+    )
+    t.set_path_effects([pe.withStroke(linewidth=1.8, foreground=(0, 0, 0, 0.8))])
+
+
+def draw_place_labels(ax):
+    for name, lo, la, dx, dy, ha in PLACE_LABELS:
+        ax.plot(
+            lo,
+            la,
+            "o",
+            markersize=3.2,
+            color=CREAM,
+            markeredgecolor=GOLD,
+            markeredgewidth=0.55,
+            zorder=8.5,
+            alpha=0.95,
+        )
+        t = ax.text(
+            lo + dx,
+            la + dy,
+            name,
+            fontsize=6.5,
+            color=CREAM,
+            ha=ha,
+            va="center",
+            fontproperties=FONT_SANS,
+            zorder=8.6,
+            alpha=0.98,
+        )
+        t.set_path_effects([pe.withStroke(linewidth=2.8, foreground=(0, 0, 0, 0.88))])
+
+
+def draw_hot_zones(ax, intensities: dict[str, float]):
+    """Puntos luminosos = zonas calientes; tamaño/brillo ∝ tasa corregida por esfuerzo."""
+    if not intensities:
+        return
+    vmax = max(intensities.values()) or 1.0
+    for zone, (lo, la) in ZONE_XY.items():
+        tasa = intensities.get(zone, 0.0)
+        if tasa <= 0:
+            continue
+        t = float(np.clip(tasa / vmax, 0.15, 1.0))
+        # halo exterior
+        ax.plot(
+            lo,
+            la,
+            "o",
+            markersize=14 + 28 * t,
+            color=(0.35 + 0.2 * t, 0.75 + 0.2 * t, 1.0, 0.10 + 0.18 * t),
+            markeredgewidth=0,
+            zorder=4.5,
+        )
+        ax.plot(
+            lo,
+            la,
+            "o",
+            markersize=7 + 14 * t,
+            color=(0.45 + 0.35 * t, 0.85 + 0.12 * t, 1.0, 0.22 + 0.45 * t),
+            markeredgewidth=0,
+            zorder=4.7,
+        )
 
 
 def catalog_taxon_ids() -> dict[str, dict]:
@@ -415,10 +664,16 @@ def _place_for_species(sp: str, hot: dict[str, str], fb_i: list[int]) -> str:
     return place
 
 
-def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
+def build_poster(
+    spp: list[dict],
+    photos: dict[str, dict],
+    hot: dict[str, str],
+    zone_int: dict[str, float] | None = None,
+):
     # A3 apaisado mm → inches (costa N–S como franja central)
     fig_w, fig_h = 16.54, 11.69
     fig = plt.figure(figsize=(fig_w, fig_h), dpi=300, facecolor=BG)
+    zone_int = zone_int or {}
 
     ax_bg = fig.add_axes([0, 0, 1, 1], zorder=0)
     ax_bg.set_xlim(0, 1)
@@ -467,8 +722,8 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
     # línea dorada fina
     ax_bg.plot([0.22, 0.78], [0.888, 0.888], color=GOLD, lw=0.6, alpha=0.55, solid_capstyle="round")
 
-    # ——— Mapa satélite central ———
-    map_l, map_b, map_w, map_h = 0.348, 0.100, 0.304, 0.76
+    # ——— Mapa satélite central (deja franja inferior para leyenda) ———
+    map_l, map_b, map_w, map_h = 0.348, 0.168, 0.304, 0.695
     ax_map = fig.add_axes([map_l, map_b, map_w, map_h], zorder=2)
     sat = np.asarray(Image.open(SAT_MAP).convert("RGB"))
     # Viñeta suave hacia negro en bordes del mapa
@@ -496,43 +751,28 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
         spn.set_linewidth(0.9)
         spn.set_alpha(0.5)
 
-    # etiquetas de costa discretas
-    labels = {
-        "Cap de Creus": (3.05, 42.38),
-        "Medes": (2.85, 42.08),
-        "Barcelona": (1.75, 41.42),
-        "Tarragona": (0.95, 41.12),
-        "Delta de l'Ebre": (0.72, 40.68),
-    }
-    for name, (lo, la) in labels.items():
-        t = ax_map.text(
-            lo,
-            la,
-            name,
-            fontsize=5.2,
-            color=CREAM,
-            ha="center",
-            va="center",
-            fontproperties=FONT_SANS,
-            zorder=5,
-            alpha=0.9,
-        )
-        t.set_path_effects([pe.withStroke(linewidth=2.0, foreground=(0, 0, 0, 0.75))])
+    # zonas calientes luminosas (tamaño ∝ intensidad corregida por esfuerzo)
+    draw_hot_zones(ax_map, zone_int)
+    # poblaciones y zonas de buceo
+    draw_place_labels(ax_map)
+    # rosa de los vientos + escala
+    draw_north_rose(ax_map, lon=1.05, lat=42.28, size_deg=0.16)
+    draw_scale_bar(ax_map, lon0=0.78, lat0=40.95, km=50.0)
 
     ax_map.text(
         0.5,
-        0.015,
+        0.012,
         "Sentinel-2 cloudless · EOX",
         transform=ax_map.transAxes,
-        fontsize=4.8,
-        color=(1, 1, 1, 0.55),
+        fontsize=4.6,
+        color=(1, 1, 1, 0.50),
         ha="center",
         va="bottom",
         fontproperties=FONT_SANS,
         zorder=6,
     )
 
-    # anclas por zona + marcadores luminosos
+    # puntos de especie (color propio) sobre las zonas
     zone_counts: dict[str, int] = defaultdict(int)
     marker_pos: dict[int, tuple[float, float]] = {}
     fb_i = [0]
@@ -546,41 +786,53 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
         lo = base[0] + r * math.cos(ang)
         la = base[1] + r * math.sin(ang) * 0.7
         marker_pos[i] = (lo, la)
-        # halo + punto
-        ax_map.plot(lo, la, "o", markersize=14, color=(0.4, 0.85, 1.0, 0.18), markeredgewidth=0, zorder=6)
+        col = SPECIES_COLORS[i % len(SPECIES_COLORS)]
+        rgba = _hex_rgba(col, 0.98)
         ax_map.plot(
             lo,
             la,
             "o",
-            markersize=7.5,
-            color=(0.85, 0.95, 1.0, 0.95),
-            markeredgecolor=GOLD,
-            markeredgewidth=0.7,
+            markersize=16,
+            color=_hex_rgba(col, 0.22),
+            markeredgewidth=0,
+            zorder=6,
+        )
+        ax_map.plot(
+            lo,
+            la,
+            "o",
+            markersize=11.5,
+            color=rgba,
+            markeredgecolor=(0.05, 0.08, 0.12, 0.95),
+            markeredgewidth=0.9,
             zorder=7,
         )
+        lum = 0.299 * rgba[0] + 0.587 * rgba[1] + 0.114 * rgba[2]
+        num_col = "#061018" if lum > 0.55 else "#f4f0e6"
         ax_map.text(
             lo,
             la,
             str(i + 1),
             ha="center",
             va="center",
-            fontsize=4.8,
-            color="#0a1520",
+            fontsize=6.6,
+            color=num_col,
             fontweight="bold",
             zorder=8,
             fontproperties=FONT_SANS,
         )
 
     # ——— Fichas especie (sin tarjeta blanca): 8 izq + 8 der ———
-    # Márgenes impresión ≈ 12 mm (A3)
-    left_col_x = 0.032
-    right_col_x = 0.668
-    col_w = 0.300
-    row0_y = 0.085
-    row_h = 0.093
-    gap = 0.0055
+    # Márgenes impresión ≈ 12 mm (A3). Nombres grandes (legibles ~1 m en A3).
+    left_col_x = 0.028
+    right_col_x = 0.662
+    col_w = 0.308
+    row0_y = 0.082
+    row_h = 0.094
+    gap = 0.0048
 
     slot_xy: dict[int, tuple[float, float, float, float]] = {}
+    anchor_fig: dict[int, tuple[float, float]] = {}
 
     for i, s in enumerate(spp):
         side = 0 if i < 8 else 1
@@ -595,29 +847,19 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
         ax_c.axis("off")
         ax_c.set_facecolor("none")
 
-        ax_c.text(
-            0.02 if side == 0 else 0.98,
-            0.90,
-            str(i + 1),
-            fontsize=7.2,
-            color=GOLD,
-            ha="left" if side == 0 else "right",
-            va="center",
-            fontproperties=FONT_SERIF_B,
-            alpha=0.85,
-        )
-
-        # Imagen grande hacia el mapa; texto compacto al borde exterior
+        # Imagen hacia el mapa; texto exterior amplio
         if side == 0:
-            img_box = [x + col_w * 0.30, y + row_h * 0.04, col_w * 0.68, row_h * 0.92]
-            text_x = 0.03
+            img_box = [x + col_w * 0.42, y + row_h * 0.22, col_w * 0.56, row_h * 0.74]
+            text_x = 0.02
             text_ha = "left"
-            cal_box = [x + 0.008, y + 0.01, col_w * 0.27, row_h * 0.18]
+            cal_box = [x + 0.01, y + 0.008, col_w * 0.40, row_h * 0.16]
+            anchor_fig[i] = (x + col_w * 0.98, y + row_h * 0.55)
         else:
-            img_box = [x + col_w * 0.02, y + row_h * 0.04, col_w * 0.68, row_h * 0.92]
-            text_x = 0.97
+            img_box = [x + col_w * 0.02, y + row_h * 0.22, col_w * 0.56, row_h * 0.74]
+            text_x = 0.98
             text_ha = "right"
-            cal_box = [x + col_w * 0.71, y + 0.01, col_w * 0.27, row_h * 0.18]
+            cal_box = [x + col_w * 0.58, y + 0.008, col_w * 0.40, row_h * 0.16]
+            anchor_fig[i] = (x + col_w * 0.02, y + row_h * 0.55)
 
         ax_img = fig.add_axes(img_box, zorder=4)
         ax_img.set_facecolor("none")
@@ -627,26 +869,39 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
         for spn in ax_img.spines.values():
             spn.set_visible(False)
 
-        vern = VERNACULAR.get(s["species"])
-        name_y = 0.58 if vern else 0.52
+        sp_col = SPECIES_COLORS[i % len(SPECIES_COLORS)]
         ax_c.text(
             text_x,
-            name_y,
+            0.92,
+            str(i + 1),
+            fontsize=10.0,
+            color=sp_col,
+            ha=text_ha,
+            va="center",
+            fontproperties=FONT_SERIF_B,
+            alpha=0.98,
+        )
+        # Nombre científico grande + nombre común debajo
+        ax_c.text(
+            text_x,
+            0.70,
             s["species"],
-            fontsize=6.6,
+            fontsize=13.5,
             color=CREAM,
             fontproperties=FONT_SERIF_BI,
             ha=text_ha,
             va="center",
         )
+        vern = VERNACULAR.get(s["species"])
         if vern:
             ca, es = vern
+            common = ca if ca == es else f"{ca}  ·  {es}"
             ax_c.text(
                 text_x,
-                0.38,
-                f"{ca}  ·  {es}",
-                fontsize=4.3,
-                color=MUTED,
+                0.40,
+                common,
+                fontsize=8.6,
+                color=GOLD,
                 fontproperties=FONT_SANS,
                 ha=text_ha,
                 va="center",
@@ -655,33 +910,146 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
         ax_cal = fig.add_axes(cal_box, zorder=4)
         draw_month_dots(ax_cal, s["months"])
 
-    # Líneas finas luminosas mapa → especie
+    # Líneas guía del color de cada especie → punto exacto del mapa
+    fig.canvas.draw()
     for i, s in enumerate(spp):
         lo, la = marker_pos[i]
-        # punto en figura vía transformación mapa
-        disp = ax_map.transData.transform((lo, la))
-        fig_pt = fig.transFigure.inverted().transform(disp)
-        sx, sy, sw, sh = slot_xy[i]
-        side = 0 if i < 8 else 1
-        if side == 0:
-            end = (sx + sw * 0.92, sy + sh * 0.5)
-        else:
-            end = (sx + sw * 0.08, sy + sh * 0.5)
-        # curva suave con ConnectionPatch
+        end = anchor_fig[i]
+        col = _hex_rgba(SPECIES_COLORS[i % len(SPECIES_COLORS)], 0.72)
         con = ConnectionPatch(
-            xyA=fig_pt,
+            xyA=(lo, la),
             xyB=end,
-            coordsA="figure fraction",
-            coordsB="figure fraction",
-            axesA=ax_bg,
+            coordsA=ax_map.transData,
+            coordsB=fig.transFigure,
+            axesA=ax_map,
             axesB=ax_bg,
-            color=(0.55, 0.85, 0.95, 0.28),
-            linewidth=0.55,
+            color=col,
+            linewidth=1.15,
             linestyle="-",
-            zorder=1.5,
-            connectionstyle="arc3,rad=0.08" if side == 0 else "arc3,rad=-0.08",
+            zorder=5.5,
+            connectionstyle="arc3,rad=0.0",
+            clip_on=False,
         )
         fig.add_artist(con)
+
+    # ——— Leyenda (bajo el mapa) ———
+    ax_leg = fig.add_axes([map_l, 0.072, map_w, 0.088], zorder=3)
+    ax_leg.set_xlim(0, 1)
+    ax_leg.set_ylim(0, 1)
+    ax_leg.axis("off")
+    ax_leg.set_facecolor("none")
+    ax_leg.add_patch(
+        mpatches.FancyBboxPatch(
+            (0.01, 0.04),
+            0.98,
+            0.92,
+            boxstyle="round,pad=0.015",
+            facecolor=(0.03, 0.07, 0.11, 0.78),
+            edgecolor=(0.83, 0.72, 0.48, 0.40),
+            linewidth=0.55,
+            transform=ax_leg.transAxes,
+            zorder=0,
+        )
+    )
+    ax_leg.text(
+        0.04,
+        0.82,
+        "Llegenda",
+        fontsize=6.8,
+        color=GOLD,
+        fontproperties=FONT_SERIF_B,
+        ha="left",
+        va="center",
+    )
+    # zonas calientes (tamaño)
+    for j, (ms, lab) in enumerate(((5.5, "baixa"), (9.0, ""), (13.5, "alta"))):
+        x = 0.07 + j * 0.055
+        ax_leg.plot(
+            x,
+            0.48,
+            "o",
+            markersize=ms,
+            color=(0.45, 0.85, 1.0, 0.35 + 0.2 * j),
+            markeredgewidth=0,
+            transform=ax_leg.transAxes,
+            zorder=2,
+        )
+    ax_leg.text(
+        0.26,
+        0.48,
+        "Zones calentes: mida/brillantor =\nintensitat d'obs. corregida per esforç",
+        fontsize=4.6,
+        color=CREAM,
+        fontproperties=FONT_SANS,
+        ha="left",
+        va="center",
+        linespacing=1.25,
+    )
+    # calendario 12 puntos
+    for j in range(12):
+        t = j / 11
+        ax_leg.plot(
+            0.07 + j * 0.018,
+            0.18,
+            "o",
+            markersize=2.2 + 2.8 * t,
+            color=(0.25 + 0.55 * t, 0.65 + 0.3 * t, 0.9, 0.25 + 0.7 * t),
+            markeredgewidth=0,
+            transform=ax_leg.transAxes,
+            zorder=2,
+        )
+    ax_leg.text(
+        0.30,
+        0.18,
+        "12 punts = mesos (G→D); brillantor = activitat",
+        fontsize=4.6,
+        color=CREAM,
+        fontproperties=FONT_SANS,
+        ha="left",
+        va="center",
+    )
+    # línea guía + punto especie
+    ax_leg.plot(
+        [0.62, 0.72],
+        [0.55, 0.55],
+        color=_hex_rgba("#ff6b4a", 0.85),
+        lw=1.3,
+        transform=ax_leg.transAxes,
+        zorder=2,
+        solid_capstyle="round",
+    )
+    ax_leg.plot(
+        0.72,
+        0.55,
+        "o",
+        markersize=7,
+        color="#ff6b4a",
+        markeredgecolor="#061018",
+        markeredgewidth=0.5,
+        transform=ax_leg.transAxes,
+        zorder=3,
+    )
+    ax_leg.text(
+        0.75,
+        0.55,
+        "Línia + punt numerat =\nespècie (color propi)",
+        fontsize=4.6,
+        color=CREAM,
+        fontproperties=FONT_SANS,
+        ha="left",
+        va="center",
+        linespacing=1.25,
+    )
+    ax_leg.text(
+        0.62,
+        0.20,
+        "Punts crema = poblacions / zones de busseig",
+        fontsize=4.5,
+        color=MUTED,
+        fontproperties=FONT_SANS,
+        ha="left",
+        va="center",
+    )
 
     # Créditos
     sat_cite = (
@@ -690,10 +1058,10 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
     )
     ax_bg.text(
         0.5,
-        0.052,
+        0.048,
         "Fotos CC0 / CC BY / CC BY-SA (crèdit a LICENCIAS_POSTER_LAMINA4.md). "
         "Dades: iNaturalist + Minka · BioFauna / FotoFauna · 2026-10-10",
-        fontsize=5.0,
+        fontsize=4.8,
         color=MUTED,
         fontproperties=FONT_SANS,
         ha="center",
@@ -701,9 +1069,9 @@ def build_poster(spp: list[dict], photos: dict[str, dict], hot: dict[str, str]):
     )
     ax_bg.text(
         0.5,
-        0.032,
-        sat_cite + "  ·  A3 · 300 ppp  ·  Punts = mesos pic",
-        fontsize=4.4,
+        0.028,
+        sat_cite + "  ·  A3 · 300 ppp",
+        fontsize=4.2,
         color=(0.45, 0.55, 0.62, 1),
         fontproperties=FONT_SANS,
         ha="center",
@@ -784,6 +1152,7 @@ def main():
     spp = load_top(16)
     names = [s["species"] for s in spp]
     hot = load_hot_zone(names)
+    zone_int = load_zone_intensity()
     prev_list = json.load(open(META_JSON)) if META_JSON.exists() else []
     prev = {p["species"]: p for p in prev_list}
     taxa = catalog_taxon_ids()
@@ -794,7 +1163,7 @@ def main():
         photos[sp] = ensure_large_photo(sp, prev.get(sp) or {}, taxa)
         print(f"  → {photos[sp]['source']} · {photos[sp]['author']} · {photos[sp]['license']}", flush=True)
     write_meta(photos, spp, hot)
-    png, pdf = build_poster(spp, photos, hot)
+    png, pdf = build_poster(spp, photos, hot, zone_int=zone_int)
     print("PNG", png, png.stat().st_size)
     print("PDF", pdf, pdf.stat().st_size)
     im = Image.open(png)

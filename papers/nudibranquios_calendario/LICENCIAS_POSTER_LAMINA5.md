@@ -1,6 +1,26 @@
-# Licencias — Lámina 5 (Carta Marina)
+# Póster A3 — Lámina 5 Carta Marina
+Generado: 2026-10-10 21:55 CEST
 
-- **Estilo:** inspirado en la *Carta Marina* de Olaus Magnus (1539), obra de **dominio público**. La imagen de referencia local `ref_carta_marina_gustavo.jpg` es solo guía de estilo y **no** se incluye en el póster ni se redistribuye.
-- **Ilustraciones de especies:** dibujos vectoriales originales (matplotlib), no fotos de terceros.
-- **Datos fenológicos / zonas:** iNaturalist + Minka (`public_observations`), agregados en `datos/`.
-- **Crédito en el póster:** «Inspirado en la Carta Marina de Olaus Magnus, 1539 (dominio público). Datos: iNaturalist + Minka · BioFauna / fotofauna.yespi.es · 2026»
+Estilo inspirado en la Carta Marina de Olaus Magnus, 1539 (dominio público).
+Costa: Natural Earth 10m (public domain).
+Criaturas: grabado coloreado a partir de recortes fotográficos CC de la lámina 4 (CPU; sin modelo de imagen).
+Referencia de estilo (no incluida): `ref_carta_marina_gustavo.jpg`.
+
+## Especies
+
+- *Cratena peregrina* · pico Agosto
+- *Flabellina affinis* · pico Julio
+- *Peltodoris atromaculata* · pico Agosto
+- *Felimare picta* · pico Agosto
+- *Edmundsella pedata* · pico Abril
+- *Felimare tricolor* · pico Junio
+- *Calmella cavolini* · pico Agosto
+- *Diaphorodoris papillata* · pico Abril
+- *Paradoris indecora* · pico Enero
+- *Antiopella cristata* · pico Mayo
+- *Polycera quadrilineata* · pico Febrero
+- *Rudmania krohni* · pico Junio
+- *Nemesignis banyulensis* · pico Marzo
+- *Diaphorodoris alba* · pico Mayo
+- *Facelina annulicornis* · pico Enero
+- *Felimare fontandraui* · pico Mayo

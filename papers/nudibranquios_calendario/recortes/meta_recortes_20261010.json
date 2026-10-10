@@ -180,9 +180,9 @@
       "source_file": "paradoris_indecora_large.jpg",
       "cutout": "paradoris_indecora_cutout.png",
       "cutout_raw": "paradoris_indecora_cutout_raw.png",
-      "author": "Golfopolikayak",
+      "author": "Ignasi Buscarons (igbusca)",
       "license": "cc-by",
-      "uri": "https://www.inaturalist.org/observations/35812574",
+      "uri": "https://observe.minka-sdg.org/observations/489030",
       "qa": {
         "size": [
           239,
@@ -190,11 +190,12 @@
         ],
         "fg_frac": 0.3646
       },
-      "engine": "manual soft ellipse + outline/shadow",
+      "engine": "rembg",
       "source_meta": "poster_lamina4",
-      "note": "inat 35812574 sin CCA (camuflaje)",
-      "qa_note": "recorte elíptico suave (rembg insuficiente por camuflaje; única foto CC-BY usable iNat 35812574)",
-      "poster_use": "soft_ellipse_cutout"
+      "note": "Minka 489030 rembg tight",
+      "qa_note": "sustituye 478511; especimen con espículas visibles",
+      "poster_use": "rembg_tight",
+      "skip_poster": false
     },
     {
       "species": "Antiopella cristata",
