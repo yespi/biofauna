@@ -1,5 +1,5 @@
 # Póster A3 — nudibranquios Cataluña (estilo museo / película)
-Generado: 2026-10-10 21:55 CEST
+Generado: 2026-10-10 21:56 CEST
 
 Solo CC0 / CC BY / CC BY-SA. Fotos reales (no generadas).
 Fondo negro abisal · recortes con halo · sin tarjetas blancas.

@@ -120,9 +120,9 @@ PLACE_LABELS = [
     ("Barcelona", 2.175, 41.385, -0.22, 0.00, "right"),
     ("Sitges", 1.825, 41.235, -0.18, 0.00, "right"),
     ("Tarragona", 1.25, 41.115, -0.18, 0.02, "right"),
-    ("l'Ametlla", 0.805, 40.885, 0.10, 0.02, "left"),
-    ("l'Ampolla", 0.710, 40.812, 0.12, -0.02, "left"),
-    ("Delta de l'Ebre", 0.78, 40.70, 0.14, -0.04, "left"),
+    ("l'Ametlla", 0.805, 40.885, 0.14, 0.05, "left"),
+    ("l'Ampolla", 0.710, 40.812, 0.14, -0.01, "left"),
+    ("Delta de l'Ebre", 0.78, 40.70, 0.16, -0.05, "left"),
 ]
 
 # 16 colores distinguibles (guía + punto de especie); tono saturado sobre satélite oscuro
@@ -757,7 +757,7 @@ def build_poster(
     draw_place_labels(ax_map)
     # rosa de los vientos + escala
     draw_north_rose(ax_map, lon=1.05, lat=42.28, size_deg=0.16)
-    draw_scale_bar(ax_map, lon0=0.78, lat0=40.95, km=50.0)
+    draw_scale_bar(ax_map, lon0=1.05, lat0=40.72, km=50.0)
 
     ax_map.text(
         0.5,
