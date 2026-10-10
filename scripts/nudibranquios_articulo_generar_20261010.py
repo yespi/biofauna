@@ -957,7 +957,7 @@ def write_articulo_md(
 
 ## Resumen
 
-Presentamos un calendario de actividad mensual de nudibranquios (**Nudibranchia** y **doridoideos**, *sensu* catálogo BioFauna) en la costa catalana, a partir de **{total_nudi:,}** observaciones georreferenciadas en la base pública `public_observations` (iNaturalist + Minka). La intensidad mensual se **corrige por el esfuerzo de muestreo** con un suavizado (corrección parcial del denominador y prior bayesiano débil), para evitar que los meses con pocas salidas (sobre todo invierno) inflen artificialmente el cociente. Los meses de poco esfuerzo se marcan en las láminas. Incluimos dos láminas imprimibles A3 (calendario por familias y rosas mensuales) con miniaturas de fotos de licencia libre cuando existen.
+Presentamos un calendario de actividad mensual de nudibranquios (**Nudibranchia** y **doridoideos**, *sensu* catálogo BioFauna) en la costa catalana, a partir de **{total_nudi:,}** observaciones georreferenciadas en la base pública `public_observations` (iNaturalist + Minka). La intensidad mensual se **corrige por el esfuerzo de muestreo** con un suavizado (corrección parcial del denominador y prior bayesiano débil), para evitar que los meses con pocas salidas (sobre todo invierno) inflen artificialmente el cociente. Los meses de poco esfuerzo se marcan en las láminas. Incluimos tres láminas imprimibles A3 (calendario por familias, rosas mensuales y distribución espacial) con miniaturas de fotos de licencia libre cuando existen.
 
 **Palabras clave:** Nudibranchia, Doridida, fenología, ciencia ciudadana, Mediterráneo, Cataluña, Minka, iNaturalist
 
@@ -989,7 +989,8 @@ Los meses con esfuerzo por debajo del {int(LOW_EFFORT_FRAC*100)} % de la mediana
 
 - Lámina 1: `{lam1.name}` (PNG 300 ppp + PDF, A3).
 - Lámina 2: `{lam2.name}` (PNG 300 ppp + PDF, A3).
-- Script: `scripts/nudibranquios_articulo_generar_20261010.py`.
+- Lámina 3: `LAMINA3_distribucion_espacial_20261010.png` (PNG 300 ppp + PDF, A3) — ver `scripts/nudibranquios_lamina3_espacial_20261010.py`.
+- Scripts: `scripts/nudibranquios_articulo_generar_20261010.py` (láminas 1–2) y `scripts/nudibranquios_lamina3_espacial_20261010.py` (lámina 3).
 
 ## 3. Resultados
 

@@ -9,6 +9,7 @@
 | [`ARTICULO_20261010.md`](ARTICULO_20261010.md) · [`ARTICULO_20261010.pdf`](ARTICULO_20261010.pdf) | Artículo naturalista |
 | [`LAMINA1_calendario_fenologico_20261010.pdf`](LAMINA1_calendario_fenologico_20261010.pdf) · [`.png`](LAMINA1_calendario_fenologico_20261010.png) | Calendario A3: familia / miniatura / nombre + mapa de calor suavizado |
 | [`LAMINA2_rosas_estaciones_20261010.pdf`](LAMINA2_rosas_estaciones_20261010.pdf) · [`.png`](LAMINA2_rosas_estaciones_20261010.png) | Rosas radiales (12 spp.) + panel estacional |
+| [`LAMINA3_distribucion_espacial_20261010.pdf`](LAMINA3_distribucion_espacial_20261010.pdf) · [`.png`](LAMINA3_distribucion_espacial_20261010.png) | Distribución espacial A3: mapas CAT/Med-ES, tramos, tendencia, zonas calientes |
 | [`LICENCIAS_FOTOS.md`](LICENCIAS_FOTOS.md) | Atribución CC0 / CC BY / CC BY-SA |
 | [`datos/`](datos/) | CSV mensual (conteos + índice suavizado) y esfuerzo |
 
@@ -21,4 +22,5 @@
 
 ```bash
 papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_articulo_generar_20261010.py
+papers/nudibranquios_calendario/.venv/bin/python scripts/nudibranquios_lamina3_espacial_20261010.py
 ```

@@ -1,0 +1,38 @@
+{
+  "generated": "2026-10-10T16:56:54.708225",
+  "species": [
+    "Cratena peregrina",
+    "Flabellina affinis",
+    "Peltodoris atromaculata",
+    "Felimare picta",
+    "Edmundsella pedata",
+    "Felimare tricolor",
+    "Calmella cavolini",
+    "Diaphorodoris papillata",
+    "Paradoris indecora",
+    "Antiopella cristata",
+    "Polycera quadrilineata",
+    "Rudmania krohni"
+  ],
+  "n_points_cat": 12896,
+  "n_points_esmed": 14855,
+  "n_depth": 0,
+  "effort_zone": {
+    "Cap de Creus": 2825,
+    "Illes Medes / Estartit": 2617,
+    "Begur–Palamós": 2899,
+    "Tossa–Blanes": 3117,
+    "Maresme": 1494,
+    "Barcelonès": 1155,
+    "Garraf": 46,
+    "Costa Daurada N": 122,
+    "Tarragona–Salou": 762,
+    "Delta de l'Ebre": 515,
+    "Fuera de tramos": 192
+  },
+  "files": [
+    "/mnt/docker/biofauna-public/papers/nudibranquios_calendario/LAMINA3_distribucion_espacial_20261010.png",
+    "/mnt/docker/biofauna-public/papers/nudibranquios_calendario/LAMINA3_distribucion_espacial_20261010.pdf"
+  ],
+  "gpu": false
+}
