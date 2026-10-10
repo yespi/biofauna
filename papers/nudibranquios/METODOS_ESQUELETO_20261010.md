@@ -31,7 +31,7 @@ Igual que correlaciones v24: **misma fotografía** (escala cm); co-ocurrencia po
 
 ## 6. Limitaciones
 
-OOS global **83,14 %** (`stats.json`); pares crípticos en `cryptic_pairs.jsonl`; sesgo de observadores costeros.
+OOS global **83,22 %** (`dataset/stats.json`, promote invasoras 10-oct-2026; 1.216.896 vec / 4.643 spp); pares crípticos en `cryptic_pairs.jsonl`; sesgo de observadores costeros. El calendario fenológico (dóridos, esfuerzo estival, sustrato) lo mantiene otro agente — no se edita aquí.
 
 ## 7. Estado
 

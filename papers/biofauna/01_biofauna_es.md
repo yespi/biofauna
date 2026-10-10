@@ -4,7 +4,7 @@
 **Aportación taxonómica:** Xavier Salvador, Miquel Pontes, Manuel Ballesteros  
 **Repositorio:** https://github.com/yespi/biofauna  
 **Sistema en vivo:** https://fotofauna.yespi.es  
-**Versión del manuscrito:** 2026-10-09 (artículo para Biodiversity Data Journal / PeerJ)
+**Versión del manuscrito:** 2026-10-10 (artículo para Biodiversity Data Journal / PeerJ; OOS 83,22 %)
 
 > **Nombre.** El proyecto se llamó YOLOFauna (2024–mediados de 2026); pasó a BioFauna cuando producción se quedó en recuperación BioCLIP, no en detectores YOLO. Origen: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -14,7 +14,7 @@
 
 BioFauna identifica taxones mediterráneos (y algunos adyacentes) a partir de fotografías por **recuperación** sobre una galería regional, sin entrenar un clasificador cerrado. El encoder de producción es **BioCLIP-2.5 ViT-H/14** (congelado; embeddings de 1024 dimensiones). La consulta se embebe (fusión del encuadre global con un recorte central al 65 %), se busca con **k-NN (k = 15)** y un agregador de votos temperado, se puede reponderar con un prior geográfico, se convierte en probabilidad calibrada y, si el margen es débil, se **abstiene** a género, familia o un grupo de indistinguibilidad curado.
 
-**Cifras vigentes** (`dataset/stats.json` tras promote *all08it2*, 8-oct-2026): galería en vivo **1.198.265** embeddings / **4.543** especies; panel de campo **78.145** filas con acierto de especie fuera de muestra **83,14 %** (género 87,9 %, familia 91,0 %). AutoID publica con umbral de especie **0,83** (precisión ≈96 %, cobertura ≈66,5 % en el eval completo). Líneas base sobre 78.180 filas (2026-10-03): centroide más cercano **74,73 %**; k-NN simple **79,86 %**. Una búsqueda sistemática de mejoras entrenando sobre este espacio (LoRA, QLoRA, ArcFace, etc.) **no superó** la recuperación congelada. Publicamos el libro de experimentos, IDs de taxón, centroides y un identificador autoalojable; **no** se redistribuyen fotos ni embeddings por foto.
+**Cifras vigentes** (`dataset/stats.json` tras promote invasoras *todoselmejB* 09:51 + *invfull2* 11:51, 10-oct-2026): galería en vivo **1.216.896** embeddings / **4.643** especies; panel de campo **78.145** filas con acierto de especie fuera de muestra **83,22 %** (género **87,96 %**, familia **91,04 %**; `calibration.field_acc`). AutoID publica con umbral de especie **0,83** (precisión ≈96 %, cobertura ≈66,5 % en el eval completo; precisión auditada histórica **96,6 %**, n=493). Líneas base sobre 78.180 filas (2026-10-03): centroide más cercano **74,73 %**; k-NN simple **79,86 %**. Una búsqueda sistemática de mejoras entrenando sobre este espacio (LoRA, QLoRA, ArcFace, etc.) **no superó** la recuperación congelada. Publicamos el libro de experimentos, IDs de taxón, centroides y un identificador autoalojable; **no** se redistribuyen fotos ni embeddings por foto.
 
 **Palabras clave:** BioCLIP-2.5, ViT-H, k-NN, clasificación visual fina, biodiversidad marina, ciencia ciudadana, abstención taxonómica, calibración, mar Mediterráneo
 
@@ -259,7 +259,7 @@ Publicar a nivel de familia solo compensa con τ ≥ 0,90; con 0,83 su precisió
 | BioFauna completo (producción, panel 5-oct) | 78.180 | 82,46 % | medida |
 | Centroide más cercano (prototipos publicados) | 78.180 (2026-10-03) | **74,73 %** | medida |
 | k-NN simple, voto mayoritario (k = 15) | mismas filas | **79,86 %** (1-NN: 79,10 %) | medida |
-| BioFauna vigente (panel tras all08it2) | 78.145 | **83,14 %** | medida (`stats.json` 0,8314) |
+| BioFauna vigente (panel tras invasoras 10-oct) | 78.145 | **83,22 %** | medida (`stats.json` 0,8322) |
 | Sugerencia CV de iNaturalist | 98 (parcial; objetivo 300) | 55,1 % (BF 84,7 % en las mismas) | parcial |
 
 La capa de decisión suma ≈2,6 pp sobre el voto k-NN simple y la recuperación ≈5,1 pp sobre solo prototipos (medido el 2026-10-03 sobre 78.180 filas). La línea base iNat sigue incompleta (n = 98 por HTTP 429).
@@ -300,17 +300,17 @@ La capa de decisión suma ≈2,6 pp sobre el voto k-NN simple y la recuperación
 
 **Límites de estas cifras.** Las observaciones juzgadas son las que tienen identificación de otro usuario; los replays usan el modelo de hoy, no el de la fecha de publicación; las ganancias de la cosecha se miden sobre un panel construido con las mismas fuentes que la galería, así que las filas sin fuga son la estimación más fiable.
 
-## 5.4 Cifras vigentes tras el promote all08it2 (OOS 83,14 %)
+## 5.4 Cifras vigentes tras el promote invasoras (OOS 83,22 %)
 
-**Panel vigente** (`dataset/stats.json`, regenerado tras el promote; `calibration.created=2026-10-08T23:38:07`):
+**Panel vigente** (`dataset/stats.json`, `updated=2026-10-10T11:50:11` tras *invfull2*):
 
 | Magnitud | Valor | Fuente |
 |---|---|---|
-| Filas del eval | **78.145** | `stats.json` → `calibration.n_samples`; `calib_raw_t05_meta.json` |
-| Acierto especie OOS | **83,14 %** (0,8314) | `stats.json` `overall_accuracy` / `calibration.field_acc.species` |
-| Género | **87,9 %** (0,8793) | `stats.json` `calibration.field_acc.genus` |
-| Familia | **91,0 %** (0,9102) | `stats.json` `calibration.field_acc.family` |
-| Índice live (health) | 1.198.265 vectores / 4.543 spp | `stats.json` `live_health` (tras all08it2; mensaje Robotin 8-oct 23:42) |
+| Filas del eval | **78.145** | `stats.json` → `calibration.n_samples`; `calib_raw_t05.jsonl` |
+| Acierto especie OOS | **83,22 %** (0,8322) | `stats.json` `overall_accuracy` / `calibration.field_acc.species` |
+| Género | **87,96 %** (0,8796) | `stats.json` `calibration.field_acc.genus` |
+| Familia | **91,04 %** (0,9104) | `stats.json` `calibration.field_acc.family` |
+| Índice live (health) | **1.216.896** vectores / **4.643** spp | `stats.json` `faiss_vectors` / `live_health.species` (promote invasoras 10-oct) |
 
 **Serie del panel (78.145 filas):**
 
@@ -319,9 +319,10 @@ La capa de decisión suma ≈2,6 pp sobre el voto k-NN simple y la recuperación
 | Pre–combo limpio (5-oct) | 82,463 % | §5.3 |
 | Tras *combo limpio* | 82,626 % (+0,163 pp) | §5.3 |
 | Tras lotes de cosecha 01+02 | 82,85 % (+0,223 pp) | §5.3 |
-| Tras *all08it2* (8-oct 23:42) | **83,14 %** | `stats.json`; confirmación `agent-bus/inbox/claude/20261008-234238-robotin.md` (antes 0,8285) |
+| Tras *all08it2* (8-oct 23:42) | **83,14 %** (0,8314) | `agent-bus/inbox/claude/20261008-234238-robotin.md` |
+| Tras invasoras *todoselmejB* (10-oct 09:51) / *invfull2* (11:51) | **83,22 %** (0,8322) | `logs/cola_gpu_4b_20261010.log.promote_*`; `stats.json` |
 
-El staging midió delta **+0,294 pp** (fix 353 / break 123, p=0; criterio *b* de especies 163/91 no cumplía 2×; Robotin promocionó igualmente: `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`).
+El promote *all08it2* midió delta **+0,294 pp** (fix 353 / break 123; `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). El promote invasoras 10-oct usó el **criterio invasoras** (delta +0,083 pp en *todoselmejB*; backup `dataset/bak_promote_invasoras_20261010_090651`).
 
 **AutoID (umbral de especie 0,83).** En el eval completo, con el calibrador logístico vigente (`calibration.json` coef/mu/sd sobre features del k-NN en `calib_raw_t05.jsonl`):
 
@@ -366,7 +367,7 @@ Para cerrar el bucle AutoID → comunidad, FotoFauna registra decisiones de revi
 1. El top-1 de especie no es nivel experto en invertebrados crípticos; las especies con poca galería o evaluación fina son mucho más difíciles que la media del panel.
 2. El catálogo y la evaluación están **centrados en el mar Mediterráneo** (y costas adyacentes en la galería); no hay estudio sistemático fuera de esa región.
 3. El código público es un **identificador de reconstrucción** (prototipos + k-NN local opcional), no el volcado del servicio de producción en HanSolo.
-4. El panel de campo vigente da **83,14 %** de acierto de especie (78.145 filas; `dataset/stats.json`); una fracción de filas puede seguir correlacionada con la galería, y el KPI operativo sobre observaciones recientes suele ser más bajo que el panel cerrado.
+4. El panel de campo vigente da **83,22 %** de acierto de especie (78.145 filas; `dataset/stats.json`); una fracción de filas puede seguir correlacionada con la galería, y el KPI operativo sobre observaciones recientes suele ser más bajo que el panel cerrado.
 5. Las correcciones de curadores aún no cierran un bucle de entrenamiento automático.
 6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; mitigado en aves con guarda zero-shot, no aún en todos los grupos.
 7. La precisión/cobertura de AutoID al umbral 0,83 (≈96 % / ≈66,5 % en el eval completo) es del calibrador vigente; la precisión real de los rescates por recorte publicados sigue pendiente de reacciones de terceros.

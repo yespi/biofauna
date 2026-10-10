@@ -1,6 +1,6 @@
 # Appendix A — Species catalog (reconstruction index)
 
-> Snapshot **2026-10-06**. **2,985** catalog taxa. Live identification gallery: **4,543** species / **1,132,767** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
+> Snapshot **2026-10-06**. **2,985** catalog taxa. Live identification gallery: **4,643** species / **1,132,767** embeddings (some gallery members are adjacent/incidental taxa not in this Mediterranean checklist).
 >
 > This table is an **index of taxon IDs**, not a training dataset. Photos are **not** redistributed (iNaturalist / Minka licences). Rebuild images via the APIs using `minka_taxon` / `inat_taxon`, then embed with BioCLIP-2.5 ViT-H (`scripts/reembed_vith.py`).
 >

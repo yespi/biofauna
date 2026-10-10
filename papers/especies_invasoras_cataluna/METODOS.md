@@ -60,7 +60,7 @@ Comparación de primeras fechas en Cataluña:
 Referencias (DOI verificados en Crossref/OpenAlex, 10-oct-2026):
 
 - García, M., Weitzmann, B., et al. (2015). *The Mediterranean Sea*. Capítulo sobre especies exóticas. https://doi.org/10.1007/698_2015_411
-- Serrano, O., et al. (2013). *PLoS ONE* (registros marinos / invasions — ver cita completa en §11 de resultados).
+- Serrano, E., Coma, R., Ribes, M., Weitzmann, B., García, M. & Ballesteros, E. (2013). *PLoS ONE* **8**(1): e52739. https://doi.org/10.1371/journal.pone.0052739 (*Oculina patagonica*; DOI Crossref 10-oct-2026).
 - ClimateFish (2022). *Frontiers in Marine Science* **9**:910887. https://doi.org/10.3389/fmars.2022.910887
 
 ## 9. Reproducibilidad

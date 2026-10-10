@@ -4,7 +4,7 @@
 **Taxonomic contributors:** Xavier Salvador, Miquel Pontes, Manuel Ballesteros  
 **Repository:** https://github.com/yespi/biofauna  
 **Live system:** https://fotofauna.yespi.es  
-**Manuscript version:** 2026-10-09 (article aimed at Biodiversity Data Journal / PeerJ)
+**Manuscript version:** 2026-10-10 (article aimed at Biodiversity Data Journal / PeerJ; OOS 83.22 %)
 
 > **Naming.** Developed as YOLOFauna (2024–mid-2026); renamed BioFauna when production settled on BioCLIP retrieval rather than YOLO detection. Provenance: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -14,7 +14,7 @@
 
 BioFauna identifies Mediterranean (and incidental adjacent) taxa from photographs by **retrieval** over a regional gallery, without training a closed-set classifier. The production encoder is **BioCLIP-2.5 ViT-H/14** (frozen; 1024-d embeddings). Queries are encoded (global frame fused with a 65 % centre crop), searched with **k-NN (k = 15)** and a tempered vote aggregator, optionally re-weighted by a geographic prior, mapped to calibrated probabilities and, when the margin is weak, **abstained** to genus, family, or a curated indistinguishability group.
 
-**Current figures** (`dataset/stats.json` after the *all08it2* promote, 8 Oct 2026): live gallery **1,198,265** embeddings / **4,543** species; field panel **78,145** rows with out-of-sample species accuracy **83.14 %** (genus 87.9 %, family 91.0 %). AutoID publishes at species threshold **0.83** (precision ≈96 %, coverage ≈66.5 % on the full eval). Baselines on 78,180 rows (2026-10-03): nearest centroid **74.73 %**; plain k-NN **79.86 %**. A systematic search for gains from training on this embedding space (LoRA, QLoRA, ArcFace, etc.) **did not beat** frozen retrieval. We publish the experiment ledger, taxon IDs, prototype centroids and a self-hostable identifier; photographs and per-photo embeddings are **not** redistributed.
+**Current figures** (`dataset/stats.json` after the invasoras promote *todoselmejB* 09:51 + *invfull2* 11:51, 10 Oct 2026): live gallery **1,216,896** embeddings / **4,643** species; field panel **78,145** rows with out-of-sample species accuracy **83.22 %** (genus **87.96 %**, family **91.04 %**; `calibration.field_acc`). AutoID publishes at species threshold **0.83** (precision ≈96 %, coverage ≈66.5 % on the full eval; audited historical precision **96.6 %**, n=493). Baselines on 78,180 rows (2026-10-03): nearest centroid **74.73 %**; plain k-NN **79.86 %**. A systematic search for gains from training on this embedding space (LoRA, QLoRA, ArcFace, etc.) **did not beat** frozen retrieval. We publish the experiment ledger, taxon IDs, prototype centroids and a self-hostable identifier; photographs and per-photo embeddings are **not** redistributed.
 
 **Keywords:** BioCLIP-2.5, ViT-H, k-NN, fine-grained visual classification, marine biodiversity, citizen science, taxonomic abstention, calibration, Mediterranean Sea
 
@@ -256,7 +256,7 @@ Family-level publication only pays off at τ ≥ 0.90; at 0.83 its precision dro
 | Full BioFauna (production, 5-Oct panel) | 78,180 | 82.46 % | measured |
 | Nearest centroid (published prototypes) | 78,180 (2026-10-03) | **74.73 %** | measured |
 | Plain k-NN, majority vote (k = 15) | same rows | **79.86 %** (1-NN: 79.10 %) | measured |
-| Current BioFauna (panel after all08it2) | 78,145 | **83.14 %** | measured (`stats.json` 0.8314) |
+| Current BioFauna (panel after invasoras 10 Oct) | 78,145 | **83.22 %** | measured (`stats.json` 0.8322) |
 | iNaturalist CV suggestion | 98 (partial; target 300) | 55.1 % (BF 84.7 % on same) | partial |
 
 The decision layer adds ≈2.6 pp over plain k-NN voting and retrieval ≈5.1 pp over prototypes alone (measured 2026-10-03 on 78,180 rows). The iNat baseline remains incomplete (n = 98 after HTTP 429).
@@ -297,17 +297,17 @@ Index after both: 4,543 species, 1,132,767 vectors, aligned. Harvest batches mea
 
 **Limits of these numbers.** Judged observations are those with an identification from another user; replays use today's model, not the one at publication time; the harvest gains are on a panel built from the same sources as the gallery, so the leak-free rows are the more reliable estimate.
 
-## 5.4 Current figures after the all08it2 promote (OOS 83.14 %)
+## 5.4 Current figures after the invasoras promote (OOS 83.22 %)
 
-**Current panel** (`dataset/stats.json`, refreshed after the promote; `calibration.created=2026-10-08T23:38:07`):
+**Current panel** (`dataset/stats.json`, `updated=2026-10-10T11:50:11` after *invfull2*):
 
 | Quantity | Value | Source |
 |---|---|---|
-| Eval rows | **78,145** | `stats.json` → `calibration.n_samples`; `calib_raw_t05_meta.json` |
-| Species OOS accuracy | **83.14 %** (0.8314) | `stats.json` `overall_accuracy` / `calibration.field_acc.species` |
-| Genus | **87.9 %** (0.8793) | `stats.json` `calibration.field_acc.genus` |
-| Family | **91.0 %** (0.9102) | `stats.json` `calibration.field_acc.family` |
-| Live index (health) | 1,198,265 vectors / 4,543 spp | `stats.json` `live_health` (after all08it2; Robotin note 8 Oct 23:42) |
+| Eval rows | **78,145** | `stats.json` → `calibration.n_samples`; `calib_raw_t05.jsonl` |
+| Species OOS accuracy | **83.22 %** (0.8322) | `stats.json` `overall_accuracy` / `calibration.field_acc.species` |
+| Genus | **87.96 %** (0.8796) | `stats.json` `calibration.field_acc.genus` |
+| Family | **91.04 %** (0.9104) | `stats.json` `calibration.field_acc.family` |
+| Live index (health) | **1,216,896** vectors / **4,643** spp | `stats.json` `faiss_vectors` / `live_health.species` (invasoras promote 10 Oct) |
 
 **Panel series (78,145 rows):**
 
@@ -316,9 +316,10 @@ Index after both: 4,543 species, 1,132,767 vectors, aligned. Harvest batches mea
 | Pre–clean combo (5 Oct) | 82.463 % | §5.3 |
 | After *clean combo* | 82.626 % (+0.163 pp) | §5.3 |
 | After harvest batches 01+02 | 82.85 % (+0.223 pp) | §5.3 |
-| After *all08it2* (8 Oct 23:42) | **83.14 %** | `stats.json`; confirmation `agent-bus/inbox/claude/20261008-234238-robotin.md` (was 0.8285) |
+| After *all08it2* (8 Oct 23:42) | **83.14 %** (0.8314) | `agent-bus/inbox/claude/20261008-234238-robotin.md` |
+| After invasoras *todoselmejB* (10 Oct 09:51) / *invfull2* (11:51) | **83.22 %** (0.8322) | `logs/cola_gpu_4b_20261010.log.promote_*`; `stats.json` |
 
-Staging measured **+0.294 pp** (fix 353 / break 123, p=0; species criterion *b* 163/91 failed the 2× rule; Robotin promoted anyway: `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`).
+The *all08it2* promote measured **+0.294 pp** (fix 353 / break 123; `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). The 10 Oct invasoras promote used the **invasoras criterion** (delta +0.083 pp on *todoselmejB*; backup `dataset/bak_promote_invasoras_20261010_090651`).
 
 **AutoID (species threshold 0.83).** On the full eval, with the live logistic calibrator (`calibration.json` coef/mu/sd on k-NN features in `calib_raw_t05.jsonl`):
 
@@ -363,7 +364,7 @@ To close the AutoID → community loop, FotoFauna logs review decisions on iNatu
 1. Species top-1 is not expert-level on cryptic invertebrates; species with thin galleries or thin evaluation sets are much harder than the panel average.
 2. The catalogue and evaluation are **Mediterranean-focused** (plus adjacent coasts in the gallery); there is no systematic study outside that region.
 3. Public code is a **reconstruction identifier** (prototypes + optional local k-NN), not a dump of the HanSolo production service.
-4. The current field panel scores **83.14 %** species accuracy (78,145 rows; `dataset/stats.json`); some rows may still correlate with the gallery, and the recent-observation operating KPI is usually lower than the closed panel.
+4. The current field panel scores **83.22 %** species accuracy (78,145 rows; `dataset/stats.json`); some rows may still correlate with the gallery, and the recent-observation operating KPI is usually lower than the closed panel.
 5. Curator corrections are not yet a closed automatic training loop.
 6. **Closed-set retrieval:** species absent from the catalog get a confident wrong answer; mitigated for birds with a zero-shot guard, not yet for all groups.
 7. AutoID precision/coverage at threshold 0.83 (≈96 % / ≈66.5 % on the full eval) is from the live calibrator; real precision of published crop rescues still awaits third-party reactions.

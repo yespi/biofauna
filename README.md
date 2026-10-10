@@ -4,11 +4,15 @@
 
 Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
 
-**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN](papers/biofauna/BIOFAUNA_paper_EN_20261006.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_20261006.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF actual: [ES](papers/proyecto_correlacion/ARTICULO_v16_ES_20260930.pdf) · [EN](papers/proyecto_correlacion/ARTICLE_v16_EN_20260930.pdf) · previa: [ES v15](papers/proyecto_correlacion/ARTICULO_v15_ES_20260930.pdf) · [EN v15](papers/proyecto_correlacion/ARTICLE_v15_EN_20260930.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_v5_20260929.pdf))
+**Papers:** [BioFauna EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md) (PDF: [EN latest](papers/biofauna/BIOFAUNA_paper_EN_latest.pdf) · [ES latest](papers/biofauna/BIOFAUNA_paper_ES_latest.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF: [ES latest](papers/proyecto_correlacion/ARTICULO_ES_latest.pdf) · [EN latest](papers/proyecto_correlacion/ARTICLE_EN_latest.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_latest.pdf)) · [Invasoras CAT](papers/especies_invasoras_cataluna/) · [Fanerógamas](papers/fanerogamas/)
 
 ## Snapshot (2026-10-10)
 
-Papers (CPU, Robotin): invasoras CAT v1.1 · correlación **v24** · fanerógamas/nudibranquios borrador — [`papers/`](papers/).
+| | |
+|---|---|
+| Gallery (live) | **1,216,896** embeddings / **4,643** species (`dataset/stats.json` after invasoras promote) |
+| Field eval OOS | **83.22%** species (78,145 rows); genus 87.96%, family 91.04% |
+| Papers (CPU) | Invasoras CAT **v1.2** · correlación **v24** + PDFs · BioFauna PeerJ/BDJ §5.4–5.5 · fanerógamas unificadas · nudi esqueleto (calendario by other agent) |
 
 ## Snapshot (2026-10-06)
 
@@ -17,7 +21,7 @@ Papers (CPU, Robotin): invasoras CAT v1.1 · correlación **v24** · fanerógama
 | Gallery | **1,132,767** embeddings / **4,543** species (FAISS aligned) |
 | Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
 | Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
-| Field eval (out-of-sample) | **83.14%** species on the 78,145-row panel after *all08it2* (series 82.463→82.626→82.85→83.14); genus 87.9%, family 91.0%; **80.63%** on the 54,878 leak-free rows before the Oct-5/6 promotions |
+| Field eval (out-of-sample) | **83.14%** after *all08it2* (8 Oct); superseded by **83.22%** on 10 Oct (invasoras) |
 | — of which original eval / mined extension | **81.18%** (n=60,743, comparable with earlier versions) / 85.5–89.9% (n=15,842; same-species accuracy equivalent: 86.8% vs 86.1%) |
 | Real precision of AutoID publications | **96.6%** (n=493 verifiable; 85% in the 0.83–0.85 band, 99% at ≥0.95) |
 | AutoID | 45/hour, 1,500/day, per-species calibrated threshold (≈0.83), margin + curator guards; **crop fallback** (since 2026-10-01) rescues photos the full image cannot identify: 35 → 48 publishable in 500 real queue photos, 85.7% of the added ones correct (n=49, ground truth) |

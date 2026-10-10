@@ -215,8 +215,8 @@ CSV: [`marinas_weitzmann_comparativa_20261010.csv`](marinas_weitzmann_comparativ
 **Referencias (DOI verificados 10-oct-2026):**
 
 - García, M., Weitzmann, B., et al. (2015). Exotic species in the Mediterranean. En *The Mediterranean Sea* (Springer). https://doi.org/10.1007/698_2015_411
-- Serrano, O., et al. (2013). Marine invasive species in the Mediterranean (PLoS ONE) — revisar cita página concreta antes de publicar; DOI no fijado en este borrador.
-- ClimateFish (2022). *Front. Mar. Sci.* **9**:910887. https://doi.org/10.3389/fmars.2022.910887
+- Serrano, E., Coma, R., Ribes, M., Weitzmann, B., García, M. & Ballesteros, E. (2013). Rapid northward spread of a zooxanthellate coral enhanced by artificial structures and sea warming in the western Mediterranean. *PLoS ONE* **8**(1): e52739. https://doi.org/10.1371/journal.pone.0052739 (DOI verificado Crossref 10-oct-2026; *Oculina patagonica*).
+- ClimateFish / Coronado-Franco et al. (2022). *Front. Mar. Sci.* **9**:910887. https://doi.org/10.3389/fmars.2022.910887
 
 No extrapolamos primer registro **oficial** de cada especie: comparamos solo fuentes ciudadanas y galería BF.
 

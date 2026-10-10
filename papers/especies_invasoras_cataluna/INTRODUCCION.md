@@ -10,4 +10,4 @@ Este informe combina tres capas:
 
 El objetivo no es sustituir los informes oficiales (EASIN, Generalitat), sino ofrecer un **informe reproducible** con series normalizadas por esfuerzo, categorías operativas (ausente / ocasional / establecida / en expansión) y un bloque aparte sobre **otras exóticas marinas** citadas por Weitzmann y colaboradores, contrastadas con nuestras primeras fotos enlazadas.
 
-**Sesgo principal:** el crecimiento de apps y proyectos (p. ej. de **820** observaciones en la caja CAT en 2013 a **102.301** en 2024 en `public_observations`) infla las series crudas; por eso reportamos tasas normalizadas (§5 de `RESULTADOS_v1.md`).
+**Sesgo principal:** el crecimiento de apps y proyectos (p. ej. de **1.220** observaciones en la caja CAT en 2013 a **102.301** en 2024 en `public_observations`; SQL §10 de `RESULTADOS_v1.md`) infla las series crudas; por eso reportamos tasas normalizadas (§5).

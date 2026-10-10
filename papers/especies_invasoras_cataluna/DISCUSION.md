@@ -8,7 +8,7 @@ El único taxon marino de la lista UE con presencia clara en CAT en este cruce e
 
 ## Esfuerzo y series temporales
 
-La curva de observaciones en BioQuest dentro de la caja CAT (**820** obs en 2013 → **102.301** en 2024; SQL §1) explica picos aparentes en especies muy observadas (*Ailanthus*, *Myocastor*). Las tasas normalizadas (§5) atenúan pero no eliminan el sesgo taxonómico (plantas y aves mejor muestreadas que peces invasores).
+La curva de observaciones en BioQuest dentro de la caja CAT (**1.220** obs en 2013 → **102.301** en 2024; SQL §10 de `RESULTADOS_v1.md`, verificado 10-oct-2026) explica picos aparentes en especies muy observadas (*Ailanthus*, *Myocastor*). Las tasas normalizadas (§5) atenúan pero no eliminan el sesgo taxonómico (plantas y aves mejor muestreadas que peces invasores).
 
 ## Exóticas marinas fuera de la lista UE
 
@@ -28,4 +28,5 @@ El bloque Weitzmann (§11 de `RESULTADOS_v1.md`) muestra un patrón distinto: es
 
 - Completar origen/vector vía EASIN y literatura primaria por especie.
 - Integrar mapas con límites administrativos y capas de hábitat.
-- Ampliar bloque marino con las **142** especies doridoideas del catálogo vivo ausentes del calendario corto de 133 nudibranquios (tarea paralela nº 5 del plan de papers).
+- Verificar el recuento oficial de la lista UE contra EUR-Lex/EASIN (hoy 114 internas vs ~88–103 según actualización).
+- Láminas con foto de Cataluña (autor, licencia, lugar, coordenadas) para el top de presencia.

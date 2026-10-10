@@ -1,16 +1,18 @@
 # Fanerógamas marinas: especies relacionadas, incluidas las no documentadas, y acierto del identificador
 
-**Estado: borrador 10-oct-2026.** [`BORRADOR_20261010.md`](BORRADOR_20261010.md) — acierto 4 spp, confusiones, correlaciones, cita carbono azul (DOI 10.1016/j.marpolbul.2026.119570).
+**Estado: borrador 10-oct-2026 (cifras unificadas).** [`BORRADOR_20261010.md`](BORRADOR_20261010.md).
 
-Si el volumen es grande, se dividirá en dos documentos: uno sobre *Posidonia oceanica* y otro sobre *Cymodocea*, *Zostera*, *Nanozostera* y otras fanerógamas.
+## Acierto unificado (`calib_raw_t05.jsonl`, OOS global 83,22 %)
 
-## Contenido previsto
-- Listado de las especies que aparecen junto a cada fanerógama, destacando las no documentadas, con fotografía atribuida.
-- Acierto del identificador en las cuatro fanerógamas principales, anatomía de los fallos y efecto de la geografía.
-- Material apartado y reintegrado de la galería.
+| Especie | Acierto | n |
+|---|---:|---:|
+| *Posidonia oceanica* | 78,43 % | 51 |
+| *Cymodocea nodosa* | **76,47 %** | 34 |
+| *Zostera marina* | 68,42 % | 38 |
+| *Nanozostera noltii* | 76,32 % | 38 |
+| Macro 4 | **75,16 %** | 161 |
 
-## Pendiente
-Redactar con tablas y figuras actualizadas y definir el alcance y la división.
+Carbono azul: Piñeiro-Juncal et al. (2026) https://doi.org/10.1016/j.marpolbul.2026.119570
 
-## Datos y atribución
-Las fotografías que se incluyan llevarán autor, licencia, fecha y hora, lugar y coordenadas, como en los demás documentos de este repositorio. Ver también [`../proyecto_correlacion/`](../proyecto_correlacion/).
+## Pendiente para publicar
+Figuras de galería con licencia; especies epífitas no documentadas con foto; posible división Posidonia vs resto.
