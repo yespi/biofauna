@@ -1,0 +1,7 @@
+filtro,n_sitios,pares_testeados,positivos,negativos,positivos_q05,negativos_q05
+A_eventos_ge2_top300,37710,44850,21801,10014,21208,9405
+B_list_len_le_Q75(5),23876,44850,2646,767,812,0
+C_submuestreo_1evento_celda_dia,27913,44850,21722,8719,20953,7859
+D_list_len+submuestreo,20427,44850,2515,449,703,0
+E_D_mas_ge5_observadores,20427,631,611,0,431,0
+F_E_mas_razon_obs_esp_ge2,20427,631,611,0,431,0

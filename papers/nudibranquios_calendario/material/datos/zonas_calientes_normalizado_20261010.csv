@@ -1,0 +1,37 @@
+especie,tramo,tasa,n_especie,esfuerzo_nudi
+Cratena peregrina,Tarragona–Salou,0.4777,364,762
+Cratena peregrina,Maresme,0.3601,538,1494
+Cratena peregrina,Delta de l'Ebre,0.3282,169,515
+Flabellina affinis,Tarragona–Salou,0.3635,277,762
+Flabellina affinis,Illes Medes / Estartit,0.1658,434,2617
+Flabellina affinis,Cap de Creus,0.1285,363,2825
+Peltodoris atromaculata,Illes Medes / Estartit,0.1792,469,2617
+Peltodoris atromaculata,Maresme,0.158,236,1494
+Peltodoris atromaculata,Begur–Palamós,0.119,345,2899
+Felimare picta,Barcelonès,0.3801,439,1155
+Felimare picta,Costa Daurada N,0.2787,34,122
+Felimare picta,Garraf,0.2391,11,46
+Edmundsella pedata,Delta de l'Ebre,0.101,52,515
+Edmundsella pedata,Tossa–Blanes,0.0876,273,3117
+Edmundsella pedata,Costa Daurada N,0.082,10,122
+Felimare tricolor,Costa Daurada N,0.1066,13,122
+Felimare tricolor,Delta de l'Ebre,0.0932,48,515
+Felimare tricolor,Illes Medes / Estartit,0.0867,227,2617
+Calmella cavolini,Delta de l'Ebre,0.1301,67,515
+Calmella cavolini,Illes Medes / Estartit,0.063,165,2617
+Calmella cavolini,Tossa–Blanes,0.0456,142,3117
+Diaphorodoris papillata,Illes Medes / Estartit,0.0329,86,2617
+Diaphorodoris papillata,Tossa–Blanes,0.0327,102,3117
+Diaphorodoris papillata,Maresme,0.0321,48,1494
+Paradoris indecora,Tossa–Blanes,0.0661,206,3117
+Paradoris indecora,Begur–Palamós,0.0355,103,2899
+Paradoris indecora,Barcelonès,0.0329,38,1155
+Antiopella cristata,Barcelonès,0.0857,99,1155
+Antiopella cristata,Cap de Creus,0.0319,90,2825
+Antiopella cristata,Tossa–Blanes,0.0314,98,3117
+Polycera quadrilineata,Tossa–Blanes,0.0427,133,3117
+Polycera quadrilineata,Cap de Creus,0.0386,109,2825
+Polycera quadrilineata,Begur–Palamós,0.0166,48,2899
+Rudmania krohni,Illes Medes / Estartit,0.0279,73,2617
+Rudmania krohni,Barcelonès,0.0268,31,1155
+Rudmania krohni,Maresme,0.0221,33,1494

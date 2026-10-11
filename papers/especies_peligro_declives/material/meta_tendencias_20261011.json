@@ -1,0 +1,17 @@
+{
+  "generated": "2026-10-11 11:57:56 CEST",
+  "effort_years": 22,
+  "effort_2013": 1220,
+  "effort_2024": 102301,
+  "control_mean_ratio_5y": 2.398,
+  "method_note": "ratio_5y = rate(2020-24)/rate(2015-19); ratio_vs_controls = ratio_5y / media controles",
+  "bbox": [
+    40.45,
+    42.95,
+    0.1,
+    3.4
+  ],
+  "n_natives": 10,
+  "n_declines": 10,
+  "n_controls": 10
+}

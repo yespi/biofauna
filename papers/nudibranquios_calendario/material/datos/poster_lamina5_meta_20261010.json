@@ -1,0 +1,241 @@
+{
+  "style": "carta_marina_olaus_magnus_1539",
+  "orientation": "A3_landscape",
+  "dpi": 300,
+  "size_mm": [
+    420,
+    297
+  ],
+  "print_margin_mm": 11.4,
+  "bbox_lon": [
+    0.2,
+    3.7
+  ],
+  "bbox_lat": [
+    40.35,
+    42.8
+  ],
+  "coast_source": "Natural Earth 10m coastline + admin_1 Catalonia provinces",
+  "creatures": "SD1.5 ControlNet-Canny img2img + flat-pastel/hatch polish from real cutouts",
+  "gpu": "used then unloaded (scripts/nudibranquios_lamina5_engrave_gpu_20261011.py)",
+  "species_n": 16,
+  "species": [
+    {
+      "species": "Cratena peregrina",
+      "placement": [
+        1.95,
+        40.82
+      ],
+      "peak": "Agosto",
+      "scale": 1.15,
+      "label_offset": [
+        0.0,
+        -0.06
+      ]
+    },
+    {
+      "species": "Flabellina affinis",
+      "placement": [
+        2.5,
+        40.78
+      ],
+      "peak": "Julio",
+      "scale": 1.1,
+      "label_offset": [
+        0.0,
+        -0.06
+      ]
+    },
+    {
+      "species": "Peltodoris atromaculata",
+      "placement": [
+        3.28,
+        41.82
+      ],
+      "peak": "Agosto",
+      "scale": 1.15,
+      "label_offset": [
+        0.18,
+        -0.1
+      ]
+    },
+    {
+      "species": "Felimare picta",
+      "placement": [
+        2.68,
+        41.18
+      ],
+      "peak": "Agosto",
+      "scale": 1.15,
+      "label_offset": [
+        0.0,
+        -0.09
+      ]
+    },
+    {
+      "species": "Edmundsella pedata",
+      "placement": [
+        1.4,
+        40.62
+      ],
+      "peak": "Abril",
+      "scale": 1.0,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Felimare tricolor",
+      "placement": [
+        2.12,
+        41.02
+      ],
+      "peak": "Junio",
+      "scale": 1.05,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Calmella cavolini",
+      "placement": [
+        1.0,
+        40.58
+      ],
+      "peak": "Agosto",
+      "scale": 0.95,
+      "label_offset": [
+        0.12,
+        -0.07
+      ]
+    },
+    {
+      "species": "Diaphorodoris papillata",
+      "placement": [
+        3.38,
+        41.52
+      ],
+      "peak": "Abril",
+      "scale": 0.95,
+      "label_offset": [
+        0.0,
+        -0.09
+      ]
+    },
+    {
+      "species": "Paradoris indecora",
+      "placement": [
+        3.18,
+        41.36
+      ],
+      "peak": "Enero",
+      "scale": 1.0,
+      "label_offset": [
+        0.0,
+        -0.09
+      ]
+    },
+    {
+      "species": "Antiopella cristata",
+      "placement": [
+        2.85,
+        41.55
+      ],
+      "peak": "Mayo",
+      "scale": 1.05,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Polycera quadrilineata",
+      "placement": [
+        2.92,
+        41.16
+      ],
+      "peak": "Febrero",
+      "scale": 0.95,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Rudmania krohni",
+      "placement": [
+        2.48,
+        41.75
+      ],
+      "peak": "Junio",
+      "scale": 0.9,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Nemesignis banyulensis",
+      "placement": [
+        1.7,
+        41.05
+      ],
+      "peak": "Marzo",
+      "scale": 0.95,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Diaphorodoris alba",
+      "placement": [
+        2.3,
+        41.45
+      ],
+      "peak": "Mayo",
+      "scale": 0.9,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    },
+    {
+      "species": "Facelina annulicornis",
+      "placement": [
+        3.38,
+        42.12
+      ],
+      "peak": "Enero",
+      "scale": 1.0,
+      "label_offset": [
+        0.0,
+        -0.09
+      ]
+    },
+    {
+      "species": "Felimare fontandraui",
+      "placement": [
+        2.75,
+        42.2
+      ],
+      "peak": "Mayo",
+      "scale": 0.95,
+      "label_offset": [
+        0.0,
+        -0.08
+      ]
+    }
+  ],
+  "credit": "Inspirado en la Carta Marina de Olaus Magnus, 1539 (dominio público)",
+  "reference_style_only": "ref_carta_marina_gustavo.jpg (no incluida en el póster)",
+  "generated": "2026-10-11 13:09:22 CEST",
+  "png": "LAMINA5_l5b_final.png",
+  "pdf": "LAMINA5_l5b_final.pdf",
+  "pixels": [
+    4960,
+    3507
+  ]
+}

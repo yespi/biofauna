@@ -1,0 +1,4 @@
+escala,n_unidades,pares_con_señal,pares_positivos_q05,pares_negativos_q05,nota
+misma_foto,galería (lista corta 138),41,41,0,obs_indep_hits>=1 en copresencia_pares (no Veech)
+evento_3h,37710,31815,21208,9405,Veech top300 sobre eventos observador×celda×día×franja3h
+celda_1km_x_mes,13800,37084,30796,5785,Veech top300 sobre celda 0.01° × mes (sin observador)

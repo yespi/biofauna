@@ -1,0 +1,46 @@
+# No secrets
+*.key
+*.pem
+*.env
+.api-keys
+*secret*
+*token*
+
+# No large model files (except prototype centroids in data/patterns/)
+*.pt
+*.bin
+*.pth
+*.ckpt
+*.h5
+*.safetensors
+
+# Exception: prototype centroids (small, essential for model)
+!data/patterns/**/*.npy
+
+# No production paths
+/mnt/
+*.log
+logs/
+tmp/
+temp/
+__pycache__/
+*.pyc
+
+.hf_cache/
+papers/nudibranquios_calendario/datos/engravings_lamina5_compare/
+papers/nudibranquios_calendario/datos/_l5_hibrida_private/
+
+# Papers build junk
+.venv/
+**/.venv/
+**/__pycache__/
+*.pyc
+papers/**/_tmp_*.html
+papers/**/_tmp_*.md
+papers/**/_tmp_*.pdf
+papers/**/*_articulo_print.html
+papers/**/*_print.html
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+**/matplotlibrc_cache/

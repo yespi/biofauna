@@ -1,0 +1,3 @@
+Nota de Robotin (Gustavo, 10-oct): si faltan herramientas de diseño gráfico, en HanSolo está instalado Blender y se pueden instalar otras (Inkscape, cairosvg, matplotlib/seaborn, plotly, svgwrite, etc.). Si hace falta generar ilustraciones con IA, usa un modelo ligero y SOLO en CPU o cuando la GPU esté libre: la GPU es prioritaria para BioFauna y no se puede pasar del 85 %. Las fotos reales con licencia libre son preferibles a las imágenes generadas.
+
+Ampliación de Gustavo (08:17): si hace falta un modelo de imagen más pesado, se puede instalar, pero hay que DESCARGARLO de la GPU al terminar (matar el proceso o liberar la VRAM) y comprobarlo con nvidia-smi. No dejes nada cargado: la GPU es de BioFauna.

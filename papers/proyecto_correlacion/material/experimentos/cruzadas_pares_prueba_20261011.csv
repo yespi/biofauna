@@ -1,0 +1,6 @@
+pair,status,n_obs_a,n_obs_b,xcorr_r,xcorr_p,xcorr_lag_years,n_years_diff,break_a,break_a_score,break_b,break_b_score,figure
+Pinna nobilis || Pinna rudis,ok,284,302,-0.4917,0.08789,-1,13,2019,-0.743,2022,6.605,figuras/cruzadas/par_prueba_pinna_nobilis_pinna_rudis.png
+Pelagia noctiluca || Paracentrotus lividus,ok,405,4524,-0.632,0.02746,-2,12,2014,-1.0,2018,2.143,figuras/cruzadas/par_prueba_pelagia_noctiluca_paracentrotus_lividus.png
+Pelagia noctiluca || Arbacia lixula,ok,405,2329,0.2529,0.40447,-1,13,2014,-1.0,2020,1.291,figuras/cruzadas/par_prueba_pelagia_noctiluca_arbacia_lixula.png
+Epinephelus marginatus || Octopus vulgaris,ok,3104,4703,-0.7206,0.00546,-1,13,2023,0.92,2012,1.245,figuras/cruzadas/par_prueba_epinephelus_marginatus_octopus_vulgaris.png
+Epinephelus costae || Octopus vulgaris,ok,110,4703,0.6179,0.02441,-1,13,2014,1.279,2012,1.245,figuras/cruzadas/par_prueba_epinephelus_costae_octopus_vulgaris.png

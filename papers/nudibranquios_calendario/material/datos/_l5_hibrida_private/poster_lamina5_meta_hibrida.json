@@ -1,0 +1,196 @@
+{
+  "style": "carta_marina_hibrida_satelite_eox",
+  "script": "nudibranquios_lamina5_hibrida_20261011.py",
+  "orientation": "A3_landscape",
+  "dpi": 300,
+  "size_mm": [
+    420,
+    297
+  ],
+  "bbox_lon": [
+    0.55,
+    3.45
+  ],
+  "bbox_lat": [
+    40.52,
+    42.55
+  ],
+  "land": "Sentinel-2 cloudless EOX CC BY 4.0 sepia/parchment",
+  "sea": "Carta Marina engraved waves",
+  "creatures": "real photo cutouts with soft shadow (no woodcut)",
+  "compass": "32-point portolan rose + fleur-de-lis north",
+  "places": "calligraphy labels only",
+  "satellite_meta": {
+    "source": "Sentinel-2 cloudless – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data)",
+    "license": "CC BY 4.0",
+    "layer": "s2cloudless-2020_3857",
+    "zoom": 10,
+    "bbox_lat": [
+      40.52,
+      42.55
+    ],
+    "bbox_lon": [
+      0.55,
+      3.45
+    ],
+    "pixels": [
+      2112,
+      1975
+    ],
+    "tiles_ok": 72
+  },
+  "species_n": 16,
+  "species": [
+    {
+      "species": "Cratena peregrina",
+      "placement": [
+        1.9,
+        40.82
+      ],
+      "peak": "Agosto",
+      "scale": 1.28
+    },
+    {
+      "species": "Flabellina affinis",
+      "placement": [
+        2.18,
+        40.78
+      ],
+      "peak": "Julio",
+      "scale": 1.22
+    },
+    {
+      "species": "Peltodoris atromaculata",
+      "placement": [
+        2.98,
+        41.68
+      ],
+      "peak": "Agosto",
+      "scale": 1.28
+    },
+    {
+      "species": "Felimare picta",
+      "placement": [
+        2.7,
+        41.25
+      ],
+      "peak": "Agosto",
+      "scale": 1.28
+    },
+    {
+      "species": "Edmundsella pedata",
+      "placement": [
+        1.3,
+        40.72
+      ],
+      "peak": "Abril",
+      "scale": 1.18
+    },
+    {
+      "species": "Felimare tricolor",
+      "placement": [
+        2.05,
+        41.02
+      ],
+      "peak": "Junio",
+      "scale": 1.22
+    },
+    {
+      "species": "Calmella cavolini",
+      "placement": [
+        0.92,
+        40.72
+      ],
+      "peak": "Agosto",
+      "scale": 1.12
+    },
+    {
+      "species": "Diaphorodoris papillata",
+      "placement": [
+        3.22,
+        41.42
+      ],
+      "peak": "Abril",
+      "scale": 1.12
+    },
+    {
+      "species": "Paradoris indecora",
+      "placement": [
+        3.05,
+        41.28
+      ],
+      "peak": "Enero",
+      "scale": 1.18
+    },
+    {
+      "species": "Antiopella cristata",
+      "placement": [
+        2.72,
+        41.5
+      ],
+      "peak": "Mayo",
+      "scale": 1.22
+    },
+    {
+      "species": "Polycera quadrilineata",
+      "placement": [
+        2.95,
+        41.08
+      ],
+      "peak": "Febrero",
+      "scale": 1.1
+    },
+    {
+      "species": "Rudmania krohni",
+      "placement": [
+        2.38,
+        41.65
+      ],
+      "peak": "Junio",
+      "scale": 1.08
+    },
+    {
+      "species": "Nemesignis banyulensis",
+      "placement": [
+        1.6,
+        41.02
+      ],
+      "peak": "Marzo",
+      "scale": 1.12
+    },
+    {
+      "species": "Diaphorodoris alba",
+      "placement": [
+        2.22,
+        41.35
+      ],
+      "peak": "Mayo",
+      "scale": 1.08
+    },
+    {
+      "species": "Facelina annulicornis",
+      "placement": [
+        3.22,
+        42.0
+      ],
+      "peak": "Enero",
+      "scale": 1.18
+    },
+    {
+      "species": "Felimare fontandraui",
+      "placement": [
+        2.65,
+        42.08
+      ],
+      "peak": "Mayo",
+      "scale": 1.12
+    }
+  ],
+  "generated": "2026-10-11 13:07:44 CEST",
+  "png": "LAMINA5_carta_marina_hibrida.png",
+  "pdf": "LAMINA5_carta_marina_hibrida.pdf",
+  "pixels": [
+    4960,
+    3507
+  ]
+}

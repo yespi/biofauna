@@ -1,0 +1,10 @@
+metodo,gold,n_pred,n_gold,tp,precision,recall,precision_ci_lo,precision_ci_hi,recall_ci_lo,recall_ci_hi
+veech_filtroE_pos_q05,all_gold,431,51,1,0.0023,0.0196,0.0,0.0038,0.0,0.0345
+veech_filtroE_pos_q05,trophic,431,12,1,0.0023,0.0833,0.0,0.0038,0.0,0.1667
+veech_filtroE_pos_q05,nontrophic,431,27,0,0.0,0.0,0.0,0.0,0.0,0.0
+glasso_pos_alpha0.005,all_gold,45,51,0,0.0,0.0,0.0,0.0,0.0,0.0
+glasso_pos_alpha0.005,trophic,45,12,0,0.0,0.0,0.0,0.0,0.0,0.0
+glasso_pos_alpha0.005,nontrophic,45,27,0,0.0,0.0,0.0,0.0,0.0,0.0
+misma_foto_hits_ge1,all_gold,41,51,2,0.0488,0.0392,0.0,0.0852,0.0,0.069
+misma_foto_hits_ge1,trophic,41,12,0,0.0,0.0,0.0,0.0,0.0,0.0
+misma_foto_hits_ge1,nontrophic,41,27,2,0.0488,0.0741,0.0,0.087,0.0,0.1333

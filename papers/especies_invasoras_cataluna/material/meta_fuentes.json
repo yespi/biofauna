@@ -1,0 +1,35 @@
+{
+  "generado": "2026-10-10T00:29:52",
+  "n_lista": 114,
+  "nota_lista": "Lista interna BioFauna 114 spp (artifacts/invasoras_ue_cruce_20261004.json); el Reglamento UE de preocupación unionense ronda ~88–103 según actualización — no re-verificado aquí contra EUR-Lex.",
+  "bioquest": {
+    "contenedor_api": "fauna_api",
+    "contenedor_web": "bioquest-webapp",
+    "bd": "postgres-global / fauna",
+    "tabla_obs": "public_observations",
+    "tabla_invasoras_meta": "academy_invasive",
+    "catalog_core": "academy_catalog_core (group=invasora: 8 spp)",
+    "scripts": [
+      "bq_sync_nightly.py",
+      "bq_download_inat.py",
+      "bq_download_minka.py"
+    ],
+    "n_obs_totales": {
+      "n": "1071684",
+      "taxa": "694",
+      "n_inat": "687317",
+      "n_minka": "384367"
+    },
+    "ue_en_bioquest_obs": 3
+  },
+  "places_inat": {
+    "catalunya": 61614,
+    "spain": 6774
+  },
+  "caja_minka_cat": {
+    "nelat": 42.95,
+    "nelng": 3.4,
+    "swlat": 40.45,
+    "swlng": 0.1
+  }
+}

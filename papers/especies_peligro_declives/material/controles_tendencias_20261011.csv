@@ -1,0 +1,11 @@
+species,taxon_id,n_obs_cat,first_obs_cat,rate_2010_2014,rate_2015_2019,rate_2020_2024,ratio_5y,ratio_vs_controls,rupture_year,rupture_score,category,category_vs_controls,method
+Diplodus sargus,118669,6561,2008-04-01,4.1262,4.8656,19.2015,3.946,1.645,2020,3.244,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Diplodus vulgaris,118667,8152,2008-04-01,7.8707,6.4081,21.5139,3.357,1.4,2013,3.118,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Chromis chromis,118682,6885,2008-04-01,4.1307,5.3378,18.3903,3.445,1.436,2013,2.679,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Coris julis,50968,8508,2004-07-01,7.4497,6.5009,21.1701,3.257,1.358,2013,31.105,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Sarpa salpa,118663,3026,2008-04-01,13.2346,8.1007,19.1235,2.361,0.984,2020,1.993,en_expansion,coherente_con_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Symphodus tinca,52554,5549,2008-04-01,4.8651,4.7436,12.3604,2.606,1.087,2013,2.679,en_expansion,coherente_con_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Octopus vulgaris,49315,5218,2007-07-04,16.3051,14.5894,14.6832,1.006,0.419,2021,0.633,estable_o_sin_patron,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Sepia officinalis,151429,1823,2008-10-18,8.0352,11.6435,5.799,0.498,0.208,2013,2.587,declive_temporal_candidato,declive_temporal_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Paracentrotus lividus,48032,5280,1975-09-20,5.8206,10.6882,15.0829,1.411,0.588,2018,2.11,aumento_leve,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Arbacia lixula,143139,2914,2008-05-01,0.612,4.0023,8.3864,2.095,0.874,2020,1.362,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19

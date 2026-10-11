@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-11",
+  "top_spp": 300,
+  "glasso_alpha": 0.005,
+  "veech_baseline": {
+    "N": 37710,
+    "pares": 44850,
+    "positivos": 21801,
+    "negativos": 10014,
+    "positivos_q05": 21208,
+    "negativos_q05": 9405
+  },
+  "list_len_Q75": 5,
+  "sensitivity": [
+    {
+      "filtro": "A_eventos_ge2_top300",
+      "n_sitios": 37710,
+      "pares_testeados": 44850,
+      "positivos": 21801,
+      "negativos": 10014,
+      "positivos_q05": 21208,
+      "negativos_q05": 9405
+    },
+    {
+      "filtro": "B_list_len_le_Q75(5)",
+      "n_sitios": 23876,
+      "pares_testeados": 44850,
+      "positivos": 2646,
+      "negativos": 767,
+      "positivos_q05": 812,
+      "negativos_q05": 0
+    },
+    {
+      "filtro": "C_submuestreo_1evento_celda_dia",
+      "n_sitios": 27913,
+      "pares_testeados": 44850,
+      "positivos": 21722,
+      "negativos": 8719,
+      "positivos_q05": 20953,
+      "negativos_q05": 7859
+    },
+    {
+      "filtro": "D_list_len+submuestreo",
+      "n_sitios": 20427,
+      "pares_testeados": 44850,
+      "positivos": 2515,
+      "negativos": 449,
+      "positivos_q05": 703,
+      "negativos_q05": 0
+    },
+    {
+      "filtro": "E_D_mas_ge5_observadores",
+      "n_sitios": 20427,
+      "pares_testeados": 631,
+      "positivos": 611,
+      "negativos": 0,
+      "positivos_q05": 431,
+      "negativos_q05": 0
+    },
+    {
+      "filtro": "F_E_mas_razon_obs_esp_ge2",
+      "n_sitios": 20427,
+      "pares_testeados": 631,
+      "positivos": 611,
+      "negativos": 0,
+      "positivos_q05": 431,
+      "negativos_q05": 0
+    }
+  ],
+  "glasso_edges": 45,
+  "glasso_pos_edges": 45,
+  "validation": [
+    {
+      "tp": 1,
+      "n_pred": 431,
+      "n_gold": 51,
+      "precision": 0.0023,
+      "recall": 0.0196,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0038,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.0345,
+      "metodo": "veech_filtroE_pos_q05",
+      "gold": "all_gold"
+    },
+    {
+      "tp": 1,
+      "n_pred": 431,
+      "n_gold": 12,
+      "precision": 0.0023,
+      "recall": 0.0833,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0038,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.1667,
+      "metodo": "veech_filtroE_pos_q05",
+      "gold": "trophic"
+    },
+    {
+      "tp": 0,
+      "n_pred": 431,
+      "n_gold": 27,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.0,
+      "metodo": "veech_filtroE_pos_q05",
+      "gold": "nontrophic"
+    },
+    {
+      "tp": 0,
+      "n_pred": 45,
+      "n_gold": 51,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.0,
+      "metodo": "glasso_pos_alpha0.005",
+      "gold": "all_gold"
+    },
+    {
+      "tp": 0,
+      "n_pred": 45,
+      "n_gold": 12,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.0,
+      "metodo": "glasso_pos_alpha0.005",
+      "gold": "trophic"
+    },
+    {
+      "tp": 0,
+      "n_pred": 45,
+      "n_gold": 27,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.0,
+      "metodo": "glasso_pos_alpha0.005",
+      "gold": "nontrophic"
+    },
+    {
+      "tp": 2,
+      "n_pred": 41,
+      "n_gold": 51,
+      "precision": 0.0488,
+      "recall": 0.0392,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0852,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.069,
+      "metodo": "misma_foto_hits_ge1",
+      "gold": "all_gold"
+    },
+    {
+      "tp": 0,
+      "n_pred": 41,
+      "n_gold": 12,
+      "precision": 0.0,
+      "recall": 0.0,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.0,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.0,
+      "metodo": "misma_foto_hits_ge1",
+      "gold": "trophic"
+    },
+    {
+      "tp": 2,
+      "n_pred": 41,
+      "n_gold": 27,
+      "precision": 0.0488,
+      "recall": 0.0741,
+      "precision_ci_lo": 0.0,
+      "precision_ci_hi": 0.087,
+      "recall_ci_lo": 0.0,
+      "recall_ci_hi": 0.1333,
+      "metodo": "misma_foto_hits_ge1",
+      "gold": "nontrophic"
+    }
+  ],
+  "scales": [
+    {
+      "escala": "misma_foto",
+      "n_unidades": "galería (lista corta 138)",
+      "pares_con_señal": 41,
+      "pares_positivos_q05": 41,
+      "pares_negativos_q05": 0,
+      "nota": "obs_indep_hits>=1 en copresencia_pares (no Veech)"
+    },
+    {
+      "escala": "evento_3h",
+      "n_unidades": 37710,
+      "pares_con_señal": 31815,
+      "pares_positivos_q05": 21208,
+      "pares_negativos_q05": 9405,
+      "nota": "Veech top300 sobre eventos observador×celda×día×franja3h"
+    },
+    {
+      "escala": "celda_1km_x_mes",
+      "n_unidades": 13800,
+      "pares_con_señal": 37084,
+      "pares_positivos_q05": 30796,
+      "pares_negativos_q05": 5785,
+      "nota": "Veech top300 sobre celda 0.01° × mes (sin observador)"
+    }
+  ],
+  "overlap": {
+    "foto_∩_evento": 8,
+    "foto_∩_mes": 7,
+    "evento_∩_mes": 21165,
+    "foto_∩_evento_∩_mes": 7,
+    "glasso∩veechE": 4
+  },
+  "gold_n": 51,
+  "citations": {
+    "veech": "10.1111/j.1466-8238.2012.00789.x",
+    "cooccur": "10.18637/jss.v069.c02",
+    "johnston": "10.1111/ddi.13271",
+    "harris": "10.1002/ecy.1605",
+    "freilich": "10.1002/ecy.2142",
+    "blanchet": "10.1111/ele.13525"
+  }
+}

@@ -1,0 +1,42 @@
+especie,categoria,tau,z,primera_any,primera_serie,ultima,n_obs,potencia_ausencia,p_miss,grupo,nota
+Acacia saligna,estable,0.429,1.36,2006,2019,2026,65,,,Plantae,ratio_2a/1a=1.61; esfuerzo=Plantae|total
+Ailanthus altissima,en_expansion,0.544,3.22,1800,2008,2026,1540,,,Plantae,ratio_2a/1a=6.82; esfuerzo=Plantae|total
+Alopochen aegyptiaca,estable,0.066,0.33,2002,2010,2026,167,,,Aves,ratio_2a/1a=0.19; esfuerzo=Aves|total
+Alternanthera philoxeroides,estable,-0.500,-0.68,2018,2023,2025,2,,,Plantae,ratio_2a/1a=0.55; esfuerzo=Plantae|total
+Ameiurus melas,estable,-0.278,-0.94,2012,2018,2025,7,,,Peces,ratio_2a/1a=0.17; esfuerzo=Peces|total
+Andropogon virginicus,dato_escaso,,,2025,2025,2025,1,,,Plantae,n años < 4 tras 1ª obs BQ
+Asparagopsis armata,estable,0.041,0.21,1923,2008,2026,209,,,Algas,ratio_2a/1a=0.24; esfuerzo=Algas|total
+Bipalium kewense,estable,-0.306,-1.04,2013,2018,2021,3,,,Platyhelminthes,ratio_2a/1a=0.00; esfuerzo=Platyhelminthes|total
+Broussonetia papyrifera,estable,0.378,1.43,2016,2017,2026,175,,,Plantae,ratio_2a/1a=2.26; esfuerzo=Plantae|total
+Callinectes sapidus,estable,-0.111,-0.36,1948,2017,2026,216,,,Crustacea,ratio_2a/1a=0.04; esfuerzo=Crustacea|total
+Cardiospermum grandiflorum,estable,0.091,0.34,2005,2015,2026,3,,,Plantae,ratio_2a/1a=0.84; esfuerzo=Plantae|total
+Caulerpa cylindracea,estable,-0.051,-0.18,1990,2014,2026,402,,,Algas,ratio_2a/1a=1.17; esfuerzo=Algas|total
+Codium fragile,estable,0.125,0.66,1950,2010,2025,14,,,Algas,ratio_2a/1a=0.05; esfuerzo=Algas|total
+Cortaderia jubata,sin_serie,,,2026,,,0,,,,sin serie CAT
+Delairea odorata,en_expansion,0.471,2.69,2009,2009,2026,107,,,Plantae,ratio_2a/1a=9.24; esfuerzo=Plantae|total
+Elodea nuttallii,estable,-0.400,-0.73,2022,2022,2022,2,,,Plantae,ratio_2a/1a=0.00; esfuerzo=Plantae|total
+Gambusia affinis,sin_serie,,,,,,0,,,,sin serie CAT
+Gambusia holbrooki,estable,0.242,1.46,1921,2007,2026,128,,,Peces,ratio_2a/1a=0.04; esfuerzo=Peces|total
+Heracleum mantegazzianum,sin_serie,,,,,,0,,,,sin serie CAT
+Impatiens glandulifera,estable,0.200,0.24,2019,2022,2026,10,,,Plantae,ratio_2a/1a=0.98; esfuerzo=Plantae|total
+Lepomis gibbosus,estable,-0.037,-0.16,2003,2003,2026,36,,,Peces,ratio_2a/1a=0.04; esfuerzo=Peces|total
+Ludwigia grandiflora,dato_escaso,,,2018,2026,2026,1,,,Plantae,n años < 4 tras 1ª obs BQ
+Ludwigia peploides,en_expansion,0.340,1.93,2009,2009,2026,58,,,Plantae,ratio_2a/1a=4.47; esfuerzo=Plantae|total
+Magallana gigas,estable,-0.056,-0.10,1960,2018,2026,28,,,Mollusca,ratio_2a/1a=1.06; esfuerzo=Mollusca|total
+Misgurnus anguillicaudatus,estable,-0.524,-1.50,2020,2020,2021,2,,,Peces,ratio_2a/1a=0.00; esfuerzo=Peces|total
+Myocastor coypus,estable,0.324,1.63,1970,2012,2026,498,,,Mammalia,ratio_2a/1a=2.39; esfuerzo=Mammalia|total
+Myriophyllum aquaticum,dato_escaso,,,2015,2025,2025,1,,,Plantae,n años < 4 tras 1ª obs BQ
+Neogale vison,estable,-0.184,-0.99,1958,2010,2026,112,,,Mammalia,ratio_2a/1a=0.29; esfuerzo=Mammalia|total
+Obama nungara,estable,-0.127,-0.47,2016,2016,2026,20,,,Platyhelminthes,ratio_2a/1a=0.19; esfuerzo=Platyhelminthes|total
+Oculina patagonica,estable,0.075,0.36,1974,2011,2026,1289,,,Algas,ratio_2a/1a=0.87; esfuerzo=Algas|total
+Orconectes limosus,dato_escaso,,,2025,2025,2025,1,,,Crustacea,n años < 4 tras 1ª obs BQ
+Pacifastacus leniusculus,estable,-0.333,-1.15,2006,2018,2026,35,,,Crustacea,ratio_2a/1a=0.18; esfuerzo=Crustacea|total
+Pennisetum setaceum,en_expansion,0.418,1.71,2000,2016,2026,109,,,Plantae,ratio_2a/1a=2.32; esfuerzo=Plantae|total
+Procambarus clarkii,estable,-0.116,-0.68,1973,2001,2026,646,,,Crustacea,ratio_2a/1a=0.81; esfuerzo=Crustacea|total
+Pseudorasbora parva,estable,0.015,0.00,2015,2015,2026,8,,,Peces,ratio_2a/1a=0.06; esfuerzo=Peces|total
+Reynoutria japonica,estable,0.139,0.42,2008,2018,2026,13,,,Plantae,ratio_2a/1a=0.56; esfuerzo=Plantae|total
+Reynoutria sachalinensis,desaparecida_proxy,,,2020,2020,2020,1,0.984,0.0158,Plantae,0 obs últimos 5 a; potencia/n insuficiente (p_miss=0.01584814973514668; n_hist=1)
+Rugulopteryx okamurae,dato_escaso,,,2015,2024,2026,83,,,Algas,n años < 4 tras 1ª obs BQ
+Threskiornis aethiopicus,estable,0.199,1.27,2004,2005,2026,16,,,Aves,ratio_2a/1a=0.02; esfuerzo=Aves|total
+Trachemys scripta elegans,estable,-0.100,-0.60,1980,2006,2026,263,,,Reptilia,ratio_2a/1a=0.01; esfuerzo=Reptilia|total
+Vespa velutina nigrithorax,estable,0.244,0.89,2010,2017,2026,156,,,Insecta,ratio_2a/1a=1.58; esfuerzo=Insecta|total

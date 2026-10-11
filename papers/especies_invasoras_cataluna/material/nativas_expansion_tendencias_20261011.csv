@@ -1,0 +1,11 @@
+species,taxon_id,n_obs_cat,first_obs_cat,rate_2010_2014,rate_2015_2019,rate_2020_2024,ratio_5y,ratio_vs_controls,rupture_year,rupture_score,category,category_vs_controls,method
+Pelagia noctiluca,256089,444,2005-09-21,3.81,2.0661,1.154,0.559,0.233,2014,-1.0,declive_leve_candidato,declive_temporal_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Rhizostoma pulmo,319371,1468,2011-08-09,5.4141,4.1921,4.8992,1.169,0.487,2012,5.265,estable_o_sin_patron,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Cotylorhiza tuberculata,324852,1216,2008-09-01,3.7286,3.1794,3.778,1.188,0.495,2016,2.233,estable_o_sin_patron,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Arbacia lixula,143139,2914,2008-05-01,0.612,4.0023,8.3864,2.095,0.874,2020,1.362,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Paracentrotus lividus,48032,5280,1975-09-20,5.8206,10.6882,15.0829,1.411,0.588,2018,2.11,aumento_leve,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Thalassoma pavo,50972,6125,2008-04-01,2.1657,6.1088,17.6004,2.881,1.201,2016,3.459,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Sparisoma cretense,112860,27,2021-03-01,0.0,0.0,0.0261,,,,0.0,en_expansion,en_expansion,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Sphyraena viridensis,47260,1192,2010-07-20,9.0152,4.6562,3.5392,0.76,0.317,2016,1.449,estable_o_sin_patron,declive_temporal_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Epinephelus costae,100091,127,2013-05-01,0.2863,0.1855,0.3483,1.878,0.783,2022,2.293,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19
+Caulerpa cylindracea,734863,402,2014-08-01,0.612,0.8175,1.6102,1.97,0.821,2021,1.65,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19

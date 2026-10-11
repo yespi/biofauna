@@ -1,0 +1,66 @@
+# BioFauna
+
+**Mediterranean marine identification by retrieval.** Formerly YOLOFauna. Production: **frozen BioCLIP-2.5 ViT-H + k-NN (k=15, T=0.05)**.
+
+Live: [fotofauna.yespi.es](https://fotofauna.yespi.es) · Paper: [EN](papers/biofauna/01_biofauna.md) · [ES](papers/biofauna/01_biofauna_es.md)
+
+**Papers:** [BioFauna ES](papers/biofauna/01_biofauna_es.md) (PDF: [ES](papers/biofauna/ARTICULO_COMPLETO_latest.pdf) · [ES latest](papers/biofauna/BIOFAUNA_paper_ES_latest.pdf)) · [EN](papers/biofauna/material/en/01_biofauna.md) ([PDF EN](papers/biofauna/material/en/ARTICLE_COMPLETO_latest.pdf)) · [Proyecto Correlación](papers/proyecto_correlacion/README.md) (PDF: [ES](papers/proyecto_correlacion/ARTICULO_COMPLETO_latest.pdf) · [EN](papers/proyecto_correlacion/material/en/ARTICLE_COMPLETO_latest.pdf) · [Láminas](papers/proyecto_correlacion/LAMINAS_latest.pdf)) · [Invasoras CAT](papers/especies_invasoras_cataluna/) ([PDF completo](papers/especies_invasoras_cataluna/ARTICULO_COMPLETO_latest.pdf)) · [Declives / peligro](papers/especies_peligro_declives/) · [Nudibranquios calendario](papers/nudibranquios_calendario/) ([PDF completo](papers/nudibranquios_calendario/ARTICULO_COMPLETO_latest.pdf) · [Carta Marina L5](papers/nudibranquios_calendario/material/LAMINA5_carta_marina_20261010.png)) · [Fanerógamas](papers/fanerogamas/)
+
+## Snapshot (2026-10-11)
+
+| | |
+|---|---|
+| Gallery (live) | **1,216,896** embeddings / **4,643** species (`stats.json` 11-oct; `/health` OK) |
+| Catalogue | **3,084** target (→ ≈**3,109** after synonym unification) |
+| Field eval OOS | **83.22%** species (78,145 rows); genus 87.96%, family 91.04% |
+| Papers (CPU) | Invasoras CAT **v1.4** (nativas relativas) · declives **v0.1** · correlación **v24** · BioFauna · L5 Carta Marina |
+
+## Snapshot (2026-10-06)
+
+| | |
+|---|---|
+| Gallery | **1,132,767** embeddings / **4,543** species (FAISS aligned) |
+| Catalog | **2,985** taxa with Minka/iNat IDs ([`dataset/catalog.json`](dataset/catalog.json)) |
+| Classifier | k-NN k=15, T=0.05, **max 3 votes per species** (K23), ROI fusion, calibrated abstention, zero-shot rescue |
+| Field eval (out-of-sample) | **83.14%** after *all08it2* (8 Oct); superseded by **83.22%** on 10 Oct (invasoras) |
+| — of which original eval / mined extension | **81.18%** (n=60,743, comparable with earlier versions) / 85.5–89.9% (n=15,842; same-species accuracy equivalent: 86.8% vs 86.1%) |
+| Real precision of AutoID publications | **96.6%** (n=493 verifiable; 85% in the 0.83–0.85 band, 99% at ≥0.95) |
+| AutoID | 45/hour, 1,500/day, per-species calibrated threshold (≈0.83), margin + curator guards; **crop fallback** (since 2026-10-01) rescues photos the full image cannot identify: 35 → 48 publishable in 500 real queue photos, 85.7% of the added ones correct (n=49, ground truth) |
+| Hierarchical abstention (2026-10-03) | Calibrated genus/family probabilities are exposed in shadow; AutoID publishes **genus** only when `p_genus` ≥ 0.95 (cap 50/day, family off). Out-of-sample check (n=1,267 recent research-grade Minka observations): species at p ≥ 0.83 covers 71.1% at 91.2% precision; the genus step adds +2.4 pp of photos at ~90% (p ≥ 0.95) — a small gain |
+| Baselines (n=78,180) | nearest centroid **74.73%**, plain k-NN (k=15, vote) **79.86%**, full system **82.46%** |
+| Inference | exact k-NN on GPU (fp16, fp32 re-scoring): ≈0.2 s per call (was 0.7 s); six-crop identification of one photo 0.97 s (was 4.4 s) |
+| This repo ships | Prototypes, calibrators, geo priors, exceptions, taxon IDs, evaluation/leak-audit scripts, papers |
+| Not shipped | Photographs, per-photo `embeddings.npy` |
+
+**2026-09-23:** an audit found that half of the evaluation rows were copies of gallery photos; they were removed and all earlier panel figures (85.78%, 90.52%, 92.36%, 93.4%) are superseded. See [paper](papers/biofauna/01_biofauna.md) (update box, O18) and [EXPERIMENTS](docs/EXPERIMENTS.md).
+
+**2026-10-06 — update:** two index promotions (clean combo, harvest batches 01+02) with backup and per-species guard; 96,392 never-embedded photos found and being re-embedded; AutoID sibling rule removed; several ideas measured and rejected (details in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) and paper §5.3). Correlation paper **v20** (rewritten: conclusions only from photographs showing both species in the same image; tables and plates embedded; every photo with author, licence, date/time, place and link): [`papers/proyecto_correlacion/`](papers/proyecto_correlacion/) · latest PDFs without version number, always updated: [ES](papers/proyecto_correlacion/ARTICULO_ES_latest.pdf) · [EN](papers/proyecto_correlacion/material/en/ARTICLE_EN_latest.pdf) · [plates](papers/proyecto_correlacion/LAMINAS_latest.pdf). BioFauna paper latest: [EN](papers/biofauna/material/en/BIOFAUNA_paper_EN_latest.pdf) · [ES](papers/biofauna/BIOFAUNA_paper_ES_latest.pdf). Rule: papers and plates are published as a numbered/dated version (the two latest are kept) **and** as the `_latest` copy.
+
+## Quick start (nearest-centroid demo)
+
+```bash
+git clone https://github.com/yespi/biofauna.git && cd biofauna
+pip install -r requirements.txt
+python -m uvicorn src.identify_service:app --host 0.0.0.0 --port 8090
+# first run downloads imageomics/bioclip-2.5-vith14 from Hugging Face
+curl -s http://127.0.0.1:8090/health
+curl -X POST http://127.0.0.1:8090/identify -F "file=@photo.jpg"
+```
+
+Full k-NN (production-class) needs a local photo gallery + `embeddings.npy` per species. See [`docs/dataset.md`](docs/dataset.md), [`docs/self_host.md`](docs/self_host.md), [`docs/cron.md`](docs/cron.md), and [`scripts/README.md`](scripts/README.md).
+
+## Docs
+
+| | |
+|---|---|
+| [API](docs/api.md) | Public `X-API-Key` flow + `/vision/biofauna/identify` and self-hosted endpoints |
+| [STATUS](docs/STATUS.md) | Current public snapshot |
+| [EXPERIMENTS](docs/EXPERIMENTS.md) | Kept vs rejected trials |
+| [HISTORY](docs/HISTORY.md) | YOLOFauna → BioFauna |
+| [FotoFauna bulk photos](docs/ff_download.md) | Admin ZIP export from FotoFauna (photos not in this repo) |
+| [cron](docs/cron.md) | Weekly jobs BF-01…BF-10 + systemd example |
+| [archive](docs/archive/README.md) | Stale August notes (e.g. closed archive gap) |
+
+## Licence
+
+MIT for code and released JSON/prototypes. Photo copyright stays with observers and Minka/iNaturalist.

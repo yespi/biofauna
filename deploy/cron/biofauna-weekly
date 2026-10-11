@@ -1,0 +1,32 @@
+# /etc/cron.d/biofauna-weekly
+# Copy, then replace /opt/biofauna and the username. Times: Europe/Madrid.
+# GPU jobs (BF-05, BF-07) should run as the user who has torch/numpy installed.
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=""
+
+# Set these or export them in the user environment:
+# BIOFAUNA_ROOT=/opt/biofauna
+# IMAGES_DIR=/data/fotofauna-images
+
+# BF-01 iNat fill — Monday 10:00
+0 10 * * 1 yespi cd /opt/biofauna && python3 scripts/repesca_diaria.py >> logs/repesca.log 2>&1
+# BF-02 Minka research-grade — Monday 11:00
+0 11 * * 1 yespi cd /opt/biofauna && python3 scripts/autoaprendizaje_minka.py >> logs/autoaprendizaje_minka.log 2>&1
+# BF-03 iNat research-grade — Tuesday 10:00
+0 10 * * 2 yespi cd /opt/biofauna && python3 scripts/autoaprendizaje_inat.py >> logs/autoaprendizaje_inat.log 2>&1
+# BF-04 Minka taxon drift — Wednesday 10:00
+0 10 * * 3 yespi cd /opt/biofauna && python3 scripts/reverificar_minka.py >> logs/reverificar.log 2>&1
+# BF-05 re-embed ViT-H — Thursday 09:00 (GPU)
+0 9 * * 4 yespi cd /opt/biofauna && python3 scripts/reembed_vith.py >> logs/reembed.log 2>&1
+# BF-06 calibrators — Thursday 10:00
+0 10 * * 4 yespi cd /opt/biofauna && python3 scripts/fit_calib.py >> logs/fit_calib.log 2>&1 && python3 scripts/fit_calib_hierarchical.py >> logs/fit_calib_hier.log 2>&1
+# BF-07 out-of-sample harvest — Friday 14:00 (GPU)
+0 14 * * 5 yespi cd /opt/biofauna && python3 scripts/harvest_calib.py 3 0 >> logs/harvest.log 2>&1
+# BF-08 archive extras + audit — Saturday 10:00
+0 10 * * 6 yespi cd /opt/biofauna && python3 scripts/archive_processed.py >> logs/archive.log 2>&1 && bash scripts/audit_biofauna.sh >> logs/audit.log 2>&1
+# BF-09 rotate saturated species — Sunday 09:00
+0 9 * * 0 yespi cd /opt/biofauna && python3 scripts/renovar_especies.py >> logs/renovar.log 2>&1
+# BF-10 second taxon-drift pass — Sunday 10:00
+0 10 * * 0 yespi cd /opt/biofauna && python3 scripts/reverificar_minka.py >> logs/reverificar.log 2>&1

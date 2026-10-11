@@ -1,0 +1,121 @@
+{
+  "generated": "2026-10-11 20:25 ",
+  "elapsed_s": 82.0,
+  "n_marine_match": 267,
+  "n_eligible": 255,
+  "n_series_ok": 120,
+  "n_pairs_tested": 7140,
+  "n_top_figures": 20,
+  "n_clusters": 6,
+  "clusters_ge10": 3,
+  "n_cascade_tests": 600,
+  "n_cascade_sig": 75,
+  "detonators": [
+    {
+      "id": "pinna_mm_spain",
+      "label": "Pinna nobilis MM (España)",
+      "year": 2016,
+      "species_trigger": "Pinna nobilis",
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Inicio documentado en España otoño 2016 (Vázquez-Luis 2017); no 2014"
+    },
+    {
+      "id": "mhw_2003",
+      "label": "Ola de calor marina 2003",
+      "year": 2003,
+      "species_trigger": null,
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Fuera de ventana 2010–2025 para series densas; se reporta solo si hay datos"
+    },
+    {
+      "id": "mhw_2015",
+      "label": "Ola de calor marina 2015",
+      "year": 2015,
+      "species_trigger": null,
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Garrabou et al. 2022 (contexto MHW Med)"
+    },
+    {
+      "id": "mhw_2022",
+      "label": "Ola de calor marina 2022",
+      "year": 2022,
+      "species_trigger": null,
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Garrabou et al. 2022 + episodios posteriores"
+    },
+    {
+      "id": "rugulopteryx",
+      "label": "Rugulopteryx okamurae (llegada)",
+      "year": 2015,
+      "species_trigger": "Rugulopteryx okamurae",
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Usar primera obs CAT en datos si disponible; año lit. Med occidental ~2015+"
+    },
+    {
+      "id": "pelagia_bloom",
+      "label": "Años bloom Pelagia (proxy pico)",
+      "year": 2012,
+      "species_trigger": "Pelagia noctiluca",
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Año = máximo de proporción esfuerzo-corregida en caja CAT"
+    },
+    {
+      "id": "vnn_meros",
+      "label": "VNN / betanodavirus en meros",
+      "year": 2020,
+      "species_trigger": "Epinephelus marginatus",
+      "zones_impact": [
+        "Costa_Brava",
+        "Barcelona",
+        "Tarragona_Ebro"
+      ],
+      "zones_control": [],
+      "note": "Ancla bibliográfica Med español: Peñalver et al. 2020 (Cabo de Palos). Brotes previos: Haddad-Boubaker et al. 2014 (E. costae y E. marginatus). No se halló en Crossref un brote publicado 2023+ en Cataluña; 2023+ = hipótesis sin DOI."
+    }
+  ],
+  "pinna_note": {
+    "pathogen": "Haplosporidium pinnae (protozoo parásito; no virus)",
+    "spain_onset_literature": 2016,
+    "gustavo_suggested": 2014,
+    "source_doi": "10.3389/fmars.2017.00220",
+    "catanese_doi": "10.1016/j.jip.2018.07.006",
+    "decision": "Usar 2016 como inicio documentado en España (Vázquez-Luis et al. 2017)."
+  },
+  "method": {
+    "proportion": "obs_spp / effort_zone_year × 1000",
+    "xcorr": "pearson on first differences, lag 0..3, BH-FDR",
+    "min_years": 8,
+    "min_obs": 40,
+    "disclaimer": "correlación ≠ causalidad"
+  }
+}

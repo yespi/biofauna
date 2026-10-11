@@ -1,0 +1,23 @@
+[Unit]
+Description=BioFauna identify service (:8090)
+After=network-online.target
+# RequiresMountsFor=/opt/biofauna
+
+[Service]
+Type=simple
+User=yespi
+Group=yespi
+WorkingDirectory=/opt/biofauna
+Environment=BIOFAUNA_ROOT=/opt/biofauna
+Environment=BIOFAUNA_FAMILY_MARGIN=0.08
+Environment=BIOFAUNA_KNN_TEMP=0.05
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/biofauna.env
+ExecStart=/usr/bin/python3 -m uvicorn src.identify_service:app --host 127.0.0.1 --port 8090 --workers 1
+Restart=on-failure
+RestartSec=10
+Nice=5
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
