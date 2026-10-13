@@ -1,0 +1,117 @@
+{
+  "fecha": "2026-10-13",
+  "motivo": "Gustavo 13-oct 14:40 — especies conflictivas/mediáticas (error de ID se nota más)",
+  "criterio": "Mismo trato que Pterois miles: catálogo Academy invasora, alertas curadas, umbral jerárquico ≈0,85, prioridad cosecha si galería corta, paper/listas BF",
+  "auto_id_global": "NO tocado (sigue p≥0,83; 1 worker)",
+  "faiss_promote": "NO (orden explícita)",
+  "especies": [
+    {
+      "name": "Pterois miles",
+      "slug": "pterois_miles",
+      "inat_id": 123459,
+      "minka_taxon": 13672,
+      "rol": "referencia mediática",
+      "listas": [
+        "academy_catalog",
+        "KNOWN_INVASIVE",
+        "Weitzmann marinas",
+        "yf_species prio=4"
+      ]
+    },
+    {
+      "name": "Callinectes sapidus",
+      "slug": "callinectes_sapidus",
+      "inat_id": 49504,
+      "minka_taxon": 34966,
+      "rol": "añadida al trato mediático (ya en Weitzmann + yf_species)",
+      "listas": [
+        "academy_catalog NUEVO",
+        "KNOWN_INVASIVE NUEVO",
+        "Weitzmann marinas",
+        "yf_species prio 0→4"
+      ],
+      "nota_ue": "NO está en lista de la Unión; no se fuerza en target_species UE"
+    },
+    {
+      "name": "Rugulopteryx okamurae",
+      "slug": "rugulopteryx_okamurae",
+      "inat_id": 956931,
+      "minka_taxon": 262168,
+      "rol": "ya en lista UE; añadida al trato Academy/mediático como Pterois",
+      "listas": [
+        "academy_catalog NUEVO",
+        "KNOWN_INVASIVE NUEVO",
+        "lista UE target_species",
+        "yf_species prio=4"
+      ]
+    }
+  ],
+  "galeria_eval_20261013": {
+    "fuente_stats": "dataset/stats.json + calib_raw_t05.jsonl + faiss species_ids",
+    "filas": [
+      {
+        "slug": "pterois_miles",
+        "photos": 546,
+        "vectores": 500,
+        "eval_n": 40,
+        "acc": 0.6,
+        "confusiones": [
+          [
+            "pterois_volitans",
+            14
+          ],
+          [
+            "arbacia_lixula",
+            2
+          ]
+        ]
+      },
+      {
+        "slug": "callinectes_sapidus",
+        "photos": 978,
+        "vectores": 978,
+        "eval_n": 30,
+        "acc": 0.9,
+        "confusiones": [
+          [
+            "caretta_caretta",
+            1
+          ],
+          [
+            "mugil_cephalus",
+            1
+          ],
+          [
+            "cronius_ruber",
+            1
+          ]
+        ]
+      },
+      {
+        "slug": "rugulopteryx_okamurae",
+        "photos": 1004,
+        "vectores": 1027,
+        "eval_n": 30,
+        "acc": 0.8667,
+        "confusiones": [
+          [
+            "valonia_utricularis",
+            1
+          ],
+          [
+            "posidonia_oceanica",
+            1
+          ],
+          [
+            "octopus_vulgaris",
+            1
+          ],
+          [
+            "dictyota_cyanoloma",
+            1
+          ]
+        ]
+      }
+    ]
+  }
+}
