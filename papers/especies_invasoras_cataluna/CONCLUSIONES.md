@@ -1,9 +1,9 @@
 # 5. Conclusiones
 
-1. De los 114 taxones de la lista de la Unión analizados, solo una fracción muestra registros en Cataluña en ciencia ciudadana; la mayoría permanece ausente en nuestras fuentes, lo que no implica ausencia biológica sino limitaciones de detectabilidad y cobertura.
+1. De los 114 taxones de la lista de la Unión, 35 tienen al menos un registro ciudadano en Cataluña; 79 no, lo que no implica ausencia biológica sino detectabilidad y cobertura limitadas (sin estimar aún la potencia de ausencia).
 
-2. Solo *Rugulopteryx okamurae* combina estatus en la lista UE, hábitat marino y presencia documentada en Cataluña; constituye el caso prioritario para gestión costera y vigilancia bentónica.
+2. *Rugulopteryx okamurae* es el único taxón de la lista con hábitat marino y registros en Cataluña (101 observaciones, cuatro observadores desde 2024); es el caso prioritario para vigilancia bentónica, con la salvedad de que su serie es demasiado corta para estimar tendencia.
 
-3. Las series crudas de observación crecen con el uso de plataformas (~84× entre 2013 y 2024 en nuestro ámbito); las tasas corregidas por esfuerzo del grupo taxonómico y los modelos con offset son imprescindibles para inferir tendencias.
+3. Con el esfuerzo disponible (base BioQuest), **ninguna especie de la lista muestra un aumento significativo de su detección** en 2013–2025; dos (*Neogale vison*, *Trachemys scripta elegans*) descienden. Las series crudas crecen ~84× entre 2013 y 2024 en la base, en parte por efectos de ingesta, por lo que la corrección por esfuerzo es necesaria pero todavía imperfecta.
 
-4. La comparación entre primer registro ciudadano y primera cita publicada revela retrasos sistemáticos en exóticas marinas, coherentes con el sesgo temporal de la ciencia ciudadana más que con cronologías de invasión (p. ej. *Pterois miles* en el Mediterráneo).
+4. En tres exóticas marinas no incluidas en la lista el primer registro ciudadano es posterior a la primera cita publicada; el resultado es descriptivo y compatible con el inicio tardío de la plataforma, no una medida de retraso de detección.

@@ -8,4 +8,4 @@ Analizamos los **114** taxones de la lista de especies exóticas invasoras preoc
 
 Este trabajo plantea tres preguntas: (i) ¿qué especies de la lista de la Unión están presentes en Cataluña según la ciencia ciudadana, y en qué medida coincide esa presencia con los inventarios oficiales (EXOCAT, EASIN)? (ii) Una vez corregido el esfuerzo de observación, ¿qué especies muestran una tendencia creciente en su tasa de detección? (iii) ¿Detecta la ciencia ciudadana las exóticas marinas con un retraso medible respecto a la primera cita publicada?
 
-Formulamos además hipótesis operativas (H1–H11) sobre vías de entrada y sesgo temporal; su contraste se resume en la Discusión y en la Tabla S3 del material suplementario.
+Se discuten además varias cuestiones sobre vías de entrada y sesgo temporal, resumidas en la Discusión y en la Tabla S3 del material suplementario.

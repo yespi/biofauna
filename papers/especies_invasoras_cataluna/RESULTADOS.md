@@ -8,21 +8,21 @@ De los 114 taxones analizados, **35** presentaron al menos una observación en C
 
 | Especie | Obs CAT | Observadores | Celdas UTM 10 km | Categoría | Hábitat |
 |---|---:|---:|---:|---|---|
-| *Ailanthus altissima* | 1540 | 450 | 431 | en expansión | T |
-| *Procambarus clarkii* | 646 | 386 | 441 | establecida | D+S |
-| *Myocastor coypus* | 498 | 301 | 242 | establecida | T |
-| *Trachemys scripta* | 263 | 138 | 177 | establecida | D |
-| *Broussonetia papyrifera* | 175 | 93 | 145 | establecida | T |
-| *Alopochen aegyptiaca* | 167 | 100 | 92 | establecida | T |
-| *Vespa velutina nigrithorax* | 156 | 88 | 143 | en expansión | T |
-| *Gambusia holbrooki* | 128 | 89 | 93 | en expansión | D+S |
-| *Neogale vison* | 109 | 64 | 76 | establecida | T |
-| *Cenchrus setaceus* | 109 | 50 | 75 | en expansión | T |
-| *Delairea odorata* | 107 | 49 | 69 | en expansión | T |
+| *Ailanthus altissima* | 1540 | 450 | 431 | recurrente | T |
+| *Procambarus clarkii* | 646 | 386 | 441 | recurrente | D+S |
+| *Myocastor coypus* | 498 | 301 | 242 | recurrente | T |
+| *Trachemys scripta* | 263 | 138 | 177 | recurrente | D |
+| *Broussonetia papyrifera* | 175 | 93 | 145 | recurrente | T |
+| *Alopochen aegyptiaca* | 167 | 100 | 92 | recurrente | T |
+| *Vespa velutina nigrithorax* | 156 | 88 | 143 | recurrente | T |
+| *Gambusia holbrooki* | 128 | 89 | 93 | recurrente | D+S |
+| *Neogale vison* | 109 | 64 | 76 | recurrente | T |
+| *Cenchrus setaceus* | 109 | 50 | 75 | recurrente | T |
+| *Delairea odorata* | 107 | 49 | 69 | recurrente | T |
 | *Rugulopteryx okamurae* | 101 | 4 | 25 | llegada reciente | M |
-| *Acacia saligna* | 65 | 49 | 55 | en expansión | T |
-| *Ludwigia peploides* | 58 | 36 | 49 | llegada reciente | D |
-| *Lepomis gibbosus* | 36 | 28 | 34 | establecida | D+S |
+| *Acacia saligna* | 65 | 49 | 55 | recurrente | T |
+| *Ludwigia peploides* | 58 | 36 | 49 | recurrente | D |
+| *Lepomis gibbosus* | 36 | 28 | 34 | recurrente | D+S |
 
 Etiquetas de hábitat: M = marino, S = salobre, D = agua dulce, T = terrestre (no excluyentes; ver Métodos).
 
@@ -32,7 +32,7 @@ Etiquetas de hábitat: M = marino, S = salobre, D = agua dulce, T = terrestre (n
 |---|---:|
 | ausente | 79 |
 | ocasional_o_puntual | 15 |
-| establecida | 11 |
+| recurrente | 11 |
 | en_expansion | 6 |
 | llegada_reciente_serie_insuficiente | 3 |
 
@@ -50,13 +50,13 @@ De los taxones marinos o salobres de la lista de la Unión, solo *Rugulopteryx o
 
 ## 3.3 Esfuerzo de observación
 
-El número total de observaciones en el ámbito catalán pasó de **1.220** (2013) a **102.301** (2024), factor ~84×. La Tabla S2 y la Fig. 2 muestran la serie anual completa (2005–2025) desglosada por grupo taxonómico.
+El número de observaciones de la **base BioQuest** (694 taxones; no el total de iNaturalist/Minka) en la caja de Cataluña pasó de **1.220** (2013) a **102.301** (2024), factor ~84× (Fig. 2, escala logarítmica; 2026 es año parcial). El valor anómalo de 2008 (858, frente a 55 y 298 en los años contiguos) y el salto 2021–2024 sugieren efectos de ingesta de la base y no solo de actividad de observadores; por eso este denominador es una aproximación débil (ver Limitaciones).
 
 ## 3.4 Tendencias de detección
 
-Tras el modelo binomial negativo con offset de esfuerzo y corrección FDR, seis especies mantuvieron pendiente positiva significativa (categoría «en expansión» en Tabla S1). Tres especies con primera observación reciente o ratio n. d. se clasificaron como «llegada reciente / serie insuficiente» (*Rugulopteryx okamurae*, *Ludwigia peploides*, *Impatiens glandulifera*). El panel de la Fig. 4 resume pendientes e intervalos de confianza para especies con n ≥ 30.
+Ajustamos el modelo binomial negativo descrito en §2.5 a las 17 especies de la lista de la Unión con ≥10 observaciones y ≥5 años con registros en 2013–2025 (`material/glm_tendencias_20261015.csv`; Fig. 4). **Ninguna especie mostró un aumento significativo de su tasa de detección tras la corrección FDR**. Dos especies mostraron descenso: *Neogale vison* (razón de tasas anual 0,84; IC 95 % 0,76–0,92; q = 0,005) y *Trachemys scripta elegans* (0,86; 0,77–0,95; q = 0,026). *Ailanthus altissima* tuvo la estimación más alta con precisión (1,17; 1,03–1,32) pero q = 0,067; su serie contiene un salto 2020→2021 (18→134 registros) que no acompaña al esfuerzo (×1,4) y que puede deberse a un observador o campaña concretos, no analizado. Con la ventana 2016–2025 los resultados son cualitativamente iguales (descenso además de *Threskiornis aethiopicus* y *Alopochen aegyptiaca*). Un análisis previo con estadístico tau/z sin FDR, que clasificaba cuatro a seis especies «en expansión», queda **superado** y no debe citarse.
 
-El análisis «¿prosperan o desaparecen?» unificado con el método anterior reduce las discrepancias entre tablas (p. ej. *Gambusia holbrooki* y *Acacia saligna* pasan a «estable» cuando se exige serie ≥ 5 años por ventana). *Reynoutria sachalinensis* queda como registro único (2020), sin potencia de ausencia estimable.
+*Rugulopteryx okamurae* (primer registro 2024) e *Impatiens glandulifera* (primer registro 2022) se clasifican como «llegada reciente»: sus series son demasiado cortas para estimar tendencia. *Reynoutria sachalinensis* es un registro único (2020), sin potencia de ausencia estimable.
 
 ## 3.5 Origen, vía y primeras fechas
 
@@ -70,8 +70,8 @@ La Tabla 2 (material suplementario `material/tabla_origen_vias_resumen.csv`) int
 
 ### Recuadro — contexto mediterráneo sin registros en Cataluña
 
-*Pterois miles* y *Lagocephalus sceleratus* no tienen observaciones en España ni en Cataluña en nuestras descargas. La primera cita mediterránea del pez león es Israel, 1991 (Golani & Sonin 1992), con vía lessepsiana; el patrón «entrada ~2008» en mapas ciudadanos refleja el inicio tardío de la ciencia ciudadana (H1 refutada; Discusión).
+*Pterois miles* y *Lagocephalus sceleratus* no tienen observaciones en España ni en Cataluña en nuestras descargas. La primera cita mediterránea del pez león es Israel, 1991 (Golani & Sonin 1992), con vía lessepsiana; el patrón «entrada ~2008» en mapas ciudadanos refleja el inicio tardío de la ciencia ciudadana (ver Discusión).
 
 ## 3.7 *Rugulopteryx okamurae*
 
-Único alga de la lista UE con registros marinos en Cataluña. Primer registro ciudadano: 31 mayo 2024 (iNaturalist). La literatura sitúa la primera cita mediterránea en la laguna de Thau (Francia, ~2002, asociada a importaciones de ostras) y la expansión en el Estrecho en 2015–2016; en Cataluña las 101 observaciones proceden de cuatro observadores (sesgo de muestreo). Fig. 6 y mapa de celdas UTM en suplemento.
+Único alga de la lista UE con registros marinos en Cataluña. Primer registro ciudadano: 31 mayo 2024 (iNaturalist). La literatura sitúa la primera cita mediterránea en la laguna de Thau (Francia; Verlaque et al. 2009), con importaciones de ostras como vía propuesta (EASIN la clasifica como «contaminante de animales»), y la expansión explosiva en el Estrecho desde 2015 (García-Gómez et al. 2020). En Cataluña las 101 observaciones proceden de cuatro observadores (sesgo de muestreo); la cifra es el máximo entre fuentes (Minka 101, iNaturalist 83), no una unión deduplicada. No se ha localizado una primera cita catalana publicada previa a 2024 (pendiente, plan P10 de la revisión). Fig. 6 y mapa de celdas UTM en suplemento.

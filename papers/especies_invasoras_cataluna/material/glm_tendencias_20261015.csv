@@ -1,0 +1,65 @@
+especie,UE,ventana,n_obs,anios_con_obs,RR_anual,IC95_lo,IC95_hi,p,alpha,q_BH,clase
+Acacia saligna,True,2013-2025,47,6,1.089,0.9234,1.284,0.3109,8.88e-07,0.4405,sin_tendencia_significativa
+Acacia saligna,True,2016-2025,47,6,1.065,0.8933,1.269,0.4838,1.589e-07,0.7036,sin_tendencia_significativa
+Ailanthus altissima,True,2013-2025,1365,11,1.167,1.03,1.324,0.01579,0.3602,0.0671,sin_tendencia_significativa
+Ailanthus altissima,True,2016-2025,1362,10,1.059,0.9215,1.217,0.4202,0.2758,0.6723,sin_tendencia_significativa
+Alopochen aegyptiaca,True,2013-2025,117,12,0.879,0.7937,0.9735,0.01328,0.1998,0.0671,sin_tendencia_significativa
+Alopochen aegyptiaca,True,2016-2025,113,10,0.8379,0.7371,0.9524,0.006819,0.188,0.02727,decreciente
+Alternanthera philoxeroides,True,2013-2025,2,2,,,,,,,no_estimable
+Alternanthera philoxeroides,True,2016-2025,2,2,,,,,,,no_estimable
+Ameiurus melas,True,2013-2025,7,4,,,,,,,no_estimable
+Ameiurus melas,True,2016-2025,7,4,,,,,,,no_estimable
+Andropogon virginicus,True,2013-2025,1,1,,,,,,,no_estimable
+Andropogon virginicus,True,2016-2025,1,1,,,,,,,no_estimable
+Bipalium kewense,True,2013-2025,3,2,,,,,,,no_estimable
+Bipalium kewense,True,2016-2025,3,2,,,,,,,no_estimable
+Broussonetia papyrifera,True,2013-2025,150,9,1.043,0.9145,1.188,0.5332,0.08953,0.5705,sin_tendencia_significativa
+Broussonetia papyrifera,True,2016-2025,150,9,0.9834,0.8767,1.103,0.7758,0.05328,0.946,sin_tendencia_significativa
+Cardiospermum grandiflorum,True,2013-2025,2,2,,,,,,,no_estimable
+Cardiospermum grandiflorum,True,2016-2025,1,1,,,,,,,no_estimable
+Delairea odorata,True,2013-2025,97,9,1.066,0.8893,1.278,0.489,0.2482,0.5705,sin_tendencia_significativa
+Delairea odorata,True,2016-2025,97,9,0.9956,0.8342,1.188,0.9614,0.1848,0.9614,sin_tendencia_significativa
+Elodea nuttallii,True,2013-2025,2,1,,,,,,,no_estimable
+Elodea nuttallii,True,2016-2025,2,1,,,,,,,no_estimable
+Gambusia holbrooki,True,2013-2025,102,10,1.012,0.8673,1.181,0.8804,0.2892,0.8804,sin_tendencia_significativa
+Gambusia holbrooki,True,2016-2025,101,9,0.9797,0.8141,1.179,0.8278,0.2797,0.946,sin_tendencia_significativa
+Impatiens glandulifera,True,2013-2025,7,3,,,,,,,no_estimable
+Impatiens glandulifera,True,2016-2025,7,3,,,,,,,no_estimable
+Lepomis gibbosus,True,2013-2025,30,7,0.9313,0.743,1.167,0.5369,0.7135,0.5705,sin_tendencia_significativa
+Lepomis gibbosus,True,2016-2025,29,6,0.9227,0.6751,1.261,0.6138,0.7655,0.8184,sin_tendencia_significativa
+Ludwigia grandiflora,True,2013-2025,0,0,,,,,,,no_estimable
+Ludwigia grandiflora,True,2016-2025,0,0,,,,,,,no_estimable
+Ludwigia peploides,True,2013-2025,50,5,1.463,0.8338,2.566,0.1848,0.9317,0.3324,sin_tendencia_significativa
+Ludwigia peploides,True,2016-2025,50,5,1.434,0.8005,2.57,0.2254,0.9161,0.4008,sin_tendencia_significativa
+Misgurnus anguillicaudatus,True,2013-2025,2,2,,,,,,,no_estimable
+Misgurnus anguillicaudatus,True,2016-2025,2,2,,,,,,,no_estimable
+Myocastor coypus,True,2013-2025,387,11,1.09,0.9568,1.241,0.1955,0.2401,0.3324,sin_tendencia_significativa
+Myocastor coypus,True,2016-2025,386,10,1.009,0.8805,1.156,0.8998,0.1739,0.9597,sin_tendencia_significativa
+Myriophyllum aquaticum,True,2013-2025,1,1,,,,,,,no_estimable
+Myriophyllum aquaticum,True,2016-2025,1,1,,,,,,,no_estimable
+Neogale vison,True,2013-2025,105,12,0.8394,0.7638,0.9224,0.0002745,0.1389,0.004667,decreciente
+Neogale vison,True,2016-2025,100,10,0.7907,0.7078,0.8833,3.249e-05,0.102,0.00026,decreciente
+Obama nungara,True,2013-2025,14,6,0.8344,0.6836,1.019,0.07514,0.618,0.1597,sin_tendencia_significativa
+Obama nungara,True,2016-2025,14,6,0.7651,0.6079,0.9631,0.02258,0.6001,0.07224,sin_tendencia_significativa
+Orconectes limosus,True,2013-2025,1,1,,,,,,,no_estimable
+Orconectes limosus,True,2016-2025,1,1,,,,,,,no_estimable
+Pacifastacus leniusculus,True,2013-2025,25,8,0.9198,0.7886,1.073,0.2873,3.884e-07,0.4405,sin_tendencia_significativa
+Pacifastacus leniusculus,True,2016-2025,25,8,0.8703,0.7317,1.035,0.1167,2.234e-06,0.2841,sin_tendencia_significativa
+Pennisetum setaceum,True,2013-2025,99,9,1.194,0.9838,1.449,0.07278,0.1235,0.1597,sin_tendencia_significativa
+Pennisetum setaceum,True,2016-2025,99,9,1.166,0.9458,1.437,0.1503,0.1347,0.3006,sin_tendencia_significativa
+Procambarus clarkii,True,2013-2025,521,13,0.9585,0.8601,1.068,0.4429,0.3015,0.5705,sin_tendencia_significativa
+Procambarus clarkii,True,2016-2025,510,10,0.8937,0.7743,1.031,0.1243,0.2635,0.2841,sin_tendencia_significativa
+Pseudorasbora parva,True,2013-2025,6,5,,,,,,,no_estimable
+Pseudorasbora parva,True,2016-2025,5,4,,,,,,,no_estimable
+Reynoutria japonica,True,2013-2025,12,6,0.8825,,,,2.031e-08,,no_estimable
+Reynoutria japonica,True,2016-2025,12,6,0.8252,,,,3.257e-05,,no_estimable
+Reynoutria sachalinensis,True,2013-2025,1,1,,,,,,,no_estimable
+Reynoutria sachalinensis,True,2016-2025,1,1,,,,,,,no_estimable
+Rugulopteryx okamurae,True,2013-2025,33,2,,,,,,,no_estimable
+Rugulopteryx okamurae,True,2016-2025,33,2,,,,,,,no_estimable
+Threskiornis aethiopicus,True,2013-2025,13,6,0.8305,0.6813,1.012,0.06608,0.1868,0.1597,sin_tendencia_significativa
+Threskiornis aethiopicus,True,2016-2025,13,6,0.7495,0.6156,0.9124,0.004065,0.0009878,0.02168,decreciente
+Trachemys scripta elegans,True,2013-2025,211,13,0.8578,0.7749,0.9495,0.003077,0.2476,0.02615,decreciente
+Trachemys scripta elegans,True,2016-2025,204,10,0.7781,0.6997,0.8653,3.705e-06,0.1508,5.928e-05,decreciente
+Vespa velutina nigrithorax,True,2013-2025,142,9,1.095,0.9949,1.205,0.06358,9.401e-09,0.1597,sin_tendencia_significativa
+Vespa velutina nigrithorax,True,2016-2025,142,9,1.071,,,,1.071e-08,,no_estimable
