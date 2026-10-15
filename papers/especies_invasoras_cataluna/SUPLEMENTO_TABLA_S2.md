@@ -1,0 +1,28 @@
+# Tabla S2. Esfuerzo anual (base BioQuest, caja CAT)
+
+| Año | Observaciones |
+|---|---:|
+| 2005 | 27 |
+| 2006 | 18 |
+| 2007 | 55 |
+| 2008 | 858 |
+| 2009 | 298 |
+| 2010 | 92 |
+| 2011 | 142 |
+| 2012 | 408 |
+| 2013 | 1220 |
+| 2014 | 1634 |
+| 2015 | 1670 |
+| 2016 | 2477 |
+| 2017 | 3520 |
+| 2018 | 5303 |
+| 2019 | 6470 |
+| 2020 | 8051 |
+| 2021 | 10939 |
+| 2022 | 25543 |
+| 2023 | 62083 |
+| 2024 | 102301 |
+| 2025 | 105404 |
+| 2026 | 37731 |
+
+Desglose por grupo taxonómico (research grade, taxones del catálogo en la caja): ver Fig. 2 (cont.) y Tabla S2 (nota).

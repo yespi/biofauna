@@ -1,0 +1,20 @@
+especie,obs_espana,lambda_esperado_cat_aprox,P_cero_obs_CAT_si_presente,ausencia_informativa
+Acridotheres cristatellus,1,0.205,0.815,no
+Oxyura jamaicensis,5,1.023,0.3595,no
+Pycnonotus cafer,64,13.095,0.0,sí
+Pycnonotus jocosus,191,39.079,0.0,sí
+Ondatra zibethicus,1,0.205,0.815,no
+Procyon lotor,30,6.138,0.0022,sí
+Fundulus heteroclitus,20,4.092,0.0167,sí
+Wasmannia auropunctata,11,2.251,0.1053,no
+Mulinia lateralis,1,0.205,0.815,no
+Acacia mearnsii,25,5.115,0.006,sí
+Baccharis halimifolia,62,12.685,0.0,sí
+Crassula helmsii,4,0.818,0.4411,no
+Eichhornia crassipes,24,4.91,0.0074,sí
+Gunnera tinctoria,5,1.023,0.3595,no
+Hydrocotyle ranunculoides,3,0.614,0.5413,no
+Lagarosiphon major,2,0.409,0.6642,no
+Prosopis juliflora,1,0.205,0.815,no
+Reynoutria x bohemica,2,0.409,0.6642,no
+Salvinia molesta,4,0.818,0.4411,no

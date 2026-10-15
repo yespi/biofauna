@@ -1,0 +1,14 @@
+{
+  "taxones_ue": 114,
+  "presentes_cat": 35,
+  "presentes_es": 52,
+  "ausentes_cat": 79,
+  "esfuerzo_2013": 1220,
+  "esfuerzo_2024": 102301,
+  "esfuerzo_2025": 105404,
+  "easin_concordancia": {
+    "ambos": 50,
+    "solo_easin": 26,
+    "solo_ciudadana": 2
+  }
+}
