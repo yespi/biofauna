@@ -208,7 +208,11 @@ def build_invasoras_completo() -> Path:
         I / "00_PORTADA.md",
         I / "INTRODUCCION.md",
         I / "METODOS.md",
+        I / "TABLA_1_FUENTES.md",
         I / "RESULTADOS.md",
+        I / "TABLA_3_PRESENCIA_TENDENCIAS.md",
+        I / "TABLA_4_CONCORDANCIA_EASIN.md",
+        I / "TABLA_2_ORIGEN_VIAS_CAT.md",
         I / "ORIGEN_Y_VIAS_EXPANSION.md",
         I / "PROSPERAN_O_DESAPARECEN.md",
         I / "DISCUSION.md",
@@ -218,7 +222,9 @@ def build_invasoras_completo() -> Path:
         I / "REFERENCIAS.md",
         I / "CRUCE_ZENETOS2022_20261015.md",
         I / "SUPLEMENTO_TABLA_S1.md",
+        I / "SUPLEMENTO_TABLA_S2.md",
         I / "SUPLEMENTO_TABLA_S3.md",
+        I / "SUPLEMENTO_TABLA_S4_EASIN.md",
     ]
     chunks = []
     for p in parts_md:
@@ -227,16 +233,28 @@ def build_invasoras_completo() -> Path:
             chunks.append("\n\n")
     figs = [
         (
+            "material/figuras/area_estudio_esfuerzo_heatmap_20261015.png",
+            "Fig. 1. Densidad del esfuerzo de observación (log10 del número de observaciones *research grade* por celda ~10 km), caja de estudio, 2018–2024.",
+        ),
+        (
             "material/figuras/esfuerzo_bioquest_catalunya.png",
             "Fig. 2. Esfuerzo: observaciones anuales de la base BioQuest (694 taxones) en la caja de Cataluña, escala logarítmica; 2026 parcial. No es el total de iNaturalist/Minka.",
         ),
         (
-            "material/figuras/top25_obs_catalunya.png",
-            "Fig. 3. Especies con más registros en Cataluña (lista UE y complementarias).",
+            "material/figuras/esfuerzo_por_grupo_20261015.png",
+            "Fig. 2 (cont.). Esfuerzo por grupo taxonómico (taxones del catálogo en la caja; *research grade*), escala logarítmica.",
+        ),
+        (
+            "material/figuras/composicion_ue_cat_20261015.png",
+            "Fig. 3. Taxones de la lista UE con registro en Cataluña, por grupo taxonómico y categoría de detección.",
         ),
         (
             "material/figuras/prosperan_panel_top8.png",
             "Fig. 4. Razón de tasas anual de detección 2013–2025 (GLM binomial negativo, offset log esfuerzo; IC 95 %) para las 17 especies de la lista UE estimables; rojo = descenso significativo (FDR&lt;0,05).",
+        ),
+        (
+            "material/figuras/marinas_retraso_ciudadano_20261015.png",
+            "Fig. 7. Primer registro en la literatura (aprox.) frente al primer registro ciudadano en Cataluña, especies marinas seleccionadas.",
         ),
         (
             "material/figuras/expansion/expansion_5y_Caulerpa_cylindracea.png",

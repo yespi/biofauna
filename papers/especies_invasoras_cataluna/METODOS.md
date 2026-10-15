@@ -11,7 +11,7 @@ El área de estudio es Cataluña. Las observaciones proceden de:
 - **iNaturalist:** place Cataluña (61614) y España (6774) para comparaciones nacionales.
 - **Minka:** registros dentro de una **caja rectangular** (0,1–3,4° E; 40,45–42,95° N), que incluye territorio no catalán (Aragón, Andorra, Francia) y mar; el recorte al polígono administrativo ICGC está pendiente (plan P1). La franja marina de 12 millas anunciada en versiones previas no se aplicó.
 
-Para cada región reportamos el **máximo** entre fuentes, no la suma. Es una **cota inferior**, no una unión deduplicada (el solape iNaturalist–Minka no se ha medido) y puede proceder de una fuente distinta según la especie.
+Para cada región reportamos el **máximo** entre fuentes, no la suma. Es una **cota inferior**, no una unión deduplicada a nivel de observación individual. En la caja de estudio, al agrupar por taxón, año y celda de ~1 km (coordenadas redondeadas), el solape iNaturalist–Minka representa ~0,4 % de las observaciones *research grade* (372.987 frente a 374.348); los conteos por especie siguen sin deduplicar entre plataformas.
 
 **Filtros de calidad:** grado de investigación (*research grade*), exclusión de observaciones cautivas o cultivadas (`captive=false`) y precisión posicional ≤ 1 km «cuando el campo está disponible»; estos dos últimos filtros **no han sido auditados** en los ficheros finales. Fecha de descarga: octubre de 2026.
 
@@ -31,7 +31,9 @@ Los valores centinela 99,0 del ratio de esfuerzo se sustituyeron por «n. d.» c
 
 ## 2.4 Esfuerzo y tasa de detección
 
-El esfuerzo anual se aproximó por el **número total de observaciones de la base BioQuest (694 taxones, iNaturalist + Minka) dentro de la caja de Cataluña** en cada año (`material/esfuerzo_bioquest_anual.csv`). **No** es el total de iNaturalist/Minka ni se estratifica por grupo taxonómico, y contiene al numerador. Esta aproximación es débil: el valor de 2008 (858) y el crecimiento 2021–2024 (10.939 → 102.301) sugieren efectos de ingesta de la base. 2026 es un año parcial y se excluye de los modelos. La tasa de detección es observaciones de la especie por 1000 observaciones de esfuerzo.
+El esfuerzo anual del modelo se aproximó por el **número total de observaciones de la base BioQuest (694 taxones, iNaturalist + Minka) dentro de la caja de Cataluña** en cada año (Tabla S2). **No** es el total de iNaturalist/Minka ni coincide taxonómicamente con cada especie de la lista UE, y el numerador puede formar parte del denominador. Como sensibilidad descriptiva (plan P1, parcial), calculamos series paralelas por grupo taxonómico (*iconic*) para los taxones del catálogo en la misma caja (Fig. 2 cont.). El valor de 2008 (858) y el crecimiento 2021–2024 (10.939 → 102.301) sugieren efectos de ingesta de la base. 2026 es un año parcial y se excluye de los modelos. La tasa de detección es observaciones de la especie por 1000 observaciones de esfuerzo.
+
+Para taxones ausentes en Cataluña pero presentes en España según EASIN, estimamos de forma exploratoria la probabilidad de cero registros locales si la especie estuviera presente (plan P3), usando la tasa relativa en España y el esfuerzo catalán de 2024 como referencia.
 
 ## 2.5 Tendencias temporales
 

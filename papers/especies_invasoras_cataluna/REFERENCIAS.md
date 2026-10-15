@@ -24,4 +24,10 @@ García-Gómez, J.C., et al. (2020). From exotic to invasive in record time: the
 
 Grizel, H. & Héral, M. (1991). Introduction into France of the Japanese oyster (*Crassostrea gigas*). *ICES Journal of Marine Science* **47**, 399–403. https://doi.org/10.1093/icesjms/47.3.399
 
-EASIN — European Alien Species Information Network, Joint Research Centre (consulta 15-oct-2026): https://easin.jrc.ec.europa.eu · WoRMS Editorial Board: World Register of Marine Species (consulta 15-oct-2026): https://www.marinespecies.org
+EASIN — European Alien Species Information Network, Joint Research Centre (consulta 15-oct-2026): https://easin.jrc.ec.europa.eu
+
+EXOCAT — Base de dades de espècies exòtiques de Catalunya, Generalitat de Catalunya / CREAF: https://exocat.creaf.cat
+
+CABI — Invasive Species Compendium: https://www.cabi.org/isc
+
+WoRMS Editorial Board: World Register of Marine Species (consulta 15-oct-2026): https://www.marinespecies.org

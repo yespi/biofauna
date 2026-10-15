@@ -1,6 +1,6 @@
 # 5. Conclusiones
 
-1. De los 114 taxones de la lista de la Unión, 35 tienen al menos un registro ciudadano en Cataluña; 79 no, lo que no implica ausencia biológica sino detectabilidad y cobertura limitadas (sin estimar aún la potencia de ausencia).
+1. De los 114 taxones de la lista de la Unión, 35 tienen al menos un registro ciudadano en Cataluña; 79 no, lo que no implica ausencia biológica sino detectabilidad y cobertura limitadas. En 7 de 19 ausentes locales con presencia española en EASIN, la probabilidad de no detectarlos sería baja si estuvieran presentes con tasas similares (análisis exploratorio P3).
 
 2. *Rugulopteryx okamurae* es el único taxón de la lista con hábitat marino y registros en Cataluña (101 observaciones, cuatro observadores desde 2024); es el caso prioritario para vigilancia bentónica, con la salvedad de que su serie es demasiado corta para estimar tendencia.
 
