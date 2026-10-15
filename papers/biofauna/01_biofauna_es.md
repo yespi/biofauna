@@ -11,6 +11,8 @@
 ---
 
 
+**Actualización 2026-10-15 — índice p15 en producción.** Producción sirve ahora el índice **p15** (promovido el 14-oct-2026 a las 17:04 CEST): **2.988 especies, 1.289.637 vectores** (p13 anterior: 3.113 especies, 1.300.986 vectores; la bajada de especies viene de la barrera que solo deja en el índice especies del catálogo con evaluación sin fuga). Acierto limpio: **81,0 %** top-1 de especie sobre **44.529** fotos de observaciones sin fuga (test congelado disjunto por observador y observación, `overall_accuracy_clean`, 12-oct-2026). En el promote de p15 la guardia de fuga midió −0,18 pp netos sobre las filas limpias (81,73 → 81,55 %, otra ejecución/base distinta de la cifra de 81,0 %), así que el promote aportó higiene de catálogo, no acierto. Novedad en §5.5: acierto por cuartil de tamaño de galería y propuesta de prior zona/mes.
+
 **Actualización 29-sep-2026 — evaluación de campo ampliada a 76.585 filas, fuga a nivel de observador purgada, segmentación por realm.** Dos rondas de minería ampliaron la evaluación de campo de 62.408 a **76.585 filas** (ronda 1: +11.156 filas al 84,8% de acierto; ronda 2: +4.691 filas al 87,8%). Una auditoría a nivel de revisor midió la **fuga por observación/observador**: el 2,17% de las filas (1.595) compartían el id de observación o el observador con la galería de referencia de su propia especie; excluirlas cambia el acierto solo **−0,14 pp**, por lo que la cifra operativa no está inflada de forma material. Acierto final segmentado: **82,34% global** (76.585 filas), marino 80,37%, terrestre 93,37%, aves 92,22%, foránea 82,08%. El campo `realm` (marine / terrestrial / aves / foranea) se añadió al catálogo como **metadato para estadísticas segmentadas** — **no filtra** la identificación ni la publicación, porque Minka incluye aves y organismos terrestres. **Composición de la cifra (revisión del 29-sep):** el eval original (60.743 filas) da **81,18%**, comparable con versiones anteriores; las 15.842 filas minadas dan 85,5% y 89,9% en las dos rondas, pero en las 1.785 especies con filas de ambos tipos el acierto es equivalente (86,8% minadas frente a 86,1% originales). El aumento global refleja, por tanto, la composición por especies y no un cambio del modelo (que no cambió). Todas las filas minadas pasaron el mismo filtro de fuga (observación, observador, similitud de embedding ≥ 0,98). **Precisión real de las publicaciones de AutoID** (500 publicaciones históricas, 493 verificables frente a identificaciones posteriores de terceros en Minka): **96,6%** (IC95% 94,5–97,8); por banda de confianza calibrada 85% (0,83–0,85, n=27), 93% (0,85–0,90), 95,5% (0,90–0,95), 99% (≥0,95, n=252). **Composición del 82,34%.** Agrupa tres bloques: el conjunto de evaluación original (60.743 filas, **81,18%**, la cifra comparable con todas las versiones anteriores), la ronda 1 de minería (11.154 filas tras la purga, 85,49%) y la ronda 2 (4.688 filas, 89,87%). Dentro de las 1.785 especies con filas en el bloque original y en los minados, el acierto es 86,1% frente a 86,8% (+0,7 pp): a igualdad de especie las filas minadas no son más fáciles, y la subida viene sobre todo de la composición (especies con más pool). **Para comparar con versiones anteriores, usar 81,18%.**
 
 **Actualización 2026-10-08/09 — promote all08it2: OOS 83,14 %.** Tras el promote auditado *all08it2* (8-oct 23:42 CEST; backup `dataset/bak_promote_all08it2_20261008_223714`), el panel de campo de **78.145** filas queda en **83,14 %** de acierto de especie fuera de muestra (`dataset/stats.json` `overall_accuracy=0.8314`; `calibration.field_acc.species`; `calib_raw_t05_meta.json` acc≈0,831416). Serie de promociones del panel: **82,463 → 82,626 → 82,85 → 83,14** (§5.3 + promote all08it2; delta del staging +0,294 pp en `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). Acierto jerárquico en el mismo eval: **género 87,9 %** (0,8793) y **familia 91,0 %** (0,9102). AutoID sigue con umbral de especie **0,83**; sobre el eval completo, aplicando el calibrador vigente (`calibration.json` + `calib_raw_t05.jsonl`): **precisión 95,97 % ≈ 96 %** y **cobertura 66,42 % ≈ 66,5 %** (n publicables 51.906 / 78.145). Figuras: [`figures/`](figures/). Detalle en §5.4.
@@ -380,6 +382,21 @@ La tabla `operating_points` del calibrador **no** incluye exactamente 0,83 (salt
 
 Figuras generadas (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`, `fig_acc_especie_genero_familia.png`, `fig_autoid_precision_cobertura.png`, `fig_metodos_descartados.png` (fuentes en `figures/fuentes_cifras_20261009.json`).
 
+## 5.5 Actualización 2026-10-15: acierto por tamaño de galería y prior zona/mes
+
+**Acierto por cuartil de tamaño de galería (medido, CPU, solo lectura).** Se cruzaron las claves limpias (`eval_limpio_v3_keys_20261012.json`, 44.529 claves) con los registros por foto de `calib_raw_t05.jsonl` y los vectores por especie del índice p15 (`species_ids.npy`, 1.289.637 vectores, 2.988 especies). Coinciden 44.480 fotos; 58 son de especies sin vectores en p15 y se excluyen de la tabla, quedando 44.422. Las fotos se ordenan por el número de vectores de galería de su especie real y se cortan en cuatro grupos iguales:
+
+| Cuartil | Vectores de la especie real | Fotos | Top-1 especie |
+|---|---|---|---|
+| Q1 (galerías más pequeñas) | 5–167 | 11.105 | **73,97 %** |
+| Q2 | 167–399 | 11.106 | 81,59 % |
+| Q3 | 399–816 | 11.105 | 86,86 % |
+| Q4 (galerías más grandes) | 816–3.208 | 11.106 | 86,79 % |
+
+En conjunto, este fichero de puntuación da 82,20 % sobre las 44.480 fotos cruzadas (contiene las decisiones posteriores a p15; la cifra de 81,0 % es la del test congelado de `stats.json`, no deben mezclarse). Lectura: el acierto sube con el tamaño de la galería hasta unos 400–800 vectores y luego se estabiliza; el cuartil más pequeño pierde unos 13 pp frente al mayor. Es una correlación (las especies raras también son más difíciles y tienen menos fotos, y menos variadas), así que no prueba que añadir fotos baste para cerrar la brecha. Sí justifica priorizar la cosecha en especies con menos de ~170 vectores, y rebaja la Limitación 10.
+
+**Prior zona/mes (propuesta y lo ya medido).** Los priors espacio-temporales de solo presencia mejoran la clasificación de grano fino cuando se conocen lugar y fecha de la foto (Mac Aodha et al., 2019 [14]). BioFauna ya aplica un prior geográfico multiplicativo (§2.2). Dos resultados internos acotan la mejora esperable: un prior puramente temporal (estacional) se descartó a escala completa (76,84 → 76,64 %), y un prior de zona como desempate solo ayudó con condición ≥10× (+3/−0, pocos casos). Por tanto **no** se afirma mejora de un prior conjunto zona × mes; el experimento propuesto es un A/B sin fuga sobre las 44.529 fotos, con el prior calculado desde observaciones del catálogo que excluyan las del test, con test de McNemar. Aún no hay resultado.
+
 ## 6. Limitaciones
 
 1. El top-1 de especie no es nivel experto en invertebrados crípticos.
@@ -423,7 +440,7 @@ Código, prototipos, catálogo, calibradores, priors, pares crípticos: este rep
 
 ## Referencias
 
-Las mismas que la versión inglesa (`01_biofauna.md`).
+Las mismas que la versión inglesa (`01_biofauna.md`), incl. [14] Mac Aodha, Cole & Perona (2019), ICCV, doi:10.1109/ICCV.2019.00969.
 
 ---
 

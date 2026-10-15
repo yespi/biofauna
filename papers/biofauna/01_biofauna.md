@@ -11,6 +11,8 @@
 ---
 
 
+**Update 2026-10-15 — index p15 in production.** Production now serves the **p15** index (promoted 2026-10-14 17:04 CEST): **2,988 species, 1,289,637 vectors** (previous p13: 3,113 species, 1,300,986 vectors; the drop in species comes from the barrier that keeps in the index only catalogue species with a leak-free evaluation set). Leak-free accuracy: **81.0 %** species top-1 on **44,529** photos from observations without leakage (observer- and observation-disjoint frozen test, `overall_accuracy_clean`, 2026-10-12). On the p15 promote the leak guard measured a net change of −0.18 pp on the leak-free rows (81.73 → 81.55 %, a different run/base from the 81.0 % headline), so the promote bought catalogue hygiene, not accuracy. New in §5.5: accuracy by gallery-size quartile and the case for a zone/month prior.
+
 **Update 2026-09-29 — field evaluation expanded to 76,585 rows, observer-level leakage purged, realm segmentation.** Two mining rounds extended the field evaluation from 62,408 to **76,585 rows** (round 1: +11,156 rows at 84.8% accuracy; round 2: +4,691 rows at 87.8%). A reviewer-grade audit measured **observation/observer leakage**: 2.17% of rows (1,595) shared an observation id or an observer with the reference gallery of their own species; excluding them changes accuracy by only **−0.14 pp**, so the operating figure is not materially inflated. Final segmented accuracy: **82.34% overall** (76,585 rows), marine 80.37%, terrestrial 93.37%, aves 92.22%, foranea 82.08%. The `realm` field (marine / terrestrial / aves / foranea) was added to the catalog as **metadata for segmented statistics** — it does **not** filter identification or publication, since Minka includes birds and terrestrial organisms. **Composition of the figure (review of 29-Sep):** the original evaluation set (60,743 rows) scores **81.18%**, comparable with earlier versions; the 15,842 mined rows score 85.5% and 89.9% in the two rounds, but on the 1,785 species that have both kinds of rows the accuracy is equivalent (86.8% mined vs 86.1% original). The overall increase therefore reflects the species mix, not a model change (the model did not change). All mined rows passed the same leakage filter (observation, observer, embedding similarity ≥ 0.98). **Real precision of AutoID publications** (500 historical publications, 493 verifiable against later third-party identifications on Minka): **96.6%** (95% CI 94.5–97.8); by calibrated confidence band 85% (0.83–0.85, n=27), 93% (0.85–0.90), 95.5% (0.90–0.95), 99% (≥0.95, n=252). **Composition of the 82.34%.** It pools three blocks: the original evaluation set (60,743 rows, **81.18%**, the figure comparable with every earlier version), mining round 1 (11,154 rows after the purge, 85.49%) and round 2 (4,688 rows, 89.87%). Within the 1,785 species that have rows in both the original and the mined blocks, accuracy is 86.1% vs 86.8% (+0.7 pp): at equal species the mined rows are not easier, and the rise comes mostly from composition (species with larger pools). **When comparing with earlier versions, use 81.18%.**
 
 **Update 2026-10-08/09 — all08it2 promote: OOS 83.14 %.** After the audited *all08it2* promote (8 Oct 23:42 CEST; backup `dataset/bak_promote_all08it2_20261008_223714`), the field panel of **78,145** rows stands at **83.14 %** out-of-sample species accuracy (`dataset/stats.json` `overall_accuracy=0.8314`; `calibration.field_acc.species`; `calib_raw_t05_meta.json` acc≈0.831416). Promotion series on the panel: **82.463 → 82.626 → 82.85 → 83.14** (§5.3 + all08it2; staging delta +0.294 pp in `artifacts/decide_promote_calib_raw_t05_stg_all08it2_20261005.json`). Hierarchical accuracy on the same eval: **genus 87.9 %** (0.8793) and **family 91.0 %** (0.9102). AutoID keeps the species threshold at **0.83**; on the full eval with the live calibrator (`calibration.json` + `calib_raw_t05.jsonl`): **precision 95.97 % ≈ 96 %** and **coverage 66.42 % ≈ 66.5 %** (51,906 / 78,145 publishable). Figures: [`figures/`](figures/). Details in §5.4.
@@ -376,6 +378,21 @@ The calibrator's `operating_points` table does **not** include exactly 0.83 (it 
 
 Generated figures (matplotlib, 2026-10-09): `figures/fig_serie_oos_promotes.png`, `fig_acc_especie_genero_familia.png`, `fig_autoid_precision_cobertura.png`, `fig_metodos_descartados.png` (sources in `figures/fuentes_cifras_20261009.json`).
 
+## 5.5 Update 2026-10-15: accuracy by gallery size, and a zone/month prior
+
+**Accuracy by gallery-size quartile (measured, CPU, read-only).** We joined the leak-free keys (`eval_limpio_v3_keys_20261012.json`, 44,529 keys) with the per-photo records of `calib_raw_t05.jsonl` and the per-species vector counts of the p15 index (`species_ids.npy`, 1,289,637 vectors, 2,988 species). 44,480 photos match; 58 of them belong to species without vectors in p15 and are excluded from the table, leaving 44,422. Photos are ordered by the number of gallery vectors of their true species and cut into four equal groups:
+
+| Quartile | Vectors of the true species | Photos | Species top-1 |
+|---|---|---|---|
+| Q1 (smallest galleries) | 5–167 | 11,105 | **73.97 %** |
+| Q2 | 167–399 | 11,106 | 81.59 % |
+| Q3 | 399–816 | 11,105 | 86.86 % |
+| Q4 (largest galleries) | 816–3,208 | 11,106 | 86.79 % |
+
+Overall, this scoring file gives 82.20 % on the 44,480 matched photos (it holds the post-p15 decisions; the 81.0 % headline is the `stats.json` frozen-test figure, so the two should not be mixed). Reading: accuracy rises with gallery size up to about 400–800 vectors and then plateaus; the smallest quartile loses about 13 pp against the largest. This is correlational (rare species are also harder and have fewer, less diverse photos), so it does not prove that adding photos alone would close the gap. It does justify prioritising harvest on species with fewer than ~170 vectors, which also lifts Limitation 10.
+
+**Zone/month prior (proposal and what is already measured).** Presence-only spatio-temporal priors improve fine-grained image classification when the location and date of the photo are known (Mac Aodha et al., 2019 [14]). BioFauna already applies a multiplicative geographic prior (§2.2). Two internal results bound the expected gain: a purely temporal (seasonal) prior was discarded at full scale (76.84 → 76.64 %), and a zone prior used as tie-break only helped under a ≥10× condition (+3/−0, too few cases). We therefore do **not** claim a gain from a joint zone × month prior; the proposed experiment is a leak-free A/B on the 44,529-photo test with the prior computed from catalogue observations excluding the test observations, reported with a McNemar test. No result is available yet.
+
 ## 6. Limitations
 
 1. Species top-1 is not expert-level on cryptic invertebrates.
@@ -432,6 +449,7 @@ Code, prototypes, catalog, calibrators, geo priors, cryptic pairs: this reposito
 11. Salvador, X., Lázaro, J. & Fuentes, M.A. (2022). Invertebrats marins de la Vall del Ridaura. Digital CSIC.
 12. Schroff, F. et al. (2015). FaceNet. *CVPR*.
 13. Hermans, A. et al. (2017). Triplet loss. arXiv:1703.07737.
+14. Mac Aodha, O., Cole, E. & Perona, P. (2019). Presence-Only Geographical Priors for Fine-Grained Image Classification. *ICCV*. doi:10.1109/ICCV.2019.00969
 
 ---
 
