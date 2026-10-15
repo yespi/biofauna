@@ -9,3 +9,5 @@
 ## Material
 [`material/`](material/) — CSV/JSON, figuras, láminas A3/A4, scripts de regeneración.  
 Panel prosperan: `material/figuras/prosperan_panel_top8.png` · suplementario: `material/figuras/prosperan_suplementario.pdf`.
+
+**Cruce con Zenetos et al. 2022 (15-oct-2026):** [`CRUCE_ZENETOS2022_20261015.md`](CRUCE_ZENETOS2022_20261015.md) — DOI https://doi.org/10.12681/mms.29106. Parcial: falta el Annex 1 del artículo.
