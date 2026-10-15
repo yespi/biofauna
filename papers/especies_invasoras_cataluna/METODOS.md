@@ -23,9 +23,9 @@ Reglas aplicadas una sola vez en todo el manuscrito (no equivalen a estatus EASI
 |---|---|
 | Ausente | 0 observaciones en todas las fuentes |
 | Ocasional | &lt; 10 observaciones, o &lt; 3 celdas UTM de 10 km, o &lt; 3 años con registros |
-| Llegada reciente / serie insuficiente | Menos de 5 años con datos en cada ventana temporal usada para tendencias |
-| En expansión | ≥ 10 obs, ≥ 5 años por ventana y pendiente del modelo de tendencia positiva con FDR &lt; 0,05 |
-| Establecida | Resto con ≥ 10 obs, ≥ 3 celdas y ≥ 3 años |
+| Llegada reciente / serie insuficiente | Primer registro ≥ 2020 (serie < 5 años; no estimable) |
+| En expansión | ≥ 10 obs, ≥ 5 años y razón de tasas > 1 con FDR &lt; 0,05 (ninguna especie la cumple) |
+| Recurrente | Resto con ≥ 10 obs, ≥ 3 celdas y ≥ 3 años (describe detección repetida; no implica población establecida) |
 
 Los valores centinela 99,0 del ratio de esfuerzo se sustituyeron por «n. d.» cuando no hay ventana previa suficiente.
 

@@ -53,7 +53,7 @@ Las series de ciencia ciudadana muestran un núcleo denso de registros en el Mar
 |---|---|
 | Origen | Endemismo del suroeste de Australia (población invasora mediterránea; Verlaque et al. 2003, pendiente verificar DOI) |
 | Vía | Transporte marítimo y/o acuariofilia (incierta); no solo «lastre» |
-| 1ª cita Med (lit.) | 1990, Libia (Verlaque et al.; pendiente verificar) |
+| 1ª cita Med (lit.) | 1990, Libia (Verlaque et al.; sin DOI verificado) |
 | BioQuest | Med **2005-07**; ES/CAT **2014-08** (n CAT 402) |
 | iNat CAT (paper) | 2014-11-11 |
 | Frente / velocidad | De Cerdeña/Córcega (~2005–2013 en BQ) a Cataluña **2014**; luego densificación 2021–2025 (mapa 5 años). |
@@ -118,7 +118,7 @@ Las series de ciencia ciudadana muestran un núcleo denso de registros en el Mar
 | Campo | Contenido |
 |---|---|
 | Origen | Pacífico noroccidental (Japón/Corea) |
-| Vía | Dos episodios: (1) introducción acuícola en laguna de Thau (Francia, ~2002; Verlaque et al. 2009, pendiente verificar); (2) expansión desde el Estrecho de Gibraltar (2015–2016; [García-Gómez et al. 2020](https://doi.org/10.1016/j.scitotenv.2019.135408)); avance hacia el este [Bottalico et al. 2024](https://doi.org/10.12681/mms.36947). |
+| Vía | Dos episodios: (1) introducción acuícola en laguna de Thau (Francia, ~2002; [Verlaque et al. 2009](https://doi.org/10.2216/08-103.1)); EASIN la clasifica como «contaminante de animales» (compatible con importaciones de ostras); (2) expansión desde el Estrecho de Gibraltar (2015–2016; [García-Gómez et al. 2020](https://doi.org/10.1016/j.scitotenv.2019.135408)); avance hacia el este [Bottalico et al. 2024](https://doi.org/10.12681/mms.36947). |
 | Datos paper | iNat España **2019-08-16**; iNat Cataluña **2024-05-31** (101 obs; 4 observadores). |
 | Frente | Andalucía → Mediterráneo occidental; Cataluña en fase reciente (ciudadana). |
 | Causas | Fouling, competencia agresiva, posibles condiciones térmicas favorables (**hipótesis**). |
@@ -147,7 +147,7 @@ Las series de ciencia ciudadana muestran un núcleo denso de registros en el Mar
 |---|---|
 | Origen | Pacífico NW |
 | Vía al Mediterráneo | **Introducción acuícola directa** (no expansión natural Cantábrico→Med por tierra). Semillas y stock de cultivo transferidos a lagunas y deltas; también **fouling** y transporte de semillas en cascos/equipo. |
-| Focos documentados | Francia atlántica → Med (introducción a Francia: [Grizel & Héral 1991](https://doi.org/10.1093/icesjms/47.3.399)); cultivo en **Thau** ([Gangnery et al. 2003](https://doi.org/10.1016/s0044-8486(02)00351-4)); **Delta del Ebro** ([Ochoa et al. 2013](https://doi.org/10.1007/s10661-013-3064-z)); Adriático / Venecia ([Orban et al. 2004](https://doi.org/10.1002/jsfa.1896)); ensayos Med central ([Agius et al. 1978](https://doi.org/10.1016/0044-8486(78)90031-5)); ficha CABI ([Magallana gigas](https://doi.org/10.1079/cabicompendium.87296)). **Mar Menor:** presencia/cultivo histórico citada en revisiones locales — aquí **hipótesis** sin DOI primario re-verificado en esta sesión. |
+| Focos documentados | Francia atlántica → Med (introducción a Francia: [Grizel & Héral 1991](https://doi.org/10.1093/icesjms/47.3.399)); el cultivo en Thau, Delta del Ebro, Venecia o Malta está descrito en la literatura de acuicultura, pero esos trabajos tratan crecimiento o calidad del producto y **no se usan aquí como evidencia de vía**; ficha CABI ([Magallana gigas](https://doi.org/10.1079/cabicompendium.87296)). **Mar Menor:** presencia/cultivo histórico citada en revisiones locales — aquí **hipótesis** sin DOI primario re-verificado en esta sesión. |
 | BioQuest (corregido) | 1ª fila ES/Atlántico N **1999-11** (Cantábrico; **no** es Mediterráneo). 1ª en Med verdadero ≈ **2010** (Thau, FR). CAT: **2018-04** (costa NE) / densificación Delta ~2019+. n CAT 28. |
 | Figura | [`lamina_expansion_Magallana_gigas_A3.png`](material/laminas_expansion/lamina_expansion_Magallana_gigas_A3.png) (suplemento) |
 
@@ -174,36 +174,36 @@ Para terrestres/dulceacuícolas, BioQuest Academy **casi no** tiene filas (salvo
 
 | Especie | Origen | Vía | 1ª CAT (ciudadana) | 1ª ES | Tendencia | Causa / fuente |
 |---|---|---|---|---|---|---|
-| *Ailanthus altissima* | China / Asia E | Ornamental / vías y suelos perturbados | 2008-06-08 | 2002-05-29 | en_expansion | Ornamental histórica; **hipótesis** facilitada por bordes urbanos |
-| *Myocastor coypus* | Sudamérica | Peletería / escapes | 2012-06-25 | 2012-06-25 | establecida | [Bertolino CABI 2008](https://doi.org/10.1079/cabicompendium.73537) (ficha); escapes |
-| *Broussonetia papyrifera* | Asia E | Ornamental | 2017-06-09 | 2016-04-15 | establecida | Ornamental; **hipótesis** |
-| *Alopochen aegyptiaca* | África | Ornamental / escapes | 2010-04-16 | 2002-11-30 | establecida | Aves de colección; **hipótesis** |
-| *Vespa velutina nigrithorax* | Asia SE | Comercio hortícola / accidental (Francia → Iberia) | 2017-11-22 | 2015-11-20 | en_expansion | [Monceau et al. 2013](https://doi.org/10.1007/s10340-013-0537-3) |
-| *Neogale vison* | Norteamérica | Escapes granjas peleteras | 2010-08-08 | 2010-08-08 | establecida | `academy_invasive`; BQ CAT desde 2010 |
-| *Pennisetum setaceum* | África | Ornamental | 2016-01-20 | 2000-09-06 | en_expansion | Jardinería; **hipótesis** |
-| *Delairea odorata* | Sudáfrica | Ornamental | 2009-12-29 | 2009-05-15 | en_expansion | Jardinería; **hipótesis** |
-| *Acacia saligna* | Australia | Forestación / ornamental | 2019-07-08 | 2006-02-13 | en_expansion | Plantaciones; **hipótesis** |
-| *Obama nungara* | Argentina | Comercio de plantas | 2016-02-29 | 2016-02-29 | establecida | [Justine et al. 2020](https://doi.org/10.7717/peerj.8385) |
-| *Threskiornis aethiopicus* | África | Zoos / escapes | 2005-03-25 | 2004-04-15 | establecida | Escapes; **hipótesis** |
-| *Reynoutria japonica* | Asia E | Ornamental | 2018-07-20 | 2008-09-24 | establecida | Jardinería histórica; **hipótesis** |
-| *Impatiens glandulifera* | Himalaya | Ornamental / ríos | 2022-08-21 | 2019-08-15 | en_expansion | Dispersión fluvial; **hipótesis** |
+| *Ailanthus altissima* | China / Asia E | Control de erosión, mejora del paisaje, jardín botánico (EASIN); bordes urbanos = hipótesis | 2008-06-08 | 2002-05-29 | recurrente | Ornamental histórica; **hipótesis** facilitada por bordes urbanos |
+| *Myocastor coypus* | Sudamérica | Peletería / escapes | 2012-06-25 | 2012-06-25 | recurrente | [Bertolino CABI 2008](https://doi.org/10.1079/cabicompendium.73537) (ficha); escapes |
+| *Broussonetia papyrifera* | Asia E | Ornamental | 2017-06-09 | 2016-04-15 | recurrente | Ornamental; **hipótesis** |
+| *Alopochen aegyptiaca* | África | Ornamental / escapes | 2010-04-16 | 2002-11-30 | recurrente | Aves de colección; **hipótesis** |
+| *Vespa velutina nigrithorax* | Asia SE | Mercancía importada (contenedor/embalaje; EASIN) — Francia → Iberia | 2017-11-22 | 2015-11-20 | recurrente | [Monceau et al. 2013](https://doi.org/10.1007/s10340-013-0537-3) |
+| *Neogale vison* | Norteamérica | Escapes granjas peleteras | 2010-08-08 | 2010-08-08 | recurrente | `academy_invasive`; BQ CAT desde 2010 |
+| *Pennisetum setaceum* | África | Ornamental | 2016-01-20 | 2000-09-06 | recurrente | Jardinería; **hipótesis** |
+| *Delairea odorata* | Sudáfrica | Ornamental | 2009-12-29 | 2009-05-15 | recurrente | Jardinería; **hipótesis** |
+| *Acacia saligna* | Australia | Forestación / ornamental | 2019-07-08 | 2006-02-13 | recurrente | Plantaciones; **hipótesis** |
+| *Obama nungara* | Argentina | Comercio de plantas | 2016-02-29 | 2016-02-29 | recurrente | [Justine et al. 2020](https://doi.org/10.7717/peerj.8385) |
+| *Threskiornis aethiopicus* | África | Zoos / escapes | 2005-03-25 | 2004-04-15 | recurrente | Escapes; **hipótesis** |
+| *Reynoutria japonica* | Asia E | Ornamental | 2018-07-20 | 2008-09-24 | recurrente | Jardinería histórica; **hipótesis** |
+| *Impatiens glandulifera* | Himalaya | Ornamental / ríos | 2022-08-21 | 2019-08-15 | recurrente | Dispersión fluvial; **hipótesis** |
 
 ### 4.2 Agua dulce
 
 | Especie | Origen | Vía | 1ª CAT | 1ª ES | Tendencia | Causa / fuente |
 |---|---|---|---|---|---|---|
-| *Procambarus clarkii* | Norteamérica | **Acuicultura** / arrozales | 2001-09-23 | 1990-09-01 | establecida | [Gherardi & Barbaresi 2000](https://doi.org/10.1127/archiv-hydrobiol/150/2000/153); [Rodríguez et al. 2003](https://doi.org/10.1023/b:hydr.0000008626.07042.87) |
-| *Trachemys scripta elegans* | Norteamérica | **Mascotas** (liberación) | 2006-05-06 | 2004-03-20 | establecida | `academy_invasive`; BQ (*T. scripta*) CAT desde 1994-05 |
-| *Gambusia holbrooki* | Norteamérica | Control biológico de mosquitos | 2007-07-13 | 2007-07-13 | en_expansion | Introducciones oficiales históricas; **hipótesis** detallada local |
-| *Ludwigia peploides* | América | Ornamental acuática | 2009-08-02 | 2009-08-02 | en_expansion | Acuariofilia / estanques; **hipótesis** |
-| *Lepomis gibbosus* | Norteamérica | Acuicultura / pesca | 2003-07-21 | 2003-07-21 | establecida | Introducciones deportivas; **hipótesis** |
-| *Pacifastacus leniusculus* | Norteamérica | Acuicultura / cangrejería | 2018-08-27 | 2006-02-26 | establecida | Introducciones; **hipótesis** |
+| *Procambarus clarkii* | Norteamérica | **Acuicultura** / arrozales | 2001-09-23 | 1990-09-01 | recurrente | EASIN: acuicultura, mascotas/acuario, ornamental (primera cita en España 1973); Gherardi & Barbaresi 2000 y Rodríguez et al. 2003 describen su ecología/impacto, no la vía hacia Cataluña |
+| *Trachemys scripta elegans* | Norteamérica | **Mascotas** (liberación) | 2006-05-06 | 2004-03-20 | recurrente | `academy_invasive`; BQ (*T. scripta*) CAT desde 1994-05 |
+| *Gambusia holbrooki* | Norteamérica | Control biológico de mosquitos | 2007-07-13 | 2007-07-13 | recurrente | Introducciones oficiales históricas; **hipótesis** detallada local |
+| *Ludwigia peploides* | América | Ornamental acuática | 2009-08-02 | 2009-08-02 | recurrente | Acuariofilia / estanques; **hipótesis** |
+| *Lepomis gibbosus* | Norteamérica | Control biológico + pesca deportiva (EASIN) | 2003-07-21 | 2003-07-21 | recurrente | Introducciones deportivas; **hipótesis** |
+| *Pacifastacus leniusculus* | Norteamérica | Acuicultura / cangrejería | 2018-08-27 | 2006-02-26 | recurrente | Introducciones; **hipótesis** |
 
 ### 4.3 Marina UE
 
 | Especie | Origen | Vía | 1ª CAT | 1ª ES | Tendencia | Fuente |
 |---|---|---|---|---|---|---|
-| *Rugulopteryx okamurae* | Pacífico NW | Shipping / fouling | 2024-05-31 | 2019-08-16 | en_expansion | [García-Gómez et al. 2020](https://doi.org/10.1016/j.scitotenv.2019.135408) |
+| *Rugulopteryx okamurae* | Pacífico NW | Contaminante de animales (ostras; EASIN); fouling = hipótesis | 2024-05-31 | 2019-08-16 | llegada reciente (serie corta) | [García-Gómez et al. 2020](https://doi.org/10.1016/j.scitotenv.2019.135408) |
 
 ---
 
@@ -213,13 +213,13 @@ Archivo: [`material/tabla_origen_vias_resumen.csv`](material/tabla_origen_vias_r
 
 ---
 
-## 6. Referencias (DOI verificados Crossref, 10-oct-2026)
+## 6. Referencias (DOI verificados Crossref, 10 y 15-oct-2026; títulos y autores revisados el 15-oct)
 
 Solo se listan DOI que devolvieron metadatos válidos en `api.crossref.org/works/{doi}`.
 
-1. Golani, D. & Sonin, O. (1992). https://doi.org/10.1007/bf02906001  
+1. Golani, D. & Sonin, O. (1992), *Pterois miles* y *Pteragogus pelycus*, Jpn. J. Ichthyol. 39:167–169. https://doi.org/10.1007/bf02906001  
 2. Bariche, M., Torres, M. & Azzurro, E. (2013). https://doi.org/10.12681/mms.470  
-3. Kletou, D., Hall-Spencer, J.M. & Kleitou, P. (2016). https://doi.org/10.1186/s41200-016-0065-y  
+3. Kletou, D., Hall-Spencer, J.M. & Kleitou, P. (2016). A lionfish (*Pterois miles*) invasion has begun in the Mediterranean Sea. https://doi.org/10.1186/s41200-016-0065-y  
 4. Bariche, M. et al. (2017). https://doi.org/10.1038/s41598-017-07326-1  
 5. Azzurro, E. & Bariche, M. (2017). https://doi.org/10.1071/mf16358  
 6. Bernardi, G. et al. (2024). https://doi.org/10.1002/ece3.11087  
@@ -228,7 +228,7 @@ Solo se listan DOI que devolvieron metadatos válidos en `api.crossref.org/works
 9. Streftaris, N. & Zenetos, A. (2006). https://doi.org/10.12681/mms.180  
 10. Zenetos, A. (2010). https://doi.org/10.1007/s10530-009-9679-x  
 11. Katsanevakis, S. et al. (2013). ELNAIS meets EASIN. https://doi.org/10.12681/mms.362  
-12. Katsanevakis, S. et al. (2013). Pathways. https://doi.org/10.1016/j.ocecoaman.2013.02.024  
+12. Katsanevakis, S. et al. (2013). Invading European Seas: assessing pathways of introduction of marine aliens. https://doi.org/10.1016/j.ocecoaman.2013.02.024  
 13. Katsanevakis, S. et al. (2014). https://doi.org/10.3389/fmars.2014.00032  
 14. Katsanevakis, S. et al. (2014). Impacts pan-European. https://doi.org/10.3391/ai.2014.9.4.01  
 15. Galil, B.S. et al. (2014). https://doi.org/10.1007/s10530-014-0778-y  
@@ -253,10 +253,6 @@ Solo se listan DOI que devolvieron metadatos válidos en `api.crossref.org/works
 34. Monceau, K. et al. (2013). https://doi.org/10.1007/s10340-013-0537-3  
 35. Justine, J.-L. et al. (2020). https://doi.org/10.7717/peerj.8385  
 36. Grizel, H. & Héral, M. (1991). Introduction into France of the Japanese oyster (*Crassostrea gigas*). https://doi.org/10.1093/icesjms/47.3.399  
-37. Gangnery, A. et al. (2003). Growth model… Thau Lagoon. https://doi.org/10.1016/s0044-8486(02)00351-4  
-38. Ochoa, V. et al. (2013). *C. gigas* cultured in the Ebro Delta. https://doi.org/10.1007/s10661-013-3064-z  
-39. Orban, E. et al. (2004). Oysters cultured in the Venice lagoon. https://doi.org/10.1002/jsfa.1896  
-40. Agius, C. et al. (1978). Growth trials… Malta. https://doi.org/10.1016/0044-8486(78)90031-5  
 41. CABI (2017). *Magallana gigas*. https://doi.org/10.1079/cabicompendium.87296  
 
 **No usados como prueba** (sin DOI Crossref válido en esta sesión): AquaNIS/EASIN como portales (sin DOI de dataset citado aquí). Mar Menor para *M. gigas* queda como **hipótesis** hasta DOI primario.

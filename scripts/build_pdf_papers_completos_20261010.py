@@ -228,7 +228,7 @@ def build_invasoras_completo() -> Path:
     figs = [
         (
             "material/figuras/esfuerzo_bioquest_catalunya.png",
-            "Fig. 2. Esfuerzo de observación anual en Cataluña (2005–2025). Fuente: agregados de ciencia ciudadana.",
+            "Fig. 2. Esfuerzo: observaciones anuales de la base BioQuest (694 taxones) en la caja de Cataluña, escala logarítmica; 2026 parcial. No es el total de iNaturalist/Minka.",
         ),
         (
             "material/figuras/top25_obs_catalunya.png",
@@ -236,7 +236,7 @@ def build_invasoras_completo() -> Path:
         ),
         (
             "material/figuras/prosperan_panel_top8.png",
-            "Fig. 4. Tendencias de detección (panel de ocho especies representativas; tasa por 1000 obs del grupo).",
+            "Fig. 4. Razón de tasas anual de detección 2013–2025 (GLM binomial negativo, offset log esfuerzo; IC 95 %) para las 17 especies de la lista UE estimables; rojo = descenso significativo (FDR&lt;0,05).",
         ),
         (
             "material/figuras/expansion/expansion_5y_Caulerpa_cylindracea.png",

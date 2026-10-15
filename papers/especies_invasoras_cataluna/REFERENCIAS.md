@@ -2,18 +2,26 @@
 
 Azzurro, E., et al. (2022). ClimateFish: A Collaborative Database to Track the Abundance of Selected Coastal Fish Species as Candidate Indicators of Climate Change in the Mediterranean Sea. *Frontiers in Marine Science* **9**, 910887. https://doi.org/10.3389/fmars.2022.910887
 
-Bariche, M., et al. (2013). First substantiated record of the lionfish *Pterois miles* (Bennett, 1828) in the Mediterranean Sea. *Mediterranean Marine Science* **14**, 292–294. https://doi.org/10.12681/mms.470
+Bariche, M., Torres, M. & Azzurro, E. (2013). The presence of the invasive lionfish *Pterois miles* in the Mediterranean Sea. *Mediterranean Marine Science* **14**. https://doi.org/10.12681/mms.470
 
-Bariche, M., et al. (2017). Genetics reveal the identity and origin of the lionfish invading the Mediterranean Sea. *Scientific Reports* **7**, 7386. https://doi.org/10.1038/s41598-017-07326-1
+Bariche, M., et al. (2017). Genetics reveal the identity and origin of the lionfish invasion in the Mediterranean Sea. *Scientific Reports* **7**, 7386. https://doi.org/10.1038/s41598-017-07326-1
 
 García, M., Weitzmann, B., et al. (2015). First Report on the Distribution and Impact of Marine Alien Species in Coastal Benthic Habitats of Catalonia (NE Spain). En *Handbook of Environmental Chemistry*. https://doi.org/10.1007/698_2015_411
 
-Golani, D., & Sonin, O. (1992). New records of the Red Sea fishes *Pterois miles* and *Pterois volitans* in the Mediterranean. *Israel Journal of Zoology* **38**, 75–76. https://doi.org/10.1007/bf02906001
+Golani, D. & Sonin, O. (1992). New records of the Red Sea fishes, *Pterois miles* (Scorpaenidae) and *Pteragogus pelycus* (Labridae) from the Mediterranean Sea. *Japanese Journal of Ichthyology* **39**, 167–169. https://doi.org/10.1007/bf02906001
 
-Kletou, M., et al. (2016). On the origin and spread of the lionfish in the Mediterranean Sea. *Aquatic Invasions* **11**, 331–334. https://doi.org/10.1186/s41200-016-0065-y
+Kletou, D., Hall-Spencer, J.M. & Kleitou, P. (2016). A lionfish (*Pterois miles*) invasion has begun in the Mediterranean Sea. *Marine Biodiversity Records* **9**, 46. https://doi.org/10.1186/s41200-016-0065-y
 
-Katsanevakis, S., et al. (2013). Impacts of invasive alien marine species on ecosystem services and biodiversity. *Ocean & Coastal Management* **79**, 58–74. https://doi.org/10.1016/j.ocecoaman.2013.02.024
+Katsanevakis, S., Zenetos, A., Belchior, C. & Cardoso, A.C. (2013). Invading European Seas: assessing pathways of introduction of marine aliens. *Ocean & Coastal Management* **76**, 64–74. https://doi.org/10.1016/j.ocecoaman.2013.02.024
 
 Serrano, E., Coma, R., Ribes, M., Weitzmann, B., García, M. & Ballesteros, E. (2013). Rapid northward spread of a zooxanthellate coral enhanced by artificial structures and sea warming in the western Mediterranean. *PLoS ONE* **8**(1), e52739. https://doi.org/10.1371/journal.pone.0052739
 
-Zenetos, A., et al. (2022). An updated checklist of marine alien species in the Mediterranean Sea. *Mediterranean Marine Science* **23**, 449–495. https://doi.org/10.12681/mms.29106
+Zenetos, A., Albano, P.G., López Garcia, E., Stern, N., Tsiamis, K. & Galanidi, M. (2022). Established non-indigenous species increased by 40 % in 11 years in the Mediterranean Sea. *Mediterranean Marine Science* **23**(1), 196–212. https://doi.org/10.12681/mms.29106
+
+Verlaque, M., Steen, F. & De Clerck, O. (2009). *Rugulopteryx* (Dictyotales, Phaeophyceae), a genus recently introduced to the Mediterranean. *Phycologia* **48**, 536–542. https://doi.org/10.2216/08-103.1
+
+García-Gómez, J.C., et al. (2020). From exotic to invasive in record time: the extreme impact of *Rugulopteryx okamurae* (Dictyotales, Ochrophyta) in the Strait of Gibraltar. *Science of the Total Environment* **704**, 135408. https://doi.org/10.1016/j.scitotenv.2019.135408
+
+Grizel, H. & Héral, M. (1991). Introduction into France of the Japanese oyster (*Crassostrea gigas*). *ICES Journal of Marine Science* **47**, 399–403. https://doi.org/10.1093/icesjms/47.3.399
+
+EASIN — European Alien Species Information Network, Joint Research Centre (consulta 15-oct-2026): https://easin.jrc.ec.europa.eu · WoRMS Editorial Board: World Register of Marine Species (consulta 15-oct-2026): https://www.marinespecies.org

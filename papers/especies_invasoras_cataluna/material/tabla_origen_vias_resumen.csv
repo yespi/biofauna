@@ -6,29 +6,29 @@ Oculina patagonica,Atlántico SW (criptogénica debatida),Shipping / estructuras
 Lagocephalus sceleratus,Mar Rojo / Indo-Pacífico,Lessepsiana (Suez),lit. E Med 2000s; BQ Med 2005-06,sin obs BQ,sin obs BQ,expansion E/centro Med,Suez + calentamiento (hipótesis),doi:10.3391/ai.2007.2.1.9; academy_invasive suez; BQ 132368
 Asparagopsis armata,Hemisferio sur,Fouling / shipping,BQ Med 2008-04,BQ 2008-04,BQ 2008-04,presente densificada,Transporte marítimo,doi:10.1080/0967026042000236436; doi:10.1016/j.ocecoaman.2013.02.024; BQ 57779
 Callinectes sapidus,Atlántico oeste,Agua de lastre,Med histórico; BQ 2017-11 (foco ES),BQ/lit. Segura 2016; BQ 2017-11,BQ 2017-11,en_expansion local,Puertos/estuarios; calentamiento (hipótesis),doi:10.3906/zoo-1511-23; BQ 49504
-Rugulopteryx okamurae,Pacífico NW,Shipping / fouling (Gibraltar),lit. Estrecho ~2015–2019,iNat 2019-08-16,iNat 2024-05-31,en_expansion,Fouling + competencia agresiva,doi:10.1016/j.scitotenv.2019.135408; doi:10.12681/mms.36947; presencia_cat_es.csv
+Rugulopteryx okamurae,Pacífico NW,Contaminante de animales (importación de ostras; EASIN); fouling/transporte marítimo = hipótesis,lit. Estrecho ~2015–2019,iNat 2019-08-16,iNat 2024-05-31,recurrente,Fouling + competencia agresiva,doi:10.1016/j.scitotenv.2019.135408; doi:10.12681/mms.36947; presencia_cat_es.csv
 Bursatella leachii,Circuntropical / Indo-Pacífico,Lessepsiana,lit. E Med,no tabulada aquí,iNat 2007-10-26; BF 2013-10-06,establecida costera,Suez + calentamiento (hipótesis),doi:10.3153/jfscom.201435; marinas_weitzmann_comparativa
 Codium fragile,Pacífico NW,Fouling / shipping (vía marítima o salto humano; NO por tierra),BQ 2010-08,BQ 2010-08,BQ 2010-08,ocasional CAT (n bajo),Shipping marítimo (Gibraltar) o salto fouling humano,hipótesis vía fouling; flechas solo mar/salto discontinuo; BQ 67555
 Magallana gigas,Pacífico NW,Acuicultura directa + fouling/semillas (NO expansión terrestre Cantábrico→Med),lit. Francia 1960s–70s (Grizel & Héral 1991); BQ Med verdadero ~2010 Thau; BQ Atl N 1999-11 NO es Med,BQ Atl N 1999-11 (Cantábrico); cultivo Delta Ebro (Ochoa 2013),BQ 2018-04 (costa NE) / Delta ~2019+,establecida (acuicultura),Introducción acuícola a lagunas/deltas (Thau; Delta Ebro; Adriático); Mar Menor=hipótesis; saltos humanos discontinuos,doi:10.1093/icesjms/47.3.399; doi:10.1016/s0044-8486(02)00351-4; doi:10.1007/s10661-013-3064-z; doi:10.1002/jsfa.1896; doi:10.1016/0044-8486(78)90031-5; doi:10.1079/cabicompendium.87296; BQ 605992
 Fistularia commersonii,Mar Rojo,Lessepsiana,lit. E Med (sprinter),sin filas BQ extracto,sin filas BQ,expansion E→W (lit.),Suez,doi:10.1080/15659801.2013.898402
 Siganus luridus,Mar Rojo,Lessepsiana,lit. E Med,sin filas BQ,sin filas BQ,establecida E Med (lit.),Suez + herbivoría,doi:10.1111/j.1095-8649.1988.tb05497.x; doi:10.1017/s1755267205001223
 Zebrasoma flavescens,Indo-Pacífico,Acuariofilia,—,iNat CAT 2008-10-01 (paper),iNat 2008-10-01,ocasional/alerta,Liberación acuario,hipótesis acuariofilia; marinas_weitzmann_comparativa
-Ailanthus altissima,Asia E,Ornamental / bordes,n/a terrestre,iNat 2002-05-29,iNat 2008-06-08,en_expansion,Perturbación urbana,hipótesis ornamental; presencia_cat_es.csv
-Procambarus clarkii,Norteamérica,Acuicultura / arrozales,n/a,iNat 1990-09-01,iNat 2001-09-23,establecida,Acuicultura + eutrofización (hipótesis),doi:10.1127/archiv-hydrobiol/150/2000/153; doi:10.1023/b:hydr.0000008626.07042.87
-Myocastor coypus,Sudamérica,Peletería / escapes,n/a,iNat 2012-06-25,iNat 2012-06-25,establecida,Escapes,hipótesis peletería; presencia_cat_es.csv
-Trachemys scripta elegans,Norteamérica,Mascotas (liberación),n/a,iNat 2004-03-20; BQ T.scripta 1994-05,iNat 2006-05-06; BQ 1994-05,establecida,Liberación mascotas,academy_invasive; doi vía mascotismo
-Vespa velutina nigrithorax,Asia SE,Comercio hortícola accidental,n/a (entrada Europa vía Francia),iNat 2015-11-20,iNat 2017-11-22,en_expansion,Propagación desde SW Francia,doi:10.1007/s10340-013-0537-3
-Gambusia holbrooki,Norteamérica,Control biológico mosquitos,n/a,iNat 2007-07-13,iNat 2007-07-13,en_expansion,Introducciones históricas,hipótesis control biológico; presencia_cat_es.csv
-Neogale vison,Norteamérica,Escapes granjas peleteras,n/a,BQ/iNat 2010-08 / 2007-08 caja,BQ/iNat 2010-08,establecida,Peletería,academy_invasive; BQ 1264432
-Pennisetum setaceum,África,Ornamental,n/a,iNat 2000-09-06,iNat 2016-01-20,en_expansion,Jardinería,hipótesis
-Delairea odorata,Sudáfrica,Ornamental,n/a,iNat 2009-05-15,iNat 2009-12-29,en_expansion,Jardinería,hipótesis
-Acacia saligna,Australia,Forestación / ornamental,n/a,iNat 2006-02-13,iNat 2019-07-08,en_expansion,Plantaciones,hipótesis
-Ludwigia peploides,América,Ornamental acuática,n/a,iNat 2009-08-02,iNat 2009-08-02,en_expansion,Estanques/acuarios,hipótesis
-Lepomis gibbosus,Norteamérica,Acuicultura / pesca,n/a,iNat 2003-07-21,iNat 2003-07-21,establecida,Introducciones deportivas,hipótesis
-Pacifastacus leniusculus,Norteamérica,Acuicultura,n/a,iNat 2006-02-26,iNat 2018-08-27,establecida,Cangrejería,hipótesis
-Obama nungara,Argentina,Comercio de plantas,n/a,iNat 2016-02-29,iNat 2016-02-29,establecida,Plantas en maceta,doi:10.7717/peerj.8385
-Broussonetia papyrifera,Asia E,Ornamental,n/a,iNat 2016-04-15,iNat 2017-06-09,establecida,Jardinería,hipótesis
-Alopochen aegyptiaca,África,Ornamental / escapes,n/a,iNat 2002-11-30,iNat 2010-04-16,establecida,Escapes,hipótesis
-Threskiornis aethiopicus,África,Zoos / escapes,n/a,iNat 2004-04-15,iNat 2005-03-25,establecida,Escapes,hipótesis
-Reynoutria japonica,Asia E,Ornamental,n/a,iNat 2008-09-24,iNat 2018-07-20,establecida,Jardinería histórica,hipótesis
-Impatiens glandulifera,Himalaya,Ornamental / ríos,n/a,iNat 2019-08-15,iNat 2022-08-21,en_expansion,Dispersión fluvial,hipótesis
+Ailanthus altissima,Asia E,Control de erosión / mejora del paisaje / jardín botánico (EASIN),n/a terrestre,iNat 2002-05-29,iNat 2008-06-08,recurrente,Perturbación urbana,hipótesis ornamental; presencia_cat_es.csv
+Procambarus clarkii,Norteamérica,Acuicultura / arrozales,n/a,iNat 1990-09-01,iNat 2001-09-23,recurrente,Acuicultura + eutrofización (hipótesis),doi:10.1127/archiv-hydrobiol/150/2000/153; doi:10.1023/b:hydr.0000008626.07042.87
+Myocastor coypus,Sudamérica,Peletería / escapes,n/a,iNat 2012-06-25,iNat 2012-06-25,recurrente,Escapes,hipótesis peletería; presencia_cat_es.csv
+Trachemys scripta elegans,Norteamérica,Mascotas (liberación),n/a,iNat 2004-03-20; BQ T.scripta 1994-05,iNat 2006-05-06; BQ 1994-05,recurrente,Liberación mascotas,academy_invasive; doi vía mascotismo
+Vespa velutina nigrithorax,Asia SE,Mercancía importada (contenedor/embalaje; EASIN),n/a (entrada Europa vía Francia),iNat 2015-11-20,iNat 2017-11-22,recurrente,Propagación desde SW Francia,doi:10.1007/s10340-013-0537-3
+Gambusia holbrooki,Norteamérica,Control biológico mosquitos,n/a,iNat 2007-07-13,iNat 2007-07-13,recurrente,Introducciones históricas,hipótesis control biológico; presencia_cat_es.csv
+Neogale vison,Norteamérica,Escapes granjas peleteras,n/a,BQ/iNat 2010-08 / 2007-08 caja,BQ/iNat 2010-08,recurrente,Peletería,academy_invasive; BQ 1264432
+Pennisetum setaceum,África,Ornamental,n/a,iNat 2000-09-06,iNat 2016-01-20,recurrente,Jardinería,hipótesis
+Delairea odorata,Sudáfrica,Ornamental,n/a,iNat 2009-05-15,iNat 2009-12-29,recurrente,Jardinería,hipótesis
+Acacia saligna,Australia,Forestación / ornamental,n/a,iNat 2006-02-13,iNat 2019-07-08,recurrente,Plantaciones,hipótesis
+Ludwigia peploides,América,Ornamental acuática,n/a,iNat 2009-08-02,iNat 2009-08-02,recurrente,Estanques/acuarios,hipótesis
+Lepomis gibbosus,Norteamérica,Control biológico + pesca deportiva (EASIN),n/a,iNat 2003-07-21,iNat 2003-07-21,recurrente,Introducciones deportivas,hipótesis
+Pacifastacus leniusculus,Norteamérica,Acuicultura,n/a,iNat 2006-02-26,iNat 2018-08-27,recurrente,Cangrejería,hipótesis
+Obama nungara,Argentina,Comercio de plantas,n/a,iNat 2016-02-29,iNat 2016-02-29,recurrente,Plantas en maceta,doi:10.7717/peerj.8385
+Broussonetia papyrifera,Asia E,Ornamental,n/a,iNat 2016-04-15,iNat 2017-06-09,recurrente,Jardinería,hipótesis
+Alopochen aegyptiaca,África,Ornamental / escapes,n/a,iNat 2002-11-30,iNat 2010-04-16,recurrente,Escapes,hipótesis
+Threskiornis aethiopicus,África,Zoos / escapes,n/a,iNat 2004-04-15,iNat 2005-03-25,recurrente,Escapes,hipótesis
+Reynoutria japonica,Asia E,Ornamental,n/a,iNat 2008-09-24,iNat 2018-07-20,recurrente,Jardinería histórica,hipótesis
+Impatiens glandulifera,Himalaya,Ornamental / ríos,n/a,iNat 2019-08-15,iNat 2022-08-21,recurrente,Dispersión fluvial,hipótesis

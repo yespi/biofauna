@@ -47,7 +47,7 @@ Los **114** taxones de la lista de especies exóticas invasoras preocupantes par
 | *Orconectes limosus* | Reg. 2016/1141 | sí | sí | 1 | D | ocasional_o_puntual |
 | *Orconectes virilis* | Reg. 2016/1141 | — | no | 0 | D | ausente |
 | *Pacifastacus leniusculus* | Reg. 2016/1141 | sí | sí | 35 | D | recurrente |
-| *Procambarus clarkii* | — | — | sí | 646 | D+S+X | recurrente |
+| *Procambarus clarkii* | Lista UE (EASIN); reg. por confirmar | — | sí | 646 | D+S+X | recurrente |
 | *Procambarus virginalis* | Reg. 2019/1262 | — | no | 0 | D | ausente |
 | *Lampropeltis getula* | Reg. 2022/1203 | — | no | 0 | T | ausente |
 | *Trachemys scripta elegans* | Reg. 2016/1141 | sí | sí | 263 | D | recurrente |
@@ -71,13 +71,13 @@ Los **114** taxones de la lista de especies exóticas invasoras preocupantes par
 | *Asterias amurensis* | Reg. 2025/1422 | — | no | 0 | M | ausente |
 | *Acacia mearnsii* | Reg. 2025/1422 | — | no | 0 | T | ausente |
 | *Acacia saligna* | Reg. 2019/1262 | — | sí | 65 | T | recurrente |
-| *Ailanthus altissima* | — | — | sí | 1540 | T | recurrente |
+| *Ailanthus altissima* | Lista UE (EASIN); reg. por confirmar | — | sí | 1540 | T | recurrente |
 | *Alternanthera philoxeroides* | Reg. 2017/1263 | sí | sí | 2 | D | ocasional_o_puntual |
 | *Andropogon virginicus* | Reg. 2019/1262 | — | sí | 1 | T | ocasional_o_puntual |
 | *Asclepias syriaca* | Reg. 2017/1263 | — | no | 0 | T | ausente |
 | *Baccharis halimifolia* | Reg. 2016/1141 | sí | no | 0 | T | ausente |
 | *Broussonetia papyrifera* | Reg. 2025/1422 | — | sí | 175 | T | recurrente |
-| *Cabomba caroliniana* | — | — | no | 0 | D | ausente |
+| *Cabomba caroliniana* | Lista UE (EASIN); reg. por confirmar | — | no | 0 | D | ausente |
 | *Cardiospermum grandiflorum* | Reg. 2019/1262 | — | sí | 3 | T | ocasional_o_puntual |
 | *Celastrus orbiculatus* | Reg. 2022/1203 | — | no | 0 | T | ausente |
 | *Cortaderia jubata* | Reg. 2019/1262 | sí (excepto Canarias) [género] | sí | 2 | T | ocasional_o_puntual |
@@ -103,7 +103,7 @@ Los **114** taxones de la lista de especies exóticas invasoras preocupantes par
 | *Lygodium japonicum* | Reg. 2019/1262 | — | no | 0 | T | ausente |
 | *Lysichiton americanus* | Reg. 2016/1141 | — | no | 0 | T | ausente |
 | *Microstegium vimineum* | Reg. 2017/1263 | — | no | 0 | T | ausente |
-| *Myriophyllum aquaticum* | — | — | sí | 1 | D | ocasional_o_puntual |
+| *Myriophyllum aquaticum* | Lista UE (EASIN); reg. por confirmar | — | sí | 1 | D | ocasional_o_puntual |
 | *Myriophyllum heterophyllum* | Reg. 2017/1263 | — | no | 0 | D | ausente |
 | *Nanozostera japonica* | Reg. 2025/1422 | — | no | 0 | M | ausente |
 | *Parthenium hysterophorus* | Reg. 2016/1141 | — | no | 0 | T | ausente |
@@ -115,6 +115,8 @@ Los **114** taxones de la lista de especies exóticas invasoras preocupantes par
 | *Reynoutria japonica* | Reg. 2025/1422 | sí | sí | 13 | T | recurrente |
 | *Reynoutria sachalinensis* | Reg. 2025/1422 | — | sí | 1 | T | ocasional_o_puntual |
 | *Reynoutria x bohemica* | Reg. 2025/1422 | — | no | 0 | T | ausente |
-| *Rugulopteryx okamurae* | — | — | sí | 101 | M | llegada_reciente_serie_insuficiente |
+| *Rugulopteryx okamurae* | Lista UE (EASIN); reg. por confirmar | — | sí | 101 | M | llegada_reciente_serie_insuficiente |
 | *Salvinia molesta* | Reg. 2019/1262 | sí [género] | no | 0 | D | ausente |
 | *Triadica sebifera* | Reg. 2019/1262 | — | no | 0 | T | ausente |
+
+**Notas.** (1) «Lista UE (EASIN); reg. por confirmar»: EASIN marca el taxón como de preocupación para la Unión pero el Reglamento de inclusión no se ha podido verificar (EUR-Lex bloquea consultas automáticas). (2) Sinónimos actuales según EASIN/WoRMS (15-oct-2026): *Herpestes javanicus* = *Urva auropunctata*; *Orconectes limosus* = *Faxonius limosus*; *O. virilis* = *Faxonius virilis*; *Pennisetum setaceum* = *Cenchrus setaceus*; *Eichhornia crassipes* = *Pontederia crassipes*; *Prosopis juliflora* = *Neltuma juliflora*; *Cortaderia jubata* = *C. selloana* subsp. *jubata*; *Nanozostera japonica* = *Zostera japonica*; *Misgurnus bipartitus* (no aceptado en WoRMS = *M. mohoity*); *Cipangopaludina chinensis* (WoRMS: *Margarya chinensis*). (3) «Recurrente» = ≥ 10 obs, ≥ 3 celdas, ≥ 3 años (detección repetida; no estatus ecológico). (4) *Pueraria montana* var. *lobata* no se resuelve en EASIN. (5) Registros por validar: *Mulinia lateralis*, *Andropogon virginicus* (sin respaldo en EASIN para España).
