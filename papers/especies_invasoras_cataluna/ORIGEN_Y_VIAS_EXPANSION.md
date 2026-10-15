@@ -1,7 +1,6 @@
 # Origen nativo y vías de expansión — especie por especie
 
-**Generado:** 2026-10-10 ~16:45 CEST (HanSolo / Cursor, orden Robotin–Gustavo).  
-**Datos:** solo `SELECT` en `public_observations` (BioQuest / BD `fauna`) + series iNat/Minka ya publicadas en `material/presencia_cat_es.csv`.  
+**Datos:** observaciones agregadas de ciencia ciudadana (octubre de 2026) y primeras citas de la literatura.  
 **Figuras:** [`material/figuras/expansion/`](material/figuras/expansion/). CSV: [`material/primera_obs_regiones_bq.csv`](material/primera_obs_regiones_bq.csv), [`material/tabla_origen_vias_resumen.csv`](material/tabla_origen_vias_resumen.csv).
 
 **Convención.** Lo confirmado cita DOI verificados en Crossref (10-oct-2026). Lo no respaldado se marca explícitamente como **hipótesis**. Las «primeras citas» de ciencia ciudadana (iNat/BioQuest) **no** sustituyen el primer registro oficial de la literatura; se contrastan.
@@ -42,16 +41,7 @@ Figuras: [`material/figuras/expansion/expansion_5y_Pterois_miles.png`](material/
 
 ### 2.3 Contraste con la lectura de los mapas (~2008 + lastre)
 
-Gustavo observa en los mapas animados una «entrada» hacia **~2008** desde el Mar Rojo y sugiere **agua de lastre**. Nuestros puntos sí muestran un **nube densa en Mar Rojo desde ~2005–2010** y un salto mediterráneo visible en ciencia ciudadana **después de 2015**, no en 1991.
-
-**Por qué difieren de la bibliografía (sin contradecirla):**
-
-1. **Sesgo temporal de iNat/Minka:** casi no hay observaciones ciudadanas antes de ~2000–2008; el registro oficial de 1991 no está en la BD.
-2. **Cobertura geográfica:** el sync Academy descarga el taxon, pero los buceadores/fotógrafos activos en BioQuest están sesgados a zonas con apps; Israel/Líbano/Chipre entran tarde y de forma irregular.
-3. **El «frente 2008» en el mapa** es sobre todo **presencia nativa / Mar Rojo fotografiada**, no la primera invasión mediterránea.
-4. Por tanto, inferir **lastre** desde ese patrón es **hipótesis visual no confirmada**; la literatura y la genética siguen apuntando a **Suez / lessepsiana**.
-
-*Academy* (`academy_invasive`) ya etiqueta vector `suez` / «Migración lessepsiana» para este taxon — coherente con la bibliografía, no con lastre.
+Las series de ciencia ciudadana muestran un núcleo denso de registros en el Mar Rojo desde ~2005–2010 y la aparición de la especie en el Mediterráneo después de 2015, lo que podría interpretarse como una entrada reciente por agua de lastre. Esta lectura es incompatible con la primera cita mediterránea (Israel, 1991; Golani & Sonin 1992) y con la genética del linaje (Bariche et al. 2017): el patrón refleja el comienzo tardío de la ciencia ciudadana en la región, no la cronología de la invasión (H1 refutada).
 
 ---
 
@@ -61,9 +51,9 @@ Gustavo observa en los mapas animados una «entrada» hacia **~2008** desde el M
 
 | Campo | Contenido |
 |---|---|
-| Origen | Indo-Pacífico |
-| Vía | Transporte marítimo (lastre / fragmentos en cascos) — alineado con `academy_invasive` (`lastre`) y revisiones de vías ([Katsanevakis et al. 2013](https://doi.org/10.1016/j.ocecoaman.2013.02.024)). Fenología/expansión NW Med: [Capiomont et al. 2005](https://doi.org/10.1515/bot.2005.006); [Ruitton et al. 2005](https://doi.org/10.1016/j.aquabot.2005.02.008). |
-| 1ª cita Med (lit.) | Década 1990 como *C. racemosa* var. *cylindracea* (inventarios Zenetos); no re-fechamos aquí el primer paper. |
+| Origen | Endemismo del suroeste de Australia (población invasora mediterránea; Verlaque et al. 2003, pendiente verificar DOI) |
+| Vía | Transporte marítimo y/o acuariofilia (incierta); no solo «lastre» |
+| 1ª cita Med (lit.) | 1990, Libia (Verlaque et al.; pendiente verificar) |
 | BioQuest | Med **2005-07**; ES/CAT **2014-08** (n CAT 402) |
 | iNat CAT (paper) | 2014-11-11 |
 | Frente / velocidad | De Cerdeña/Córcega (~2005–2013 en BQ) a Cataluña **2014**; luego densificación 2021–2025 (mapa 5 años). |
@@ -83,7 +73,7 @@ Gustavo observa en los mapas animados una «entrada» hacia **~2008** desde el M
 
 | Campo | Contenido |
 |---|---|
-| Origen | Atlántico SW (patagonia / templado); criptogénica en debates antiguos |
+| Origen | Atlántico SW (discutido); estatus en el Mediterráneo debatido como criptogénico |
 | Vía | Históricamente asociada a **transporte marítimo / estructuras**; expansión norte favorecida por **calentamiento y sustratos artificiales** ([Zibrowius 1974](https://doi.org/10.1007/bf01611381); [Serrano et al. 2013](https://doi.org/10.1371/journal.pone.0052739)). |
 | BioQuest | Med/ES **2010-09** (Alicante ~38,5 / −0,13); CAT **2011-08** (n CAT 1.289) |
 | Frente | Norteada a lo largo de la costa ibérica; Cataluña ya densa en BQ 2014–2026. |
@@ -117,7 +107,8 @@ Gustavo observa en los mapas animados una «entrada» hacia **~2008** desde el M
 |---|---|
 | Origen | Atlántico oeste |
 | Vía | **Agua de lastre** (vía típica de cangrejo azul; [Katsanevakis et al. 2013](https://doi.org/10.1016/j.ocecoaman.2013.02.024)). Primera cita Segura/España: [González-Wangüemert & Pujol 2016](https://doi.org/10.3906/zoo-1511-23). |
-| BioQuest | Med/ES/CAT **2017-11** (Barcelona; n CAT 216) |
+| Primera cita en Cataluña (lit.) | Delta del Ebro, ~2012 (pendiente verificar DOI primario) |
+| Primer registro ciudadano | 2017-11, Barcelona (n CAT 216 en agregados) |
 | Frente | Foco NE peninsular / deltas; expansión costera reciente. |
 | Causas | Puertos, estuarios, calentamiento (**hipótesis** coadyuvante). |
 | Figura | [`expansion_5y_Callinectes_sapidus.png`](material/figuras/expansion/expansion_5y_Callinectes_sapidus.png) |
@@ -126,10 +117,10 @@ Gustavo observa en los mapas animados una «entrada» hacia **~2008** desde el M
 
 | Campo | Contenido |
 |---|---|
-| Origen | Pacífico NW (Japón/Corea) |
-| Vía | **Transporte marítimo** (estrecho de Gibraltar; impacto extremo [García-Gómez et al. 2020](https://doi.org/10.1016/j.scitotenv.2019.135408)); avance este [Bottalico et al. 2024](https://doi.org/10.12681/mms.36947). |
-| Datos paper | iNat ES **2019-08-16**; iNat CAT **2024-05-31** (101 obs); **no** en `public_observations` Academy (0 filas por nombre). |
-| Frente | Gibraltar / Andalucía → este Med; Cataluña en fase reciente (ciudadana). |
+| Origen | Pacífico noroccidental (Japón/Corea) |
+| Vía | Dos episodios: (1) introducción acuícola en laguna de Thau (Francia, ~2002; Verlaque et al. 2009, pendiente verificar); (2) expansión desde el Estrecho de Gibraltar (2015–2016; [García-Gómez et al. 2020](https://doi.org/10.1016/j.scitotenv.2019.135408)); avance hacia el este [Bottalico et al. 2024](https://doi.org/10.12681/mms.36947). |
+| Datos paper | iNat España **2019-08-16**; iNat Cataluña **2024-05-31** (101 obs; 4 observadores). |
+| Frente | Andalucía → Mediterráneo occidental; Cataluña en fase reciente (ciudadana). |
 | Causas | Fouling, competencia agresiva, posibles condiciones térmicas favorables (**hipótesis**). |
 
 ### 3.8 *Bursatella leachii*
@@ -158,8 +149,7 @@ Gustavo observa en los mapas animados una «entrada» hacia **~2008** desde el M
 | Vía al Mediterráneo | **Introducción acuícola directa** (no expansión natural Cantábrico→Med por tierra). Semillas y stock de cultivo transferidos a lagunas y deltas; también **fouling** y transporte de semillas en cascos/equipo. |
 | Focos documentados | Francia atlántica → Med (introducción a Francia: [Grizel & Héral 1991](https://doi.org/10.1093/icesjms/47.3.399)); cultivo en **Thau** ([Gangnery et al. 2003](https://doi.org/10.1016/s0044-8486(02)00351-4)); **Delta del Ebro** ([Ochoa et al. 2013](https://doi.org/10.1007/s10661-013-3064-z)); Adriático / Venecia ([Orban et al. 2004](https://doi.org/10.1002/jsfa.1896)); ensayos Med central ([Agius et al. 1978](https://doi.org/10.1016/0044-8486(78)90031-5)); ficha CABI ([Magallana gigas](https://doi.org/10.1079/cabicompendium.87296)). **Mar Menor:** presencia/cultivo histórico citada en revisiones locales — aquí **hipótesis** sin DOI primario re-verificado en esta sesión. |
 | BioQuest (corregido) | 1ª fila ES/Atlántico N **1999-11** (Cantábrico; **no** es Mediterráneo). 1ª en Med verdadero ≈ **2010** (Thau, FR). CAT: **2018-04** (costa NE) / densificación Delta ~2019+. n CAT 28. |
-| Error corregido | Una versión previa de la lámina dibujaba una flecha sólida Cantábrico→Cataluña **atravesando los Pirineos**. Para una ostra marina eso es imposible: las vías válidas son **mar** (Gibraltar) o **salto humano discontinuo** (acuicultura/fouling/semillas). |
-| Figura | [`lamina_expansion_Magallana_gigas_A3.png`](material/laminas_expansion/lamina_expansion_Magallana_gigas_A3.png) |
+| Figura | [`lamina_expansion_Magallana_gigas_A3.png`](material/laminas_expansion/lamina_expansion_Magallana_gigas_A3.png) (suplemento) |
 
 ### 3.11 Otras Weitzmann (breve)
 

@@ -1,4 +1,7 @@
-medio,n_especies
-terrestre,81
-agua_dulce,32
-marino,1
+etiqueta,n_taxones,nota
+,114,categorías no excluyentes (un taxón puede llevar varias)
+marino,8,
+salobre,12,
+agua dulce,35,
+terrestre,75,
+mixto/diádromo,11,

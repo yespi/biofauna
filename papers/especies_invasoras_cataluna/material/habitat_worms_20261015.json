@@ -1,0 +1,234 @@
+{
+  "Oxyura jamaicensis": {
+    "AphiaID": 159100,
+    "isMarine": 0,
+    "isBrackish": null,
+    "isFreshwater": 1,
+    "isTerrestrial": 1,
+    "status": "accepted"
+  },
+  "Ameiurus melas": {
+    "AphiaID": 154205,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Channa argus": {
+    "AphiaID": 594763,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Fundulus heteroclitus": {
+    "AphiaID": 159306,
+    "isMarine": 1,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Gambusia affinis": {
+    "AphiaID": 159325,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Gambusia holbrooki": {
+    "AphiaID": 276134,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Lepomis gibbosus": {
+    "AphiaID": 151290,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Misgurnus anguillicaudatus": {
+    "AphiaID": 991279,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Misgurnus bipartitus": {
+    "AphiaID": 1534586,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "unaccepted"
+  },
+  "Morone americana": {
+    "AphiaID": 151177,
+    "isMarine": 1,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Perccottus glenii": {
+    "AphiaID": 234083,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Plotosus lineatus": {
+    "AphiaID": 217659,
+    "isMarine": 1,
+    "isBrackish": 1,
+    "isFreshwater": 0,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Pseudorasbora parva": {
+    "AphiaID": 465541,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Cherax destructor": {
+    "AphiaID": 885551,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Eriocheir sinensis": {
+    "AphiaID": 107451,
+    "isMarine": 1,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Faxonius immunis": {
+    "AphiaID": 885305,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Faxonius rusticus": {
+    "AphiaID": 885343,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Orconectes limosus": {
+    "AphiaID": 234098,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "superseded combination"
+  },
+  "Orconectes virilis": {
+    "AphiaID": 593154,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "superseded combination"
+  },
+  "Pacifastacus leniusculus": {
+    "AphiaID": 885106,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Procambarus clarkii": {
+    "AphiaID": 465540,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Procambarus virginalis": {
+    "AphiaID": 1049466,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Cipangopaludina chinensis": {
+    "AphiaID": 594807,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "superseded combination"
+  },
+  "Limnoperna fortunei": {
+    "AphiaID": 506081,
+    "isMarine": 0,
+    "isBrackish": 1,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Marisa cornuarietis": {
+    "AphiaID": 737469,
+    "isMarine": 0,
+    "isBrackish": 0,
+    "isFreshwater": 1,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Mulinia lateralis": {
+    "AphiaID": 156870,
+    "isMarine": 1,
+    "isBrackish": null,
+    "isFreshwater": null,
+    "isTerrestrial": null,
+    "status": "accepted"
+  },
+  "Asterias amurensis": {
+    "AphiaID": 254497,
+    "isMarine": 1,
+    "isBrackish": 0,
+    "isFreshwater": 0,
+    "isTerrestrial": 0,
+    "status": "accepted"
+  },
+  "Nanozostera japonica": {
+    "AphiaID": 1723145,
+    "isMarine": 1,
+    "isBrackish": null,
+    "isFreshwater": null,
+    "isTerrestrial": null,
+    "status": "junior objective synonym"
+  },
+  "Rugulopteryx okamurae": {
+    "AphiaID": 495597,
+    "isMarine": 1,
+    "isBrackish": null,
+    "isFreshwater": null,
+    "isTerrestrial": null,
+    "status": "accepted"
+  }
+}
