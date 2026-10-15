@@ -210,6 +210,8 @@ def build_invasoras_completo() -> Path:
         I / "PROSPERAN_O_DESAPARECEN.md",
         I / "NATIVAS_EN_EXPANSION.md",
         I / "DISCUSION.md",
+        I / "CRUCE_ZENETOS2022_20261015.md",
+        I / "ESPECIES_INVASORAS_ALTO_IMPACTO.md",
         I / "REVISION_CRITICA_20261011.md",
     ]
     chunks = []
