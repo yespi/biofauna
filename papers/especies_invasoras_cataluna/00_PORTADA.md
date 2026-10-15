@@ -1,8 +1,8 @@
 # Detección por ciencia ciudadana y tendencias de las especies exóticas invasoras preocupantes para la Unión en Cataluña (noreste de España), corregidas por esfuerzo de observación
 
-**Autores:** Gustavo Yespi [ORCID pendiente]  
+**Autores:** Gustavo Zafra [ORCID pendiente]  
 **Afiliación:** Proyecto FotoFauna / BioQuest, Cataluña, España  
-**Autor de correspondencia:** gustavo@yespi.es
+**Autor de correspondencia:** gustavo.zafra@gmail.com
 
 ---
 
