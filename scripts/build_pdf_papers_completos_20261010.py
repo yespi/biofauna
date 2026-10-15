@@ -108,7 +108,7 @@ def chrome_pdf(html_path: Path, pdf_path: Path) -> None:
         raise RuntimeError(f"FALLO PDF {pdf_path.name}: {(r.stderr or '')[-500:]}")
 
 
-def md_to_pdf(base: Path, md_name: str, outs: list[str], css: str) -> Path:
+def md_to_pdf(base: Path, md_name: str, outs: list[str], css: str, *, watermark: bool = True) -> Path:
     html_body = markdown.markdown(
         (base / md_name).read_text(encoding="utf-8"),
         extensions=["tables", "fenced_code", "sane_lists"],
@@ -118,7 +118,8 @@ def md_to_pdf(base: Path, md_name: str, outs: list[str], css: str) -> Path:
     first = base / outs[0]
     chrome_pdf(h, first)
     h.unlink(missing_ok=True)
-    stamp(first)
+    if watermark:
+        stamp(first)
     for o in outs[1:]:
         shutil.copy2(first, base / o)
     print("ok", outs[0], first.stat().st_size)
@@ -160,7 +161,7 @@ def strip_trailing_blank_pages(pdf_path: Path) -> None:
     print("stripped trailing blank page from", pdf_path.name, f"white={white:.3f}")
 
 
-def pdfunite(parts: list[Path], out: Path) -> None:
+def pdfunite(parts: list[Path], out: Path, *, watermark: bool = True) -> None:
     parts = [p for p in parts if p.exists()]
     if not parts:
         raise RuntimeError(f"sin partes para {out}")
@@ -168,7 +169,8 @@ def pdfunite(parts: list[Path], out: Path) -> None:
         shutil.copy2(parts[0], out)
     else:
         subprocess.run(["pdfunite", *[str(p) for p in parts], str(out)], check=True)
-    stamp(out)
+    if watermark:
+        stamp(out)
     print("COMPLETO", out, out.stat().st_size)
 
 
@@ -263,7 +265,7 @@ def build_invasoras_completo() -> Path:
     tmp_md = I / f"_tmp_completo_{DATE}.md"
     tmp_md.write_text(body, encoding="utf-8")
     article_pdf = I / f"_tmp_articulo_{DATE}.pdf"
-    md_to_pdf(I, tmp_md.name, [article_pdf.name], CSS_INV)
+    md_to_pdf(I, tmp_md.name, [article_pdf.name], CSS_INV, watermark=False)
     strip_trailing_blank_pages(article_pdf)
 
     parts = [article_pdf]
@@ -271,7 +273,7 @@ def build_invasoras_completo() -> Path:
         parts.append(supl)
 
     out = I / f"ARTICULO_COMPLETO_{DATE}.pdf"
-    pdfunite(parts, out)
+    pdfunite(parts, out, watermark=False)
     for p in I.glob("_tmp_*"):
         p.unlink(missing_ok=True)
     latest = I / "ARTICULO_COMPLETO_latest.pdf"
