@@ -1,8 +1,7 @@
 # Declives y especies en peligro en Cataluña: señales en ciencia ciudadana corregidas por esfuerzo
 
-**Autor:** Gustavo Zafra (Yespi) · **Borrador:** v0.1 · **Fecha:** 2026-10-11  
-**Datos:** BioQuest / `public_observations` (iNaturalist + Minka), caja Cataluña.  
-**Identificador de apoyo:** BioFauna (OOS 83,22 %; índice 1.216.896 vectores / 4.643 spp en vivo; catálogo unificado previsto ~3.109 spp).
+**Autor:** Gustavo Zafra (Yespi) · **Borrador:** v0.2 · **Fecha:** 2026-10-15  
+**Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka, grado de investigación) en el área de estudio de Cataluña (véase §2.1).
 
 ---
 
@@ -16,7 +15,7 @@ Este borrador propone un protocolo reproducible: (i) tasas normalizadas por esfu
 
 - ***Pinna nobilis* / *Haplosporidium pinnae*.** El agente es un **protozoo parásito** (haplosporidio), no un virus; se han citado también *Mycobacterium* y co-infecciones. La bibliografía sitúa el **inicio del evento de mortalidad masiva en España en otoño de 2016** ([Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)), no en 2014. Descripción del parásito: [Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006). En nuestras series, la ruptura heurística de la tasa esfuerzo-corregida cae en **~2019** (retraso detection/citizen-science respecto al inicio clínico).
 - ***Epinephelus* / necrosis nerviosa viral (VNN, betanodavirus).** Brotes publicados con DOI: [Haddad-Boubaker et al. 2014](https://doi.org/10.3147/jsfp.49.53) (*E. costae* y *E. marginatus*); [Peñalver et al. 2020](https://doi.org/10.6018/analesbio.42.07) (Cabo de Palos – Islas Hormigas); revisión reciente [Toffan et al. 2026](https://doi.org/10.48045/001c.158446). **No** se encontró en Crossref un brote 2023+ documentado en Cataluña: cualquier episodio local 2023+ queda como **hipótesis** hasta DOI/comunicación oficial.
-- Uso en cascadas: mismos anclajes en el paper de correlaciones §3.9 (`papers/proyecto_correlacion/`, v26).
+- Los mismos anclajes epidemiológicos se reutilizan en el análisis de correlaciones marinas (manuscrito aparte).
 
 ---
 
@@ -24,9 +23,9 @@ Este borrador propone un protocolo reproducible: (i) tasas normalizadas por esfu
 
 ### 2.1 Datos
 
-- Tabla `public_observations` (BD `fauna`, contenedor `postgres-global`).
-- Caja Cataluña: lat 40,45–42,95; lon 0,10–3,40 (misma del paper de invasoras).
-- Taxon IDs iNaturalist resueltos por nombre en la BD (11-oct-2026).
+- Observaciones descargadas de iNaturalist y Minka (octubre de 2026), unificadas en una base interna de observaciones públicas.
+- Área de estudio: caja NE de la península ibérica (lat 40,45–42,95; lon 0,10–3,40), coherente con el paper de invasoras; recorte administrativo ICGC pendiente.
+- Identificadores taxonómicos resueltos contra el backbone de iNaturalist en la fecha de extracción.
 
 ### 2.2 Especies objetivo y controles
 
@@ -50,11 +49,11 @@ donde \(E_y\) es el esfuerzo total de la caja.
 
 | Etiqueta | Criterio operativo |
 |---|---|
-| declive_permanente_relativo | vs controles ≤ 0,35 y tasa reciente ≤ 15 % de la previa |
-| declive_semipermanente_relativo | vs controles ≤ 0,20 (o residual muy bajo tras caída) |
-| declive_temporal_relativo | vs controles ≤ 0,35 sin residual tan bajo |
-| declive_leve_relativo | vs controles ≤ 0,60 |
-| expansion_relativa | vs controles ≥ 1,15 |
+| declive permanente (relativo) | vs controles ≤ 0,35 y tasa reciente ≤ 15 % de la previa |
+| declive semipermanente (relativo) | vs controles ≤ 0,20 (o residual muy bajo tras caída) |
+| declive temporal (relativo) | vs controles ≤ 0,35 sin residual tan bajo |
+| declive leve (relativo) | vs controles ≤ 0,60 |
+| expansión relativa | vs controles ≥ 1,15 |
 
 Punto de ruptura heurístico: año 2012–2024 con mayor cambio relativo respecto a la media de los 3 años previos (se ignoran bases &lt; 0,05 para evitar artefactos).
 
@@ -69,11 +68,11 @@ Punto de ruptura heurístico: año 2012–2024 con mayor cambio relativo respect
 | Indicador | Valor |
 |---|---|
 | n obs CAT | 302 |
-| Primera obs CAT (BQ) | 2007-11-18 |
+| Primer registro ciudadano | 2007-11-18 |
 | Tasa 2010–2014 / 2015–2019 / 2020–2024 | 7,14 / 5,86 / **1,07** |
 | ratio_5y | **0,182** |
 | vs controles | **0,076** |
-| Categoría | **declive_semipermanente_relativo** |
+| Categoría | **declive semipermanente (relativo)** |
 | Ruptura heurística | **2019** (score −0,77) |
 
 La caída coincide temporalmente con la ola de mortalidad mediterránea atribuida a *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006)). El método **no inventa** el colapso: lo recupera en ciencia ciudadana una vez corregido el esfuerzo.
