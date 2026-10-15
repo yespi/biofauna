@@ -360,6 +360,23 @@ To close the AutoID → community loop, FotoFauna logs review decisions on iNatu
 
 **Manuscript placeholder:** when the queue exceeds ~200 verified final taxa, we will publish a summary table (BF proposal vs agreed taxon, latency, observers) for PeerJ/BDJ. Until then, cite only the counts above; do not infer queue precision.
 
+## 5.5 Update 2026-10-15: accuracy by gallery size, and a zone/month prior
+
+**Production index p15.** Production now serves the **p15** index (promoted 2026-10-14 17:04 CEST): **2,988 species, 1,289,637 vectors** (previous p13: 3,113 species, 1,300,986 vectors; the drop in species comes from the barrier that keeps in the index only catalogue species with a leak-free evaluation set). Leak-free accuracy: **81.0 %** species top-1 on **44,529** photos from observations without leakage (observer- and observation-disjoint frozen test, `overall_accuracy_clean`, 2026-10-12). On the p15 promote the leak guard measured a net change of −0.18 pp on the leak-free rows (81.73 → 81.55 %, a different run/base from the 81.0 % headline), so the promote bought catalogue hygiene, not accuracy. New in §5.5: accuracy by gallery-size quartile and the case for a zone/month prior.
+
+**Accuracy by gallery-size quartile (measured, CPU, read-only).** We joined the leak-free keys (`eval_limpio_v3_keys_20261012.json`, 44,529 keys) with the per-photo records of `calib_raw_t05.jsonl` and the per-species vector counts of the p15 index (`species_ids.npy`, 1,289,637 vectors, 2,988 species). 44,480 photos match; 58 of them belong to species without vectors in p15 and are excluded from the table, leaving 44,422. Photos are ordered by the number of gallery vectors of their true species and cut into four equal groups:
+
+| Quartile | Vectors of the true species | Photos | Species top-1 |
+|---|---|---|---|
+| Q1 (smallest galleries) | 5–167 | 11,105 | **73.97 %** |
+| Q2 | 167–399 | 11,106 | 81.59 % |
+| Q3 | 399–816 | 11,105 | 86.86 % |
+| Q4 (largest galleries) | 816–3,208 | 11,106 | 86.79 % |
+
+Overall, this scoring file gives 82.20 % on the 44,480 matched photos (it holds the post-p15 decisions; the 81.0 % headline is the `stats.json` frozen-test figure, so the two should not be mixed). Reading: accuracy rises with gallery size up to about 400–800 vectors and then plateaus; the smallest quartile loses about 13 pp against the largest. This is correlational (rare species are also harder and have fewer, less diverse photos), so it does not prove that adding photos alone would close the gap. It does justify prioritising harvest on species with fewer than ~170 vectors, which also lifts Limitation 10.
+
+**Zone/month prior (proposal and what is already measured).** Presence-only spatio-temporal priors improve fine-grained image classification when the location and date of the photo are known (Mac Aodha et al., 2019 [14]). BioFauna already applies a multiplicative geographic prior (§2.2). Two internal results bound the expected gain: a purely temporal (seasonal) prior was discarded at full scale (76.84 → 76.64 %), and a zone prior used as tie-break only helped under a ≥10× condition (+3/−0, too few cases). We therefore do **not** claim a gain from a joint zone × month prior; the proposed experiment is a leak-free A/B on the 44,529-photo test with the prior computed from catalogue observations excluding the test observations, reported with a McNemar test. No result is available yet.
+
 ## 6. Limitations
 
 1. Species top-1 is not expert-level on cryptic invertebrates; species with thin galleries or thin evaluation sets are much harder than the panel average.
@@ -472,6 +489,7 @@ Code, prototypes, catalog, calibrators, geo priors, cryptic pairs: this reposito
 11. Salvador, X., Lázaro, J. & Fuentes, M.A. (2022). Invertebrats marins de la Vall del Ridaura. Digital CSIC.
 12. Schroff, F. et al. (2015). FaceNet. *CVPR*.
 13. Hermans, A. et al. (2017). Triplet loss. arXiv:1703.07737.
+14. Mac Aodha, O., Cole, E. & Perona, P. (2019). Presence-Only Geographical Priors for Fine-Grained Image Classification. *ICCV*. doi:10.1109/ICCV.2019.00969
 
 ---
 

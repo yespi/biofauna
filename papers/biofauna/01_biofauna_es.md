@@ -364,6 +364,23 @@ Para cerrar el bucle AutoID → comunidad, FotoFauna registra decisiones de revi
 
 **Apartado reservado para el manuscrito:** cuando la cola supere ~200 decisiones con taxón final verificado, publicaremos una tabla resumen (precisión de la propuesta BF vs taxón acordado, latencia, observadores) en PeerJ/BDJ. Hasta entonces, citar solo el conteo anterior y no inferir precisión de la cola.
 
+## 5.5 Actualización 2026-10-15: acierto por tamaño de galería y prior zona/mes
+
+**Índice p15 en producción.** Producción sirve ahora el índice **p15** (promovido el 14-oct-2026 a las 17:04 CEST): **2.988 especies, 1.289.637 vectores** (p13 anterior: 3.113 especies, 1.300.986 vectores; la bajada de especies viene de la barrera que solo deja en el índice especies del catálogo con evaluación sin fuga). Acierto limpio: **81,0 %** top-1 de especie sobre **44.529** fotos de observaciones sin fuga (test congelado disjunto por observador y observación, `overall_accuracy_clean`, 12-oct-2026). En el promote de p15 la guardia de fuga midió −0,18 pp netos sobre las filas limpias (81,73 → 81,55 %, otra ejecución/base distinta de la cifra de 81,0 %), así que el promote aportó higiene de catálogo, no acierto. Novedad en §5.5: acierto por cuartil de tamaño de galería y propuesta de prior zona/mes.
+
+**Acierto por cuartil de tamaño de galería (medido, CPU, solo lectura).** Se cruzaron las claves limpias (`eval_limpio_v3_keys_20261012.json`, 44.529 claves) con los registros por foto de `calib_raw_t05.jsonl` y los vectores por especie del índice p15 (`species_ids.npy`, 1.289.637 vectores, 2.988 especies). Coinciden 44.480 fotos; 58 son de especies sin vectores en p15 y se excluyen de la tabla, quedando 44.422. Las fotos se ordenan por el número de vectores de galería de su especie real y se cortan en cuatro grupos iguales:
+
+| Cuartil | Vectores de la especie real | Fotos | Top-1 especie |
+|---|---|---|---|
+| Q1 (galerías más pequeñas) | 5–167 | 11.105 | **73,97 %** |
+| Q2 | 167–399 | 11.106 | 81,59 % |
+| Q3 | 399–816 | 11.105 | 86,86 % |
+| Q4 (galerías más grandes) | 816–3.208 | 11.106 | 86,79 % |
+
+En conjunto, este fichero de puntuación da 82,20 % sobre las 44.480 fotos cruzadas (contiene las decisiones posteriores a p15; la cifra de 81,0 % es la del test congelado de `stats.json`, no deben mezclarse). Lectura: el acierto sube con el tamaño de la galería hasta unos 400–800 vectores y luego se estabiliza; el cuartil más pequeño pierde unos 13 pp frente al mayor. Es una correlación (las especies raras también son más difíciles y tienen menos fotos, y menos variadas), así que no prueba que añadir fotos baste para cerrar la brecha. Sí justifica priorizar la cosecha en especies con menos de ~170 vectores, y rebaja la Limitación 10.
+
+**Prior zona/mes (propuesta y lo ya medido).** Los priors espacio-temporales de solo presencia mejoran la clasificación de grano fino cuando se conocen lugar y fecha de la foto (Mac Aodha et al., 2019 [14]). BioFauna ya aplica un prior geográfico multiplicativo (§2.2). Dos resultados internos acotan la mejora esperable: un prior puramente temporal (estacional) se descartó a escala completa (76,84 → 76,64 %), y un prior de zona como desempate solo ayudó con condición ≥10× (+3/−0, pocos casos). Por tanto **no** se afirma mejora de un prior conjunto zona × mes; el experimento propuesto es un A/B sin fuga sobre las 44.529 fotos, con el prior calculado desde observaciones del catálogo que excluyan las del test, con test de McNemar. Aún no hay resultado.
+
 ## 6. Limitaciones
 
 1. El top-1 de especie no es nivel experto en invertebrados crípticos; las especies con poca galería o evaluación fina son mucho más difíciles que la media del panel.
@@ -449,7 +466,7 @@ Código, prototipos, catálogo, calibradores, priors, pares crípticos: este rep
 
 ## Referencias
 
-Las mismas que la versión inglesa (`01_biofauna.md`).
+Las mismas que la versión inglesa (`material/en/01_biofauna.md`), más [14] Mac Aodha, Cole & Perona (2019), *ICCV*, doi:10.1109/ICCV.2019.00969.
 
 ---
 
