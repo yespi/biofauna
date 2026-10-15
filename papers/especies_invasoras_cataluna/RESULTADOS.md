@@ -19,7 +19,7 @@ De los 114 taxones analizados, **35** presentaron al menos una observación en C
 | *Neogale vison* | 109 | 64 | 76 | recurrente | T |
 | *Cenchrus setaceus* | 109 | 50 | 75 | recurrente | T |
 | *Delairea odorata* | 107 | 49 | 69 | recurrente | T |
-| *Rugulopteryx okamurae* | 101 | 4 | 25 | llegada reciente | M |
+| *Rugulopteryx okamurae* | 101 | 4 | 25 | reciente | M |
 | *Acacia saligna* | 65 | 49 | 55 | recurrente | T |
 | *Ludwigia peploides* | 58 | 36 | 49 | recurrente | D |
 | *Lepomis gibbosus* | 36 | 28 | 34 | recurrente | D+S |
@@ -32,10 +32,11 @@ Etiquetas de hábitat: M = marino, S = salobre, D = agua dulce, T = terrestre (n
 |---|---:|
 | ausente | 79 |
 | ocasional | 15 |
-| recurrente | 18 |
+| recurrente | 17 |
+| en expansión (tasa de detección) | 1 |
 | llegada reciente (serie insuficiente) | 2 |
 
-Ningún taxón cumple el criterio «en expansión» del GLM con FDR &lt; 0,05 (véase §3.4). Las etiquetas internas `ocasional_o_puntual` y `llegada_reciente_serie_insuficiente` se muestran en lenguaje natural en las tablas del cuerpo.
+Un taxón cumple el criterio «en expansión» del GLM con FDR &lt; 0,05 (*Ailanthus altissima*; §3.4). Las categorías ocasional y llegada reciente se definen en §2.3.
 
 ### Hábitat en la lista UE (114 taxones; categorías no excluyentes, WoRMS 15-oct-2026)
 
@@ -51,15 +52,15 @@ De los taxones marinos o salobres de la lista de la Unión, solo *Rugulopteryx o
 
 ## 3.3 Esfuerzo de observación
 
-El número de observaciones de la **base BioQuest** (694 taxones; no el total de iNaturalist/Minka) en la caja de Cataluña pasó de **1.220** (2013) a **102.301** (2024) y **105.404** (2025), factor ~84× entre 2013 y 2024 (Fig. 2; Tabla S2; 2026 es año parcial). El valor anómalo de 2008 (858, frente a 55 y 298 en los años contiguos) y el salto 2021–2024 sugieren efectos de ingesta de la base y no solo de actividad de observadores.
+El número total de observaciones *research grade* (iNaturalist + Minka) en la caja de estudio pasó de **1.220** (2013) a **102.052** (2024) y **105.050** (2025), factor ~84× entre 2013 y 2024 (Fig. 2; Tabla S2; 2026 es año parcial). El valor anómalo de 2008 (847, frente a 55 y 298 en los años contiguos) y el salto 2021–2024 sugieren efectos de sincronización de la base además de la actividad de observadores.
 
-Como aproximación al plan de esfuerzo por grupo (P1), las observaciones *research grade* de los taxones del catálogo en la misma caja se desglosan por grupo taxonómico (plantas, aves, mamíferos, peces, invertebrados; Fig. 2 cont.). La densidad espacial del esfuerzo 2018–2024 se resume en la Fig. 1 (mapa de calor sobre celdas ~10 km).
+El mismo esfuerzo se desglosa por grupo taxonómico amplio en la Fig. 2 (cont.). La densidad espacial del esfuerzo 2018–2024 se resume en la Fig. 1 (mapa de calor sobre celdas ~10 km; costa Natural Earth 10 m).
 
 En la caja, el solape iNaturalist–Minka a nivel de celda año–taxón–coordenada redondeada es pequeño: **372.987** observaciones tras deduplicar frente a **374.348** brutas (~0,4 %), pero el máximo por especie entre fuentes sigue sin deduplicar (Métodos).
 
 ## 3.4 Tendencias de detección
 
-Ajustamos el modelo binomial negativo descrito en §2.5 a las 17 especies de la lista de la Unión con ≥10 observaciones y ≥5 años con registros en 2013–2025 (`material/glm_tendencias_20261015.csv`; Fig. 4). **Ninguna especie mostró un aumento significativo de su tasa de detección tras la corrección FDR**. Dos especies mostraron descenso: *Neogale vison* (razón de tasas anual 0,84; IC 95 % 0,76–0,92; q = 0,005) y *Trachemys scripta elegans* (0,86; 0,77–0,95; q = 0,026). *Ailanthus altissima* tuvo la estimación más alta con precisión (1,17; 1,03–1,32) pero q = 0,067; su serie contiene un salto 2020→2021 (18→134 registros) que no acompaña al esfuerzo (×1,4) y que puede deberse a un observador o campaña concretos, no analizado. Con la ventana 2016–2025 los resultados son cualitativamente iguales (descenso además de *Threskiornis aethiopicus* y *Alopochen aegyptiaca*). Un análisis previo con estadístico tau/z sin FDR, que clasificaba cuatro a seis especies «en expansión», queda **superado** y no debe citarse.
+Ajustamos el modelo binomial negativo descrito en §2.5 a las 17 especies de la lista de la Unión con ≥10 observaciones y ≥5 años con registros en 2013–2025 (Fig. 4; Material suplementario S5). **Una especie aumentó significativamente su tasa de detección tras FDR:** *Ailanthus altissima* (razón de tasas anual 1,17; IC 95 % 1,03–1,32; q = 0,043), con un salto 2020→2021 (18→134 registros) que no acompaña al esfuerzo (×1,4) y que puede deberse a un observador o campaña concretos. **Tres especies descendieron:** *Neogale vison* (0,84; 0,76–0,92; q = 0,005), *Trachemys scripta elegans* (0,86; 0,77–0,95; q = 0,018) y *Alopochen aegyptiaca* (0,88; 0,78–0,99; q = 0,043). Con la ventana 2016–2025 el patrón es similar (*Threskiornis aethiopicus* también desciende de forma significativa).
 
 *Rugulopteryx okamurae* (primer registro 2024) e *Impatiens glandulifera* (primer registro 2022) se clasifican como «llegada reciente»: sus series son demasiado cortas para estimar tendencia. *Reynoutria sachalinensis* es un registro único (2020), sin potencia de ausencia estimable.
 
@@ -83,8 +84,8 @@ La Tabla 2 resume origen, hábitat, vía y primer registro ciudadano para los **
 
 ## 3.8 *Rugulopteryx okamurae*
 
-Único alga de la lista UE con registros marinos en Cataluña. Primer registro ciudadano: 31 mayo 2024 (iNaturalist). La literatura sitúa la primera cita mediterránea en la laguna de Thau (Francia; Verlaque et al. 2009), con importaciones de ostras como vía propuesta (EASIN: contaminante de animales), y la expansión explosiva en el Estrecho desde 2015 (García-Gómez et al. 2020). En Cataluña las **101** observaciones proceden de **cuatro** observadores y **25** celdas UTM de 10 km (sesgo extremo: media ~25 obs por observador). La cifra es el máximo entre fuentes (Minka 101, iNaturalist 83), no una unión deduplicada. No se ha localizado una primera cita catalana publicada previa a 2024 (plan P10). Fig. 6 (mapas por periodos de cinco años) y Fig. 3 (composición por categoría).
+Único alga de la lista UE con registros marinos en Cataluña. Primer registro ciudadano: 31 mayo 2024 (iNaturalist). La literatura sitúa la primera cita mediterránea en la laguna de Thau (Francia; Verlaque et al. 2009), con importaciones de ostras como vía propuesta (EASIN: contaminante de animales), y la expansión explosiva en el Estrecho desde 2015 (García-Gómez et al. 2020). En Cataluña las **101** observaciones proceden de **cuatro** observadores y **25** celdas UTM de 10 km (sesgo extremo: media ~25 obs por observador). La cifra es el máximo entre fuentes (Minka 101, iNaturalist 83), no una unión deduplicada. No se ha localizado una primera cita catalana publicada previa a 2024. Fig. 6 (mapas por periodos de cinco años) y Fig. 3 (composición por categoría).
 
 ## 3.9 Sesgos de muestreo (cuantificación breve)
 
-La Fig. 1 muestra la concentración del esfuerzo en la costa y el área metropolitana de Barcelona. Entre las especies con muchos registros, la participación del observador principal es baja en especies generalistas (*Ailanthus altissima*, cientos de observadores) y alta en *Rugulopteryx okamurae* (cuatro observadores para 101 registros). Para **19** taxones ausentes en Cataluña pero presentes en España según EASIN, la probabilidad de cero registros en Cataluña si la especie estuviera presente con la misma tasa relativa es &lt;0,05 en **7** casos (análisis de potencia de ausencia, P3; suplemento), lo que indica que la mayoría de ausencias locales son informativas solo de forma parcial.
+La Fig. 1 muestra la concentración del esfuerzo en la costa y el área metropolitana de Barcelona. Entre las especies con muchos registros, la participación del observador principal es baja en especies generalistas (*Ailanthus altissima*, cientos de observadores) y alta en *Rugulopteryx okamurae* (cuatro observadores para 101 registros). Para **19** taxones ausentes en Cataluña pero presentes en España según EASIN, la probabilidad de cero registros en Cataluña si la especie estuviera presente con la misma tasa relativa es &lt;0,05 en **7** casos (Material suplementario S3), lo que indica que la mayoría de ausencias locales son informativas solo de forma parcial.
