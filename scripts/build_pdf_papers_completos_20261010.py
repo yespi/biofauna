@@ -203,16 +203,20 @@ def pngs_to_pdf(pngs: list[Path], out_pdf: Path) -> Path:
 
 def build_invasoras_completo() -> Path:
     parts_md = [
+        I / "00_PORTADA.md",
         I / "INTRODUCCION.md",
         I / "METODOS.md",
-        I / "RESULTADOS_v1.md",
+        I / "RESULTADOS.md",
         I / "ORIGEN_Y_VIAS_EXPANSION.md",
         I / "PROSPERAN_O_DESAPARECEN.md",
-        I / "NATIVAS_EN_EXPANSION.md",
         I / "DISCUSION.md",
+        I / "CONCLUSIONES.md",
+        I / "AGRADECIMIENTOS.md",
+        I / "DISPONIBILIDAD_DATOS.md",
+        I / "REFERENCIAS.md",
         I / "CRUCE_ZENETOS2022_20261015.md",
-        I / "ESPECIES_INVASORAS_ALTO_IMPACTO.md",
-        I / "REVISION_CRITICA_20261011.md",
+        I / "SUPLEMENTO_TABLA_S1.md",
+        I / "SUPLEMENTO_TABLA_S3.md",
     ]
     chunks = []
     for p in parts_md:
@@ -220,27 +224,35 @@ def build_invasoras_completo() -> Path:
             chunks.append(p.read_text(encoding="utf-8"))
             chunks.append("\n\n")
     figs = [
-        "material/figuras/top25_obs_catalunya.png",
-        "material/figuras/esfuerzo_bioquest_catalunya.png",
-        "material/figuras/mapa_cat_1990_1999.png",
-        "material/figuras/mapa_cat_2000_2009.png",
-        "material/figuras/mapa_cat_2010_2019.png",
-        "material/figuras/mapa_cat_2020_2026.png",
-        "material/figuras/prosperan_panel_top8.png",
-        "material/figuras/nativa_trend_Thalassoma_pavo.png",
-        "material/figuras/nativa_trend_Arbacia_lixula.png",
-        "material/figuras/nativa_trend_Pelagia_noctiluca.png",
-        "material/figuras/nativa_trend_Sparisoma_cretense.png",
-        "material/figuras/expansion/expansion_5y_Pterois_miles.png",
-        "material/figuras/expansion/expansion_5y_Caulerpa_cylindracea.png",
-        "material/figuras/expansion/expansion_5y_Oculina_patagonica.png",
-        "material/figuras/expansion/expansion_5y_Callinectes_sapidus.png",
-        "material/figuras/expansion/pterois_miles_longitud_vs_ano.png",
+        (
+            "material/figuras/esfuerzo_bioquest_catalunya.png",
+            "Fig. 2. Esfuerzo de observación anual en Cataluña (2005–2025). Fuente: agregados de ciencia ciudadana.",
+        ),
+        (
+            "material/figuras/top25_obs_catalunya.png",
+            "Fig. 3. Especies con más registros en Cataluña (lista UE y complementarias).",
+        ),
+        (
+            "material/figuras/prosperan_panel_top8.png",
+            "Fig. 4. Tendencias de detección (panel de ocho especies representativas; tasa por 1000 obs del grupo).",
+        ),
+        (
+            "material/figuras/expansion/expansion_5y_Caulerpa_cylindracea.png",
+            "Fig. 6. *Caulerpa cylindracea*: registros por periodos de cinco años (proyección EPSG:3035).",
+        ),
+        (
+            "material/figuras/expansion/expansion_5y_Callinectes_sapidus.png",
+            "Fig. 6 (cont.). *Callinectes sapidus*: mismos criterios.",
+        ),
+        (
+            "material/figuras/expansion/expansion_5y_Oculina_patagonica.png",
+            "Fig. 6 (cont.). *Oculina patagonica*: mismos criterios.",
+        ),
     ]
     fig_md = ["\n\n## Figuras\n\n"]
-    for rel in figs:
+    for rel, cap in figs:
         if (I / rel).exists():
-            fig_md.append(f"![{Path(rel).stem}]({rel})\n\n")
+            fig_md.append(f'<figure class="fig"><img src="{rel}" alt=""><figcaption>{cap}</figcaption></figure>\n\n')
     supl = I_MAT / "figuras" / "prosperan_suplementario.pdf"
     if supl.exists():
         fig_md.append(
@@ -254,14 +266,7 @@ def build_invasoras_completo() -> Path:
     md_to_pdf(I, tmp_md.name, [article_pdf.name], CSS_INV)
     strip_trailing_blank_pages(article_pdf)
 
-    lam_pngs = sorted((I_MAT / "laminas_expansion").glob("lamina_expansion_*_A3.png"))
-    lam_pdf = I / f"_tmp_laminas_{DATE}.pdf"
-    if lam_pngs:
-        pngs_to_pdf(lam_pngs, lam_pdf)
-
     parts = [article_pdf]
-    if lam_pdf.exists():
-        parts.append(lam_pdf)
     if supl.exists():
         parts.append(supl)
 

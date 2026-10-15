@@ -1,13 +1,11 @@
-# Introducción — Especies invasoras de la lista UE en Cataluña
+# 1. Introducción
 
-Las especies de **preocupación unionense** incluidas en el Reglamento (UE) exigen seguimiento y, en muchos casos, medidas de gestión. En Cataluña el conocimiento distribuido entre administraciones, EASIN, ciencia ciudadana (iNaturalist, Minka SDG) y proyectos educativos (BioQuest) dificulta una visión única de **presencia, tendencia y esfuerzo de observación**.
+El Reglamento (UE) 1143/2014 establece una lista de especies exóticas invasoras preocupantes para la Unión y obliga a los Estados miembros a aplicar vigilancia, información pública y, cuando proceda, medidas de gestión (artículo 14). En el Mediterráneo noroccidental las introducciones marinas y terrestres se acumulan desde décadas (Zenetos et al. 2022; García et al. 2015), y Cataluña concentra tanto costa urbanizada como redes de humedales interiores donde conviven listas administrativas (EXOCAT), bases europeas (EASIN) y un volumen creciente de registros ciudadanos.
 
-Este informe combina tres capas:
+La ciencia ciudadana detecta invasoras conspicuas con rapidez, pero introduce sesgos espaciales (cercanía a núcleos urbanos y costa), taxonómicos (plantas y aves frente a invertebrados acuáticos) y temporales (las plataformas masivas arrancan años después de muchas primeras citas científicas). Normalizar por esfuerzo de observación y contrastar con inventarios oficiales es, por tanto, condición para usar esos datos en vigilancia.
 
-1. **Lista de trabajo BioFauna** (114 taxones en `artifacts/invasoras_ue_cruce_20261004.json`; el recuento oficial del Reglamento ronda ~88–103 según actualización — no re-verificado aquí contra EUR-Lex).
-2. **Observaciones públicas** (iNaturalist places Catalunya=61614, Spain=6774; Minka en caja 8-oct; tabla `public_observations` de BioQuest con **1.071.684** observaciones a 10-oct-2026).
-3. **Galería BioFauna** (metadatos de observación enlazados a fotos, para primeras fechas y mapas cuando la especie está en el identificador).
+Analizamos los **114** taxones de la lista de especies exóticas invasoras preocupantes para la Unión (Reglamento (UE) 1143/2014), según los Reglamentos de Ejecución 2016/1141, 2017/1263, 2019/1262, 2022/1203 y 2025/1422 (texto consolidado, EUR-Lex, consultado el 15 de octubre de 2026). La Tabla S1 recoge cada taxón con su Reglamento de inclusión y su estatus en el Catálogo Español de Especies Exóticas Invasoras (Real Decreto 630/2013).
 
-El objetivo no es sustituir los informes oficiales (EASIN, Generalitat), sino ofrecer un **informe reproducible** con series normalizadas por esfuerzo, categorías operativas (ausente / ocasional / establecida / en expansión), un bloque sobre **otras exóticas marinas** (Weitzmann y colaboradores) y un análisis de **origen nativo y vías de expansión** especie por especie (literatura con DOI + secuencia espacio-temporal de BioQuest/`public_observations`, como en los mapas animados).
+Este trabajo plantea tres preguntas: (i) ¿qué especies de la lista de la Unión están presentes en Cataluña según la ciencia ciudadana, y en qué medida coincide esa presencia con los inventarios oficiales (EXOCAT, EASIN)? (ii) Una vez corregido el esfuerzo de observación, ¿qué especies muestran una tendencia creciente en su tasa de detección? (iii) ¿Detecta la ciencia ciudadana las exóticas marinas con un retraso medible respecto a la primera cita publicada?
 
-**Sesgo principal:** el crecimiento de apps y proyectos (p. ej. de **1.220** observaciones en la caja CAT en 2013 a **102.301** en 2024 en `public_observations`; SQL §10 de `RESULTADOS_v1.md`) infla las series crudas; por eso reportamos tasas normalizadas (§5).
+Formulamos además hipótesis operativas (H1–H11) sobre vías de entrada y sesgo temporal; su contraste se resume en la Discusión y en la Tabla S3 del material suplementario.
