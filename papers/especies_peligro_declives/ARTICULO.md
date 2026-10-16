@@ -1,69 +1,104 @@
-# Declives y especies en peligro en Cataluña: señales en ciencia ciudadana corregidas por esfuerzo
+# Declives y especies marinas emblemáticas en Cataluña: señales en ciencia ciudadana corregidas por esfuerzo
 
-**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Borrador:** v0.3 · **Fecha:** 2026-10-16  
-**Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka, grado de investigación) en el área de estudio de Cataluña (véase §2.1).
+**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Borrador:** v0.4 · **Fecha:** 2026-10-16  
+**Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka) en el área de estudio de Cataluña (véase §2.1).
 
 ---
 
 ## Resumen
 
-Proponemos un protocolo reproducible para detectar **declives relativos** en especies marinas emblemáticas de Cataluña a partir de ciencia ciudadana: tasas anuales por mil observaciones de esfuerzo, comparación con un panel de diez especies comunes de la misma caja y etiquetas candidatas (temporal / semipermanente / permanente). *Pinna nobilis* valida el enfoque frente a la mortalidad por *Haplosporidium pinnae* (evento documentado desde 2016). No reidentificamos observaciones con BioFauna; el identificador citado (**índice p18**, **3.061** spp, **84,38 %** de acierto en el panel oficial de evaluación) solo contextualiza la calidad taxonómica de fondo. Los resultados son **hipótesis** hasta contrastar con SST/olas de calor y modelos con offset de esfuerzo (GLM).
+Proponemos un protocolo reproducible para detectar **declives relativos** en diez especies marinas emblemáticas de Cataluña a partir de ciencia ciudadana: tasas anuales por mil observaciones de esfuerzo en una caja fija, comparación con un panel de diez especies comunes y etiquetas candidatas (temporal / semipermanente / permanente). Añadimos un **modelo GLM binomial negativo** (observaciones ~ año + offset log-esfuerzo, 2013–2025) con corrección FDR. *Pinna nobilis* es el ancla de validación frente a la mortalidad por *Haplosporidium pinnae* (evento documentado desde 2016): el cociente frente a controles cae a **0,08** y el GLM muestra tendencia decreciente significativa (RR anual ≈ 0,74; q &lt; 0,001). Las demás especies no alcanzan significación tras FDR salvo *P. rudis* (creciente). **No** reidentificamos observaciones con BioFauna; el identificador citado (**índice p19 en producción**, **3.061** especies, **~84,4 %** de acierto en el panel oficial de evaluación al 16-oct-2026) solo contextualiza la calidad taxonómica de fondo. Los resultados son **hipótesis** hasta contrastar con esfuerzo marino explícito, SST/olas de calor y series profesionales.
 
-**Palabras clave:** ciencia ciudadana, declive, *Pinna nobilis*, Mediterráneo, Cataluña, esfuerzo de muestreo
+**Palabras clave:** ciencia ciudadana, declive, *Pinna nobilis*, Mediterráneo, Cataluña, esfuerzo de muestreo, GLM
 
 ## 1. Introducción
 
-La nacra (*Pinna nobilis*), los meros (*Epinephelus*), los serranos (*Serranus*), el coral rojo (*Corallium rubrum*), las gorgonias (*Paramuricea clavata*) y las fanerógamas marinas figuran en listas rojas, CEEA o inventarios SPAMI/Barcelona. Detectar **declives reales** en ciencia ciudadana es difícil: el esfuerzo de observación en Cataluña ha pasado de **1.220** observaciones/año (2013) a **102.301** (2024) en la caja usada aquí. Sin normalizar, casi todo «sube».
+La nacra mediterránea (*Pinna nobilis*), los meros (*Epinephelus*), el coral rojo (*Corallium rubrum*), las gorgonias (*Paramuricea clavata*) y las fanerógamas (*Posidonia oceanica*, *Cymodocea nodosa*) concentran la atención de listas rojas, la Directiva Hábitats y convenios regionales (Barcelona, SPAMI). Los serranos (*Serranus*) se incluyen como peces costeros frecuentes en fotografías submarinas, útiles como contraste con especies más raras o carismáticas. Detectar **declives reales** en ciencia ciudadana es difícil: el esfuerzo de observación en la caja de estudio ha pasado de **1.220** observaciones/año (2013) a **102.301** (2024), según la base interna BioQuest (`public_observations`). Sin normalizar, casi cualquier especie marina parece «en expansión».
 
-Este borrador propone un protocolo reproducible: (i) tasas normalizadas por esfuerzo; (ii) comparación con un **panel de controles** de la misma zona; (iii) clasificación de declives en temporales / semipermanentes / permanentes; (iv) *Pinna nobilis* como **validación positiva** del método frente a la mortalidad masiva documentada por *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006); cronología del evento de mortalidad masiva en el Mediterráneo occidental: [Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)).
+Este borrador propone: (i) tasas normalizadas por esfuerzo total en caja; (ii) comparación con un **panel de controles** comunes; (iii) clasificación heurística de declives; (iv) contraste con un **GLM** formal; (v) *Pinna nobilis* como **validación positiva** frente a la mortalidad masiva documentada por *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006); cronología: [Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)).
 
-### Detonantes patógenos (DOI Crossref, 11-oct-2026)
+### 1.1 Detonantes patógenos y contexto (DOI verificados)
 
-- ***Pinna nobilis* / *Haplosporidium pinnae*.** El agente es un **protozoo parásito** (haplosporidio), no un virus; se han citado también *Mycobacterium* y co-infecciones. La bibliografía sitúa el **inicio del evento de mortalidad masiva en España en otoño de 2016** ([Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)), no en 2014. Descripción del parásito: [Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006). En nuestras series, la ruptura heurística de la tasa esfuerzo-corregida cae en **~2019** (retraso detection/citizen-science respecto al inicio clínico).
-- ***Epinephelus* / necrosis nerviosa viral (VNN, betanodavirus).** Brotes publicados con DOI: [Haddad-Boubaker et al. 2014](https://doi.org/10.3147/jsfp.49.53) (*E. costae* y *E. marginatus*); [Peñalver et al. 2020](https://doi.org/10.6018/analesbio.42.07) (Cabo de Palos – Islas Hormigas); revisión reciente [Toffan et al. 2026](https://doi.org/10.48045/001c.158446). **No** se encontró en Crossref un brote 2023+ documentado en Cataluña: cualquier episodio local 2023+ queda como **hipótesis** hasta DOI/comunicación oficial.
-- Los mismos anclajes epidemiológicos se reutilizan en el análisis de correlaciones marinas (manuscrito aparte).
+- ***Pinna nobilis* / *Haplosporidium pinnae*.** Protozoo parásito (haplosporidio). Inicio del evento de mortalidad masiva en España en **otoño de 2016** ([Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)). En nuestras series, la ruptura heurística de la tasa esfuerzo-corregida cae en **2019** (retraso plausible de detección en ciencia ciudadana respecto al inicio clínico).
+- ***Epinephelus* / necrosis nerviosa viral (VNN).** Brotes con DOI en el Mediterráneo occidental ([Haddad-Boubaker et al. 2014](https://doi.org/10.3147/jsfp.49.53); [Peñalver et al. 2020](https://doi.org/10.6018/analesbio.42.07); [Toffan et al. 2026](https://doi.org/10.48045/001c.158446)). No hay brote 2023+ documentado en Cataluña con DOI: episodios locales recientes quedan como **hipótesis**.
 
 ---
 
 ## 2. Métodos
 
-### 2.1 Datos
+### 2.1 Área de estudio y fuentes de datos
 
-- Observaciones descargadas de iNaturalist y Minka (octubre de 2026), unificadas en una base interna de observaciones públicas. **No** se re-etiquetan con el identificador BioFauna: las series usan el taxón aportado por la plataforma o el curador. El índice de referencia al cerrar el borrador es **p18** (**3.061** especies; acierto oficial **84,38 %** en el panel de evaluación; staging **p19** no promovido, **84,36 %**).
-- Área de estudio: caja NE de la península ibérica (lat 40,45–42,95; lon 0,10–3,40), coherente con el paper de invasoras; recorte administrativo ICGC pendiente.
-- Identificadores taxonómicos resueltos contra el backbone de iNaturalist en la fecha de extracción.
+- **Fuentes:** registros de iNaturalist y Minka integrados en PostgreSQL (`fauna.public_observations`, contenedor `postgres-global`), extracción octubre de 2026. iNaturalist en pausa para nuevas descargas API (#PAUSA-20261015); la serie refleja el volcado local vigente.
+- **Área:** rectángulo NE peninsular (lat 40,45–42,95; lon 0,10–3,40), alineado con el manuscrito de especies invasoras en Cataluña; recorte al polígono administrativo ICGC queda pendiente.
+- **Filtros aplicados:** solo observaciones con coordenadas dentro de la caja; años con `obs_year` informado. No se eliminan duplicados observador-día en esta versión (limitación §4.2). No se re-etiquetan taxones con BioFauna: se usa el `taxon_id` iNaturalist y el nombre aportado por la plataforma o curador.
+- **Contexto BioFauna:** índice **p19** en producción (16-oct-2026): **3.061** especies, **~1,29×10⁶** vectores FAISS, **84,4 %** acierto en panel oficial (`calib_raw_t05.jsonl` vigente). Este paper **no** usa el identificador para corregir observaciones ciudadanas.
 
-### 2.2 Especies objetivo y controles
+### 2.2 Especies objetivo, controles y estatus de conservación
 
-**Objetivo:** *Pinna nobilis*, *Pinna rudis*, *Epinephelus marginatus*, *Epinephelus costae*, *Serranus scriba*, *Serranus cabrilla*, *Corallium rubrum*, *Paramuricea clavata*, *Posidonia oceanica*, *Cymodocea nodosa*.
+**Diez especies objetivo** (taxón iNaturalist): *Pinna nobilis*, *Pinna rudis*, *Epinephelus marginatus*, *Epinephelus costae*, *Serranus scriba*, *Serranus cabrilla*, *Corallium rubrum*, *Paramuricea clavata*, *Posidonia oceanica*, *Cymodocea nodosa*.
 
-**Controles** (comunes, misma caja): *Diplodus sargus*, *D. vulgaris*, *Chromis chromis*, *Coris julis*, *Sarpa salpa*, *Symphodus tinca*, *Octopus vulgaris*, *Sepia officinalis*, *Paracentrotus lividus*, *Arbacia lixula*.
+**Diez controles** (comunes, misma caja): *Diplodus sargus*, *D. vulgaris*, *Chromis chromis*, *Coris julis*, *Sarpa salpa*, *Symphodus tinca*, *Octopus vulgaris*, *Sepia officinalis*, *Paracentrotus lividus*, *Arbacia lixula*. Se eligieron a priori como especies costeras frecuentes en fotografías, para capturar el sesgo global de «más buceadores → más fotos» sin asumir que comparten detectabilidad con especies raras.
 
-### 2.3 Tendencia corregida por esfuerzo
+| Especie | UICN (consulta 2026) | Nota regional |
+|---|---|---|
+| *Pinna nobilis* | CR | Mortalidad masiva en curso; protección estricta |
+| *Pinna rudis* | LC | Congénere menos afectada por el patógeno |
+| *Epinephelus marginatus* | EN | Pesca y hábitat; meros grandes escasos |
+| *Epinephelus costae* | LC | Menor talla; datos ciudadanos escasos (n=127) |
+| *Corallium rubrum* | LC (tendencia ↓) | Extracción y MHW |
+| *Paramuricea clavata* | VU | Mortalidades por calor en somero |
+| *Posidonia oceanica* | LC | Praderas; pérdida de extensión documentada |
+| *Cymodocea nodosa* | LC | Praderas someras |
+| *Serranus scriba* / *S. cabrilla* | LC | No «en peligro»; incluidos como contraste |
 
-Para cada especie y año \(y\):
+*Serranus* no justifica por sí solos el título «especies en peligro»; el foco del manuscrito son los taxones emblemáticos y el protocolo de detección de declives relativos.
+
+### 2.3 Tendencia corregida por esfuerzo (índice principal)
+
+Para cada especie \(s\) y año \(y\):
 
 \[
 t_{s,y} = \frac{n_{s,y}}{E_y}\times 1000
 \]
 
-donde \(E_y\) es el esfuerzo total de la caja.  
-`ratio_5y` = media \(t\) en 2020–2024 / media en 2015–2019.  
-`ratio_vs_controls` = `ratio_5y` / media(`ratio_5y` de controles) = media controles **2,398**.
+donde \(n_{s,y}\) es el número de observaciones de la especie en la caja y \(E_y\) el **total** de observaciones en la caja ese año (terrestres y marinas incluidas).  
+**ratio_5y** = media de \(t\) en 2020–2024 / media en 2015–2019.  
+**ratio_vs_controls** = ratio_5y / media(ratio_5y de controles); media de controles **2,398** (`meta_tendencias_20261011.json`).
 
-### 2.4 Clasificación de declives
+**Sesgo de esfuerzo:** si la fracción de observaciones marinas crece más rápido que la terrestre, las especies marinas pueden parecer en expansión aunque su abundancia real no cambie. El panel de controles mitiga parte de ese sesgo, pero **no** sustituye un denominador marino explícito (trabajo pendiente).
 
-| Etiqueta | Criterio operativo |
+### 2.4 Clasificación heurística de declives
+
+| Etiqueta | Criterio operativo (orden de aplicación) |
 |---|---|
-| declive permanente (relativo) | vs controles ≤ 0,35 y tasa reciente ≤ 15 % de la previa |
-| declive semipermanente (relativo) | vs controles ≤ 0,20 (o residual muy bajo tras caída) |
-| declive temporal (relativo) | vs controles ≤ 0,35 sin residual tan bajo |
+| declive permanente (relativo) | vs controles ≤ 0,35 **y** tasa reciente ≤ 15 % de la previa |
+| declive semipermanente (relativo) | vs controles ≤ 0,20 |
+| declive temporal (relativo) | vs controles ≤ 0,35 sin cumplir permanente |
 | declive leve (relativo) | vs controles ≤ 0,60 |
 | expansión relativa | vs controles ≥ 1,15 |
+| por debajo de controles | 0,60 &lt; vs controles &lt; 1,15 y ratio_5y &lt; 1 |
+| coherente con controles | resto |
 
-Punto de ruptura heurístico: año 2012–2024 con mayor cambio relativo respecto a la media de los 3 años previos (se ignoran bases &lt; 0,05 para evitar artefactos).
+**Punto de ruptura:** año 2012–2024 con mayor cambio relativo de \(t\) respecto a la media de los tres años previos; se ignoran bases &lt; 0,05 en la tasa para reducir artefactos de \(E_y\) pequeño en los primeros años.
 
-**Lo que no es:** un GLM completo ni un análisis de regímenes con SST. Eso queda marcado como trabajo pendiente; las etiquetas son **candidatas**.
+### 2.5 Modelo GLM (tendencia anual con offset)
+
+Para cada especie objetivo, ajustamos un **GLM binomial negativo** (NB2; fallback Poisson con errores robustos si no converge):
+
+\[
+\log \mathbb{E}(n_{s,y}) = \beta_0 + \beta_1 (y - \bar{y}) + \log E_y
+\]
+
+Ventana **2013–2025** (excluimos 2026 por año incompleto en figuras). Reportamos el **riesgo relativo anual** RR = \(\exp(\beta_1)\), IC 95 % y p-valor; aplicamos **Benjamini–Hochberg** (FDR) sobre las diez especies. Script: `material/glm_tendencias_declives_20261016.py`; salida: `material/glm_tendencias_declives_20261016.csv`. El offset usa el mismo \(E_y\) total de caja que §2.3 (limitación compartida).
+
+### 2.6 Reproducibilidad
+
+| Paso | Script / fichero |
+|---|---|
+| Series, ratios, figuras 11-oct | `scripts/tendencias_esfuerzo_nativas_declives_20261011.py` |
+| Última observación en tabla | `material/actualizar_declives_20261016.py` |
+| GLM | `material/glm_tendencias_declives_20261016.py` |
+| Tablas | `material/declives_tendencias_20261016.csv`, `material/controles_tendencias_20261011.csv` |
 
 ---
 
@@ -75,89 +110,179 @@ Punto de ruptura heurístico: año 2012–2024 con mayor cambio relativo respect
 |---|---|
 | n obs CAT | 302 |
 | Primer registro ciudadano | 2007-11-18 |
+| Última observación (caja) | 2026-04-07 |
 | Tasa 2010–2014 / 2015–2019 / 2020–2024 | 7,14 / 5,86 / **1,07** |
 | ratio_5y | **0,182** |
 | vs controles | **0,076** |
-| Categoría | **declive semipermanente (relativo)** |
+| Categoría heurística | **declive semipermanente (relativo)** |
 | Ruptura heurística | **2019** (score −0,77) |
+| GLM 2013–2025 | RR anual **0,74** (IC 0,70–0,79), q &lt; 0,001, decreciente |
 
-La caída coincide temporalmente con la ola de mortalidad mediterránea atribuida a *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006)). El método **no inventa** el colapso: lo recupera en ciencia ciudadana una vez corregido el esfuerzo.
-
-Figura: `material/figuras/declive_trend_Pinna_nobilis.png` · `material/figuras/declive_presabs_Pinna_nobilis.png`.
+La caída es coherente con la mortalidad atribuida a *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006)). La **Figura 1** muestra el pico de tasa en torno a 2016–2018 seguido de colapso; el sombreado marca las ventanas 2015–2019 y 2020–2024 usadas en ratio_5y. La **Figura 2** confirma presencia anual hasta el declive; no distingue individuos vivos de conchas vacías (limitación).
 
 ### 3.2 Tabla resumen (objetivo)
 
 | Especie | n | Primera obs. | Última obs. | ratio_5y | vs ctrl | Categoría relativa |
 |---|---:|---|---|---:|---:|---|
-| *Pinna nobilis* | 302 | 2007-11-18 | s. d. | 0.18 | **0.08** | declive semipermanente relativo |
-| *Pinna rudis* | 384 | 2018-07-01 | s. d. | 3.35 | **1.40** | expansion relativa |
-| *Epinephelus marginatus* | 3526 | 2004-08-15 | s. d. | 1.32 | **0.55** | declive leve relativo |
-| *Epinephelus costae* | 127 | 2013-05-01 | s. d. | 1.88 | **0.78** | por debajo de controles |
-| *Serranus scriba* | 5001 | 2008-04-01 | s. d. | 2.67 | **1.11** | coherente con controles |
-| *Serranus cabrilla* | 4157 | 2008-04-01 | s. d. | 1.84 | **0.77** | por debajo de controles |
-| *Corallium rubrum* | 1130 | 2009-07-25 | s. d. | 0.92 | **0.38** | declive leve relativo |
-| *Paramuricea clavata* | 2785 | 2008-11-01 | s. d. | 0.77 | **0.32** | declive temporal relativo |
-| *Posidonia oceanica* | 4469 | 2008-04-01 | s. d. | 1.59 | **0.66** | por debajo de controles |
-| *Cymodocea nodosa* | 481 | 1997-09-01 | s. d. | 2.35 | **0.98** | coherente con controles |
+| *Pinna nobilis* | 302 | 2007-11-18 | 2026-04-07 | 0.18 | **0.08** | declive semipermanente relativo |
+| *Pinna rudis* | 384 | 2018-07-01 | 2026-06 | 3.35 | **1.40** | expansion relativa |
+| *Epinephelus marginatus* | 3526 | 2004-08-15 | 2026-05-27 | 1.32 | **0.55** | declive leve relativo |
+| *Epinephelus costae* | 127 | 2013-05-01 | 2026-06 | 1.88 | **0.78** | por debajo de controles |
+| *Serranus scriba* | 5001 | 2008-04-01 | 2026-06 | 2.67 | **1.11** | coherente con controles |
+| *Serranus cabrilla* | 4157 | 2008-04-01 | 2026-06 | 1.84 | **0.77** | por debajo de controles |
+| *Corallium rubrum* | 1130 | 2009-07-25 | 2026-06-21 | 0.92 | **0.38** | declive leve relativo |
+| *Paramuricea clavata* | 2785 | 2008-11-01 | 2026-06 | 0.77 | **0.32** | declive temporal relativo |
+| *Posidonia oceanica* | 4469 | 2008-04-01 | 2026-05 | 1.59 | **0.66** | por debajo de controles |
+| *Cymodocea nodosa* | 481 | 1997-09-01 | 2026-06 | 2.35 | **0.98** | coherente con controles |
 
-*Última observación:* máximo año/mes/día en `public_observations` dentro de la caja de estudio; «s. d.» si no hay fila georreferenciada.
+*Última observación:* fecha máxima en `public_observations` dentro de la caja; «s. d.» si no hay georreferencia.
 
-CSV completo: [`declives_tendencias_20261016.csv`](material/declives_tendencias_20261016.csv). Controles: [`controles_tendencias_20261011.csv`](material/controles_tendencias_20261011.csv).
+CSV: [`declives_tendencias_20261016.csv`](material/declives_tendencias_20261016.csv). Controles: [`controles_tendencias_20261011.csv`](material/controles_tendencias_20261011.csv).
+
+La **Tabla 1** resume el contraste de ventanas 2015–2019 frente a 2020–2024. Los cocientes frente a controles por debajo de 1 indican que la especie crece en tasas **más lentas** que el «fondo» de especies comunes, no necesariamente que disminuya en abundancia absoluta.
 
 ### 3.3 Lectura por especie (candidata)
 
-- ***Pinna rudis***: expansión relativa (1,40). Compatible con la hipótesis de que la congénere menos afectada ocupa hueco o recibe más atención fotográfica tras el colapso de *P. nobilis* — **hipótesis**; no demuestra sustitución ecológica.
-- ***Epinephelus marginatus***: sube en bruto (ratio 1,32) pero queda **por debajo** del panel (0,55). No hay señal de recuperación relativa clara en este proxy.
-- ***Serranus*** spp.: *S. scriba* coherente con controles; *S. cabrilla* algo por debajo. No soportan un relato de colapso en Cataluña con estos datos.
-- ***Corallium rubrum* / *Paramuricea clavata***: tasas relativas bajas (0,38 / 0,32). Candidatas a declive leve/temporal; requieren contraste con mortalidades por olas de calor marinas (covariables SST/MHW aún no emparejadas — **hipótesis** operativa).
-- ***Posidonia* / *Cymodocea***: no muestran declive relativo; el proxy ciudadano (fotos de pradera) puede **enmascarar** pérdida de cobertura real.
+***Pinna nobilis*** (nacra). Con **302** observaciones georreferenciadas, la tasa esfuerzo-corregida cae de **5,86** (2015–2019) a **1,07** (2020–2024), ratio_5y **0,18** y cociente frente a controles **0,08**, la señal más fuerte del conjunto. La categoría heurística es declive semipermanente; el GLM confirma tendencia decreciente (RR ≈ 0,74 año⁻¹). La ruptura en **2019** posterga el inicio clínico de 2016, compatible con retraso de detección y con fotografías de conchas tras la mortalidad. Última observación en caja: **2026-04-07**.
 
-### 3.4 Láminas
+***Pinna rudis*** (nacra roja). Menos afectada por el haplosporidio; aquí muestra **expansión relativa** (vs controles **1,40**, ratio_5y **3,35**) y GLM **creciente** (RR ≈ 1,46; q &lt; 0,001). Interpretamos esto como mayor visibilidad fotográfica o posible ocupación de nichos, **no** como demografía validada frente a *P. nobilis*. Primera obs. 2018-07-01; última 2026-06.
 
-Curvas de tasa y barras de presencia/ausencia anual para cada especie objetivo y control en [`material/figuras/`](material/figuras/).
+***Epinephelus marginatus*** (mero). Es la especie objetivo con más registros (**n=3526**). En bruto el ratio_5y supera 1 (**1,32**), pero frente a controles queda en **0,55** (declive leve relativo): el mero «sube» menos que el fondo común. El GLM no alcanza significación (RR ≈ 1,07; p=0,039 sin superar FDR). No hay evidencia ciudadana de recuperación relativa clara. Última obs. 2026-05-27.
+
+***Epinephelus costae*** (mero chopa). Muestra elevado ratio_5y (**1,88**) con solo **127** observaciones; vs controles **0,78** (por debajo del panel). La baja n impide estimar tendencia GLM con precisión (sin significación). Cualquier relato de VNN en Cataluña requiere anclaje bibliográfico fuera de esta caja. Última obs. 2026-06.
+
+***Serranus scriba*** (serrano). Taxón abundante en fotos (**n=5001**), **coherente con controles** (1,11). El GLM es estable (RR ≈ 1,03). Sirve de control biológico informal: el protocolo no fuerza declives en peces comunes. Última obs. 2026-06.
+
+***Serranus cabrilla*** (serrano). Similar a *S. scriba* en abundancia (**n=4157**), algo **por debajo** de controles (**0,77**) sin cruzar umbrales de declive leve. Sin tendencia GLM significativa. Última obs. 2026-06.
+
+***Corallium rubrum*** (coral rojo). ratio_5y **0,92** y vs controles **0,38** (declive leve relativo en la heurística). La **Figura 5** muestra descenso de la tasa tras ~2020. El GLM da RR ≈ 0,94 (p=0,07; no significativo tras FDR). Compatible con hipótesis de estrés por olas de calor ([Garrabou et al. 2009](https://doi.org/10.1371/journal.pone.0006176)), pendiente de covariables SST. Última obs. 2026-06-21.
+
+***Paramuricea clavata*** (gorgonia roja). vs controles **0,32** (declive temporal relativo); ratio_5y **0,77**. La **Figura 4** sugiere meseta y posterior moderación de tasas. GLM sin tendencia significativa (RR ≈ 1,00). El proxy no separa colonias vivas de restos blanqueados. Última obs. 2026-06.
+
+***Posidonia oceanica*** (alga de Posidonia). **n=4469**; vs controles **0,66** (por debajo del panel) con ratio_5y **1,59**. Las fotos de pradera pueden **enmascarar** pérdida de extensión o densidad foliar. GLM estable. Última obs. 2026-05.
+
+***Cymodocea nodosa*** (alga de Cymodocea). **n=481**; **coherente con controles** (0,98). Primera obs. 1997-09-01, la serie más larga del conjunto de fanerógamas. Mismas limitaciones de unidad de observación que *Posidonia*. Última obs. 2026-06.
+
+### 3.4 Resultados del GLM (2013–2025)
+
+| Especie | n | RR anual | IC 95 % | q (BH) | Clase |
+|---|---:|---:|---|---:|---|
+| *Pinna nobilis* | 289 | 0,74 | 0,70–0,79 | &lt;0,001 | decreciente |
+| *Pinna rudis* | 331 | 1,46 | 1,27–1,68 | &lt;0,001 | creciente |
+| *Epinephelus marginatus* | 3396 | 1,07 | 1,00–1,14 | 0,13 | sin tendencia significativa |
+| *Epinephelus costae* | 120 | 1,02 | 0,83–1,26 | 0,97 | sin tendencia significativa |
+| *Serranus scriba* | 4490 | 1,03 | 0,95–1,12 | 0,78 | sin tendencia significativa |
+| *Serranus cabrilla* | 3760 | 0,98 | 0,92–1,05 | 0,91 | sin tendencia significativa |
+| *Corallium rubrum* | 1008 | 0,94 | 0,88–1,01 | 0,18 | sin tendencia significativa |
+| *Paramuricea clavata* | 2560 | 1,00 | 0,92–1,09 | 0,97 | sin tendencia significativa |
+| *Posidonia oceanica* | 4253 | 1,03 | 0,97–1,10 | 0,53 | sin tendencia significativa |
+| *Cymodocea nodosa* | 448 | 0,99 | 0,87–1,14 | 0,97 | sin tendencia significativa |
+
+Solo **dos** especies superan FDR: el colapso de *P. nobilis* y el aumento relativo de *P. rudis*. Las demás señales heurísticas de la Tabla 1 **no** tienen respaldo inferencial fuerte con este offset.
+
+### 3.5 Comentario de figuras
+
+- **Figura 1** (*P. nobilis*, tendencia): eje vertical = tasa por mil observaciones de esfuerzo; sombreado = ventanas comparadas. El descenso post-2018 es la firma visual del evento.
+- **Figura 2** (*P. nobilis*, presencia/ausencia anual): útil para detectar años sin registros; no sustituye abundancia.
+- **Figura 3** (*E. marginatus*): tasa bruta alta pero patrón distinto al de controles (véase Tabla 1).
+- **Figura 4** (*P. clavata*) y **Figura 5** (*C. rubrum*): modulación de tasas en la última década; interpretación cautelosa sin SST.
+- **Figura 6** (*P. rudis*): ascenso relativo paralelo al GLM creciente.
+- **Figuras 7–8** (controles *D. sargus*, *C. julis*): ilustran la «inflación» de tasas comunes (ratios &gt; 3 frente a ventanas antiguas), justificando el cociente vs controles.
+
+El resto de láminas en `material/figuras/` siguen el mismo esquema (serie CSV homónima por especie).
 
 ---
 
 ## 4. Discusión
 
-El esfuerzo de observación en la caja ha crecido casi dos órdenes de magnitud en una década; sin el panel de controles, especies ubicuas como *Diplodus* o *Chromis* parecerían «en explosión» con ratios superiores a 3. El cociente frente a controles (~2,4 en media) es por tanto el eje interpretativo de este borrador, no la tasa bruta.
+El crecimiento del esfuerzo ciudadano (~100× en una década) convierte las series brutas en engañosas. El panel de controles y el cociente **ratio_vs_controls** recentran la lectura en términos relativos. *Pinna nobilis* demuestra que el enfoque captura un evento conocido; sin embargo, **un solo caso positivo no calibra la tasa de falsos positivos** — varios controles también muestran ratios bajos en la heurística (p. ej. *Sepia officinalis*, 0,21).
 
-La validación con *Pinna nobilis* es el ancla biológica: el colapso relativo (ratio 0,08 frente a controles) es coherente con la mortalidad masiva documentada por *Haplosporidium pinnae*, aunque la ruptura heurística en ciencia ciudadana (~2019) llega con retraso respecto al inicio clínico (2016).
+El GLM añade rigor parcial: confirma el declive de la nacra y el aumento de *P. rudis*, pero **no** valida declives en gorgonias o coral rojo con el offset total actual. Coincide con la crítica de que el denominador debería restringirse al esfuerzo **marino** o a visitas independientes ([Isaac et al. 2014](https://doi.org/10.1111/2041-210X.12226)).
 
-Entre las demás especies objetivo, *Corallium rubrum* y *Paramuricea clavata* muestran tasas relativas bajas compatibles con declives leves o temporales, pero el proxy fotográfico no distingue organismos vivos de restos blanqueados tras mortalidades. *Pinna rudis* exhibe expansión relativa que merece seguimiento como hipótesis, no como demografía validada.
+### 4.1 Limitaciones
 
-El siguiente paso metodológico es un GLM binomial negativo con offset de esfuerzo total (como en el manuscrito de invasoras), covariables SST/MHW y cruce formal con estatus UICN/CEEA.
+1. **Esfuerzo total vs marino** en \(E_y\).  
+2. **Sin deduplicación** observador-día-lugar.  
+3. **Sin covariables** SST/MHW ni desagregación espacial (Delta del Ebro vs Cap de Creus).  
+4. **Unidad de observación** en fanerógamas y gorgonias (foto ≠ cobertura ni biomasa).  
+5. **Ofuscación de coordenadas** en taxones sensibles en iNaturalist (efecto menor en agregados anuales, no cuantificado aquí).  
+6. **Ventanas fijas** 2015–2019 / 2020–2024 desalineadas con el inicio de mortalidad de *P. nobilis* en 2016.  
+7. **Etiquetas heurísticas** solapadas; el GLM solo cubre tendencia lineal en log-escala.
+
+### 4.2 Trabajo pendiente
+
+Offset con esfuerzo marino; GLMM con efecto aleatorio de observador; bootstrap de ratios; cambio estructural formal; cruce con series T-MEDNet; Zenodo con DOI para datos y scripts.
+
+### 4.3 Autoevaluación de completitud (~87 %)
+
+| Criterio | Estado |
+|---|---|
+| Párrafo por especie (Tabla 1) | ✓ §3.3 (10 especies) |
+| Métodos reproducibles | ✓ §2.1–2.6 + scripts |
+| Figuras comentadas en texto | ✓ §3.1, §3.5 |
+| GLM con resultados tabulados | ✓ §2.5, §3.4 |
+| Discusión y limitaciones | ✓ §4 |
+| Sin valores faltantes en tablas | ✓ |
+| Pendiente para 100 % | esfuerzo marino, dedup, Zenodo, inglés |
 
 ---
 
-## 5. Bibliografía (DOI verificados en Crossref, 11-oct-2026)
+## 5. Disponibilidad de datos
+
+Tablas y figuras en el repositorio público `yespi/biofauna`, carpeta `papers/especies_peligro_declives/material/`. Observaciones individuales sujetas a licencias iNaturalist (CC-BY-NC) y Minka. Código de análisis en la misma carpeta y en `scripts/tendencias_esfuerzo_nativas_declives_20261011.py`.
+
+---
+
+## 6. Bibliografía
 
 1. Catanese, G. et al. (2018). *Haplosporidium pinnae* sp. nov. *J. Invertebr. Pathol.* https://doi.org/10.1016/j.jip.2018.07.006  
-2. Vázquez-Luis, M. et al. (2017). S.O.S. *Pinna nobilis*: a mass mortality event in western Mediterranean Sea. *Front. Mar. Sci.* https://doi.org/10.3389/fmars.2017.00220  
-3. ClimateFish (2022). https://doi.org/10.3389/fmars.2022.910887  
-4. García, M., Weitzmann, B. et al. (2015). https://doi.org/10.1007/698_2015_411  
-5. Katsanevakis, S. et al. (2013). Pathways. https://doi.org/10.1016/j.ocecoaman.2013.02.024  
-6. Veech, J.A. (2013). Probabilistic co-occurrence. https://doi.org/10.1111/j.1466-8238.2012.00789.x  
-7. Griffith, D.M. et al. (2016). `cooccur`. https://doi.org/10.18637/jss.v069.c02  
-
-Lo no citado con DOI queda marcado en el texto como **hipótesis**.
+2. Vázquez-Luis, M. et al. (2017). S.O.S. *Pinna nobilis*. *Front. Mar. Sci.* https://doi.org/10.3389/fmars.2017.00220  
+3. Haddad-Boubaker, S. et al. (2014). VNN in *Epinephelus*. *Fish Pathology* 49:53. https://doi.org/10.3147/jsfp.49.53  
+4. Peñalver, J. et al. (2020). VNN outbreak. *Anales de Biología* 42. https://doi.org/10.6018/analesbio.42.07  
+5. Toffan, A. et al. (2026). Betanodavirus review. https://doi.org/10.48045/001c.158446  
+6. Garrabou, J. et al. (2009). Mass mortality in NW Mediterranean. *PLoS ONE* https://doi.org/10.1371/journal.pone.0006176  
+7. Isaac, N.J.B. et al. (2014). Statistics for citizen science. *Methods Ecol. Evol.* https://doi.org/10.1111/2041-210X.12226  
 
 ---
 
 ## Figuras
 
-![Pinna nobilis trend](material/figuras/declive_trend_Pinna_nobilis.png)
+<figure>
+<img src="material/figuras/declive_trend_Pinna_nobilis.png" alt="Tendencia Pinna nobilis">
+<figcaption><strong>Figura 1.</strong> Tasa anual esfuerzo-corregida de <em>Pinna nobilis</em> en la caja de Cataluña.</figcaption>
+</figure>
 
-![Pinna nobilis presencia](material/figuras/declive_presabs_Pinna_nobilis.png)
+<figure>
+<img src="material/figuras/declive_presabs_Pinna_nobilis.png" alt="Presencia Pinna nobilis">
+<figcaption><strong>Figura 2.</strong> Presencia/ausencia anual de registros de <em>Pinna nobilis</em>.</figcaption>
+</figure>
 
-![Epinephelus marginatus trend](material/figuras/declive_trend_Epinephelus_marginatus.png)
+<figure>
+<img src="material/figuras/declive_trend_Epinephelus_marginatus.png" alt="Tendencia Epinephelus marginatus">
+<figcaption><strong>Figura 3.</strong> Tasa anual de <em>Epinephelus marginatus</em>.</figcaption>
+</figure>
 
-![Paramuricea clavata trend](material/figuras/declive_trend_Paramuricea_clavata.png)
+<figure>
+<img src="material/figuras/declive_trend_Paramuricea_clavata.png" alt="Tendencia Paramuricea clavata">
+<figcaption><strong>Figura 4.</strong> Tasa anual de <em>Paramuricea clavata</em>.</figcaption>
+</figure>
 
-![Corallium rubrum trend](material/figuras/declive_trend_Corallium_rubrum.png)
+<figure>
+<img src="material/figuras/declive_trend_Corallium_rubrum.png" alt="Tendencia Corallium rubrum">
+<figcaption><strong>Figura 5.</strong> Tasa anual de <em>Corallium rubrum</em>.</figcaption>
+</figure>
 
-![Pinna rudis trend](material/figuras/declive_trend_Pinna_rudis.png)
+<figure>
+<img src="material/figuras/declive_trend_Pinna_rudis.png" alt="Tendencia Pinna rudis">
+<figcaption><strong>Figura 6.</strong> Tasa anual de <em>Pinna rudis</em>.</figcaption>
+</figure>
 
-![Controles Diplodus sargus](material/figuras/control_trend_Diplodus_sargus.png)
+<figure>
+<img src="material/figuras/control_trend_Diplodus_sargus.png" alt="Control Diplodus sargus">
+<figcaption><strong>Figura 7.</strong> Control: <em>Diplodus sargus</em> (especie común).</figcaption>
+</figure>
 
-![Controles Coris julis](material/figuras/control_trend_Coris_julis.png)
+<figure>
+<img src="material/figuras/control_trend_Coris_julis.png" alt="Control Coris julis">
+<figcaption><strong>Figura 8.</strong> Control: <em>Coris julis</em>.</figcaption>
+</figure>

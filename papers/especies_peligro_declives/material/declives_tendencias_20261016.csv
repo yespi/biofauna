@@ -1,11 +1,11 @@
 species,taxon_id,n_obs_cat,first_obs_cat,rate_2010_2014,rate_2015_2019,rate_2020_2024,ratio_5y,ratio_vs_controls,rupture_year,rupture_score,category,category_vs_controls,method,ultima_obs_catalunya
-Pinna nobilis,118945,302,2007-11-18,7.1398,5.8641,1.0665,0.182,0.076,2019,-0.771,declive_semipermanente_candidato,declive_semipermanente_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Pinna rudis,292173,384,2018-07-01,0.0,0.1373,0.4603,3.354,1.399,2022,3.692,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Epinephelus marginatus,100119,3526,2004-08-15,14.6098,5.3694,7.0799,1.319,0.55,2023,1.03,aumento_leve,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Epinephelus costae,100091,127,2013-05-01,0.2863,0.1855,0.3483,1.878,0.783,2022,2.293,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Serranus scriba,118674,5001,2008-04-01,7.7306,3.5632,9.5115,2.669,1.113,2013,7.026,en_expansion,coherente_con_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Serranus cabrilla,118675,4157,2008-04-01,8.3895,5.5214,10.1628,1.841,0.768,2013,33.111,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Corallium rubrum,483326,1130,2009-07-25,11.3048,3.4662,3.1881,0.92,0.384,2020,1.298,estable_o_sin_patron,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Paramuricea clavata,338005,2785,2008-11-01,2.2491,6.6373,5.0901,0.767,0.32,2023,6.39,estable_o_sin_patron,declive_temporal_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Posidonia oceanica,118943,4469,2008-04-01,6.0896,7.6821,12.2154,1.59,0.663,2012,7.765,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
-Cymodocea nodosa,131135,481,1997-09-01,0.6535,1.2619,2.9694,2.353,0.981,2014,7.96,en_expansion,coherente_con_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,s. d.
+Pinna nobilis,118945,302,2007-11-18,7.1398,5.8641,1.0665,0.182,0.076,2019,-0.771,declive_semipermanente_candidato,declive_semipermanente_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-04-07
+Pinna rudis,292173,384,2018-07-01,0.0,0.1373,0.4603,3.354,1.399,2022,3.692,en_expansion,expansion_relativa,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06
+Epinephelus marginatus,100119,3526,2004-08-15,14.6098,5.3694,7.0799,1.319,0.55,2023,1.03,aumento_leve,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-05-27
+Epinephelus costae,100091,127,2013-05-01,0.2863,0.1855,0.3483,1.878,0.783,2022,2.293,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06
+Serranus scriba,118674,5001,2008-04-01,7.7306,3.5632,9.5115,2.669,1.113,2013,7.026,en_expansion,coherente_con_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06
+Serranus cabrilla,118675,4157,2008-04-01,8.3895,5.5214,10.1628,1.841,0.768,2013,33.111,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06
+Corallium rubrum,483326,1130,2009-07-25,11.3048,3.4662,3.1881,0.92,0.384,2020,1.298,estable_o_sin_patron,declive_leve_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06-21
+Paramuricea clavata,338005,2785,2008-11-01,2.2491,6.6373,5.0901,0.767,0.32,2023,6.39,estable_o_sin_patron,declive_temporal_relativo,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06
+Posidonia oceanica,118943,4469,2008-04-01,6.0896,7.6821,12.2154,1.59,0.663,2012,7.765,en_expansion,por_debajo_de_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-05
+Cymodocea nodosa,131135,481,1997-09-01,0.6535,1.2619,2.9694,2.353,0.981,2014,7.96,en_expansion,coherente_con_controles,obs/esfuerzo_caja×1000; ratio 2020-24 / 2015-19,2026-06

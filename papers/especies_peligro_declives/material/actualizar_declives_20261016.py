@@ -79,7 +79,13 @@ def main() -> None:
             lambda r: fmt_date(r.get("obs_year"), r.get("obs_month"), r.get("obs_day")),
             axis=1,
         )
-        by_taxon = last.groupby("taxon_id")["ultima_obs"].max().to_dict()
+        by_taxon = {
+            int(k): v
+            for k, v in last.assign(taxon_id=last["taxon_id"].astype(int))
+            .groupby("taxon_id")["ultima_obs"]
+            .max()
+            .items()
+        }
     else:
         by_taxon = {}
     df["ultima_obs_catalunya"] = df["taxon_id"].map(
