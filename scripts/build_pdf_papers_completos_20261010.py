@@ -65,7 +65,8 @@ a{color:#1a4f8b;text-decoration:none}
 
 CSS_GENERIC = """
 body{font-family:Georgia,'DejaVu Serif',serif;font-size:10.5pt;line-height:1.4;margin:0 1.3cm;color:#111}
-h1{font-size:18pt}h2{font-size:14pt;margin-top:16px;break-after:avoid}h3{font-size:12pt;break-after:avoid}
+h1{font-size:18pt}h2{font-size:14pt;margin-top:16px;break-after:avoid-page;page-break-after:auto}h3{font-size:12pt;break-after:avoid}
+.pagebreak-before{break-before:page;page-break-before:always;height:0;margin:0}
 table{border-collapse:collapse;font-size:8.5pt;margin:8px 0;width:100%;break-inside:avoid;page-break-inside:avoid}
 td,th{border:1px solid #bbb;padding:3px 5px;vertical-align:top}th{background:#eee}
 img{max-width:100%;height:auto;max-height:10cm;display:block;margin:6px auto}
@@ -327,12 +328,21 @@ def build_nudi_completo() -> Path:
 
 
 def build_declives_completo() -> Path:
-    return md_to_pdf(
+    article = md_to_pdf(
         D,
         "ARTICULO.md",
-        [f"ARTICULO_COMPLETO_{DATE}.pdf", "ARTICULO_COMPLETO_latest.pdf"],
+        [f"_tmp_declives_{DATE}.pdf"],
         CSS_GENERIC,
+        watermark=False,
     )
+    strip_trailing_blank_pages(article)
+    out = D / f"ARTICULO_COMPLETO_{DATE}.pdf"
+    shutil.copy2(article, out)
+    stamp(out)
+    shutil.copy2(out, D / "ARTICULO_COMPLETO_latest.pdf")
+    article.unlink(missing_ok=True)
+    print("COMPLETO", out)
+    return out
 
 
 def build_corr_completo(es_pdf: Path) -> Path:

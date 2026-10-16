@@ -1,9 +1,15 @@
 # Declives y especies en peligro en Cataluña: señales en ciencia ciudadana corregidas por esfuerzo
 
-**Autor:** Gustavo Zafra (Yespi) · **Borrador:** v0.2 · **Fecha:** 2026-10-15  
+**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Borrador:** v0.3 · **Fecha:** 2026-10-16  
 **Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka, grado de investigación) en el área de estudio de Cataluña (véase §2.1).
 
 ---
+
+## Resumen
+
+Proponemos un protocolo reproducible para detectar **declives relativos** en especies marinas emblemáticas de Cataluña a partir de ciencia ciudadana: tasas anuales por mil observaciones de esfuerzo, comparación con un panel de diez especies comunes de la misma caja y etiquetas candidatas (temporal / semipermanente / permanente). *Pinna nobilis* valida el enfoque frente a la mortalidad por *Haplosporidium pinnae* (evento documentado desde 2016). No reidentificamos observaciones con BioFauna; el identificador citado (**índice p18**, **3.061** spp, **84,38 %** de acierto en el panel oficial de evaluación) solo contextualiza la calidad taxonómica de fondo. Los resultados son **hipótesis** hasta contrastar con SST/olas de calor y modelos con offset de esfuerzo (GLM).
+
+**Palabras clave:** ciencia ciudadana, declive, *Pinna nobilis*, Mediterráneo, Cataluña, esfuerzo de muestreo
 
 ## 1. Introducción
 
@@ -23,7 +29,7 @@ Este borrador propone un protocolo reproducible: (i) tasas normalizadas por esfu
 
 ### 2.1 Datos
 
-- Observaciones descargadas de iNaturalist y Minka (octubre de 2026), unificadas en una base interna de observaciones públicas.
+- Observaciones descargadas de iNaturalist y Minka (octubre de 2026), unificadas en una base interna de observaciones públicas. **No** se re-etiquetan con el identificador BioFauna: las series usan el taxón aportado por la plataforma o el curador. El índice de referencia al cerrar el borrador es **p18** (**3.061** especies; acierto oficial **84,38 %** en el panel de evaluación; staging **p19** no promovido, **84,36 %**).
 - Área de estudio: caja NE de la península ibérica (lat 40,45–42,95; lon 0,10–3,40), coherente con el paper de invasoras; recorte administrativo ICGC pendiente.
 - Identificadores taxonómicos resueltos contra el backbone de iNaturalist en la fecha de extracción.
 
@@ -81,20 +87,22 @@ Figura: `material/figuras/declive_trend_Pinna_nobilis.png` · `material/figuras/
 
 ### 3.2 Tabla resumen (objetivo)
 
-| Especie | n | ratio_5y | vs ctrl | Categoría relativa |
-|---|---:|---:|---:|---|
-| *Pinna nobilis* | 302 | 0,18 | **0,08** | declive_semipermanente_relativo |
-| *Paramuricea clavata* | 2.785 | 0,77 | 0,32 | declive_temporal_relativo |
-| *Corallium rubrum* | 1.130 | 0,92 | 0,38 | declive_leve_relativo |
-| *Epinephelus marginatus* | 3.526 | 1,32 | 0,55 | declive_leve_relativo |
-| *Posidonia oceanica* | 4.469 | 1,59 | 0,66 | por_debajo_de_controles |
-| *Serranus cabrilla* | 4.157 | 1,84 | 0,77 | por_debajo_de_controles |
-| *Epinephelus costae* | 127 | 1,88 | 0,78 | por_debajo_de_controles |
-| *Cymodocea nodosa* | 481 | 2,35 | 0,98 | coherente_con_controles |
-| *Serranus scriba* | 5.001 | 2,67 | 1,11 | coherente_con_controles |
-| *Pinna rudis* | 384 | 3,35 | **1,40** | expansion_relativa |
+| Especie | n | Primera obs. | Última obs. | ratio_5y | vs ctrl | Categoría relativa |
+|---|---:|---|---|---:|---:|---|
+| *Pinna nobilis* | 302 | 2007-11-18 | s. d. | 0.18 | **0.08** | declive semipermanente relativo |
+| *Pinna rudis* | 384 | 2018-07-01 | s. d. | 3.35 | **1.40** | expansion relativa |
+| *Epinephelus marginatus* | 3526 | 2004-08-15 | s. d. | 1.32 | **0.55** | declive leve relativo |
+| *Epinephelus costae* | 127 | 2013-05-01 | s. d. | 1.88 | **0.78** | por debajo de controles |
+| *Serranus scriba* | 5001 | 2008-04-01 | s. d. | 2.67 | **1.11** | coherente con controles |
+| *Serranus cabrilla* | 4157 | 2008-04-01 | s. d. | 1.84 | **0.77** | por debajo de controles |
+| *Corallium rubrum* | 1130 | 2009-07-25 | s. d. | 0.92 | **0.38** | declive leve relativo |
+| *Paramuricea clavata* | 2785 | 2008-11-01 | s. d. | 0.77 | **0.32** | declive temporal relativo |
+| *Posidonia oceanica* | 4469 | 2008-04-01 | s. d. | 1.59 | **0.66** | por debajo de controles |
+| *Cymodocea nodosa* | 481 | 1997-09-01 | s. d. | 2.35 | **0.98** | coherente con controles |
 
-CSV completo: [`declives_tendencias_20261011.csv`](declives_tendencias_20261011.csv). Controles: [`controles_tendencias_20261011.csv`](controles_tendencias_20261011.csv).
+*Última observación:* máximo año/mes/día en `public_observations` dentro de la caja de estudio; «s. d.» si no hay fila georreferenciada.
+
+CSV completo: [`declives_tendencias_20261016.csv`](material/declives_tendencias_20261016.csv). Controles: [`controles_tendencias_20261011.csv`](material/controles_tendencias_20261011.csv).
 
 ### 3.3 Lectura por especie (candidata)
 
@@ -112,7 +120,14 @@ Curvas de tasa y barras de presencia/ausencia anual para cada especie objetivo y
 
 ## 4. Discusión
 
-1. **El esfuerzo domina.** Sin controles, *Diplodus*, *Coris* o *Chromis* parecerían «en explosión» (ratios 3–4). El panel ancla esa línea base (~2,4).
+El esfuerzo de observación en la caja ha crecido casi dos órdenes de magnitud en una década; sin el panel de controles, especies ubicuas como *Diplodus* o *Chromis* parecerían «en explosión» con ratios superiores a 3. El cociente frente a controles (~2,4 en media) es por tanto el eje interpretativo de este borrador, no la tasa bruta.
+
+La validación con *Pinna nobilis* es el ancla biológica: el colapso relativo (ratio 0,08 frente a controles) es coherente con la mortalidad masiva documentada por *Haplosporidium pinnae*, aunque la ruptura heurística en ciencia ciudadana (~2019) llega con retraso respecto al inicio clínico (2016).
+
+Entre las demás especies objetivo, *Corallium rubrum* y *Paramuricea clavata* muestran tasas relativas bajas compatibles con declives leves o temporales, pero el proxy fotográfico no distingue organismos vivos de restos blanqueados tras mortalidades. *Pinna rudis* exhibe expansión relativa que merece seguimiento como hipótesis, no como demografía validada.
+
+El siguiente paso metodológico es un GLM binomial negativo con offset de esfuerzo total (como en el manuscrito de invasoras), covariables SST/MHW y cruce formal con estatus UICN/CEEA.
+ Sin controles, *Diplodus*, *Coris* o *Chromis* parecerían «en explosión» (ratios 3–4). El panel ancla esa línea base (~2,4).
 2. **Validación Pinna.** El método pasa el test duro: detecta el colapso conocido.
 3. **Falsos negativos posibles.** Especies carismáticas fotografadas tras mortalidades (gorgonias blancas, nacras muertas) pueden inflar tasas; no distinguimos vivos/muertos en la BD.
 4. **Alerta temprana.** *Pinna rudis* y, en el paper hermano, *Thalassoma pavo* / *Sparisoma cretense* son señales a seguir, no conclusiones demográficas.
