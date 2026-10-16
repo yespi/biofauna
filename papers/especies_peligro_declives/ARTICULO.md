@@ -135,7 +135,7 @@ La caída es coherente con la mortalidad atribuida a *Haplosporidium pinnae* ([C
 | *Posidonia oceanica* | 4469 | 2008-04-01 | 2026-05 | 1.59 | **0.66** | por debajo de controles |
 | *Cymodocea nodosa* | 481 | 1997-09-01 | 2026-06 | 2.35 | **0.98** | coherente con controles |
 
-*Última observación:* fecha máxima en `public_observations` dentro de la caja; «s. d.» si no hay georreferencia.
+*Última observación:* fecha máxima en `public_observations` dentro de la caja; «sin datos» si no hay georreferencia utilizable.
 
 CSV: [`declives_tendencias_20261016.csv`](material/declives_tendencias_20261016.csv). Controles: [`controles_tendencias_20261011.csv`](material/controles_tendencias_20261011.csv).
 

@@ -40,7 +40,7 @@ def psql(sql: str) -> pd.DataFrame:
 
 def fmt_date(y, m, d) -> str:
     if y in (None, "", "None") or pd.isna(y):
-        return "s. d."
+        return "sin datos"
     try:
         y = int(float(y))
         if m in (None, "", "None") or pd.isna(m):
@@ -51,7 +51,7 @@ def fmt_date(y, m, d) -> str:
         d = int(float(d))
         return f"{y:04d}-{min(max(m, 1), 12):02d}-{min(max(d, 1), 28):02d}"
     except (ValueError, TypeError):
-        return "s. d."
+        return "sin datos"
 
 
 def main() -> None:
@@ -89,7 +89,7 @@ def main() -> None:
     else:
         by_taxon = {}
     df["ultima_obs_catalunya"] = df["taxon_id"].map(
-        lambda t: by_taxon.get(int(t), "s. d.") if pd.notna(t) else "s. d."
+        lambda t: by_taxon.get(int(t), "sin datos") if pd.notna(t) else "sin datos"
     )
     df.to_csv(M / "declives_tendencias_20261016.csv", index=False)
 
