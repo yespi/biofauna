@@ -1,6 +1,6 @@
-# Tabla S6. Identificador BioFauna (índice staging p18, eval 16-oct-2026)
+# Tabla S6. Identificador BioFauna (índice producción p19, eval 16-oct-2026)
 
-Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_20261016.jsonl`; **3.061** especies en índice p18, **84,4 %** acierto global oficial). «no» = sin filas de eval para ese slug en el panel (no implica ausencia del catálogo).
+Acierto de especie en el panel de evaluación vigente (`calib_raw_t05.jsonl`; **3.061** especies en índice p19, **84,38 %** acierto global oficial según `stats.json`). «no» = sin filas de eval para ese slug en el panel (no implica ausencia del catálogo).
 
 | Especie lista UE | Slug BioFauna | n eval | Acierto especie (%) | En panel eval |
 |---|---|---:|---:|---|
@@ -20,7 +20,7 @@ Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_
 | *Baccharis halimifolia* | `baccharis_halimifolia` | 10 | 100.0 | sí |
 | *Bipalium kewense* | `bipalium_kewense` | 10 | 100.0 | sí |
 | *Brachyponera chinensis* | `brachyponera_chinensis` | 10 | 100.0 | sí |
-| *Broussonetia papyrifera* | `broussonetia_papyrifera` | 0 | s. d. | no |
+| *Broussonetia papyrifera* | `broussonetia_papyrifera` | 0 | sin datos | no |
 | *Cabomba caroliniana* | `cabomba_caroliniana` | 10 | 90.0 | sí |
 | *Callosciurus erythraeus* | `callosciurus_erythraeus` | 10 | 70.0 | sí |
 | *Callosciurus finlaysonii* | `callosciurus_finlaysonii` | 10 | 90.0 | sí |
@@ -48,7 +48,7 @@ Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_
 | *Gymnocoronis spilanthoides* | `gymnocoronis_spilanthoides` | 10 | 90.0 | sí |
 | *Hakea sericea* | `hakea_sericea` | 10 | 100.0 | sí |
 | *Heracleum mantegazzianum* | `heracleum_mantegazzianum` | 12 | 91.7 | sí |
-| *Heracleum persicum* | `heracleum_persicum` | 0 | s. d. | no |
+| *Heracleum persicum* | `heracleum_persicum` | 0 | sin datos | no |
 | *Heracleum sosnowskyi* | `heracleum_sosnowskyi` | 10 | 80.0 | sí |
 | *Herpestes javanicus* | `herpestes_javanicus` | 1 | 100.0 | sí |
 | *Humulus scandens* | `humulus_scandens` | 10 | 100.0 | sí |
@@ -64,11 +64,11 @@ Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_
 | *Ludwigia grandiflora* | `ludwigia_grandiflora` | 10 | 70.0 | sí |
 | *Ludwigia peploides* | `ludwigia_peploides` | 10 | 80.0 | sí |
 | *Lygodium japonicum* | `lygodium_japonicum` | 10 | 100.0 | sí |
-| *Lysichiton americanus* | `lysichiton_americanus` | 0 | s. d. | no |
+| *Lysichiton americanus* | `lysichiton_americanus` | 0 | sin datos | no |
 | *Marisa cornuarietis* | `marisa_cornuarietis` | 10 | 90.0 | sí |
 | *Microstegium vimineum* | `microstegium_vimineum` | 10 | 100.0 | sí |
 | *Misgurnus anguillicaudatus* | `misgurnus_anguillicaudatus` | 10 | 80.0 | sí |
-| *Misgurnus bipartitus* | `misgurnus_bipartitus` | 0 | s. d. | no |
+| *Misgurnus bipartitus* | `misgurnus_bipartitus` | 0 | sin datos | no |
 | *Morone americana* | `morone_americana` | 10 | 80.0 | sí |
 | *Mulinia lateralis* | `mulinia_lateralis` | 10 | 100.0 | sí |
 | *Muntiacus reevesi* | `muntiacus_reevesi` | 10 | 60.0 | sí |
@@ -97,7 +97,7 @@ Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_
 | *Procyon lotor* | `procyon_lotor` | 10 | 100.0 | sí |
 | *Prosopis juliflora* | `prosopis_juliflora` | 1 | 100.0 | sí |
 | *Pseudorasbora parva* | `pseudorasbora_parva` | 10 | 60.0 | sí |
-| *Pueraria montana var. lobata* | `pueraria_montana_var_lobata` | 0 | s. d. | no |
+| *Pueraria montana var. lobata* | `pueraria_montana_var_lobata` | 0 | sin datos | no |
 | *Pycnonotus cafer* | `pycnonotus_cafer` | 10 | 90.0 | sí |
 | *Pycnonotus jocosus* | `pycnonotus_jocosus` | 10 | 100.0 | sí |
 | *Reynoutria japonica* | `reynoutria_japonica` | 10 | 90.0 | sí |
@@ -112,9 +112,9 @@ Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_
 | *Solenopsis richteri* | `solenopsis_richteri` | 10 | 100.0 | sí |
 | *Tamias sibiricus* | `tamias_sibiricus` | 1 | 100.0 | sí |
 | *Threskiornis aethiopicus* | `threskiornis_aethiopicus` | 10 | 100.0 | sí |
-| *Trachemys scripta elegans* | `trachemys_scripta_elegans` | 0 | s. d. | no |
+| *Trachemys scripta elegans* | `trachemys_scripta_elegans` | 0 | sin datos | no |
 | *Triadica sebifera* | `triadica_sebifera` | 10 | 90.0 | sí |
 | *Vespa mandarinia* | `vespa_mandarinia` | 10 | 80.0 | sí |
-| *Vespa velutina nigrithorax* | `vespa_velutina_nigrithorax` | 0 | s. d. | no |
+| *Vespa velutina nigrithorax* | `vespa_velutina_nigrithorax` | 0 | sin datos | no |
 | *Wasmannia auropunctata* | `wasmannia_auropunctata` | 1 | 100.0 | sí |
-| *Xenopus laevis* | `xenopus_laevis` | 0 | s. d. | no |
+| *Xenopus laevis* | `xenopus_laevis` | 0 | sin datos | no |

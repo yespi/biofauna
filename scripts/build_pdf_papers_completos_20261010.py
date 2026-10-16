@@ -247,7 +247,7 @@ def build_invasoras_completo() -> Path:
     figs = [
         (
             "material/figuras/area_estudio_esfuerzo_heatmap_20261015.png",
-            "Fig. 1. Densidad del esfuerzo de observación (log10 del número de observaciones *research grade* por celda ~10 km), caja de estudio, 2018–2024.",
+            "Fig. 1. Densidad del esfuerzo de observación (log10 del número de observaciones *research grade* por celda ~10 km), caja de estudio con contorno provincial aproximado (unión de las cuatro provincias catalanas; Material suplementario geo), 2018–2024.",
         ),
         (
             "material/figuras/esfuerzo_bioquest_catalunya.png",
@@ -264,6 +264,10 @@ def build_invasoras_completo() -> Path:
         (
             "material/figuras/prosperan_panel_top8.png",
             "Fig. 4. Razón de tasas anual de detección 2013–2025 (GLM binomial negativo, offset log esfuerzo excluyente; IC 95 %) para las especies de la lista UE estimables; rojo = descenso significativo (FDR&lt;0,05); verde = aumento significativo.",
+        ),
+        (
+            "material/figuras/exocat_retraso_ciudadano_20261016.png",
+            "Fig. 5. Año de la primera cita en inventario oficial o literatura (EXOCAT u otras fuentes citadas) frente al primer registro ciudadano *research grade* en la caja de estudio, para taxones presentes con ambas fechas documentadas (Material suplementario: <code>concordancia_exocat_oficial_20261016.csv</code>).",
         ),
         (
             "material/figuras/marinas_retraso_ciudadano_20261015.png",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ultima observación, limpieza nan/s.d., tablas S1–S6 y acierto BioFauna p18 (sin APIs)."""
+"""Ultima observación, «sin datos», tablas S1–S6 y acierto BioFauna p19 (sin iNat API)."""
 from __future__ import annotations
 
 import json
@@ -47,7 +47,7 @@ def slugify(binomial: str) -> str:
 
 def fmt_date(y, m, d) -> str:
     if pd.isna(y) or y == "" or str(y) == "None":
-        return "s. d."
+        return "sin datos"
     try:
         y = int(float(y))
         if m in (None, "", "None") or pd.isna(m):
@@ -60,65 +60,26 @@ def fmt_date(y, m, d) -> str:
         d = min(max(d, 1), 28)
         return f"{y:04d}-{m:02d}-{d:02d}"
     except (ValueError, TypeError):
-        return "s. d."
+        return "sin datos"
 
 
 def sd_cell(v) -> str:
     if v is None or (isinstance(v, float) and pd.isna(v)):
-        return "s. d."
-    if isinstance(v, str) and v.strip().lower() in ("", "nan", "none", "nat"):
-        return "s. d."
+        return "sin datos"
+    if isinstance(v, str) and v.strip().lower() in ("", "nan", "none", "nat", "s. d.", "s.d."):
+        return "sin datos"
     return str(v)
 
 
 def enrich_presencia():
-    pres = pd.read_csv(M / "presencia_cat_es.csv")
-    ids = pres["inat_taxon"].dropna().astype(int).tolist()
-    id_list = ",".join(str(i) for i in ids)
-    sql = f"""
-    WITH last AS (
-      SELECT taxon_id, MAX(obs_year)::int AS y_max
-      FROM public_observations
-      WHERE quality_grade='research'
-        AND lat BETWEEN {BOX[0]} AND {BOX[1]}
-        AND lng BETWEEN {BOX[2]} AND {BOX[3]}
-        AND taxon_id = ANY(ARRAY[{id_list}]::int[])
-      GROUP BY taxon_id
-    )
-    SELECT l.taxon_id::int,
-           l.y_max,
-           MAX(p.obs_month::int) AS m_max,
-           MAX(p.obs_day::int) AS d_max
-    FROM last l
-    JOIN public_observations p
-      ON p.taxon_id = l.taxon_id AND p.obs_year = l.y_max
-     AND p.quality_grade='research'
-     AND p.lat BETWEEN {BOX[0]} AND {BOX[1]}
-     AND p.lng BETWEEN {BOX[2]} AND {BOX[3]}
-    GROUP BY l.taxon_id, l.y_max;
-    """
-    ult = psql(sql)
-    if ult.empty:
-        pres["ultima_obs_catalunya"] = ""
-        pres.to_csv(M / "presencia_cat_es.csv", index=False)
-        return pres
-    ult["taxon_id"] = ult["taxon_id"].astype(int)
-    pres["inat_taxon"] = pres["inat_taxon"].astype("Int64")
-    pres = pres.merge(ult, left_on="inat_taxon", right_on="taxon_id", how="left")
-    pres["ultima_obs_catalunya"] = pres.apply(
-        lambda r: fmt_date(r.get("y_max"), r.get("m_max"), r.get("d_max"))
-        if int(r.get("obs_catalunya") or 0) > 0
-        else "",
-        axis=1,
-    )
-    drop = [c for c in pres.columns if c in ("taxon_id", "y_max", "m_max", "d_max")]
-    pres = pres.drop(columns=drop, errors="ignore")
-    pres.to_csv(M / "presencia_cat_es.csv", index=False)
-    return pres
+    import ultima_obs_enrich_20261016 as uo
+
+    uo.main()
+    return pd.read_csv(M / "presencia_cat_es.csv")
 
 
-def eval_p18_ue():
-    eval_path = Path("/mnt/docker/biofauna/dataset/calib_raw_t05_stg_p18_20261016.jsonl")
+def eval_p19_ue():
+    eval_path = Path("/mnt/docker/biofauna/dataset/calib_raw_t05.jsonl")
     if not eval_path.exists():
         return pd.DataFrame()
     ts = json.loads((M / "target_species.json").read_text())
@@ -139,13 +100,13 @@ def eval_p18_ue():
             {
                 "especie": name,
                 "slug_bf": slug,
-                "n_eval_p18": n,
+                "n_eval_p19": n,
                 "acierto_especie_pct": round(acc, 1) if acc is not None else None,
-                "en_indice_p18": "sí" if n else "no",
+                "en_indice_p19": "sí" if n else "no",
             }
         )
     df = pd.DataFrame(rows)
-    df.to_csv(M / "cobertura_bf_ue_p18_20261016.csv", index=False)
+    df.to_csv(M / "cobertura_bf_ue_p19_20261016.csv", index=False)
     return df
 
 
@@ -174,19 +135,19 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
     lines3 = [
         "# Tabla 3. Presencia en Cataluña, tendencias y registros ciudadanos\n\n",
         "Primer y último registro: fechas de observación *research grade* en la caja de estudio (§2.2). "
-        "«s. d.» = sin dato (sin registros o fecha incompleta en la base).\n\n",
+        "«sin datos» = sin fecha utilizable en las fuentes locales consultadas.\n\n",
         "| Especie | Obs | Celdas UTM 10 km | Primer registro | Última observación | Categoría | RR anual (IC 95 %) | q (FDR) |\n",
         "|---|---:|---:|---|---|---|---:|---:|\n",
     ]
     for _, r in pres_cat.sort_values("obs_catalunya", ascending=False).iterrows():
         pr = sd_cell(r.get("primera_obs_catalunya") or "")
         ul = sd_cell(r.get("ultima_obs_catalunya") or "")
-        if pr == "s. d." and int(r["obs_catalunya"]) > 0:
-            pr = "s. d."
-        if ul == "s. d." and int(r["obs_catalunya"]) == 0:
+        if pr == "sin datos" and int(r["obs_catalunya"]) > 0:
+            pr = "sin datos"
+        if ul == "sin datos" and int(r["obs_catalunya"]) == 0:
             ul = "—"
         loc = r.get("localidades_catalunya")
-        loc_s = int(loc) if pd.notna(loc) and str(loc) not in ("nan", "") else "s. d."
+        loc_s = int(loc) if pd.notna(loc) and str(loc) not in ("nan", "") else "sin datos"
         if pd.notna(r.get("RR_anual")) and pd.notna(r.get("IC95_lo")):
             rr = f"{r['RR_anual']:.2f} ({r['IC95_lo']:.2f}–{r['IC95_hi']:.2f})"
             q = f"{r['q_BH']:.3f}" if pd.notna(r["q_BH"]) else "—"
@@ -249,30 +210,30 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
 
     if not bf.empty:
         s6 = [
-            "# Tabla S6. Identificador BioFauna (índice staging p18, eval 16-oct-2026)\n\n",
-            "Acierto de especie en el panel de evaluación congelado (`calib_raw_t05_stg_p18_20261016.jsonl`; "
-            "**3.061** especies en índice p18, **84,4 %** acierto global oficial). "
+            "# Tabla S6. Identificador BioFauna (índice producción p19, eval 16-oct-2026)\n\n",
+            "Acierto de especie en el panel de evaluación vigente (`calib_raw_t05.jsonl`; "
+            "**3.061** especies en índice p19, **84,38 %** acierto global oficial según `stats.json`). "
             "«no» = sin filas de eval para ese slug en el panel (no implica ausencia del catálogo).\n\n",
             "| Especie lista UE | Slug BioFauna | n eval | Acierto especie (%) | En panel eval |\n",
             "|---|---|---:|---:|---|\n",
         ]
         for _, r in bf.sort_values("especie").iterrows():
-            acc = f"{r['acierto_especie_pct']:.1f}" if pd.notna(r["acierto_especie_pct"]) else "s. d."
+            acc = f"{r['acierto_especie_pct']:.1f}" if pd.notna(r["acierto_especie_pct"]) else "sin datos"
             s6.append(
-                f"| *{r['especie']}* | `{r['slug_bf']}` | {int(r['n_eval_p18'])} | {acc} | {r['en_indice_p18']} |\n"
+                f"| *{r['especie']}* | `{r['slug_bf']}` | {int(r['n_eval_p19'])} | {acc} | {r['en_indice_p19']} |\n"
             )
         (P / "SUPLEMENTO_TABLA_S6_BIOFAUNA.md").write_text("".join(s6), encoding="utf-8")
 
-    n_con_eval = (bf["n_eval_p18"] > 0).sum() if not bf.empty else 0
-    mean_acc = bf.loc[bf["n_eval_p18"] > 0, "acierto_especie_pct"].mean() if n_con_eval else None
+    n_con_eval = (bf["n_eval_p19"] > 0).sum() if not bf.empty else 0
+    mean_acc = bf.loc[bf["n_eval_p19"] > 0, "acierto_especie_pct"].mean() if n_con_eval else None
     summary = {
         "ue_taxones": 114,
-        "ue_con_eval_p18": int(n_con_eval),
+        "ue_con_eval_p19": int(n_con_eval),
         "acierto_medio_ue_con_eval": round(mean_acc, 2) if mean_acc is not None else None,
-        "indice_global_p18_pct": 84.4,
-        "indice_especies_p18": 3061,
+        "indice_global_p19_pct": 84.38,
+        "indice_especies_p19": 3061,
     }
-    (M / "cobertura_bf_ue_p18_20261016.json").write_text(
+    (M / "cobertura_bf_ue_p19_20261016.json").write_text(
         json.dumps(summary, indent=2), encoding="utf-8"
     )
 
@@ -283,10 +244,10 @@ def patch_resultados_top15(pres: pd.DataFrame):
     lines = []
     for _, r in top.iterrows():
         ul = sd_cell(r.get("ultima_obs_catalunya") or "—")
-        pr = sd_cell(r.get("primera_obs_catalunya") or "s. d.")
+        pr = sd_cell(r.get("primera_obs_catalunya") or "sin datos")
         cat = cat_h.get(r.categoria, r.categoria.replace("_", " "))
         hab = (r.get("habitat_tags") or "T").replace(",", "+")
-        loc = int(r.localidades_catalunya) if pd.notna(r.localidades_catalunya) else "s. d."
+        loc = int(r.localidades_catalunya) if pd.notna(r.localidades_catalunya) else "sin datos"
         lines.append(
             f"| *{r['especie']}* | {int(r.obs_catalunya)} | {int(r.observadores_catalunya or 0)} | {loc} | {pr} | {ul} | {cat} | {hab} |"
         )
@@ -321,10 +282,10 @@ def patch_resultados_top15(pres: pd.DataFrame):
 
 def main():
     pres = enrich_presencia()
-    bf = eval_p18_ue()
+    bf = eval_p19_ue()
     write_all_tables(pres, bf)
     patch_resultados_top15(pres)
-    print("OK tablas 20261016", "eval rows", len(bf), "con eval", (bf.n_eval_p18 > 0).sum())
+    print("OK tablas 20261016", "eval rows", len(bf), "con eval", (bf.n_eval_p19 > 0).sum())
 
 
 if __name__ == "__main__":

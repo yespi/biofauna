@@ -7,21 +7,21 @@ De los 114 taxones analizados, **35** presentaron al menos una observación en C
 ### Top 15 en Cataluña (observaciones combinadas)
 
 | Especie | Obs CAT | Observadores | Celdas UTM 10 km | Primer registro | Última observación | Categoría | Hábitat |
-| *Ailanthus altissima* | 1540 | 450 | 431 | 2008-06-08 | s. d. | recurrente | T |
-| *Procambarus clarkii* | 646 | 386 | 441 | 2001-09-23 | s. d. | recurrente | D+S+X |
-| *Myocastor coypus* | 498 | 301 | 242 | 2012-06-25 | s. d. | recurrente | T |
-| *Trachemys scripta elegans* | 263 | 138 | 177 | 2006-05-06 | s. d. | recurrente | D |
-| *Broussonetia papyrifera* | 175 | 93 | 145 | 2017-06-09 | s. d. | recurrente | T |
-| *Alopochen aegyptiaca* | 167 | 100 | 92 | 2010-04-16 | s. d. | recurrente | T |
-| *Vespa velutina nigrithorax* | 156 | 88 | 143 | 2017-11-22 | s. d. | recurrente | T |
-| *Gambusia holbrooki* | 128 | 89 | 93 | 2007-07-13 | s. d. | recurrente | D+S+X |
-| *Neogale vison* | 109 | 64 | 76 | 2010-08-08 | 2026-04-28 | recurrente | T |
-| *Pennisetum setaceum* | 109 | 50 | 75 | 2016-01-20 | s. d. | recurrente | T |
-| *Delairea odorata* | 107 | 49 | 69 | 2009-12-29 | s. d. | recurrente | T |
-| *Rugulopteryx okamurae* | 101 | 4 | 25 | 2024-05-31 | 2026-10 | reciente | M |
-| *Acacia saligna* | 65 | 49 | 55 | 2019-07-08 | s. d. | recurrente | T |
-| *Ludwigia peploides* | 58 | 36 | 49 | 2009-08-02 | s. d. | recurrente | D |
-| *Lepomis gibbosus* | 36 | 28 | 34 | 2003-07-21 | s. d. | recurrente | D+S+X |
+| *Ailanthus altissima* | 1540 | 450 | 431 | 2008-06-08 | 2008-06-08 | recurrente | T |
+| *Procambarus clarkii* | 646 | 386 | 441 | 2001-09-23 | 2007-08-26 | recurrente | D+S+X |
+| *Myocastor coypus* | 498 | 301 | 242 | 2012-06-25 | 2026-10-01 | recurrente | T |
+| *Trachemys scripta elegans* | 263 | 138 | 177 | 2006-05-06 | 2011-03-26 | recurrente | D |
+| *Broussonetia papyrifera* | 175 | 93 | 145 | 2017-06-09 | 2019-04-13 | recurrente | T |
+| *Alopochen aegyptiaca* | 167 | 100 | 92 | 2010-04-16 | 2010-08-23 | recurrente | T |
+| *Vespa velutina nigrithorax* | 156 | 88 | 143 | 2017-11-22 | 2020-10-20 | recurrente | T |
+| *Gambusia holbrooki* | 128 | 89 | 93 | 2007-07-13 | 2026-07-14 | recurrente | D+S+X |
+| *Neogale vison* | 109 | 64 | 76 | 2010-08-08 | 2026-04-11 | recurrente | T |
+| *Pennisetum setaceum* | 109 | 50 | 75 | 2016-01-20 | 2019-10-31 | recurrente | T |
+| *Delairea odorata* | 107 | 49 | 69 | 2009-12-29 | 2021-05-14 | recurrente | T |
+| *Rugulopteryx okamurae* | 101 | 4 | 25 | 2024-05-31 | 2026-10-01 | reciente | M |
+| *Acacia saligna* | 65 | 49 | 55 | 2019-07-08 | 2026-04-25 | recurrente | T |
+| *Ludwigia peploides* | 58 | 36 | 49 | 2009-08-02 | 2019-08-17 | recurrente | D |
+| *Lepomis gibbosus* | 36 | 28 | 34 | 2003-07-21 | 2010-08-23 | recurrente | D+S+X |
 
 Etiquetas de hábitat: M = marino, S = salobre, D = agua dulce, T = terrestre (no excluyentes; ver Métodos).
 
@@ -65,7 +65,7 @@ Ajustamos el modelo binomial negativo descrito en §2.5 a las 17 especies de la 
 
 ## 3.5 Concordancia con EASIN (España)
 
-A escala de país, EASIN registra **76** taxones de la lista como presentes en España; nuestras fuentes ciudadanas dan **52**, con **50** coincidencias (Tabla 4; Tabla S4). **26** taxones figuran en EASIN sin registro ciudadano nuestro (falsos ausentes a escala España, sobre todo grupos infradetectados). **2** registros ciudadanos (*Mulinia lateralis*, *Andropogon virginicus*) no tienen respaldo en EASIN. La comparación con EXOCAT en Cataluña permanece pendiente de descarga del inventario autonómico.
+A escala de país, EASIN registra **76** taxones de la lista como presentes en España; nuestras fuentes ciudadanas dan **52**, con **50** coincidencias (Tabla 4; Tabla S4). **26** taxones figuran en EASIN sin registro ciudadano nuestro (falsos ausentes a escala España, sobre todo grupos infradetectados). **2** registros ciudadanos (*Mulinia lateralis*, *Andropogon virginicus*) no tienen respaldo en EASIN. A escala catalana, la **Fig. 5** contrasta, para un subconjunto de taxones presentes con fuente verificable, el año de la primera cita en inventario o literatura (EXOCAT u otras referencias citadas en `material/concordancia_exocat_oficial_20261016.csv`) frente al primer registro ciudadano *research grade* en la caja. El retraso es nulo o pequeño en varias especies marinas ya inventariadas (*Oculina patagonica*, *Caulerpa cylindracea*) y puede superar una década en casos recientes de detección ciudadana (*Rugulopteryx okamurae*) o en taxones cuya primera fecha en plataforma no coincide con la primera presencia documentada (*Myocastor coypus*, *Trachemys scripta elegans*; ver Limitaciones). Una concordancia celda a celda con el inventario EXOCAT completo sigue pendiente de descarga masiva del portal de la Generalitat.
 
 ## 3.6 Origen, vía y primeras fechas
 

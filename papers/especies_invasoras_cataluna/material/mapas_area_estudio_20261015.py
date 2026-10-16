@@ -17,6 +17,7 @@ from pyproj import Transformer
 M = Path(__file__).parent
 F = M / "figuras"
 GEO = Path("/mnt/docker/biofauna/artifacts/invasoras/origen_expansion/geo")
+ICGC = M / "geo" / "catalunya_icgc_admin.geojson"
 BOX = dict(swlat=40.45, nelat=42.95, swlng=0.1, nelng=3.4)
 T = Transformer.from_crs("EPSG:4326", "EPSG:25831", always_xy=True)
 
@@ -80,6 +81,27 @@ def load_coast():
     return polys
 
 
+def load_icgc_outline():
+    if not ICGC.exists():
+        return []
+    import json
+
+    data = json.loads(ICGC.read_text(encoding="utf-8"))
+    lines = []
+    for feat in data.get("features", []):
+        if feat.get("properties", {}).get("kind") == "marine_buffer_bbox":
+            continue
+        geom = feat["geometry"]
+        if geom["type"] == "Polygon":
+            rings = [geom["coordinates"][0]]
+        else:
+            rings = [p[0] for p in geom["coordinates"]]
+        for ring in rings:
+            lngs, lats = zip(*ring)
+            lines.append((list(lngs), list(lats)))
+    return lines
+
+
 def fig_area_heatmap():
     q = f"""
     SELECT FLOOR((lng - {BOX['swlng']}) / 0.09)::int AS gx,
@@ -114,9 +136,13 @@ def fig_area_heatmap():
     for ux, uy in polys:
         lngs, lats = zip(*[T.transform(e, n, direction="INVERSE") for e, n in zip(ux, uy)])
         ax.plot(lngs, lats, color="#4e342e", lw=0.8, zorder=3)
+    for lngs, lats in load_icgc_outline():
+        ax.plot(lngs, lats, color="#1a5276", lw=1.0, zorder=4, alpha=0.9)
     ax.set_xlabel("Longitud (°)")
     ax.set_ylabel("Latitud (°)")
-    ax.set_title("Área de estudio y densidad de esfuerzo (log10 obs), 2018–2024")
+    ax.set_title(
+        "Área de estudio (contorno provincial ICGC aprox.) y densidad de esfuerzo (log10 obs), 2018–2024"
+    )
     fig.tight_layout()
     fig.savefig(F / "area_estudio_esfuerzo_heatmap_20261015.png", dpi=200)
     plt.close(fig)

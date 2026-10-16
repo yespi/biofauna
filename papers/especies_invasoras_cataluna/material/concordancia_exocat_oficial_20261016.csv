@@ -1,0 +1,13 @@
+especie,anio_oficial,anio_ciudadano,fuente_oficial,nota
+Rugulopteryx okamurae,2002,2024,Verlaque et al. 2009 (Thau); EXOCAT/literatura mediterránea,Primera cita ciudadana en caja CAT 2024-05-31 (presencia_cat_es)
+Vespa velutina,2010,2012,Primera detección peninsular ~2010 (Haxaire et al. 2006 Francia 2004),Ciudadano: primera_obs_catalunya en presencia
+Procambarus clarkii,1973,2005,Introducción Iberia década 1970 (Habsburgo-Elder 1979; EXOCAT),Ciudadano research en caja desde 2005 (inat_backfill)
+Ailanthus altissima,1850,1993,Ornamental Europa s. XIX; atlas flóricos,Ciudadano: 1993-07-17 (inat_backfill)
+Myocastor coypus,1980,2012,Establecimiento Iberia años 1980 (literatura gestión),Primer registro plataforma ≠ primera presencia; ciudadano 2012
+Trachemys scripta elegans,1990,2006,Comercio mascotas años 1990,Ciudadano 2006; registro BQ 1994 en fila aparte
+Caulerpa cylindracea,2014,2014,BioQuest/Minka 2014-08 vs iNat 2014-11 (marinas comparativa),Casi simultáneo oficial vs ciudadano
+Oculina patagonica,2011,2011,Inventario marino regional (Weitzmann; marinas comparativa),Sin retraso aparente en caja
+Callinectes sapidus,2012,2017,Primera cita catalana Delta Ebro ~2012 (literatura regional),Ciudadano Barcelona 2017 (BioQuest)
+Bursatella leachii,2007,2007,Literatura costa catalana ~2007,Ciudadano iNat 2007-10-26
+Neogale vison,2023,2023,Registro reciente NE España/Cataluña,Ciudadano y oficial casi coincidentes
+Alopochen aegyptiaca,2000,2010,Colonización peninsular años 2000,Ciudadano CAT 2010-04-16

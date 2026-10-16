@@ -29,7 +29,7 @@ Priorizar vigilancia de *Rugulopteryx okamurae* en roca infralitoral, *Callinect
 
 Los atlas y listas basados en ciencia ciudadana en Europa (p. ej. Azzurro et al. 2022, ClimateFish) muestran que peces costeros y especies conspicuas se detectan antes que invertebrados crípticos, un patrón que reproducimos con la lista UE en Cataluña. García et al. (2015) y los inventarios EXOCAT/EASIN documentan muchas de las marinas que aquí solo aparecen con retraso en iNaturalist (Fig. 7), lo que refuerza la hipótesis de sesgo temporal de plataforma más que de ausencia biológica. Los modelos de tendencia con offset de esfuerzo siguen la práctica recomendada para datos de iNaturalist (Isaac et al. 2014), aunque nuestro denominador local puede subestimar el *place* completo de Cataluña cuando las observaciones viven solo en exportaciones de iNaturalist no ingeridas en la base unificada — de ahí las fechas de «última observación» marcadas como «s. d.» en la Tabla 3 cuando no hay fila fechada en la base local.
 
-El acierto medio del identificador BioFauna para los taxones UE con eval (**85,1 %** en p18; Tabla S6) es comparable al global del índice (**84,4 %**), lo que apoya su uso como capa de etiquetado en FotoFauna, pero no sustituye la validación experta en grupos difíciles (cangrejos, planarias, algas).
+El acierto medio del identificador BioFauna para los taxones UE con eval (Tabla S6; índice **p19**) es comparable al global del índice (**84,38 %** según `stats.json`), lo que apoya su uso como capa de etiquetado en FotoFauna, pero no sustituye la validación experta en grupos difíciles (cangrejos, planarias, algas).
 
 ## 4.5 Limitaciones
 

@@ -9,7 +9,9 @@ Trabajamos con los 114 taxones de la lista UE (Material suplementario S1), verif
 El área de estudio es Cataluña. Las observaciones proceden de:
 
 - **iNaturalist:** place Cataluña (61614) y España (6774) para comparaciones nacionales.
-- **Minka:** registros dentro de una **caja rectangular** (0,1–3,4° E; 40,45–42,95° N), que incluye territorio no catalán (Aragón, Andorra, Francia) y mar. El recorte al polígono administrativo ICGC y una franja marina coherente con la costa catalana quedan como trabajo futuro (Limitaciones).
+- **Minka:** registros dentro de una **caja rectangular** (0,1–3,4° E; 40,45–42,95° N), que incluye territorio no catalán (Aragón, Andorra, Francia) y mar. Para mapas y descripción del área usamos además un **contorno provincial aproximado** (`material/geo/catalunya_icgc_admin.geojson`: unión de Barcelona, Girona, Lleida y Tarragona a partir de `spain-provinces.geojson`, más una franja marina rectangular ~12 mn al este; sustituto hasta disponer de la capa ICGC oficial).
+
+**Última observación en Cataluña (Tablas 2–3, S1, Top 15):** fecha más reciente *research grade* en la caja, obtenida en este orden: (1) tablas locales `public_observations` e `inat_backfill_20261011` en PostgreSQL; (2) si no hay fecha, consulta a la API de Minka (máximo 1 petición cada 5 s, sin llamadas a iNaturalist). Donde ninguna fuente devuelve fecha utilizable se anota «sin datos» (p. ej. conteos agregados de iNaturalist de octubre de 2026 sin filas fechadas en la base local).
 
 Para cada región reportamos el **máximo** entre fuentes, no la suma. Es una **cota inferior**, no una unión deduplicada a nivel de observación individual. En la caja de estudio, al agrupar por taxón, año y celda de ~1 km (coordenadas redondeadas), el solape iNaturalist–Minka representa ~0,4 % de las observaciones *research grade* (372.987 frente a 374.348); los conteos por especie siguen sin deduplicar entre plataformas.
 
@@ -27,7 +29,7 @@ Reglas aplicadas una sola vez en todo el manuscrito (no equivalen a estatus EASI
 | En expansión | ≥ 10 obs, ≥ 5 años y razón de tasas > 1 con FDR &lt; 0,05 (ninguna especie la cumple) |
 | Recurrente | Resto con ≥ 10 obs, ≥ 3 celdas y ≥ 3 años (describe detección repetida; no implica población establecida) |
 
-Los valores centinela 99,0 del ratio de esfuerzo se sustituyeron por «s. d.» (sin datos) cuando no hay ventana previa suficiente. En las tablas por especie, «s. d.» indica además fechas no disponibles en la base unificada local (p. ej. observaciones solo en exportaciones de iNaturalist no ingeridas).
+Los valores centinela 99,0 del ratio de esfuerzo se sustituyeron por «sin datos» cuando no hay ventana previa suficiente. En las tablas por especie, «sin datos» indica fechas no recuperables con las fuentes locales descritas en §2.2.
 
 ## 2.4 Esfuerzo y tasa de detección
 
