@@ -1,11 +1,11 @@
 # BioFauna: identificación de taxones mediterráneos por recuperación sobre BioCLIP-2.5 ViT-H congelado
 
-**Autor:** Gustavo Zafra (Yespi)  
+**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com)  
 **Fuentes taxonómicas:** listas publicadas del Mediterráneo (GROC/OPK; Ballesteros 2007; Salvador et al. 2022) y curadores de la comunidad  
 
 **Repositorio:** https://github.com/yespi/biofauna  
 **Sistema en vivo:** https://fotofauna.yespi.es  
-**Versión del manuscrito:** 2026-10-11 (artículo para Biodiversity Data Journal / PeerJ; OOS 83,22 %; catálogo unificado previsto ≈3.109 spp)
+**Versión del manuscrito:** 2026-10-16 (artículo para Biodiversity Data Journal / PeerJ; índice **p18**, **3.061** spp; acierto oficial panel **84,38 %**)
 
 > **Nombre.** El proyecto se llamó YOLOFauna (2024–mediados de 2026); pasó a BioFauna cuando producción se quedó en recuperación BioCLIP, no en detectores YOLO. Origen: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -15,7 +15,7 @@
 
 BioFauna identifica taxones mediterráneos (y algunos adyacentes) a partir de fotografías por **recuperación** sobre una galería regional, sin entrenar un clasificador cerrado. El encoder de producción es **BioCLIP-2.5 ViT-H/14** (congelado; embeddings de 1024 dimensiones). La consulta se embebe (fusión del encuadre global con un recorte central al 65 %), se busca con **k-NN (k = 15)** y un agregador de votos temperado, se puede reponderar con un prior geográfico, se convierte en probabilidad calibrada y, si el margen es débil, se **abstiene** a género, familia o un grupo de indistinguibilidad curado.
 
-**Cifras vigentes** (`dataset/stats.json` `updated=2026-10-11T08:00:50`; `/health` 11-oct): galería en vivo **1.216.896** embeddings / **4.643** especies en el índice FAISS; catálogo objetivo actual **3.084** spp embebidas (**3.083**), con unificación prevista a ≈**3.109** spp; panel de campo **78.145** filas con acierto de especie fuera de muestra **83,22 %** (género **87,96 %**, familia **91,04 %**; `calibration.field_acc`). AutoID publica con umbral de especie **0,83** (precisión ≈96 %, cobertura ≈66,5 % en el eval completo; precisión auditada histórica **96,6 %**, n=493). Líneas base sobre 78.180 filas (2026-10-03): centroide más cercano **74,73 %**; k-NN simple **79,86 %**. Una búsqueda sistemática de mejoras entrenando sobre este espacio (LoRA, QLoRA, ArcFace, etc.) **no superó** la recuperación congelada. Publicamos el libro de experimentos, IDs de taxón, centroides y un identificador autoalojable; **no** se redistribuyen fotos ni embeddings por foto.
+**Cifras vigentes** (`dataset/stats.json` `updated=2026-10-16T14:17:28`): catálogo e índice de producción **p18** con **3.061** especies embebidas y **~1,29×10⁶** vectores FAISS; acierto oficial de especie en el panel de evaluación rescore **84,38 %** (`overall_accuracy`). Staging **p19** (mismo panel, **no promovido** a producción): **84,36 %** oficial — ver informe interno `STAGING_P19_20261016.md`. El panel histórico de campo (**78.145** filas, **83,22 %** en octubre de 2026) sigue citándose solo donde se comparan promociones antiguas. AutoID publica con umbral de especie **0,83** (precisión ≈96 %, cobertura ≈66,5 % en el eval completo; precisión auditada histórica **96,6 %**, n=493). Líneas base sobre 78.180 filas (2026-10-03): centroide más cercano **74,73 %**; k-NN simple **79,86 %**. Una búsqueda sistemática de mejoras entrenando sobre este espacio (LoRA, QLoRA, ArcFace, etc.) **no superó** la recuperación congelada. Publicamos el libro de experimentos, IDs de taxón, centroides y un identificador autoalojable; **no** se redistribuyen fotos ni embeddings por foto.
 
 **Palabras clave:** BioCLIP-2.5, ViT-H, k-NN, clasificación visual fina, biodiversidad marina, ciencia ciudadana, abstención taxonómica, calibración, mar Mediterráneo
 
@@ -366,7 +366,9 @@ Para cerrar el bucle AutoID → comunidad, FotoFauna registra decisiones de revi
 
 ## 5.5 Actualización 2026-10-15: acierto por tamaño de galería y prior zona/mes
 
-**Índice p15 en producción.** Producción sirve ahora el índice **p15** (promovido el 14-oct-2026 a las 17:04 CEST): **2.988 especies, 1.289.637 vectores** (p13 anterior: 3.113 especies, 1.300.986 vectores; la bajada de especies viene de la barrera que solo deja en el índice especies del catálogo con evaluación sin fuga). Acierto limpio: **81,0 %** top-1 de especie sobre **44.529** fotos de observaciones sin fuga (test congelado disjunto por observador y observación, `overall_accuracy_clean`, 12-oct-2026). En el promote de p15 la guardia de fuga midió −0,18 pp netos sobre las filas limpias (81,73 → 81,55 %, otra ejecución/base distinta de la cifra de 81,0 %), así que el promote aportó higiene de catálogo, no acierto. Novedad en §5.5: acierto por cuartil de tamaño de galería y propuesta de prior zona/mes.
+**Índice p15 en producción (histórico).** Entre el 14-oct y mediados de octubre de 2026 producción sirvió el índice **p15** (**2.988** especies, **1.289.637** vectores; barrera de catálogo con evaluación sin fuga). Acierto limpio congelado: **81,0 %** sobre **44.529** fotos sin fuga (`overall_accuracy_clean`, 12-oct-2026).
+
+**Índice p18 (16-oct-2026, producción al cerrar este manuscrito).** Tras fusionar held-out y cuarentena de vectores, el índice **p18** alcanza **3.061** especies y **1.294.670** vectores con acierto oficial **84,38 %** en el panel rescore (`stats.json`). Staging **p19** (limpieza por vecindad, no promovida) queda en **84,36 %** (−0,019 pp); no se recomienda promote. Los párrafos siguientes sobre cuartiles de galería se midieron sobre **p15** y conservan valor cualitativo (galerías pequeñas ≈14 pp peor que las grandes).
 
 **Acierto por cuartil de tamaño de galería (medido, CPU, solo lectura).** Se cruzaron las claves limpias (`eval_limpio_v3_keys_20261012.json`, 44.529 claves) con los registros por foto de `calib_raw_t05.jsonl` y los vectores por especie del índice p15 (`species_ids.npy`, 1.289.637 vectores, 2.988 especies). Coinciden 44.480 fotos; 58 son de especies sin vectores en p15 y se excluyen de la tabla, quedando 44.422. Las fotos se ordenan por el número de vectores de galería de su especie real y se cortan en cuatro grupos iguales:
 
@@ -386,7 +388,7 @@ En conjunto, este fichero de puntuación da 82,20 % sobre las 44.480 fotos cruza
 1. El top-1 de especie no es nivel experto en invertebrados crípticos; las especies con poca galería o evaluación fina son mucho más difíciles que la media del panel.
 2. El catálogo y la evaluación están **centrados en el mar Mediterráneo** (y costas adyacentes en la galería); no hay estudio sistemático fuera de esa región.
 3. El código público es un **identificador de reconstrucción** (prototipos + k-NN local opcional), no el volcado del servicio de producción en HanSolo.
-4. El panel de campo vigente da **83,22 %** de acierto de especie (78.145 filas; `dataset/stats.json`); una fracción de filas puede seguir correlacionada con la galería, y el KPI operativo sobre observaciones recientes suele ser más bajo que el panel cerrado.
+4. La cifra de cabecera (**84,38 %**, índice p18) proviene del panel rescore oficial; filas históricas del panel de 78.145 observaciones pueden seguir correlacionadas con la galería, y el KPI operativo sobre observaciones recientes suele ser más bajo que el panel cerrado.
 5. Las correcciones de curadores aún no cierran un bucle de entrenamiento automático.
 6. **Recuperación de conjunto cerrado:** las especies ausentes del catálogo reciben una respuesta errónea con confianza; mitigado en aves con guarda zero-shot, no aún en todos los grupos.
 7. La precisión/cobertura de AutoID al umbral 0,83 (≈96 % / ≈66,5 % en el eval completo) es del calibrador vigente; la precisión real de los rescates por recorte publicados sigue pendiente de reacciones de terceros.
@@ -414,7 +416,7 @@ Licencia MIT para código y JSON/prototipos publicados. El copyright de las foto
 BioFauna es un clasificador por **recuperación**, no una red entrenada de extremo a extremo:
 
 1. **Encoder congelado.** Cada foto de la galería se embebe con **BioCLIP-2.5 ViT-H/14** (congelado). La consulta se embebe igual: vector global **más fusión ROI al 65 %** (recorte centrado en el sujeto), normalizado L2.
-2. **Búsqueda aproximada.** Un índice **FAISS** guarda los vectores de galería (hoy **≈1,20 M vectores / 4.543 especies**, alineados fila a especie).
+2. **Búsqueda aproximada.** Un índice **FAISS** guarda los vectores de galería (producción **p18**: **~1,29×10⁶** vectores / **3.061** especies, alineados fila a especie).
 3. **k-NN con agregador temperado.** Los *k*=15 vecinos votan con pesos `exp(similitud / T)`, `T=0,05`, **tope de 3 votos por especie**.
 4. **Correcciones de contexto.** Prior **geográfico** y manejo de **pares crípticos** corrigen el ranking cuando dos especies son casi idénticas a la vista.
 5. **Calibración jerárquica.** Un modelo logístico por especie convierte la puntuación k-NN en **probabilidad calibrada**, con respaldo a género/familia; bajo el umbral el servicio **se abstiene**.

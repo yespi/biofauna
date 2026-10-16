@@ -1,11 +1,11 @@
 # BioFauna: Mediterranean taxon identification by retrieval over a frozen BioCLIP-2.5 ViT-H encoder
 
-**Author:** Gustavo Zafra (Yespi)  
+**Author:** Gustavo Zafra (gustavo.zafra@gmail.com)  
 **Taxonomic sources:** published Mediterranean checklists (GROC/OPK; Ballesteros 2007; Salvador et al. 2022) and community curators  
 
 **Repository:** https://github.com/yespi/biofauna  
 **Live system:** https://fotofauna.yespi.es  
-**Manuscript version:** 2026-10-11 (article aimed at Biodiversity Data Journal / PeerJ; OOS 83.22 %; unified catalogue expected ≈3,109 spp)
+**Manuscript version:** 2026-10-16 (article aimed at Biodiversity Data Journal / PeerJ; production index **p18**, **3,061** spp; official panel accuracy **84.38 %**)
 
 > **Naming.** Developed as YOLOFauna (2024–mid-2026); renamed BioFauna when production settled on BioCLIP retrieval rather than YOLO detection. Provenance: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -15,7 +15,7 @@
 
 BioFauna identifies Mediterranean (and incidental adjacent) taxa from photographs by **retrieval** over a regional gallery, without training a closed-set classifier. The production encoder is **BioCLIP-2.5 ViT-H/14** (frozen; 1024-d embeddings). Queries are encoded (global frame fused with a 65 % centre crop), searched with **k-NN (k = 15)** and a tempered vote aggregator, optionally re-weighted by a geographic prior, mapped to calibrated probabilities and, when the margin is weak, **abstained** to genus, family, or a curated indistinguishability group.
 
-**Current figures** (`dataset/stats.json` `updated=2026-10-11T08:00:50`; `/health` 11 Oct): live gallery **1,216,896** embeddings / **4,643** species in the FAISS index; target catalogue **3,084** embedded species (**3,083**), with unification expected at ≈**3,109** spp; field panel **78,145** rows with out-of-sample species accuracy **83.22 %** (genus **87.96 %**, family **91.04 %**; `calibration.field_acc`). AutoID publishes at species threshold **0.83** (precision ≈96 %, coverage ≈66.5 % on the full eval; audited historical precision **96.6 %**, n=493). Baselines on 78,180 rows (2026-10-03): nearest centroid **74.73 %**; plain k-NN **79.86 %**. A systematic search for gains from training on this embedding space (LoRA, QLoRA, ArcFace, etc.) **did not beat** frozen retrieval. We publish the experiment ledger, taxon IDs, prototype centroids and a self-hostable identifier; photographs and per-photo embeddings are **not** redistributed.
+**Current figures** (`dataset/stats.json` `updated=2026-10-16T14:17:28`): production index **p18** with **3,061** embedded species and **~1.29×10⁶** FAISS vectors; official species accuracy on the rescore panel **84.38 %** (`overall_accuracy`). Staging **p19** (same panel, **not** promoted): **84.36 %** official. The historical 78,145-row field panel (**83.22 %** in early Oct 2026) is cited only for legacy promote comparisons. AutoID publishes at species threshold **0.83** (precision ≈96 %, coverage ≈66.5 % on the full eval; audited historical precision **96.6 %**, n=493). Baselines on 78,180 rows (2026-10-03): nearest centroid **74.73 %**; plain k-NN **79.86 %**. A systematic search for gains from training on this embedding space (LoRA, QLoRA, ArcFace, etc.) **did not beat** frozen retrieval. We publish the experiment ledger, taxon IDs, prototype centroids and a self-hostable identifier; photographs and per-photo embeddings are **not** redistributed.
 
 **Keywords:** BioCLIP-2.5, ViT-H, k-NN, fine-grained visual classification, marine biodiversity, citizen science, taxonomic abstention, calibration, Mediterranean Sea
 
