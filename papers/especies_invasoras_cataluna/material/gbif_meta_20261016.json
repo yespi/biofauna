@@ -1,0 +1,585 @@
+{
+ "fecha": "2026-10-16",
+ "filtros": {
+  "gadmGid": "ESP.6_1",
+  "datasetKey": "50c9509d-22c7-4a22-a47d-8c48425ef4a7",
+  "basisOfRecord": "HUMAN_OBSERVATION",
+  "occurrenceStatus": "PRESENT",
+  "hasCoordinate": "true"
+ },
+ "ventana": "2008,2025",
+ "total": 475069,
+ "claves_gbif": {
+  "Acridotheres cristatellus": {
+   "key": 2489010,
+   "match": "EXACT",
+   "accepted": "Acridotheres cristatellus (Linnaeus, 1758)"
+  },
+  "Acridotheres tristis": {
+   "key": 2489005,
+   "match": "EXACT",
+   "accepted": "Acridotheres tristis (Linnaeus, 1766)"
+  },
+  "Alopochen aegyptiaca": {
+   "key": 2498252,
+   "match": "EXACT",
+   "accepted": "Alopochen aegyptiaca (Linnaeus, 1766)"
+  },
+  "Corvus splendens": {
+   "key": 2482499,
+   "match": "EXACT",
+   "accepted": "Corvus splendens Vieillot, 1817"
+  },
+  "Oxyura jamaicensis": {
+   "key": 2498305,
+   "match": "EXACT",
+   "accepted": "Oxyura jamaicensis (J.F.Gmelin, 1789)"
+  },
+  "Pycnonotus cafer": {
+   "key": 2486131,
+   "match": "EXACT",
+   "accepted": "Pycnonotus cafer (Linnaeus, 1766)"
+  },
+  "Pycnonotus jocosus": {
+   "key": 2486151,
+   "match": "EXACT",
+   "accepted": "Pycnonotus jocosus (Linnaeus, 1758)"
+  },
+  "Threskiornis aethiopicus": {
+   "key": 2480764,
+   "match": "EXACT",
+   "accepted": "Threskiornis aethiopicus (Latham, 1790)"
+  },
+  "Axis axis": {
+   "key": 2440934,
+   "match": "EXACT",
+   "accepted": "Axis axis (Erxleben, 1777)"
+  },
+  "Callosciurus erythraeus": {
+   "key": 2437394,
+   "match": "EXACT",
+   "accepted": "Callosciurus erythraeus (Pallas, 1779)"
+  },
+  "Callosciurus finlaysonii": {
+   "key": 2437399,
+   "match": "EXACT",
+   "accepted": "Callosciurus finlaysonii (Horsfield, 1823)"
+  },
+  "Castor canadensis": {
+   "key": 2439838,
+   "match": "EXACT",
+   "accepted": "Castor canadensis Kuhl, 1820"
+  },
+  "Cervus nippon": {
+   "key": 2440954,
+   "match": "EXACT",
+   "accepted": "Cervus nippon Temminck, 1838"
+  },
+  "Herpestes javanicus": {
+   "key": 2434271,
+   "match": "EXACT",
+   "accepted": "Herpestes javanicus (É.Geoffroy Saint-Hilaire, 1818)"
+  },
+  "Muntiacus reevesi": {
+   "key": 2440946,
+   "match": "EXACT",
+   "accepted": "Muntiacus reevesi (Ogilby, 1839)"
+  },
+  "Myocastor coypus": {
+   "key": 4264680,
+   "match": "EXACT",
+   "accepted": "Myocastor coypus (Molina, 1782)"
+  },
+  "Nasua nasua": {
+   "key": 2433536,
+   "match": "EXACT",
+   "accepted": "Nasua nasua (Linnaeus, 1766)"
+  },
+  "Neogale vison": {
+   "key": 4833733,
+   "match": "HIGHERRANK",
+   "accepted": "Neogale Gray, 1865"
+  },
+  "Nyctereutes procyonoides": {
+   "key": 2434552,
+   "match": "EXACT",
+   "accepted": "Nyctereutes procyonoides (Gray, 1834)"
+  },
+  "Ondatra zibethicus": {
+   "key": 5219858,
+   "match": "EXACT",
+   "accepted": "Ondatra zibethicus (Linnaeus, 1766)"
+  },
+  "Procyon lotor": {
+   "key": 5218786,
+   "match": "EXACT",
+   "accepted": "Procyon lotor (Linnaeus, 1758)"
+  },
+  "Sciurus carolinensis": {
+   "key": 5219681,
+   "match": "EXACT",
+   "accepted": "Sciurus carolinensis Gmelin, 1788"
+  },
+  "Sciurus niger": {
+   "key": 5219683,
+   "match": "EXACT",
+   "accepted": "Sciurus niger Linnaeus, 1758"
+  },
+  "Tamias sibiricus": {
+   "key": 2437450,
+   "match": "EXACT",
+   "accepted": "Tamias sibiricus (Laxmann, 1769)"
+  },
+  "Ameiurus melas": {
+   "key": 2340977,
+   "match": "EXACT",
+   "accepted": "Ameiurus melas (Rafinesque, 1820)"
+  },
+  "Channa argus": {
+   "key": 4284921,
+   "match": "EXACT",
+   "accepted": "Channa argus (Cantor, 1842)"
+  },
+  "Fundulus heteroclitus": {
+   "key": 5712056,
+   "match": "EXACT",
+   "accepted": "Fundulus heteroclitus (Linnaeus, 1766)"
+  },
+  "Gambusia affinis": {
+   "key": 2350580,
+   "match": "EXACT",
+   "accepted": "Gambusia affinis (Baird & Girard, 1853)"
+  },
+  "Gambusia holbrooki": {
+   "key": 2350570,
+   "match": "EXACT",
+   "accepted": "Gambusia holbrooki Girard, 1859"
+  },
+  "Lepomis gibbosus": {
+   "key": 2394486,
+   "match": "EXACT",
+   "accepted": "Lepomis gibbosus (Linnaeus, 1758)"
+  },
+  "Misgurnus anguillicaudatus": {
+   "key": 2367919,
+   "match": "EXACT",
+   "accepted": "Misgurnus anguillicaudatus (Cantor, 1842)"
+  },
+  "Misgurnus bipartitus": {
+   "key": 2367913,
+   "match": "EXACT",
+   "accepted": "Misgurnus bipartitus (Sauvage & Dabry de Thiersant, 1874)"
+  },
+  "Morone americana": {
+   "key": 2394604,
+   "match": "EXACT",
+   "accepted": "Morone americana (Gmelin, 1789)"
+  },
+  "Perccottus glenii": {
+   "key": 2390064,
+   "match": "EXACT",
+   "accepted": "Perccottus glenii Dybowski, 1877"
+  },
+  "Plotosus lineatus": {
+   "key": 7965247,
+   "match": "EXACT",
+   "accepted": "Plotosus lineatus (Thunberg, 1787)"
+  },
+  "Pseudorasbora parva": {
+   "key": 2362868,
+   "match": "EXACT",
+   "accepted": "Pseudorasbora parva (Temminck & Schlegel, 1846)"
+  },
+  "Cherax destructor": {
+   "key": 4417558,
+   "match": "EXACT",
+   "accepted": "Cherax destructor Clark, 1936"
+  },
+  "Eriocheir sinensis": {
+   "key": 2225776,
+   "match": "EXACT",
+   "accepted": "Eriocheir sinensis H.Milne Edwards, 1853"
+  },
+  "Faxonius immunis": {
+   "key": 8930656,
+   "match": "EXACT",
+   "accepted": "Faxonius immunis (Hagen, 1870)"
+  },
+  "Faxonius rusticus": {
+   "key": 8979506,
+   "match": "EXACT",
+   "accepted": "Faxonius rusticus (Girard, 1852)"
+  },
+  "Orconectes limosus": {
+   "key": 2227000,
+   "match": "EXACT",
+   "accepted": "Orconectes limosus (Rafinesque, 1817)"
+  },
+  "Orconectes virilis": {
+   "key": 2227064,
+   "match": "EXACT",
+   "accepted": "Orconectes virilis (Hagen, 1870)"
+  },
+  "Pacifastacus leniusculus": {
+   "key": 2226990,
+   "match": "EXACT",
+   "accepted": "Pacifastacus leniusculus (Dana, 1852)"
+  },
+  "Procambarus clarkii": {
+   "key": 2227300,
+   "match": "EXACT",
+   "accepted": "Procambarus clarkii (Girard, 1852)"
+  },
+  "Procambarus virginalis": {
+   "key": 9442269,
+   "match": "EXACT",
+   "accepted": "Procambarus virginalis Lyko, 2017"
+  },
+  "Lampropeltis getula": {
+   "key": 9799308,
+   "match": "EXACT",
+   "accepted": "Lampropeltis getula (Linnaeus, 1766)"
+  },
+  "Trachemys scripta elegans": {
+   "key": 6157026,
+   "match": "EXACT",
+   "accepted": "Trachemys scripta elegans (Wied, 1838)"
+  },
+  "Lithobates catesbeianus": {
+   "key": 2427091,
+   "match": "EXACT",
+   "accepted": "Lithobates catesbeianus (Shaw, 1802)"
+  },
+  "Xenopus laevis": {
+   "key": 5217334,
+   "match": "EXACT",
+   "accepted": "Xenopus laevis (Daudin, 1802)"
+  },
+  "Brachyponera chinensis": {
+   "key": 10314173,
+   "match": "EXACT",
+   "accepted": "Brachyponera chinensis (Emery, 1895)"
+  },
+  "Solenopsis geminata": {
+   "key": 5035187,
+   "match": "EXACT",
+   "accepted": "Solenopsis geminata (Fabricius, 1804)"
+  },
+  "Solenopsis invicta": {
+   "key": 5035230,
+   "match": "EXACT",
+   "accepted": "Solenopsis invicta Buren, 1972"
+  },
+  "Solenopsis richteri": {
+   "key": 5035017,
+   "match": "EXACT",
+   "accepted": "Solenopsis richteri Forel, 1909"
+  },
+  "Vespa mandarinia": {
+   "key": 5871429,
+   "match": "EXACT",
+   "accepted": "Vespa mandarinia Smith, 1852"
+  },
+  "Vespa velutina nigrithorax": {
+   "key": 6247411,
+   "match": "EXACT",
+   "accepted": "Vespa velutina nigrithorax Buysson, 1905"
+  },
+  "Wasmannia auropunctata": {
+   "key": 1315391,
+   "match": "EXACT",
+   "accepted": "Wasmannia auropunctata (Roger, 1863)"
+  },
+  "Cipangopaludina chinensis": {
+   "key": 9738098,
+   "match": "EXACT",
+   "accepted": "Cipangopaludina chinensis (J.E.Gray, 1833)"
+  },
+  "Limnoperna fortunei": {
+   "key": 5855350,
+   "match": "EXACT",
+   "accepted": "Limnoperna fortunei (Dunker, 1857)"
+  },
+  "Marisa cornuarietis": {
+   "key": 2292586,
+   "match": "EXACT",
+   "accepted": "Marisa cornuarietis (Linnaeus, 1758)"
+  },
+  "Mulinia lateralis": {
+   "key": 2286388,
+   "match": "EXACT",
+   "accepted": "Mulinia lateralis (Say, 1822)"
+  },
+  "Arthurdendyus triangulatus": {
+   "key": 2502792,
+   "match": "EXACT",
+   "accepted": "Arthurdendyus triangulatus (Dendy, 1895)"
+  },
+  "Bipalium kewense": {
+   "key": 2502938,
+   "match": "EXACT",
+   "accepted": "Bipalium kewense Moseley, 1878"
+  },
+  "Obama nungara": {
+   "key": 8701771,
+   "match": "EXACT",
+   "accepted": "Obama nungara Carbayo, Alvarez-Presas, Jones & Riutort, 2016"
+  },
+  "Platydemus manokwari": {
+   "key": 5892137,
+   "match": "EXACT",
+   "accepted": "Platydemus manokwari Beauchamp, 1962"
+  },
+  "Asterias amurensis": {
+   "key": 5187508,
+   "match": "EXACT",
+   "accepted": "Asterias amurensis Lutken, 1871"
+  },
+  "Acacia mearnsii": {
+   "key": 2979775,
+   "match": "EXACT",
+   "accepted": "Acacia mearnsii De Wild."
+  },
+  "Acacia saligna": {
+   "key": 2978552,
+   "match": "EXACT",
+   "accepted": "Acacia saligna (Labill.) H.L.Wendl."
+  },
+  "Ailanthus altissima": {
+   "key": 3190653,
+   "match": "EXACT",
+   "accepted": "Ailanthus altissima (Mill.) Swingle"
+  },
+  "Alternanthera philoxeroides": {
+   "key": 3084923,
+   "match": "EXACT",
+   "accepted": "Alternanthera philoxeroides (Mart.) Griseb."
+  },
+  "Andropogon virginicus": {
+   "key": 2706080,
+   "match": "EXACT",
+   "accepted": "Andropogon virginicus L."
+  },
+  "Asclepias syriaca": {
+   "key": 3170247,
+   "match": "EXACT",
+   "accepted": "Asclepias syriaca L."
+  },
+  "Baccharis halimifolia": {
+   "key": 3129663,
+   "match": "EXACT",
+   "accepted": "Baccharis halimifolia L."
+  },
+  "Broussonetia papyrifera": {
+   "key": 5361944,
+   "match": "EXACT",
+   "accepted": "Broussonetia papyrifera (L.) L'Hér. ex Vent."
+  },
+  "Cabomba caroliniana": {
+   "key": 2882443,
+   "match": "EXACT",
+   "accepted": "Cabomba caroliniana A.Gray"
+  },
+  "Cardiospermum grandiflorum": {
+   "key": 3189935,
+   "match": "EXACT",
+   "accepted": "Cardiospermum grandiflorum Sw."
+  },
+  "Celastrus orbiculatus": {
+   "key": 3169169,
+   "match": "EXACT",
+   "accepted": "Celastrus orbiculatus Thunb."
+  },
+  "Cortaderia jubata": {
+   "key": 2704521,
+   "match": "EXACT",
+   "accepted": "Cortaderia jubata (Lemoine) Stapf"
+  },
+  "Crassula helmsii": {
+   "key": 5362054,
+   "match": "EXACT",
+   "accepted": "Crassula helmsii (Kirk) Cockayne"
+  },
+  "Delairea odorata": {
+   "key": 3134183,
+   "match": "EXACT",
+   "accepted": "Delairea odorata Lem."
+  },
+  "Ehrharta calycina": {
+   "key": 2702865,
+   "match": "EXACT",
+   "accepted": "Ehrharta calycina Sm."
+  },
+  "Eichhornia crassipes": {
+   "key": 2765940,
+   "match": "EXACT",
+   "accepted": "Eichhornia crassipes (Mart.) Solms"
+  },
+  "Elodea nuttallii": {
+   "key": 5329212,
+   "match": "EXACT",
+   "accepted": "Elodea nuttallii (Planch.) H.St.John"
+  },
+  "Gymnocoronis spilanthoides": {
+   "key": 6063677,
+   "match": "EXACT",
+   "accepted": "Gymnocoronis spilanthoides DC."
+  },
+  "Gunnera tinctoria": {
+   "key": 2984306,
+   "match": "EXACT",
+   "accepted": "Gunnera tinctoria (Molina) Mirb."
+  },
+  "Hakea sericea": {
+   "key": 7287606,
+   "match": "EXACT",
+   "accepted": "Hakea sericea Schrad. & J.C.Wendl."
+  },
+  "Heracleum mantegazzianum": {
+   "key": 3034825,
+   "match": "EXACT",
+   "accepted": "Heracleum mantegazzianum Sommier & Levier"
+  },
+  "Heracleum persicum": {
+   "key": 3628745,
+   "match": "EXACT",
+   "accepted": "Heracleum persicum Desf."
+  },
+  "Heracleum sosnowskyi": {
+   "key": 3642949,
+   "match": "EXACT",
+   "accepted": "Heracleum sosnowskyi Manden."
+  },
+  "Humulus scandens": {
+   "key": 2984537,
+   "match": "EXACT",
+   "accepted": "Humulus scandens (Lour.) Merr."
+  },
+  "Hydrocotyle ranunculoides": {
+   "key": 7978544,
+   "match": "EXACT",
+   "accepted": "Hydrocotyle ranunculoides L.fil."
+  },
+  "Impatiens glandulifera": {
+   "key": 2891770,
+   "match": "EXACT",
+   "accepted": "Impatiens glandulifera Royle"
+  },
+  "Koenigia polystachya": {
+   "key": 8848208,
+   "match": "EXACT",
+   "accepted": "Koenigia polystachya (Wall. ex Meisn.) T.M.Schust. & Reveal"
+  },
+  "Lagarosiphon major": {
+   "key": 2865565,
+   "match": "EXACT",
+   "accepted": "Lagarosiphon major (Ridl.) Moss"
+  },
+  "Lespedeza cuneata": {
+   "key": 8114276,
+   "match": "EXACT",
+   "accepted": "Lespedeza cuneata (Dum.Cours.) G.Don"
+  },
+  "Ludwigia grandiflora": {
+   "key": 5421039,
+   "match": "EXACT",
+   "accepted": "Ludwigia grandiflora (Michx.) Greuter & Burdet"
+  },
+  "Ludwigia peploides": {
+   "key": 5420991,
+   "match": "EXACT",
+   "accepted": "Ludwigia peploides (Kunth) P.H.Raven"
+  },
+  "Lygodium japonicum": {
+   "key": 2650436,
+   "match": "EXACT",
+   "accepted": "Lygodium japonicum (Thunb.) Sw."
+  },
+  "Lysichiton americanus": {
+   "key": 2869311,
+   "match": "EXACT",
+   "accepted": "Lysichiton americanus Hultén & H.St.John"
+  },
+  "Microstegium vimineum": {
+   "key": 5289808,
+   "match": "EXACT",
+   "accepted": "Microstegium vimineum (Trin.) A.Camus"
+  },
+  "Myriophyllum aquaticum": {
+   "key": 5361785,
+   "match": "EXACT",
+   "accepted": "Myriophyllum aquaticum (Vell.) Verdc."
+  },
+  "Myriophyllum heterophyllum": {
+   "key": 5361762,
+   "match": "EXACT",
+   "accepted": "Myriophyllum heterophyllum Michx."
+  },
+  "Nanozostera japonica": {
+   "key": 2863941,
+   "match": "EXACT",
+   "accepted": "Nanozostera japonica (Asch. & Graebn.) Toml. & Posl."
+  },
+  "Parthenium hysterophorus": {
+   "key": 3086784,
+   "match": "EXACT",
+   "accepted": "Parthenium hysterophorus L."
+  },
+  "Pennisetum setaceum": {
+   "key": 2706134,
+   "match": "EXACT",
+   "accepted": "Pennisetum setaceum (Forssk.) Chiov."
+  },
+  "Persicaria perfoliata": {
+   "key": 4033648,
+   "match": "EXACT",
+   "accepted": "Persicaria perfoliata (L.) H.Gross"
+  },
+  "Pistia stratiotes": {
+   "key": 2870583,
+   "match": "EXACT",
+   "accepted": "Pistia stratiotes L."
+  },
+  "Prosopis juliflora": {
+   "key": 5358460,
+   "match": "EXACT",
+   "accepted": "Prosopis juliflora (Sw.) DC."
+  },
+  "Pueraria montana var. lobata": {
+   "key": 2977647,
+   "match": "EXACT",
+   "accepted": "Pueraria montana var. lobata (Willd.) Maesen & S.M.Almeida ex Sanjappa & Predeep"
+  },
+  "Reynoutria japonica": {
+   "key": 2889173,
+   "match": "EXACT",
+   "accepted": "Reynoutria japonica Houtt."
+  },
+  "Reynoutria sachalinensis": {
+   "key": 2889088,
+   "match": "EXACT",
+   "accepted": "Reynoutria sachalinensis (F.Schmidt) Nakai"
+  },
+  "Reynoutria x bohemica": {
+   "key": 4038485,
+   "match": "EXACT",
+   "accepted": "Reynoutria × bohemica Chrtek & Chrtková"
+  },
+  "Rugulopteryx okamurae": {
+   "key": 5824863,
+   "match": "EXACT",
+   "accepted": "Rugulopteryx okamurae (E.Y.Dawson) I.K.Hwang, W.J.Lee & H.S.Kim, 2009"
+  },
+  "Salvinia molesta": {
+   "key": 5274863,
+   "match": "EXACT",
+   "accepted": "Salvinia × molesta D.S.Mitch."
+  },
+  "Triadica sebifera": {
+   "key": 3054399,
+   "match": "EXACT",
+   "accepted": "Triadica sebifera (L.) Small"
+  }
+ },
+ "n_registros_ue": 2237
+}

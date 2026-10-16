@@ -25,4 +25,4 @@
 | 2025 | 105050 |
 | 2026 | 36840 |
 
-Total anual iNaturalist+Minka en la caja (§2.2); el modelo usa offset excluyendo las observaciones de cada especie.
+Total anual iNaturalist+Minka en la caja (§2.2), solo descriptivo. **Las tendencias (§2.5)** usan esfuerzo por grupo en GBIF (`material/esfuerzo_grupo_gbif_20261016.csv`; Fig. 2 cont.), no esta tabla.

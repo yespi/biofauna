@@ -72,7 +72,7 @@
 | *Morone americana* | Reg. 2022/1203 | sí | no | 0 | — | — | D+M+S+X | ausente |
 | *Mulinia lateralis* | Reg. 2025/1422 | sí | no | 0 | — | — | M | ausente |
 | *Muntiacus reevesi* | Reg. 2016/1141 | sí | no | 0 | — | — | T | ausente |
-| *Myocastor coypus* | Reg. 2016/1141 | sí | sí | 498 | 2012-06-25 | 2026-10-01 | T | recurrente |
+| *Myocastor coypus* | Reg. 2016/1141 | sí | sí | 498 | 2012-06-25 | 2026-10-01 | T | en expansión |
 | *Myriophyllum aquaticum* | Lista UE (EASIN); reg. por confirmar | sí | sí | 1 | 2025-09-15 | sin datos | D | ocasional |
 | *Myriophyllum heterophyllum* | Reg. 2017/1263 | sí | no | 0 | — | — | D | ausente |
 | *Nanozostera japonica* | Reg. 2025/1422 | sí | no | 0 | — | — | M | ausente |
@@ -115,6 +115,6 @@
 | *Trachemys scripta elegans* | Reg. 2016/1141 | sí | sí | 263 | 2006-05-06 | 2011-03-26 | D | recurrente |
 | *Triadica sebifera* | Reg. 2019/1262 | sí | no | 0 | — | — | T | ausente |
 | *Vespa mandarinia* | Reg. 2025/1422 | sí | no | 0 | — | — | T | ausente |
-| *Vespa velutina nigrithorax* | Reg. 2016/1141 | sí | sí | 156 | 2017-11-22 | 2020-10-20 | T | recurrente |
+| *Vespa velutina nigrithorax* | Reg. 2016/1141 | sí | sí | 156 | 2017-11-22 | 2020-10-20 | T | en expansión |
 | *Wasmannia auropunctata* | Reg. 2022/1203 | sí | no | 0 | — | — | T | ausente |
 | *Xenopus laevis* | Reg. 2022/1203 | sí | no | 0 | — | — | T | ausente |

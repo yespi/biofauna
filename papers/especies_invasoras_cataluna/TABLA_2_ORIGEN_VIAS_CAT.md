@@ -2,13 +2,13 @@
 
 | Especie | Hábitat | Origen | Vía principal | Primer registro | Última observación | Categoría |
 |---|---|---|---|---|---|---|
-| *Ailanthus altissima* | T | sin datos | sin datos | 2008-06-08 | 2008-06-08 | en expansión |
+| *Ailanthus altissima* | T | sin datos | sin datos | 2008-06-08 | 2008-06-08 | recurrente |
 | *Procambarus clarkii* | D+S+X | sin datos | sin datos | 2001-09-23 | 2007-08-26 | recurrente |
-| *Myocastor coypus* | T | sin datos | sin datos | 2012-06-25 | 2026-10-01 | recurrente |
+| *Myocastor coypus* | T | sin datos | sin datos | 2012-06-25 | 2026-10-01 | en expansión |
 | *Trachemys scripta elegans* | D | Norteamérica | Liberación de mascotas (acuariofilia/terrariofilia) | 2006-05-06 | 2011-03-26 | recurrente |
 | *Broussonetia papyrifera* | T | sin datos | sin datos | 2017-06-09 | 2019-04-13 | recurrente |
 | *Alopochen aegyptiaca* | T | sin datos | sin datos | 2010-04-16 | 2010-08-23 | recurrente |
-| *Vespa velutina nigrithorax* | T | sin datos | sin datos | 2017-11-22 | 2020-10-20 | recurrente |
+| *Vespa velutina nigrithorax* | T | sin datos | sin datos | 2017-11-22 | 2020-10-20 | en expansión |
 | *Gambusia holbrooki* | D+S+X | sin datos | sin datos | 2007-07-13 | 2026-07-14 | recurrente |
 | *Pennisetum setaceum* | T | sin datos | sin datos | 2016-01-20 | 2019-10-31 | recurrente |
 | *Neogale vison* | T | Norteamérica | Escapes de granjas peleteras | 2010-08-08 | 2026-04-11 | recurrente |

@@ -255,16 +255,16 @@ def build_invasoras_completo() -> Path:
             "Fig. 2. Esfuerzo: observaciones anuales de la base BioQuest (694 taxones) en la caja de Cataluña, escala logarítmica; 2026 parcial. No es el total de iNaturalist/Minka.",
         ),
         (
-            "material/figuras/esfuerzo_por_grupo_20261015.png",
-            "Fig. 2 (cont.). Esfuerzo por grupo taxonómico (taxones del catálogo en la caja; *research grade*), escala logarítmica.",
+            "material/figuras/esfuerzo_grupo_gbif_20261016.png",
+            "Fig. 2 (cont.). Esfuerzo independiente por grupo (GBIF, dataset iNaturalist *research grade*, Cataluña GADM ESP.6_1; 2008–2025, escala logarítmica). Denominador del GLMM (§2.5).",
         ),
         (
             "material/figuras/composicion_ue_cat_20261015.png",
             "Fig. 3. Taxones de la lista UE con registro en Cataluña, por grupo taxonómico y categoría de detección.",
         ),
         (
-            "material/figuras/prosperan_panel_top8.png",
-            "Fig. 4. Razón de tasas anual de detección 2013–2025 (GLM binomial negativo, offset log esfuerzo excluyente; IC 95 %) para las especies de la lista UE estimables; rojo = descenso significativo (FDR&lt;0,05); verde = aumento significativo.",
+            "material/figuras/tendencias_glmm_20261016.png",
+            "Fig. 4. Razón de tasas anual 2013–2025 (GLMM Poisson, intercepto aleatorio de observador, offset log esfuerzo del observador en el grupo; IC 95 %). Marcas × = sensibilidad sin los tres observadores principales. Rojo = descenso (q&lt;0,05); verde = aumento (q&lt;0,05).",
         ),
         (
             "material/figuras/exocat_retraso_ciudadano_20261016.png",

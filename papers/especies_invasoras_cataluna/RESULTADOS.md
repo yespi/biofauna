@@ -9,11 +9,11 @@ De los 114 taxones analizados, **35** presentaron al menos una observación en C
 | Especie | Obs CAT | Observadores | Celdas UTM 10 km | Primer registro | Última observación | Categoría | Hábitat |
 | *Ailanthus altissima* | 1540 | 450 | 431 | 2008-06-08 | 2008-06-08 | recurrente | T |
 | *Procambarus clarkii* | 646 | 386 | 441 | 2001-09-23 | 2007-08-26 | recurrente | D+S+X |
-| *Myocastor coypus* | 498 | 301 | 242 | 2012-06-25 | 2026-10-01 | recurrente | T |
+| *Myocastor coypus* | 498 | 301 | 242 | 2012-06-25 | 2026-10-01 | en expansión | T |
 | *Trachemys scripta elegans* | 263 | 138 | 177 | 2006-05-06 | 2011-03-26 | recurrente | D |
 | *Broussonetia papyrifera* | 175 | 93 | 145 | 2017-06-09 | 2019-04-13 | recurrente | T |
 | *Alopochen aegyptiaca* | 167 | 100 | 92 | 2010-04-16 | 2010-08-23 | recurrente | T |
-| *Vespa velutina nigrithorax* | 156 | 88 | 143 | 2017-11-22 | 2020-10-20 | recurrente | T |
+| *Vespa velutina nigrithorax* | 156 | 88 | 143 | 2017-11-22 | 2020-10-20 | en expansión | T |
 | *Gambusia holbrooki* | 128 | 89 | 93 | 2007-07-13 | 2026-07-14 | recurrente | D+S+X |
 | *Neogale vison* | 109 | 64 | 76 | 2010-08-08 | 2026-04-11 | recurrente | T |
 | *Pennisetum setaceum* | 109 | 50 | 75 | 2016-01-20 | 2019-10-31 | recurrente | T |
@@ -31,11 +31,11 @@ Etiquetas de hábitat: M = marino, S = salobre, D = agua dulce, T = terrestre (n
 |---|---:|
 | ausente | 79 |
 | ocasional | 15 |
-| recurrente | 17 |
-| en expansión (tasa de detección) | 1 |
+| recurrente | 15 |
+| en expansión (tasa de detección, GLMM robusto) | 2 |
 | llegada reciente (serie insuficiente) | 2 |
 
-Un taxón cumple el criterio «en expansión» del GLM con FDR &lt; 0,05 (*Ailanthus altissima*; §3.4). Las categorías ocasional y llegada reciente se definen en §2.3.
+La categoría «en expansión» exige RR &gt; 1 con FDR &lt; 0,05 **y** el mismo criterio al excluir a los tres observadores con más registros de la especie (§2.3–2.5). Con ello solo *Myocastor coypus* y *Vespa velutina nigrithorax* la cumplen; *Gambusia holbrooki* y *Ludwigia peploides* aumentan en el modelo completo pero dejan de ser significativas sin los tres principales observadores.
 
 ### Hábitat en la lista UE (114 taxones; categorías no excluyentes, WoRMS 15-oct-2026)
 
@@ -51,17 +51,21 @@ De los taxones marinos o salobres de la lista de la Unión, solo *Rugulopteryx o
 
 ## 3.3 Esfuerzo de observación
 
-El número total de observaciones *research grade* (iNaturalist + Minka) en la caja de estudio pasó de **1.220** (2013) a **102.052** (2024) y **105.050** (2025), factor ~84× entre 2013 y 2024 (Fig. 2; Tabla S2; 2026 es año parcial). El valor anómalo de 2008 (847, frente a 55 y 298 en los años contiguos) y el salto 2021–2024 sugieren efectos de sincronización de la base además de la actividad de observadores.
+En la base local (iNaturalist + Minka, caja §2.2) el total *research grade* pasó de **1.220** (2013) a **102.052** (2024) y **105.050** (2025), factor ~84× (Fig. 2; Tabla S2; 2026 parcial). El pico de 2008 (847) y el salto 2021–2024 reflejan en parte sincronización de la base BioQuest, no solo actividad de campo.
 
-El mismo esfuerzo se desglosa por grupo taxonómico amplio en la Fig. 2 (cont.). La densidad espacial del esfuerzo 2018–2024 se resume en la Fig. 1 (mapa de calor sobre celdas ~10 km; costa Natural Earth 10 m).
+Para las **tendencias** usamos un denominador independiente: observaciones anuales del mismo grupo taxonómico en Cataluña (GADM `ESP.6_1`) descargadas de GBIF (dataset iNaturalist *research grade*, 16-oct-2026; `material/esfuerzo_grupo_gbif_20261016.csv`). Entre 2013 y 2024 el esfuerzo de plantas pasa de ~1.400 a ~48.000 registros/año; aves, de ~1.100 a ~22.000; el total agregado no reproduce el artefacto de 2008 de la Tabla S2 (Fig. 2 cont.). La densidad espacial del esfuerzo local 2018–2024 sigue en la Fig. 1.
 
 En la caja, el solape iNaturalist–Minka a nivel de celda año–taxón–coordenada redondeada es pequeño: **372.987** observaciones tras deduplicar frente a **374.348** brutas (~0,4 %), pero el máximo por especie entre fuentes sigue sin deduplicar (Métodos).
 
 ## 3.4 Tendencias de detección
 
-Ajustamos el modelo binomial negativo descrito en §2.5 a las 17 especies de la lista de la Unión con ≥10 observaciones y ≥5 años con registros en 2013–2025 (Fig. 4; Material suplementario S5). **Una especie aumentó significativamente su tasa de detección tras FDR:** *Ailanthus altissima* (razón de tasas anual 1,17; IC 95 % 1,03–1,32; q = 0,043), con un salto 2020→2021 (18→134 registros) que no acompaña al esfuerzo (×1,4) y que puede deberse a un observador o campaña concretos. **Tres especies descendieron:** *Neogale vison* (0,84; 0,76–0,92; q = 0,005), *Trachemys scripta elegans* (0,86; 0,77–0,95; q = 0,018) y *Alopochen aegyptiaca* (0,88; 0,78–0,99; q = 0,043). Con la ventana 2016–2025 el patrón es similar (*Threskiornis aethiopicus* también desciende de forma significativa).
+Ajustamos el GLMM de §2.5 a las **13** especies de la lista de la Unión con ≥10 observaciones y ≥5 años con registro en GBIF-iNaturalist (Cataluña GADM) en 2013–2025 (Fig. 4; Tabla S5). La unidad es observador–año con offset del esfuerzo del observador en el grupo.
 
-*Rugulopteryx okamurae* (primer registro 2024) e *Impatiens glandulifera* (primer registro 2022) se clasifican como «llegada reciente»: sus series son demasiado cortas para estimar tendencia. *Reynoutria sachalinensis* es un registro único (2020), sin potencia de ausencia estimable.
+**Aumento robusto (q &lt; 0,05 y persistente sin los tres observadores principales):** *Myocastor coypus* (RR 1,13/año; IC 95 % 1,05–1,21; q = 0,004) y *Vespa velutina nigrithorax* (1,36; 1,18–1,56; q &lt; 0,001). **Aumento no robusto:** *Gambusia holbrooki* (1,24; q = 0,022) y *Ludwigia peploides* (1,15; q = 0,004) pierden significación al excluir a los tres observadores con más registros (Tabla S5). *Ailanthus altissima* (847 obs. en GBIF) no muestra tendencia significativa con efecto aleatorio de observador (RR 0,93; q = 0,18), coherente con campañas puntuales en la serie local.
+
+**Descenso significativo:** *Neogale vison* (0,89; q = 0,017), *Procambarus clarkii* (0,92; q = 0,002) y, en sensibilidad sin top-3, *Ailanthus* (0,91; q = 0,066 en el modelo completo; 0,89 sin top-3 con q = 0,035). *Trachemys scripta elegans* y *Alopochen aegyptiaca* tienen pocas observaciones en GBIF-Cataluña y no entran en el panel estimable (presencia en Tabla 3 basada en iNat+Minka).
+
+*Rugulopteryx okamurae* (primer registro 2024) e *Impatiens glandulifera* (2022) permanecen como «llegada reciente». *Reynoutria sachalinensis* es un registro único (2020).
 
 ## 3.5 Concordancia con EASIN (España)
 

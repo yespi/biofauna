@@ -1,0 +1,145 @@
+year,grupo,n
+2008,Aves,146
+2009,Aves,94
+2010,Aves,251
+2011,Aves,230
+2012,Aves,336
+2013,Aves,533
+2014,Aves,594
+2015,Aves,826
+2016,Aves,710
+2017,Aves,1251
+2018,Aves,1293
+2019,Aves,1812
+2020,Aves,3178
+2021,Aves,6228
+2022,Aves,8713
+2023,Aves,10659
+2024,Aves,14457
+2025,Aves,18316
+2008,Herpetofauna,24
+2009,Herpetofauna,19
+2010,Herpetofauna,44
+2011,Herpetofauna,50
+2012,Herpetofauna,109
+2013,Herpetofauna,100
+2014,Herpetofauna,107
+2015,Herpetofauna,121
+2016,Herpetofauna,158
+2017,Herpetofauna,156
+2018,Herpetofauna,321
+2019,Herpetofauna,485
+2020,Herpetofauna,679
+2021,Herpetofauna,994
+2022,Herpetofauna,1276
+2023,Herpetofauna,1370
+2024,Herpetofauna,2251
+2025,Herpetofauna,2811
+2008,Insectos,289
+2009,Insectos,282
+2010,Insectos,639
+2011,Insectos,864
+2012,Insectos,769
+2013,Insectos,1403
+2014,Insectos,1532
+2015,Insectos,1418
+2016,Insectos,1380
+2017,Insectos,1359
+2018,Insectos,3171
+2019,Insectos,5953
+2020,Insectos,8364
+2021,Insectos,13237
+2022,Insectos,17159
+2023,Insectos,20452
+2024,Insectos,28515
+2025,Insectos,29969
+2008,Mamíferos,7
+2009,Mamíferos,13
+2010,Mamíferos,11
+2011,Mamíferos,17
+2012,Mamíferos,31
+2013,Mamíferos,27
+2014,Mamíferos,48
+2015,Mamíferos,72
+2016,Mamíferos,58
+2017,Mamíferos,88
+2018,Mamíferos,117
+2019,Mamíferos,168
+2020,Mamíferos,228
+2021,Mamíferos,389
+2022,Mamíferos,562
+2023,Mamíferos,632
+2024,Mamíferos,795
+2025,Mamíferos,1065
+2008,"Otros (hongos, cromistas, etc.)",12
+2009,"Otros (hongos, cromistas, etc.)",11
+2010,"Otros (hongos, cromistas, etc.)",41
+2011,"Otros (hongos, cromistas, etc.)",20
+2012,"Otros (hongos, cromistas, etc.)",78
+2013,"Otros (hongos, cromistas, etc.)",26
+2014,"Otros (hongos, cromistas, etc.)",82
+2015,"Otros (hongos, cromistas, etc.)",57
+2016,"Otros (hongos, cromistas, etc.)",57
+2017,"Otros (hongos, cromistas, etc.)",63
+2018,"Otros (hongos, cromistas, etc.)",211
+2019,"Otros (hongos, cromistas, etc.)",234
+2020,"Otros (hongos, cromistas, etc.)",391
+2021,"Otros (hongos, cromistas, etc.)",532
+2022,"Otros (hongos, cromistas, etc.)",967
+2023,"Otros (hongos, cromistas, etc.)",1177
+2024,"Otros (hongos, cromistas, etc.)",1835
+2025,"Otros (hongos, cromistas, etc.)",2182
+2008,Otros animales (invert. no insectos),40
+2009,Otros animales (invert. no insectos),56
+2010,Otros animales (invert. no insectos),110
+2011,Otros animales (invert. no insectos),89
+2012,Otros animales (invert. no insectos),154
+2013,Otros animales (invert. no insectos),212
+2014,Otros animales (invert. no insectos),209
+2015,Otros animales (invert. no insectos),207
+2016,Otros animales (invert. no insectos),247
+2017,Otros animales (invert. no insectos),279
+2018,Otros animales (invert. no insectos),652
+2019,Otros animales (invert. no insectos),1050
+2020,Otros animales (invert. no insectos),1617
+2021,Otros animales (invert. no insectos),2555
+2022,Otros animales (invert. no insectos),3568
+2023,Otros animales (invert. no insectos),3600
+2024,Otros animales (invert. no insectos),6479
+2025,Otros animales (invert. no insectos),7919
+2008,Peces,2
+2009,Peces,28
+2010,Peces,29
+2011,Peces,23
+2012,Peces,86
+2013,Peces,49
+2014,Peces,87
+2015,Peces,82
+2016,Peces,107
+2017,Peces,86
+2018,Peces,161
+2019,Peces,253
+2020,Peces,367
+2021,Peces,479
+2022,Peces,755
+2023,Peces,804
+2024,Peces,1601
+2025,Peces,2857
+2008,Plantas,110
+2009,Plantas,207
+2010,Plantas,478
+2011,Plantas,186
+2012,Plantas,363
+2013,Plantas,681
+2014,Plantas,967
+2015,Plantas,878
+2016,Plantas,1556
+2017,Plantas,1743
+2018,Plantas,2991
+2019,Plantas,4489
+2020,Plantas,6455
+2021,Plantas,19597
+2022,Plantas,27087
+2023,Plantas,37875
+2024,Plantas,52573
+2025,Plantas,50173

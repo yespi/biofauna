@@ -1,0 +1,229 @@
+especie,grupo,ventana,n_obs,anios_con_obs,n_observadores,top1_pct,top3_pct,RR_anual,IC95_lo,IC95_hi,p,sigma_obs,conv,RR_sinRE,p_sinRE,n_sin_top3,RR_sin_top3,IC_lo_sin_top3,IC_hi_sin_top3,p_sin_top3,q_BH,q_sinRE,q_sin_top3,clase,clase_sin_top3
+Acridotheres cristatellus,Aves,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acridotheres tristis,Aves,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Alopochen aegyptiaca,Aves,2013-2025,87,12,48,12.6,29.9,0.9885,0.901,1.084,0.8065,1.385,True,0.9442,0.3133,61,0.9663,0.871,1.072,0.5178,0.8667,0.442,0.561,sin_tendencia_significativa,sin_tendencia_significativa
+Corvus splendens,Aves,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Oxyura jamaicensis,Aves,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pycnonotus cafer,Aves,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pycnonotus jocosus,Aves,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Threskiornis aethiopicus,Aves,2013-2025,7,4,7,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Axis axis,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Callosciurus erythraeus,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Callosciurus finlaysonii,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Castor canadensis,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cervus nippon,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Herpestes javanicus,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Muntiacus reevesi,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Myocastor coypus,Mamíferos,2013-2025,259,11,142,6.6,15.8,1.125,1.048,1.206,0.001031,1.533,True,1.151,0.0005625,218,1.12,1.047,1.198,0.0009439,0.00351,0.003657,0.00409,creciente,creciente
+Nasua nasua,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Neogale vison,Mamíferos,2013-2025,58,11,37,19,31,0.8892,0.8172,0.9677,0.006476,1.082,True,0.9212,0.1418,40,0.8578,0.7911,0.9302,0.0002058,0.01684,0.3607,0.001338,decreciente,decreciente
+Nyctereutes procyonoides,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ondatra zibethicus,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Procyon lotor,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Sciurus carolinensis,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Sciurus niger,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Tamias sibiricus,Mamíferos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ameiurus melas,Peces,2013-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Channa argus,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Fundulus heteroclitus,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gambusia affinis,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gambusia holbrooki,Peces,2013-2025,73,9,46,11,24.7,1.236,1.052,1.453,0.009939,2.743,True,1.028,0.7894,55,1.204,1.012,1.432,0.03613,0.02153,0.8552,0.0671,creciente,sin_tendencia_significativa
+Lepomis gibbosus,Peces,2013-2025,28,6,22,10.7,28.6,0.9778,0.7521,1.271,0.8667,2.442,True,0.9842,0.8857,20,1.154,0.8547,1.557,0.3502,0.8667,0.8857,0.466,sin_tendencia_significativa,sin_tendencia_significativa
+Misgurnus anguillicaudatus,Peces,2013-2025,2,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Misgurnus bipartitus,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Morone americana,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Perccottus glenii,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Plotosus lineatus,Peces,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pseudorasbora parva,Peces,2013-2025,2,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cherax destructor,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Eriocheir sinensis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Faxonius immunis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Faxonius rusticus,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Orconectes limosus,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Orconectes virilis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pacifastacus leniusculus,Otros animales (invert. no insectos),2013-2025,21,7,15,23.8,42.9,1.071,0.8513,1.348,0.5577,2.969,True,1.051,0.5775,12,0.9753,0.8012,1.187,0.8027,0.6591,0.6826,0.8027,sin_tendencia_significativa,sin_tendencia_significativa
+Procambarus clarkii,Otros animales (invert. no insectos),2013-2025,339,13,190,11.8,20.6,0.9178,0.8766,0.9609,0.0002476,1.883,True,0.9391,0.1662,269,0.9319,0.8808,0.986,0.01425,0.00161,0.3607,0.04633,decreciente,decreciente
+Procambarus virginalis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lampropeltis getula,Herpetofauna,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Trachemys scripta elegans,Herpetofauna,2013-2025,147,13,79,6.1,14.3,0.9137,0.8124,1.028,0.1323,2.062,True,0.9383,0.222,126,0.9574,0.8723,1.051,0.3585,0.1911,0.3607,0.466,sin_tendencia_significativa,sin_tendencia_significativa
+Lithobates catesbeianus,Herpetofauna,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Xenopus laevis,Herpetofauna,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Brachyponera chinensis,Insectos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Solenopsis geminata,Insectos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Solenopsis invicta,Insectos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Solenopsis richteri,Insectos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Vespa mandarinia,Insectos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Vespa velutina nigrithorax,Insectos,2013-2025,96,6,57,17.7,30.2,1.358,1.181,1.562,1.745e-05,1.891,True,1.485,4.835e-07,67,1.471,1.245,1.738,5.659e-06,0.0002269,6.285e-06,7.357e-05,creciente,creciente
+Wasmannia auropunctata,Insectos,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cipangopaludina chinensis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Limnoperna fortunei,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Marisa cornuarietis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Mulinia lateralis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Arthurdendyus triangulatus,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Bipalium kewense,Otros animales (invert. no insectos),2013-2025,2,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Obama nungara,Otros animales (invert. no insectos),2013-2025,7,5,6,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Platydemus manokwari,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Asterias amurensis,Otros animales (invert. no insectos),2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acacia mearnsii,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acacia saligna,Plantas,2013-2025,18,4,16,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ailanthus altissima,Plantas,2013-2025,847,11,276,13.1,30.2,0.9294,0.8488,1.017,0.113,1.584,True,1.063,0.34,591,0.9133,0.8413,0.9915,0.03045,0.1836,0.442,0.06598,sin_tendencia_significativa,sin_tendencia_significativa
+Alternanthera philoxeroides,Plantas,2013-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Andropogon virginicus,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Asclepias syriaca,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Baccharis halimifolia,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Broussonetia papyrifera,Plantas,2013-2025,96,8,51,13.5,35.4,1.159,0.9876,1.361,0.07066,1.761,True,1.123,0.1704,62,1.199,0.9979,1.44,0.05264,0.1312,0.3607,0.08554,sin_tendencia_significativa,sin_tendencia_significativa
+Cabomba caroliniana,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cardiospermum grandiflorum,Plantas,2013-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Celastrus orbiculatus,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cortaderia jubata,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Crassula helmsii,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Delairea odorata,Plantas,2013-2025,66,7,31,12.1,30.3,1.058,0.8786,1.274,0.5511,1.918,True,1.108,0.1994,46,1.073,0.8701,1.323,0.5107,0.6591,0.3607,0.561,sin_tendencia_significativa,sin_tendencia_significativa
+Ehrharta calycina,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Eichhornia crassipes,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Elodea nuttallii,Plantas,2013-2025,2,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gymnocoronis spilanthoides,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gunnera tinctoria,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Hakea sericea,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Heracleum mantegazzianum,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Heracleum persicum,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Heracleum sosnowskyi,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Humulus scandens,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Hydrocotyle ranunculoides,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Impatiens glandulifera,Plantas,2013-2025,9,5,8,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Koenigia polystachya,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lagarosiphon major,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lespedeza cuneata,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ludwigia grandiflora,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ludwigia peploides,Plantas,2013-2025,33,5,20,12.1,33.3,1.15,1.058,1.251,0.00108,1.64,True,1.087,0.01698,22,1.11,1.012,1.216,0.02614,0.00351,0.0736,0.06598,creciente,sin_tendencia_significativa
+Lygodium japonicum,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lysichiton americanus,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Microstegium vimineum,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Myriophyllum aquaticum,Plantas,2013-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Myriophyllum heterophyllum,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Nanozostera japonica,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Parthenium hysterophorus,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pennisetum setaceum,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Persicaria perfoliata,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pistia stratiotes,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Prosopis juliflora,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pueraria montana var. lobata,"Otros (hongos, cromistas, etc.)",2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Reynoutria japonica,Plantas,2013-2025,5,4,4,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Reynoutria sachalinensis,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Reynoutria x bohemica,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Rugulopteryx okamurae,"Otros (hongos, cromistas, etc.)",2013-2025,11,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Salvinia molesta,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Triadica sebifera,Plantas,2013-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acridotheres cristatellus,Aves,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acridotheres tristis,Aves,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Alopochen aegyptiaca,Aves,2016-2025,83,10,46,13.3,30.1,0.9711,0.8531,1.105,0.6577,1.412,True,0.9408,0.4402,58,0.937,0.8307,1.057,0.2894,0.8252,0.6359,0.342,sin_tendencia_significativa,sin_tendencia_significativa
+Corvus splendens,Aves,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Oxyura jamaicensis,Aves,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pycnonotus cafer,Aves,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pycnonotus jocosus,Aves,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Threskiornis aethiopicus,Aves,2016-2025,7,4,7,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Axis axis,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Callosciurus erythraeus,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Callosciurus finlaysonii,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Castor canadensis,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cervus nippon,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Herpestes javanicus,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Muntiacus reevesi,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Myocastor coypus,Mamíferos,2016-2025,258,10,141,6.6,15.9,1.092,1.016,1.174,0.01642,1.426,True,1.133,0.006855,217,1.096,1.019,1.178,0.01364,0.0427,0.04456,0.03546,creciente,creciente
+Nasua nasua,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Neogale vison,Mamíferos,2016-2025,55,9,34,20,32.7,0.872,0.7833,0.9706,0.01224,1.106,True,0.9035,0.1556,37,0.825,0.7439,0.915,0.0002719,0.03978,0.4047,0.001767,decreciente,decreciente
+Nyctereutes procyonoides,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ondatra zibethicus,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Procyon lotor,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Sciurus carolinensis,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Sciurus niger,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Tamias sibiricus,Mamíferos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ameiurus melas,Peces,2016-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Channa argus,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Fundulus heteroclitus,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gambusia affinis,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gambusia holbrooki,Peces,2016-2025,73,9,46,11,24.7,1.207,1.01,1.443,0.03799,2.725,True,0.9833,0.8887,55,1.167,0.9637,1.413,0.1138,0.0823,0.9059,0.1644,sin_tendencia_significativa,sin_tendencia_significativa
+Lepomis gibbosus,Peces,2016-2025,27,5,21,11.1,29.6,1,0.7155,1.398,0.9999,2.48,True,0.9835,0.9059,19,1.333,1.01,1.759,0.04214,0.9999,0.9059,0.0913,sin_tendencia_significativa,sin_tendencia_significativa
+Misgurnus anguillicaudatus,Peces,2016-2025,2,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Misgurnus bipartitus,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Morone americana,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Perccottus glenii,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Plotosus lineatus,Peces,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pseudorasbora parva,Peces,2016-2025,2,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cherax destructor,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Eriocheir sinensis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Faxonius immunis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Faxonius rusticus,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Orconectes limosus,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Orconectes virilis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pacifastacus leniusculus,Otros animales (invert. no insectos),2016-2025,21,7,15,23.8,42.9,1.042,0.7996,1.357,0.7617,2.975,True,1.018,0.8682,12,0.9245,0.7234,1.181,0.5303,0.8252,0.9059,0.5745,sin_tendencia_significativa,sin_tendencia_significativa
+Procambarus clarkii,Otros animales (invert. no insectos),2016-2025,331,10,185,11.8,20.5,0.8611,0.7752,0.9566,0.005315,1.924,True,0.9146,0.1428,263,0.9116,0.85,0.9776,0.009482,0.0273,0.4047,0.03546,decreciente,decreciente
+Procambarus virginalis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lampropeltis getula,Herpetofauna,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Trachemys scripta elegans,Herpetofauna,2016-2025,141,10,76,4.3,12.8,0.8931,0.7721,1.033,0.1284,2.075,True,0.9245,0.1902,123,0.9295,0.8223,1.051,0.2424,0.2086,0.4121,0.3151,sin_tendencia_significativa,sin_tendencia_significativa
+Lithobates catesbeianus,Herpetofauna,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Xenopus laevis,Herpetofauna,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Brachyponera chinensis,Insectos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Solenopsis geminata,Insectos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Solenopsis invicta,Insectos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Solenopsis richteri,Insectos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Vespa mandarinia,Insectos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Vespa velutina nigrithorax,Insectos,2016-2025,96,6,57,17.7,30.2,1.346,1.162,1.56,7.515e-05,1.893,True,1.479,1.416e-06,67,1.463,1.23,1.739,1.643e-05,0.000977,1.841e-05,0.0002136,creciente,creciente
+Wasmannia auropunctata,Insectos,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cipangopaludina chinensis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Limnoperna fortunei,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Marisa cornuarietis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Mulinia lateralis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Arthurdendyus triangulatus,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Bipalium kewense,Otros animales (invert. no insectos),2016-2025,2,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Obama nungara,Otros animales (invert. no insectos),2016-2025,7,5,6,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Platydemus manokwari,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Asterias amurensis,Otros animales (invert. no insectos),2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acacia mearnsii,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Acacia saligna,Plantas,2016-2025,18,4,16,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ailanthus altissima,Plantas,2016-2025,844,10,273,13.2,30.3,0.9095,0.8252,1.002,0.05606,1.601,True,1.05,0.4998,588,0.8926,0.8173,0.9748,0.01151,0.1041,0.6498,0.03546,sin_tendencia_significativa,decreciente
+Alternanthera philoxeroides,Plantas,2016-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Andropogon virginicus,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Asclepias syriaca,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Baccharis halimifolia,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Broussonetia papyrifera,Plantas,2016-2025,96,8,51,13.5,35.4,1.131,0.8718,1.469,0.3531,2.04,True,1.107,0.2792,62,1.186,0.9724,1.446,0.09224,0.5101,0.5184,0.1628,sin_tendencia_significativa,sin_tendencia_significativa
+Cabomba caroliniana,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cardiospermum grandiflorum,Plantas,2016-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Celastrus orbiculatus,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Cortaderia jubata,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Crassula helmsii,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Delairea odorata,Plantas,2016-2025,66,7,31,12.1,30.3,1.036,0.8406,1.278,0.7386,1.92,True,1.091,0.3292,46,1.05,0.8293,1.329,0.6853,0.8252,0.535,0.6853,sin_tendencia_significativa,sin_tendencia_significativa
+Ehrharta calycina,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Eichhornia crassipes,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Elodea nuttallii,Plantas,2016-2025,2,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gymnocoronis spilanthoides,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Gunnera tinctoria,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Hakea sericea,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Heracleum mantegazzianum,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Heracleum persicum,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Heracleum sosnowskyi,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Humulus scandens,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Hydrocotyle ranunculoides,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Impatiens glandulifera,Plantas,2016-2025,9,5,8,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Koenigia polystachya,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lagarosiphon major,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lespedeza cuneata,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ludwigia grandiflora,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Ludwigia peploides,Plantas,2016-2025,33,5,20,12.1,33.3,1.134,1.036,1.242,0.0063,1.637,True,1.068,0.08787,22,1.087,0.984,1.202,0.1002,0.0273,0.3808,0.1628,creciente,sin_tendencia_significativa
+Lygodium japonicum,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Lysichiton americanus,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Microstegium vimineum,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Myriophyllum aquaticum,Plantas,2016-2025,1,1,1,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Myriophyllum heterophyllum,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Nanozostera japonica,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Parthenium hysterophorus,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pennisetum setaceum,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Persicaria perfoliata,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pistia stratiotes,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Prosopis juliflora,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Pueraria montana var. lobata,"Otros (hongos, cromistas, etc.)",2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Reynoutria japonica,Plantas,2016-2025,5,4,4,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Reynoutria sachalinensis,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Reynoutria x bohemica,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Rugulopteryx okamurae,"Otros (hongos, cromistas, etc.)",2016-2025,11,2,2,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Salvinia molesta,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable
+Triadica sebifera,Plantas,2016-2025,0,0,0,,,,,,,,,,,,,,,,,,,no_estimable,no_estimable

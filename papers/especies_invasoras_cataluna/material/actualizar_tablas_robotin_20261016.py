@@ -110,10 +110,49 @@ def eval_p19_ue():
     return df
 
 
+def write_suplemento_s5():
+    """Tabla S5 desde glm_tendencias_glmm_20261016.csv (P2)."""
+    glm = pd.read_csv(M / "glm_tendencias_glmm_20261016.csv")
+    g = glm[glm.ventana == "2013-2025"].sort_values("especie")
+    lines = [
+        "# Tabla S5. GLMM de tendencias (GBIF-iNaturalist RG, Cataluña GADM, ventana 2013–2025)\n\n",
+        "Modelo Poisson con intercepto aleatorio de observador (§2.5); offset = log(registros del observador en el grupo "
+        "taxonómico de la especie, excluidos los de la propia especie). FDR Benjamini–Hochberg sobre las 13 especies "
+        "estimables (≥10 obs y ≥5 años con registro en GBIF). Script: `material/p2_glmm_observador_20261016.py`.\n\n",
+        "| Especie | Grupo | n GBIF | Años con obs. | Observ. | RR anual | IC 95 % | q | Clase | RR sin top-3 | q sin top-3 | Clase sin top-3 |\n",
+        "|---|---|---:|---:|---:|---:|---|---:|---|---:|---:|---|\n",
+    ]
+    for _, r in g.iterrows():
+        sp = r["especie"]
+        if pd.isna(r.get("RR_anual")):
+            lines.append(
+                f"| *{sp}* | {r.get('grupo', '—')} | {int(r.n_obs or 0)} | {int(r.anios_con_obs or 0)} | "
+                f"{int(r.n_observadores or 0) if pd.notna(r.n_observadores) else '—'} | — | — | — | no estimable | — | — | — |\n"
+            )
+            continue
+        rr = f"{r.RR_anual:.3f}".replace(".", ",")
+        ic = f"{r.IC95_lo:.3f}–{r.IC95_hi:.3f}".replace(".", ",")
+        q = f"{r.q_BH:.4f}".replace(".", ",") if pd.notna(r.q_BH) else "—"
+        cl = r.get("clase", "—")
+        if pd.notna(r.get("RR_sin_top3")):
+            rr3 = f"{r.RR_sin_top3:.3f}".replace(".", ",")
+            q3 = f"{r.q_sin_top3:.4f}".replace(".", ",") if pd.notna(r.q_sin_top3) else "—"
+            c3 = r.get("clase_sin_top3", "—")
+        else:
+            rr3, q3, c3 = "—", "—", "—"
+        lines.append(
+            f"| *{sp}* | {r.grupo} | {int(r.n_obs)} | {int(r.anios_con_obs)} | {int(r.n_observadores)} | "
+            f"{rr} | {ic} | {q} | {cl} | {rr3} | {q3} | {c3} |\n"
+        )
+    (P / "SUPLEMENTO_TABLA_S5.md").write_text("".join(lines), encoding="utf-8")
+
+
 def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
-    glm = pd.read_csv(M / "glm_tendencias_20261015.csv")
+    write_suplemento_s5()
+    # P2 (16-oct-2026): GLMM con efecto aleatorio de observador (p2_glmm_observador_20261016.py)
+    glm = pd.read_csv(M / "glm_tendencias_glmm_20261016.csv")
     glm = glm[glm.ventana == "2013-2025"][
-        ["especie", "RR_anual", "IC95_lo", "IC95_hi", "q_BH", "clase"]
+        ["especie", "RR_anual", "IC95_lo", "IC95_hi", "q_BH", "clase", "clase_sin_top3"]
     ]
     easin = pd.read_csv(M / "concordancia_easin_20261015.csv")
     eff = pd.read_csv(M / "esfuerzo_bioquest_anual.csv")
@@ -124,10 +163,23 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
     }
 
     def cat_label(row):
+        """«en expansión» solo si el GLMM da RR>1 con q<0,05 Y se mantiene sin los 3 observadores principales."""
         c = row["categoria"]
-        if c == "recurrente" and row.get("clase") == "creciente":
+        if c == "en_expansion":  # categoría antigua por razón de esfuerzo: ya no se usa
+            c = "recurrente"
+        if c == "recurrente" and row.get("clase") == "creciente" and row.get("clase_sin_top3") == "creciente":
             return "en expansión"
         return cat_h.get(c, c)
+
+    def tendencia_label(row):
+        c, c3 = row.get("clase"), row.get("clase_sin_top3")
+        if not isinstance(c, str) or c == "no_estimable":
+            return "no estimable"
+        if c == "creciente":
+            return "creciente (robusta)" if c3 == "creciente" else "creciente (no robusta sin top-3)"
+        if c == "decreciente":
+            return "decreciente" + ("" if c3 == "decreciente" else " (no robusta sin top-3)")
+        return "sin tendencia" + (" (decrece sin top-3)" if c3 == "decreciente" else "")
 
     pres_cat = pres[pres.presencia_catalunya == "sí"].copy()
     pres_cat = pres_cat.merge(glm, on="especie", how="left")
@@ -136,8 +188,8 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
         "# Tabla 3. Presencia en Cataluña, tendencias y registros ciudadanos\n\n",
         "Primer y último registro: fechas de observación *research grade* en la caja de estudio (§2.2). "
         "«sin datos» = sin fecha utilizable en las fuentes locales consultadas.\n\n",
-        "| Especie | Obs | Celdas UTM 10 km | Primer registro | Última observación | Categoría | RR anual (IC 95 %) | q (FDR) |\n",
-        "|---|---:|---:|---|---|---|---:|---:|\n",
+        "| Especie | Obs | Celdas UTM 10 km | Primer registro | Última observación | Categoría | RR anual (IC 95 %) | q (FDR) | Tendencia (GLMM) |\n",
+        "|---|---:|---:|---|---|---|---:|---:|---|\n",
     ]
     for _, r in pres_cat.sort_values("obs_catalunya", ascending=False).iterrows():
         pr = sd_cell(r.get("primera_obs_catalunya") or "")
@@ -155,7 +207,7 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
             rr, q = "—", "—"
         cat = cat_label(r)
         lines3.append(
-            f"| *{r['especie']}* | {int(r['obs_catalunya'])} | {loc_s} | {pr} | {ul} | {cat} | {rr} | {q} |\n"
+            f"| *{r['especie']}* | {int(r['obs_catalunya'])} | {loc_s} | {pr} | {ul} | {cat} | {rr} | {q} | {tendencia_label(r)} |\n"
         )
     (P / "TABLA_3_PRESENCIA_TENDENCIAS.md").write_text("".join(lines3), encoding="utf-8")
 
@@ -196,13 +248,14 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
         "|---|---|---|---|---:|---|---|---|---|\n",
     ]
     cat_h2 = {**cat_h, "ausente": "ausente", "recurrente": "recurrente"}
+    pres = pres.merge(glm, on="especie", how="left")
     for _, r in pres.sort_values("especie").iterrows():
         reg = reg_map.get(r["especie"], "—")
         ceea = "sí" if str(r.get("kingdom", "")) else "—"
         pr = sd_cell(r.get("primera_obs_catalunya") or "") if r.presencia_catalunya == "sí" else "—"
         ul = sd_cell(r.get("ultima_obs_catalunya") or "") if int(r.obs_catalunya or 0) > 0 else "—"
         hab = sd_cell(r.get("habitat_tags") or "T")
-        cat = cat_h2.get(r.categoria, r.categoria)
+        cat = cat_label(r) if r.categoria not in ("ausente",) else "ausente"
         s1.append(
             f"| *{r['especie']}* | {reg} | {ceea} | {r.presencia_catalunya} | {int(r.obs_catalunya or 0)} | {pr} | {ul} | {hab} | {cat} |\n"
         )
@@ -239,13 +292,29 @@ def write_all_tables(pres: pd.DataFrame, bf: pd.DataFrame):
 
 
 def patch_resultados_top15(pres: pd.DataFrame):
+    glm = pd.read_csv(M / "glm_tendencias_glmm_20261016.csv")
+    glm = glm[glm.ventana == "2013-2025"][["especie", "clase", "clase_sin_top3"]]
+    pres = pres.merge(glm, on="especie", how="left")
+
+    def cat_label_row(row):
+        c = row["categoria"]
+        if c == "en_expansion":
+            c = "recurrente"
+        if c == "recurrente" and row.get("clase") == "creciente" and row.get("clase_sin_top3") == "creciente":
+            return "en expansión"
+        cat_h = {
+            "ocasional_o_puntual": "ocasional",
+            "llegada_reciente_serie_insuficiente": "reciente",
+            "recurrente": "recurrente",
+        }
+        return cat_h.get(c, c.replace("_", " "))
+
     top = pres[pres.presencia_catalunya == "sí"].nlargest(15, "obs_catalunya")
-    cat_h = {"ocasional_o_puntual": "ocasional", "llegada_reciente_serie_insuficiente": "reciente"}
     lines = []
     for _, r in top.iterrows():
         ul = sd_cell(r.get("ultima_obs_catalunya") or "—")
         pr = sd_cell(r.get("primera_obs_catalunya") or "sin datos")
-        cat = cat_h.get(r.categoria, r.categoria.replace("_", " "))
+        cat = cat_label_row(r)
         hab = (r.get("habitat_tags") or "T").replace(",", "+")
         loc = int(r.localidades_catalunya) if pd.notna(r.localidades_catalunya) else "sin datos"
         lines.append(
