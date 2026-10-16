@@ -1,6 +1,6 @@
 # Proyecto correlación — mismas especies en la misma fotografía
 
-**Estado:** 11-oct-2026 · **artículo v27**. OOS **83,22 %**.
+**Estado:** 16-oct-2026 · **artículo v0.28** (foco misma foto; cruzadas fuera del cuerpo). OOS **84,38 %** (p19, 3.061 spp).
 
 ## Raíz
 - Fuente ES: [`ARTICULO.md`](ARTICULO.md)
