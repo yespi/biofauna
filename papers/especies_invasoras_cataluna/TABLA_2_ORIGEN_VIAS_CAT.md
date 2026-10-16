@@ -1,39 +1,39 @@
-# Tabla 2. Origen, hábitat, vía y primer registro (taxones presentes en Cataluña)
+# Tabla 2. Origen, hábitat, vía y registros (taxones presentes en Cataluña)
 
-| Especie | Hábitat | Origen | Vía principal (EASIN/CBD) | Primer registro ciudadano | Categoría |
-|---|---|---|---|---|---|
-| *Ailanthus altissima* | T | nan | nan | 2008-06-08 | recurrente |
-| *Procambarus clarkii* | D+S+X | nan | nan | 2001-09-23 | recurrente |
-| *Myocastor coypus* | T | nan | nan | 2012-06-25 | recurrente |
-| *Trachemys scripta elegans* | D | Norteamérica | Liberación de mascotas (acuariofilia/terrariofilia) | 2006-05-06 | recurrente |
-| *Broussonetia papyrifera* | T | nan | nan | 2017-06-09 | recurrente |
-| *Alopochen aegyptiaca* | T | nan | nan | 2010-04-16 | recurrente |
-| *Vespa velutina nigrithorax* | T | nan | nan | 2017-11-22 | recurrente |
-| *Gambusia holbrooki* | D+S+X | nan | nan | 2007-07-13 | recurrente |
-| *Pennisetum setaceum* | T | nan | nan | 2016-01-20 | recurrente |
-| *Neogale vison* | T | Norteamérica | Escapes de granjas peleteras | 2010-08-08 | recurrente |
-| *Delairea odorata* | T | nan | nan | 2009-12-29 | recurrente |
-| *Rugulopteryx okamurae* | M | nan | nan | 2024-05-31 | llegada reciente |
-| *Acacia saligna* | T | nan | nan | 2019-07-08 | recurrente |
-| *Ludwigia peploides* | D | nan | nan | 2009-08-02 | recurrente |
-| *Lepomis gibbosus* | D+S+X | nan | nan | 2003-07-21 | recurrente |
-| *Pacifastacus leniusculus* | D | nan | nan | 2018-08-27 | recurrente |
-| *Obama nungara* | T | nan | nan | 2016-02-29 | recurrente |
-| *Threskiornis aethiopicus* | T | nan | nan | 2005-03-25 | recurrente |
-| *Reynoutria japonica* | T | nan | nan | 2018-07-20 | recurrente |
-| *Impatiens glandulifera* | T | nan | nan | 2022-08-21 | llegada reciente |
-| *Pseudorasbora parva* | D+S+X | nan | nan | 2015-07-08 | ocasional |
-| *Ameiurus melas* | D | nan | nan | 2018-09-25 | ocasional |
-| *Bipalium kewense* | T | nan | nan | 2018-02-07 | ocasional |
-| *Cardiospermum grandiflorum* | T | nan | nan | 2015-10-03 | ocasional |
-| *Alternanthera philoxeroides* | D | nan | nan | 2023-08-06 | ocasional |
-| *Misgurnus anguillicaudatus* | D+S+X | nan | nan | 2020-06-19 | ocasional |
-| *Heracleum mantegazzianum* | T | nan | nan | nan | ocasional |
-| *Cortaderia jubata* | T | nan | nan | nan | ocasional |
-| *Elodea nuttallii* | D | nan | nan | 2022-04-05 | ocasional |
-| *Gambusia affinis* | D+S+X | nan | nan | nan | ocasional |
-| *Orconectes limosus* | D | nan | nan | 2025-08-17 | ocasional |
-| *Andropogon virginicus* | T | nan | nan | 2025-01-21 | ocasional |
-| *Ludwigia grandiflora* | D | nan | nan | 2026-08-03 | ocasional |
-| *Myriophyllum aquaticum* | D | nan | nan | 2025-09-15 | ocasional |
-| *Reynoutria sachalinensis* | T | nan | nan | 2020-09-01 | ocasional |
+| Especie | Hábitat | Origen | Vía principal | Primer registro | Última observación | Categoría |
+|---|---|---|---|---|---|---|
+| *Ailanthus altissima* | T | s. d. | s. d. | 2008-06-08 | s. d. | en expansión |
+| *Procambarus clarkii* | D+S+X | s. d. | s. d. | 2001-09-23 | s. d. | recurrente |
+| *Myocastor coypus* | T | s. d. | s. d. | 2012-06-25 | s. d. | recurrente |
+| *Trachemys scripta elegans* | D | Norteamérica | Liberación de mascotas (acuariofilia/terrariofilia) | 2006-05-06 | s. d. | recurrente |
+| *Broussonetia papyrifera* | T | s. d. | s. d. | 2017-06-09 | s. d. | recurrente |
+| *Alopochen aegyptiaca* | T | s. d. | s. d. | 2010-04-16 | s. d. | recurrente |
+| *Vespa velutina nigrithorax* | T | s. d. | s. d. | 2017-11-22 | s. d. | recurrente |
+| *Gambusia holbrooki* | D+S+X | s. d. | s. d. | 2007-07-13 | s. d. | recurrente |
+| *Pennisetum setaceum* | T | s. d. | s. d. | 2016-01-20 | s. d. | recurrente |
+| *Neogale vison* | T | Norteamérica | Escapes de granjas peleteras | 2010-08-08 | 2026-04-28 | recurrente |
+| *Delairea odorata* | T | s. d. | s. d. | 2009-12-29 | s. d. | recurrente |
+| *Rugulopteryx okamurae* | M | s. d. | s. d. | 2024-05-31 | 2026-10 | llegada reciente |
+| *Acacia saligna* | T | s. d. | s. d. | 2019-07-08 | s. d. | recurrente |
+| *Ludwigia peploides* | D | s. d. | s. d. | 2009-08-02 | s. d. | recurrente |
+| *Lepomis gibbosus* | D+S+X | s. d. | s. d. | 2003-07-21 | s. d. | recurrente |
+| *Pacifastacus leniusculus* | D | s. d. | s. d. | 2018-08-27 | s. d. | recurrente |
+| *Obama nungara* | T | s. d. | s. d. | 2016-02-29 | s. d. | recurrente |
+| *Threskiornis aethiopicus* | T | s. d. | s. d. | 2005-03-25 | s. d. | recurrente |
+| *Reynoutria japonica* | T | s. d. | s. d. | 2018-07-20 | s. d. | recurrente |
+| *Impatiens glandulifera* | T | s. d. | s. d. | 2022-08-21 | s. d. | llegada reciente |
+| *Pseudorasbora parva* | D+S+X | s. d. | s. d. | 2015-07-08 | s. d. | ocasional |
+| *Ameiurus melas* | D | s. d. | s. d. | 2018-09-25 | s. d. | ocasional |
+| *Bipalium kewense* | T | s. d. | s. d. | 2018-02-07 | s. d. | ocasional |
+| *Cardiospermum grandiflorum* | T | s. d. | s. d. | 2015-10-03 | s. d. | ocasional |
+| *Alternanthera philoxeroides* | D | s. d. | s. d. | 2023-08-06 | s. d. | ocasional |
+| *Misgurnus anguillicaudatus* | D+S+X | s. d. | s. d. | 2020-06-19 | s. d. | ocasional |
+| *Heracleum mantegazzianum* | T | s. d. | s. d. | s. d. | s. d. | ocasional |
+| *Cortaderia jubata* | T | s. d. | s. d. | s. d. | s. d. | ocasional |
+| *Elodea nuttallii* | D | s. d. | s. d. | 2022-04-05 | s. d. | ocasional |
+| *Gambusia affinis* | D+S+X | s. d. | s. d. | s. d. | s. d. | ocasional |
+| *Orconectes limosus* | D | s. d. | s. d. | 2025-08-17 | s. d. | ocasional |
+| *Andropogon virginicus* | T | s. d. | s. d. | 2025-01-21 | s. d. | ocasional |
+| *Ludwigia grandiflora* | D | s. d. | s. d. | 2026-08-03 | s. d. | ocasional |
+| *Myriophyllum aquaticum* | D | s. d. | s. d. | 2025-09-15 | s. d. | ocasional |
+| *Reynoutria sachalinensis* | T | s. d. | s. d. | 2020-09-01 | s. d. | ocasional |

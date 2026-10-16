@@ -27,7 +27,7 @@ Reglas aplicadas una sola vez en todo el manuscrito (no equivalen a estatus EASI
 | En expansión | ≥ 10 obs, ≥ 5 años y razón de tasas > 1 con FDR &lt; 0,05 (ninguna especie la cumple) |
 | Recurrente | Resto con ≥ 10 obs, ≥ 3 celdas y ≥ 3 años (describe detección repetida; no implica población establecida) |
 
-Los valores centinela 99,0 del ratio de esfuerzo se sustituyeron por «n. d.» cuando no hay ventana previa suficiente.
+Los valores centinela 99,0 del ratio de esfuerzo se sustituyeron por «s. d.» (sin datos) cuando no hay ventana previa suficiente. En las tablas por especie, «s. d.» indica además fechas no disponibles en la base unificada local (p. ej. observaciones solo en exportaciones de iNaturalist no ingeridas).
 
 ## 2.4 Esfuerzo y tasa de detección
 

@@ -6,23 +6,22 @@ De los 114 taxones analizados, **35** presentaron al menos una observación en C
 
 ### Top 15 en Cataluña (observaciones combinadas)
 
-| Especie | Obs CAT | Observadores | Celdas UTM 10 km | Categoría | Hábitat |
-|---|---:|---:|---:|---|---|
-| *Ailanthus altissima* | 1540 | 450 | 431 | recurrente | T |
-| *Procambarus clarkii* | 646 | 386 | 441 | recurrente | D+S |
-| *Myocastor coypus* | 498 | 301 | 242 | recurrente | T |
-| *Trachemys scripta* | 263 | 138 | 177 | recurrente | D |
-| *Broussonetia papyrifera* | 175 | 93 | 145 | recurrente | T |
-| *Alopochen aegyptiaca* | 167 | 100 | 92 | recurrente | T |
-| *Vespa velutina nigrithorax* | 156 | 88 | 143 | recurrente | T |
-| *Gambusia holbrooki* | 128 | 89 | 93 | recurrente | D+S |
-| *Neogale vison* | 109 | 64 | 76 | recurrente | T |
-| *Cenchrus setaceus* | 109 | 50 | 75 | recurrente | T |
-| *Delairea odorata* | 107 | 49 | 69 | recurrente | T |
-| *Rugulopteryx okamurae* | 101 | 4 | 25 | reciente | M |
-| *Acacia saligna* | 65 | 49 | 55 | recurrente | T |
-| *Ludwigia peploides* | 58 | 36 | 49 | recurrente | D |
-| *Lepomis gibbosus* | 36 | 28 | 34 | recurrente | D+S |
+| Especie | Obs CAT | Observadores | Celdas UTM 10 km | Primer registro | Última observación | Categoría | Hábitat |
+| *Ailanthus altissima* | 1540 | 450 | 431 | 2008-06-08 | s. d. | recurrente | T |
+| *Procambarus clarkii* | 646 | 386 | 441 | 2001-09-23 | s. d. | recurrente | D+S+X |
+| *Myocastor coypus* | 498 | 301 | 242 | 2012-06-25 | s. d. | recurrente | T |
+| *Trachemys scripta elegans* | 263 | 138 | 177 | 2006-05-06 | s. d. | recurrente | D |
+| *Broussonetia papyrifera* | 175 | 93 | 145 | 2017-06-09 | s. d. | recurrente | T |
+| *Alopochen aegyptiaca* | 167 | 100 | 92 | 2010-04-16 | s. d. | recurrente | T |
+| *Vespa velutina nigrithorax* | 156 | 88 | 143 | 2017-11-22 | s. d. | recurrente | T |
+| *Gambusia holbrooki* | 128 | 89 | 93 | 2007-07-13 | s. d. | recurrente | D+S+X |
+| *Neogale vison* | 109 | 64 | 76 | 2010-08-08 | 2026-04-28 | recurrente | T |
+| *Pennisetum setaceum* | 109 | 50 | 75 | 2016-01-20 | s. d. | recurrente | T |
+| *Delairea odorata* | 107 | 49 | 69 | 2009-12-29 | s. d. | recurrente | T |
+| *Rugulopteryx okamurae* | 101 | 4 | 25 | 2024-05-31 | 2026-10 | reciente | M |
+| *Acacia saligna* | 65 | 49 | 55 | 2019-07-08 | s. d. | recurrente | T |
+| *Ludwigia peploides* | 58 | 36 | 49 | 2009-08-02 | s. d. | recurrente | D |
+| *Lepomis gibbosus* | 36 | 28 | 34 | 2003-07-21 | s. d. | recurrente | D+S+X |
 
 Etiquetas de hábitat: M = marino, S = salobre, D = agua dulce, T = terrestre (no excluyentes; ver Métodos).
 
@@ -85,6 +84,8 @@ La Tabla 2 resume origen, hábitat, vía y primer registro ciudadano para los **
 ## 3.8 *Rugulopteryx okamurae*
 
 Único alga de la lista UE con registros marinos en Cataluña. Primer registro ciudadano: 31 mayo 2024 (iNaturalist). La literatura sitúa la primera cita mediterránea en la laguna de Thau (Francia; Verlaque et al. 2009), con importaciones de ostras como vía propuesta (EASIN: contaminante de animales), y la expansión explosiva en el Estrecho desde 2015 (García-Gómez et al. 2020). En Cataluña las **101** observaciones proceden de **cuatro** observadores y **25** celdas UTM de 10 km (sesgo extremo: media ~25 obs por observador). La cifra es el máximo entre fuentes (Minka 101, iNaturalist 83), no una unión deduplicada. No se ha localizado una primera cita catalana publicada previa a 2024. Fig. 6 (mapas por periodos de cinco años) y Fig. 3 (composición por categoría).
+
+La Fig. 4 resume las tendencias estimables; la Tabla 3 y el Material suplementario S6 enlazan presencia, fechas y acierto del identificador. Las fichas en prosa de las especies prioritarias continúan en el §3.10.
 
 ## 3.9 Sesgos de muestreo (cuantificación breve)
 

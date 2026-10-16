@@ -16,6 +16,10 @@ Katsanevakis, S., Zenetos, A., Belchior, C. & Cardoso, A.C. (2013). Invading Eur
 
 Serrano, E., Coma, R., Ribes, M., Weitzmann, B., García, M. & Ballesteros, E. (2013). Rapid northward spread of a zooxanthellate coral enhanced by artificial structures and sea warming in the western Mediterranean. *PLoS ONE* **8**(1), e52739. https://doi.org/10.1371/journal.pone.0052739
 
+Isaac, N. J. B., van Strien, A. J., August, T. A., de Zeeuw, M. P. & Roy, D. B. (2014). Statistics for citizen science: extracting signals of change from noisy ecological data. *Methods in Ecology and Evolution* **5**(10), 1052–1060. https://doi.org/10.1111/2041-210X.12254
+
+Sladonja, N., Schirone, B., Vuković, M. & Medori, M. (2015). *Ailanthus altissima* (Mill.) Swingle in natural and disturbed areas: a highly successful invasive species of huge economic and concern for human health. *Environmental Monitoring and Assessment* **187**, 546. https://doi.org/10.1007/s00267-015-0546-5
+
 Zenetos, A., Albano, P.G., López Garcia, E., Stern, N., Tsiamis, K. & Galanidi, M. (2022). Established non-indigenous species increased by 40 % in 11 years in the Mediterranean Sea. *Mediterranean Marine Science* **23**(1), 196–212. https://doi.org/10.12681/mms.29106
 
 Verlaque, M., Steen, F. & De Clerck, O. (2009). *Rugulopteryx* (Dictyotales, Phaeophyceae), a genus recently introduced to the Mediterranean. *Phycologia* **48**, 536–542. https://doi.org/10.2216/08-103.1

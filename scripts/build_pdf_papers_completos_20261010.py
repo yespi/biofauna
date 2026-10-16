@@ -76,7 +76,11 @@ code{font-size:8.5pt}a{color:#1a4f8b;text-decoration:none}
 """
 
 CSS_INV = CSS_GENERIC + """
+h2{break-after:avoid-page;page-break-after:auto}
+h1{break-before:auto}
 img.lamina-page{max-height:none;width:100%;height:auto;page-break-before:always}
+.pagebreak-before{break-before:page;page-break-before:always;height:0;margin:0}
+table.tabla-larga{font-size:7.5pt}
 """
 
 
@@ -210,10 +214,10 @@ def build_invasoras_completo() -> Path:
         I / "METODOS.md",
         I / "TABLA_1_FUENTES.md",
         I / "RESULTADOS.md",
+        I / "FICHAS_ESPECIES_PRIORITARIAS.md",
         I / "TABLA_3_PRESENCIA_TENDENCIAS.md",
         I / "TABLA_4_CONCORDANCIA_EASIN.md",
         I / "TABLA_2_ORIGEN_VIAS_CAT.md",
-        I / "ORIGEN_Y_VIAS_EXPANSION.md",
         I / "PROSPERAN_O_DESAPARECEN.md",
         I / "DISCUSION.md",
         I / "CONCLUSIONES.md",
@@ -225,12 +229,20 @@ def build_invasoras_completo() -> Path:
         I / "SUPLEMENTO_TABLA_S2.md",
         I / "SUPLEMENTO_TABLA_S3.md",
         I / "SUPLEMENTO_TABLA_S4_EASIN.md",
+        I / "SUPLEMENTO_TABLA_S5.md",
+        I / "SUPLEMENTO_TABLA_S6_BIOFAUNA.md",
     ]
     chunks = []
     for p in parts_md:
-        if p.exists():
-            chunks.append(p.read_text(encoding="utf-8"))
-            chunks.append("\n\n")
+        if not p.exists():
+            continue
+        name = p.name
+        if name == "REFERENCIAS.md":
+            chunks.append('<div class="pagebreak-before"></div>\n')
+        if name.startswith("SUPLEMENTO_TABLA_S1"):
+            chunks.append('<div class="pagebreak-before"></div>\n')
+        chunks.append(p.read_text(encoding="utf-8"))
+        chunks.append("\n\n")
     figs = [
         (
             "material/figuras/area_estudio_esfuerzo_heatmap_20261015.png",
@@ -250,7 +262,7 @@ def build_invasoras_completo() -> Path:
         ),
         (
             "material/figuras/prosperan_panel_top8.png",
-            "Fig. 4. Razón de tasas anual de detección 2013–2025 (GLM binomial negativo, offset log esfuerzo; IC 95 %) para las 17 especies de la lista UE estimables; rojo = descenso significativo (FDR&lt;0,05).",
+            "Fig. 4. Razón de tasas anual de detección 2013–2025 (GLM binomial negativo, offset log esfuerzo excluyente; IC 95 %) para las especies de la lista UE estimables; rojo = descenso significativo (FDR&lt;0,05); verde = aumento significativo.",
         ),
         (
             "material/figuras/marinas_retraso_ciudadano_20261015.png",
