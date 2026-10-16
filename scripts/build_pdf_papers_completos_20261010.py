@@ -32,6 +32,7 @@ Q_MAT = Q / "material"
 Q_EN = Q_MAT / "en"
 N = ROOT / "papers/nudibranquios_calendario"
 N_MAT = N / "material"
+F = ROOT / "papers/fanerogamas"
 I = ROOT / "papers/especies_invasoras_cataluna"
 I_MAT = I / "material"
 D = ROOT / "papers/especies_peligro_declives"
@@ -317,17 +318,52 @@ def build_invasoras_completo() -> Path:
 
 
 def build_nudi_completo() -> Path:
-    article = N / "ARTICULO_20261010.pdf"
+    article = md_to_pdf(
+        N,
+        "ARTICULO_20261010.md",
+        [f"ARTICULO_{DATE}.pdf", "ARTICULO_20261010.pdf"],
+        CSS_GENERIC,
+        watermark=False,
+    )
+    strip_trailing_blank_pages(article)
+    stamp(article)
+    lam5 = N_MAT / "LAMINA5_carta_marina_hibrida_20261011.pdf"
+    if not lam5.exists():
+        lam5 = N_MAT / "LAMINA5_carta_marina_20261010.pdf"
     laminas = [
         N_MAT / "LAMINA1_calendario_fenologico_20261010.pdf",
         N_MAT / "LAMINA2_rosas_estaciones_20261010.pdf",
         N_MAT / "LAMINA3_distribucion_espacial_20261010.pdf",
         N_MAT / "LAMINA4_poster_guia_20261010.pdf",
-        N_MAT / "LAMINA5_carta_marina_20261010.pdf",
+        lam5,
     ]
+    lam_paths = []
+    for p in laminas:
+        if p.exists():
+            stamp(p)
+            lam_paths.append(p)
     out = N / f"ARTICULO_COMPLETO_{DATE}.pdf"
-    pdfunite([article] + [p for p in laminas if p.exists()], out)
+    pdfunite([article] + lam_paths, out, watermark=False)
+    stamp(out)
     shutil.copy2(out, N / "ARTICULO_COMPLETO_latest.pdf")
+    print("COMPLETO", out)
+    return out
+
+
+def build_fanerogamas_completo() -> Path:
+    article = md_to_pdf(
+        F,
+        "ARTICULO.md",
+        [f"ARTICULO_{DATE}.pdf", "ARTICULO_latest.pdf"],
+        CSS_GENERIC,
+        watermark=False,
+    )
+    strip_trailing_blank_pages(article)
+    out = F / f"ARTICULO_COMPLETO_{DATE}.pdf"
+    shutil.copy2(article, out)
+    stamp(out)
+    shutil.copy2(out, F / "ARTICULO_COMPLETO_latest.pdf")
+    print("COMPLETO", out)
     return out
 
 
@@ -426,12 +462,10 @@ def main():
     print("=== Completos ===")
     build_corr_completo(es)
     build_biofauna_completo()
-    if (N / "ARTICULO_20261010.pdf").exists():
-        # re-stamp article-only + rebuild completo
-        stamp(N / "ARTICULO_20261010.pdf")
-        for lam in N_MAT.glob("LAMINA*.pdf"):
-            stamp(lam)
+    if (N / "ARTICULO_20261010.md").exists():
         build_nudi_completo()
+    if (F / "ARTICULO.md").exists():
+        build_fanerogamas_completo()
     build_invasoras_completo()
     build_declives_completo()
     print("DONE", DATE)
