@@ -127,11 +127,6 @@ La validación con *Pinna nobilis* es el ancla biológica: el colapso relativo (
 Entre las demás especies objetivo, *Corallium rubrum* y *Paramuricea clavata* muestran tasas relativas bajas compatibles con declives leves o temporales, pero el proxy fotográfico no distingue organismos vivos de restos blanqueados tras mortalidades. *Pinna rudis* exhibe expansión relativa que merece seguimiento como hipótesis, no como demografía validada.
 
 El siguiente paso metodológico es un GLM binomial negativo con offset de esfuerzo total (como en el manuscrito de invasoras), covariables SST/MHW y cruce formal con estatus UICN/CEEA.
- Sin controles, *Diplodus*, *Coris* o *Chromis* parecerían «en explosión» (ratios 3–4). El panel ancla esa línea base (~2,4).
-2. **Validación Pinna.** El método pasa el test duro: detecta el colapso conocido.
-3. **Falsos negativos posibles.** Especies carismáticas fotografadas tras mortalidades (gorgonias blancas, nacras muertas) pueden inflar tasas; no distinguimos vivos/muertos en la BD.
-4. **Alerta temprana.** *Pinna rudis* y, en el paper hermano, *Thalassoma pavo* / *Sparisoma cretense* son señales a seguir, no conclusiones demográficas.
-5. **Siguiente paso:** GLM binomial negativo con offset de esfuerzo + covariable SST / MHW; estatus UICN/CEEA formal; láminas con fotos CC de Cataluña.
 
 ---
 
