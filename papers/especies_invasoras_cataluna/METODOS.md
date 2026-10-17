@@ -55,6 +55,14 @@ Para fauna acuática reclasificamos hábitat con indicadores WoRMS (`isMarine`, 
 
 Origen nativo y vías se documentan en la Tabla 2 con categorías CBD/EASIN (una especie puede tener varias vías; EASIN consultado el 15-oct-2026) y, cuando no hay fuente, se marcan como hipótesis. Las «primeras fechas» ciudadanas se distinguen de las primeras citas publicadas (columnas separadas en Tabla 3). Las flechas de expansión en mapas siguen solo rutas marítimas plausibles o saltos humanos discontinuos (acuicultura, fouling), nunca expansión terrestre de especies estrictamente marinas.
 
-## 2.8 Exóticas marinas no incluidas en la lista UE
+## 2.8 Modelo de ocupación (extensión)
+
+El GLMM de §2.5 estima la tendencia de detección con intercepto aleatorio de observador y offset de esfuerzo del grupo: es el núcleo reproducible del paper. Como extensión planificada, un modelo de **ocupación** con unidad celda UTM 10 km × año, detectabilidad ligada al esfuerzo del grupo y presencia latente ψ, requeriría series por celda que hoy solo son fiables para un puñado de taxones conspicuos (*Myocastor*, *Vespa velutina*). No sustituye las tablas de presencia actuales.
+
+## 2.9 Alerta temprana (FotoFauna / AutoID)
+
+Ver `USO_ALERTA_TEMPRANA.md`: umbrales de publicación automática, taxones sin eval (Tabla S7) y relación con el acierto por especie (Tabla S6).
+
+## 2.10 Exóticas marinas no incluidas en la lista UE
 
 Complementamos el análisis con un subconjunto de exóticas marinas documentadas en inventarios regionales (inventario ampliado facilitado por B. Weitzmann, provisional; García et al. 2015), contrastando primer registro ciudadano y primera cita bibliográfica. *Pterois miles* y *Lagocephalus sceleratus* se tratan en un recuadro de contexto mediterráneo (sin registros en Cataluña en nuestras fuentes).
