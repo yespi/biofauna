@@ -15,7 +15,7 @@
 
 BioFauna identifies Mediterranean (and incidental adjacent) taxa from photographs by **retrieval** over a regional gallery, without training a closed-set classifier. The production encoder is **BioCLIP-2.5 ViT-H/14** (frozen; 1024-d embeddings). Queries are encoded (global frame fused with a 65 % centre crop), searched with **k-NN (k = 15)** and a tempered vote aggregator, optionally re-weighted by a geographic prior, mapped to calibrated probabilities and, when the margin is weak, **abstained** to genus, family, or a curated indistinguishability group.
 
-**Current figures** (index **p19** promoted 16 Oct 2026 15:16 CEST; rescore `calib_raw_t05.jsonl` / `dataset/stats.json`): **3,061** species and **1,294,055** aligned FAISS vectors; **official** species top-1 on the rescore panel **84.36 %** (64,290 rows). On **clean eval v3** (no observation duplicates, no multi-subject rows, obvious leaks removed) top-1 is **82.23 %** (44,425 rows). On **leak-free** rows (max query–gallery similarity &lt;0.95; ~52,413 rows) accuracy is **~81.1 %**—about **2.3 pp** below clean v3 and **~3.3 pp** below official, because the official panel still includes easier or historically gallery-correlated rows. AutoID publishes at species threshold **0.83** (precision ≈96 %, coverage ≈66.5 % on the full eval; audited historical precision **96.6 %**, n=493). Baselines on 78,180 rows (2026-10-03): nearest centroid **74.73 %**; plain k-NN **79.86 %**. A systematic search for gains from training on this embedding space (LoRA, QLoRA, ArcFace, etc.) **did not beat** frozen retrieval. We publish the experiment ledger, taxon IDs, prototype centroids and a self-hostable identifier; photographs and per-photo embeddings are **not** redistributed.
+**Headline metric (leak-free).** On rows with max query–gallery similarity &lt;0.95 (~52,400 rescore rows), species top-1 accuracy is **~81.1 %**—the conservative figure for genuinely new photos. **Secondary figures** (index **p19** promoted 16 Oct 2026 15:16 CEST; `calib_raw_t05.jsonl` / `dataset/stats.json`): **3,061** species and **1,294,055** aligned FAISS vectors; **official** top-1 on the full rescore panel **84.36 %** (64,290 rows); **clean eval v3** **82.23 %** (44,425 rows). Official is **~3.3 pp** above leak-free because the panel still includes easier or gallery-correlated rows. AutoID publishes at species threshold **0.83** (precision ≈96 %, coverage ≈66.5 % on the full eval; audited historical precision **96.6 %**, n=493). Baselines on 78,180 rows (2026-10-03): nearest centroid **74.73 %**; plain k-NN **79.86 %**. A systematic search for gains from training on this embedding space (LoRA, QLoRA, ArcFace, etc.) **did not beat** frozen retrieval. We publish the experiment ledger, taxon IDs, prototype centroids and a self-hostable identifier; photographs and per-photo embeddings are **not** redistributed.
 
 **Keywords:** BioCLIP-2.5, ViT-H, k-NN, fine-grained visual classification, marine biodiversity, citizen science, taxonomic abstention, calibration, Mediterranean Sea
 
@@ -515,6 +515,10 @@ Community taxonomic curators and expert reviewers; published checklists (GROC/OP
 ## Data availability
 
 Code, prototypes, catalog, calibrators, geo priors, cryptic pairs: this repository. Backbone: Hugging Face `imageomics/bioclip-2.5-vith14`. Images: obtain independently from Minka/iNaturalist/GBIF.
+
+### Frozen release (Zenodo)
+
+On manuscript submission we will deposit a **Zenodo** archive with DOI fixing: (1) the FAISS index and `dataset/stats.json` cited in the header; (2) the evaluation panel (`calib_raw_t05.jsonl` and clean v3 / leak-free subsets in §5.6); (3) the git commit and hashes of prototypes/calibrators; (4) minimal rescore scripts. Per-photo images and embeddings are **not** included (licensing). Checklist: `papers/biofauna/material/ZENODO_FREEZE_CHECKLIST_20261017.md`. **DOI: pending.**
 
 ---
 
