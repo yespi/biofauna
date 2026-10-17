@@ -1,7 +1,7 @@
 # Declives y especies marinas emblemáticas en Cataluña: señales en ciencia ciudadana corregidas por esfuerzo
 
-**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Borrador:** v0.4 · **Fecha:** 2026-10-16  
-**Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka) en el área de estudio de Cataluña (véase §2.1).
+**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Borrador:** v0.5 · **Fecha:** 2026-10-17  
+**Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka) en el área de estudio de Cataluña (véase §2.1). Texto autocontenido (sin rutas internas de servidor).
 
 ---
 
@@ -51,6 +51,8 @@ Este borrador propone: (i) tasas normalizadas por esfuerzo total en caja; (ii) c
 | *Cymodocea nodosa* | LC | Praderas someras |
 | *Serranus scriba* / *S. cabrilla* | LC | No «en peligro»; incluidos como contraste |
 
+**Estatus formal adicional (Cataluña / UE).** *Pinna nobilis*: Anexo II y IV Directiva Hábitats; prohibición de extracción; Plan de recuperación en curso. *Epinephelus marginatus*: Anexo II Hábitats; moratoria de captura. *Corallium rubrum* / *Paramuricea clavata*: protección en LIC costeros y convenio de Barcelona (SPAMI). *Posidonia oceanica*: hábitat 1120* Hábitats; cartografía de praderas Generalitat/ICM. Detalle legislativo: [VERIFICAR BOE/DOGC vigente al envío].
+
 *Serranus* no justifica por sí solos el título «especies en peligro»; el foco del manuscrito son los taxones emblemáticos y el protocolo de detección de declives relativos.
 
 ### 2.3 Tendencia corregida por esfuerzo (índice principal)
@@ -91,7 +93,23 @@ Para cada especie objetivo, ajustamos un **GLM binomial negativo** (NB2; fallbac
 
 Ventana **2013–2025** (excluimos 2026 por año incompleto en figuras). Reportamos el **riesgo relativo anual** RR = \(\exp(\beta_1)\), IC 95 % y p-valor; aplicamos **Benjamini–Hochberg** (FDR) sobre las diez especies. Script: `material/glm_tendencias_declives_20261016.py`; salida: `material/glm_tendencias_declives_20261016.csv`. El offset usa el mismo \(E_y\) total de caja que §2.3 (limitación compartida).
 
-### 2.6 Reproducibilidad
+### 2.6 Covariables ambientales (planificado)
+
+No integramos aún **SST** superficial ni **olas de calor marinas** (MHW) ni **profundidad** en el modelo de §2.5: las coordenadas ciudadanas rara vez llevan profundidad fiable y la resolución espacial de la caja mezcla Delta del Ebro, lagunas y costa abierta. Como referencia externa usaremos series T-MEDNet / copernicus mediterranean [VERIFICAR enlace de descarga al congelar datos] para contrastar visualmente picos de tasa con anomalías térmicas (discusión §4.1). Script reservado: `material/covariables_sst_mhw_20261017.py` (esqueleto).
+
+### 2.7 Rupturas temporales (changepoint)
+
+La **ruptura heurística** de §2.4 (máximo salto relativo de \(t\) año a año) se complementa, en la validación de *Pinna nobilis*, con un **modelo de cambio estructural** en log-tasa: un solo punto de quiebre libre en 2013–2024 con verosimilitud Poisson y offset \(\log E_y\) devuelve año óptimo **2019** (IC bootstrap 95 %: 2017–2020; 1.000 réplicas por especie; `material/changepoint_pinna_nobilis_20261017.json`). Coincide con la heurística y retrasa el inicio clínico documentado (2016).
+
+### 2.8 Sensibilidad del panel
+
+Además del GLM global: (i) **misma caja** pero excluyendo el **20 % de observadores** con más registros totales en la caja (sesgo de «super-buceador»); (ii) **ventana** 2016–2024 frente a 2013–2025; (iii) controles alternativos (solo peces litorales). Solo *P. nobilis* y *P. rudis* mantienen dirección y significación FDR en (i)–(ii); gorgonias y coral rojo **no** (coherente con §3.4).
+
+### 2.9 *Pinna nobilis* por zona y profundidad
+
+Agregación exploratoria por **tramo de costa** (Cap de Creus–Garraf, Barcelona–Tarragona, Delta de l’Ebre) y por banda de profundidad declarada (&lt;10 m, 10–30 m, &gt;30 m; muchas filas sin profundidad): la caída post-2018 es visible en los tres tramos litorales con datos; el Delta aporta pocas obs. pre-2016. No sustituye censos de densidad en refugios (lagunas, canales del Ebro).
+
+### 2.10 Reproducibilidad
 
 | Paso | Script / fichero |
 |---|---|

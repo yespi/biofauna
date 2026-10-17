@@ -1,0 +1,9 @@
+{
+  "especie": "Pinna nobilis",
+  "metodo": "segmented Poisson log-link, single break, offset log E_y",
+  "ventana": "2013-2024",
+  "anio_quiebre_ml": 2019,
+  "ic_bootstrap_95": [2017, 2020],
+  "n_bootstrap": 1000,
+  "nota": "Exploratorio; generado 17-oct-2026 para texto §2.7. Re-ejecutar con script definitivo antes de Zenodo."
+}
