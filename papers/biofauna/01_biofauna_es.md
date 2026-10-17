@@ -5,7 +5,7 @@
 
 **Repositorio:** https://github.com/yespi/biofauna  
 **Sistema en vivo:** https://fotofauna.yespi.es  
-**Versión del manuscrito:** 2026-10-16 (artículo para Biodiversity Data Journal / PeerJ; índice **p19**, **3.061** spp, **1.294.055** vectores; acierto oficial panel rescore **84,36 %**, eval limpio v3 **82,23 %**)
+**Fecha:** 2026-10-16 (artículo para Biodiversity Data Journal / PeerJ; índice **p19**, **3.061** spp, **1.294.055** vectores; acierto oficial panel rescore **84,36 %**, eval limpio v3 **82,23 %**)
 
 > **Nombre.** El proyecto se llamó YOLOFauna (2024–mediados de 2026); pasó a BioFauna cuando producción se quedó en recuperación BioCLIP, no en detectores YOLO. Origen: [`docs/HISTORY.md`](../docs/HISTORY.md).
 
@@ -364,7 +364,7 @@ Para cerrar el bucle AutoID → comunidad, FotoFauna registra decisiones de revi
 
 **Apartado reservado para el manuscrito:** cuando la cola supere ~200 decisiones con taxón final verificado, publicaremos una tabla resumen (precisión de la propuesta BF vs taxón acordado, latencia, observadores) en PeerJ/BDJ. Hasta entonces, citar solo el conteo anterior y no inferir precisión de la cola.
 
-## 5.5 Actualización 2026-10-15: acierto por tamaño de galería y prior zona/mes
+## 5.5 Acierto por tamaño de galería y prior zona/mes
 
 **Índice p15 (histórico).** Entre el 14-oct y mediados de octubre de 2026 producción sirvió el índice **p15** (**2.988** especies, **1.289.637** vectores). Acierto limpio congelado: **81,0 %** sobre **44.529** fotos sin fuga (`overall_accuracy_clean`, 12-oct-2026).
 

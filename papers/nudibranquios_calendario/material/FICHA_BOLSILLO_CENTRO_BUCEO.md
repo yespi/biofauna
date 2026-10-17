@@ -12,4 +12,4 @@
 
 **Antes de salir:** mirar Lámina 3 (tramo de costa). **En el agua:** foto con licencia abierta; profundidad en el formulario. **Después:** confirmar nombre (OPK/GROC); FotoFauna solo sugiere.
 
-Impresión: `LAMINA1` + esta ficha en reverso. Datos: `ARTICULO_20261010.md` v0.3.
+Impresión: `LAMINA1` + esta ficha en reverso. Datos: `ARTICULO_20261010.md`.

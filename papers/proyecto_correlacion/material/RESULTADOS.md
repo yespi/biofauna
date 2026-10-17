@@ -1,4 +1,4 @@
-# Proyecto Correlación — Resultados (v21, 7-oct-2026)
+# Proyecto Correlación — Resultados (7-oct-2026)
 
 Solo se presentan como conclusiones las parejas con **ambas especies visibles en la misma fotografía**. El cribado por eventos es material de hipótesis.
 
@@ -23,4 +23,4 @@ Fotografías con autor, licencia, fecha y hora, lugar y enlace: [`LAMINAS.md`](L
 ## 4. Identificador
 82,85 % de acierto de especie en el panel fuera de muestra; crece con la galería (68,6 % con 0–25 fotos; 89,2 % con ≥1.000).
 
-Resultados anteriores (lift, 70.971 pares, nulo con 2.000 permutaciones, candidatas por grupos): [`archivo_2026-09/`](archivo_2026-09/) — **retirados como conclusiones en v20**.
+Resultados exploratorios archivados (lift, 70.971 pares, nulo con 2.000 permutaciones, candidatas por grupos): [`archivo_2026-09/`](archivo_2026-09/) — **no forman parte de las conclusiones de este manuscrito**.

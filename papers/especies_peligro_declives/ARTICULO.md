@@ -1,6 +1,6 @@
 # Declives y especies marinas emblemáticas en Cataluña: señales en ciencia ciudadana corregidas por esfuerzo
 
-**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Borrador:** v0.5 · **Fecha:** 2026-10-17  
+**Autor:** Gustavo Zafra (gustavo.zafra@gmail.com) · **Fecha:** 2026-10-17  
 **Datos:** observaciones agregadas de ciencia ciudadana (iNaturalist y Minka) en el área de estudio de Cataluña (véase §2.1). Texto autocontenido (sin rutas internas de servidor).
 
 ---
@@ -15,7 +15,7 @@ Proponemos un protocolo reproducible para detectar **declives relativos** en die
 
 La nacra mediterránea (*Pinna nobilis*), los meros (*Epinephelus*), el coral rojo (*Corallium rubrum*), las gorgonias (*Paramuricea clavata*) y las fanerógamas (*Posidonia oceanica*, *Cymodocea nodosa*) concentran la atención de listas rojas, la Directiva Hábitats y convenios regionales (Barcelona, SPAMI). Los serranos (*Serranus*) se incluyen como peces costeros frecuentes en fotografías submarinas, útiles como contraste con especies más raras o carismáticas. Detectar **declives reales** en ciencia ciudadana es difícil: el esfuerzo de observación en la caja de estudio ha pasado de **1.220** observaciones/año (2013) a **102.301** (2024), según la base interna BioQuest (`public_observations`). Sin normalizar, casi cualquier especie marina parece «en expansión».
 
-Este borrador propone: (i) tasas normalizadas por esfuerzo total en caja; (ii) comparación con un **panel de controles** comunes; (iii) clasificación heurística de declives; (iv) contraste con un **GLM** formal; (v) *Pinna nobilis* como **validación positiva** frente a la mortalidad masiva documentada por *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006); cronología: [Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)).
+Este artículo propone: (i) tasas normalizadas por esfuerzo total en caja; (ii) comparación con un **panel de controles** comunes; (iii) clasificación heurística de declives; (iv) contraste con un **GLM** formal; (v) *Pinna nobilis* como **validación positiva** frente a la mortalidad masiva documentada por *Haplosporidium pinnae* ([Catanese et al. 2018](https://doi.org/10.1016/j.jip.2018.07.006); cronología: [Vázquez-Luis et al. 2017](https://doi.org/10.3389/fmars.2017.00220)).
 
 ### 1.1 Detonantes patógenos y contexto (DOI verificados)
 
@@ -30,7 +30,7 @@ Este borrador propone: (i) tasas normalizadas por esfuerzo total en caja; (ii) c
 
 - **Fuentes:** registros de iNaturalist y Minka integrados en PostgreSQL (`fauna.public_observations`, contenedor `postgres-global`), extracción octubre de 2026. iNaturalist en pausa para nuevas descargas API (#PAUSA-20261015); la serie refleja el volcado local vigente.
 - **Área:** rectángulo NE peninsular (lat 40,45–42,95; lon 0,10–3,40), alineado con el manuscrito de especies invasoras en Cataluña; recorte al polígono administrativo ICGC queda pendiente.
-- **Filtros aplicados:** solo observaciones con coordenadas dentro de la caja; años con `obs_year` informado. No se eliminan duplicados observador-día en esta versión (limitación §4.2). No se re-etiquetan taxones con BioFauna: se usa el `taxon_id` iNaturalist y el nombre aportado por la plataforma o curador.
+- **Filtros aplicados:** solo observaciones con coordenadas dentro de la caja; años con `obs_year` informado. No se eliminan duplicados observador-día en este análisis (limitación §4.2). No se re-etiquetan taxones con BioFauna: se usa el `taxon_id` iNaturalist y el nombre aportado por la plataforma o curador.
 - **Contexto BioFauna:** índice **p19** en producción (16-oct-2026): **3.061** especies, **~1,29×10⁶** vectores FAISS, **84,4 %** acierto en panel oficial (`calib_raw_t05.jsonl` vigente). Este paper **no** usa el identificador para corregir observaciones ciudadanas.
 
 ### 2.2 Especies objetivo, controles y estatus de conservación

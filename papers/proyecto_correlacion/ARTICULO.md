@@ -2,7 +2,7 @@
 
 **Autor: Gustavo Zafra (gustavo.zafra@gmail.com)** · Creador y desarrollador de BioFauna (identificador BioCLIP-2.5 ViT-H/14 + FAISS) y de las aplicaciones FotoFauna y BioQuest; colaborador de la plataforma de ciencia ciudadana Minka SDG.
 
-**Borrador v0.28 — 16-oct-2026.** Manuscrito centrado en el criterio «ambas especies en la misma fotografía»; las series temporales esfuerzo-corregidas (antiguo §3.9) se publican aparte (véase `papers/especies_peligro_declives/` y `material/experimentos/AVANCE_cruzadas_20261011.md`).
+**Fecha:** 16-oct-2026. Manuscrito centrado en el criterio «ambas especies en la misma fotografía»; las series temporales esfuerzo-corregidas se publican aparte (véase `papers/especies_peligro_declives/` y `material/experimentos/AVANCE_cruzadas_20261011.md`).
 
 ---
 
@@ -195,7 +195,7 @@ Con acierto de especie 84,38 %, P(ambas OK) ≈ 0,71 en la lista corta. Eso acot
 |*Parazoanthus axinellae*–*Spongia lamella*|convivencia en el mismo plano; sin interacción demostrada|
 |*Calystegia soldanella*–*Medicago marina*|hábitat dunar compartido (terrestre)|
 
-Revisores expertos / curadores de la comunidad: pendiente el envío formal de las láminas v10 para revisión.
+Revisores expertos / curadores de la comunidad: pendiente el envío formal del material de láminas para revisión.
 
 
 ## 4. Discusión
@@ -216,7 +216,7 @@ Revisores expertos / curadores de la comunidad: pendiente el envío formal de la
 
 ### 4.4 Autoevaluación editorial (16-oct-2026)
 
-Tras `REVISION_proyecto_correlacion_20261012.md` y `CORRECCIONES_correlacion_20261016.md`, estimamos **~86 %** de completitud para envío interno: foco en la misma foto; cabeceras de proceso retiradas; lámina Costa Rica excluida; candidatas al suplemento; limitaciones explícitas (muestra ciega, láminas, JSDM, licencias NC, Zenodo). Pendiente: validación ciega del detector, confirmación taxonómica de segundas especies, permisos fotos NC.
+Tras revisión interna (octubre 2026), estimamos **~86 %** de completitud para envío interno: foco en la misma foto; lámina Costa Rica excluida; candidatas al suplemento; limitaciones explícitas (muestra ciega, láminas, JSDM, licencias NC, Zenodo). Pendiente: validación ciega del detector, confirmación taxonómica de segundas especies, permisos fotos NC.
 
 ## 5. Limitaciones
 
@@ -290,7 +290,7 @@ Minka SDG.
 - Parejas de la lista corta y sus fotos candidatas: [`data/copresencia_pares_20261006.csv`](https://github.com/yespi/biofauna/blob/master/data/copresencia_pares_20261006.csv) y [`data/copresencia_hits_20261006.jsonl`](https://github.com/yespi/biofauna/blob/master/data/copresencia_hits_20261006.jsonl).
 - Manifiesto de las láminas con autor, licencia, fecha y hora, lugar y enlace de cada foto: [`papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261008.json`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/lamina_fotos/lamina_manifest_20261008.json).
 - Listados del cribado por eventos (solo hipótesis), con su descripción: [`data/README_correlacion.md`](https://github.com/yespi/biofauna/blob/master/data/README_correlacion.md) y los ficheros `data/nulo_exacto_pares_*.csv` y `data/pares_*_20261005.csv`.
-- Métodos y resultados ampliados, figuras y láminas: carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) (artículo en español e inglés, `LAMINAS`, `METODOS.md`, `RESULTADOS.md`, `material/figuras/`, `lamina_fotos/`). Las versiones sin número (`ARTICULO_ES_latest.pdf`, `ARTICLE_EN_latest.pdf`, `LAMINAS_latest.pdf`) se actualizan siempre; las versionadas se conservan. Detalle P1/P3/P4/P9: [`material/experimentos/AVANCE_P3_P4_P1_P9_20261009.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/material/experimentos/AVANCE_P3_P4_P1_P9_20261009.md); v25: [`AVANCE_v25_20261011.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/material/experimentos/AVANCE_v25_20261011.md); **v26 tendencias cruzadas:** [`AVANCE_cruzadas_20261011.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/material/experimentos/AVANCE_cruzadas_20261011.md) y `material/figuras/cruzadas/`.
+- Métodos y resultados ampliados, figuras y láminas: carpeta [`papers/proyecto_correlacion/`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/) (artículo en español e inglés, `LAMINAS`, `METODOS.md`, `RESULTADOS.md`, `material/figuras/`, `lamina_fotos/`). PDFs compilados: `ARTICULO_COMPLETO_latest.pdf`, `LAMINAS_latest.pdf`. Notas de experimentos: [`material/experimentos/`](https://github.com/yespi/biofauna/tree/master/papers/proyecto_correlacion/material/experimentos/) (p. ej. [`AVANCE_P3_P4_P1_P9_20261009.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/material/experimentos/AVANCE_P3_P4_P1_P9_20261009.md), [`AVANCE_v25_20261011.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/material/experimentos/AVANCE_v25_20261011.md), [`AVANCE_cruzadas_20261011.md`](https://github.com/yespi/biofauna/blob/master/papers/proyecto_correlacion/material/experimentos/AVANCE_cruzadas_20261011.md)) y `material/figuras/cruzadas/`.
 - Identificador BioFauna (código, prototipos, calibradores, scripts de evaluación): carpetas [`src/`](https://github.com/yespi/biofauna/blob/master/src/), [`scripts/`](https://github.com/yespi/biofauna/blob/master/scripts/), [`data/`](https://github.com/yespi/biofauna/blob/master/data/) y [`papers/biofauna/`](https://github.com/yespi/biofauna/blob/master/papers/biofauna/).
 - **No redistribuibles**: las fotografías de la galería (licencias de Minka SDG, iNaturalist y otras fuentes; las de las láminas se incluyen con atribución) y los *embeddings* por foto.
 

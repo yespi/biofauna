@@ -1,4 +1,4 @@
-# Proyecto Correlación — Métodos (v21, 7-oct-2026)
+# Proyecto Correlación — Métodos (7-oct-2026)
 
 ## 1. Datos
 1.222.170 fotografías de la galería BioFauna (Minka SDG, iNaturalist, GBIF, Wikimedia Commons, DORIS/FFESSM, SeaSlugForum, WoRMS, FishBase y otras) y 759.207 observaciones con coordenadas, fecha y (92 %) hora; catálogo de 2.985 taxones mediterráneos.

@@ -1,7 +1,7 @@
 # Fanerógamas marinas en la foto ciudadana: cuatro especies, un identificador y el carbono azul
 
 **Autor:** Gustavo Zafra (gustavo.zafra@gmail.com)  
-**Fecha:** 2026-10-16 (v0.1 divulgación)  
+**Fecha:** 2026-10-16 (divulgación)  
 **Repositorio:** https://github.com/yespi/biofauna (`papers/fanerogamas/`)
 
 ---
@@ -97,7 +97,7 @@ Cifras históricas con otro tamaño de muestra (p. ej. n = 60 por especie en cam
 
 Las fanerógamas marinas conectan **biodiversidad**, **pesca** y **clima**. En FotoFauna/BioFauna son un bloque pequeño pero políticamente relevante: cuatro especies, **~75 %** de acierto conjunto en evaluación interna, confusiones sobre todo entre zosteráceas. Mejorar encuadres, profundidad en el formulario y revisión humana de pares crípticos subirá la utilidad de la ciencia ciudadana para el carbono azul sin sustituir a los censos profesionales.
 
-## 11. Autoevaluación (v0.2, 17-oct-2026)
+## 11. Autoevaluación (17-oct-2026)
 
 | Criterio | Estado |
 |---|---|
@@ -119,4 +119,4 @@ Las fanerógamas marinas conectan **biodiversidad**, **pesca** y **clima**. En F
 
 ---
 
-*Manuscrito de divulgación v0.1 (2026-10-16). Borrador de G. Zafra.*
+*Manuscrito de divulgación (2026-10-16). G. Zafra.*

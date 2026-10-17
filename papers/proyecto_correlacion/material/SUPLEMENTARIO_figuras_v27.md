@@ -1,4 +1,4 @@
-# Material suplementario — figuras fuera del cuerpo (v27)
+# Material suplementario — figuras fuera del cuerpo
 
 Criterio del cuerpo (Gustavo 11-oct-2026): efecto grande y significativo tras control de esfuerzo (FDR), patrón visible a simple vista y explicación ecológica plausible o documentada. Máximo 6–10 figuras principales.
 

@@ -17,7 +17,7 @@ Paper separado del de correlaciones. **Borrador estructural; sin resultados GPU.
 
 ## 3. Criterio de asociación
 
-Igual que correlaciones v24: **misma fotografía** (escala cm); co-ocurrencia por eventos solo para generar hipótesis.
+Igual que el paper de correlaciones: **misma fotografía** (escala cm); co-ocurrencia por eventos solo para generar hipótesis.
 
 ## 4. Métricas del identificador
 

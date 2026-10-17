@@ -1,6 +1,6 @@
 # Nudibranquios del Mediterráneo: asociaciones con presas y sustrato a partir de fotografías de ciencia ciudadana, y acierto de un identificador automático
 
-**BORRADOR 1 (17-oct-2026).** Estado: introducción, métodos y resultados de identificación completos; resultados de asociaciones **pendientes del análisis del escaneo** (ver §3.3); discusión esquemática. Autoría y agradecimientos: por completar. Revista objetivo: *Journal of Molluscan Studies* (peso en asociaciones) o *Ecological Informatics* (peso en el identificador).
+**17-oct-2026.** Estado: introducción, métodos y resultados de identificación completos; resultados de asociaciones **pendientes del análisis del escaneo** (ver §3.3); discusión esquemática. Autoría y agradecimientos: por completar. Revista objetivo: *Journal of Molluscan Studies* (peso en asociaciones) o *Ecological Informatics* (peso en el identificador).
 
 > Reglas de redacción: no citar rutas internas ni notas entre agentes; toda cifra con su n; toda cita con fuente verificada (las no verificadas se marcan **[VERIFICAR]**).
 

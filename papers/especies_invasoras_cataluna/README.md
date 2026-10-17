@@ -1,6 +1,6 @@
 # Especies invasoras en Cataluña
 
-**Estado:** manuscrito IMRaD en revisión (2026-10-15). Borrador anterior v1.7 archivado en git.
+**Estado:** manuscrito IMRaD en revisión (2026-10-15).
 
 ## Manuscrito (PDF)
 

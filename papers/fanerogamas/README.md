@@ -1,6 +1,6 @@
 # Fanerógamas marinas: especies relacionadas, incluidas las no documentadas, y acierto del identificador
 
-**Artículo divulgación (v0.1, 16-oct-2026):** [`ARTICULO.md`](ARTICULO.md) · PDF [`ARTICULO_COMPLETO_latest.pdf`](ARTICULO_COMPLETO_latest.pdf)  
+**Artículo divulgación (16-oct-2026):** [`ARTICULO.md`](ARTICULO.md) · PDF [`ARTICULO_COMPLETO_latest.pdf`](ARTICULO_COMPLETO_latest.pdf)  
 **Notas técnicas:** [`BORRADOR_20261010.md`](BORRADOR_20261010.md).
 
 ## Acierto unificado (`calib_raw_t05.jsonl`, OOS global 83,22 %)
