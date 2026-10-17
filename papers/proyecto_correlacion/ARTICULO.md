@@ -37,7 +37,7 @@ Para cada pareja (A, B) de la lista corta se analizaron hasta 60 fotos de A y de
 Se usan fotografías CC0, CC BY, CC BY-SA y CC BY-NC / CC BY-NC-SA; se excluyen las que no tienen licencia y las CC BY-NC-ND. Cada foto indica autor, licencia, fecha y hora local, lugar y enlace a la observación. Las marcadas con † (no comerciales) **deben sustituirse por fotos CC0, CC BY o CC BY-SA, o contar con permiso del autor, si el artículo se publica en una revista comercial**.
 
 ### 2.7 Modelo nulo Veech / `cooccur`
-Se implementó en Python el modelo probabilístico de Veech (2013) tal como lo expone el paquete `cooccur` (Griffith et al., 2016): para cada par de especies, con *N* sitios, *N₁* y *N₂* ocupaciones y *j* co-ocurrencias observadas, se calculan P(*J*≥*j*) y P(*J*≤*j*) bajo la hipergeométrica, el esperado *N₁N₂/N* y el efecto *j*−esperado. Sitios = eventos (observador × celda ~1 km × día × franja 3 h) con ≥2 especies; especies = las 300 más frecuentes. Se reportan pares **positivos**, **negativos** y aleatorios, con FDR Benjamini-Hochberg. Figura observado frente a esperado: `material/figuras/fig_v25_veech_obs_vs_esperado.png`. Un JSDM/HMSC con covariables ambientales (Ovaskainen et al., 2017) **sigue pendiente**.
+Se implementó en Python el modelo probabilístico de Veech (2013) tal como lo expone el paquete `cooccur` (Griffith et al., 2016): para cada par de especies, con *N* sitios, *N₁* y *N₂* ocupaciones y *j* co-ocurrencias observadas, se calculan P(*J*≥*j*) y P(*J*≤*j*) bajo la hipergeométrica, el esperado *N₁N₂/N* y el efecto *j*−esperado. Sitios = eventos (observador × celda ~1 km × día × franja 3 h) con ≥2 especies; especies = las 300 más frecuentes. Se reportan pares **positivos**, **negativos** y aleatorios, con FDR Benjamini-Hochberg. Figura observado frente a esperado: `material/figuras/fig_v25_veech_obs_vs_esperado.png`. Como paso intermedio sin covariables ambientales completas, exploramos una **red de precisión parcial (graphical lasso)** sobre la matriz de co-presencia en eventos (300 especies más frecuentes; aristas tras FDR), solo para visualizar clústeres taxonómicos — no sustituye un JSDM/HMSC con covariables (Ovaskainen et al., 2017), que **sigue pendiente**.
 
 ### 2.8 Covariables de esfuerzo y sensibilidad (Johnston)
 Siguiendo las guías de Johnston et al. (2021) e Isaac et al. (2014): (i) longitud de lista por evento (nº de especies); (ii) submuestreo espacial de 1 evento por celda×día; (iii) exigencia de ≥5 observadores distintos por par. Tabla de sensibilidad: cuántos pares +/− sobreviven a cada filtro (`material/experimentos/v25_sensibilidad_johnston_20261011.csv`).
@@ -68,17 +68,17 @@ De las 138 parejas, 41 tuvieron al menos una foto candidata y 12 tres o más obs
 <figure class="fig"><img src="material/figuras/fig2_candidatas_por_pareja.png" alt="Figura 2. Fotos candidatas por pareja y resultado de la revi"><figcaption><b>Figura 2. Fotos candidatas por pareja y resultado de la revisión visual.</b> Observaciones distintas con foto candidata de ambas especies para las 14 parejas con más candidatas. Verde: confirmada a ojo con ambas especies visibles; rojo: falso positivo por especies parecidas; gris: sin revisar o por confirmar (<i>Echinolittorina</i>–<i>Melarhaphe</i>, <i>Cliona</i>/<i>Clavularia</i>–<i>Rocellaria</i>, <i>Anas</i>–<i>Gallinula</i>).</figcaption></figure>
 
 ### 3.3 Parejas con ambas especies visibles
-La Tabla 2 recoge las parejas confirmadas a ojo y las Láminas 1–9 las fotografías. De las **138** parejas de la lista corta, solo **dos** proceden del cribado y resisten la revisión visual con ambas especies visibles; el resto de filas son controles positivos, selecciones previas o candidatas revisadas en campañas posteriores. *Peltodoris atromaculata* sobre *Petrosia ficiformis* (Avila, 1996) y *Cratena peregrina* sobre hidrozoos sirven de **control positivo**: son relaciones documentadas y el método encuentra fotos con ambas visibles. *Condylactis aurantiaca* con *Periclimenes scriptus* (el camarón entre los tentáculos de la anémona) salió de la lista corta; es coherente con el comensalismo conocido de los *Periclimenes* con anémonas, sin que se haya comprobado bibliografía específica para esta pareja. *Lysmata grabhami* con *Telmatactis cricoides* (camarón limpiador y anémona) y *Electra posidoniae* con *Tridentata perpusilla* (briozoo y hidrozoo sobre una misma hoja de *Posidonia*) muestran proximidad real, pero en el segundo caso es **microhábitat compartido, no interacción demostrada**. La segunda especie de cada foto la identifica BioFauna y **no está confirmada por curadores**.
 
-| Tabla 2. Parejas con fotografías de ambas especies en la misma imagen | Nivel | Fotos (obs. distintas) | Origen |
+**Frontera con el paper de nudibranquios.** Las asociaciones **nudibranquio–presa/sustrato** por misma fotografía (*Peltodoris atromaculata*–*Petrosia ficiformis*, *Cratena peregrina*–*Eudendrium racemosum*, *Felimare orsinii*–*Scalarispongia scalaris*; antiguas láminas 1, 2 y 7) se retiran de este manuscrito para evitar redundancia y se tratan en `papers/nudibranquios/` (Zafra, en preparación). Aquí permanecen el **método general** (cribado + detector + revisión a ojo) y las parejas **sin** opistobranquio como foco principal.
+
+La Tabla 2 recoge las parejas confirmadas a ojo en este artículo; las láminas 3–6 y 8–9 ilustran un subconjunto (la lámina 5 incluye un nudibranquio pelágico como ejemplo de camuflaje, no como bloque de dietas). De las **138** parejas de la lista corta original del cribado, **dos** no nudibranquio–presa proceden del cribado y resisten la revisión visual con ambas especies visibles (*Condylactis*–*Periclimenes*, *Electra*–*Tridentata*). *Condylactis aurantiaca* con *Periclimenes scriptus* es coherente con el comensalismo conocido de los *Periclimenes* con anémonas [VERIFICAR cita específica para esta pareja]. *Lysmata grabhami* con *Telmatactis cricoides* (limpieza) y *Electra posidoniae* con *Tridentata perpusilla* (microhábitat en *Posidonia*) muestran proximidad real; en el segundo caso **no** hay interacción demostrada. La segunda especie de cada foto la identifica BioFauna y **no está confirmada por curadores**.
+
+| Tabla 2. Parejas con fotografías de ambas especies en la misma imagen (cuerpo; sin bloque nudibranquio–presa) | Nivel | Fotos (obs. distintas) | Origen |
 |---|---|---:|---|
-| *Peltodoris atromaculata* sobre *Petrosia ficiformis* (predación) | 2 | 4 (4) | control positivo (relación documentada) |
-| *Cratena peregrina* sobre colonias de hidrozoos (*Eudendrium racemosum*; kleptopredación) | 2 | 4 (4) | control positivo (relación documentada) |
 | *Condylactis aurantiaca* con el camarón *Periclimenes scriptus* (comensalismo) | 2 | 4 (4) | lista corta del cribado |
 | *Lysmata grabhami* y *Telmatactis cricoides* (limpieza) | 1 | 4 (4) | selección previa (limpiador) |
-| *Scyllaea pelagica* sobre *Sargassum* flotante | 0–1 | 1 (1) | selección previa |
+| *Scyllaea pelagica* sobre *Sargassum* flotante | 0–1 | 1 (1) | selección previa (ilustración; ver paper nudibranquios para dietas bentónicas) |
 | *Electra posidoniae* y *Tridentata perpusilla* sobre hojas de *Posidonia* (microhábitat compartido) | 1 | 4 (4) | lista corta del cribado |
-| *Felimare orsinii* sobre una esponja oscura (*Scalarispongia scalaris*) | 1 | 4 (4) | pares de misma foto (revisión a ojo 8-oct) |
 | *Parazoanthus axinellae* junto a *Spongia lamella* | 1 | 2 (2) | pares de misma foto (revisión a ojo 8-oct) |
 | *Echinolittorina punctata* y *Melarhaphe neritoides* (zona de salpicadura) | 0–1 | 3 (3) | pares de misma foto (con cautela) |
 
@@ -88,26 +88,6 @@ No apareció ninguna foto con ambas especies para *Felimare picta*–*Ircinia or
 
 El cribado dejó **41** parejas con al menos una foto candidata del detector (incluidas ocho de aves acuáticas de la lista corta). La mayoría no se han revisado a ojo o resultaron falsos positivos por especies parecidas. El listado completo con estado de revisión figura en la **Tabla S3** (`material/TABLA_S3_candidatas.md`).
 
-
-<div class="lamina">
-<p class="lt"><b>Lámina 1. <i>Peltodoris atromaculata</i> sobre <i>Petrosia ficiformis</i> (predación).</b> <i>Esponja identificada por BioFauna como <i>Petrosia ficiformis</i> (variantes púrpura, rojiza y crema); sin confirmación de curadores.</i></p>
-<div class="grid">
-<figure><img src="material/lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg" alt="Lámina 1.1"><figcaption>Lámina 1.1: Pau Pagès Jaén · CC BY · 2024-08-06 12:08 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña; España · 42.0999° N, 3.1866° E (±36 m) · Minka obs 324790.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg" alt="Lámina 1.2"><figcaption>Lámina 1.2: Dean Zagorac · CC BY-NC † · 2023-08-07 16:40 (Europe/Zagreb) · Rožići, Kostrena, Općina Kostrena, Primorsko-goranska županija, Croacia; Dolina Ričine, Bakar, Primorsko-Goranska · 45.3024° N, 14.4878° E · iNaturalist obs 184319097.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg" alt="Lámina 1.3"><figcaption>Lámina 1.3: jmturon · CC BY-NC † · 2022-07-23 10:16 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña; España · 42.0860° N, 3.1988° E (±287 m) · Minka obs 205860.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg" alt="Lámina 1.4"><figcaption>Lámina 1.4: Óscar Comellas Garcia · CC BY-NC † · 2023-11-11 11:43 (Europe/Madrid) · Girona, España; Empordà Marítim, Girona, Cataluña · 42.0736° N, 3.2055° E (±55 m) · Minka obs 203388.</figcaption></figure>
-</div>
-</div>
-
-<div class="lamina">
-<p class="lt"><b>Lámina 2. <i>Cratena peregrina</i> sobre colonias de hidrozoos (<i>Eudendrium racemosum</i>; kleptopredación).</b> <i>Hidrozoo identificado por BioFauna como <i>Eudendrium racemosum</i>; sin confirmación de curadores.</i></p>
-<div class="grid">
-<figure><img src="material/lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__1.jpg" alt="Lámina 2.1"><figcaption>Lámina 2.1: xavi salvador costa · CC BY-NC † · 2024-11-02 22:52 (Europe/Paris) · La Peyrade, Frontignan, Montpellier, Hérault, Francia; ABC de la Lagune, Hérault, Languedoc-Roussillon · 43.4247° N, 3.7000° E (±88 m) · Minka obs 392849.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__2.jpg" alt="Lámina 2.2"><figcaption>Lámina 2.2: xatrac · CC BY-NC † · 2022-08-27 10:08 (Europe/Paris) · Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña · 41.6913° N, 2.8299° E (±183 m) · Minka obs 88838.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__3.jpg" alt="Lámina 2.3"><figcaption>Lámina 2.3: xatrac · CC BY-NC † · 2022-08-10 09:42 (Europe/Paris) · Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña · 41.6913° N, 2.8299° E (±183 m) · Minka obs 88546.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__4.jpg" alt="Lámina 2.4"><figcaption>Lámina 2.4: xatrac · CC BY-NC † · 2022-08-07 09:16 (Europe/Paris) · Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña · 41.6913° N, 2.8299° E (±183 m) · Minka obs 88528.</figcaption></figure>
-</div>
-</div>
 
 <div class="lamina">
 <p class="lt"><b>Lámina 3. <i>Condylactis aurantiaca</i> con el camarón <i>Periclimenes scriptus</i> (comensalismo).</b> <i>Camarón identificado por BioFauna como <i>Periclimenes scriptus</i>; sin confirmación de curadores.</i></p>
@@ -143,16 +123,6 @@ El cribado dejó **41** parejas con al menos una foto candidata del detector (in
 <figure><img src="material/lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg" alt="Lámina 6.2"><figcaption>Lámina 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · Valldolig, Blanes, la Selva, Cataluña, España; Vegueria de Barcelona, Barcelona, Cataluña · 41.6732° N, 2.8022° E (±178 m) · Minka obs 511234.</figcaption></figure>
 <!-- Excluida Lámina 6.3 (Costa Rica): incompatible con *Posidonia oceanica* / *Electra posidoniae* mediterráneos. -->
 <figure><img src="material/lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg" alt="Lámina 6.4"><figcaption>Lámina 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Llançà, Alto Ampurdán, Cataluña, España; Orientales, Girona, Cataluña · 42.3875° N, 3.1612° E (±622 m) · Minka obs 544263.</figcaption></figure>
-</div>
-</div>
-
-<div class="lamina">
-<p class="lt"><b>Lámina 7. <i>Felimare orsinii</i> sobre una esponja oscura (<i>Scalarispongia scalaris</i>).</b> <i>Esponja identificada solo por BioFauna a partir de la foto (sin confirmación de curadores): se presenta como nivel 1 (aparece sobre), sin afirmar depredación.</i></p>
-<div class="grid">
-<figure><img src="material/lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__1.jpg" alt="Lámina 7.1"><figcaption>Lámina 7.1: motalec · CC BY-NC † · 2026-08-02 14:01 (Europe/Paris) · 8e Arrondissement, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1907° N, 5.3827° E · iNaturalist obs 389401988.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__2.jpg" alt="Lámina 7.2"><figcaption>Lámina 7.2: xavi salvador costa · CC BY-NC † · 2016-07-25 23:04 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña · 41.7658° N, 3.0026° E · Minka obs 418034.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__3.jpg" alt="Lámina 7.3"><figcaption>Lámina 7.3: motalec · CC BY-NC † · 2025-04-26 09:37 (Europe/Paris) · Impérial du Milieu; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1716° N, 5.3938° E · iNaturalist obs 275056747.</figcaption></figure>
-<figure><img src="material/lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__4.jpg" alt="Lámina 7.4"><figcaption>Lámina 7.4: Alessandro Diotallevi · CC BY-NC † · 2024-04-28 10:06 (Etc/GMT-1) · lugar no indicado · 41.2450° N, 12.3467° E · iNaturalist obs 212560581.</figcaption></figure>
 </div>
 </div>
 
@@ -218,12 +188,10 @@ Con acierto de especie 84,38 %, P(ambas OK) ≈ 0,71 en la lista corta. Eso acot
 
 | Pareja | Notas |
 |---|---|
-|*Peltodoris atromaculata*–*Petrosia ficiformis*|predación documentada (Avila, 1996); control positivo|
-|*Cratena peregrina*–hidrozoos|relación clásica mediterránea; falta DOI primario en esta versión|
+|*Peltodoris* / *Cratena* / *Felimare*–presa|ver paper nudibranquios (retiradas de este manuscrito, §3.3)|
 |*Condylactis aurantiaca*–*Periclimenes scriptus*|comensalismo coherente a nivel de género; pendiente cita de la pareja concreta|
 |*Lysmata grabhami*–*Telmatactis cricoides*|limpieza documentada en *Lysmata*; literatura Atlántico E / Canarias pendiente|
 |*Electra posidoniae*–*Tridentata perpusilla*|microhábitat compartido sobre *Posidonia*, no interacción demostrada|
-|*Felimare orsinii*–*Scalarispongia scalaris*|nivel 1 (aparece sobre); **no** afirmar depredación|
 |*Parazoanthus axinellae*–*Spongia lamella*|convivencia en el mismo plano; sin interacción demostrada|
 |*Calystegia soldanella*–*Medicago marina*|hábitat dunar compartido (terrestre)|
 
