@@ -8,7 +8,7 @@
 
 ## Abstract
 
-Seeing two species on the same dive does not show they are related: a diver sees many different species in one outing, and spatial co-occurrence is not evidence of ecological interaction (Blanchet et al., 2020; Freilich et al., 2018). We therefore require a stricter, checkable criterion: **both species in the same photograph** (centimetre-scale proximity). We start from **1,222,170 photographs** and **759,207 geolocated observations** (Minka SDG, iNaturalist and other sources), identified by **BioFauna** (out-of-sample species accuracy **84.38 %** on the 78,145-row panel; source: `dataset/stats.json` /health 11 Oct 2026; invasoras promote 10 Oct 2026). A screening by *events* (observer × ~1 km cell × day × 3 h slot), with local effort controlled, serves only to **generate hypotheses**: 115,204 supported pairs, of which 51,401 are significant, so significance alone does not discriminate. For a shortlist of 138 pairs we searched the gallery for images where both species appear: 41 pairs had at least one candidate photo and 12 had three or more distinct observations; visual review showed **many false positives between look-alike species**. Pairs with both species visible were confirmed by eye (documented positive controls and level 1–2 candidates; Plates 1–9). Crossing the shortlist with GloBI does not validate the screening: without waterbirds there is no enrichment (Fisher p = 0.68; P1). A Python port of Veech (2013) / Griffith et al. (2016) classifies, among the top-300 species, **21,208** positive and **9,405** negative pairs (q≤0.05); after Johnston et al. (2021) effort filters, **431** positives remain. Freilich-style validation against GloBI+literature yields ≈0.2 % precision for event screening versus ≈4.9 % for same-photo (non-trophic). With accuracy 84.38 %, the probability that both IDs in a co-event are correct is ≈0.71 (P4). Proximity in a photo shows coexistence at centimetre scale, **not interaction**, and the second species is proposed by the identifier without curator confirmation.
+Seeing two species on the same dive does not show they are related: a diver sees many different species in one outing, and spatial co-occurrence is not evidence of ecological interaction (Blanchet et al., 2020; Freilich et al., 2018). We therefore require a stricter, checkable criterion: **both species in the same photograph** (centimetre-scale proximity). We start from **1,222,170 photographs** and **759,207 geolocated observations** (Minka SDG, iNaturalist and other sources), identified by **BioFauna** (out-of-sample species accuracy **84.38 %** on the 78,145-row panel; source: `dataset/stats.json` /health 11 Oct 2026; invasoras promote 10 Oct 2026). A screening by *events* (observer × ~1 km cell × day × 3 h slot), with local effort controlled, serves only to **generate hypotheses**: 115,204 supported pairs, of which 51,401 are significant, so significance alone does not discriminate. For a shortlist of 138 pairs we searched the gallery for images where both species appear: 41 pairs had at least one candidate photo and 12 had three or more distinct observations; visual review showed **many false positives between look-alike species**. **Two** shortlist pairs were confirmed with both species visible (*Condylactis aurantiaca*–*Periclimenes scriptus* and Mediterranean *Electra posidoniae*–*Tridentata perpusilla*); other plates include earlier selections or same-photo pairs reviewed in v22 (Plates 3–6, 8–9). Crossing the shortlist with GloBI does not validate the screening: without waterbirds there is no enrichment (Fisher p = 0.68; P1). A Python port of Veech (2013) / Griffith et al. (2016) classifies, among the top-300 species, **21,208** positive and **9,405** negative pairs (q≤0.05); after Johnston et al. (2021) effort filters, **431** positives remain. Freilich-style validation against GloBI+literature yields ≈0.2 % precision for event screening versus ≈4.9 % for same-photo (non-trophic). With accuracy 84.38 %, the probability that both IDs in a co-event are correct is ≈0.71 (P4). Proximity in a photo shows coexistence at centimetre scale, **not interaction**, and the second species is proposed by the identifier without curator confirmation.
 
 **Keywords:** citizen science, coexistence, proximity, deep learning, Mediterranean, underwater photography, co-occurrence.
 
@@ -70,91 +70,26 @@ Of the 138 pairs, 41 had at least one candidate photo and 12 three or more disti
 <figure class="fig"><img src="../figuras/fig2_candidatas_por_pareja.png" alt="Figure 2. Candidate photos per pair and visual review outcom"><figcaption><b>Figure 2. Candidate photos per pair and visual review outcome.</b> Distinct observations with a candidate photo of both species for the 14 pairs with most candidates. Green: confirmed by eye with both species visible; red: false positive due to look-alike species; grey: not reviewed or to be confirmed (<i>Echinolittorina</i>–<i>Melarhaphe</i>, <i>Cliona</i>/<i>Clavularia</i>–<i>Rocellaria</i>, <i>Anas</i>–<i>Gallinula</i>).</figcaption></figure>
 
 ### 3.3 Pairs with both species visible
-Table 2 lists the pairs confirmed by eye and Plates 1–9 show the photographs. *Peltodoris atromaculata* on *Petrosia ficiformis* (Avila, 1996) and *Cratena peregrina* on hydroids serve as **positive controls**: they are documented relations and the method finds photos with both visible. *Condylactis aurantiaca* with *Periclimenes scriptus* (the shrimp among the anemone's tentacles) came from the shortlist; it is consistent with the known commensalism of *Periclimenes* with anemones, although pair-specific literature has not been checked. *Lysmata grabhami* with *Telmatactis cricoides* (cleaner shrimp and anemone) and *Electra posidoniae* with *Tridentata perpusilla* (bryozoan and hydroid on the same *Posidonia* leaf) show real proximity, but the latter is **shared microhabitat, not demonstrated interaction**. The second species in each photo is identified by BioFauna and is **not confirmed by curators**.
 
-| Table 2. Pairs with photographs of both species in the same image | Level | Photos (distinct obs.) | Origin |
+**Boundary with the nudibranch paper.** **Nudibranch–prey/substrate** associations in the same photograph (*Peltodoris atromaculata*–*Petrosia ficiformis*, *Cratena peregrina*–*Eudendrium racemosum*, *Felimare orsinii*–*Scalarispongia scalaris*; former Plates 1, 2 and 7) are **removed from this manuscript** to avoid redundancy and are treated in `papers/nudibranquios/` (Zafra, in preparation). What remains here is the **general method** (screening + detector + visual review) and pairs **without** opisthobranchs as the main focus.
+
+Table 2 lists the pairs confirmed by eye in this article; Plates 3–6 and 8–9 illustrate a subset (Plate 5 includes a pelagic nudibranch as a camouflage example, not as a diet block). Of the **138** shortlist pairs from screening, **two** non–nudibranch–prey pairs from the shortlist survive visual review with both species visible (*Condylactis*–*Periclimenes*, *Electra*–*Tridentata*). *Condylactis aurantiaca* with *Periclimenes scriptus* is consistent with the known commensalism of *Periclimenes* with anemones [VERIFY pair-specific citation]. *Lysmata grabhami* with *Telmatactis cricoides* (cleaning) and *Electra posidoniae* with *Tridentata perpusilla* (*Posidonia* microhabitat) show real proximity; in the latter case there is **no demonstrated interaction**. The second species in each photo is identified by BioFauna and is **not confirmed by curators**.
+
+| Table 2. Pairs with photographs of both species in the same image (body; no nudibranch–prey block) | Level | Photos (distinct obs.) | Origin |
 |---|---|---:|---|
-| *Peltodoris atromaculata* on *Petrosia ficiformis* (predation) | 2 | 4 (4) | positive control (documented relation) |
-| *Cratena peregrina* on hydroid colonies (*Eudendrium racemosum*; kleptoparasitism) | 2 | 4 (4) | positive control (documented relation) |
 | *Condylactis aurantiaca* with the shrimp *Periclimenes scriptus* (commensalism) | 2 | 4 (4) | screening shortlist |
 | *Lysmata grabhami* and *Telmatactis cricoides* (cleaning) | 1 | 4 (4) | earlier selection (cleaner) |
-| *Scyllaea pelagica* on floating *Sargassum* | 0–1 | 1 (1) | earlier selection |
+| *Scyllaea pelagica* on floating *Sargassum* | 0–1 | 1 (1) | earlier selection (illustration; see nudibranch paper for benthic diets) |
 | *Electra posidoniae* and *Tridentata perpusilla* on *Posidonia* leaves (shared microhabitat) | 1 | 4 (4) | screening shortlist |
-| *Felimare orsinii* on a dark sponge (*Scalarispongia scalaris*) | 1 | 4 (4) | same-photo pairs (visual review 8 Oct) |
 | *Parazoanthus axinellae* next to *Spongia lamella* | 1 | 2 (2) | same-photo pairs (visual review 8 Oct) |
 | *Echinolittorina punctata* and *Melarhaphe neritoides* (splash zone) | 0–1 | 3 (3) | same-photo pairs (with caution) |
 
 ### 3.4 Pairs without a joint photo
 No photo with both species was found for *Felimare picta*–*Ircinia oros*, *Muraena helena*–*Ophidiaster ophidianus* or *Fistularia commersonii*–*Pterois miles*. This does not show they do not coexist and does not allow any relation to be claimed: they remain *unconfirmed*.
 ### 3.5 Other detected relations (screening candidates)
-The screening left 41 pairs with at least one candidate photo (including 8 waterbird pairs from the 138-pair shortlist: the same-photo criterion does not depend on the taxonomic group; waterbirds from the shortlist are listed as not reviewed by eye). Table 3 lists them with their review status; those marked 'not reviewed by eye' are hypotheses awaiting visual checking, not results. The pairs in plates 7–9 were added in v22.
 
-Table 3. Candidate pairs with a photo of both species according to the detector
+The screening left **41** pairs with at least one candidate photo from the detector (including eight waterbird pairs from the shortlist). Most have not been reviewed by eye or were false positives between look-alike species. The full list with review status is in **Table S3** (`../TABLA_S3_candidatas.md`).
 
-| Pair | Distinct obs. with candidate photo | Status |
-|---|---:|---|
-| *Electra posidoniae* – *Tridentata perpusilla* | 43 | plate 6 |
-| *Polititapes aureus* – *Ruditapes decussatus* | 31 | false positive (look-alikes) |
-| *Condylactis aurantiaca* – *Periclimenes scriptus* | 31 | plate 3 |
-| *Caloria quatrefagesi* – *Luisella babai* | 24 | false positive (look-alikes) |
-| *Echinolittorina punctata* – *Melarhaphe neritoides* | 15 | plate 9, with caution |
-| *Anas platyrhynchos* – *Gallinula chloropus* | 14 | waterbirds; not reviewed by eye |
-| *Cliona rhodensis* – *Rocellaria dubia* | 14 | discarded (bivalve not visible) |
-| *Clavularia crassa* – *Rocellaria dubia* | 13 | not reviewed by eye |
-| *Clavelina lepadiformis* – *Echinaster sepositus* | 6 | weak (ascidian unconfirmed) |
-| *Eryngium maritimum* – *Pancratium maritimum* | 4 | unconfirmed (*Eryngium* not distinguishable) |
-| *Calystegia soldanella* – *Medicago marina* | 3 | 1 obs.; undecided |
-| *Mactra corallina* – *Peronaea planata* | 3 | not reviewed by eye |
-| *Chamelea gallina* – *Glycymeris glycymeris* | 2 | not reviewed by eye |
-| *Chamelea gallina* – *Spisula subtruncata* | 2 | not reviewed by eye |
-| *Donax trunculus* – *Spisula subtruncata* | 2 | not reviewed by eye |
-| *Sicyonia carinata* – *Synodus saurus* | 2 | not reviewed by eye |
-| *Ophidiaster ophidianus* – *Tripterygion delaisi* | 2 | not reviewed by eye |
-| *Holothuria forskali* – *Reptadeonella violacea* | 2 | not reviewed by eye |
-| *Columbella rustica* – *Conus ventricosus* | 1 | not reviewed by eye |
-| *Chroicocephalus ridibundus* – *Gallinula chloropus* | 1 | waterbirds; not reviewed by eye |
-| *Ardea cinerea* – *Gallinula chloropus* | 1 | waterbirds; not reviewed by eye |
-| *Diaphorodoris alba* – *Luisella babai* | 1 | not reviewed by eye |
-| *Mactra corallina* – *Turritellinella tricarinata* | 1 | not reviewed by eye |
-| *Donax semistriatus* – *Spisula subtruncata* | 1 | not reviewed by eye |
-| *Barbatia barbata* – *Limaria tuberculata* | 1 | not reviewed by eye |
-| *Chamelea gallina* – *Mactra corallina* | 1 | not reviewed by eye |
-| *Anas platyrhynchos* – *Phalacrocorax carbo* | 1 | waterbirds; not reviewed by eye |
-| *Chamelea gallina* – *Ensis minor* | 1 | not reviewed by eye |
-| *Fistularia commersonii* – *Siganus rivulatus* | 1 | not reviewed by eye |
-| *Cotylorhiza tuberculata* – *Diplodus vulgaris* | 1 | not reviewed by eye |
-| *Acanthocardia tuberculata* – *Cymodocea nodosa* | 1 | not reviewed by eye |
-| *Chthamalus stellatus* – *Echinolittorina punctata* | 1 | not reviewed by eye |
-| *Semicassis undulata* – *Synodus saurus* | 1 | not reviewed by eye |
-| *Ophisurus serpens* – *Sicyonia carinata* | 1 | not reviewed by eye |
-| *Condylactis aurantiaca* – *Gobius geniporus* | 1 | not reviewed by eye |
-| *Holothuria forskali* – *Pleraplysilla spinifera* | 1 | not reviewed by eye |
-| *Epinephelus costae* – *Pinna rudis* | 1 | not reviewed by eye |
-| *Muraena helena* – *Octopus vulgaris* | 1 | not reviewed by eye |
-| *Chthamalus stellatus* – *Cystoseira compressa* | 1 | not reviewed by eye |
-| *Conger conger* – *Galathea strigosa* | 1 | not reviewed by eye |
-| *Bispira volutacornis* – *Phycis phycis* | 1 | not reviewed by eye |
-
-
-<div class="lamina">
-<p class="lt"><b>Plate 1. <i>Peltodoris atromaculata</i> on <i>Petrosia ficiformis</i> (predation).</b> <i>Sponge identified by BioFauna as <i>Petrosia ficiformis</i> (purple, reddish and cream variants); not confirmed by curators.</i></p>
-<div class="grid">
-<figure><img src="../lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__1.jpg" alt="Plate 1.1"><figcaption>Plate 1.1: Pau Pagès Jaén · CC BY · 2024-08-06 12:08 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña; España · 42.0999° N, 3.1866° E (±36 m) · Minka obs 324790.</figcaption></figure>
-<figure><img src="../lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__2.jpg" alt="Plate 1.2"><figcaption>Plate 1.2: Dean Zagorac · CC BY-NC † · 2023-08-07 16:40 (Europe/Zagreb) · Rožići, Kostrena, Općina Kostrena, Primorsko-goranska županija, Croacia; Dolina Ričine, Bakar, Primorsko-Goranska · 45.3024° N, 14.4878° E · iNaturalist obs 184319097.</figcaption></figure>
-<figure><img src="../lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__3.jpg" alt="Plate 1.3"><figcaption>Plate 1.3: jmturon · CC BY-NC † · 2022-07-23 10:16 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña; España · 42.0860° N, 3.1988° E (±287 m) · Minka obs 205860.</figcaption></figure>
-<figure><img src="../lamina_fotos/par1__peltodoris_atromaculata__petrosia_ficiformis__4.jpg" alt="Plate 1.4"><figcaption>Plate 1.4: Óscar Comellas Garcia · CC BY-NC † · 2023-11-11 11:43 (Europe/Madrid) · Girona, España; Empordà Marítim, Girona, Cataluña · 42.0736° N, 3.2055° E (±55 m) · Minka obs 203388.</figcaption></figure>
-</div>
-</div>
-
-<div class="lamina">
-<p class="lt"><b>Plate 2. <i>Cratena peregrina</i> on hydroid colonies (<i>Eudendrium racemosum</i>; kleptoparasitism).</b> <i>Hydroid identified by BioFauna as <i>Eudendrium racemosum</i>; not confirmed by curators.</i></p>
-<div class="grid">
-<figure><img src="../lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__1.jpg" alt="Plate 2.1"><figcaption>Plate 2.1: xavi salvador costa · CC BY-NC † · 2024-11-02 22:52 (Europe/Paris) · La Peyrade, Frontignan, Montpellier, Hérault, Francia; ABC de la Lagune, Hérault, Languedoc-Roussillon · 43.4247° N, 3.7000° E (±88 m) · Minka obs 392849.</figcaption></figure>
-<figure><img src="../lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__2.jpg" alt="Plate 2.2"><figcaption>Plate 2.2: xatrac · CC BY-NC † · 2022-08-27 10:08 (Europe/Paris) · Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña · 41.6913° N, 2.8299° E (±183 m) · Minka obs 88838.</figcaption></figure>
-<figure><img src="../lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__3.jpg" alt="Plate 2.3"><figcaption>Plate 2.3: xatrac · CC BY-NC † · 2022-08-10 09:42 (Europe/Paris) · Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña · 41.6913° N, 2.8299° E (±183 m) · Minka obs 88546.</figcaption></figure>
-<figure><img src="../lamina_fotos/par2__cratena_peregrina__eudendrium_racemosum__4.jpg" alt="Plate 2.4"><figcaption>Plate 2.4: xatrac · CC BY-NC † · 2022-08-07 09:16 (Europe/Paris) · Venta de Goya, Lloret de Mar, la Selva, Cataluña, España; Comarca de la Selva, Girona, Cataluña · 41.6913° N, 2.8299° E (±183 m) · Minka obs 88528.</figcaption></figure>
-</div>
-</div>
 
 <div class="lamina">
 <p class="lt"><b>Plate 3. <i>Condylactis aurantiaca</i> with the shrimp <i>Periclimenes scriptus</i> (commensalism).</b> <i>Shrimp identified by BioFauna as <i>Periclimenes scriptus</i>; not confirmed by curators.</i></p>
@@ -190,16 +125,6 @@ Table 3. Candidate pairs with a photo of both species according to the detector
 <figure><img src="../lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__2.jpg" alt="Plate 6.2"><figcaption>Plate 6.2: conxi · CC BY-NC † · 2025-05-31 11:48 (Europe/Madrid) · Valldolig, Blanes, la Selva, Cataluña, España; Vegueria de Barcelona, Barcelona, Cataluña · 41.6732° N, 2.8022° E (±178 m) · Minka obs 511234.</figcaption></figure>
 <!-- Plate 6.3 (Costa Rica) excluded: incompatible with Mediterranean *Posidonia oceanica* / *Electra posidoniae*. -->
 <figure><img src="../lamina_fotos/par6__electra_posidoniae__tridentata_perpusilla__4.jpg" alt="Plate 6.4"><figcaption>Plate 6.4: Manel Ortega · CC BY · 2025-08-10 10:13 (Europe/Madrid) · Llançà, Alto Ampurdán, Cataluña, España; Orientales, Girona, Cataluña · 42.3875° N, 3.1612° E (±622 m) · Minka obs 544263.</figcaption></figure>
-</div>
-</div>
-
-<div class="lamina">
-<p class="lt"><b>Plate 7. <i>Felimare orsinii</i> on a dark sponge (<i>Scalarispongia scalaris</i>).</b> <i>Sponge identified only by BioFauna from the photo (not confirmed by curators): level 1 (appears on it); predation is not claimed.</i></p>
-<div class="grid">
-<figure><img src="../lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__1.jpg" alt="Plate 7.1"><figcaption>Plate 7.1: motalec · CC BY-NC † · 2026-08-02 14:01 (Europe/Paris) · 8e Arrondissement, Marseille, France; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1907° N, 5.3827° E · iNaturalist obs 389401988.</figcaption></figure>
-<figure><img src="../lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__2.jpg" alt="Plate 7.2"><figcaption>Plate 7.2: xavi salvador costa · CC BY-NC † · 2016-07-25 23:04 (Europe/Madrid) · Empordà Marítim, Girona, Cataluña · 41.7658° N, 3.0026° E · Minka obs 418034.</figcaption></figure>
-<figure><img src="../lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__3.jpg" alt="Plate 7.3"><figcaption>Plate 7.3: motalec · CC BY-NC † · 2025-04-26 09:37 (Europe/Paris) · Impérial du Milieu; Bouches-Du-Rhône, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur · 43.1716° N, 5.3938° E · iNaturalist obs 275056747.</figcaption></figure>
-<figure><img src="../lamina_fotos/par7__felimare_orsinii__scalarispongia_scalaris__4.jpg" alt="Plate 7.4"><figcaption>Plate 7.4: Alessandro Diotallevi · CC BY-NC † · 2024-04-28 10:06 (Etc/GMT-1) · lugar no indicado · 41.2450° N, 12.3467° E · iNaturalist obs 212560581.</figcaption></figure>
 </div>
 </div>
 
@@ -264,12 +189,13 @@ Gold: 51 pairs (documented GloBI + article literature); 12 trophic / 27 non-trop
 With OOS = 84.38 %, P(both OK) ≈ 0.69–0.72 on the shortlist. That bounds how many event coincidences can be doubly correct IDs **before** visual review; it does not replace that review.
 
 ### 3.8 Literature review of confirmed pairs (P9)
-|*Peltodoris atromaculata*–*Petrosia ficiformis*|documented predation (Avila, 1996); positive control|
-|*Cratena peregrina*–hydroids|classic Mediterranean relation; primary DOI missing in this version|
-|*Condylactis aurantiaca*–*Periclimenes scriptus*|genus-level commensalism; pair-specific citation pending|
+
+| Pair | Notes |
+|---|---|
+|*Peltodoris* / *Cratena* / *Felimare*–prey|see nudibranch paper (removed from this manuscript, §3.3)|
+|*Condylactis aurantiaca*–*Periclimenes scriptus*|genus-level commensalism coherent; pair-specific citation pending|
 |*Lysmata grabhami*–*Telmatactis cricoides*|cleaning documented in *Lysmata*; E Atlantic / Canary literature pending|
 |*Electra posidoniae*–*Tridentata perpusilla*|shared *Posidonia* microhabitat, not demonstrated interaction|
-|*Felimare orsinii*–*Scalarispongia scalaris*|level 1 (appears on); **do not** claim predation|
 |*Parazoanthus axinellae*–*Spongia lamella*|coexistence in the same frame; interaction not demonstrated|
 |*Calystegia soldanella*–*Medicago marina*|shared dune habitat (terrestrial)|
 
