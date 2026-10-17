@@ -53,7 +53,33 @@ Los números de acierto que siguen salen de un **panel de evaluación interno** 
 
 *N. japonica* es una especie invasora en otros contextos; si aparece en foto, conviene revisión experta y cita en el paper de invasoras del repositorio.
 
-## 4. Qué puede aportar tu foto
+## 4. Guía visual: *Zostera*, *Nanozostera* y *Cymodocea*
+
+| Rasgo en foto | *Zostera marina* | *Nanozostera noltii* | *Cymodocea nodosa* |
+|---|---|---|---|
+| Tamaño de hoja | Larga, banda ancha | Muy fina, «pelo» | Media, algo más ancha que *Nanozostera* |
+| Fondo típico | Arena o arena fangosa, a veces con conchas | Somero, bahías poco profundas | Praderas someras, a veces con *Posidonia* cerca |
+| Confusión habitual | Con *N. noltii* si el encuadre es macro | Con *Z. marina* y *C. nodosa* | Con *Zostera* en fotos parciales |
+
+Ilustraciones con licencia libre: pendiente lámina en `material/guia_visual_fanerogamas/` (README).
+
+## 5. Cómo hacer una buena foto para identificarla
+
+1. **Encuadre:** al menos una hoja entera o varias hojas con el **vértice** y la nervadura visibles; evita solo peces u horizonte.
+2. **Escala:** incluye un objeto de referencia (mano, regleta de buceo) si la profundidad es &lt;5 m.
+3. **Metadatos:** coordenadas, profundidad aproximada y fecha en el formulario (Minka/iNaturalist/FotoFauna).
+4. **Licencia:** CC BY o CC0 si quieres que la imagen entre en atlas o en futuras versiones del identificador.
+5. **No dañar:** no arranques rizomas de *Posidonia*; en fanerógamas someras, no pises la pradera.
+
+## 6. Mapa ciudadano frente a praderas cartografiadas
+
+Las observaciones georreferenciadas de las cuatro especies en FotoFauna/Minka **no** coinciden uno a uno con los polígonos oficiales de praderas (Generalitat, ICM, proyectos de carbono azul). Sirven como **complemento** en zonas poco muestreadas y para detectar **anomalías** (p. ej. *Halophila stipulacea* fuera de su rango esperado). La cartografía de carbono azul (Piñeiro-Juncal et al., 2026) sigue siendo la referencia para mitigación climática.
+
+## 7. *Halophila stipulacea* como alerta
+
+El catálogo incluye *Halophila stipulacea* (especie lessepsiana en expansión). Con pocas fotos en eval, el acierto automático es **incierto**; cualquier cita en aguas catalanas debe pasar por **revisión experta** y enlazarse con el paper de invasoras del repositorio. No confundir con *Cymodocea* en fotos turbias.
+
+## 8. Qué puede aportar tu foto (ciencia ciudadana)
 
 - **Extensión y salud** de praderas en zonas poco censadas (siempre con coordenadas y, si es posible, profundidad).
 - **Epífitos y fauna asociada** (gorgonias, erizos, peces): el paper de correlaciones del mismo repositorio estudia co-ocurrencias; una fanerógama bien etiquetada ayuda a enlazar hábitat y especies.
@@ -61,29 +87,31 @@ Los números de acierto que siguen salen de un **panel de evaluación interno** 
 
 **Buenas prácticas:** encuadre que muestre la **hoja o la pradera** sin solo el cielo o el pez; evita pisar *Posidonia* (rizomas muy sensibles); usa licencia **CC BY** o **CC0** si quieres que la imagen entre en atlas o en entrenamiento futuro.
 
-## 5. Discusión y límites
+## 9. Discusión y límites
 
 Este texto **no** estima hectáreas de pradera ni biomasa: para eso siguen haciendo falta cartografía acústica, transectos y modelos oficiales. Tampoco sustituye la lista roja o los planes de gestión del hábitat *Posidonia*. Lo que ofrece es transparencia sobre **qué tan fiable es el nombre automático** en cuatro especies frecuentes en fotos ciudadanas.
 
 Cifras históricas con otro tamaño de muestra (p. ej. n = 60 por especie en campañas de septiembre de 2026) aparecen en `papers/biofauna/01_biofauna_es.md` y **no deben mezclarse** con la Tabla 1 sin etiquetar la cohorte.
 
-## 6. Conclusiones
+## 10. Conclusiones
 
 Las fanerógamas marinas conectan **biodiversidad**, **pesca** y **clima**. En FotoFauna/BioFauna son un bloque pequeño pero políticamente relevante: cuatro especies, **~75 %** de acierto conjunto en evaluación interna, confusiones sobre todo entre zosteráceas. Mejorar encuadres, profundidad en el formulario y revisión humana de pares crípticos subirá la utilidad de la ciencia ciudadana para el carbono azul sin sustituir a los censos profesionales.
 
-## 7. Autoevaluación (v0.1, 16-oct-2026)
+## 11. Autoevaluación (v0.2, 17-oct-2026)
 
 | Criterio | Estado |
 |---|---|
 | Prosa divulgativa completa | **Sí** |
 | Tablas comentadas | **Sí** — Tablas 1–2 |
 | Cifras p19 / 3.061 / 84,38 % global | **Sí** |
-| Figuras con licencia | **No** — pendiente galería ilustrada (README) |
+| Guía visual Zostera/Nanozostera/Cymodocea | **Sí** — §4 (lámina pendiente) |
+| Foto, mapa, Halophila, llamada CC | **Sí** — §5–8 |
+| Figuras con licencia | **Parcial** — pendiente galería ilustrada |
 | DOI y referencia carbono azul | **Sí** |
 
-**Estimación: ~85 %** como nota divulgativa; falta lámina de fotos y posible división Posidonia vs. resto en figura.
+**Estimación: ~90 %** como nota divulgativa; falta lámina ilustrada y ampliación eval (tarea GPU 7.1).
 
-## 8. Referencias
+## 12. Referencias
 
 - Piñeiro-Juncal, N., Serrano, O., de los Santos, C., Marbà, N., et al. (2026). Blue carbon inventories of Spain and Portugal for their inclusion in national climate mitigation strategies. *Marine Pollution Bulletin* **228**: 119570. https://doi.org/10.1016/j.marpolbul.2026.119570
 - BioFauna — `papers/biofauna/01_biofauna_es.md` (método e índice p19).
